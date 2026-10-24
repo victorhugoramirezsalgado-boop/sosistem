@@ -1,6 +1,175 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sistema S.O.S.</title><meta name="description" content="Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales"><link rel="stylesheet" href="estilo.css"></head>
-<body><main data-nombre="Sistema S.O.S.©"><p><code>sosistem.com</code></p><h1>Sistema S.O.S.©</h1><p>Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</p>
-<div class="esc"><div class="cubo"><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div></div></div><p>Sitio en construcción.</p>
-<footer>© 2026 Víctor Hugo Ramírez Salgado. Obra registrada en Safe Creative. Todos los derechos reservados.</footer></main>
-<script src="cubo.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema S.O.S.© · Seguridad sin cámaras</title>
+<meta name="description" content="Sistema S.O.S.©: detecta a una persona en riesgo en sanitarios y espacios confinados, sin cámaras, y escala la alerta hasta el 911. Alerta sísmica en sitio.">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:title" content="Sistema S.O.S.© — Seguridad sin cámaras">
+<meta property="og:description" content="Detección de personas en riesgo y alerta sísmica en sitio para recintos confinados.">
+<meta property="og:url" content="https://sosistem.com/">
+<link rel="canonical" href="https://sosistem.com/">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="logo-mark">S.O.S</span><span>Sistema S.O.S.©</span></a>
+    <nav>
+      <a class="btn ghost hide-sm" href="#funciona">Cómo funciona</a>
+      <a class="btn ghost hide-sm" href="#piloto">Piloto</a>
+      <button class="btn" id="btn-presentar" type="button" title="Modo presentación (flechas para avanzar)">Presentar</button>
+      <a class="btn primary" href="#contacto">Solicitar demostración</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="slide hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</span>
+      <h1>Seguridad en sanitarios y espacios confinados, sin cámaras.</h1>
+      <p class="lead">S.O.S.© detecta a una persona caída o sin movimiento dentro de una cabina y avisa en segundos al encargado, a la central de monitoreo y, si nadie responde, al 911.</p>
+      <p><a class="btn primary" href="#contacto">Solicitar demostración</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
+    </div>
+    <div class="card" aria-hidden="true">
+      <svg class="chart" viewBox="0 0 420 300" role="img">
+        <rect x="10" y="20" width="250" height="150" rx="12" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <text x="22" y="42" style="font-weight:700;fill:var(--ink-2)">Módulo de sanitarios</text>
+        <g>
+          <rect x="24" y="56" width="70" height="98" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+          <rect x="102" y="56" width="70" height="98" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+          <rect x="180" y="56" width="70" height="98" rx="8" fill="color-mix(in srgb, var(--brand) 14%, var(--surface))" stroke="var(--brand)"/>
+          <circle cx="59" cy="70" r="5" fill="var(--s2)"/><circle cx="137" cy="70" r="5" fill="var(--s2)"/><circle cx="215" cy="70" r="5" fill="var(--brand)"/>
+          <rect x="190" y="132" width="50" height="10" rx="5" fill="var(--brand)"/>
+          <text x="186" y="120" style="fill:var(--brand);font-weight:700">riesgo</text>
+        </g>
+        <path d="M215 154 C215 220 300 220 330 200" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <rect x="300" y="170" width="110" height="60" rx="12" fill="var(--navy)"/>
+        <text x="314" y="196" style="fill:var(--surface);font-weight:700">Estación</text>
+        <text x="314" y="214" style="fill:var(--surface)">central</text>
+        <g style="font-weight:700">
+          <rect x="300" y="20" width="110" height="30" rx="8" fill="var(--surface-2)" stroke="var(--line)"/><text x="312" y="40">N1 Encargado</text>
+          <rect x="300" y="60" width="110" height="30" rx="8" fill="var(--surface-2)" stroke="var(--line)"/><text x="312" y="80">N2 Central</text>
+          <rect x="300" y="100" width="110" height="30" rx="8" fill="var(--brand)"/><text x="312" y="120" style="fill:#fff">N3 911</text>
+        </g>
+        <path d="M355 170 V134" stroke="var(--ink-3)" stroke-width="2" marker-end="url(#fl)"/>
+        <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--ink-3)"/></marker></defs>
+        <text x="10" y="270" style="fill:var(--ink-3)">Sin cámaras ni micrófonos que graben: solo estados y medidas.</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="problema">
+  <div class="wrap">
+    <span class="eyebrow">El problema</span>
+    <h2>Donde hay privacidad, nadie ve una emergencia a tiempo.</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Minutos sin ayuda</h3><p>Un desmayo, una caída o una crisis médica dentro de una cabina puede pasar desapercibida, porque nadie puede vigilar ese espacio.</p></div>
+      <div class="card"><h3>Cámaras, imposibles</h3><p>En sanitarios y vestidores no se pueden instalar cámaras. Los botones de pánico solo sirven si la persona puede usarlos.</p></div>
+      <div class="card"><h3>Sismos sin aviso</h3><p>En Baja California la alerta sísmica pública no tiene cobertura. Las personas en cabinas cerradas son las últimas en enterarse.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="funciona">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2>Escalamiento automático en cuatro niveles.</h2>
+    <p>Un nodo en cada cabina detecta si hay una persona, su postura y si se mueve. Si detecta riesgo sostenido, la estación central escala la alerta hasta que alguien responde.</p>
+    <div class="ladder" id="ladder">
+      <div class="rung"><b>Sospecha</b><span>Persona en el piso o sin movimiento</span></div>
+      <div class="rung"><b>N0 · Cabina</b><span>Aviso por voz: “¿Está bien?” · a los <em data-t="N0">20</em> s</span></div>
+      <div class="rung"><b>N1 · Encargado</b><span>App del administrador · a los <em data-t="N1">50</em> s</span></div>
+      <div class="rung"><b>N2 · Central</b><span>Central de monitoreo · a los <em data-t="N2">110</em> s</span></div>
+      <div class="rung n3"><b>N3 · 911</b><span>Mensaje CAP v1.2 y llamada · a los <em data-t="N3">200</em> s</span></div>
+    </div>
+    <p class="note" style="margin-top:12px">Tiempos de la versión 1.0.0, configurables por recinto; para menores de edad se reducen a la mitad. Se calibran en el piloto.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="ventajas">
+  <div class="wrap">
+    <span class="eyebrow">Por qué S.O.S.©</span>
+    <h2>Diseñado para lugares donde otros sistemas no pueden entrar.</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Privacidad total</h3><p>Radar y sensores de distancia: sin imágenes, sin audio grabado. Las medidas se usan al momento y no se guardan.</p></div>
+      <div class="card"><h3>Alerta sísmica en sitio</h3><p>Acelerómetros con confirmación cruzada detectan la onda P, abren cerraduras y avisan en todas las cabinas ocupadas.</p></div>
+      <div class="card"><h3>Conteo de evacuación</h3><p>Sabe cuántas personas entraron, cuántas salieron y en qué zona falta alguien. La brigada lo ve en pantalla.</p></div>
+      <div class="card"><h3>Estándar internacional</h3><p>Alertas en formato CAP v1.2 (OASIS), el mismo que usan los sistemas oficiales de emergencia.</p></div>
+      <div class="card"><h3>Sigue funcionando sin luz</h3><p>Bus de 12 V con respaldo de baterías; diseñado para operar aunque falle la red eléctrica.</p></div>
+      <div class="card"><h3>Riesgos ambientales</h3><p>Versión S2: humo, fuego, amoniaco, falta de oxígeno, hidrógeno, agua en el piso y la palabra “S.O.S.”.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="clientes">
+  <div class="wrap">
+    <span class="eyebrow">Para quién</span>
+    <h2>Recintos con cabinas, espacios confinados y alto flujo de personas.</h2>
+    <div class="grid g4">
+      <div class="card"><h3>Puertos y aduanas</h3><p>Sanitarios de acceso, casetas y oficinas operativas.</p></div>
+      <div class="card"><h3>Gobierno</h3><p>Oficinas de atención al público y edificios administrativos.</p></div>
+      <div class="card"><h3>Transporte y comercio</h3><p>Centrales de autobuses, gasolineras y plazas comerciales.</p></div>
+      <div class="card"><h3>Industria</h3><p>Vestidores, espacios confinados y mini bodegas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="piloto">
+  <div class="wrap">
+    <span class="eyebrow">Piloto 2026–2027</span>
+    <h2>Prueba real en el Puerto de Ensenada.</h2>
+    <div class="grid g2">
+      <div class="card">
+        <ol class="steps">
+          <li><div><b>Pruebas en instalaciones propias.</b> Armado, calibración de umbrales y bitácora de pruebas.</div></li>
+          <li><div><b>Piloto propuesto en dos sitios.</b> Oficinas de ASIPONA Ensenada y sanitarios de acceso al puerto, bajo convenio de colaboración.</div></li>
+          <li><div><b>Medición.</b> Tiempo de respuesta, falsas alarmas, disponibilidad y satisfacción del personal.</div></li>
+          <li><div><b>Validación.</b> Carta de resultados y propuesta para todas las instalaciones.</div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Modelo de servicio</h3>
+        <p><b>Equipo instalado</b> por recinto, más <b>servicio mensual</b> de monitoreo, mantenimiento y reportes estadísticos por evento, con fecha, hora, minuto y segundo.</p>
+        <p>Cada cliente recibe su panel con indicadores: alertas por nivel, tiempos de respuesta, porcentaje de error del sistema y disponibilidad.</p>
+        <p class="note">El piloto está en gestión. Las cifras se publicarán al concluir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">Contacto</span>
+    <h2>Agende una demostración.</h2>
+    <p class="lead">Le mostramos el simulador, las pantallas y el panel de estadísticas con datos de prueba, y evaluamos su recinto sin costo.</p>
+    <p><a class="btn primary" href="mailto:contacto@sosistem.com?subject=Demostraci%C3%B3n%20Sistema%20S.O.S.">contacto@sosistem.com</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cubo-firma" data-nombre="Sistema S.O.S.©" aria-hidden="true">
+      <div class="esc"><div class="cubo"><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div></div></div>
+      <p class="note">Código de comunicación del Cubo (33)©</p>
+    </div>
+    <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© es una obra registrada en Safe Creative (2609046908578). Todos los derechos reservados.</p>
+    <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
+  </div>
+</footer>
+
+<div class="present-bar">
+  <button class="btn" type="button" data-nav="-1">Anterior</button>
+  <button class="btn" type="button" data-nav="1">Siguiente</button>
+  <button class="btn primary" type="button" id="btn-salir">Salir</button>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/cubo.js"></script>
+</body>
+</html>
