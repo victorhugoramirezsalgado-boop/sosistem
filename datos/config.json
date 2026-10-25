@@ -1,5 +1,65 @@
 {
-  "tiempos": { "N0": 20, "N1": 50, "N2": 110, "N3": 200 },
+  "tiempos": {
+    "N0": 20,
+    "N1": 50,
+    "N2": 110,
+    "N3": 200
+  },
   "goatcounter": "sosistem",
-  "actualizado": "2026-10-24T17:40:00-07:00"
+  "actualizado": "2026-10-24T17:40:00-07:00",
+  "alertas": {
+    "nota": "Parámetros de la pantalla física S.O.S. por estado. sirena_db: nivel a 1 m (máx. 105 dB SPL). rafaga_s: duración de cada ráfaga de sirena. cada_s: cada cuántos segundos se repite el ciclo sirena + Morse (0 = una vez). tope_min: minutos a nivel máximo antes de bajar a db_tras_tope (NOM-011-STPS-2001: 105 dB(A) máx. 15 min de exposición).",
+    "advertencia": {
+      "sirena": false,
+      "sirena_db": 85,
+      "rafaga_s": 0,
+      "morse": true,
+      "texto": "AVISO",
+      "volumen": 60,
+      "cada_s": 60,
+      "imagen": true,
+      "hasta_atender": true,
+      "tope_min": 10,
+      "db_tras_tope": 85
+    },
+    "caida": {
+      "sirena": true,
+      "sirena_db": 105,
+      "rafaga_s": 20,
+      "morse": true,
+      "texto": "SOS SOS",
+      "volumen": 100,
+      "cada_s": 30,
+      "imagen": true,
+      "hasta_atender": true,
+      "tope_min": 10,
+      "db_tras_tope": 95
+    },
+    "sismo": {
+      "sirena": true,
+      "sirena_db": 105,
+      "rafaga_s": 60,
+      "morse": true,
+      "texto": "SOS SISMO SOS",
+      "volumen": 100,
+      "cada_s": 20,
+      "imagen": true,
+      "hasta_atender": false,
+      "tope_min": 10,
+      "db_tras_tope": 95
+    },
+    "prueba": {
+      "sirena": true,
+      "sirena_db": 85,
+      "rafaga_s": 3,
+      "morse": true,
+      "texto": "PRUEBA SOS",
+      "volumen": 50,
+      "cada_s": 0,
+      "imagen": true,
+      "hasta_atender": false,
+      "tope_min": 1,
+      "db_tras_tope": 85
+    }
+  }
 }

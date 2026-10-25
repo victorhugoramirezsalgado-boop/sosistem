@@ -12,7 +12,7 @@
     ":": "---...", "=": "-...-", "+": ".-.-.", "-": "-....-", "@": ".--.-." };
   const WPM = 15, HZ = 650;
   const U = 1.2 / WPM;               // duración de un punto en segundos
-  let ctx = null, ganancia = null, timers = [], activo = null;
+  let ctx = null, ganancia = null, gSirena = null, oSirena = null, timers = [], activo = null;
 
   // Texto → Morse. Quita acentos (el Morse internacional no los tiene) y omite símbolos sin código.
   function aMorse(texto) {
@@ -33,6 +33,7 @@
   function detener() {
     timers.forEach(clearTimeout); timers = [];
     if (ganancia && ctx) { try { ganancia.gain.cancelScheduledValues(ctx.currentTime); ganancia.gain.setValueAtTime(0, ctx.currentTime); } catch (e) {} }
+    if (gSirena && ctx) { try { gSirena.gain.cancelScheduledValues(ctx.currentTime); gSirena.gain.setValueAtTime(0, ctx.currentTime); oSirena.frequency.cancelScheduledValues(ctx.currentTime); } catch (e) {} }
     if (activo) { activo.luz?.classList.remove("morse-luz"); activo.boton?.classList.remove("morse-sonando"); activo.alTerminar?.(); }
     if (navigator.vibrate) navigator.vibrate(0);
     activo = null;
@@ -41,7 +42,7 @@
   function reproducir(texto, luz, opciones = {}) {
     detener();
     const palabras = aMorse(texto);
-    if (!palabras.length) return 0;
+    if (!palabras.length && !(opciones.sirenaSeg > 0)) return 0;
     const conSonido = MOTIVOS_CON_SONIDO.has(opciones.motivo);
     if (!conSonido) return destellar(palabras, luz, opciones);
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -52,13 +53,27 @@
       const osc = ctx.createOscillator(); osc.type = "sine"; osc.frequency.value = HZ; osc.connect(ganancia); osc.start();
     }
     if (ctx.state === "suspended") ctx.resume();
-    const t0 = ctx.currentTime + 0.08, g = ganancia.gain, rampa = 0.005;
+    // Volumen relativo (0–1) y sirena bitonal opcional antes del Morse (FSK a 4 Hz, como la sirena del equipo)
+    const vol = Math.max(0, Math.min(1, opciones.volumen ?? 1)), pico = 0.35 * vol;
+    const sirSeg = Math.max(0, opciones.sirenaSeg || 0), sirVol = Math.max(0, Math.min(1, opciones.sirenaVolumen ?? vol));
+    if (sirSeg > 0) {
+      if (!gSirena) {
+        gSirena = ctx.createGain(); gSirena.gain.value = 0; gSirena.connect(ctx.destination);
+        oSirena = ctx.createOscillator(); oSirena.type = "square"; oSirena.frequency.value = 800; oSirena.connect(gSirena); oSirena.start();
+      }
+      const s0 = ctx.currentTime + 0.05;
+      gSirena.gain.setValueAtTime(0, s0); gSirena.gain.linearRampToValueAtTime(0.12 * sirVol, s0 + 0.02);
+      for (let k = 0; k * 0.125 < sirSeg; k++) oSirena.frequency.setValueAtTime(k % 2 ? 1250 : 800, s0 + k * 0.125);
+      gSirena.gain.setValueAtTime(0.12 * sirVol, s0 + sirSeg - 0.02); gSirena.gain.linearRampToValueAtTime(0, s0 + sirSeg);
+      if (luz) { timers.push(setTimeout(() => luz.classList.add("morse-luz"), 50)); timers.push(setTimeout(() => luz.classList.remove("morse-luz"), sirSeg * 1000)); }
+    }
+    const t0 = ctx.currentTime + 0.08 + (sirSeg ? sirSeg + 0.4 : 0), g = ganancia.gain, rampa = 0.005;
     let t = 0;
     const vib = [];
     const pulso = (dur) => {
       const a = t0 + t;
-      g.setValueAtTime(0, a); g.linearRampToValueAtTime(0.35, a + rampa);
-      g.setValueAtTime(0.35, a + dur - rampa); g.linearRampToValueAtTime(0, a + dur);
+      g.setValueAtTime(0, a); g.linearRampToValueAtTime(pico, a + rampa);
+      g.setValueAtTime(pico, a + dur - rampa); g.linearRampToValueAtTime(0, a + dur);
       if (luz) {
         timers.push(setTimeout(() => luz.classList.add("morse-luz"), (a - ctx.currentTime) * 1000));
         timers.push(setTimeout(() => luz.classList.remove("morse-luz"), (a + dur - ctx.currentTime) * 1000));
@@ -77,8 +92,9 @@
     if (navigator.vibrate && opciones.vibrar !== false) { try { navigator.vibrate(vib); } catch (e) {} }
     activo = { luz, boton: opciones.boton, alTerminar: opciones.alTerminar };
     opciones.boton?.classList.add("morse-sonando");
-    timers.push(setTimeout(detener, (t + 0.15) * 1000));
-    return t;
+    const total = t + (t0 - ctx.currentTime);
+    timers.push(setTimeout(detener, (total + 0.15) * 1000));
+    return total;
   }
 
   // Solo luz (sin sonido ni vibración), con los mismos tiempos del Morse

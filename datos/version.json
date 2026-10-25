@@ -1,8 +1,13 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.1",
+      "fecha": "2026-10-24",
+      "resumen": "Panel: pestaña «Sirena y Morse» para configurar por estado la sirena (hasta 105 dB, duración de ráfaga, tope a nivel máximo según NOM-011-STPS-2001), el Morse (mensaje, volumen, cada cuántos segundos se repite), si el código se ve en pantalla y si se repite hasta que alguien atienda. Cubo para armar de 12 caras a doble cara."
+    },
     {
       "v": "2.0",
       "fecha": "2026-10-24",

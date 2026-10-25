@@ -11,6 +11,22 @@
   };
   // Sonidos de la pantalla física: SOS en emergencia, SOS + SISMO en desastre natural
   const SONIDO = { advertencia: "AVISO", caida: "SOS SOS", sismo: "SOS SISMO SOS" };
+  // Parámetros del equipo por estado (se editan en el panel: pestaña «Sirena y Morse»)
+  let ALERTAS = {};
+  fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
+    ALERTAS = c.alertas || {};
+    Object.keys(SONIDO).forEach((k) => { if (ALERTAS[k]?.texto) SONIDO[k] = ALERTAS[k].texto; });
+    mostrarCodigo();
+  }).catch(() => {});
+  function mostrarCodigo() {
+    const pm = document.getElementById("pt-morse"); if (!pm || !window.SOSMorse) return;
+    const a = ALERTAS[estado] || {}, txt = SONIDO[estado];
+    if (!txt || a.imagen === false || a.morse === false) { pm.innerHTML = ""; return; }
+    let info = "";
+    if (a.sirena) info += ` · Equipo: sirena ${a.sirena_db} dB × ${a.rafaga_s} s`;
+    if (a.cada_s) info += `${info ? "," : " · Equipo:"} repite cada ${a.cada_s} s`;
+    pm.innerHTML = "<b>" + txt + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(txt)) + "<br><span style='letter-spacing:0'>" + info.replace(/^ · /, "") + "</span>";
+  }
   let estado = "caida", t0 = Date.now();
   const mmss = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
   const nivel = (s) => (s >= 200 ? "N3 · C5/911 notificado" : s >= 110 ? "N2 · central de monitoreo" : s >= 50 ? "N1 · encargado notificado" : s >= 20 ? "N0 · aviso por voz en cabina" : "confirmando caída (Z < 15 cm)");
@@ -43,14 +59,14 @@
     // En la web esto es una simulación: suena solo si el cliente activó su módulo de pruebas
     if (!window.SOSMorse) return;
     const luz = P.querySelector(estado === "sismo" ? ".pt-ley .w" : estado === "advertencia" ? ".pt-ley .y" : ".pt-ley .r");
-    const pm = document.getElementById("pt-morse");
-    if (pm) pm.innerHTML = SONIDO[estado] ? "<b>" + SONIDO[estado] + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(SONIDO[estado])) : "";
-    const prueba = document.getElementById("sim-sonido")?.checked;
-    if (SONIDO[estado]) SOSMorse.reproducir(SONIDO[estado], luz, { motivo: prueba ? "prueba-cliente" : "" });
+    mostrarCodigo();
+    const prueba = document.getElementById("sim-sonido")?.checked, a = ALERTAS[estado] || {};
+    if (SONIDO[estado]) SOSMorse.reproducir(a.morse === false ? "" : SONIDO[estado], luz, { motivo: prueba ? "prueba-cliente" : "",
+      volumen: (a.volumen ?? 100) / 100, sirenaSeg: prueba && a.sirena ? Math.min(2, a.rafaga_s || 0) : 0, sirenaVolumen: a.sirena ? ((a.sirena_db || 105) - 60) / 45 : 0 });
     else SOSMorse.detener();
   }));
   document.getElementById("sim-sonido")?.addEventListener("change", (e) => { if (!e.target.checked) window.SOSMorse?.detener(); });
   pinta();
-  { const pm = document.getElementById("pt-morse"); if (pm && window.SOSMorse) pm.innerHTML = "<b>" + SONIDO[estado] + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(SONIDO[estado])); }
+  mostrarCodigo();
   setInterval(tick, 1000);
 })();

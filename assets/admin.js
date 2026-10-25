@@ -115,37 +115,83 @@
   const PESTANAS = [
     ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["financiera", "Financiera"],
     ["tecnico", "Datos técnicos"], ["cambios", "Cambios y comentarios"], ["usuarios", "Usuarios"],
-    ["ejecutivo", "Ejecutivo"], ["pruebas", "Pruebas de sonido"], ["ajustes", "Ajustes"],
+    ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["ajustes", "Ajustes"],
   ];
 
-  // ---------- Pruebas de sonido (solo el administrador) ----------
-  const PRUEBAS = [
-    ["advertencia", "Advertencia", "AVISO"],
-    ["caida", "Emergencia · persona caída", "SOS SOS"],
-    ["sismo", "Desastre natural · sismo", "SOS SISMO SOS"],
-    ["general", "Prueba general de sirena", "PRUEBA SOS"],
-  ];
+  // ---------- Sirena y Morse por estado (configuración + pruebas del administrador) ----------
+  const ESTADOS_ALERTA = [["advertencia", "Advertencia"], ["caida", "Emergencia · persona caída"], ["sismo", "Desastre natural · sismo"], ["prueba", "Prueba general"]];
+  const ALERTA_BASE = {
+    advertencia: { sirena: false, sirena_db: 85, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, cada_s: 60, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 85 },
+    caida: { sirena: true, sirena_db: 105, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, cada_s: 30, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 95 },
+    sismo: { sirena: true, sirena_db: 105, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, cada_s: 20, imagen: true, hasta_atender: false, tope_min: 10, db_tras_tope: 95 },
+    prueba: { sirena: true, sirena_db: 85, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, cada_s: 0, imagen: true, hasta_atender: false, tope_min: 1, db_tras_tope: 85 },
+  };
+  const LIMITES = { sirena_db: [70, 105], rafaga_s: [0, 300], volumen: [0, 100], cada_s: [0, 600], tope_min: [1, 15], db_tras_tope: [70, 105] };
   const RENDER_PRUEBAS = (el) => {
+    S.config.alertas = S.config.alertas || {};
+    ESTADOS_ALERTA.forEach(([id]) => { S.config.alertas[id] = { ...ALERTA_BASE[id], ...(S.config.alertas[id] || {}) }; });
+    const A = S.config.alertas;
+    const num = (id, k, unidad) => `<label class="al-campo">${unidad}<input type="number" min="${LIMITES[k][0]}" max="${LIMITES[k][1]}" data-al="${id}" data-k="${k}" value="${A[id][k]}"></label>`;
+    const chk = (id, k, txt) => `<label class="al-chk"><input type="checkbox" data-al="${id}" data-k="${k}" ${A[id][k] ? "checked" : ""}> ${txt}</label>`;
     el.innerHTML = `
-      <div class="card"><h3>Pruebas de sonido Morse</h3>
-        <p>Regla del sistema: el sonido solo se emite en <b>advertencia</b>, <b>emergencia</b>, <b>desastre natural</b>, <b>pruebas del administrador</b> y <b>pruebas del cliente</b> en su módulo de pruebas. Cada prueba queda registrada en Cambios y comentarios.</p>
-        <div class="filters">${PRUEBAS.map(([id, n]) => `<button class="btn" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> ${esc(n)}</button>`).join("")}
-          <button class="btn" type="button" id="pr-stop">Detener</button></div>
-        <div class="filters"><label style="flex:1">Mensaje libre en Morse<input id="pr-txt" maxlength="60" placeholder="p. ej. PRUEBA CABINA F2" style="width:100%"></label>
-          <button class="btn primary" type="button" id="pr-libre">Probar mensaje</button></div>
+      <div class="card"><h3>Sirena y Morse de la pantalla</h3>
+        <p>Defina por estado qué emite la pantalla física: la sirena de hasta <b>105 dB</b>, el código Morse, su volumen, cada cuánto se repite y si el código se ve en pantalla. Se guarda en la configuración del sistema al pulsar «Guardar y publicar».</p>
+        <p class="note">Límite de seguridad (NOM-011-STPS-2001): a 105 dB(A) la exposición máxima es de 15 minutos. Por eso, pasado el «tope a nivel máximo», la sirena baja al nivel indicado.</p>
+      </div>
+      ${ESTADOS_ALERTA.map(([id, nombre]) => `
+      <div class="card al-estado" style="margin-top:12px">
+        <h3>${esc(nombre)}</h3>
+        <div class="filters">
+          ${chk(id, "sirena", "Sirena")}
+          ${num(id, "sirena_db", "Nivel de sirena (dB a 1 m)")}
+          ${num(id, "rafaga_s", "Duración de cada ráfaga (s)")}
+          ${num(id, "tope_min", "Tope a nivel máximo (min)")}
+          ${num(id, "db_tras_tope", "Nivel después del tope (dB)")}
+        </div>
+        <div class="filters">
+          ${chk(id, "morse", "Código Morse")}
+          <label class="al-campo">Mensaje<input data-al="${id}" data-k="texto" maxlength="40" value="${esc(A[id].texto)}"></label>
+          ${num(id, "volumen", "Volumen del Morse (%)")}
+          ${num(id, "cada_s", "Repetir cada (s; 0 = una vez)")}
+          ${chk(id, "imagen", "Mostrar el código en pantalla")}
+          ${chk(id, "hasta_atender", "Repetir hasta que alguien atienda")}
+        </div>
+        <p class="note mono" data-resumen="${id}"></p>
+        <p><button class="btn primary" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> Probar ${esc(nombre.toLowerCase())}</button></p>
+      </div>`).join("")}
+      <div class="card" style="margin-top:12px"><h3>Mensaje libre</h3>
+        <div class="filters"><label style="flex:1">Texto en Morse<input id="pr-txt" maxlength="60" placeholder="p. ej. PRUEBA CABINA F2" style="width:100%"></label>
+          <button class="btn primary" type="button" id="pr-libre">Probar mensaje</button> <button class="btn" type="button" id="pr-stop">Detener</button></div>
         <p class="note mono" id="pr-codigo"></p>
-      </div>`;
-    const correr = (texto, nombre, boton) => {
-      if (!window.SOSMorse) return;
-      $("#pr-codigo").textContent = SOSMorse.visible(SOSMorse.aMorse(texto));
-      SOSMorse.reproducir(texto, boton.querySelector(".bm-luz") || boton, { motivo: "prueba-admin", boton });
-      S.datos.cambios.push({ fecha: new Date().toLocaleString("sv-SE").slice(0, 16), tipo: "Prueba", autor: S.datos.usuarios[0]?.nombre || "Administrador", texto: `Prueba de sonido: ${nombre} (${texto}).` });
-      marcar();
+        <p class="note">En el navegador la sirena se reproduce con volumen bajo y máximo 3 s: es una prueba de la secuencia, no del nivel de 105 dB del equipo.</p></div>`;
+    const resumen = (id) => {
+      const c = A[id], partes = [];
+      if (c.sirena) partes.push(`sirena ${c.sirena_db} dB × ${c.rafaga_s} s`);
+      if (c.morse) partes.push(`Morse «${c.texto}» al ${c.volumen} %`);
+      partes.push(c.cada_s ? `cada ${c.cada_s} s` : "una vez");
+      if (c.hasta_atender) partes.push("hasta que alguien atienda");
+      if (c.sirena && c.sirena_db > c.db_tras_tope) partes.push(`a los ${c.tope_min} min baja a ${c.db_tras_tope} dB`);
+      partes.push(c.imagen ? "código visible en pantalla" : "sin código en pantalla");
+      const r = el.querySelector(`[data-resumen="${id}"]`); if (r) r.textContent = partes.join(" · ") + (c.morse ? "  ·  " + SOSMorse.visible(SOSMorse.aMorse(c.texto)) : "");
     };
+    ESTADOS_ALERTA.forEach(([id]) => resumen(id));
+    el.addEventListener("input", (e) => {
+      const x = e.target, id = x.dataset.al, k = x.dataset.k; if (!id) return;
+      let v = x.type === "checkbox" ? x.checked : x.type === "number" ? Number(x.value) : x.value;
+      if (LIMITES[k]) v = Math.max(LIMITES[k][0], Math.min(LIMITES[k][1], v || 0));
+      A[id][k] = v; marcar(); resumen(id);
+    });
+    // Al salir del campo, el número fuera de rango se corrige a la vista (p. ej. 120 dB → 105 dB)
+    el.addEventListener("change", (e) => { const x = e.target; if (x.dataset.al && x.type === "number") x.value = A[x.dataset.al][x.dataset.k]; });
+    const registrar = (txt) => { S.datos.cambios.push({ fecha: new Date().toLocaleString("sv-SE").slice(0, 16), tipo: "Prueba", autor: S.datos.usuarios[0]?.nombre || "Administrador", texto: txt }); marcar(); };
     el.querySelectorAll("[data-prueba]").forEach((b) => b.addEventListener("click", () => {
-      const [, n, t] = PRUEBAS.find((p) => p[0] === b.dataset.prueba); correr(t, n, b);
+      const id = b.dataset.prueba, c = A[id], nombre = ESTADOS_ALERTA.find((p) => p[0] === id)[1];
+      $("#pr-codigo").textContent = c.morse ? SOSMorse.visible(SOSMorse.aMorse(c.texto)) : "";
+      SOSMorse.reproducir(c.morse ? c.texto : "", b.querySelector(".bm-luz"), { motivo: "prueba-admin", boton: b, volumen: c.volumen / 100,
+        sirenaSeg: c.sirena ? Math.min(3, c.rafaga_s) : 0, sirenaVolumen: c.sirena ? (c.sirena_db - 60) / 45 : 0 });
+      registrar(`Prueba de sonido: ${nombre} (sirena ${c.sirena ? c.sirena_db + " dB × " + c.rafaga_s + " s" : "no"}; Morse ${c.morse ? "«" + c.texto + "» " + c.volumen + " %" : "no"}).`);
     }));
-    $("#pr-libre").onclick = (e) => { const t = $("#pr-txt").value.trim(); if (t) correr(t, "mensaje libre", e.currentTarget); };
+    $("#pr-libre").onclick = (e) => { const t = $("#pr-txt").value.trim(); if (!t) return; $("#pr-codigo").textContent = SOSMorse.visible(SOSMorse.aMorse(t)); SOSMorse.reproducir(t, e.currentTarget, { motivo: "prueba-admin", boton: e.currentTarget }); registrar(`Prueba de sonido: mensaje libre (${t}).`); };
     $("#pr-stop").onclick = () => window.SOSMorse?.detener();
   };
   function iniciarApp() {
