@@ -1,8 +1,13 @@
 {
-  "version": "3.0",
-  "fecha": "2026-10-24",
+  "version": "3.1",
+  "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.1",
+      "fecha": "2026-10-25",
+      "resumen": "Pestañas del sistema justificadas de arriba hacia abajo al costado (misma anchura, repartidas en todo el alto) y sin pestañas en la barra superior. Marca SOSistem™ en el logo principal, el panel de administrador y la cara 1 del Cubo Morse. Cubo Morse sin © hasta su registro. Caras del cubo rehechas: exterior en la mitad inferior e interior en la mitad superior, con el Morse completo y legible. Panel: recuperación de claves exclusiva del titular y aviso legal con registro de cada intento de ingreso."
+    },
     {
       "v": "3.0",
       "fecha": "2026-10-24",

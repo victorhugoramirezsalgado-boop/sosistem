@@ -49,10 +49,21 @@
     const h = Number(sessionStorage.getItem("sos_bloq") || 0);
     return h > Date.now() ? Math.ceil((h - Date.now()) / 60000) : 0;
   }
-  function fallo() {
+  // Registro de cada intento de ingreso (aviso legal visible en el acceso). GoatCounter guarda fecha y hora,
+  // navegador, sistema operativo, tamaño de pantalla y ubicación aproximada; no guarda la IP ni usa cookies.
+  function registrarIntento(tipo, titulo) {
+    try {
+      const code = (S.config && S.config.goatcounter) || "sosistem";
+      const u = `https://${code}.goatcounter.com/count?p=${encodeURIComponent("admin/" + tipo)}&t=${encodeURIComponent(titulo || "Intento de ingreso")}` +
+        `&e=true&s=${screen.width}&rnd=${Math.random().toString(36).slice(2)}`;
+      if (navigator.sendBeacon) navigator.sendBeacon(u); else new Image().src = u;
+    } catch (e) {}
+  }
+  function fallo(paso = "acceso") {
+    registrarIntento("intento-fallido/" + paso, "Intento de ingreso fallido · " + paso);
     const n = Number(sessionStorage.getItem("sos_fallos") || 0) + 1;
     sessionStorage.setItem("sos_fallos", n);
-    if (n >= 5) { sessionStorage.setItem("sos_bloq", Date.now() + 5 * 60000); sessionStorage.setItem("sos_fallos", 0); }
+    if (n >= 5) { sessionStorage.setItem("sos_bloq", Date.now() + 5 * 60000); sessionStorage.setItem("sos_fallos", 0); registrarIntento("bloqueo", "Acceso bloqueado por intentos"); }
   }
 
   // ---------- Acceso en dos pasos ----------
@@ -76,7 +87,7 @@
       $("#f1").hidden = true; $("#f2").hidden = false; $("#r-abrir").parentElement.hidden = true;
       if (S.pendiente2) { $("#c2").value = S.pendiente2; S.pendiente2 = null; $("#f2").requestSubmit(); } else $("#c2").focus();
     } catch (err) {
-      fallo(); msg.textContent = err.message.startsWith("No se") ? err.message : "Clave de pre-ingreso incorrecta.";
+      if (!err.message.startsWith("No se")) fallo("pre-ingreso"); msg.textContent = err.message.startsWith("No se") ? err.message : "Clave de pre-ingreso incorrecta.";
     } finally { btn.disabled = false; }
   }
   async function paso2(e) {
@@ -91,9 +102,10 @@
       sessionStorage.setItem("sos_fallos", 0);
       await cargarConfig();
       $("#acceso").hidden = true; $("#app").hidden = false; scrollTo(0, 0);
+      registrarIntento("acceso-correcto", "Acceso al panel");
       iniciarApp();
     } catch {
-      fallo(); msg.textContent = "Clave de 2.ª autorización incorrecta.";
+      fallo("2a-autorizacion"); msg.textContent = "Clave de 2.ª autorización incorrecta.";
     } finally { btn.disabled = false; }
   }
   async function cargarConfig() {
@@ -590,7 +602,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
     const T = S.config.tiempos;
     const AP = S.config.apariencia = { fondo: "gris", logo: "sello", pantallas_portada: 6, ...(S.config.apariencia || {}) };
     const FONDOS = [["blanco", "Blanco", "#ffffff"], ["beige", "Beige", "#ece2cf"], ["crema", "Crema", "#fbf4e2"], ["gris", "Gris", "#dde0e5"], ["azul", "Azul", "#0b2240"], ["negro", "Negro", "#000000"]];
-    const LOGOS = [["sello", "Sello Morse S.O.S.©", "assets/logo-sello.svg"], ["cubo", "Cubo Morse©", "assets/logo.svg"]];
+    const LOGOS = [["sello", "Sello Morse S.O.S.©", "assets/logo-sello.svg"], ["cubo", "Cubo Morse", "assets/logo.svg"]];
     el.innerHTML = `
       <div class="card"><h3>Apariencia de la página pública</h3>
         <p>Fondo de todo el sitio (se aplica en celular, tableta y computadora, sin importar el modo claro u oscuro del equipo):</p>
@@ -658,15 +670,15 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
     const H = { Authorization: "Bearer " + tk, Accept: "application/vnd.github.raw+json", "X-GitHub-Api-Version": "2022-11-28" };
     let r;
     try { r = await fetch(`https://api.github.com/repos/${RESPALDO.repo}/contents/${RESPALDO.ruta}?ref=${RAMA}&_=${Date.now()}`, { headers: H, cache: "no-store" }); }
-    catch { throw new Error("No se pudo conectar con GitHub."); }
-    if (r.status === 401) throw new Error("Token de GitHub inválido o vencido.");
-    if (r.status === 404 || r.status === 403) throw new Error("El token no tiene acceso al repositorio privado sistema-sos.");
-    if (!r.ok) throw new Error(`GitHub respondió ${r.status}.`);
+    catch { throw new Error("No fue posible completar la recuperación."); }
+    if (r.status === 401) throw new Error("Credenciales del titular no válidas.");
+    if (r.status === 404 || r.status === 403) throw new Error("Credenciales del titular no válidas.");
+    if (!r.ok) throw new Error("No fue posible completar la recuperación.");
     const R = await r.json();
     try {
       const k = await llave(frase, ub64(R.salt));
       return await descifrar(k, R.iv, R.ct);
-    } catch { throw new Error("Frase de recuperación incorrecta."); }
+    } catch { throw Object.assign(new Error("Credenciales del titular no válidas."), { frase: true }); }
   }
   async function guardarRespaldo(tk, frase, pre, autorizacion) {
     const salt = crypto.getRandomValues(new Uint8Array(16));
@@ -685,7 +697,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
       e.preventDefault();
       const m = $("#m0"), btn = $("#f0 > button");
       const min = bloqueado(); if (min) { m.textContent = `Demasiados intentos. Espere ${min} min.`; return; }
-      btn.disabled = true; m.textContent = "Consultando su respaldo privado…";
+      btn.disabled = true; m.textContent = "Verificando…";
       try {
         const c = await leerRespaldo($("#r-tk").value.trim(), $("#r-fr").value);
         $("#r-fr").value = ""; m.textContent = "";
@@ -698,7 +710,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
           ver("acceso"); $("#f1").requestSubmit();
         };
       } catch (err) {
-        if (err.message.startsWith("Frase")) fallo();
+        fallo("recuperacion");
         m.textContent = err.message;
       } finally { btn.disabled = false; }
     });

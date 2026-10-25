@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Administrador · Sistema S.O.S.©</title>
+<title>Administrador · SOSistem™</title>
 <meta name="theme-color" content="#0f2a4a">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/estilo.css">
@@ -26,13 +26,16 @@
   .filters input:not([type]), .filters input[type="number"], .filters input[type="password"] { font: 500 .9rem var(--font); padding: 8px 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); min-width: 120px; }
   .filters input[type="number"] { width: 130px; }
   .card pre { white-space: pre-wrap; word-break: break-word; margin: 8px 0 0; }
+  .aviso-legal { margin-top: 14px; padding: 12px 14px; border: 1px solid color-mix(in srgb, var(--bad) 45%, var(--line)); border-left: 4px solid var(--bad); border-radius: 10px; background: color-mix(in srgb, var(--bad) 6%, var(--surface)); font-size: .82rem; line-height: 1.45; text-align: left; hyphens: auto; }
+  .aviso-legal b { display: block; margin-bottom: 4px; color: var(--bad); }
+  .aviso-legal p { margin: 6px 0 0; }
   @media print { .barra-app, #acceso { display: none !important; } }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" width="38" height="41" alt="" style="display:block"><span class="logo-text">Administrador</span></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" width="38" height="41" alt="" style="display:block"><span class="logo-text">SOSistem™ <small style="font-weight:600;opacity:.75">· Administrador</small></span></a>
     <nav><a class="btn ghost" href="index.html">Ver sitio público</a></nav>
   </div>
 </header>
@@ -60,10 +63,10 @@
       </form>
       <form id="f0" autocomplete="off" hidden>
         <h2>Recuperar claves</h2>
-        <p class="note">Las claves se recuperan de un respaldo cifrado que vive solo en su repositorio privado <b>sistema-sos</b>. Se necesitan su token de GitHub y su frase de recuperación.</p>
-        <label for="r-tk" class="note">Token de GitHub (lectura de sistema-sos)</label>
-        <input type="password" id="r-tk" required autocomplete="off" placeholder="github_pat_…">
-        <label for="r-fr" class="note">Frase de recuperación</label>
+        <p class="note">La recuperación de claves es exclusiva del titular y solo puede hacerse desde su cuenta de GitHub.</p>
+        <label for="r-tk" class="note">Credencial del titular</label>
+        <input type="password" id="r-tk" required autocomplete="off">
+        <label for="r-fr" class="note">Frase del titular</label>
         <input type="password" id="r-fr" required autocomplete="off">
         <button class="btn primary" type="submit">Recuperar</button>
         <div class="msg" id="m0" role="alert"></div>
@@ -76,6 +79,11 @@
       </form>
       <p style="margin-top:10px"><a href="#" id="r-abrir">¿Olvidó sus claves?</a></p>
       <p class="note" style="margin-top:14px">Los datos de este panel están cifrados (AES-256). Sin ambas claves no pueden leerse, ni siquiera desde el código del sitio.</p>
+      <div class="aviso-legal" role="note">
+        <b>Aviso legal · acceso restringido</b>
+        <p>Este panel es de uso exclusivo de su titular. Todo intento de ingreso, correcto o fallido, queda registrado automáticamente por el sistema con fecha, hora, navegador, sistema operativo, tamaño de pantalla y ubicación aproximada del dispositivo; estos datos se tratan conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (2025) con fines de seguridad.</p>
+        <p>El acceso no autorizado a sistemas informáticos protegidos es un delito (Código Penal Federal, arts. 211 bis 1 a 211 bis 7). Los registros de quien intente ingresar sin autorización se conservarán como evidencia y podrán entregarse a la autoridad competente para iniciar el proceso legal correspondiente.</p>
+      </div>
     </div>
   </div>
 

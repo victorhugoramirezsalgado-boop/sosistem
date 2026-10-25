@@ -1,4 +1,4 @@
-/* Cubo Morse© de 12 caras (6 exteriores + 6 interiores) · © Víctor Hugo Ramírez Salgado
+/* Cubo Morse de 12 caras (6 exteriores + 6 interiores) · © Víctor Hugo Ramírez Salgado
    Al tocar una cara se escucha y destella su Morse (motivo «cubo»). */
 (() => {
   const cubo = document.getElementById("cm-cubo");
