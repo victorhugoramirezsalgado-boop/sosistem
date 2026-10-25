@@ -1,8 +1,13 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "1.6",
+      "fecha": "2026-10-24",
+      "resumen": "Logo Cubo Morse© (seis proyectos en código Morse) en encabezado, favicon y panel; cubo 3D interactivo; cubo para armar en PDF; imagen de vista previa para WhatsApp y redes."
+    },
     {
       "v": "1.5",
       "fecha": "2026-10-24",
