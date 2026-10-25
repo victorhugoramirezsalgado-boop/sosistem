@@ -168,7 +168,21 @@
   ],
   "recintos": [
     {
+      "id": "R0",
+      "tipo": "entrada",
+      "nombre": "Entrada principal",
+      "poligono": "P-01 Oficinas ContenedorEns",
+      "capacidad": 15,
+      "pantalla": "PNL-E01",
+      "modulos": [
+        "permanencia",
+        "sismo"
+      ],
+      "salida": "A"
+    },
+    {
       "id": "R1",
+      "tipo": "banos",
       "nombre": "Sanitarios planta baja",
       "poligono": "P-01 Oficinas ContenedorEns",
       "capacidad": 18,
@@ -177,37 +191,44 @@
         "caida",
         "permanencia",
         "sismo"
-      ]
+      ],
+      "salida": "A"
     },
     {
       "id": "R2",
+      "tipo": "oficina",
       "nombre": "Oficina administrativa",
       "poligono": "P-01 Oficinas ContenedorEns",
       "capacidad": 8,
       "pantalla": "PNL-A05",
       "modulos": [
         "sismo"
-      ]
+      ],
+      "salida": "A"
     },
     {
       "id": "R3",
-      "nombre": "Taller de modificación",
+      "tipo": "cocina",
+      "nombre": "Cocina",
+      "poligono": "P-01 Oficinas ContenedorEns",
+      "capacidad": 6,
+      "pantalla": "PNL-A06",
+      "modulos": [
+        "sismo"
+      ],
+      "salida": "A"
+    },
+    {
+      "id": "R4",
+      "tipo": "bodega",
+      "nombre": "Bodega y taller",
       "poligono": "P-02 Patio de contenedores",
       "capacidad": 12,
       "pantalla": "PNL-B01",
       "modulos": [
         "sismo"
-      ]
-    },
-    {
-      "id": "R4",
-      "nombre": "Patio y contenedores",
-      "poligono": "P-02 Patio de contenedores",
-      "capacidad": 10,
-      "pantalla": "PNL-B02",
-      "modulos": [
-        "sismo"
-      ]
+      ],
+      "salida": "B"
     }
   ],
   "pantalla_exterior": {
@@ -251,5 +272,6 @@
       "otros_recintos": false,
       "pantalla_exterior": false
     }
-  }
+  },
+  "recintos_regla": "Obligatorio: 1.º sistema en la entrada principal de todo el lugar; 2.º en baños; 3.º en cocina, oficina, bodega o donde el cliente lo requiera."
 }

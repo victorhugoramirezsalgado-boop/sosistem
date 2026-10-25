@@ -1,8 +1,13 @@
 {
-  "version": "2.3",
+  "version": "2.4",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.4",
+      "fecha": "2026-10-24",
+      "resumen": "Pantalla dividida en sismo o evento natural: a un lado las salidas de emergencia desde el lugar donde está instalada la pantalla («Usted está aquí»), al otro las personas en cada recinto, incluida la entrada principal, y cuántas están con usted. Sistemas obligatorios: entrada principal y baños; el tercero donde el cliente lo requiera."
+    },
     {
       "v": "2.3",
       "fecha": "2026-10-24",

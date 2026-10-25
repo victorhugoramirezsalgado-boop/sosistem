@@ -387,3 +387,26 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 .pantalla-ext[data-on="sismo"] .pe-cuerpo b { font-size: 1.35em; text-transform: uppercase; }
 .pantalla-ext[data-on="sismo"] .pe-n { font: 800 1.2em var(--mono); color: #b3150c; }
 @media (prefers-reduced-motion: reduce) { .pantalla-ext[data-on="sismo"] { animation: none; } }
+
+/* v2.4 · pantalla dividida en sismo: salidas de emergencia | personas por recinto */
+@media (min-width: 700px) {
+  .pantalla.ver-salidas .pt-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 10px; align-items: start; }
+  .pantalla.ver-salidas .pt-der .pt-ocup-l { grid-template-columns: 1fr; }
+}
+.pantalla.ver-salidas .pt-der { border-left: 0; }
+.pt-aqui { margin-top: 8px; border-radius: 10px; padding: 10px; display: grid; gap: 2px; text-align: center; background: #2a0d0b; border: 2px solid #ffb020; }
+.pt-aqui span { font-size: .8em; font-weight: 700; color: #ffd27a; text-transform: uppercase; letter-spacing: .03em; }
+.pt-aqui b { font: 800 2.4em var(--mono); color: #fff; line-height: 1; }
+.pt-aqui.ok { background: #0b2a17; border-color: #19a65a; } .pt-aqui.ok b { color: #2fd27a; }
+.pt-aqui[hidden] { display: none; }
+.po-r.yo { outline: 2px solid #ffb020; outline-offset: 1px; }
+.ps-rec rect { fill: #121a26; stroke: #3a4658; stroke-width: 1.5; }
+.ps-rec text { fill: #9aa7b8; font: 700 12px var(--font); text-anchor: middle; }
+.ps-rec.aqui rect { fill: rgba(255,176,32,.18); stroke: #ffb020; stroke-width: 2.5; }
+.ps-rec.aqui text { fill: #ffd27a; }
+.ps-ruta { fill: none; stroke: #2fd27a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4 6; opacity: .45; }
+.ps-ruta.aqui { stroke-width: 5; stroke-dasharray: 10 7; opacity: 1; animation: pm-avanza 1s linear infinite; }
+#ps-aqui circle { fill: #ffb020; stroke: #fff; stroke-width: 2; }
+#ps-aqui text { fill: #ffd27a; font: 800 10px var(--font); text-anchor: middle; }
+.pm-l.otras { color: #2fd27a; opacity: .6; } .pm-l.otras i { border-top-width: 2px; }
+@media (prefers-reduced-motion: reduce) { .ps-ruta.aqui { animation: none; } }

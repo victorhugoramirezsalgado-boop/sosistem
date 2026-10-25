@@ -174,6 +174,7 @@
       <button class="btn" type="button" data-estado="advertencia">Advertencia</button>
       <button class="btn primary" type="button" data-estado="caida">Persona caída</button>
       <button class="btn" type="button" data-estado="sismo">Sismo</button>
+      <label class="sim-prueba">Pantalla instalada en <select id="sim-lugar" aria-label="Lugar donde está instalada la pantalla"></select></label>
       <label class="sim-prueba"><input type="checkbox" id="sim-sonido"> Módulo de pruebas: activar sonido</label>
     </div>
     <p class="note">El sonido Morse solo se emite en advertencias, emergencias, desastres naturales o pruebas autorizadas. Aquí es una prueba: actívela para escucharlo.</p>
@@ -193,6 +194,8 @@
         </div>
       </div>
       <div class="pt-alerta" id="pt-alerta"><b id="pt-a1">—</b><span id="pt-a2"></span></div>
+      <div class="pt-split" id="pt-split">
+        <div class="pt-izq">
       <div class="pt-noti" id="pt-noti" role="alert" hidden><b id="pt-n1"></b><span id="pt-n2"></span></div>
       <div class="pt-911" id="pt-911" hidden><span id="pt-911t"></span><b id="pt-911n"></b><i id="pt-911b"></i></div>
       <figure class="pt-mapa" id="pt-mapa" hidden>
@@ -216,8 +219,33 @@
         </svg>
         <figcaption id="pt-mapa-ley"></figcaption>
       </figure>
+      <figure class="pt-mapa pt-sitio" id="pt-sitio" hidden>
+        <svg viewBox="0 0 400 272" role="img" aria-labelledby="pt-sitio-tit"><title id="pt-sitio-tit">Plano general con salidas de emergencia</title>
+          <rect class="pm-muro" x="10" y="10" width="380" height="220" rx="4"/>
+          <g class="ps-rec" data-rec="R2"><rect x="20" y="20" width="130" height="70" rx="3"/><text x="85" y="58">R2</text></g>
+          <g class="ps-rec" data-rec="R1"><rect x="250" y="20" width="130" height="70" rx="3"/><text x="315" y="58">R1</text></g>
+          <g class="ps-rec" data-rec="R3"><rect x="20" y="130" width="100" height="60" rx="3"/><text x="70" y="164">R3</text></g>
+          <g class="ps-rec" data-rec="R0"><rect x="150" y="150" width="100" height="80" rx="3"/><text x="200" y="184">R0</text></g>
+          <g class="ps-rec" data-rec="R4"><rect x="280" y="130" width="110" height="80" rx="3"/><text x="335" y="164">R4</text></g>
+          <rect class="pm-salida" x="178" y="226" width="44" height="8"/><text class="pm-sal" x="200" y="248" id="ps-salA">Salida A</text>
+          <rect class="pm-salida" x="386" y="160" width="8" height="34"/><text class="pm-sal" x="392" y="262" style="text-anchor:end" id="ps-salB">Salida B</text>
+          <g class="pm-reunion"><circle cx="18" cy="258" r="4"/><text class="pm-s" x="26" y="261" style="text-anchor:start" id="ps-reu">Punto de reunión</text></g>
+          <polyline class="ps-ruta" data-rec="R0" points="200,200 200,232"/>
+          <polyline class="ps-ruta" data-rec="R1" points="315,90 315,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R2" points="85,90 85,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R3" points="70,130 70,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R4" points="335,177 392,177"/>
+          <g id="ps-aqui"><circle r="9"/><text y="-13" id="ps-aqui-t">Usted está aquí</text></g>
+        </svg>
+        <figcaption id="pt-sitio-ley"></figcaption>
+      </figure>
+        </div>
+        <div class="pt-der">
+          <div class="pt-aqui" id="pt-aqui" hidden><span id="pt-aqui-t"></span><b id="pt-aqui-n"></b></div>
       <div class="pt-ocup" id="pt-ocup" hidden><h5 id="pt-ocup-t"></h5><div class="pt-ocup-l" id="pt-ocup-l"></div></div>
       <p class="pt-nube" id="pt-nube" hidden></p>
+        </div>
+      </div>
       <div class="pt-ley">
         <span><i class="r"></i>Rojo ≈ 625 nm, destello 2 Hz: caída o sismo</span>
         <span><i class="y"></i>Ámbar ≈ 590 nm: permanencia &gt; 10 min o aforo &gt; 90 %</span>
@@ -225,7 +253,7 @@
         <span><i class="w"></i>Blanco 5,500 K: balizamiento de evacuación</span>
       </div>
       <div class="pt-morse" id="pt-morse" aria-live="polite"></div>
-      <div class="pt-pie"><span>PNL-A04 · Planta baja</span><span>S.O.S.© PROJECT</span></div>
+      <div class="pt-pie"><span id="pt-pie-l">PNL-A04 · Planta baja</span><span>S.O.S.© PROJECT</span></div>
     </div>
     <div class="pantalla-ext" id="pantalla-ext" data-on="0" aria-live="polite">
       <div class="pe-top"><b id="pe-tit">Pantalla exterior</b><span>EXT-01 · Acceso principal ContenedorEns</span></div>
@@ -386,7 +414,7 @@
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.3</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.4</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>

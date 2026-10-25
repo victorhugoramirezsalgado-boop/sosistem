@@ -16,7 +16,7 @@
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
     ALERTAS = c.alertas || {}; CFG = c;
     Object.keys(SONIDO).forEach((k) => { if (ALERTAS[k]?.texto) SONIDO[k] = ALERTAS[k].texto; });
-    mostrarCodigo(); mapa(); llamada(); ocupacion();
+    lugares(); mostrarCodigo(); mapa(); llamada(); ocupacion();
   }).catch(() => {});
   function mostrarCodigo() {
     const pm = document.getElementById("pt-morse"); if (!pm || !window.SOSMorse) return;
@@ -40,23 +40,26 @@
   };
   // Textos de la pantalla en el idioma elegido (datos/idiomas.json)
   const ES = { noti_caida: "Persona en el suelo", noti_lugar: "Sanitarios de mujeres · cabina F‑2", ruta_auxilio: "Ruta de auxilio", ruta_traslado: "Ruta de traslado", ruta_evac: "Ruta de evacuación",
-    noti_sismo: "Sismo: evacúe por la salida de emergencia más cercana", salida: "Salida de emergencia", llamada_en: "Llamada al 911 en", llamando: "Llamando al 911 · simulación: no se realiza ninguna llamada", reunion: "Punto de reunión", encargado: "Encargado" };
+    noti_sismo: "Sismo: evacúe por la salida de emergencia más cercana", salida: "Salida de emergencia", llamada_en: "Llamada al 911 en", llamando: "Llamando al 911 · simulación: no se realiza ninguna llamada", reunion: "Punto de reunión", encargado: "Encargado",
+    aqui_con: "Aquí con usted", usted_aqui: "Usted está aquí", ocup_tit: "Personal en todos los recintos", dentro: "Dentro", fuera: "Evacuadas", todos_fuera: "Todos fuera", ext_tit: "Pantalla exterior", ext_off: "Apagada", ext_msg: "Sismo en curso · no ingrese al recinto", nube_tit: "Compartido en la nube con" };
   const tr = (k) => (window.SOSIdioma && SOSIdioma.texto(k)) || ES[k];
   // Plano: 380 unidades ≈ 12.2 m (contenedor de 40 pies). Velocidades estimadas:
   // auxilio a paso rápido 1.5 m/s, traslado con camilla 0.8 m/s, evacuación 1.2 m/s.
   const M_POR_U = 12.2 / 380, VEL = { aux: 1.5, tra: 0.8, ev: 1.2 };
-  const largo = (id) => { const p = $(id).getAttribute("points").trim().split(/\s+/).map((x) => x.split(",").map(Number));
-    let L = 0; for (let i = 1; i < p.length; i++) L += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); return L * M_POR_U; };
-  const ruta = (id, v) => { const m = largo(id); return { m: Math.round(m), s: Math.ceil(m / v) }; };
+  const largo = (id, esc = M_POR_U) => { const p = (typeof id === "string" ? $(id) : id).getAttribute("points").trim().split(/\s+/).map((x) => x.split(",").map(Number));
+    let L = 0; for (let i = 1; i < p.length; i++) L += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); return L * esc; };
+  const M_SITIO = 24 / 380; // plano general: 380 unidades ≈ 24 m
+  const ruta = (id, v, esc) => { const m = largo(id, esc); return { m: Math.round(m), s: Math.ceil(m / v) }; };
   function mapa() {
     const M = $("pt-mapa"); if (!M) return;
     const ver = estado === "caida" || estado === "sismo";
-    M.hidden = !ver; $("pt-noti").hidden = !ver; P.classList.toggle("ver-salidas", estado === "sismo");
+    const sis = estado === "sismo";
+    M.hidden = !ver || sis; $("pt-sitio").hidden = !sis; $("pt-noti").hidden = !ver; P.classList.toggle("ver-salidas", sis);
     if (!ver) return;
     M.dataset.modo = estado;
     // La pantalla física conserva su distribución; solo los textos siguen la dirección del idioma (árabe, hebreo)
     const dir = document.documentElement.dir === "rtl" ? "rtl" : "ltr";
-    ["pt-noti", "pt-911", "pt-mapa-ley"].forEach((id) => $(id).setAttribute("dir", dir));
+    ["pt-noti", "pt-911", "pt-mapa-ley", "pt-sitio-ley", "pt-aqui"].forEach((id) => $(id).setAttribute("dir", dir));
     $("pm-enc").textContent = tr("encargado"); $("pm-reu").textContent = tr("reunion");
     $("pm-salA").textContent = tr("salida") + " A"; $("pm-salB").textContent = tr("salida") + " B";
     const L = (cls, txt, r) => `<span class="pm-l ${cls}"><i></i>${txt} · ${r.m} m · ≈ ${r.s} s</span>`;
@@ -64,9 +67,17 @@
       $("pt-n1").textContent = tr("noti_caida"); $("pt-n2").textContent = tr("noti_lugar") + " · ContenedorEns";
       $("pt-mapa-ley").innerHTML = L("aux", tr("ruta_auxilio") + " (" + tr("encargado") + " → F‑2)", ruta("pm-aux", VEL.aux)) + L("tra", tr("ruta_traslado") + " (F‑2 → " + tr("salida") + " B)", ruta("pm-tra", VEL.tra));
     } else {
-      $("pt-n1").textContent = tr("noti_sismo"); $("pt-n2").textContent = tr("reunion") + " · ContenedorEns";
-      const a = ruta("pm-ev1", VEL.ev), b = ruta("pm-ev2", VEL.ev);
-      $("pt-mapa-ley").innerHTML = L("evm", tr("ruta_evac") + " M → " + tr("salida") + " A", a) + L("evf", tr("ruta_evac") + " F → " + tr("salida") + " B", b);
+      // Plano general: ruta desde el lugar donde está ESTA pantalla hasta su salida
+      const R = recinto(), S = $("pt-sitio");
+      $("pt-n1").textContent = tr("noti_sismo"); $("pt-n2").textContent = tr("usted_aqui") + ": " + R.id + " · " + R.nombre;
+      $("ps-salA").textContent = tr("salida") + " A"; $("ps-salB").textContent = tr("salida") + " B"; $("ps-reu").textContent = tr("reunion"); $("ps-aqui-t").textContent = tr("usted_aqui");
+      S.querySelectorAll(".ps-rec, .ps-ruta").forEach((g) => g.classList.toggle("aqui", g.dataset.rec === R.id));
+      const linea = S.querySelector(`.ps-ruta[data-rec="${R.id}"]`) || S.querySelector(".ps-ruta");
+      const [x, y] = linea.getAttribute("points").trim().split(/\s+/)[0].split(",");
+      $("ps-aqui").setAttribute("transform", `translate(${x},${y})`);
+      const fin = linea.getAttribute("points").trim().endsWith("232") ? "A" : "B";
+      $("pt-sitio-ley").innerHTML = L("evm", tr("ruta_evac") + " " + R.id + " → " + tr("salida") + " " + fin, ruta(linea, VEL.ev, M_SITIO)) +
+        `<span class="pm-l otras"><i></i>${tr("ruta_evac")} · R0–R4</span>`;
     }
   }
   function llamada() {
@@ -81,8 +92,16 @@
   }
 
   // Sismo: todas las pantallas muestran el personal de todos los recintos y polígonos con módulos
-  const OCUP0 = { R1: 9, R2: 5, R3: 6, R4: 4 }; // ocupación de ejemplo al iniciar el sismo
   const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+  const OCUP0 = { R0: 4, R1: 9, R2: 5, R3: 3, R4: 6 };
+  let LUGAR = "R1"; // la pantalla del simulador está en los baños (PNL-A04)
+  const recinto = () => (CFG.recintos || []).find((r) => r.id === LUGAR) || (CFG.recintos || [])[0] || { id: "R1", nombre: "Sanitarios planta baja", pantalla: "PNL-A04" };
+  function lugares() {
+    const sel = $("sim-lugar"); if (!sel || !CFG.recintos) return;
+    sel.innerHTML = CFG.recintos.map((r) => `<option value="${esc(r.id)}">${esc(r.id)} · ${esc(r.nombre)}${r.tipo === "entrada" || r.tipo === "banos" ? " (obligatoria)" : ""}</option>`).join("");
+    sel.value = LUGAR;
+    sel.onchange = () => { LUGAR = sel.value; mapa(); ocupacion(); };
+  } // ocupación de ejemplo al iniciar el sismo
   function conteo() {
     const s = (Date.now() - t0) / 1000;
     return (CFG.recintos || []).map((r) => {
@@ -95,13 +114,16 @@
   function ocupacion() {
     const O = $("pt-ocup"); if (!O) return;
     const dir = document.documentElement.dir === "rtl" ? "rtl" : "ltr";
-    const R = conteo(), ver = estado === "sismo" && R.length;
-    O.hidden = !ver;
+    const R = conteo().sort((a, b) => (b.tipo === "entrada") - (a.tipo === "entrada")), ver = estado === "sismo" && R.length;
+    const yo = recinto(); $("pt-pie-l").textContent = (yo.pantalla || "PNL") + " · " + yo.nombre;
+    O.hidden = !ver; $("pt-aqui").hidden = !ver;
     if (ver) {
       O.setAttribute("dir", dir);
       const tot = R.reduce((a, r) => a + r.dentro, 0), tf = R.reduce((a, r) => a + r.fuera, 0);
       $("pt-ocup-t").textContent = `${tr("ocup_tit")} · ${tr("dentro")} ${tot} · ${tr("fuera")} ${tf}` + (tot === 0 ? ` · ✓ ${tr("todos_fuera")}` : "");
-      $("pt-ocup-l").innerHTML = R.map((r) => `<div class="po-r${r.dentro ? "" : " ok"}"><span><b>${esc(r.id)} · ${esc(r.nombre)}</b><small>${esc(r.poligono)}</small></span><em>${r.dentro ? tr("dentro") + " " + r.dentro : "✓ " + tr("todos_fuera")}</em><i style="width:${r.n0 ? (r.fuera / r.n0) * 100 : 100}%"></i></div>`).join("");
+      const aqui = R.find((r) => r.id === yo.id);
+      if (aqui) { $("pt-aqui-t").textContent = tr("aqui_con") + " · " + aqui.nombre; $("pt-aqui-n").textContent = aqui.dentro; $("pt-aqui").classList.toggle("ok", !aqui.dentro); }
+      $("pt-ocup-l").innerHTML = R.map((r) => `<div class="po-r${r.dentro ? "" : " ok"}${r.id === yo.id ? " yo" : ""}"><span><b>${esc(r.id)} · ${esc(r.nombre)}${r.tipo === "entrada" ? " ★" : ""}${r.id === yo.id ? " · " + esc(tr("usted_aqui")) : ""}</b><small>${esc(r.poligono)}</small></span><em>${r.dentro ? tr("dentro") + " " + r.dentro : "✓ " + tr("todos_fuera")}</em><i style="width:${r.n0 ? (r.fuera / r.n0) * 100 : 100}%"></i></div>`).join("");
     }
     // Nube: con quién comparte el cliente este evento
     const N = $("pt-nube"), regla = (CFG.nube || {})[estado];

@@ -53,7 +53,10 @@
   "ext_tit",
   "ext_off",
   "ext_msg",
-  "nube_tit"
+  "nube_tit",
+  "aqui_con",
+  "usted_aqui",
+  "principal"
  ],
  "idiomas": {
   "es": {
@@ -113,7 +116,10 @@
     "Pantalla exterior",
     "Apagada · se enciende solo con sismo u otro evento natural, o si el cliente la activa",
     "Sismo en curso · no ingrese al recinto",
-    "Compartido en la nube con"
+    "Compartido en la nube con",
+    "Aquí con usted",
+    "Usted está aquí",
+    "Entrada principal"
    ]
   },
   "en": {
@@ -173,7 +179,10 @@
     "Outdoor screen",
     "Off · turns on only for an earthquake or other natural event, or if the client turns it on",
     "Earthquake in progress · do not enter the building",
-    "Shared in the cloud with"
+    "Shared in the cloud with",
+    "Here with you",
+    "You are here",
+    "Main entrance"
    ]
   },
   "pt": {
@@ -233,7 +242,10 @@
     "Tela externa",
     "Desligada · acende só com terremoto ou outro evento natural, ou se o cliente ativar",
     "Terremoto em curso · não entre no recinto",
-    "Compartilhado na nuvem com"
+    "Compartilhado na nuvem com",
+    "Aqui com você",
+    "Você está aqui",
+    "Entrada principal"
    ]
   },
   "fr": {
@@ -293,7 +305,10 @@
     "Écran extérieur",
     "Éteint · s’allume seulement en cas de séisme ou autre événement naturel, ou si le client l’active",
     "Séisme en cours · n’entrez pas",
-    "Partagé dans le cloud avec"
+    "Partagé dans le cloud avec",
+    "Ici avec vous",
+    "Vous êtes ici",
+    "Entrée principale"
    ]
   },
   "it": {
@@ -353,7 +368,10 @@
     "Schermo esterno",
     "Spento · si accende solo con terremoto o altro evento naturale, o se il cliente lo attiva",
     "Terremoto in corso · non entrare",
-    "Condiviso nel cloud con"
+    "Condiviso nel cloud con",
+    "Qui con lei",
+    "Lei è qui",
+    "Ingresso principale"
    ]
   },
   "de": {
@@ -413,7 +431,10 @@
     "Außenbildschirm",
     "Aus · schaltet sich nur bei Erdbeben oder anderen Naturereignissen ein oder wenn der Kunde es wünscht",
     "Erdbeben · Gebäude nicht betreten",
-    "In der Cloud geteilt mit"
+    "In der Cloud geteilt mit",
+    "Hier bei Ihnen",
+    "Sie sind hier",
+    "Haupteingang"
    ]
   },
   "nl": {
@@ -473,7 +494,10 @@
     "Buitenscherm",
     "Uit · gaat alleen aan bij een aardbeving of ander natuurverschijnsel, of als de klant het inschakelt",
     "Aardbeving bezig · ga niet naar binnen",
-    "Gedeeld in de cloud met"
+    "Gedeeld in de cloud met",
+    "Hier bij u",
+    "U bent hier",
+    "Hoofdingang"
    ]
   },
   "ca": {
@@ -533,7 +557,10 @@
     "Pantalla exterior",
     "Apagada · s’encén només amb terratrèmol o un altre fenomen natural, o si el client l’activa",
     "Terratrèmol en curs · no entreu al recinte",
-    "Compartit al núvol amb"
+    "Compartit al núvol amb",
+    "Aquí amb vostè",
+    "Vostè és aquí",
+    "Entrada principal"
    ]
   },
   "gl": {
@@ -593,7 +620,10 @@
     "Pantalla exterior",
     "Apagada · acéndese só con terremoto ou outro evento natural, ou se o cliente a activa",
     "Terremoto en curso · non entre no recinto",
-    "Compartido na nube con"
+    "Compartido na nube con",
+    "Aquí con vostede",
+    "Vostede está aquí",
+    "Entrada principal"
    ]
   },
   "eu": {
@@ -653,7 +683,10 @@
     "Kanpoko pantaila",
     "Itzalita · lurrikara edo beste gertaera natural batekin bakarrik pizten da, edo bezeroak aktibatzen badu",
     "Lurrikara martxan · ez sartu barrutira",
-    "Hodeian partekatua honekin"
+    "Hodeian partekatua honekin",
+    "Hemen zurekin",
+    "Hemen zaude",
+    "Sarrera nagusia"
    ]
   },
   "da": {
@@ -713,7 +746,10 @@
     "Udendørs skærm",
     "Slukket · tændes kun ved jordskælv eller anden naturhændelse, eller hvis kunden tænder den",
     "Jordskælv i gang · gå ikke ind",
-    "Delt i skyen med"
+    "Delt i skyen med",
+    "Her sammen med dig",
+    "Du er her",
+    "Hovedindgang"
    ]
   },
   "sv": {
@@ -773,7 +809,10 @@
     "Utomhusskärm",
     "Avstängd · tänds bara vid jordbävning eller annan naturhändelse, eller om kunden slår på den",
     "Jordbävning pågår · gå inte in",
-    "Delas i molnet med"
+    "Delas i molnet med",
+    "Här med dig",
+    "Du är här",
+    "Huvudentré"
    ]
   },
   "nb": {
@@ -833,7 +872,10 @@
     "Utendørs skjerm",
     "Av · slås bare på ved jordskjelv eller annen naturhendelse, eller hvis kunden slår den på",
     "Jordskjelv pågår · ikke gå inn",
-    "Delt i skyen med"
+    "Delt i skyen med",
+    "Her sammen med deg",
+    "Du er her",
+    "Hovedinngang"
    ]
   },
   "ga": {
@@ -893,7 +935,10 @@
     "Scáileán seachtrach",
     "Múchta · lasann sé ach amháin le crith talún nó teagmhas nádúrtha eile, nó má chuireann an cliant ar siúl é",
     "Crith talún ar siúl · ná téigh isteach",
-    "Roinnte sa néal le"
+    "Roinnte sa néal le",
+    "Anseo leat",
+    "Tá tú anseo",
+    "Príomhbhealach isteach"
    ]
   },
   "el": {
@@ -953,7 +998,10 @@
     "Εξωτερική οθόνη",
     "Σβηστή · ανάβει μόνο σε σεισμό ή άλλο φυσικό φαινόμενο, ή αν το ενεργοποιήσει ο πελάτης",
     "Σεισμός σε εξέλιξη · μην εισέρχεστε",
-    "Κοινοποιείται στο cloud με"
+    "Κοινοποιείται στο cloud με",
+    "Εδώ μαζί σας",
+    "Βρίσκεστε εδώ",
+    "Κεντρική είσοδος"
    ]
   },
   "ru": {
@@ -1013,7 +1061,10 @@
     "Наружный экран",
     "Выключен · включается только при землетрясении или другом природном явлении, либо по решению клиента",
     "Идёт землетрясение · не входите",
-    "Передаётся в облако:"
+    "Передаётся в облако:",
+    "Здесь вместе с вами",
+    "Вы здесь",
+    "Главный вход"
    ]
   },
   "uk": {
@@ -1073,7 +1124,10 @@
     "Зовнішній екран",
     "Вимкнено · вмикається лише під час землетрусу чи іншого природного явища або за рішенням клієнта",
     "Триває землетрус · не заходьте",
-    "Передається в хмару:"
+    "Передається в хмару:",
+    "Тут разом з вами",
+    "Ви тут",
+    "Головний вхід"
    ]
   },
   "ar": {
@@ -1133,7 +1187,10 @@
     "الشاشة الخارجية",
     "مطفأة · تعمل فقط عند وقوع زلزال أو حدث طبيعي آخر، أو إذا شغّلها العميل",
     "زلزال جارٍ · لا تدخلوا المبنى",
-    "تتم المشاركة عبر السحابة مع"
+    "تتم المشاركة عبر السحابة مع",
+    "هنا معك",
+    "أنت هنا",
+    "المدخل الرئيسي"
    ]
   },
   "he": {
@@ -1193,7 +1250,10 @@
     "מסך חיצוני",
     "כבוי · נדלק רק ברעידת אדמה או באירוע טבע אחר, או אם הלקוח מפעיל אותו",
     "רעידת אדמה מתרחשת · אין להיכנס",
-    "משותף בענן עם"
+    "משותף בענן עם",
+    "כאן איתך",
+    "אתה נמצא כאן",
+    "כניסה ראשית"
    ]
   },
   "hi": {
@@ -1253,7 +1313,10 @@
     "बाहरी स्क्रीन",
     "बंद · केवल भूकंप या अन्य प्राकृतिक घटना पर, या ग्राहक के चालू करने पर चालू होती है",
     "भूकंप जारी है · परिसर में प्रवेश न करें",
-    "क्लाउड में साझा:"
+    "क्लाउड में साझा:",
+    "यहाँ आपके साथ",
+    "आप यहाँ हैं",
+    "मुख्य प्रवेश द्वार"
    ]
   },
   "zh": {
@@ -1313,7 +1376,10 @@
     "室外屏幕",
     "关闭 · 仅在地震或其他自然事件时开启，或由客户开启",
     "地震进行中 · 请勿进入",
-    "云端共享对象"
+    "云端共享对象",
+    "与您在此处",
+    "您在这里",
+    "主入口"
    ]
   },
   "ja": {
@@ -1373,7 +1439,10 @@
     "屋外スクリーン",
     "消灯 · 地震などの自然災害時、または顧客が点灯した場合のみ点灯",
     "地震発生中 · 立ち入らないでください",
-    "クラウド共有先"
+    "クラウド共有先",
+    "ここにいる人数",
+    "現在地",
+    "正面入口"
    ]
   }
  },

@@ -214,6 +214,8 @@
   // ---------- Módulos por cliente, recintos/polígonos, pantalla exterior y nube ----------
   const DESTINOS = [["c5_911", "C5 / 911"], ["central", "Central de monitoreo"], ["proteccion_civil", "Protección Civil"], ["encargados", "Encargados de recinto"], ["otros_recintos", "Pantallas de los demás recintos"], ["pantalla_exterior", "Pantalla exterior"]];
   const EVENTOS_NUBE = [["caida", "Persona caída"], ["sismo", "Sismo"], ["natural", "Otro evento natural (inundación, tsunami, viento, calor)"], ["otros", "Otros módulos (humo, gas, energía…)"]];
+  const TIPOS_REC = [["entrada", "Entrada principal (obligatoria)"], ["banos", "Baños (obligatorio)"], ["cocina", "Cocina"], ["oficina", "Oficina"], ["bodega", "Bodega"], ["otro", "Otro"]];
+  const OBLIGATORIOS = ["entrada", "banos"];
   RENDER.modulos = (el) => {
     const C = S.config;
     C.modulos = C.modulos || []; C.recintos = C.recintos || []; C.nube = C.nube || {};
@@ -231,10 +233,12 @@
         <div class="filters"><label style="flex:1">Nuevo módulo<input id="mod-n" placeholder="p. ej. Detección de cristal roto" style="width:100%"></label><label style="flex:1">Sensor<input id="mod-s" style="width:100%"></label><button class="btn" type="button" id="mod-add">Agregar</button></div>
       </div>
       <div class="card" style="margin-top:12px"><h3>Recintos y polígonos controlados</h3>
-        <p>En un sismo o evento natural, <b>todas las pantallas</b> muestran cuántas personas hay en cada recinto con módulos y cuántas ya salieron. Solo se cuentan personas; no se identifica a nadie.</p>
-        <div class="tbl-wrap"><table><thead><tr><th>ID</th><th>Recinto</th><th>Polígono</th><th class="num">Capacidad</th><th>Pantalla</th><th>Módulos</th><th></th></tr></thead><tbody>
-        ${C.recintos.map((r, i) => `<tr><td class="mono">${esc(r.id)}</td><td><input data-rec="${i}" data-k="nombre" value="${esc(r.nombre)}"></td><td><input data-rec="${i}" data-k="poligono" value="${esc(r.poligono)}"></td><td><input type="number" min="1" max="500" data-rec="${i}" data-k="capacidad" value="${r.capacidad}" style="width:5em"></td><td><input data-rec="${i}" data-k="pantalla" value="${esc(r.pantalla || "")}" style="width:6em"></td>
-          <td>${activos.map((m) => `<label class="al-chk"><input type="checkbox" data-recmod="${i}" value="${esc(m.id)}" ${(r.modulos || []).includes(m.id) ? "checked" : ""}> ${esc(m.nombre)}</label>`).join(" ")}</td><td><button class="btn" type="button" data-recdel="${i}">Quitar</button></td></tr>`).join("")}
+        <p>Orden obligatorio de instalación: <b>1.º entrada principal</b> de todo el lugar, <b>2.º baños</b> y <b>3.º</b> cocina, oficina, bodega o donde el cliente lo requiera.</p>
+        <p>En un sismo o evento natural, <b>cada pantalla se divide en dos</b>: a un lado las salidas de emergencia desde ese lugar («Usted está aquí») y al otro cuántas personas hay en cada recinto, incluida la entrada principal, y cuántas están con quien la lee. Solo se cuentan personas; no se identifica a nadie.</p>
+        ${(() => { const falta = OBLIGATORIOS.filter((t) => !C.recintos.some((r) => r.tipo === t)); return falta.length ? `<p class="tag bad">Falta registrar: ${falta.map((t) => TIPOS_REC.find((x) => x[0] === t)[1]).join(" y ")}</p>` : `<p class="tag ok">Entrada principal y baños registrados</p>`; })()}
+        <div class="tbl-wrap"><table><thead><tr><th>ID</th><th>Tipo</th><th>Recinto</th><th>Polígono</th><th class="num">Capacidad</th><th>Pantalla</th><th>Módulos</th><th></th></tr></thead><tbody>
+        ${C.recintos.map((r, i) => `<tr><td class="mono">${esc(r.id)}</td><td><select data-rec="${i}" data-k="tipo">${TIPOS_REC.map(([t, n]) => `<option value="${t}" ${(r.tipo || "otro") === t ? "selected" : ""}>${n}</option>`).join("")}</select></td><td><input data-rec="${i}" data-k="nombre" value="${esc(r.nombre)}"></td><td><input data-rec="${i}" data-k="poligono" value="${esc(r.poligono)}"></td><td><input type="number" min="1" max="500" data-rec="${i}" data-k="capacidad" value="${r.capacidad}" style="width:5em"></td><td><input data-rec="${i}" data-k="pantalla" value="${esc(r.pantalla || "")}" style="width:6em"></td>
+          <td>${activos.map((m) => `<label class="al-chk"><input type="checkbox" data-recmod="${i}" value="${esc(m.id)}" ${(r.modulos || []).includes(m.id) ? "checked" : ""}> ${esc(m.nombre)}</label>`).join(" ")}</td><td>${OBLIGATORIOS.includes(r.tipo) && C.recintos.filter((x) => x.tipo === r.tipo).length === 1 ? '<span class="tag">Obligatorio</span>' : `<button class="btn" type="button" data-recdel="${i}">Quitar</button>`}</td></tr>`).join("")}
         </tbody></table></div>
         <p><button class="btn" type="button" id="rec-add">Agregar recinto</button></p>
       </div>
@@ -260,7 +264,12 @@
     el.addEventListener("change", (e) => {
       const x = e.target, d = x.dataset;
       if (d.mod) { C.modulos[d.mod][d.k] = x.checked; if (d.k === "activo") pinta(); }
-      else if (d.rec) C.recintos[d.rec][d.k] = x.type === "number" ? Math.max(1, Math.min(500, Number(x.value) || 1)) : x.value.trim();
+      else if (d.rec) {
+        const r = C.recintos[d.rec], antes = r.tipo;
+        if (d.k === "tipo" && OBLIGATORIOS.includes(antes) && C.recintos.filter((y) => y.tipo === antes).length === 1) { alert("Debe existir al menos un recinto de este tipo (obligatorio)."); x.value = antes; return; }
+        r[d.k] = x.type === "number" ? Math.max(1, Math.min(500, Number(x.value) || 1)) : x.value.trim();
+        if (d.k === "tipo") { marcar(); pinta(); return; }
+      }
       else if (d.recmod) { const r = C.recintos[d.recmod]; r.modulos = r.modulos || []; r.modulos = x.checked ? [...new Set([...r.modulos, x.value])] : r.modulos.filter((m) => m !== x.value); }
       else if (d.ext) C.pantalla_exterior[d.ext] = x.type === "checkbox" ? x.checked : x.value.trim();
       else if (d.nube) C.nube[d.nube][d.k] = x.checked;
@@ -270,7 +279,7 @@
     el.addEventListener("click", (e) => {
       const b = e.target.closest("button"); if (!b) return;
       if (b.id === "mod-add") { const n = $("#mod-n").value.trim(); if (!n) return; C.modulos.push({ id: n.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), nombre: n, activo: true, natural: false, sensor: $("#mod-s").value.trim() }); }
-      else if (b.id === "rec-add") { const n = C.recintos.length + 1; C.recintos.push({ id: "R" + n, nombre: "Recinto " + n, poligono: "P-01", capacidad: 10, pantalla: "", modulos: ["sismo"] }); }
+      else if (b.id === "rec-add") { const ids = C.recintos.map((r) => Number(String(r.id).replace(/\D/g, "")) || 0); const n2 = Math.max(-1, ...ids) + 1; C.recintos.push({ id: "R" + n2, tipo: "otro", nombre: "Recinto " + n2, poligono: "P-01", capacidad: 10, pantalla: "", modulos: ["sismo"] }); }
       else if (b.dataset.recdel) { if (!confirm("¿Quitar este recinto?")) return; C.recintos.splice(Number(b.dataset.recdel), 1); }
       else return;
       marcar(); pinta();
