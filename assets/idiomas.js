@@ -26,8 +26,52 @@
     return (L.t[i] || D.idiomas.es.t[i] || "");
   }
 
-  function aplicar(lang) {
+  // ---------- Traducción de TODO el texto de la página (nodo por nodo) ----------
+  // datos/textos/es.json = lista de textos en español; datos/textos/<idioma>.json = misma lista traducida.
+  const EXCL = "script,style,noscript,.mono,code,#idioma,#idioma-wrap,.cm-cubo,.cubo-firma,.alfabeto-morse,.refs,.ics-morse,.no-traducir";
+  const ORIG = new WeakMap(), CACHE = {};
+  let ES = null, MAPA = null, cambiando = false;
+  const limpio = (t) => t.replace(/\s+/g, " ").trim();
+  async function cargarTextos(lang) {
+    if (lang === "es") return null;
+    try {
+      if (!ES) ES = await (await fetch("datos/textos/es.json", { cache: "no-cache" })).json();
+      if (!CACHE[lang]) {
+        const tr = await (await fetch(`datos/textos/${lang}.json`, { cache: "no-cache" })).json(), m = new Map();
+        ES.forEach((t, i) => { if (tr[i]) m.set(t, tr[i]); });
+        CACHE[lang] = m;
+      }
+      return CACHE[lang];
+    } catch (e) { return null; }
+  }
+  function nodo(n) {
+    const p = n.parentElement; if (!p || p.closest(EXCL)) return;
+    const cur = n.nodeValue; let o = ORIG.get(n);
+    if (!o || (cur !== o.tr && cur !== o.es)) o = { es: cur };          // texto nuevo puesto por la página
+    const clave = limpio(o.es), t = MAPA && clave && MAPA.get(clave);
+    const nuevo = t ? (o.es.match(/^\s*/)[0] + t + o.es.match(/\s*$/)[0]) : o.es;
+    o.tr = nuevo; ORIG.set(n, o);
+    if (cur !== nuevo) { cambiando = true; n.nodeValue = nuevo; cambiando = false; }
+  }
+  function recorrer(raiz) {
+    const w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT); let n;
+    while ((n = w.nextNode())) if (/[\p{L}]/u.test(n.nodeValue)) nodo(n);
+    document.querySelectorAll("[placeholder],[data-i18n-title]").forEach((el) => {
+      const k = el.dataset.esPh ?? (el.dataset.esPh = el.getAttribute("placeholder") || ""); if (k) el.setAttribute("placeholder", (MAPA && MAPA.get(k)) || k);
+    });
+  }
+  // Textos que la página cambia sola (simulador, cubo de pantallas) también se traducen
+  new MutationObserver((ms) => {
+    if (cambiando || actual === "es") return;
+    ms.forEach((m) => {
+      if (m.type === "characterData") nodo(m.target);
+      else m.addedNodes.forEach((a) => (a.nodeType === 3 ? nodo(a) : a.nodeType === 1 && recorrer(a)));
+    });
+  }).observe(document.body, { subtree: true, childList: true, characterData: true });
+
+  async function aplicar(lang) {
     if (!D.idiomas[lang]) lang = "es";
+    MAPA = await cargarTextos(lang);
     actual = lang;
     const L = D.idiomas[lang];
     document.documentElement.lang = lang;
@@ -38,6 +82,9 @@
     document.querySelectorAll(".btn-morse .bm-txt").forEach((s) => { s.textContent = texto("morse_play"); });
     const sel = document.getElementById("idioma"); if (sel) { sel.value = lang; sel.setAttribute("aria-label", texto("idioma")); }
     guardar("sos_idioma", lang);
+    recorrer(document.body);
+    if (!document.documentElement.dataset.tituloEs) document.documentElement.dataset.tituloEs = document.title;
+    document.title = (MAPA && MAPA.get(document.documentElement.dataset.tituloEs)) || document.documentElement.dataset.tituloEs;
     document.dispatchEvent(new CustomEvent("sos-idioma", { detail: lang }));
   }
 
@@ -91,5 +138,6 @@
     const pref = leer("sos_idioma") || (navigator.language || "es").slice(0, 2).toLowerCase();
     aplicar(D.idiomas[pref] ? pref : (pref === "no" || pref === "nn" ? "nb" : "es"));
   }).catch(() => {});
-  window.SOSIdioma = { texto: (k) => (D ? texto(k) : ""), actual: () => actual };
+  // t("texto en español") → traducción del idioma actual (para textos armados por los scripts)
+  window.SOSIdioma = { texto: (k) => (D ? texto(k) : ""), actual: () => actual, t: (es) => (MAPA && MAPA.get(es)) || es };
 })();

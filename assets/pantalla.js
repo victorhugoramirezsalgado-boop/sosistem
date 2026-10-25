@@ -3,6 +3,7 @@
   const P = document.getElementById("pantalla");
   if (!P) return;
   const $ = (id) => document.getElementById(id);
+  const T = (t) => (window.SOSIdioma?.t ? SOSIdioma.t(t) : t); // traduce textos armados aquí
   const ESTADOS = {
     normal: { gral: ["Normal", "ok"], f2: ["Libre", "ok", ""], a1: "Sin incidentes", a2: "Todas las cabinas en condición segura." },
     advertencia: { gral: ["Advertencia", "warn"], f2: ["Atención", "warn", "Permanencia prolongada en cabina F‑2 (> 10 min)"], a1: "Advertencia · cabina F‑2", a2: "Permanencia mayor a 10 min. Aviso por voz en cabina (N0)." },
@@ -28,9 +29,9 @@
       return;
     }
     let info = "";
-    if (a.sirena) info += ` · Equipo: sirena ${a.sirena_db} dB × ${a.rafaga_s} s`;
-    if (a.cada_s) info += `${info ? "," : " · Equipo:"} repite cada ${a.cada_s} s`;
-    if (a.sirena && a.patron && window.SOSMorse?.patrones) info += ` · ${SOSMorse.patrones[a.patron]}`;
+    if (a.sirena) info += ` · ${T("Equipo: sirena")} ${a.sirena_db} dB × ${a.rafaga_s} s`;
+    if (a.cada_s) info += `${info ? "," : " · " + T("Equipo:")} ${T("repite cada")} ${a.cada_s} s`;
+    if (a.sirena && a.patron && window.SOSMorse?.patrones) info += ` · ${T(SOSMorse.patrones[a.patron])}`;
     pm.innerHTML = "<b>" + txt + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(txt)) + "<br><span style='letter-spacing:0'>" + info.replace(/^ · /, "") + "</span>";
     // Bandera del Código Internacional de Señales (OMI) que corresponde al evento
     // Debajo del Morse: el mismo aviso en banderas del Código Internacional de Señales (OMI) y la bandera del evento
@@ -79,7 +80,7 @@
     } else {
       // Plano general: ruta desde el lugar donde está ESTA pantalla hasta su salida
       const R = recinto(), S = $("pt-sitio");
-      $("pt-n1").textContent = tr("noti_sismo"); $("pt-n2").textContent = tr("usted_aqui") + ": " + R.id + " · " + R.nombre;
+      $("pt-n1").textContent = tr("noti_sismo"); $("pt-n2").textContent = tr("usted_aqui") + ": " + R.id + " · " + T(R.nombre);
       $("ps-salA").textContent = tr("salida") + " A"; $("ps-salB").textContent = tr("salida") + " B"; $("ps-reu").textContent = tr("reunion"); $("ps-aqui-t").textContent = tr("usted_aqui");
       S.querySelectorAll(".ps-rec, .ps-ruta").forEach((g) => g.classList.toggle("aqui", g.dataset.rec === R.id));
       const linea = S.querySelector(`.ps-ruta[data-rec="${R.id}"]`) || S.querySelector(".ps-ruta");
@@ -108,7 +109,7 @@
   const recinto = () => (CFG.recintos || []).find((r) => r.id === LUGAR) || (CFG.recintos || [])[0] || { id: "R1", nombre: "Sanitarios planta baja", pantalla: "PNL-A04" };
   function lugares() {
     const sel = $("sim-lugar"); if (!sel || !CFG.recintos) return;
-    sel.innerHTML = CFG.recintos.map((r) => `<option value="${esc(r.id)}">${esc(r.id)} · ${esc(r.nombre)}${r.tipo === "entrada" || r.tipo === "banos" ? " (obligatoria)" : ""}</option>`).join("");
+    sel.innerHTML = CFG.recintos.map((r) => `<option value="${esc(r.id)}">${esc(r.id)} · ${esc(T(r.nombre))}${r.tipo === "entrada" || r.tipo === "banos" ? " (" + T("obligatoria") + ")" : ""}</option>`).join("");
     sel.value = LUGAR;
     sel.onchange = () => { LUGAR = sel.value; mapa(); ocupacion(); };
   } // ocupación de ejemplo al iniciar el sismo
@@ -125,7 +126,7 @@
     const O = $("pt-ocup"); if (!O) return;
     const dir = document.documentElement.dir === "rtl" ? "rtl" : "ltr";
     const R = conteo().sort((a, b) => (b.tipo === "entrada") - (a.tipo === "entrada")), ver = estado === "sismo" && R.length;
-    const yo = recinto(); $("pt-pie-l").textContent = (yo.pantalla || "PNL") + " · " + yo.nombre;
+    const yo = recinto(); $("pt-pie-l").textContent = (yo.pantalla || "PNL") + " · " + T(yo.nombre);
     O.hidden = !ver; $("pt-aqui").hidden = !ver;
     if (ver) {
       O.setAttribute("dir", dir);
@@ -133,12 +134,12 @@
       $("pt-ocup-t").textContent = `${tr("ocup_tit")} · ${tr("dentro")} ${tot} · ${tr("fuera")} ${tf}` + (tot === 0 ? ` · ✓ ${tr("todos_fuera")}` : "");
       const aqui = R.find((r) => r.id === yo.id);
       if (aqui) { $("pt-aqui-t").textContent = tr("aqui_con") + " · " + aqui.nombre; $("pt-aqui-n").textContent = aqui.dentro; $("pt-aqui").classList.toggle("ok", !aqui.dentro); }
-      $("pt-ocup-l").innerHTML = R.map((r) => `<div class="po-r${r.dentro ? "" : " ok"}${r.id === yo.id ? " yo" : ""}"><span><b>${esc(r.id)} · ${esc(r.nombre)}${r.tipo === "entrada" ? " ★" : ""}${r.id === yo.id ? " · " + esc(tr("usted_aqui")) : ""}</b><small>${esc(r.poligono)}</small></span><em>${r.dentro ? tr("dentro") + " " + r.dentro : "✓ " + tr("todos_fuera")}</em><i style="width:${r.n0 ? (r.fuera / r.n0) * 100 : 100}%"></i></div>`).join("");
+      $("pt-ocup-l").innerHTML = R.map((r) => `<div class="po-r${r.dentro ? "" : " ok"}${r.id === yo.id ? " yo" : ""}"><span><b>${esc(r.id)} · ${esc(T(r.nombre))}${r.tipo === "entrada" ? " ★" : ""}${r.id === yo.id ? " · " + esc(tr("usted_aqui")) : ""}</b><small>${esc(T(r.poligono))}</small></span><em>${r.dentro ? tr("dentro") + " " + r.dentro : "✓ " + tr("todos_fuera")}</em><i style="width:${r.n0 ? (r.fuera / r.n0) * 100 : 100}%"></i></div>`).join("");
     }
     // Nube: con quién comparte el cliente este evento
     const N = $("pt-nube"), regla = (CFG.nube || {})[estado];
     N.hidden = !regla;
-    if (regla) { N.setAttribute("dir", dir); N.textContent = "☁ " + tr("nube_tit") + ": " + (Object.keys(DEST).filter((k) => regla[k]).map((k) => DEST[k]).join(" · ") || "—"); }
+    if (regla) { N.setAttribute("dir", dir); N.textContent = "☁ " + tr("nube_tit") + ": " + (Object.keys(DEST).filter((k) => regla[k]).map((k) => T(DEST[k])).join(" · ") || "—"); }
     // Pantalla exterior: solo con sismo/evento natural, o si el cliente decide encenderla
     const E = $("pantalla-ext"), X = CFG.pantalla_exterior; if (!E) return;
     E.hidden = !(X && X.instalada);
@@ -150,21 +151,21 @@
     if (!on) { $("pe-cuerpo").textContent = tr("ext_off"); return; }
     if (estado !== "sismo") { $("pe-cuerpo").innerHTML = "<b>Sistema S.O.S.©</b>"; return; }
     const tot = R.reduce((a, r) => a + r.dentro, 0);
-    $("pe-cuerpo").innerHTML = `<b>${esc(tr("ext_msg"))}</b><span>${esc(X.mensaje || "")}</span>` +
+    $("pe-cuerpo").innerHTML = `<b>${esc(tr("ext_msg"))}</b><span>${esc(T(X.mensaje || ""))}</span>` +
       (X.mostrar_ocupacion ? `<span class="pe-n">${esc(tr("dentro"))}: ${tot}${tot === 0 ? " · ✓ " + esc(tr("todos_fuera")) : ""}</span>` : "");
   }
 
   function pinta() {
     const e = ESTADOS[estado];
     P.dataset.estado = estado;
-    $("pt-gral").textContent = e.gral[0]; $("pt-gral").className = e.gral[1];
-    $("pt-f2s").textContent = e.f2[0]; $("pt-f2s").className = "st " + e.f2[1];
-    $("pt-f2t").textContent = e.f2[2] ? " · " + e.f2[2] : "";
-    $("pt-a1").textContent = e.a1;
+    $("pt-gral").textContent = T(e.gral[0]); $("pt-gral").className = e.gral[1];
+    $("pt-f2s").textContent = T(e.f2[0]); $("pt-f2s").className = "st " + e.f2[1];
+    $("pt-f2t").textContent = e.f2[2] ? " · " + T(e.f2[2]) : "";
+    $("pt-a1").textContent = T(e.a1);
     // En sismo, todas las cabinas pasan a «Evacuar»
     P.querySelectorAll(".pt-row .st").forEach((s) => {
       if (s.id === "pt-f2s") return;
-      s.textContent = estado === "sismo" ? "Evacuar" : "Libre";
+      s.textContent = T(estado === "sismo" ? "Evacuar" : "Libre");
       s.className = "st " + (estado === "sismo" ? "bad" : "ok");
     });
     document.querySelectorAll("[data-estado]").forEach((b) => b.tagName === "BUTTON" && b.classList.toggle("primary", b.dataset.estado === estado));
@@ -175,8 +176,8 @@
     $("pt-hora").textContent = new Date().toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" });
     if (estado === "caida") {
       const s = Math.floor((Date.now() - t0) / 1000);
-      $("pt-a2").textContent = `Tiempo inmóvil ${mmss(s)} · ${nivel(s)}`;
-    } else $("pt-a2").textContent = ESTADOS[estado].a2;
+      $("pt-a2").textContent = `${T("Tiempo inmóvil")} ${mmss(s)} · ${T(nivel(s))}`;
+    } else $("pt-a2").textContent = T(ESTADOS[estado].a2);
     llamada();
     ocupacion();
   }
@@ -192,7 +193,7 @@
     else SOSMorse.detener();
   }));
   document.getElementById("sim-sonido")?.addEventListener("change", (e) => { if (!e.target.checked) window.SOSMorse?.detener(); });
-  document.addEventListener("sos-idioma", () => { mapa(); llamada(); ocupacion(); });
+  document.addEventListener("sos-idioma", () => { pinta(); lugares(); mostrarCodigo(); mapa(); llamada(); ocupacion(); });
   pinta();
   setTimeout(mostrarCodigo, 0);
   setInterval(tick, 250);

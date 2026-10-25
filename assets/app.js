@@ -1,5 +1,6 @@
 /* Sistema S.O.S.© — página pública: modo presentación */
 (function () {
+  const T = (t) => (window.SOSIdioma?.t ? SOSIdioma.t(t) : t); // traduce textos armados aquí
   const slides = () => Array.from(document.querySelectorAll("section.slide"));
   let i = 0;
 
@@ -70,7 +71,7 @@
       lis.forEach((li) => li.classList.toggle("on", s >= seg(li.dataset.n)));
       const falta = Math.max(0, Math.ceil(N3 - s));
       b.classList.toggle("hecha", falta === 0);
-      document.getElementById("eq-911t").textContent = falta ? "Llamada al 911 en" : "Llamando al 911 · CAP v1.2";
+      document.getElementById("eq-911t").textContent = T(falta ? "Llamada al 911 en" : "Llamando al 911 · CAP v1.2");
       document.getElementById("eq-911n").textContent = falta ? falta + " s" : "";
       document.getElementById("eq-911b").style.width = Math.min(100, (s / N3) * 100) + "%";
       const ss = Math.floor(s); document.getElementById("eq-t").textContent = "00:" + String(ss).padStart(2, "0");
@@ -92,8 +93,8 @@
     const puntos = document.getElementById("eq-puntos");
     function dibujar() {
       C.querySelectorAll(".eq-cara").forEach((f) => { f.hidden = Number(f.dataset.n) > n; });
-      puntos.innerHTML = Array.from({ length: n }, (_, i) => `<button type="button" aria-label="Pantalla ${i + 1}: ${NOMBRES[i]}" aria-current="${i === k}"></button>`).join("");
-      document.getElementById("eq-cap").textContent = `${k + 1}/${n} · ${NOMBRES[k]}`;
+      puntos.innerHTML = Array.from({ length: n }, (_, i) => `<button type="button" aria-label="${T("Pantalla")} ${i + 1}: ${T(NOMBRES[i])}" aria-current="${i === k}"></button>`).join("");
+      document.getElementById("eq-cap").textContent = `${k + 1}/${n} · ${T(NOMBRES[k])}`;
     }
     function ir(j) {
       k = (j + n) % n;
@@ -110,13 +111,14 @@
     E.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { ir(k + 1); ciclo(); } if (e.key === "ArrowLeft") { ir(k - 1); ciclo(); } });
     addEventListener("resize", medir, { passive: true });
     medir(); C.style.transform = PASOS[0]; dibujar(); ciclo();
+    document.addEventListener("sos-idioma", dibujar);
     return { pantallas(x) { n = Math.max(4, Math.min(6, Number(x) || 6)); if (k >= n) ir(0); else dibujar(); } };
   })();
 
   // Versión publicada
   fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
     const el = document.getElementById("version");
-    if (el && v.version) el.textContent = "Versión " + v.version;
+    if (el && v.version) el.textContent = T("Versión") + " " + v.version;
   }).catch(() => {});
 
   // Tiempos de escalamiento configurados desde el panel de administración
