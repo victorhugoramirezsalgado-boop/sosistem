@@ -1,8 +1,13 @@
 {
-  "version": "1.9",
+  "version": "2.0",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.0",
+      "fecha": "2026-10-24",
+      "resumen": "Cara interior 11 del Cubo Morse: Código Omnigráfico© con su prueba en Safe Creative (2610257441013), como parte del Código de Comunicación del Cubo (33)©."
+    },
     {
       "v": "1.9",
       "fecha": "2026-10-24",
