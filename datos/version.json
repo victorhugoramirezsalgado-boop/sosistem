@@ -1,11 +1,32 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
-    { "v": "1.3", "fecha": "2026-10-24", "resumen": "Simulador de la pantalla S.S.O.S. (normal, advertencia, caída), galería de referencias visuales y control de versiones." },
-    { "v": "1.2", "fecha": "2026-10-24", "resumen": "Panel de administrador con doble clave cifrada, visitas anónimas, eventos, financiera, técnico, usuarios, ejecutivo y ajustes." },
-    { "v": "1.1", "fecha": "2026-10-24", "resumen": "Expediente S.S.O.S. v1.1: datos reales (OMS, INEGI), módulo S.S.O.S., normativa vigente y fuentes APA 7." },
-    { "v": "1.0", "fecha": "2026-10", "resumen": "Sitio inicial con diseño adaptable para celular, tableta y escritorio." }
+    {
+      "v": "1.4",
+      "fecha": "2026-10-24",
+      "resumen": "Prototipo y prueba real en oficinas de ContenedorEns©; Puerto de Ensenada como propuesta de prueba adicional, previa autorización y convenio."
+    },
+    {
+      "v": "1.3",
+      "fecha": "2026-10-24",
+      "resumen": "Simulador de la pantalla S.S.O.S. (normal, advertencia, caída), galería de referencias visuales y control de versiones."
+    },
+    {
+      "v": "1.2",
+      "fecha": "2026-10-24",
+      "resumen": "Panel de administrador con doble clave cifrada, visitas anónimas, eventos, financiera, técnico, usuarios, ejecutivo y ajustes."
+    },
+    {
+      "v": "1.1",
+      "fecha": "2026-10-24",
+      "resumen": "Expediente S.S.O.S. v1.1: datos reales (OMS, INEGI), módulo S.S.O.S., normativa vigente y fuentes APA 7."
+    },
+    {
+      "v": "1.0",
+      "fecha": "2026-10",
+      "resumen": "Sitio inicial con diseño adaptable para celular, tableta y escritorio."
+    }
   ]
 }

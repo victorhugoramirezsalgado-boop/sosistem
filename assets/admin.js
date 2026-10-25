@@ -385,7 +385,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
       <tbody>${U.map((u, i) => `<tr><td>${esc(u.nombre)}</td><td>${esc(u.rol)}</td><td>${esc(u.alcance)}</td><td class="mono">${esc(u.alta)}</td><td>${i ? `<button class="btn" data-del="${i}" type="button">Quitar</button>` : '<span class="tag ok">Propietario</span>'}</td></tr>`).join("")}</tbody></table></div>
       <div class="card" style="margin-top:16px"><h3>Agregar usuario</h3><div class="filters">
         <label>Nombre<input id="u-n"></label><label>Rol<select id="u-r"><option>Administrador</option><option>Encargado de recinto</option><option>Central de monitoreo</option><option>Técnico</option><option>Consulta</option></select></label>
-        <label>Recinto / alcance<input id="u-a" placeholder="p. ej. ASIPONA Ensenada"></label><button class="btn primary" id="u-ok" type="button">Agregar</button></div></div>`;
+        <label>Recinto / alcance<input id="u-a" placeholder="p. ej. Oficinas ContenedorEns©"></label><button class="btn primary" id="u-ok" type="button">Agregar</button></div></div>`;
     $("#u-ok").onclick = () => {
       const n = $("#u-n").value.trim(); if (!n) return;
       U.push({ nombre: n, rol: $("#u-r").value, alcance: $("#u-a").value.trim() || "—", alta: new Date().toLocaleDateString("sv-SE") });
