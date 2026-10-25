@@ -602,7 +602,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
     const T = S.config.tiempos;
     const AP = S.config.apariencia = { fondo: "gris", logo: "giro", pantallas_portada: 6, ...(S.config.apariencia || {}) };
     const FONDOS = [["blanco", "Blanco", "#ffffff"], ["beige", "Beige", "#ece2cf"], ["crema", "Crema", "#fbf4e2"], ["gris", "Gris", "#dde0e5"], ["azul", "Azul", "#0b2240"], ["negro", "Negro", "#000000"]];
-    const LOGOS = [["giro", "Cubo giratorio SOSistem™ (SOS, SOSISTEM, 911, AYUDA, SALIDA, AVISO)", "assets/logo-sello.svg"], ["sello", "Sello Morse S.O.S.©", "assets/logo-sello.svg"], ["cubo", "Cubo Morse", "assets/logo.svg"]];
+    const LOGOS = [["giro", "Cubo giratorio SOSistem™ (SOS, SOSISTEM, 911, AYUDA, SALIDA, AVISO)", "assets/logo-sello.svg"], ["sello", "Sello Morse S.O.S.©", "assets/logo-sello.svg"], ["cubo", "Cubo Morse©", "assets/logo.svg"]];
     el.innerHTML = `
       <div class="card"><h3>Apariencia de la página pública</h3>
         <p>Fondo de todo el sitio (se aplica en celular, tableta y computadora, sin importar el modo claro u oscuro del equipo):</p>

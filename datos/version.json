@@ -1,8 +1,13 @@
 {
-  "version": "3.6",
+  "version": "3.7",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.7",
+      "fecha": "2026-10-25",
+      "resumen": "Cubo Morse© registrado en Safe Creative (2610257441754): se restituye el © en todo el sitio, la cara 6 del cubo y la pestaña muestran el número de registro, y el pie de página lo cita en los 14 idiomas. Sello de tiempo automático (OpenTimestamps) en cada versión publicada, carpeta sellos/."
+    },
     {
       "v": "3.6",
       "fecha": "2026-10-25",
