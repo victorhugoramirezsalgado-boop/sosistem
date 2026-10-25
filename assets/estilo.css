@@ -606,3 +606,27 @@ body.present .hero { padding-top: 40px; }
 .hero-equipo figcaption { max-width: 440px; margin: 0 auto; }
 @media (max-width: 420px) { .eq-pant { font-size: 10.5px; gap: 5px; padding: 8px; } .eq-top b { font-size: 9.5px; } .eq-aforo b { font-size: 26px; } }
 @media (prefers-reduced-motion: reduce) { .eq-cubo { transition-duration: .01s; } .eq-sismo, .eq-extmsg, .eq-leds i.on, .eq-ruta { animation: none; } }
+
+/* v2.9 · Señales normalizadas, banderas del CIS y patrones sonoros */
+.tbl-normas td, .tbl-normas th { vertical-align: top; font-size: .88rem; }
+.tbl-normas td small { color: var(--ink-3); }
+.sn-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.sn-btns .btn.morse-sonando { border-color: var(--brand); box-shadow: inset 0 0 0 1px var(--brand); }
+.sn-luz { height: 14px; border-radius: 99px; margin: 12px 0 6px; background: var(--surface-2); border: 1px solid var(--line); transition: background .05s; }
+.sn-luz.morse-luz { background: #F5F5EF; box-shadow: 0 0 18px #ff2a1f, inset 0 0 0 3px #ff2a1f; }
+.sn-t3 { width: 100%; max-width: 400px; height: auto; display: block; }
+.sn-campo { display: grid; gap: 4px; font-weight: 600; font-size: .85rem; }
+.sn-campo input { font: 600 1rem var(--font); padding: 8px 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.ics { display: inline-block; vertical-align: middle; border-radius: 2px; }
+.ics-sal { display: flex; flex-wrap: wrap; gap: 14px; margin: 12px 0 6px; min-height: 46px; padding: 4px; border-radius: 8px; }
+.ics-sal.morse-luz { box-shadow: 0 0 0 3px var(--brand); }
+.ics-pal { display: inline-flex; gap: 4px; }
+.ics-morse { font-size: .9rem; letter-spacing: .14em; color: var(--ink-2); overflow-wrap: anywhere; }
+.ics-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 10px; }
+.ics-c { display: grid; gap: 2px; padding: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.ics-c b { font-size: 1rem; } .ics-c span { font-size: .78rem; color: var(--ink-2); letter-spacing: .12em; } .ics-c small { font-size: .74rem; color: var(--ink-3); line-height: 1.3; }
+.pt-band { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; letter-spacing: 0; font-family: var(--font); }
+.pt-band span { font-size: .95em; color: var(--p-ink, #e8edf5); }
+.tbl-normas { table-layout: fixed; width: 100%; min-width: 720px; }
+.tbl-normas th, .tbl-normas td { white-space: normal; overflow-wrap: anywhere; }
+.tbl-normas th:nth-child(1) { width: 24%; } .tbl-normas th:nth-child(2) { width: 38%; }

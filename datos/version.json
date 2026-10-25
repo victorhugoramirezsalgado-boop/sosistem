@@ -1,8 +1,13 @@
 {
-  "version": "2.8",
+  "version": "2.9",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.9",
+      "fecha": "2026-10-24",
+      "resumen": "Señales normalizadas: patrones de sirena T-3 (ISO 8201), 7 cortas + 1 larga (SOLAS/Código IDS 7.2.1), pulsos (ISO 7731) y bitonal, con luz sincronizada (ISO 11429); verificación de 15 dB sobre el ruido de fondo en el panel; banderas del Código Internacional de Señales A–Z y mensaje en banderas y Morse (ITU-R M.1677-1); códigos ISO 639-3 de lenguas de señas; fuentes APA 7."
+    },
     {
       "v": "2.8",
       "fecha": "2026-10-24",

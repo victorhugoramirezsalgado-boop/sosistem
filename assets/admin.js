@@ -121,12 +121,12 @@
   // ---------- Sirena y Morse por estado (configuración + pruebas del administrador) ----------
   const ESTADOS_ALERTA = [["advertencia", "Advertencia"], ["caida", "Emergencia · persona caída"], ["sismo", "Desastre natural · sismo"], ["prueba", "Prueba general"]];
   const ALERTA_BASE = {
-    advertencia: { sirena: false, sirena_db: 85, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, cada_s: 60, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 85, llamada_911_s: 0 },
-    caida: { sirena: true, sirena_db: 105, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, cada_s: 30, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 95, llamada_911_s: 10 },
-    sismo: { sirena: true, sirena_db: 105, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, cada_s: 20, imagen: true, hasta_atender: false, tope_min: 10, db_tras_tope: 95, llamada_911_s: 5 },
-    prueba: { sirena: true, sirena_db: 85, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, cada_s: 0, imagen: true, hasta_atender: false, tope_min: 1, db_tras_tope: 85, llamada_911_s: 0 },
+    advertencia: { sirena: false, sirena_db: 85, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, cada_s: 60, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 85, llamada_911_s: 0, patron: "pulsos", ruido_fondo_db: 50 },
+    caida: { sirena: true, sirena_db: 105, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, cada_s: 30, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 95, llamada_911_s: 10, patron: "fsk", ruido_fondo_db: 55 },
+    sismo: { sirena: true, sirena_db: 105, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, cada_s: 20, imagen: true, hasta_atender: false, tope_min: 10, db_tras_tope: 95, llamada_911_s: 5, patron: "t3", ruido_fondo_db: 55 },
+    prueba: { sirena: true, sirena_db: 85, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, cada_s: 0, imagen: true, hasta_atender: false, tope_min: 1, db_tras_tope: 85, llamada_911_s: 0, patron: "t3", ruido_fondo_db: 55 },
   };
-  const LIMITES = { sirena_db: [70, 105], rafaga_s: [0, 300], volumen: [0, 100], cada_s: [0, 600], tope_min: [1, 15], db_tras_tope: [70, 105], llamada_911_s: [0, 300] };
+  const LIMITES = { sirena_db: [70, 105], rafaga_s: [0, 300], volumen: [0, 100], cada_s: [0, 600], tope_min: [1, 15], db_tras_tope: [70, 105], llamada_911_s: [0, 300], ruido_fondo_db: [30, 100] };
   const RENDER_PRUEBAS = (el) => {
     S.config.alertas = S.config.alertas || {};
     ESTADOS_ALERTA.forEach(([id]) => { S.config.alertas[id] = { ...ALERTA_BASE[id], ...(S.config.alertas[id] || {}) }; });
@@ -137,6 +137,7 @@
       <div class="card"><h3>Sirena y Morse de la pantalla</h3>
         <p>Defina por estado qué emite la pantalla física: la sirena de hasta <b>105 dB</b>, el código Morse, su volumen, cada cuánto se repite y si el código se ve en pantalla, y a los cuántos segundos la pantalla llama al 911. Se guarda en la configuración del sistema al pulsar «Guardar y publicar».</p>
         <p class="note">Límite de seguridad (NOM-011-STPS-2001): a 105 dB(A) la exposición máxima es de 15 minutos. Por eso, pasado el «tope a nivel máximo», la sirena baja al nivel indicado.</p>
+        <p class="note">Normas de la señal: ISO 7731 (al menos 15 dB por encima del ruido de fondo, tonos de 500 a 1500 Hz), ISO 8201 (patrón T-3 de evacuación), ISO 11429 (luz y sonido coherentes: la luz destella al mismo ritmo) y, en puertos o buques, la alarma general SOLAS/Código IDS 7.2.1 (7 cortas + 1 larga).</p>
       </div>
       ${ESTADOS_ALERTA.map(([id, nombre]) => `
       <div class="card al-estado" style="margin-top:12px">
@@ -158,6 +159,8 @@
         </div>
         <div class="filters">
           ${num(id, "llamada_911_s", "Llamar al 911 a los (s; 0 = no llamar)")}
+          <label class="al-campo">Patrón de sirena<select data-al="${id}" data-k="patron">${Object.entries(SOSMorse.patrones).map(([v, n]) => `<option value="${v}" ${A[id].patron === v ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>
+          ${num(id, "ruido_fondo_db", "Ruido de fondo medido (dB(A))")}
         </div>
         <p class="note mono" data-resumen="${id}"></p>
         <p><button class="btn primary" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> Probar ${esc(nombre.toLowerCase())}</button></p>
@@ -174,6 +177,8 @@
       partes.push(c.cada_s ? `cada ${c.cada_s} s` : "una vez");
       if (c.hasta_atender) partes.push("hasta que alguien atienda");
       if (c.sirena && c.sirena_db > c.db_tras_tope) partes.push(`a los ${c.tope_min} min baja a ${c.db_tras_tope} dB`);
+      partes.push("patrón " + (SOSMorse.patrones[c.patron] || c.patron));
+      if (c.sirena) { const m = c.sirena_db - c.ruido_fondo_db; partes.push(m >= 15 ? `ISO 7731 ✓ (+${m} dB sobre el ruido)` : `ISO 7731 ✗: solo +${m} dB; se requieren 15 dB sobre el ruido`); }
       partes.push(c.llamada_911_s ? `llamada al 911 a los ${c.llamada_911_s} s` : "sin llamada al 911");
       partes.push(c.imagen ? "código visible en pantalla" : "sin código en pantalla");
       const r = el.querySelector(`[data-resumen="${id}"]`); if (r) r.textContent = partes.join(" · ") + (c.morse ? "  ·  " + SOSMorse.visible(SOSMorse.aMorse(c.texto)) : "");
@@ -192,7 +197,7 @@
       const id = b.dataset.prueba, c = A[id], nombre = ESTADOS_ALERTA.find((p) => p[0] === id)[1];
       $("#pr-codigo").textContent = c.morse ? SOSMorse.visible(SOSMorse.aMorse(c.texto)) : "";
       SOSMorse.reproducir(c.morse ? c.texto : "", b.querySelector(".bm-luz"), { motivo: "prueba-admin", boton: b, volumen: c.volumen / 100,
-        sirenaSeg: c.sirena ? Math.min(3, c.rafaga_s) : 0, sirenaVolumen: c.sirena ? (c.sirena_db - 60) / 45 : 0 });
+        sirenaSeg: c.sirena ? (c.patron === "t3" ? 4 : c.patron === "solas" ? 19 : Math.min(3, c.rafaga_s)) : 0, sirenaVolumen: c.sirena ? (c.sirena_db - 60) / 45 : 0, patron: c.patron });
       registrar(`Prueba de sonido: ${nombre} (sirena ${c.sirena ? c.sirena_db + " dB × " + c.rafaga_s + " s" : "no"}; Morse ${c.morse ? "«" + c.texto + "» " + c.volumen + " %" : "no"}).`);
     }));
     $("#pr-libre").onclick = (e) => { const t = $("#pr-txt").value.trim(); if (!t) return; $("#pr-codigo").textContent = SOSMorse.visible(SOSMorse.aMorse(t)); SOSMorse.reproducir(t, e.currentTarget, { motivo: "prueba-admin", boton: e.currentTarget }); registrar(`Prueba de sonido: mensaje libre (${t}).`); };

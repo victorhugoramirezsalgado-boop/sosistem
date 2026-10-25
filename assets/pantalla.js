@@ -25,7 +25,11 @@
     let info = "";
     if (a.sirena) info += ` · Equipo: sirena ${a.sirena_db} dB × ${a.rafaga_s} s`;
     if (a.cada_s) info += `${info ? "," : " · Equipo:"} repite cada ${a.cada_s} s`;
+    if (a.sirena && a.patron && window.SOSMorse?.patrones) info += ` · ${SOSMorse.patrones[a.patron]}`;
     pm.innerHTML = "<b>" + txt + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(txt)) + "<br><span style='letter-spacing:0'>" + info.replace(/^ · /, "") + "</span>";
+    // Bandera del Código Internacional de Señales (OMI) que corresponde al evento
+    const BAND = { caida: "W" };
+    if (BAND[estado] && window.SOSBanderas) pm.innerHTML += `<div class="pt-band">${SOSBanderas.svg(BAND[estado], 22)}<span>${BAND[estado]} · ${SOSBanderas.significado(BAND[estado])} (CIS · OMI)</span></div>`;
   }
   let estado = "caida", t0 = Date.now();
   let TIEMPOS = { N0: 2, N1: 4, N2: 7, N3: 10 };
@@ -178,12 +182,12 @@
     mostrarCodigo();
     const prueba = document.getElementById("sim-sonido")?.checked, a = ALERTAS[estado] || {};
     if (SONIDO[estado]) SOSMorse.reproducir(a.morse === false ? "" : SONIDO[estado], luz, { motivo: prueba ? "prueba-cliente" : "",
-      volumen: (a.volumen ?? 100) / 100, sirenaSeg: prueba && a.sirena ? Math.min(2, a.rafaga_s || 0) : 0, sirenaVolumen: a.sirena ? ((a.sirena_db || 105) - 60) / 45 : 0 });
+      volumen: (a.volumen ?? 100) / 100, sirenaSeg: prueba && a.sirena ? (a.patron === "t3" ? 4 : a.patron === "solas" ? 19 : Math.min(2, a.rafaga_s || 0)) : 0, sirenaVolumen: a.sirena ? ((a.sirena_db || 105) - 60) / 45 : 0, patron: a.patron });
     else SOSMorse.detener();
   }));
   document.getElementById("sim-sonido")?.addEventListener("change", (e) => { if (!e.target.checked) window.SOSMorse?.detener(); });
   document.addEventListener("sos-idioma", () => { mapa(); llamada(); ocupacion(); });
   pinta();
-  mostrarCodigo();
+  setTimeout(mostrarCodigo, 0);
   setInterval(tick, 250);
 })();

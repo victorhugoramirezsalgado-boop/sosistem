@@ -8,7 +8,7 @@
   "goatcounter": "sosistem",
   "actualizado": "2026-10-24T17:40:00-07:00",
   "alertas": {
-    "nota": "Parámetros de la pantalla física S.O.S. por estado. sirena_db: nivel a 1 m (máx. 105 dB SPL). rafaga_s: duración de cada ráfaga de sirena. cada_s: cada cuántos segundos se repite el ciclo sirena + Morse (0 = una vez). tope_min: minutos a nivel máximo antes de bajar a db_tras_tope (NOM-011-STPS-2001: 105 dB(A) máx. 15 min de exposición). llamada_911_s: segundos tras confirmar el evento para llamar al 911 (0 = no llamar); lo decide el cliente.",
+    "nota": "Parámetros de la pantalla física S.O.S. por estado. sirena_db: nivel a 1 m (máx. 105 dB SPL). rafaga_s: duración de cada ráfaga de sirena. cada_s: cada cuántos segundos se repite el ciclo sirena + Morse (0 = una vez). tope_min: minutos a nivel máximo antes de bajar a db_tras_tope (NOM-011-STPS-2001: 105 dB(A) máx. 15 min de exposición). llamada_911_s: segundos tras confirmar el evento para llamar al 911 (0 = no llamar); lo decide el cliente. patron: fsk (bitonal continuo), t3 (ISO 8201, evacuación), solas (7 cortas + 1 larga, OMI/LSA 7.2.1), pulsos (ISO 7731). ruido_fondo_db: ruido ambiente medido; ISO 7731 pide la señal al menos 15 dB por encima.",
     "advertencia": {
       "sirena": false,
       "sirena_db": 85,
@@ -21,7 +21,9 @@
       "hasta_atender": true,
       "tope_min": 10,
       "db_tras_tope": 85,
-      "llamada_911_s": 0
+      "llamada_911_s": 0,
+      "patron": "pulsos",
+      "ruido_fondo_db": 50
     },
     "caida": {
       "sirena": true,
@@ -35,7 +37,9 @@
       "hasta_atender": true,
       "tope_min": 10,
       "db_tras_tope": 95,
-      "llamada_911_s": 10
+      "llamada_911_s": 10,
+      "patron": "fsk",
+      "ruido_fondo_db": 55
     },
     "sismo": {
       "sirena": true,
@@ -49,7 +53,9 @@
       "hasta_atender": false,
       "tope_min": 10,
       "db_tras_tope": 95,
-      "llamada_911_s": 5
+      "llamada_911_s": 5,
+      "patron": "t3",
+      "ruido_fondo_db": 55
     },
     "prueba": {
       "sirena": true,
@@ -63,7 +69,9 @@
       "hasta_atender": false,
       "tope_min": 1,
       "db_tras_tope": 85,
-      "llamada_911_s": 0
+      "llamada_911_s": 0,
+      "patron": "t3",
+      "ruido_fondo_db": 55
     }
   },
   "modulos": [

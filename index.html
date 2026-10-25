@@ -436,6 +436,74 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   </div>
 </section>
 
+<section class="slide blk" id="senales">
+  <div class="wrap">
+    <span class="eyebrow">Señales normalizadas · ISO, UIT y OMI</span>
+    <h2>Cada sonido, luz y código del sistema sigue una norma internacional.</h2>
+    <p>S.O.S.© usa señales que cualquier persona, brigada o tripulación reconoce sin entrenamiento previo: el patrón de evacuación T-3, la alarma general de los buques, el código Morse internacional y las banderas del Código Internacional de Señales.</p>
+    <div class="tbl-wrap"><table class="tbl-normas">
+      <thead><tr><th>Norma</th><th>Qué establece</th><th>Cómo la aplica S.O.S.©</th></tr></thead>
+      <tbody>
+        <tr><td><b>ISO 7731:2003</b><br><small>Señales auditivas de peligro</small></td><td>La señal debe ser audible, identificable y no confundible: al menos <b>15 dB por encima del ruido de fondo</b> en toda la zona y tonos principales entre 500 y 1500 Hz.</td><td>Sirena bitonal 800/1250 Hz y Morse a 650 Hz. El panel pide el ruido medido en cada recinto y marca ✓ o ✗ si la sirena no supera el ruido por 15 dB.</td></tr>
+        <tr><td><b>ISO 8201:2017</b><br><small>Señal de evacuación</small></td><td>Patrón temporal <b>T-3</b>: 0.5 s sonido, 0.5 s silencio, tres veces, y 1.5 s de pausa (ciclo de 4 s); equivalente al de NFPA 72.</td><td>Patrón por defecto en <b>sismo y evacuación</b>; la luz blanca destella al mismo ritmo.</td></tr>
+        <tr><td><b>ISO 11429:1996</b><br><small>Señales sonoras y visuales</small> <small>(confirmada en 2014)</small></td><td>Sistema de señales de peligro e información según el grado de urgencia, con sonido y luz coherentes entre sí.</td><td>Cada estado tiene un solo par sonido-luz: rojo en emergencia, ámbar en advertencia, verde seguro y blanco de evacuación (NOM-026-STPS-2008); la luz sigue el mismo ritmo que el sonido.</td></tr>
+        <tr><td><b>SOLAS, cap. III, regla 34 · Código IDS (LSA) 7.2.1</b><br><small>OMI</small></td><td>Alarma general de emergencia en buques: <b>siete o más pitadas cortas y una larga</b>.</td><td>Patrón opcional «SOLAS» para recintos portuarios y a bordo (propuesta Puerto de Ensenada, previa autorización).</td></tr>
+        <tr><td><b>Código de Alertas e Indicadores, 2009</b><br><small>OMI, res. A.1021(26)</small></td><td>Prioridades, colores y señales visuales y sonoras de alarmas a bordo.</td><td>Referencia para las pantallas instaladas en buques o terminales.</td></tr>
+        <tr><td><b>ITU-R M.1677-1 (2009)</b><br><small>Código Morse internacional</small></td><td>Alfabeto Morse; la raya dura 3 puntos; espacios de 1 punto entre señales, 3 entre letras y 7 entre palabras.</td><td>Motor Morse a 15 palabras por minuto (punto ≈ 80 ms), con luz y sonido.</td></tr>
+        <tr><td><b>ISO/IEC 646:1991</b><br><small>Caracteres de 7 bits</small></td><td>Conjunto básico de letras, cifras y signos para intercambio de información.</td><td>Los avisos se normalizan a mayúsculas sin acentos antes de pasarlos a Morse y a banderas.</td></tr>
+        <tr><td><b>Código Internacional de Señales</b><br><small>OMI, res. A.80(IV)</small></td><td>Banderas A–Z con significado de una letra (p. ej. O: hombre al agua; V: necesito auxilio; W: necesito asistencia médica).</td><td>La pantalla muestra la bandera que corresponde al evento: <b>W</b> en persona caída y <b>V</b> si se pide auxilio.</td></tr>
+        <tr><td><b>ISO 639-3</b><br><small>Códigos de lenguas</small></td><td>Identifica cada lengua de señas: <b>mfs</b> Lengua de Señas Mexicana, <b>ssp</b> Lengua de Signos Española, <b>ase</b> Lengua de Señas Americana, <b>ils</b> Señas Internacionales.</td><td>Base para el futuro selector de lengua de señas por país.</td></tr>
+        <tr><td><b>Convención sobre los Derechos de las Personas con Discapacidad</b><br><small>ONU, arts. 2, 9, 21 y 24</small></td><td>Reconoce las lenguas de señas y obliga a dar información accesible.</td><td>Avisos con luz, texto, Morse y sonido; lengua de señas en desarrollo.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Aclaración: la ISO 8384 corresponde a «Buques y tecnología marina — Dragas — Vocabulario»; las señales visuales a bordo se rigen por el Código de Alertas e Indicadores de la OMI. La lengua de señas no tiene una norma ISO de señas: cada país tiene la suya.</p>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><h3>Escuche los patrones</h3>
+        <p class="note">Módulo de pruebas: suena solo al tocar, con volumen bajo. En el equipo real la sirena llega a 105 dB.</p>
+        <div class="sn-btns">
+          <button class="btn" type="button" data-patron-prueba="t3">T-3 · ISO 8201</button>
+          <button class="btn" type="button" data-patron-prueba="solas">7 cortas + 1 larga · SOLAS</button>
+          <button class="btn" type="button" data-patron-prueba="pulsos">Pulsos · ISO 7731</button>
+          <button class="btn" type="button" data-patron-prueba="fsk">Bitonal 800/1250 Hz</button>
+          <button class="btn" type="button" data-patron-prueba="morse">SOS · ITU-R M.1677-1</button>
+          <button class="btn" type="button" id="sn-stop">Detener</button>
+        </div>
+        <div class="sn-luz" id="sn-luz" aria-hidden="true"></div>
+        <svg class="sn-t3" viewBox="0 0 400 46" role="img" aria-label="Patrón T-3: tres pulsos de 0.5 s y pausa de 1.5 s"><g fill="#C8102E"><rect x="10" y="10" width="40" height="20" rx="3"/><rect x="90" y="10" width="40" height="20" rx="3"/><rect x="170" y="10" width="40" height="20" rx="3"/></g><g fill="none" stroke="#7a8699"><line x1="10" y1="34" x2="330" y2="34"/></g><g font-size="9" fill="#7a8699"><text x="10" y="44">0.5 s</text><text x="54" y="44">0.5</text><text x="210" y="44">pausa 1.5 s</text><text x="300" y="44">↻ 4 s</text></g></svg>
+      </div>
+      <div class="card"><h3>Su mensaje en banderas y Morse</h3>
+        <label class="sn-campo">Mensaje<input id="ics-txt" value="SOS" maxlength="24" autocomplete="off"></label>
+        <div class="ics-sal" id="ics-sal" aria-live="polite"></div>
+        <p class="mono ics-morse" id="ics-morse"></p>
+        <button class="btn" type="button" id="ics-oir">Escuchar en Morse (prueba)</button>
+      </div>
+    </div>
+
+    <details class="guia-morse" style="margin-top:14px"><summary>Banderas del Código Internacional de Señales (A–Z)</summary>
+      <div class="ics-rejilla" id="ics-rejilla"></div>
+    </details>
+
+    <div class="fuentes-sec">
+      <b>Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>International Organization for Standardization. (1991). <i>Information technology — ISO 7-bit coded character set for information interchange</i> (ISO/IEC 646:1991). <a href="https://www.iso.org/standard/4777.html" rel="noopener">https://www.iso.org/standard/4777.html</a></li>
+        <li>International Organization for Standardization. (1996). <i>Ergonomics — System of auditory and visual danger and information signals</i> (ISO 11429:1996; confirmada en 2014). <a href="https://www.iso.org/standard/19369.html" rel="noopener">https://www.iso.org/standard/19369.html</a></li>
+        <li>International Organization for Standardization. (2003). <i>Ergonomics — Danger signals for public and work areas — Auditory danger signals</i> (ISO 7731:2003). <a href="https://www.iso.org/standard/33590.html" rel="noopener">https://www.iso.org/standard/33590.html</a></li>
+        <li>International Organization for Standardization. (2017). <i>Acoustics — Audible and other emergency evacuation signals</i> (ISO 8201:2017). <a href="https://webstore.ansi.org/standards/iso/iso82012017" rel="noopener">https://webstore.ansi.org/standards/iso/iso82012017</a></li>
+        <li>International Organization for Standardization. (2018). <i>Ships and marine technology — Dredgers — Vocabulary</i> (ISO 8384:2018). <a href="https://www.austrian-standards.at/de/shop/iso-8384-2018-2018-08-10~p2400991" rel="noopener">https://www.austrian-standards.at/de/shop/iso-8384-2018-2018-08-10~p2400991</a></li>
+        <li>International Telecommunication Union. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I/" rel="noopener">https://www.itu.int/rec/R-REC-M.1677-1-200910-I/</a></li>
+        <li>Organización Marítima Internacional. (1965). <i>Código Internacional de Señales</i> (Resolución A.80(IV); edición vigente 2005).</li>
+        <li>Organización Marítima Internacional. (1996). <i>Código internacional de dispositivos de salvamento (Código IDS)</i> (Resolución MSC.48(66)), párr. 7.2.1; Convenio SOLAS 1974, cap. III, regla 34.</li>
+        <li>Organización Marítima Internacional. (2009). <i>Código de alertas e indicadores, 2009</i> (Resolución A.1021(26)). <a href="https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.1021(26).pdf" rel="noopener">https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.1021(26).pdf</a></li>
+        <li>Organización de las Naciones Unidas. (2006). <i>Convención sobre los Derechos de las Personas con Discapacidad</i>. <a href="https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf" rel="noopener">https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf</a></li>
+        <li>SIL International. (s. f.). <i>ISO 639-3 code tables</i> [mfs, ssp, ase, ils]. <a href="https://iso639-3.sil.org/" rel="noopener">https://iso639-3.sil.org/</a></li>
+        <li>Flags of the World. (s. f.). <i>International Code of Signals</i>. <a href="https://crwflags.com/fotw/flags/xf-ics.html" rel="noopener">https://crwflags.com/fotw/flags/xf-ics.html</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="clientes">
   <div class="wrap">
     <span class="eyebrow">Para quién</span>
@@ -513,7 +581,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.8</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.9</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
@@ -532,6 +600,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 <script src="assets/pantalla.js"></script>
 <script src="assets/cubo-morse.js"></script>
 <script src="assets/idiomas.js"></script>
+<script src="assets/banderas.js"></script>
 <script src="assets/pestanas.js"></script>
 <script src="assets/rastreo.js"></script>
 </body>

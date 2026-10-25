@@ -56,17 +56,21 @@
     if (ctx.state === "suspended") ctx.resume();
     // Volumen relativo (0–1) y sirena bitonal opcional antes del Morse (FSK a 4 Hz, como la sirena del equipo)
     const vol = Math.max(0, Math.min(1, opciones.volumen ?? 1)), pico = 0.35 * vol;
-    const sirSeg = Math.max(0, opciones.sirenaSeg || 0), sirVol = Math.max(0, Math.min(1, opciones.sirenaVolumen ?? vol));
+    let sirSeg = Math.max(0, opciones.sirenaSeg || 0), sirVol = Math.max(0, Math.min(1, opciones.sirenaVolumen ?? vol));
     if (sirSeg > 0) {
       if (!gSirena) {
         gSirena = ctx.createGain(); gSirena.gain.value = 0; gSirena.connect(ctx.destination);
         oSirena = ctx.createOscillator(); oSirena.type = "square"; oSirena.frequency.value = 800; oSirena.connect(gSirena); oSirena.start();
       }
-      const s0 = ctx.currentTime + 0.05;
-      gSirena.gain.setValueAtTime(0, s0); gSirena.gain.linearRampToValueAtTime(0.12 * sirVol, s0 + 0.02);
-      for (let k = 0; k * 0.125 < sirSeg; k++) oSirena.frequency.setValueAtTime(k % 2 ? 1250 : 800, s0 + k * 0.125);
-      gSirena.gain.setValueAtTime(0.12 * sirVol, s0 + sirSeg - 0.02); gSirena.gain.linearRampToValueAtTime(0, s0 + sirSeg);
-      if (luz) { timers.push(setTimeout(() => luz.classList.add("morse-luz"), 50)); timers.push(setTimeout(() => luz.classList.remove("morse-luz"), sirSeg * 1000)); }
+      // Patrón temporal (ISO 8201 «T-3», SOLAS/LSA 7+1, pulsos ISO 7731 o FSK continuo) con luz sincronizada (ISO 11429)
+      const s0 = ctx.currentTime + 0.05, nivel = 0.12 * sirVol, tramos = segmentos(opciones.patron || "fsk", sirSeg);
+      tramos.forEach(([a, d]) => {
+        gSirena.gain.setValueAtTime(0, s0 + a); gSirena.gain.linearRampToValueAtTime(nivel, s0 + a + 0.015);
+        gSirena.gain.setValueAtTime(nivel, s0 + a + d - 0.015); gSirena.gain.linearRampToValueAtTime(0, s0 + a + d);
+        for (let k = 0; k * 0.125 < d; k++) oSirena.frequency.setValueAtTime(k % 2 ? 1250 : 800, s0 + a + k * 0.125);
+        if (luz) { timers.push(setTimeout(() => luz.classList.add("morse-luz"), (a + 0.05) * 1000)); timers.push(setTimeout(() => luz.classList.remove("morse-luz"), (a + d + 0.05) * 1000)); }
+      });
+      sirSeg = tramos.length ? Math.max(...tramos.map(([a, d]) => a + d)) + (opciones.patron === "t3" ? 1.5 : 0) : sirSeg;
     }
     const t0 = ctx.currentTime + 0.08 + (sirSeg ? sirSeg + 0.4 : 0), g = ganancia.gain, rampa = 0.005;
     let t = 0;
@@ -98,6 +102,20 @@
     return total;
   }
 
+  // Tramos de sonido [inicio, duración] en segundos para cada patrón normalizado
+  // t3: ISO 8201 / NFPA 72 — 0.5 s on, 0.5 s off, 0.5 on, 0.5 off, 0.5 on, 1.5 s de pausa (ciclo de 4 s)
+  // solas: Código IDS (LSA) 7.2.1 / SOLAS III-34 — 7 pitadas cortas (≈1 s) y una larga (4–6 s)
+  // pulsos: tono intermitente 0.25/0.25 s (alternativa de ISO 7731) · fsk: tono bitonal continuo
+  function segmentos(patron, seg) {
+    const out = [];
+    if (patron === "t3") { for (let c = 0; c * 4 < seg; c++) [0, 1, 2].forEach((i) => out.push([c * 4 + i, 0.5])); }
+    else if (patron === "solas") { for (let i = 0; i < 7; i++) out.push([i * 2, 1]); out.push([14, 5]); }
+    else if (patron === "pulsos") { for (let t = 0; t < seg; t += 0.5) out.push([t, 0.25]); }
+    else out.push([0, seg]);
+    return out;
+  }
+  const PATRONES = { fsk: "Bitonal continuo 800/1250 Hz", t3: "T-3 · ISO 8201 (evacuación)", solas: "7 cortas + 1 larga · SOLAS/LSA (buques y puertos)", pulsos: "Pulsos 0.25 s · ISO 7731" };
+
   // Solo luz (sin sonido ni vibración), con los mismos tiempos del Morse
   function destellar(palabras, luz, opciones) {
     let t = 0;
@@ -122,5 +140,5 @@
   }
 
   window.SOSMorse = { reproducir, detener, aMorse, visible, cobertura, sonando: () => !!activo && !activo.silencioso,
-    activo: () => !!activo, motivos: [...MOTIVOS_CON_SONIDO] };
+    activo: () => !!activo, motivos: [...MOTIVOS_CON_SONIDO], patrones: PATRONES, segmentos };
 })();
