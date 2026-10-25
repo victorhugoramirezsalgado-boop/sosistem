@@ -58,6 +58,27 @@
   }
   try { const ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap) aplicarApariencia(ap); } catch (e) {}
 
+  // Portada: la pantalla real recorre el escalamiento N0 → N3 (911) en bucle
+  (function equipo() {
+    const P = document.getElementById("hero-equipo"); if (!P) return;
+    const lis = [...P.querySelectorAll(".eq-esc li")], b = P.querySelector(".eq-911");
+    const seg = (n) => Number(P.querySelector(`[data-t="${n}"]`)?.textContent) || 0;
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let t0 = Date.now();
+    const paso = () => {
+      const N3 = seg("N3") || 10, s = quieto ? N3 : ((Date.now() - t0) / 1000) % (N3 + 4);
+      lis.forEach((li) => li.classList.toggle("on", s >= seg(li.dataset.n)));
+      const falta = Math.max(0, Math.ceil(N3 - s));
+      b.classList.toggle("hecha", falta === 0);
+      document.getElementById("eq-911t").textContent = falta ? "Llamada al 911 en" : "Llamando al 911 · CAP v1.2";
+      document.getElementById("eq-911n").textContent = falta ? falta + " s" : "";
+      document.getElementById("eq-911b").style.width = Math.min(100, (s / N3) * 100) + "%";
+      const ss = Math.floor(s); document.getElementById("eq-t").textContent = "00:" + String(ss).padStart(2, "0");
+      document.getElementById("eq-hora").textContent = new Date().toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit", hour12: false });
+    };
+    paso(); if (!quieto) setInterval(paso, 250);
+  })();
+
   // Versión publicada
   fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
     const el = document.getElementById("version");
@@ -68,8 +89,7 @@
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
     aplicarApariencia(c.apariencia);
     Object.entries(c.tiempos || {}).forEach(([k, v]) => {
-      const el = document.querySelector(`[data-t="${k}"]`);
-      if (el && Number(v) > 0) el.textContent = v;
+      if (Number(v) > 0) document.querySelectorAll(`[data-t="${k}"]`).forEach((el) => { el.textContent = v; });
     });
   }).catch(() => {});
 })();

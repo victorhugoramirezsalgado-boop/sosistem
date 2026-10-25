@@ -1,8 +1,13 @@
 {
-  "version": "2.6",
+  "version": "2.7",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.7",
+      "fecha": "2026-10-24",
+      "resumen": "Portada con la pantalla S.S.O.S.© real animada (persona en el suelo y escalamiento N0–N3 al 911); nueva sección «Funciones» con todas las funciones del sistema en breve; espacios más compactos y separador de tema (línea, cubo y título) entre secciones, también en modo presentación."
+    },
     {
       "v": "2.6",
       "fecha": "2026-10-24",

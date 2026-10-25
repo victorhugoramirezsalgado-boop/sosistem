@@ -51,31 +51,48 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="lead">S.O.S.© detecta a una persona caída o sin movimiento dentro de una cabina y avisa en segundos al encargado, a la central de monitoreo y, si nadie responde, al 911.</p>
       <p><a class="btn primary" href="#contacto">Solicitar demostración</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
     </div>
-    <div class="card" aria-hidden="true">
-      <svg class="chart" viewBox="0 0 420 300" role="img">
-        <rect x="10" y="20" width="250" height="150" rx="12" fill="none" stroke="var(--line)" stroke-width="2"/>
-        <text x="22" y="42" style="font-weight:700;fill:var(--ink-2)">Módulo de sanitarios</text>
-        <g>
-          <rect x="24" y="56" width="70" height="98" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
-          <rect x="102" y="56" width="70" height="98" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
-          <rect x="180" y="56" width="70" height="98" rx="8" fill="color-mix(in srgb, var(--brand) 14%, var(--surface))" stroke="var(--brand)"/>
-          <circle cx="59" cy="70" r="5" fill="var(--s2)"/><circle cx="137" cy="70" r="5" fill="var(--s2)"/><circle cx="215" cy="70" r="5" fill="var(--brand)"/>
-          <rect x="190" y="132" width="50" height="10" rx="5" fill="var(--brand)"/>
-          <text x="186" y="120" style="fill:var(--brand);font-weight:700">riesgo</text>
-        </g>
-        <path d="M215 154 C215 220 300 220 330 200" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-dasharray="6 5"/>
-        <rect x="300" y="170" width="110" height="60" rx="12" fill="var(--navy)"/>
-        <text x="314" y="196" style="fill:var(--surface);font-weight:700">Estación</text>
-        <text x="314" y="214" style="fill:var(--surface)">central</text>
-        <g style="font-weight:700">
-          <rect x="300" y="20" width="110" height="30" rx="8" fill="var(--surface-2)" stroke="var(--line)"/><text x="312" y="40">N1 Encargado</text>
-          <rect x="300" y="60" width="110" height="30" rx="8" fill="var(--surface-2)" stroke="var(--line)"/><text x="312" y="80">N2 Central</text>
-          <rect x="300" y="100" width="110" height="30" rx="8" fill="var(--brand)"/><text x="312" y="120" style="fill:#fff">N3 911</text>
-        </g>
-        <path d="M355 170 V134" stroke="var(--ink-3)" stroke-width="2" marker-end="url(#fl)"/>
-        <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--ink-3)"/></marker></defs>
-        <text x="10" y="270" style="fill:var(--ink-3)">Sin cámaras ni micrófonos que graben: solo estados y medidas.</text>
-      </svg>
+    <figure class="hero-equipo" id="hero-equipo" aria-label="Pantalla S.S.O.S.© real: persona en el suelo en la cabina F-2 y escalamiento hasta el 911">
+      <div class="eq-bisel">
+        <div class="eq-pant" data-fase="caida">
+          <div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span><span id="eq-hora">22:22</span> · LiFePO4 <em class="ok">100 %</em> · Red <em class="ok">OK</em></span></div>
+          <div class="eq-mods">
+            <div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Pediátrico 1/3<em class="ok">Libre</em></p></div>
+            <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p class="riesgo"><i></i>Pediátrico F‑2<em class="bad">Caída</em></p></div>
+          </div>
+          <div class="eq-alerta"><b>¡Persona en el suelo! · Cabina F‑2</b><span>Tiempo inmóvil <span id="eq-t">00:00</span></span></div>
+          <div class="eq-911"><span id="eq-911t">Llamada al 911 en</span> <b id="eq-911n">10 s</b><i id="eq-911b"></i></div>
+          <div class="eq-morse">SOS SOS &nbsp;<span>··· ––– ··· / ··· ––– ···</span></div>
+        </div>
+        <div class="eq-pie"><span>PNL-A04</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+      </div>
+      <ol class="eq-esc" id="eq-esc">
+        <li data-n="N0"><b>N0</b> Voz en cabina <small><em data-t="N0">2</em> s</small></li>
+        <li data-n="N1"><b>N1</b> Encargado <small><em data-t="N1">4</em> s</small></li>
+        <li data-n="N2"><b>N2</b> Central <small><em data-t="N2">7</em> s</small></li>
+        <li data-n="N3"><b>N3</b> 911 · CAP <small><em data-t="N3">10</em> s</small></li>
+      </ol>
+      <figcaption>Sin cámaras ni micrófonos que graben: radar mmWave, solo estados y medidas.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide blk" id="funciones">
+  <div class="wrap">
+    <span class="eyebrow">Funciones del Sistema S.O.S.©</span>
+    <h2>Todo lo que puede hacer el sistema, en breve.</h2>
+    <div class="grid g3 funciones">
+      <div class="card fn"><b>Caída sin cámaras</b><span>Radar mmWave de 60 GHz detecta presencia, postura y falta de movimiento en cada cabina, sin imagen ni grabación.</span></div>
+      <div class="card fn"><b>Escalamiento automático</b><span>Voz en cabina (N0), encargado (N1), central (N2) y 911 (N3) con mensaje CAP v1.2; el cliente fija los segundos de cada nivel.</span></div>
+      <div class="card fn"><b>Pantalla de ocupación</b><span>Cabinas libres u ocupadas por módulo, permanencia mayor a 10 min y aforo, con colores NOM-026-STPS-2008.</span></div>
+      <div class="card fn"><b>Sirena y Morse</b><span>Sirena de hasta 105 dB y código Morse con luz y sonido: AVISO, SOS y SOS SISMO SOS; volumen y repetición configurables.</span></div>
+      <div class="card fn"><b>Sismo y evacuación</b><span>Con alerta sísmica, todas las pantallas se dividen: salidas de emergencia desde «usted está aquí» y personas por recinto.</span></div>
+      <div class="card fn"><b>Pantalla exterior</b><span>Se enciende solo con sismo o evento natural (o si el cliente lo decide) para avisar a quien llega cuántas personas siguen dentro.</span></div>
+      <div class="card fn"><b>Módulos a la medida</b><span>Humo, inundación, falta de energía, gas, CO, oxígeno, tóxicos, calor, viento, tsunami y palabra «S.O.S.» por voz.</span></div>
+      <div class="card fn"><b>30 días sin luz</b><span>Batería LiFePO4 y enlace celular propio (eSIM): sigue avisando aunque falle la energía o el internet del inmueble.</span></div>
+      <div class="card fn"><b>Nube con permiso</b><span>El cliente decide con quién se comparte cada evento (C5/911, central, Protección Civil, encargados); solo conteos, sin identidad.</span></div>
+      <div class="card fn"><b>Panel de administración</b><span>Eventos, tiempos de respuesta, estadísticas, usuarios, reportes y ajustes protegidos con doble clave.</span></div>
+      <div class="card fn"><b>22 idiomas</b><span>Avisos en el idioma elegido, con código Morse universal y lengua de señas en desarrollo.</span></div>
+      <div class="card fn"><b>Módulo de pruebas</b><span>Simulacros de sonido, caída y sismo para el administrador y el cliente, registrados en bitácora.</span></div>
     </div>
   </div>
 </section>
@@ -432,7 +449,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.6</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.7</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
