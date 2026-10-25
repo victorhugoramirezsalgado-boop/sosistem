@@ -1,8 +1,13 @@
 {
-  "version": "3.8",
+  "version": "3.9",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.9",
+      "fecha": "2026-10-25",
+      "resumen": "Pie de página con el registro de la plataforma SOSistem™ (versiones 1.0.0 a 3.8) en Safe Creative (2610257442171) en los 22 idiomas; tabla de registros en la carpeta de sellos."
+    },
     {
       "v": "3.8",
       "fecha": "2026-10-25",

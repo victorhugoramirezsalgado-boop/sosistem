@@ -5,6 +5,16 @@ Su comprobante `.ots` (OpenTimestamps) prueba que la huella existía en esa fech
 `ots verify archivo.sha256.ots` o en https://opentimestamps.org.
 
 Estos sellos documentan las actualizaciones naturales del software como obras derivadas del
-Expediente Maestro de Propiedad Intelectual (versiones 1.0.0 a 3.6) y de «Sistema S.O.S.©» (Safe Creative 2609046908578).
+Expediente Maestro de Propiedad Intelectual (versiones 1.0.0 a 3.8, Safe Creative 2610257442171) y de «Sistema S.O.S.©» (Safe Creative 2609046908578).
 
 © Víctor Hugo Ramírez Salgado. Todos los derechos reservados.
+
+## Registros
+
+| Obra | Registro |
+|---|---|
+| Sistema S.O.S.© (obra original) | Safe Creative 2609046908578 |
+| SOSistem™ · versiones 1.0.0 a 3.8 | Safe Creative 2610257442171 |
+| Cubo Morse© | Safe Creative 2610257441754 |
+| sosistem.com (página certificada, NOM-151) | Safe Stamper 261025-CC4SCY |
+| Versiones 3.9 en adelante | Sellos de tiempo de esta carpeta |
