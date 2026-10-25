@@ -114,7 +114,7 @@
     else out.push([0, seg]);
     return out;
   }
-  const PATRONES = { fsk: "Bitonal continuo 800/1250 Hz", t3: "T-3 · ISO 8201 (evacuación)", solas: "7 cortas + 1 larga · SOLAS/LSA (buques y puertos)", pulsos: "Pulsos 0.25 s · ISO 7731" };
+  const PATRONES = { fsk: "Bitonal continuo 800/1250 Hz", t3: "T-3 · ISO 8201 (evacuación)", solas: "7 o más cortas + 1 larga · SOLAS/LSA (buques y puertos)", pulsos: "Pulsos 0.25 s · ISO 7731" };
 
   // Solo luz (sin sonido ni vibración), con los mismos tiempos del Morse
   function destellar(palabras, luz, opciones) {
