@@ -1,8 +1,13 @@
 {
-  "version": "3.3",
+  "version": "3.4",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.4",
+      "fecha": "2026-10-25",
+      "resumen": "Portada con resumen ejecutivo: «Alerta temprana al instante para salvaguardar la vida humana en recintos confinados» y descripción de SOSistem™ como sistema de terminales y pantallas físicas en interiores y exteriores para la seguridad humana, en los 22 idiomas; título y descripción para buscadores y redes actualizados."
+    },
     {
       "v": "3.3",
       "fecha": "2026-10-25",
