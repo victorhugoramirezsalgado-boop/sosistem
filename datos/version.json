@@ -1,8 +1,13 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "1.7",
+      "fecha": "2026-10-24",
+      "resumen": "Código Morse sonoro y luminoso al tocar (cubo, secciones y alerta del simulador); selector de 22 idiomas con traducción automática en revisión (árabe y hebreo de derecha a izquierda)."
+    },
     {
       "v": "1.6",
       "fecha": "2026-10-24",

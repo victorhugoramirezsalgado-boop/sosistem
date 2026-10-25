@@ -18,7 +18,14 @@
     cubo.classList.add("auto");
     botones.forEach((b) => b.setAttribute("aria-pressed", "false"));
   }
-  botones.forEach((b) => b.addEventListener("click", () => girar(b.dataset.cara)));
-  document.getElementById("cm-auto")?.addEventListener("click", auto);
+  const ORDEN = ["sos", "eco", "ssos", "arsa", "inter", "cont"];   // mismo orden que las caras en la página
+  const caras = cubo.querySelectorAll(".cm-cara");
+  botones.forEach((b) => b.addEventListener("click", () => {
+    girar(b.dataset.cara);
+    // Suena el nombre del proyecto en Morse y la cara destella al mismo ritmo
+    const nombre = (b.querySelector("b")?.textContent || "").replace(/[™©.]/g, "");
+    if (window.SOSMorse) SOSMorse.reproducir(nombre, caras[ORDEN.indexOf(b.dataset.cara)], { boton: b });
+  }));
+  document.getElementById("cm-auto")?.addEventListener("click", () => { window.SOSMorse?.detener(); auto(); });
   auto();
 })();

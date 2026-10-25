@@ -246,6 +246,28 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 @media (max-width: 860px) { .cm-grid { grid-template-columns: 1fr; } .cm-escena { order: -1; } }
 @media (max-width: 600px) { .cm-escena { --m: 100px; height: 280px; } .cm-lista { grid-template-columns: 1fr; } }
 
+/* Selector de idioma y aviso de traducción */
+.idioma select { font: 600 .85rem var(--font); padding: 8px 6px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); max-width: 92px; min-height: 40px; min-width: 0; }
+.aviso-trad { background: color-mix(in srgb, var(--warn) 14%, var(--surface)); color: var(--ink); font-size: .85rem;
+  text-align: center; padding: 8px 16px; border-bottom: 1px solid var(--line); }
+.aviso-trad[hidden] { display: none; }
+[dir="rtl"] .top .wrap, [dir="rtl"] .hero-grid { direction: rtl; }
+[dir="rtl"] .top nav { margin-left: 0; margin-right: auto; }
+
+/* Morse sonoro: botón por sección y destellos sincronizados */
+.btn-morse { display: inline-flex; align-items: center; gap: 8px; margin: -4px 0 14px; padding: 6px 12px; min-height: 36px;
+  border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: 600 .82rem var(--font); cursor: pointer; }
+.btn-morse:hover { border-color: var(--ink-3); }
+.bm-luz { width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: background .03s; }
+.btn-morse.morse-sonando { border-color: var(--brand); color: var(--brand); }
+.bm-luz.morse-luz { background: var(--brand); box-shadow: 0 0 10px var(--brand); }
+.cm-cara.morse-luz svg { filter: brightness(1.35) drop-shadow(0 0 14px rgba(255,59,48,.8)); }
+.cm-lista button.morse-sonando { border-color: var(--brand); }
+.pt-ley i.morse-luz { box-shadow: 0 0 10px #ff2a1f; transform: scale(1.4); }
+@media (prefers-reduced-motion: reduce) { .cm-cara.morse-luz svg { filter: brightness(1.2); } }
+@media (max-width: 600px) { .idioma select { max-width: 64px; padding: 6px 4px; } }
+
 /* Galería de referencias */
 .galeria figure { margin: 0; padding: 10px; }
 .galeria img { width: 100%; height: auto; border-radius: 9px; display: block; background: var(--surface-2); }
@@ -260,3 +282,4 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
   background: color-mix(in srgb, var(--bg) 85%, transparent); }
 @keyframes cubo-giro { to { transform: rotateX(360deg) rotateY(720deg); } }
 @media (prefers-reduced-motion: reduce) { .cubo-firma .cubo { animation: none; } }
+.logo-text { unicode-bidi: isolate; direction: ltr; }

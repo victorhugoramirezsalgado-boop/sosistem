@@ -29,7 +29,11 @@
       $("pt-a2").textContent = `Tiempo inmóvil ${mmss(s)} · ${nivel(s)}`;
     } else $("pt-a2").textContent = ESTADOS[estado].a2;
   }
-  document.querySelectorAll("button[data-estado]").forEach((b) => b.addEventListener("click", () => { estado = b.dataset.estado; t0 = Date.now(); pinta(); }));
+  document.querySelectorAll("button[data-estado]").forEach((b) => b.addEventListener("click", () => {
+    estado = b.dataset.estado; t0 = Date.now(); pinta();
+    // La sirena de la pantalla física emite SOS; aquí suena al tocar (··· ––– ··· dos veces)
+    if (window.SOSMorse) { if (estado === "caida") SOSMorse.reproducir("SOS SOS", P.querySelector(".pt-ley .r")); else SOSMorse.detener(); }
+  }));
   pinta();
   setInterval(tick, 1000);
 })();
