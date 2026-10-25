@@ -1,8 +1,13 @@
 {
-  "version": "3.4",
+  "version": "3.5",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.5",
+      "fecha": "2026-10-25",
+      "resumen": "Portada: el resumen incluye el conteo de personas en tiempo real dentro de cada recinto (inventario físico para evacuación y rescate) en los 22 idiomas, y un panel «Inventario de personas en tiempo real» con total, aforo, barra de ocupación y desglose por recinto, sincronizado con la pantalla de Entrada principal (demostración)."
+    },
     {
       "v": "3.4",
       "fecha": "2026-10-25",

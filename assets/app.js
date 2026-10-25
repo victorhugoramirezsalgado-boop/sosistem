@@ -132,3 +132,31 @@
     });
   }).catch(() => {});
 })();
+
+/* Portada: inventario de personas en tiempo real (demostración). Entradas y salidas por recinto,
+   sin rebasar el aforo; sincroniza la pantalla «Entrada principal» del cubo. © Víctor Hugo Ramírez Salgado */
+(() => {
+  const tot = document.getElementById("iv-total"), lista = document.getElementById("iv-lista"), barra = document.getElementById("iv-barra");
+  const pant = document.querySelector(".eq-aforo"), lis = pant ? [...pant.parentElement.querySelectorAll(".eq-lista li")] : [];
+  if (!tot || !lista || !lis.length) return;
+  const AFORO = 60, CAP = [16, 12, 8, 14, 10];   // capacidad por recinto (R1, R2, R3, R4, R0)
+  const R = lis.map((li, i) => ({ nombre: li.firstChild.textContent.trim(), n: Number(li.querySelector("em").textContent) || 0, cap: CAP[i] || 10 }));
+  lista.innerHTML = R.map((r) => `<li><span>${r.nombre}</span><em>${r.n}</em></li>`).join("");
+  const filas = [...lista.children];
+  function pintar(k) {
+    const t = R.reduce((a, r) => a + r.n, 0), pct = Math.round(t / AFORO * 100);
+    tot.textContent = t; barra.style.width = pct + "%";
+    barra.classList.toggle("alto", pct >= 75 && pct < 95); barra.classList.toggle("lleno", pct >= 95);
+    R.forEach((r, i) => { filas[i].querySelector("em").textContent = r.n; lis[i].querySelector("em").textContent = r.n; filas[i].classList.toggle("cambio", i === k); });
+    if (pant) { pant.querySelector("b").textContent = t; const bi = pant.querySelector("i"); if (bi) bi.style.width = pct + "%"; }
+  }
+  pintar(-1);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setInterval(() => {
+    if (document.hidden) return;
+    const k = Math.floor(Math.random() * R.length), r = R[k], t = R.reduce((a, x) => a + x.n, 0);
+    const entra = Math.random() < (t < AFORO * 0.4 ? 0.65 : t > AFORO * 0.7 ? 0.35 : 0.5);
+    if (entra && r.n < r.cap && t < AFORO) r.n++; else if (!entra && r.n > 0) r.n--; else return;
+    pintar(k);
+  }, 3500);
+})();

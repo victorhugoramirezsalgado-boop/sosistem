@@ -7,7 +7,7 @@
 "Demo",
 "Wave Sounds for Natural Disasters and Personal Emergencies",
 "Instant early warning to safeguard human life in confined spaces.",
-"SOSistem™ is a system of physical terminals and displays, installed indoors and outdoors, for human security. Without cameras, it detects a person who has fallen or stopped moving, alerts with light, sound and Morse code, and notifies the attendant, the monitoring center and 911 within seconds.",
+"SOSistem™ is a system of physical terminals and displays, installed indoors and outdoors, for human security. It keeps a real-time count of the people inside each space, like a physical inventory for evacuation and rescue; without cameras, it detects anyone who has fallen or stopped moving, alerts with light, sound and Morse code, and notifies the attendant, the monitoring center and 911 within seconds.",
 "See how it works",
 "S.O.S.© NODE · GROUND-FLOOR RESTROOMS",
 "Men",
@@ -514,5 +514,7 @@
 "PNL-A04 · Earthquake",
 "EXT-01 · Outdoor",
 "PNL-A05 · Office",
-"PNL-A06 · Kitchen"
+"PNL-A06 · Kitchen",
+"Real-time people inventory",
+"Live demo"
 ]

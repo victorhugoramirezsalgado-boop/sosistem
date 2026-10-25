@@ -7,7 +7,7 @@
 "Demostració",
 "Sons ondulatoris sobre desastres naturals i emergències personals",
 "Alerta primerenca a l’instant per salvaguardar la vida humana en espais confinats.",
-"SOSistem™ és un sistema de terminals i pantalles físiques, instal·lades a l’interior i a l’exterior, per a la seguretat humana. Sense càmeres, detecta una persona caiguda o sense moviment, alerta amb llum, so i codi Morse i avisa en segons l’encarregat, la central de monitoratge i el 911.",
+"SOSistem™ és un sistema de terminals i pantalles físiques, instal·lades a l’interior i a l’exterior, per a la seguretat humana. Porta en temps real el recompte de persones dins de cada recinte, com un inventari físic per a l’evacuació i el rescat; sense càmeres, detecta qui ha caigut o no es mou, alerta amb llum, so i codi Morse i avisa en segons l’encarregat, la central de monitoratge i el 911.",
 "Veure com funciona",
 "NODE S.O.S.© · LAVABOS PLANTA BAIXA",
 "Homes",
@@ -514,5 +514,7 @@
 "PNL-A04 · Terratrèmol",
 "EXT-01 · Exterior",
 "PNL-A05 · Oficina",
-"PNL-A06 · Cuina"
+"PNL-A06 · Cuina",
+"Inventari de persones en temps real",
+"Demostració en directe"
 ]

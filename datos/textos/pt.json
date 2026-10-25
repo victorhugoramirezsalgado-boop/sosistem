@@ -7,7 +7,7 @@
 "Demonstração",
 "Sons Ondulatórios sobre Desastres Naturais e Emergências Pessoais",
 "Alerta precoce instantâneo para salvaguardar a vida humana em espaços confinados.",
-"SOSistem™ é um sistema de terminais e telas físicas, instaladas em ambientes internos e externos, para a segurança humana. Sem câmeras, detecta uma pessoa caída ou sem movimento, alerta com luz, som e código Morse e avisa em segundos o responsável, a central de monitoramento e o 911.",
+"SOSistem™ é um sistema de terminais e telas físicas, instaladas em ambientes internos e externos, para a segurança humana. Mantém em tempo real a contagem de pessoas em cada recinto, como um inventário físico para evacuação e resgate; sem câmeras, detecta quem está caído ou sem movimento, alerta com luz, som e código Morse e avisa em segundos o responsável, a central de monitoramento e o 911.",
 "Ver como funciona",
 "NÓ S.O.S.© · BANHEIROS DO TÉRREO",
 "Masculino",
@@ -514,5 +514,7 @@
 "PNL-A04 · Terremoto",
 "EXT-01 · Externa",
 "PNL-A05 · Escritório",
-"PNL-A06 · Cozinha"
+"PNL-A06 · Cozinha",
+"Inventário de pessoas em tempo real",
+"Demonstração ao vivo"
 ]

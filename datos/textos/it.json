@@ -7,7 +7,7 @@
 "Demo",
 "Suoni ondulatori su disastri naturali ed emergenze personali",
 "Allerta precoce istantanea per salvaguardare la vita umana negli spazi confinati.",
-"SOSistem™ è un sistema di terminali e schermi fisici, installati all’interno e all’esterno, per la sicurezza umana. Senza telecamere rileva una persona caduta o immobile, avvisa con luce, suono e codice Morse e allerta in pochi secondi il responsabile, la centrale di monitoraggio e il 911.",
+"SOSistem™ è un sistema di terminali e schermi fisici, installati all’interno e all’esterno, per la sicurezza umana. Tiene in tempo reale il conteggio delle persone presenti in ogni ambiente, come un inventario fisico per l’evacuazione e il soccorso; senza telecamere rileva chi è caduto o immobile, avvisa con luce, suono e codice Morse e allerta in pochi secondi il responsabile, la centrale di monitoraggio e il 911.",
 "Vedi come funziona",
 "NODO S.O.S.© · BAGNI PIANO TERRA",
 "Uomini",
@@ -514,5 +514,7 @@
 "PNL-A04 · Terremoto",
 "EXT-01 · Esterno",
 "PNL-A05 · Ufficio",
-"PNL-A06 · Cucina"
+"PNL-A06 · Cucina",
+"Inventario delle persone in tempo reale",
+"Dimostrazione dal vivo"
 ]

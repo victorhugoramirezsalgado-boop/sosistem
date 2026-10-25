@@ -7,7 +7,7 @@
 "Démo",
 "Sons ondulatoires sur les catastrophes naturelles et les urgences personnelles",
 "Alerte précoce instantanée pour protéger la vie humaine dans les espaces confinés.",
-"SOSistem™ est un système de terminaux et d’écrans physiques, installés à l’intérieur comme à l’extérieur, au service de la sécurité humaine. Sans caméras, il détecte une personne tombée ou immobile, alerte par la lumière, le son et le code Morse, et prévient en quelques secondes le responsable, le centre de surveillance et le 911.",
+"SOSistem™ est un système de terminaux et d’écrans physiques, installés à l’intérieur comme à l’extérieur, au service de la sécurité humaine. Il tient en temps réel le décompte des personnes présentes dans chaque espace, comme un inventaire physique pour l’évacuation et le sauvetage ; sans caméras, il détecte toute personne tombée ou immobile, alerte par la lumière, le son et le code Morse, et prévient en quelques secondes le responsable, le centre de surveillance et le 911.",
 "Voir le fonctionnement",
 "NŒUD S.O.S.© · TOILETTES REZ-DE-CHAUSSÉE",
 "Hommes",
@@ -514,5 +514,7 @@
 "PNL-A04 · Séisme",
 "EXT-01 · Extérieur",
 "PNL-A05 · Bureau",
-"PNL-A06 · Cuisine"
+"PNL-A06 · Cuisine",
+"Inventaire des personnes en temps réel",
+"Démonstration en direct"
 ]

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SOSistem™ · Sistema S.O.S.© · Alerta temprana para la seguridad humana</title>
-<meta name="description" content="SOSistem™ (Sistema S.O.S.©): terminales y pantallas físicas en interiores y exteriores para la seguridad humana. Detección sin cámaras, alerta temprana con luz, sonido y Morse, y aviso al 911 en formato CAP v1.2.">
+<meta name="description" content="SOSistem™ (Sistema S.O.S.©): terminales y pantallas físicas en interiores y exteriores para la seguridad humana. Conteo de personas en tiempo real, detección sin cámaras, alerta temprana con luz, sonido y Morse, y aviso al 911 en formato CAP v1.2.">
 <meta name="theme-color" content="#c8102e">
 <meta property="og:title" content="SOSistem™ — Alerta temprana para salvaguardar la vida humana">
 <meta property="og:description" content="Terminales y pantallas físicas en interiores y exteriores: alerta temprana sin cámaras para salvaguardar la vida humana en recintos confinados, con aviso al 911.">
@@ -44,8 +44,14 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
     <div>
       <span class="eyebrow">Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</span>
       <h1>Alerta temprana al instante para salvaguardar la vida humana en recintos confinados.</h1>
-      <p class="lead">SOSistem™ es un sistema de terminales y pantallas físicas, instaladas en interiores y exteriores, para la seguridad humana. Detecta sin cámaras a una persona caída o sin movimiento, alerta con luz, sonido y código Morse, y avisa en segundos al encargado, a la central de monitoreo y al 911.</p>
+      <p class="lead">SOSistem™ es un sistema de terminales y pantallas físicas, instaladas en interiores y exteriores, para la seguridad humana. Lleva en tiempo real el conteo de personas dentro de cada recinto, como un inventario físico para evacuación y rescate; detecta sin cámaras a quien está caído o sin movimiento, alerta con luz, sonido y código Morse, y avisa en segundos al encargado, a la central de monitoreo y al 911.</p>
       <p><a class="btn primary" href="#contacto">Solicitar demostración</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
+      <div class="inv-vivo" id="inv-vivo" aria-live="polite">
+        <div class="iv-cab"><span class="iv-tit">Inventario de personas en tiempo real</span><em class="iv-dem">Demostración en vivo</em></div>
+        <div class="iv-tot"><b id="iv-total">27</b><span>personas dentro de 60</span></div>
+        <div class="iv-barra"><i id="iv-barra" style="width:45%"></i></div>
+        <ul class="iv-lista" id="iv-lista"></ul>
+      </div>
     </div>
     <figure class="hero-equipo" id="hero-equipo" aria-label="Pantallas S.S.O.S.© reales como caras de un cubo: sanitarios, entrada, sismo, exterior, oficina y cocina">
       <div class="eq-escena" id="eq-escena" tabindex="0" aria-roledescription="carrusel" aria-label="Pantallas del sistema en distintos lugares; cambia cada 4 segundos">
@@ -609,7 +615,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 25 de octubre de 2026 · <span id="version">Versión 3.4</span>.</p>
+    <p>Información técnica y normativa actualizada al 25 de octubre de 2026 · <span id="version">Versión 3.5</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>

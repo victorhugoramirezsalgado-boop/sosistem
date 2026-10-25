@@ -7,7 +7,7 @@
 "Demo",
 "Golfgeluiden bij natuurrampen en persoonlijke noodsituaties",
 "Directe vroegtijdige waarschuwing om mensenlevens te beschermen in besloten ruimten.",
-"SOSistem™ is een systeem van fysieke terminals en schermen, binnen en buiten geïnstalleerd, voor menselijke veiligheid. Zonder camera’s detecteert het een gevallen of bewegingloze persoon, waarschuwt met licht, geluid en morsecode en alarmeert binnen seconden de verantwoordelijke, de meldkamer en 911.",
+"SOSistem™ is een systeem van fysieke terminals en schermen, binnen en buiten geïnstalleerd, voor menselijke veiligheid. Het houdt in realtime bij hoeveel mensen er in elke ruimte zijn, als een fysieke inventaris voor evacuatie en redding; zonder camera’s detecteert het wie gevallen of bewegingloos is, waarschuwt met licht, geluid en morsecode en alarmeert binnen seconden de verantwoordelijke, de meldkamer en 911.",
 "Bekijk hoe het werkt",
 "S.O.S.©-KNOOPPUNT · TOILETTEN BEGANE GROND",
 "Heren",
@@ -514,5 +514,7 @@
 "PNL-A04 · Aardbeving",
 "EXT-01 · Buiten",
 "PNL-A05 · Kantoor",
-"PNL-A06 · Keuken"
+"PNL-A06 · Keuken",
+"Personeninventaris in realtime",
+"Live demo"
 ]

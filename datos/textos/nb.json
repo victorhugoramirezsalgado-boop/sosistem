@@ -7,7 +7,7 @@
 "Demo",
 "Bølgelyder ved naturkatastrofer og personlige nødsituasjoner",
 "Øyeblikkelig tidlig varsling for å beskytte menneskeliv i lukkede rom.",
-"SOSistem™ er et system av fysiske terminaler og skjermer, installert innendørs og utendørs, for menneskelig sikkerhet. Uten kameraer oppdager det en person som har falt eller ligger urørlig, varsler med lys, lyd og morsekode og alarmerer på sekunder den ansvarlige, alarmsentralen og 911.",
+"SOSistem™ er et system av fysiske terminaler og skjermer, installert innendørs og utendørs, for menneskelig sikkerhet. Det teller i sanntid antall personer i hvert rom, som en fysisk opptelling for evakuering og redning; uten kameraer oppdager det den som har falt eller ligger urørlig, varsler med lys, lyd og morsekode og alarmerer på sekunder den ansvarlige, alarmsentralen og 911.",
 "Se hvordan det virker",
 "S.O.S.©-NODE · TOALETTER I FØRSTE ETASJE",
 "Herrer",
@@ -514,5 +514,7 @@
 "PNL-A04 · Jordskjelv",
 "EXT-01 · Utendørs",
 "PNL-A05 · Kontor",
-"PNL-A06 · Kjøkken"
+"PNL-A06 · Kjøkken",
+"Personoversikt i sanntid",
+"Live demo"
 ]

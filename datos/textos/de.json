@@ -7,7 +7,7 @@
 "Demo",
 "Wellenschall bei Naturkatastrophen und persönlichen Notfällen",
 "Sofortige Frühwarnung zum Schutz menschlichen Lebens in engen Räumen.",
-"SOSistem™ ist ein System aus physischen Terminals und Anzeigen für innen und außen, im Dienst der menschlichen Sicherheit. Ohne Kameras erkennt es eine gestürzte oder regungslose Person, warnt mit Licht, Ton und Morsecode und benachrichtigt in Sekunden die zuständige Person, die Leitstelle und den Notruf 911.",
+"SOSistem™ ist ein System aus physischen Terminals und Anzeigen für innen und außen, im Dienst der menschlichen Sicherheit. Es zählt in Echtzeit die Personen in jedem Raum, wie eine physische Bestandsaufnahme für Evakuierung und Rettung; ohne Kameras erkennt es gestürzte oder regungslose Personen, warnt mit Licht, Ton und Morsecode und benachrichtigt in Sekunden die zuständige Person, die Leitstelle und den Notruf 911.",
 "So funktioniert es",
 "S.O.S.©-KNOTEN · TOILETTEN ERDGESCHOSS",
 "Herren",
@@ -514,5 +514,7 @@
 "PNL-A04 · Erdbeben",
 "EXT-01 · Außen",
 "PNL-A05 · Büro",
-"PNL-A06 · Küche"
+"PNL-A06 · Küche",
+"Personenbestand in Echtzeit",
+"Live-Demo"
 ]

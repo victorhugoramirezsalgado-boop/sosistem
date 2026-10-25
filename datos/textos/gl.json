@@ -7,7 +7,7 @@
 "Demostración",
 "Sons ondulatorios sobre desastres naturais e emerxencias persoais",
 "Alerta temperá ao instante para salvagardar a vida humana en espazos confinados.",
-"SOSistem™ é un sistema de terminais e pantallas físicas, instaladas en interiores e exteriores, para a seguridade humana. Sen cámaras, detecta unha persoa caída ou sen movemento, alerta con luz, son e código Morse e avisa en segundos ao encargado, á central de monitorización e ao 911.",
+"SOSistem™ é un sistema de terminais e pantallas físicas, instaladas en interiores e exteriores, para a seguridade humana. Leva en tempo real a conta de persoas dentro de cada recinto, como un inventario físico para evacuación e rescate; sen cámaras, detecta a quen está caído ou sen movemento, alerta con luz, son e código Morse e avisa en segundos ao encargado, á central de monitorización e ao 911.",
 "Ver como funciona",
 "NODO S.O.S.© · ASEOS PLANTA BAIXA",
 "Masculino",
@@ -514,5 +514,7 @@
 "PNL-A04 · Terremoto",
 "EXT-01 · Exterior",
 "PNL-A05 · Oficina",
-"PNL-A06 · Cociña"
+"PNL-A06 · Cociña",
+"Inventario de persoas en tempo real",
+"Demostración en directo"
 ]

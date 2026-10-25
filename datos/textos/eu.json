@@ -7,7 +7,7 @@
 "Demoa",
 "Hondamendi naturalei eta larrialdi pertsonalei buruzko uhin-soinuak",
 "Berehalako alerta goiztiarra, espazio itxietan giza bizitza babesteko.",
-"SOSistem™ terminal eta pantaila fisikoz osatutako sistema bat da, barruan eta kanpoan instalatuta, giza segurtasunerako. Kamerarik gabe, eroritako edo mugitzen ez den pertsona bat detektatzen du, argiz, soinuz eta Morse kodez ohartarazten du, eta segundo gutxitan arduradunari, monitorizazio-zentralari eta 911ri abisatzen die.",
+"SOSistem™ terminal eta pantaila fisikoz osatutako sistema bat da, barruan eta kanpoan instalatuta, giza segurtasunerako. Denbora errealean zenbatzen ditu espazio bakoitzaren barruan dauden pertsonak, ebakuaziorako eta erreskaterako inbentario fisiko baten moduan; kamerarik gabe, eroritako edo mugitzen ez den pertsona detektatzen du, argiz, soinuz eta Morse kodez ohartarazten du, eta segundo gutxitan arduradunari, monitorizazio-zentralari eta 911ri abisatzen die.",
 "Ikusi nola dabilen",
 "S.O.S.© NODOA · BEHEKO SOLAIRUKO KOMUNAK",
 "Gizonak",
@@ -514,5 +514,7 @@
 "PNL-A04 · Lurrikara",
 "EXT-01 · Kanpoa",
 "PNL-A05 · Bulegoa",
-"PNL-A06 · Sukaldea"
+"PNL-A06 · Sukaldea",
+"Pertsonen inbentarioa denbora errealean",
+"Zuzeneko erakustaldia"
 ]

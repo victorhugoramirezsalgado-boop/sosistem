@@ -7,7 +7,7 @@
 "Demo",
 "Vågljud vid naturkatastrofer och personliga nödlägen",
 "Omedelbar tidig varning för att skydda människoliv i slutna utrymmen.",
-"SOSistem™ är ett system av fysiska terminaler och skärmar, installerade inomhus och utomhus, för mänsklig säkerhet. Utan kameror upptäcker det en person som har fallit eller ligger orörlig, varnar med ljus, ljud och morsekod och larmar inom sekunder ansvarig person, larmcentralen och 911.",
+"SOSistem™ är ett system av fysiska terminaler och skärmar, installerade inomhus och utomhus, för mänsklig säkerhet. Det räknar i realtid antalet personer i varje utrymme, som en fysisk inventering för utrymning och räddning; utan kameror upptäcker det den som har fallit eller ligger orörlig, varnar med ljus, ljud och morsekod och larmar inom sekunder ansvarig person, larmcentralen och 911.",
 "Se hur det fungerar",
 "S.O.S.©-NOD · TOALETTER ENTRÉPLAN",
 "Herrar",
@@ -514,5 +514,7 @@
 "PNL-A04 · Jordbävning",
 "EXT-01 · Utomhus",
 "PNL-A05 · Kontor",
-"PNL-A06 · Kök"
+"PNL-A06 · Kök",
+"Personinventering i realtid",
+"Livedemo"
 ]
