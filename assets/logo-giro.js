@@ -38,13 +38,18 @@
     }
     return "";
   }
-  function cara(palabra) {
-    const fs = Math.min(30, 84 / (0.7 * palabra.length));
-    return `<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="1" y="1" width="98" height="98" rx="20" fill="#C8102E"/>` +
-      `<rect x="7" y="7" width="86" height="86" rx="15" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>` +
-      `<text x="50" y="${f(14 + fs * .78)}" text-anchor="middle" font-family="Archivo, Inter, Arial, sans-serif" font-weight="900" font-size="${f(fs)}" fill="#fff">${palabra}</text>` +
-      `<g fill="#fff">${morse(palabra, 18 + fs * .85, 90)}</g></svg>`;
+  // Cara del cubo: palabra arriba y su Morse abajo (o solo Morse en grande)
+  function cara(palabra, fondo = "#C8102E", tinta = "#fff", soloMorse = false) {
+    const txt = palabra.length > 7 && palabra.includes(" ") ? palabra.split(" ").slice(0, 3) : [palabra];
+    const fs = Math.min(txt.length > 1 ? 22 : 30, 84 / (0.72 * Math.max(...txt.map((t) => t.length), 1)));
+    const tex = soloMorse ? "" : txt.map((t, i) => `<text x="50" y="${f(14 + fs * .78 + i * fs * .95)}" text-anchor="middle" font-family="Archivo, Inter, Arial, sans-serif" font-weight="900" font-size="${f(fs)}" fill="${tinta}">${t}</text>`).join("");
+    const yM = soloMorse ? 12 : 18 + fs * .85 + (txt.length - 1) * fs * .95;
+    return `<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="1" y="1" width="98" height="98" rx="20" fill="${fondo}"/>` +
+      `<rect x="7" y="7" width="86" height="86" rx="15" fill="none" stroke="${tinta}" stroke-opacity=".35" stroke-width="2"/>` +
+      tex + `<g fill="${tinta}">${morse(palabra.replace(/ /g, ""), yM, 90)}</g></svg>`;
   }
+  // Texto apto para Morse internacional: mayúsculas, sin acentos ni signos (ISO/IEC 646)
+  const normal = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z0-9 ]/g, "").replace(/\s+/g, " ").trim();
 
   const LADOS = ["translateZ(var(--lg))", "rotateY(90deg) translateZ(var(--lg))", "rotateY(180deg) translateZ(var(--lg))",
     "rotateY(-90deg) translateZ(var(--lg))", "rotateX(90deg) translateZ(var(--lg))", "rotateX(-90deg) translateZ(var(--lg))"];
@@ -65,5 +70,17 @@
       img.hidden = true; img.after(crear());
     },
     quitar() { document.getElementById("logo-giro")?.remove(); const img = document.getElementById("logo-img"); if (img) img.hidden = false; },
+    // Cubo amarillo de los separadores: gira mostrando el nombre de su pestaña y su Morse
+    separador(nombre) {
+      const p = normal(nombre) || "SOS";
+      const el = document.createElement("span");
+      el.className = "sep-giro"; el.dataset.palabra = p;
+      el.setAttribute("aria-hidden", "true");
+      el.title = `${p}  ${p.split(" ").map((w) => [...w].map((c) => M[c]).join(" ")).join(" / ")}`;
+      const caras = [cara(p, "#F4C400", "#1B1F27"), cara(p, "#F4C400", "#1B1F27", true), cara(p, "#F4C400", "#1B1F27"), cara(p, "#F4C400", "#1B1F27", true),
+        cara("SOS", "#F4C400", "#1B1F27"), cara("SOS", "#F4C400", "#1B1F27")];
+      el.innerHTML = `<span class="sg-cubo">${caras.map((c, i) => `<span class="lg-cara" style="transform:${LADOS[i]}">${c}</span>`).join("")}</span>`;
+      return el;
+    },
   };
 })();

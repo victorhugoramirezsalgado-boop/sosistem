@@ -1,8 +1,13 @@
 {
-  "version": "3.2",
+  "version": "3.3",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.3",
+      "fecha": "2026-10-25",
+      "resumen": "Separadores de sección con cubo amarillo giratorio: cada uno muestra el nombre de su pestaña y su código Morse (cambia con el idioma elegido)."
+    },
     {
       "v": "3.2",
       "fecha": "2026-10-25",

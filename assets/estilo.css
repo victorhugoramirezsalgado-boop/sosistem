@@ -673,3 +673,16 @@ body.present .hero { padding-top: 40px; }
 @media (prefers-reduced-motion: reduce) { .lg-cubo { animation-duration: 60s; } }
 @media print { .lg-cubo { animation: none; } }
 .logo-cubo[hidden] { display: none !important; }
+
+/* Separadores de sección: cubo amarillo giratorio con el nombre de la pestaña en Morse (oct-2026) */
+.sep-giro { --lg: 14px; width: 28px; height: 28px; flex: none; display: block; perspective: 160px; }
+.sg-cubo { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; animation: sg-giro 12s cubic-bezier(.6,0,.3,1) infinite; }
+@keyframes sg-giro {
+  0%, 20% { transform: rotateX(-10deg) rotateY(0deg); }
+  25%, 45% { transform: rotateX(-10deg) rotateY(-90deg); }
+  50%, 70% { transform: rotateX(-10deg) rotateY(-180deg); }
+  75%, 95% { transform: rotateX(-10deg) rotateY(-270deg); }
+  100% { transform: rotateX(-10deg) rotateY(-360deg); }
+}
+@media (prefers-reduced-motion: reduce) { .sg-cubo { animation-duration: 48s; } }
+@media print { .sg-cubo { animation: none; } }

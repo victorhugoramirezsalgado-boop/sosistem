@@ -50,7 +50,15 @@
       let sep = s.querySelector(":scope > .sep-sec");
       if (!sep) { sep = document.createElement("div"); sep.className = "sep-sec"; sep.setAttribute("aria-hidden", "true");
         sep.innerHTML = '<span class="sep-l"></span><img src="assets/logo.svg" alt="" width="18" height="19"><b></b><span class="sep-l"></span>'; s.prepend(sep); }
-      sep.querySelector("b").textContent = FIJAS[s.id] || tr(ETIQ[s.id] || s.id);
+      const nombre = FIJAS[s.id] || tr(ETIQ[s.id] || s.id);
+      sep.querySelector("b").textContent = nombre;
+      // Cubo amarillo giratorio con el nombre de la pestaña en Morse (reemplaza al cubo fijo)
+      if (window.SOSLogoGiro) {
+        const viejo = sep.querySelector(".sep-giro"), nuevo = SOSLogoGiro.separador(nombre);
+        if (!viejo || viejo.dataset.palabra !== nuevo.dataset.palabra) {
+          if (viejo) viejo.replaceWith(nuevo); else sep.querySelector("img")?.replaceWith(nuevo);
+        }
+      }
     });
   }
   function mostrar(id, { desplazar = true } = {}) {
