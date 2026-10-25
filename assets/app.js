@@ -45,6 +45,12 @@
     setTimeout(() => ir(0), 50);
   }
 
+  // Versión publicada
+  fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
+    const el = document.getElementById("version");
+    if (el && v.version) el.textContent = "Versión " + v.version;
+  }).catch(() => {});
+
   // Tiempos de escalamiento configurados desde el panel de administración
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
     Object.entries(c.tiempos || {}).forEach(([k, v]) => {

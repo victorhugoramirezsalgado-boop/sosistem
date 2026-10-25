@@ -184,6 +184,51 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
   .card { box-shadow: none; }
 }
 
+/* Simulador de pantalla S.S.O.S.© (colores fijos: es un equipo físico) */
+.sim-ctrl { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+.pantalla { --p-bg: #05080d; --p-ink: #f2f5f9; --p-dim: #9aa7b8; --p-r: #ff2a1f; --p-y: #ffb300; --p-g: #22c55e; --p-w: #f5f5ef;
+  background: var(--p-bg); color: var(--p-ink); border: 10px solid #2a2f37; border-radius: 16px; padding: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px #000; font: 600 15px/1.3 var(--font); max-width: 880px; }
+.pantalla b { color: inherit; }
+.pantalla .ok { color: var(--p-g); } .pantalla .warn { color: var(--p-y); } .pantalla .bad { color: var(--p-r); }
+.pt-top { display: grid; gap: 2px; text-align: center; padding-bottom: 8px; border-bottom: 1px solid #1d2430; font-size: .95em; }
+.pt-top > b { font-size: 1.12em; letter-spacing: .02em; }
+.pt-top > span { color: var(--p-dim); font-size: .82em; }
+.pt-mods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+.pt-mod { border: 1px solid #1d2430; border-radius: 10px; overflow: hidden; }
+.pt-mod h4 { margin: 0; padding: 7px 10px; font-size: 1em; text-transform: uppercase; letter-spacing: .04em; text-align: center; }
+.pt-mod.m h4 { background: #123a7a; } .pt-mod.f h4 { background: #6b1450; }
+.pt-row { display: grid; grid-template-columns: 34px 1fr auto; gap: 8px; align-items: center; padding: 9px 10px; border-top: 1px solid #141a24; }
+.pt-row small { display: block; color: var(--p-y); font-size: .75em; font-weight: 600; }
+.pantalla[data-estado="caida"] .pt-row small { color: var(--p-r); }
+.st { font-style: normal; font-size: .78em; padding: 3px 8px; border-radius: 99px; border: 1px solid currentColor; white-space: nowrap; }
+.pict { width: 30px; height: 30px; display: block; background: var(--p-g);
+  -webkit-mask: var(--pict) center/contain no-repeat; mask: var(--pict) center/contain no-repeat; }
+.pict.a { --pict: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='4' r='2.6'/%3E%3Cpath d='M8 8h8l-1 7h-2v8h-2v-8H9z'/%3E%3C/svg%3E"); }
+.pict.n { --pict: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='7' cy='4' r='2.4'/%3E%3Cpath d='M3.5 8h7l-1 6H8v8H6v-8H4.5z'/%3E%3Ccircle cx='17' cy='10' r='2'/%3E%3Cpath d='M14.2 13.4h5.6l-.8 4.6h-1.2v4h-1.6v-4H15z'/%3E%3C/svg%3E"); }
+.pantalla[data-estado="advertencia"] #pt-f2 .pict { background: var(--p-y); }
+.pantalla[data-estado="caida"] #pt-f2 .pict { background: var(--p-r); }
+.pt-alerta { border-radius: 10px; padding: 12px; text-align: center; display: grid; gap: 4px; font-size: 1.05em; border: 2px solid transparent; }
+.pt-alerta span { font-size: .85em; font-weight: 600; }
+.pantalla[data-estado="normal"] .pt-alerta { background: #0d2a18; border-color: var(--p-g); color: var(--p-g); }
+.pantalla[data-estado="advertencia"] .pt-alerta { background: #2e2205; border-color: var(--p-y); color: var(--p-y); }
+.pantalla[data-estado="caida"] .pt-alerta { background: var(--p-r); color: #fff; text-transform: uppercase; animation: destello .5s steps(1) infinite; }
+@keyframes destello { 50% { background: #5c0b07; } }
+@media (prefers-reduced-motion: reduce) { .pantalla[data-estado="caida"] .pt-alerta { animation: none; } }
+.pt-ley { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; margin-top: 10px; font-size: .74em; font-weight: 500; color: var(--p-dim); }
+.pt-ley i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.pt-ley .r { background: var(--p-r); } .pt-ley .y { background: var(--p-y); } .pt-ley .g { background: var(--p-g); } .pt-ley .w { background: var(--p-w); }
+.pt-pie { display: flex; justify-content: space-between; margin-top: 8px; font-size: .66em; color: #5d6878; letter-spacing: .06em; }
+@media (max-width: 600px) {
+  .pantalla { font-size: 13px; border-width: 7px; padding: 9px; }
+  .pt-mods, .pt-ley { grid-template-columns: 1fr; }
+}
+
+/* Galería de referencias */
+.galeria figure { margin: 0; padding: 10px; }
+.galeria img { width: 100%; height: auto; border-radius: 9px; display: block; background: var(--surface-2); }
+.galeria figcaption { font-size: .85rem; color: var(--ink-2); margin-top: 8px; }
+
 /* Firma: Código de comunicación del Cubo (33)© */
 .cubo-firma { text-align: center; margin-bottom: 18px; }
 .cubo-firma .esc { perspective: 600px; height: 130px; margin: 8px auto; }

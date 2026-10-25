@@ -167,6 +167,12 @@
           <p class="note">${esc(f.fondos.uso)}</p></div>
       </div>`;
     contador("TOTAL").then((r) => { if (r) $("#r-visitas").textContent = Number(r.count.replace(/\D/g, "")).toLocaleString("es-MX"); });
+    fetch("datos/version.json?_=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((v) => {
+      const c = document.createElement("div"); c.className = "card"; c.style.marginTop = "16px";
+      c.innerHTML = `<h3>Versión publicada: ${esc(v.version)}</h3><p class="note">${esc(v.esquema)}</p>` +
+        v.historial.map((h) => `<p><b>${esc(h.v)}</b> · ${esc(h.fecha)} — ${esc(h.resumen)}</p>`).join("");
+      el.appendChild(c);
+    }).catch(() => {});
   };
 
   // ---------- Visitas (GoatCounter, sin cookies) ----------
