@@ -3,7 +3,7 @@
 (() => {
   if (navigator.doNotTrack === "1" || location.hostname === "localhost") return;
   const inicio = Date.now();
-  let code = "sositem", listo;
+  let code = "sosistem", listo;
   const cfg = fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => { if (c.goatcounter) code = c.goatcounter; }).catch(() => {});
   const url = (p, t, ev) => `https://${code}.goatcounter.com/count?p=${encodeURIComponent(p)}&t=${encodeURIComponent(t || "")}` +
     (ev ? "&e=true" : `&r=${encodeURIComponent(document.referrer)}&s=${screen.width}`) + `&rnd=${Math.random().toString(36).slice(2)}`;

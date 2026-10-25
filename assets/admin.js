@@ -95,7 +95,7 @@
   }
   async function cargarConfig() {
     try { S.config = await (await fetch("datos/config.json?_=" + Date.now(), { cache: "no-store" })).json(); }
-    catch { S.config = { tiempos: { N0: 20, N1: 50, N2: 110, N3: 200 }, goatcounter: "sositem" }; }
+    catch { S.config = { tiempos: { N0: 20, N1: 50, N2: 110, N3: 200 }, goatcounter: "sosistem" }; }
   }
   function salir() {
     S.datos = S.k1 = S.k2 = S.salt2 = null;
@@ -192,7 +192,7 @@
     if (!tot) {
       el.innerHTML = `<div class="demo-banner">Aún no hay conexión con el contador de visitas <b>${esc(S.config.goatcounter || "(sin código)")}.goatcounter.com</b>.</div>
         <div class="card"><h3>Actívelo en 3 pasos (gratis, sin cookies)</h3><ol class="steps">
-        <li><div>Cree una cuenta en <a href="https://www.goatcounter.com/signup" target="_blank" rel="noopener">goatcounter.com</a> con el código <b>${esc(S.config.goatcounter || "sositem")}</b>.</div></li>
+        <li><div>Cree una cuenta en <a href="https://www.goatcounter.com/signup" target="_blank" rel="noopener">goatcounter.com</a> con el código <b>${esc(S.config.goatcounter || "sosistem")}</b>.</div></li>
         <li><div>En <i>Settings</i>, active <b>“Allow adding visitor counts on your website”</b>.</div></li>
         <li><div>El sitio ya envía las visitas; vuelva a esta pestaña. Si usó otro código, cámbielo en <b>Ajustes</b> y publique.</div></li></ol></div>`;
       return;
