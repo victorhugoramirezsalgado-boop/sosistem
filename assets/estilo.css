@@ -503,3 +503,9 @@ body.present .ver-pestanas, body.present .pestanas { display: none !important; }
 :root:not(.pestanas-fijas) main { padding-top: 22px; }
 .pestanas-abiertas .wa-fab { display: none !important; }
 .kpi span.l, .kpi span.s { display: block; }
+
+/* v2.6 · Cubo Morse© en colores claros (beige y gris), sin rojo; exterior al 50 % deja ver el interior */
+.cm-capa.morse-luz svg { filter: brightness(1.08) drop-shadow(0 0 12px rgba(43,52,66,.55)); }
+.cm-lista button[aria-pressed="true"], .cm-lista button.morse-sonando { border-color: #2B3442; box-shadow: inset 0 0 0 1px #2B3442; }
+.cm-cubo .cm-capa { outline: 1px solid rgba(43,52,66,.25); outline-offset: -1px; }
+:root[data-fondo="azul"] .cm-lista button[aria-pressed="true"], :root[data-fondo="negro"] .cm-lista button[aria-pressed="true"] { border-color: #E3E6EA; box-shadow: inset 0 0 0 1px #E3E6EA; }

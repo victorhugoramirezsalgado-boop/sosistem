@@ -1,5 +1,5 @@
 /* Cubo Morse© de 12 caras (6 exteriores + 6 interiores) · © Víctor Hugo Ramírez Salgado
-   Las caras destellan su Morse sin sonido: el sonido solo se permite en emergencias y pruebas. */
+   Al tocar una cara se escucha y destella su Morse (motivo «cubo»). */
 (() => {
   const cubo = document.getElementById("cm-cubo");
   if (!cubo) return;
@@ -30,7 +30,7 @@
     const capa = cubo.querySelector(`.cm-capa[data-cara="${b.dataset.cara}"]`);
     const palabra = (b.querySelector("span")?.textContent || "");
     const texto = b.querySelector("b").textContent.replace(/^\d+\.\s*/, "").replace(/[™©.]/g, "");
-    if (window.SOSMorse && capa) SOSMorse.reproducir(texto, capa, { boton: b });
+    if (window.SOSMorse && capa) SOSMorse.reproducir(texto, capa, { boton: b, motivo: "cubo", volumen: 0.8 });
     b.title = palabra;
   }));
   bExt?.addEventListener("click", () => vista(false));

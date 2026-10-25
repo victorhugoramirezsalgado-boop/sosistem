@@ -1,8 +1,13 @@
 {
-  "version": "2.5",
+  "version": "2.6",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.6",
+      "fecha": "2026-10-24",
+      "resumen": "Cubo Morse©: suena en Morse al tocar cada cara; exterior con obras de identidad y código (marca de agua al 50 % que deja ver el interior) e interior con ContenedorEns©, Arsa Bodegas©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía©; colores claros beige y gris, sin rojo. PDF armable y memoria de registro actualizados."
+    },
     {
       "v": "2.5",
       "fecha": "2026-10-24",
