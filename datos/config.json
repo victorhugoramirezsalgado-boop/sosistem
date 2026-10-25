@@ -286,5 +286,12 @@
     "fondo": "gris",
     "logo": "giro",
     "pantallas_portada": 6
+  },
+  "apoyo": {
+    "activo": false,
+    "url": "https://github.com/sponsors/victorhugoramirezsalgado-boop",
+    "meta_mxn": 50000,
+    "recaudado_mxn": 0,
+    "nota": "activo=true cuando GitHub Sponsors apruebe la cuenta; recaudado_mxn lo actualiza el administrador."
   }
 }

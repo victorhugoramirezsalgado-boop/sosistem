@@ -6,7 +6,7 @@
   const T = (t) => (window.SOSIdioma?.t ? SOSIdioma.t(t) : t); // traduce textos armados aquí
   const ESTADOS = {
     normal: { gral: ["Normal", "ok"], f2: ["Libre", "ok", ""], a1: "Sin incidentes", a2: "Todas las cabinas en condición segura." },
-    advertencia: { gral: ["Advertencia", "warn"], f2: ["Atención", "warn", "Permanencia prolongada en cabina F‑2 (> 10 min)"], a1: "Advertencia · cabina F‑2", a2: "Permanencia mayor a 10 min. Aviso por voz en cabina (N0)." },
+    advertencia: { gral: ["Advertencia", "warn"], f2: ["Atención", "warn", "Permanencia prolongada en cabina F‑2 (> 10 min)"], a1: "Advertencia · cabina F‑2", a2: "Permanencia mayor de 10 min. Aviso por voz en cabina (N0)." },
     caida: { gral: ["Alerta crítica", "bad"], f2: ["Caída", "bad", "Persona en el piso en cabina F‑2"], a1: "¡Persona en el suelo! · Cabina F‑2", a2: "" },
     sismo: { gral: ["Alerta sísmica", "bad"], f2: ["Evacuar", "bad", "Puerta liberada · salga con calma"], a1: "¡Alerta sísmica! · Evacúe el área", a2: "Siga la luz blanca de evacuación. Puertas de cabinas liberadas." },
   };

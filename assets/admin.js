@@ -370,7 +370,7 @@
       el.innerHTML = `<div class="demo-banner">Aún no hay conexión con el contador de visitas <b>${esc(S.config.goatcounter || "(sin código)")}.goatcounter.com</b>.</div>
         <div class="card"><h3>Actívelo en 3 pasos (gratis, sin cookies)</h3><ol class="steps">
         <li><div>Cree una cuenta en <a href="https://www.goatcounter.com/signup" target="_blank" rel="noopener">goatcounter.com</a> con el código <b>${esc(S.config.goatcounter || "sosistem")}</b>.</div></li>
-        <li><div>En <i>Settings</i>, active <b>“Allow adding visitor counts on your website”</b>.</div></li>
+        <li><div>En <i>Settings</i>, active <b>«Allow adding visitor counts on your website»</b>.</div></li>
         <li><div>El sitio ya envía las visitas; vuelva a esta pestaña. Si usó otro código, cámbielo en <b>Ajustes</b> y publique.</div></li></ol></div>`;
       return;
     }
@@ -616,6 +616,10 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
       <div class="grid g2" style="margin-top:12px">
         <div class="card"><h3>Tiempos de escalamiento (página pública)</h3>
           <div class="filters">${["N0", "N1", "N2", "N3"].map((k) => `<label>${k} (s)<input type="number" min="1" data-cfg="${k}" value="${T[k]}"></label>`).join("")}</div>
+          <h3>Apoya el proyecto</h3>
+          <div class="filters"><label>Meta (MXN)<input type="number" min="0" id="aj-ap-meta" value="${Number(S.config.apoyo?.meta_mxn ?? 50000)}"></label>
+          <label>Recaudado (MXN)<input type="number" min="0" id="aj-ap-rec" value="${Number(S.config.apoyo?.recaudado_mxn ?? 0)}"></label></div>
+          <div class="filters"><label class="ap-op"><input type="checkbox" id="aj-ap-act" ${S.config.apoyo?.activo ? "checked" : ""}>Botón de GitHub Sponsors activo</label></div>
           <h3>Contador de visitas</h3>
           <div class="filters"><label>Código GoatCounter<input id="aj-gc" value="${esc(S.config.goatcounter || "")}"></label></div>
           <p class="note">Estos ajustes se guardan en datos/config.json (público) al publicar.</p></div>
@@ -637,6 +641,13 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
     el.addEventListener("input", (e) => {
       if (e.target.dataset.cfg) { T[e.target.dataset.cfg] = Number(e.target.value); marcar(); }
       if (e.target.id === "aj-gc") { S.config.goatcounter = e.target.value.trim(); marcar(); }
+      if (/^aj-ap-/.test(e.target.id)) {
+        const A = S.config.apoyo = { activo: false, url: "https://github.com/sponsors/victorhugoramirezsalgado-boop", meta_mxn: 50000, recaudado_mxn: 0, ...(S.config.apoyo || {}) };
+        if (e.target.id === "aj-ap-meta") A.meta_mxn = Number(e.target.value) || 0;
+        if (e.target.id === "aj-ap-rec") A.recaudado_mxn = Number(e.target.value) || 0;
+        if (e.target.id === "aj-ap-act") A.activo = e.target.checked;
+        marcar();
+      }
       if (e.target.name === "ap-fondo") { AP.fondo = e.target.value; marcar(); }
       if (e.target.name === "ap-logo") { AP.logo = e.target.value; marcar(); }
       if (e.target.name === "ap-pant") { AP.pantallas_portada = Number(e.target.value); marcar(); }

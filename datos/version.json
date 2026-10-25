@@ -1,8 +1,13 @@
 {
-  "version": "3.5",
+  "version": "3.6",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.6",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «Apoyar»: meta del prototipo ($50,000 MXN), barra de avance editable desde el panel y botón de GitHub Sponsors (activable al aprobarse la cuenta; mientras tanto, WhatsApp). Botón «Sponsor» en el repositorio (.github/FUNDING.yml). Revisión ortográfica y gramatical del sitio: comillas angulares, «mayor de», «inconfundible», «minibodegas», «vista de despiece», «etapa piloto», concordancias y puntuación."
+    },
     {
       "v": "3.5",
       "fecha": "2026-10-25",

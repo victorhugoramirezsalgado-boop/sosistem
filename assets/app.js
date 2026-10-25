@@ -160,3 +160,21 @@
     pintar(k);
   }, 3500);
 })();
+
+/* Apoya el proyecto: meta, avance y botón según datos/config.json → apoyo (editable desde el panel) */
+(() => {
+  const btn = document.getElementById("ap-btn"); if (!btn) return;
+  const mx = (n) => "$" + Math.round(n).toLocaleString("es-MX");
+  fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
+    const a = { meta_mxn: 50000, recaudado_mxn: 0, activo: false, url: "", ...(c.apoyo || {}) };
+    const pct = a.meta_mxn > 0 ? Math.min(100, Math.round(a.recaudado_mxn / a.meta_mxn * 100)) : 0;
+    document.getElementById("ap-rec").textContent = mx(a.recaudado_mxn);
+    document.getElementById("ap-meta").textContent = mx(a.meta_mxn) + " MXN";
+    document.getElementById("ap-barra").style.width = pct + "%";
+    document.getElementById("ap-pct").textContent = pct + " % de la meta";
+    if (a.activo && /^https:\/\/github\.com\/sponsors\//.test(a.url)) {
+      btn.href = a.url; btn.textContent = "Patrocinar en GitHub";
+      document.getElementById("ap-estado").textContent = "Pago único o mensual con tarjeta, mediante GitHub Sponsors.";
+    }
+  }).catch(() => {});
+})();

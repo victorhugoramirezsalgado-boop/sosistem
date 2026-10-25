@@ -705,3 +705,9 @@ body.present .hero { padding-top: 40px; }
 .iv-lista li.cambio em { color: #1FA85A; }
 @keyframes iv-pulso { 50% { opacity: .3; } }
 @media (prefers-reduced-motion: reduce) { .iv-dem::before { animation: none; } }
+
+/* Apoya el proyecto */
+.apoyo-grid { align-items: center; }
+.apoyo-card .ap-meta { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.apoyo-card .ap-meta > b { font: 900 2rem/1 var(--font); font-variant-numeric: tabular-nums; }
+.apoyo-card .ap-meta span { color: var(--ink-2); }
