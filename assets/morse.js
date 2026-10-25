@@ -1,7 +1,9 @@
 /* Sistema S.O.S.© — código Morse sonoro y luminoso · © Víctor Hugo Ramírez Salgado
-   Solo suena cuando la persona toca un botón (los navegadores no permiten sonido automático).
-   Uso: SOSMorse.reproducir("SOS", elementoQueDestella) · SOSMorse.detener() */
+   REGLA DE SONIDO: solo suena en emergencia, desastre natural, prueba del administrador
+   o prueba del cliente en su módulo de pruebas. En cualquier otro caso solo destella.
+   Uso: SOSMorse.reproducir("SOS", elementoQueDestella, { motivo: "emergencia" }) · SOSMorse.detener() */
 (() => {
+  const MOTIVOS_CON_SONIDO = new Set(["emergencia", "desastre", "prueba-admin", "prueba-cliente"]);
   const T = { A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.", G: "--.", H: "....", I: "..", J: ".---",
     K: "-.-", L: ".-..", M: "--", N: "-.", O: "---", P: ".--.", Q: "--.-", R: ".-.", S: "...", T: "-", U: "..-",
     V: "...-", W: ".--", X: "-..-", Y: "-.--", Z: "--..", "Ñ": "--.--",
@@ -40,8 +42,10 @@
     detener();
     const palabras = aMorse(texto);
     if (!palabras.length) return 0;
+    const conSonido = MOTIVOS_CON_SONIDO.has(opciones.motivo);
+    if (!conSonido) return destellar(palabras, luz, opciones);
     const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return 0;
+    if (!AC) return destellar(palabras, luz, opciones);
     if (!ctx) {
       ctx = new AC();
       ganancia = ctx.createGain(); ganancia.gain.value = 0; ganancia.connect(ctx.destination);
@@ -77,5 +81,29 @@
     return t;
   }
 
-  window.SOSMorse = { reproducir, detener, aMorse, visible, cobertura, sonando: () => !!activo };
+  // Solo luz (sin sonido ni vibración), con los mismos tiempos del Morse
+  function destellar(palabras, luz, opciones) {
+    let t = 0;
+    const pulso = (dur) => {
+      if (luz) {
+        timers.push(setTimeout(() => luz.classList.add("morse-luz"), t * 1000));
+        timers.push(setTimeout(() => luz.classList.remove("morse-luz"), (t + dur) * 1000));
+      }
+      t += dur;
+    };
+    palabras.forEach((p, pi) => {
+      if (pi) t += 7 * U;
+      p.forEach((letra, li) => {
+        if (li) t += 3 * U;
+        [...letra].forEach((s, si) => { if (si) t += U; pulso(s === "." ? U : 3 * U); });
+      });
+    });
+    activo = { luz, boton: opciones.boton, alTerminar: opciones.alTerminar, silencioso: true };
+    opciones.boton?.classList.add("morse-sonando");
+    timers.push(setTimeout(detener, (t + 0.1) * 1000));
+    return t;
+  }
+
+  window.SOSMorse = { reproducir, detener, aMorse, visible, cobertura, sonando: () => !!activo && !activo.silencioso,
+    activo: () => !!activo, motivos: [...MOTIVOS_CON_SONIDO] };
 })();

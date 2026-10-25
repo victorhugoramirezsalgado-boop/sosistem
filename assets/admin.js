@@ -115,8 +115,38 @@
   const PESTANAS = [
     ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["financiera", "Financiera"],
     ["tecnico", "Datos técnicos"], ["cambios", "Cambios y comentarios"], ["usuarios", "Usuarios"],
-    ["ejecutivo", "Ejecutivo"], ["ajustes", "Ajustes"],
+    ["ejecutivo", "Ejecutivo"], ["pruebas", "Pruebas de sonido"], ["ajustes", "Ajustes"],
   ];
+
+  // ---------- Pruebas de sonido (solo el administrador) ----------
+  const PRUEBAS = [
+    ["caida", "Emergencia · persona caída", "SOS SOS"],
+    ["sismo", "Desastre natural · sismo", "SOS SISMO SOS"],
+    ["general", "Prueba general de sirena", "PRUEBA SOS"],
+  ];
+  const RENDER_PRUEBAS = (el) => {
+    el.innerHTML = `
+      <div class="card"><h3>Pruebas de sonido Morse</h3>
+        <p>Regla del sistema: el sonido solo se emite en <b>emergencia</b>, <b>desastre natural</b>, <b>pruebas del administrador</b> y <b>pruebas del cliente</b> en su módulo de pruebas. Cada prueba queda registrada en Cambios y comentarios.</p>
+        <div class="filters">${PRUEBAS.map(([id, n]) => `<button class="btn" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> ${esc(n)}</button>`).join("")}
+          <button class="btn" type="button" id="pr-stop">Detener</button></div>
+        <div class="filters"><label style="flex:1">Mensaje libre en Morse<input id="pr-txt" maxlength="60" placeholder="p. ej. PRUEBA CABINA F2" style="width:100%"></label>
+          <button class="btn primary" type="button" id="pr-libre">Probar mensaje</button></div>
+        <p class="note mono" id="pr-codigo"></p>
+      </div>`;
+    const correr = (texto, nombre, boton) => {
+      if (!window.SOSMorse) return;
+      $("#pr-codigo").textContent = SOSMorse.visible(SOSMorse.aMorse(texto));
+      SOSMorse.reproducir(texto, boton.querySelector(".bm-luz") || boton, { motivo: "prueba-admin", boton });
+      S.datos.cambios.push({ fecha: new Date().toLocaleString("sv-SE").slice(0, 16), tipo: "Prueba", autor: S.datos.usuarios[0]?.nombre || "Administrador", texto: `Prueba de sonido: ${nombre} (${texto}).` });
+      marcar();
+    };
+    el.querySelectorAll("[data-prueba]").forEach((b) => b.addEventListener("click", () => {
+      const [, n, t] = PRUEBAS.find((p) => p[0] === b.dataset.prueba); correr(t, n, b);
+    }));
+    $("#pr-libre").onclick = (e) => { const t = $("#pr-txt").value.trim(); if (t) correr(t, "mensaje libre", e.currentTarget); };
+    $("#pr-stop").onclick = () => window.SOSMorse?.detener();
+  };
   function iniciarApp() {
     const t = $("#tabs");
     t.innerHTML = PESTANAS.map(([id, n], i) => `<button class="tab" role="tab" aria-selected="${i === 0}" data-tab="${id}">${n}</button>`).join("");
@@ -129,6 +159,7 @@
     abrir("resumen");
   }
   const RENDER = {};
+  RENDER.pruebas = (el) => RENDER_PRUEBAS(el);
   function abrir(id) {
     $$(".tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === id));
     $$(".panel").forEach((p) => (p.hidden = p.id !== "p-" + id));

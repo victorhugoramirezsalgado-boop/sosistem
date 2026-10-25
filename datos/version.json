@@ -1,8 +1,13 @@
 {
-  "version": "1.7",
+  "version": "1.8",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "1.8",
+      "fecha": "2026-10-24",
+      "resumen": "Regla de sonido: el Morse solo suena en emergencia, desastre natural, pruebas del administrador (pestaña Pruebas de sonido) y módulo de pruebas del cliente; en el resto solo destella. Estado «Sismo» en el simulador."
+    },
     {
       "v": "1.7",
       "fecha": "2026-10-24",

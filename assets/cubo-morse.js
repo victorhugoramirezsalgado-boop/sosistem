@@ -22,7 +22,7 @@
   const caras = cubo.querySelectorAll(".cm-cara");
   botones.forEach((b) => b.addEventListener("click", () => {
     girar(b.dataset.cara);
-    // Suena el nombre del proyecto en Morse y la cara destella al mismo ritmo
+    // La cara destella el nombre del proyecto en Morse (sin sonido: la regla solo permite sonido en emergencias y pruebas)
     const nombre = (b.querySelector("b")?.textContent || "").replace(/[™©.]/g, "");
     if (window.SOSMorse) SOSMorse.reproducir(nombre, caras[ORDEN.indexOf(b.dataset.cara)], { boton: b });
   }));

@@ -86,11 +86,9 @@
     D = d;
     marcar();
     selector();
-    botonesMorse();
+    // Botones «Escuchar en Morse» por sección: desactivados por regla de sonido (solo emergencias y pruebas)
     const pref = leer("sos_idioma") || (navigator.language || "es").slice(0, 2).toLowerCase();
     aplicar(D.idiomas[pref] ? pref : (pref === "no" || pref === "nn" ? "nb" : "es"));
-  }).catch(() => { botonesMorseSinIdiomas(); });
-
-  function botonesMorseSinIdiomas() { D = { claves: ["morse_play", "morse_stop"], idiomas: { es: { t: ["Escuchar en Morse", "Detener"] } } }; botonesMorse(); }
+  }).catch(() => {});
   window.SOSIdioma = { texto: (k) => (D ? texto(k) : ""), actual: () => actual };
 })();
