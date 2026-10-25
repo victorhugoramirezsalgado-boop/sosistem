@@ -115,6 +115,9 @@ th { background: var(--surface-2); font-weight: 700; color: var(--ink-2); positi
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr:last-child td { border-bottom: 0; }
 .mono { font-family: var(--mono); font-size: .82rem; }
+table.wrap-cells td, table.wrap-cells th { white-space: normal; vertical-align: top; min-width: 160px; }
+.refs { padding-left: 20px; margin: 0; display: grid; gap: 6px; font-size: .86rem; color: var(--ink-2); }
+.refs a { word-break: break-word; }
 
 /* Filtros */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: end; }

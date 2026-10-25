@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistema S.O.S.© · Seguridad sin cámaras</title>
-<meta name="description" content="Sistema S.O.S.©: detecta a una persona en riesgo en sanitarios y espacios confinados, sin cámaras, y escala la alerta hasta el 911. Alerta sísmica en sitio.">
+<meta name="description" content="Sistema S.O.S.© y señalética S.S.O.S.©: detección de caídas con radar mmWave sin cámaras en sanitarios y espacios confinados, 30 días de autonomía y alerta CAP v1.2 al 911.">
 <meta name="theme-color" content="#c8102e">
 <meta property="og:title" content="Sistema S.O.S.© — Seguridad sin cámaras">
-<meta property="og:description" content="Detección de personas en riesgo y alerta sísmica en sitio para recintos confinados.">
+<meta property="og:description" content="Radar mmWave sin cámaras, pantalla de ocupación y salvaguarda S.S.O.S.©, 30 días sin luz y aviso al 911 en formato CAP v1.2.">
 <meta property="og:url" content="https://sosistem.com/">
+<meta property="og:type" content="website">
 <link rel="canonical" href="https://sosistem.com/">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/estilo.css">
@@ -19,6 +20,8 @@
     <a class="logo" href="#inicio"><span class="logo-mark">S.O.S</span><span class="logo-text">Sistema S.O.S.©</span></a>
     <nav>
       <a class="btn ghost hide-sm" href="#funciona">Cómo funciona</a>
+      <a class="btn ghost hide-sm" href="#ssos">S.S.O.S.©</a>
+      <a class="btn ghost hide-sm" href="#normativa">Normativa</a>
       <a class="btn ghost hide-sm" href="#piloto">Piloto</a>
       <button class="btn hide-xs" id="btn-presentar" type="button" title="Modo presentación (flechas para avanzar)">Presentar</button>
       <a class="btn primary" href="#contacto"><span class="hide-xs">Solicitar demostración</span><span class="show-xs">Demostración</span></a>
@@ -76,6 +79,24 @@
   </div>
 </section>
 
+<section class="slide blk" id="datos">
+  <div class="wrap">
+    <span class="eyebrow">Datos reales</span>
+    <h2>El tamaño del riesgo, con cifras oficiales.</h2>
+    <div class="grid g4">
+      <div class="card kpi"><div class="v">684,000</div><div class="l">muertes al año por caídas en el mundo</div><div class="s">Segunda causa de muerte por traumatismo involuntario · OMS</div></div>
+      <div class="card kpi"><div class="v">37.3 M</div><div class="l">caídas al año que requieren atención médica</div><div class="s">OMS</div></div>
+      <div class="card kpi"><div class="v">85,282</div><div class="l">defunciones por causas externas en México (2024)</div><div class="s">10.4 % de 819,672 · INEGI</div></div>
+      <div class="card kpi"><div class="v">39,919</div><div class="l">defunciones por accidentes en México (2024)</div><div class="s">Quinta causa de muerte · INEGI</div></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Exposición del patrón en 2026</h3>
+      <p>La Ley Federal del Trabajo (art. 994, fr. V) sanciona con <b>250 a 5,000 UMA</b> a quien no observe las normas de seguridad e higiene. Con la UMA 2026 de $117.31, eso equivale a <b>$29,327.50 a $586,550.00 MXN</b> por infracción.</p>
+      <p class="note">El tiempo de respuesta real de S.O.S.© es un indicador que se medirá en el piloto; no publicamos cifras sin medirlas.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="funciona">
   <div class="wrap">
     <span class="eyebrow">Cómo funciona</span>
@@ -101,8 +122,60 @@
       <div class="card"><h3>Alerta sísmica en sitio</h3><p>Acelerómetros con confirmación cruzada detectan la onda P, abren cerraduras y avisan en todas las cabinas ocupadas.</p></div>
       <div class="card"><h3>Conteo de evacuación</h3><p>Sabe cuántas personas entraron, cuántas salieron y en qué zona falta alguien. La brigada lo ve en pantalla.</p></div>
       <div class="card"><h3>Estándar internacional</h3><p>Alertas en formato CAP v1.2 (OASIS), el mismo que usan los sistemas oficiales de emergencia.</p></div>
-      <div class="card"><h3>Sigue funcionando sin luz</h3><p>Bus de 12 V con respaldo de baterías; diseñado para operar aunque falle la red eléctrica.</p></div>
+      <div class="card"><h3>30 días sin luz</h3><p>Bus de 12 V con banco LiFePO4 de 250 Ah: 3.2 W × 720 h = 2,304 Wh. Un circuito NiMH de respaldo mantiene reloj, memoria y sirena.</p></div>
       <div class="card"><h3>Riesgos ambientales</h3><p>Versión S2: humo, fuego, amoniaco, falta de oxígeno, hidrógeno, agua en el piso y la palabra “S.O.S.”.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>¿En qué se distingue de un sensor doméstico?</h3>
+      <p>Ya existen sensores mmWave de consumo con detección de caídas que avisan a una app del hogar. S.O.S.© está hecho para recintos públicos y centros de trabajo: escala la alerta hasta el 911 con mensaje CAP v1.2 y llamada SIP, opera 30 días sin red eléctrica y muestra la señal de ocupación y emergencia con los colores de seguridad de la NOM-026-STPS-2008.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="ssos">
+  <div class="wrap">
+    <span class="eyebrow">Módulo S.S.O.S.© · Señalética Sobre Ocupación y Salvaguarda</span>
+    <h2>La señal de “ocupado” se convierte en un nodo salvavidas.</h2>
+    <p>Pantalla micro-LED en el acceso y sensores de radar en cada sanitario. Si alguien queda en el piso, la pantalla cambia a rojo, suena la sirena y la alerta sale hacia el encargado y el 911.</p>
+    <div class="grid g4">
+      <div class="card kpi"><div class="v">60 / 77 GHz</div><div class="l">Radar FMCW de onda milimétrica</div><div class="s">Antena en chip; sin imagen ni audio</div></div>
+      <div class="card kpi"><div class="v">≤ 5 s</div><div class="l">Confirmación de caída (objetivo)</div><div class="s">Cota vertical &lt; 15 cm sostenida</div></div>
+      <div class="card kpi"><div class="v">720 h</div><div class="l">Autonomía sin red eléctrica</div><div class="s">LiFePO4 250 Ah, &gt; 4,000 ciclos</div></div>
+      <div class="card kpi"><div class="v">105 dB</div><div class="l">Sirena bifrecuencia a 1 m</div><div class="s">Balizamiento blanco autónomo</div></div>
+    </div>
+    <h3 style="margin-top:22px">Pantallas por tipo de recinto</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Entorno</th><th>Aforo</th><th>Medidas</th><th>Pitch</th><th class="num">Luminancia</th><th>Protección</th></tr></thead>
+        <tbody>
+          <tr><td>Interior: restaurantes y baños</td><td>Hasta 100 p.</td><td>60 × 60 cm</td><td>4.0 mm</td><td class="num">≥ 1,200 cd/m²</td><td>IP65 / IK08</td></tr>
+          <tr><td>Interior: naves industriales</td><td>101 a 499 p.</td><td>70 × 70 cm</td><td>5.0 mm</td><td class="num">≥ 1,200 cd/m²</td><td>IP65 / IK08</td></tr>
+          <tr><td>Exterior: acceso primario (Fase 1)</td><td>—</td><td>40 × 40 cm</td><td>3.0 mm</td><td class="num">≥ 5,500 cd/m²</td><td>IP67 / IK09</td></tr>
+          <tr><td>Exterior: fachada o vialidad (Fase 2)</td><td>—</td><td>50 × 50 cm</td><td>3.5 mm</td><td class="num">≥ 6,500 cd/m²</td><td>IP67 / IK09, niebla salina</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend"><span><i style="background:var(--brand)"></i>Rojo: emergencia</span><span><i style="background:var(--warn)"></i>Ámbar: precaución / aforo &gt; 90 %</span><span><i style="background:var(--ok)"></i>Verde: libre</span></p>
+  </div>
+</section>
+
+<section class="slide blk" id="normativa">
+  <div class="wrap">
+    <span class="eyebrow">Marco normativo vigente · octubre 2026</span>
+    <h2>Pensado para cumplir, no para sustituir.</h2>
+    <div class="tbl-wrap">
+      <table class="wrap-cells">
+        <thead><tr><th>Norma o ley</th><th>Qué exige</th><th>Cómo ayuda S.O.S.©</th></tr></thead>
+        <tbody>
+          <tr><td><b>NOM-026-STPS-2008</b></td><td>Colores y señales de seguridad e higiene.</td><td>Pantalla con colores de seguridad según su significado normativo.</td></tr>
+          <tr><td><b>NOM-002-STPS-2010</b></td><td>Prevención y protección contra incendios.</td><td>Complementa la alarma y la señal de evacuación; no sustituye detectores certificados.</td></tr>
+          <tr><td><b>NOM-033-STPS-2015</b></td><td>Trabajos en espacios confinados.</td><td>Monitoreo de “hombre caído” en cuartos técnicos, cisternas y fosas, dentro del plan de rescate.</td></tr>
+          <tr><td><b>Ley Federal del Trabajo</b></td><td>Seguridad e higiene y primeros auxilios (arts. 132, 504 y 994).</td><td>Evidencia de medidas preventivas y aviso inmediato.</td></tr>
+          <tr><td><b>LFPDPPP 2025</b></td><td>Protección de datos personales; autoridad: Secretaría Anticorrupción y Buen Gobierno.</td><td>Sin cámaras ni grabación; aviso de privacidad y retención mínima de eventos.</td></tr>
+          <tr><td><b>Ley en Materia de Telecomunicaciones y Radiodifusión</b></td><td>Homologación de equipos de radio ante la Comisión Reguladora de Telecomunicaciones.</td><td>Módulos de radio y conectividad ya homologados.</td></tr>
+          <tr><td><b>CAP v1.2 (OASIS) · SIP (RFC 3261)</b></td><td>Formatos estándar de alerta y voz.</td><td>La alerta llega estructurada: qué pasó, dónde y con qué urgencia.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -137,6 +210,7 @@
         <h3>Modelo de servicio</h3>
         <p><b>Equipo instalado</b> por recinto, más <b>servicio mensual</b> de monitoreo, mantenimiento y reportes estadísticos por evento, con fecha, hora, minuto y segundo.</p>
         <p>Cada cliente recibe su panel con indicadores: alertas por nivel, tiempos de respuesta, porcentaje de error del sistema y disponibilidad.</p>
+        <p><b>Paquete de referencia para restaurante:</b> pantalla maestra de 60 × 60 cm, dos sensores de radar (sanitarios de hombres y mujeres), herrajes antivandálicos, instalación nocturna y calibración. Precio de referencia <b>USD 1,667.50</b> (≈ $31,183 MXN al FIX de Banxico del 23-oct-2026), más servicio de monitoreo de <b>USD 35 al mes</b>. Precios sin IVA; cotización final por recinto.</p>
         <p class="note">El piloto está en gestión. Las cifras se publicarán al concluir.</p>
       </div>
     </div>
@@ -151,6 +225,27 @@
     <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20me%20interesa%20una%20demostraci%C3%B3n%20del%20Sistema%20S.O.S." target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn" href="tel:+526462270490">646 227 0490</a></p>
   </div>
 </section>
+
+<section class="blk no-present" id="fuentes">
+  <div class="wrap">
+    <span class="eyebrow">Fuentes</span>
+    <h2>Referencias (APA 7.ª ed.)</h2>
+    <ol class="refs">
+      <li>Banco de México. (2026, 23 de octubre). <i>Tipos de cambio diarios (CF102)</i>. <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&amp;idCuadro=CF102&amp;sector=6&amp;locale=es" rel="noopener">banxico.org.mx</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Valor de la Unidad de Medida y Actualización 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">inegi.org.mx</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadísticas de defunciones registradas 2024</i>. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">inegi.org.mx</a></li>
+      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">who.int</a></li>
+      <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, 20 de marzo de 2025. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">diputados.gob.mx</a></li>
+      <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008</i>. <a href="https://dof.gob.mx/normasOficiales/3541/stps.htm" rel="noopener">dof.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2010). <i>NOM-002-STPS-2010</i>. <a href="https://platiica.economia.gob.mx/normalizacion/NOM-002-STPS-2010" rel="noopener">economia.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2015). <i>NOM-033-STPS-2015</i>. <a href="https://www.dof.gob.mx" rel="noopener">dof.gob.mx</a></li>
+      <li>OASIS. (2010). <i>Common Alerting Protocol Version 1.2</i>. <a href="https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html" rel="noopener">oasis-open.org</a></li>
+      <li>Rosenberg, J., et al. (2002). <i>SIP: Session Initiation Protocol</i> (RFC 3261). <a href="https://www.rfc-editor.org/rfc/rfc3261" rel="noopener">rfc-editor.org</a></li>
+      <li>Eleos Compliance. (2025, 20 de octubre). <i>Mexico’s IFT ceases operations</i>. <a href="https://www.eleoscompliance.com/en/article/mexico-mexico%E2%80%99s-ift-ceases-operations" rel="noopener">eleoscompliance.com</a></li>
+    </ol>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -159,7 +254,8 @@
       <div class="esc"><div class="cubo"><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div></div></div>
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
-    <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© es una obra registrada en Safe Creative (2609046908578). Todos los derechos reservados.</p>
+    <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). Todos los derechos reservados.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026.</p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
 </footer>
