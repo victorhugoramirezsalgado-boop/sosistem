@@ -527,5 +527,18 @@
 "Patrocinar a GitHub",
 "Donar suport",
 "Cubo Morse© registrat a Safe Creative (2610257441754).",
-"Plataforma SOSistem™ (versions 1.0.0 a 3.8) registrada a Safe Creative (2610257442171)."
+"Plataforma SOSistem™ (versions 1.0.0 a 3.8) registrada a Safe Creative (2610257442171).",
+"Terminal de proves",
+"El vostre mòbil com a terminal del sistema.",
+"Instal·leu l’app SOSistem™ Terminal i feu servir el mòbil com a punt de prova: llegeix l’acceleròmetre, el giroscopi, el micròfon i la ubicació, detecta caigudes, vibració de tipus sisme, soroll fort i la paraula «S.O.S.», i escala l’alerta pels nivells N0–N3 com la pantalla física.",
+"Sensors en directe",
+"Moviment, orientació, nivell de so, bateria, xarxa i dades tècniques de l’aparell.",
+"Esdeveniments amb estadística",
+"Cada esdeveniment queda registrat al mil·lisegon amb el nivell assolit i el temps de resposta; en marcar-lo com a vàlid o falsa alarma es calcula el percentatge d’error.",
+"Les vostres dades, al vostre compte",
+"Tot es desa al mòbil. Podeu exportar-ho en CSV o JSON, o enviar-ho al vostre repositori privat de GitHub.",
+"Obrir la terminal",
+"A l’iPhone: Safari → Compartir → «Afegir a la pantalla d’inici». A Android: Chrome → «Instal·lar l’app».",
+"Eina de prova: no és un dispositiu mèdic ni substitueix el 911.",
+"Escanegeu amb el mòbil per obrir la terminal."
 ]

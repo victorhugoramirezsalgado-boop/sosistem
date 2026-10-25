@@ -527,5 +527,18 @@
 "Auf GitHub sponsern",
 "Unterstützen",
 "Cubo Morse© bei Safe Creative registriert (2610257441754).",
-"Plattform SOSistem™ (Versionen 1.0.0 bis 3.8) bei Safe Creative registriert (2610257442171)."
+"Plattform SOSistem™ (Versionen 1.0.0 bis 3.8) bei Safe Creative registriert (2610257442171).",
+"Testterminal",
+"Ihr Handy als Terminal des Systems.",
+"Installieren Sie die App SOSistem™ Terminal und nutzen Sie Ihr Handy als Testpunkt: Es liest Beschleunigungssensor, Gyroskop, Mikrofon und Standort, erkennt Stürze, erdbebenartige Vibrationen, laute Geräusche und das Wort „S.O.S.“ und eskaliert den Alarm über die Stufen N0–N3 wie der physische Bildschirm.",
+"Sensoren live",
+"Bewegung, Ausrichtung, Schallpegel, Akku, Netz und technische Daten des Geräts.",
+"Ereignisse mit Statistik",
+"Jedes Ereignis wird millisekundengenau mit erreichter Stufe und Reaktionszeit gespeichert; markiert als gültig oder Fehlalarm ergibt sich die Fehlerquote.",
+"Ihre Daten, in Ihrem Konto",
+"Alles wird auf dem Handy gespeichert. Sie können es als CSV oder JSON exportieren oder an Ihr privates GitHub-Repository senden.",
+"Terminal öffnen",
+"iPhone: Safari → Teilen → „Zum Home-Bildschirm“. Android: Chrome → „App installieren“.",
+"Testwerkzeug: kein Medizinprodukt und kein Ersatz für den Notruf 911.",
+"Mit dem Handy scannen, um das Terminal zu öffnen."
 ]

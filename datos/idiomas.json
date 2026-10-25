@@ -109,7 +109,8 @@
   "fn_23",
   "fn_24",
   "fn_25",
-  "tab_senales"
+  "tab_senales",
+  "tab_terminal"
  ],
  "idiomas": {
   "es": {
@@ -225,7 +226,8 @@
     "Avisos en el idioma elegido, con código Morse universal y lengua de señas en desarrollo.",
     "Módulo de pruebas",
     "Simulacros de sonido, caída y sismo para el administrador y el cliente, registrados en bitácora.",
-    "Señales"
+    "Señales",
+    "Terminal"
    ]
   },
   "en": {
@@ -341,7 +343,8 @@
     "Alerts in the chosen language, with universal Morse code; sign language in development.",
     "Test module",
     "Sound, fall and earthquake drills for the administrator and the client, logged.",
-    "Signals"
+    "Signals",
+    "Terminal"
    ]
   },
   "pt": {
@@ -457,7 +460,8 @@
     "Avisos no idioma escolhido, com código Morse universal; língua de sinais em desenvolvimento.",
     "Módulo de testes",
     "Simulações de som, queda e terremoto para o administrador e o cliente, registradas em log.",
-    "Sinais"
+    "Sinais",
+    "Terminal"
    ]
   },
   "fr": {
@@ -573,7 +577,8 @@
     "Alertes dans la langue choisie, avec le code Morse universel ; langue des signes en développement.",
     "Module de tests",
     "Exercices de son, de chute et de séisme pour l’administrateur et le client, enregistrés.",
-    "Signaux"
+    "Signaux",
+    "Terminal"
    ]
   },
   "it": {
@@ -689,7 +694,8 @@
     "Avvisi nella lingua scelta, con codice Morse universale; lingua dei segni in sviluppo.",
     "Modulo di prova",
     "Esercitazioni di suono, caduta e terremoto per l’amministratore e il cliente, registrate.",
-    "Segnali"
+    "Segnali",
+    "Terminale"
    ]
   },
   "de": {
@@ -805,7 +811,8 @@
     "Hinweise in der gewählten Sprache mit universellem Morsecode; Gebärdensprache in Entwicklung.",
     "Testmodul",
     "Ton-, Sturz- und Erdbebenübungen für Administrator und Kunde, protokolliert.",
-    "Signale"
+    "Signale",
+    "Terminal"
    ]
   },
   "nl": {
@@ -921,7 +928,8 @@
     "",
     "",
     "",
-    "Signalen"
+    "Signalen",
+    "Terminal"
    ]
   },
   "ca": {
@@ -1037,7 +1045,8 @@
     "",
     "",
     "",
-    "Senyals"
+    "Senyals",
+    "Terminal"
    ]
   },
   "gl": {
@@ -1153,7 +1162,8 @@
     "",
     "",
     "",
-    "Sinais"
+    "Sinais",
+    "Terminal"
    ]
   },
   "eu": {
@@ -1269,7 +1279,8 @@
     "",
     "",
     "",
-    "Seinaleak"
+    "Seinaleak",
+    "Terminala"
    ]
   },
   "da": {
@@ -1385,7 +1396,8 @@
     "",
     "",
     "",
-    "Signaler"
+    "Signaler",
+    "Terminal"
    ]
   },
   "sv": {
@@ -1501,7 +1513,8 @@
     "",
     "",
     "",
-    "Signaler"
+    "Signaler",
+    "Terminal"
    ]
   },
   "nb": {
@@ -1617,7 +1630,8 @@
     "",
     "",
     "",
-    "Signaler"
+    "Signaler",
+    "Terminal"
    ]
   },
   "ga": {
@@ -1733,7 +1747,8 @@
     "",
     "",
     "",
-    "Comharthaí"
+    "Comharthaí",
+    "Teirminéal"
    ]
   },
   "el": {
@@ -1849,7 +1864,8 @@
     "",
     "",
     "",
-    "Σήματα"
+    "Σήματα",
+    "Τερματικό"
    ]
   },
   "ru": {
@@ -1965,7 +1981,8 @@
     "Оповещения на выбранном языке с универсальным кодом Морзе; жестовый язык в разработке.",
     "Тестовый модуль",
     "Учения по звуку, падению и землетрясению для администратора и клиента с записью в журнал.",
-    "Сигналы"
+    "Сигналы",
+    "Терминал"
    ]
   },
   "uk": {
@@ -2081,7 +2098,8 @@
     "",
     "",
     "",
-    "Сигнали"
+    "Сигнали",
+    "Термінал"
    ]
   },
   "ar": {
@@ -2197,7 +2215,8 @@
     "تنبيهات باللغة المختارة مع شيفرة مورس العالمية؛ لغة الإشارة قيد التطوير.",
     "وحدة الاختبار",
     "تمارين للصوت والسقوط والزلزال للمسؤول والعميل، مع تسجيلها.",
-    "الإشارات"
+    "الإشارات",
+    "المحطة"
    ]
   },
   "he": {
@@ -2313,7 +2332,8 @@
     "",
     "",
     "",
-    "אותות"
+    "אותות",
+    "מסוף"
    ]
   },
   "hi": {
@@ -2429,7 +2449,8 @@
     "",
     "",
     "",
-    "संकेत"
+    "संकेत",
+    "टर्मिनल"
    ]
   },
   "zh": {
@@ -2545,7 +2566,8 @@
     "以所选语言提示，配合通用摩尔斯码；手语开发中。",
     "测试模块",
     "为管理员和客户提供声音、跌倒和地震演练，并记录日志。",
-    "信号"
+    "信号",
+    "终端"
    ]
   },
   "ja": {
@@ -2661,7 +2683,8 @@
     "選択した言語で通知し、共通のモールス信号を併用。手話は開発中。",
     "テストモジュール",
     "管理者と顧客向けの音・転倒・地震の訓練を記録付きで実施。",
-    "信号"
+    "信号",
+    "端末"
    ]
   }
  },

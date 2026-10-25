@@ -527,5 +527,18 @@
 "Sponsorér på GitHub",
 "Støt",
 "Cubo Morse© registreret hos Safe Creative (2610257441754).",
-"SOSistem™-platformen (version 1.0.0 til 3.8) registreret hos Safe Creative (2610257442171)."
+"SOSistem™-platformen (version 1.0.0 til 3.8) registreret hos Safe Creative (2610257442171).",
+"Testterminal",
+"Din telefon som systemets terminal.",
+"Installér appen SOSistem™ Terminal og brug din telefon som testpunkt: den læser accelerometer, gyroskop, mikrofon og placering, registrerer fald, jordskælvslignende vibrationer, høj støj og ordet »S.O.S.«, og eskalerer alarmen gennem niveauerne N0–N3 som den fysiske skærm.",
+"Sensorer live",
+"Bevægelse, retning, lydniveau, batteri, netværk og enhedens tekniske data.",
+"Hændelser med statistik",
+"Hver hændelse registreres på millisekundet med det nåede niveau og svartiden; markeres den som gyldig eller falsk alarm, beregnes fejlprocenten.",
+"Dine data, på din konto",
+"Alt gemmes på telefonen. Du kan eksportere det som CSV eller JSON eller sende det til dit private GitHub-repository.",
+"Åbn terminalen",
+"iPhone: Safari → Del → »Føj til hjemmeskærm«. Android: Chrome → »Installer app«.",
+"Testværktøj: ikke et medicinsk udstyr og erstatter ikke 911.",
+"Scan med din telefon for at åbne terminalen."
 ]

@@ -1,8 +1,13 @@
 {
-  "version": "3.8.1",
+  "version": "3.9",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "3.9",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «Terminal» y app instalable SOSistem™ Terminal de pruebas (terminal.html): el celular funciona como terminal del sistema con acelerómetro, giroscopio, orientación, micrófono (solo nivel de sonido), ubicación, batería y red; detecta caída, vibración tipo sismo, ruido fuerte, palabra «S.O.S.», sin movimiento prolongado y botón manual; escala N0–N3 con los tiempos del panel; registra cada evento al milisegundo con nivel, tiempo de respuesta y calificación (válido / falsa alarma) para calcular el % de error; exporta CSV/JSON y envía a un repositorio privado de GitHub. Funciona sin internet. Se restituye la portada 3.8, que había sido reemplazada por una carga manual."
+    },
     {
       "v": "3.8.1",
       "fecha": "2026-10-25",
