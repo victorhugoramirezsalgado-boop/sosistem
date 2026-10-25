@@ -1,8 +1,13 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.2",
+      "fecha": "2026-10-24",
+      "resumen": "Simulador: aviso «persona en el suelo» con recinto y cabina en el idioma elegido, plano con rutas de auxilio, traslado y evacuación con metros y tiempos, pantalla de salidas de emergencia en sismo y cuenta regresiva de la llamada al 911 configurable por el cliente (web: caída 10 s, sismo 5 s)."
+    },
     {
       "v": "2.1",
       "fecha": "2026-10-24",

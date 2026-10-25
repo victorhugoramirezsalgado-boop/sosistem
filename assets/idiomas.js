@@ -38,6 +38,7 @@
     document.querySelectorAll(".btn-morse .bm-txt").forEach((s) => { s.textContent = texto("morse_play"); });
     const sel = document.getElementById("idioma"); if (sel) { sel.value = lang; sel.setAttribute("aria-label", texto("idioma")); }
     guardar("sos_idioma", lang);
+    document.dispatchEvent(new CustomEvent("sos-idioma", { detail: lang }));
   }
 
   function selector() {

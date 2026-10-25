@@ -98,7 +98,7 @@
   }
   async function cargarConfig() {
     try { S.config = await (await fetch("datos/config.json?_=" + Date.now(), { cache: "no-store" })).json(); }
-    catch { S.config = { tiempos: { N0: 20, N1: 50, N2: 110, N3: 200 }, goatcounter: "sosistem" }; }
+    catch { S.config = { tiempos: { N0: 2, N1: 4, N2: 7, N3: 10 }, goatcounter: "sosistem" }; }
   }
   function salir() {
     S.datos = S.k1 = S.k2 = S.salt2 = null;
@@ -121,12 +121,12 @@
   // ---------- Sirena y Morse por estado (configuración + pruebas del administrador) ----------
   const ESTADOS_ALERTA = [["advertencia", "Advertencia"], ["caida", "Emergencia · persona caída"], ["sismo", "Desastre natural · sismo"], ["prueba", "Prueba general"]];
   const ALERTA_BASE = {
-    advertencia: { sirena: false, sirena_db: 85, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, cada_s: 60, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 85 },
-    caida: { sirena: true, sirena_db: 105, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, cada_s: 30, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 95 },
-    sismo: { sirena: true, sirena_db: 105, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, cada_s: 20, imagen: true, hasta_atender: false, tope_min: 10, db_tras_tope: 95 },
-    prueba: { sirena: true, sirena_db: 85, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, cada_s: 0, imagen: true, hasta_atender: false, tope_min: 1, db_tras_tope: 85 },
+    advertencia: { sirena: false, sirena_db: 85, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, cada_s: 60, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 85, llamada_911_s: 0 },
+    caida: { sirena: true, sirena_db: 105, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, cada_s: 30, imagen: true, hasta_atender: true, tope_min: 10, db_tras_tope: 95, llamada_911_s: 10 },
+    sismo: { sirena: true, sirena_db: 105, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, cada_s: 20, imagen: true, hasta_atender: false, tope_min: 10, db_tras_tope: 95, llamada_911_s: 5 },
+    prueba: { sirena: true, sirena_db: 85, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, cada_s: 0, imagen: true, hasta_atender: false, tope_min: 1, db_tras_tope: 85, llamada_911_s: 0 },
   };
-  const LIMITES = { sirena_db: [70, 105], rafaga_s: [0, 300], volumen: [0, 100], cada_s: [0, 600], tope_min: [1, 15], db_tras_tope: [70, 105] };
+  const LIMITES = { sirena_db: [70, 105], rafaga_s: [0, 300], volumen: [0, 100], cada_s: [0, 600], tope_min: [1, 15], db_tras_tope: [70, 105], llamada_911_s: [0, 300] };
   const RENDER_PRUEBAS = (el) => {
     S.config.alertas = S.config.alertas || {};
     ESTADOS_ALERTA.forEach(([id]) => { S.config.alertas[id] = { ...ALERTA_BASE[id], ...(S.config.alertas[id] || {}) }; });
@@ -135,7 +135,7 @@
     const chk = (id, k, txt) => `<label class="al-chk"><input type="checkbox" data-al="${id}" data-k="${k}" ${A[id][k] ? "checked" : ""}> ${txt}</label>`;
     el.innerHTML = `
       <div class="card"><h3>Sirena y Morse de la pantalla</h3>
-        <p>Defina por estado qué emite la pantalla física: la sirena de hasta <b>105 dB</b>, el código Morse, su volumen, cada cuánto se repite y si el código se ve en pantalla. Se guarda en la configuración del sistema al pulsar «Guardar y publicar».</p>
+        <p>Defina por estado qué emite la pantalla física: la sirena de hasta <b>105 dB</b>, el código Morse, su volumen, cada cuánto se repite y si el código se ve en pantalla, y a los cuántos segundos la pantalla llama al 911. Se guarda en la configuración del sistema al pulsar «Guardar y publicar».</p>
         <p class="note">Límite de seguridad (NOM-011-STPS-2001): a 105 dB(A) la exposición máxima es de 15 minutos. Por eso, pasado el «tope a nivel máximo», la sirena baja al nivel indicado.</p>
       </div>
       ${ESTADOS_ALERTA.map(([id, nombre]) => `
@@ -156,6 +156,9 @@
           ${chk(id, "imagen", "Mostrar el código en pantalla")}
           ${chk(id, "hasta_atender", "Repetir hasta que alguien atienda")}
         </div>
+        <div class="filters">
+          ${num(id, "llamada_911_s", "Llamar al 911 a los (s; 0 = no llamar)")}
+        </div>
         <p class="note mono" data-resumen="${id}"></p>
         <p><button class="btn primary" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> Probar ${esc(nombre.toLowerCase())}</button></p>
       </div>`).join("")}
@@ -171,6 +174,7 @@
       partes.push(c.cada_s ? `cada ${c.cada_s} s` : "una vez");
       if (c.hasta_atender) partes.push("hasta que alguien atienda");
       if (c.sirena && c.sirena_db > c.db_tras_tope) partes.push(`a los ${c.tope_min} min baja a ${c.db_tras_tope} dB`);
+      partes.push(c.llamada_911_s ? `llamada al 911 a los ${c.llamada_911_s} s` : "sin llamada al 911");
       partes.push(c.imagen ? "código visible en pantalla" : "sin código en pantalla");
       const r = el.querySelector(`[data-resumen="${id}"]`); if (r) r.textContent = partes.join(" · ") + (c.morse ? "  ·  " + SOSMorse.visible(SOSMorse.aMorse(c.texto)) : "");
     };

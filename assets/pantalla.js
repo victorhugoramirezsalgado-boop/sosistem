@@ -6,7 +6,7 @@
   const ESTADOS = {
     normal: { gral: ["Normal", "ok"], f2: ["Libre", "ok", ""], a1: "Sin incidentes", a2: "Todas las cabinas en condición segura." },
     advertencia: { gral: ["Advertencia", "warn"], f2: ["Atención", "warn", "Permanencia prolongada en cabina F‑2 (> 10 min)"], a1: "Advertencia · cabina F‑2", a2: "Permanencia mayor a 10 min. Aviso por voz en cabina (N0)." },
-    caida: { gral: ["Alerta crítica", "bad"], f2: ["Caída", "bad", "Persona en el piso en cabina F‑2"], a1: "¡Persona caída detectada! · Cabina F‑2", a2: "" },
+    caida: { gral: ["Alerta crítica", "bad"], f2: ["Caída", "bad", "Persona en el piso en cabina F‑2"], a1: "¡Persona en el suelo! · Cabina F‑2", a2: "" },
     sismo: { gral: ["Alerta sísmica", "bad"], f2: ["Evacuar", "bad", "Puerta liberada · salga con calma"], a1: "¡Alerta sísmica! · Evacúe el área", a2: "Siga la luz blanca de evacuación. Puertas de cabinas liberadas." },
   };
   // Sonidos de la pantalla física: SOS en emergencia, SOS + SISMO en desastre natural
@@ -16,7 +16,7 @@
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
     ALERTAS = c.alertas || {};
     Object.keys(SONIDO).forEach((k) => { if (ALERTAS[k]?.texto) SONIDO[k] = ALERTAS[k].texto; });
-    mostrarCodigo();
+    mostrarCodigo(); mapa(); llamada();
   }).catch(() => {});
   function mostrarCodigo() {
     const pm = document.getElementById("pt-morse"); if (!pm || !window.SOSMorse) return;
@@ -28,8 +28,57 @@
     pm.innerHTML = "<b>" + txt + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(txt)) + "<br><span style='letter-spacing:0'>" + info.replace(/^ · /, "") + "</span>";
   }
   let estado = "caida", t0 = Date.now();
+  let TIEMPOS = { N0: 2, N1: 4, N2: 7, N3: 10 };
+  fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => { if (c.tiempos) TIEMPOS = c.tiempos; }).catch(() => {});
   const mmss = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
-  const nivel = (s) => (s >= 200 ? "N3 · C5/911 notificado" : s >= 110 ? "N2 · central de monitoreo" : s >= 50 ? "N1 · encargado notificado" : s >= 20 ? "N0 · aviso por voz en cabina" : "confirmando caída (Z < 15 cm)");
+  // Segundos para llamar al 911: los decide el cliente en su panel (web: caída 10 s, sismo 5 s)
+  const BASE_911 = { caida: 10, sismo: 5 };
+  const seg911 = () => Number(ALERTAS[estado]?.llamada_911_s ?? BASE_911[estado] ?? 0);
+  const nivel = (s) => {
+    const t911 = seg911() || TIEMPOS.N3;
+    return s >= t911 ? "N3 · C5/911 notificado" : s >= TIEMPOS.N2 ? "N2 · central de monitoreo" : s >= TIEMPOS.N1 ? "N1 · encargado notificado" : s >= TIEMPOS.N0 ? "N0 · aviso por voz en cabina" : "confirmando caída (Z < 15 cm)";
+  };
+  // Textos de la pantalla en el idioma elegido (datos/idiomas.json)
+  const ES = { noti_caida: "Persona en el suelo", noti_lugar: "Sanitarios de mujeres · cabina F‑2", ruta_auxilio: "Ruta de auxilio", ruta_traslado: "Ruta de traslado", ruta_evac: "Ruta de evacuación",
+    noti_sismo: "Sismo: evacúe por la salida de emergencia más cercana", salida: "Salida de emergencia", llamada_en: "Llamada al 911 en", llamando: "Llamando al 911 · simulación: no se realiza ninguna llamada", reunion: "Punto de reunión", encargado: "Encargado" };
+  const tr = (k) => (window.SOSIdioma && SOSIdioma.texto(k)) || ES[k];
+  // Plano: 380 unidades ≈ 12.2 m (contenedor de 40 pies). Velocidades estimadas:
+  // auxilio a paso rápido 1.5 m/s, traslado con camilla 0.8 m/s, evacuación 1.2 m/s.
+  const M_POR_U = 12.2 / 380, VEL = { aux: 1.5, tra: 0.8, ev: 1.2 };
+  const largo = (id) => { const p = $(id).getAttribute("points").trim().split(/\s+/).map((x) => x.split(",").map(Number));
+    let L = 0; for (let i = 1; i < p.length; i++) L += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); return L * M_POR_U; };
+  const ruta = (id, v) => { const m = largo(id); return { m: Math.round(m), s: Math.ceil(m / v) }; };
+  function mapa() {
+    const M = $("pt-mapa"); if (!M) return;
+    const ver = estado === "caida" || estado === "sismo";
+    M.hidden = !ver; $("pt-noti").hidden = !ver; P.classList.toggle("ver-salidas", estado === "sismo");
+    if (!ver) return;
+    M.dataset.modo = estado;
+    // La pantalla física conserva su distribución; solo los textos siguen la dirección del idioma (árabe, hebreo)
+    const dir = document.documentElement.dir === "rtl" ? "rtl" : "ltr";
+    ["pt-noti", "pt-911", "pt-mapa-ley"].forEach((id) => $(id).setAttribute("dir", dir));
+    $("pm-enc").textContent = tr("encargado"); $("pm-reu").textContent = tr("reunion");
+    $("pm-salA").textContent = tr("salida") + " A"; $("pm-salB").textContent = tr("salida") + " B";
+    const L = (cls, txt, r) => `<span class="pm-l ${cls}"><i></i>${txt} · ${r.m} m · ≈ ${r.s} s</span>`;
+    if (estado === "caida") {
+      $("pt-n1").textContent = tr("noti_caida"); $("pt-n2").textContent = tr("noti_lugar") + " · ContenedorEns";
+      $("pt-mapa-ley").innerHTML = L("aux", tr("ruta_auxilio") + " (" + tr("encargado") + " → F‑2)", ruta("pm-aux", VEL.aux)) + L("tra", tr("ruta_traslado") + " (F‑2 → " + tr("salida") + " B)", ruta("pm-tra", VEL.tra));
+    } else {
+      $("pt-n1").textContent = tr("noti_sismo"); $("pt-n2").textContent = tr("reunion") + " · ContenedorEns";
+      const a = ruta("pm-ev1", VEL.ev), b = ruta("pm-ev2", VEL.ev);
+      $("pt-mapa-ley").innerHTML = L("evm", tr("ruta_evac") + " M → " + tr("salida") + " A", a) + L("evf", tr("ruta_evac") + " F → " + tr("salida") + " B", b);
+    }
+  }
+  function llamada() {
+    const B = $("pt-911"); if (!B) return;
+    const n = seg911(), ver = (estado === "caida" || estado === "sismo") && n > 0;
+    B.hidden = !ver; if (!ver) return;
+    const s = (Date.now() - t0) / 1000, falta = Math.max(0, Math.ceil(n - s));
+    B.classList.toggle("hecha", falta === 0);
+    $("pt-911t").textContent = falta ? tr("llamada_en") : tr("llamando");
+    $("pt-911n").textContent = falta ? falta + " s" : "";
+    $("pt-911b").style.width = Math.min(100, (s / n) * 100) + "%";
+  }
 
   function pinta() {
     const e = ESTADOS[estado];
@@ -45,14 +94,16 @@
       s.className = "st " + (estado === "sismo" ? "bad" : "ok");
     });
     document.querySelectorAll("[data-estado]").forEach((b) => b.tagName === "BUTTON" && b.classList.toggle("primary", b.dataset.estado === estado));
+    mapa();
     tick();
   }
   function tick() {
     $("pt-hora").textContent = new Date().toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" });
     if (estado === "caida") {
-      const s = Math.floor((Date.now() - t0) / 1000) + 30;
+      const s = Math.floor((Date.now() - t0) / 1000);
       $("pt-a2").textContent = `Tiempo inmóvil ${mmss(s)} · ${nivel(s)}`;
     } else $("pt-a2").textContent = ESTADOS[estado].a2;
+    llamada();
   }
   document.querySelectorAll("button[data-estado]").forEach((b) => b.addEventListener("click", () => {
     estado = b.dataset.estado; t0 = Date.now(); pinta();
@@ -66,7 +117,8 @@
     else SOSMorse.detener();
   }));
   document.getElementById("sim-sonido")?.addEventListener("change", (e) => { if (!e.target.checked) window.SOSMorse?.detener(); });
+  document.addEventListener("sos-idioma", () => { mapa(); llamada(); });
   pinta();
   mostrarCodigo();
-  setInterval(tick, 1000);
+  setInterval(tick, 250);
 })();

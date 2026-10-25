@@ -1,14 +1,14 @@
 {
   "tiempos": {
-    "N0": 20,
-    "N1": 50,
-    "N2": 110,
-    "N3": 200
+    "N0": 2,
+    "N1": 4,
+    "N2": 7,
+    "N3": 10
   },
   "goatcounter": "sosistem",
   "actualizado": "2026-10-24T17:40:00-07:00",
   "alertas": {
-    "nota": "Parámetros de la pantalla física S.O.S. por estado. sirena_db: nivel a 1 m (máx. 105 dB SPL). rafaga_s: duración de cada ráfaga de sirena. cada_s: cada cuántos segundos se repite el ciclo sirena + Morse (0 = una vez). tope_min: minutos a nivel máximo antes de bajar a db_tras_tope (NOM-011-STPS-2001: 105 dB(A) máx. 15 min de exposición).",
+    "nota": "Parámetros de la pantalla física S.O.S. por estado. sirena_db: nivel a 1 m (máx. 105 dB SPL). rafaga_s: duración de cada ráfaga de sirena. cada_s: cada cuántos segundos se repite el ciclo sirena + Morse (0 = una vez). tope_min: minutos a nivel máximo antes de bajar a db_tras_tope (NOM-011-STPS-2001: 105 dB(A) máx. 15 min de exposición). llamada_911_s: segundos tras confirmar el evento para llamar al 911 (0 = no llamar); lo decide el cliente.",
     "advertencia": {
       "sirena": false,
       "sirena_db": 85,
@@ -20,7 +20,8 @@
       "imagen": true,
       "hasta_atender": true,
       "tope_min": 10,
-      "db_tras_tope": 85
+      "db_tras_tope": 85,
+      "llamada_911_s": 0
     },
     "caida": {
       "sirena": true,
@@ -33,7 +34,8 @@
       "imagen": true,
       "hasta_atender": true,
       "tope_min": 10,
-      "db_tras_tope": 95
+      "db_tras_tope": 95,
+      "llamada_911_s": 10
     },
     "sismo": {
       "sirena": true,
@@ -46,7 +48,8 @@
       "imagen": true,
       "hasta_atender": false,
       "tope_min": 10,
-      "db_tras_tope": 95
+      "db_tras_tope": 95,
+      "llamada_911_s": 5
     },
     "prueba": {
       "sirena": true,
@@ -59,7 +62,8 @@
       "imagen": true,
       "hasta_atender": false,
       "tope_min": 1,
-      "db_tras_tope": 85
+      "db_tras_tope": 85,
+      "llamada_911_s": 0
     }
   }
 }

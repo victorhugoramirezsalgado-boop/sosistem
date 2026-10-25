@@ -34,7 +34,18 @@
   "aviso_trad",
   "morse_play",
   "morse_stop",
-  "idioma"
+  "idioma",
+  "noti_caida",
+  "noti_lugar",
+  "ruta_auxilio",
+  "noti_sismo",
+  "salida",
+  "llamada_en",
+  "llamando",
+  "reunion",
+  "encargado",
+  "ruta_traslado",
+  "ruta_evac"
  ],
  "idiomas": {
   "es": {
@@ -75,7 +86,18 @@
     "",
     "Escuchar en Morse",
     "Detener",
-    "Idioma"
+    "Idioma",
+    "Persona en el suelo",
+    "Sanitarios de mujeres · cabina F‑2",
+    "Ruta de auxilio",
+    "Sismo: evacúe por la salida de emergencia más cercana",
+    "Salida de emergencia",
+    "Llamada al 911 en",
+    "Llamando al 911 · simulación: no se realiza ninguna llamada",
+    "Punto de reunión",
+    "Encargado",
+    "Ruta de traslado",
+    "Ruta de evacuación"
    ]
   },
   "en": {
@@ -116,7 +138,18 @@
     "Automatic translation under review. The official version of this site is in Spanish.",
     "Listen in Morse",
     "Stop",
-    "Language"
+    "Language",
+    "Person on the floor",
+    "Women’s restroom · stall F‑2",
+    "Assistance route",
+    "Earthquake: evacuate through the nearest emergency exit",
+    "Emergency exit",
+    "Calling 911 in",
+    "Calling 911 · simulation: no call is placed",
+    "Assembly point",
+    "Attendant",
+    "Transfer route",
+    "Evacuation route"
    ]
   },
   "pt": {
@@ -157,7 +190,18 @@
     "Tradução automática em revisão. A versão oficial deste site é em espanhol.",
     "Ouvir em Morse",
     "Parar",
-    "Idioma"
+    "Idioma",
+    "Pessoa no chão",
+    "Banheiro feminino · cabine F‑2",
+    "Rota de socorro",
+    "Terremoto: evacue pela saída de emergência mais próxima",
+    "Saída de emergência",
+    "Chamada ao 911 em",
+    "Chamando o 911 · simulação: nenhuma chamada é feita",
+    "Ponto de encontro",
+    "Responsável",
+    "Rota de transferência",
+    "Rota de evacuação"
    ]
   },
   "fr": {
@@ -198,7 +242,18 @@
     "Traduction automatique en cours de révision. La version officielle de ce site est en espagnol.",
     "Écouter en Morse",
     "Arrêter",
-    "Langue"
+    "Langue",
+    "Personne au sol",
+    "Toilettes femmes · cabine F‑2",
+    "Itinéraire de secours",
+    "Séisme : évacuez par la sortie de secours la plus proche",
+    "Sortie de secours",
+    "Appel au 911 dans",
+    "Appel au 911 · simulation : aucun appel n’est passé",
+    "Point de rassemblement",
+    "Responsable",
+    "Itinéraire de transfert",
+    "Itinéraire d’évacuation"
    ]
   },
   "it": {
@@ -239,7 +294,18 @@
     "Traduzione automatica in revisione. La versione ufficiale di questo sito è in spagnolo.",
     "Ascolta in Morse",
     "Ferma",
-    "Lingua"
+    "Lingua",
+    "Persona a terra",
+    "Bagno donne · cabina F‑2",
+    "Percorso di soccorso",
+    "Terremoto: evacuare dall’uscita di emergenza più vicina",
+    "Uscita di emergenza",
+    "Chiamata al 911 tra",
+    "Chiamata al 911 · simulazione: nessuna chiamata effettuata",
+    "Punto di raccolta",
+    "Responsabile",
+    "Percorso di trasferimento",
+    "Percorso di evacuazione"
    ]
   },
   "de": {
@@ -280,7 +346,18 @@
     "Automatische Übersetzung in Prüfung. Die offizielle Version dieser Website ist Spanisch.",
     "In Morse anhören",
     "Stopp",
-    "Sprache"
+    "Sprache",
+    "Person am Boden",
+    "Damentoilette · Kabine F‑2",
+    "Hilfsweg",
+    "Erdbeben: über den nächsten Notausgang evakuieren",
+    "Notausgang",
+    "Notruf 911 in",
+    "Notruf 911 · Simulation: es wird kein Anruf getätigt",
+    "Sammelplatz",
+    "Verantwortliche Person",
+    "Transportweg",
+    "Fluchtweg"
    ]
   },
   "nl": {
@@ -321,7 +398,18 @@
     "Automatische vertaling in controle. De officiële versie van deze site is Spaans.",
     "Beluister in morse",
     "Stop",
-    "Taal"
+    "Taal",
+    "Persoon op de grond",
+    "Damestoilet · cabine F‑2",
+    "Hulproute",
+    "Aardbeving: evacueer via de dichtstbijzijnde nooduitgang",
+    "Nooduitgang",
+    "Oproep naar 911 over",
+    "911 wordt gebeld · simulatie: er wordt niet echt gebeld",
+    "Verzamelplaats",
+    "Verantwoordelijke",
+    "Transportroute",
+    "Evacuatieroute"
    ]
   },
   "ca": {
@@ -362,7 +450,18 @@
     "Traducció automàtica en revisió. La versió oficial d’aquest lloc és en castellà.",
     "Escoltar en Morse",
     "Aturar",
-    "Llengua"
+    "Llengua",
+    "Persona a terra",
+    "Lavabos de dones · cabina F‑2",
+    "Ruta d’auxili",
+    "Terratrèmol: evacueu per la sortida d’emergència més propera",
+    "Sortida d’emergència",
+    "Trucada al 911 en",
+    "Trucant al 911 · simulació: no es fa cap trucada",
+    "Punt de trobada",
+    "Encarregat",
+    "Ruta de trasllat",
+    "Ruta d’evacuació"
    ]
   },
   "gl": {
@@ -403,7 +502,18 @@
     "Tradución automática en revisión. A versión oficial deste sitio é en castelán.",
     "Escoitar en Morse",
     "Deter",
-    "Lingua"
+    "Lingua",
+    "Persoa no chan",
+    "Aseos de mulleres · cabina F‑2",
+    "Ruta de auxilio",
+    "Terremoto: evacúe pola saída de emerxencia máis próxima",
+    "Saída de emerxencia",
+    "Chamada ao 911 en",
+    "Chamando ao 911 · simulación: non se realiza ningunha chamada",
+    "Punto de reunión",
+    "Encargado",
+    "Ruta de traslado",
+    "Ruta de evacuación"
    ]
   },
   "eu": {
@@ -444,7 +554,18 @@
     "Itzulpen automatikoa berrikusten. Gune honen bertsio ofiziala gaztelaniaz dago.",
     "Morsez entzun",
     "Gelditu",
-    "Hizkuntza"
+    "Hizkuntza",
+    "Pertsona lurrean",
+    "Emakumeen komunak · F‑2 kabina",
+    "Laguntza-bidea",
+    "Lurrikara: ebakuatu larrialdi-irteera hurbilenetik",
+    "Larrialdi-irteera",
+    "911ra deia:",
+    "911ra deitzen · simulazioa: ez da deirik egiten",
+    "Bilgunea",
+    "Arduraduna",
+    "Lekualdatze-bidea",
+    "Ebakuazio-bidea"
    ]
   },
   "da": {
@@ -485,7 +606,18 @@
     "Automatisk oversættelse under gennemgang. Den officielle version af siden er på spansk.",
     "Lyt i morse",
     "Stop",
-    "Sprog"
+    "Sprog",
+    "Person på gulvet",
+    "Dametoilet · kabine F‑2",
+    "Hjælperute",
+    "Jordskælv: evakuer ad nærmeste nødudgang",
+    "Nødudgang",
+    "Opkald til 911 om",
+    "Ringer til 911 · simulering: der foretages intet opkald",
+    "Samlingssted",
+    "Ansvarlig",
+    "Transportrute",
+    "Evakueringsrute"
    ]
   },
   "sv": {
@@ -526,7 +658,18 @@
     "Automatisk översättning under granskning. Den officiella versionen av webbplatsen är på spanska.",
     "Lyssna i morse",
     "Stoppa",
-    "Språk"
+    "Språk",
+    "Person på golvet",
+    "Damtoalett · bås F‑2",
+    "Hjälpväg",
+    "Jordbävning: utrym via närmaste nödutgång",
+    "Nödutgång",
+    "Samtal till 911 om",
+    "Ringer 911 · simulering: inget samtal görs",
+    "Återsamlingsplats",
+    "Ansvarig",
+    "Transportväg",
+    "Utrymningsväg"
    ]
   },
   "nb": {
@@ -567,7 +710,18 @@
     "Automatisk oversettelse under gjennomgang. Den offisielle versjonen av nettstedet er på spansk.",
     "Lytt i morse",
     "Stopp",
-    "Språk"
+    "Språk",
+    "Person på gulvet",
+    "Dametoalett · bås F‑2",
+    "Hjelperute",
+    "Jordskjelv: evakuer via nærmeste nødutgang",
+    "Nødutgang",
+    "Anrop til 911 om",
+    "Ringer 911 · simulering: det ringes ikke",
+    "Møteplass",
+    "Ansvarlig",
+    "Transportrute",
+    "Rømningsvei"
    ]
   },
   "ga": {
@@ -608,7 +762,18 @@
     "Aistriúchán uathoibríoch á athbhreithniú. Is i Spáinnis atá leagan oifigiúil an tsuímh seo.",
     "Éist i Morse",
     "Stad",
-    "Teanga"
+    "Teanga",
+    "Duine ar an urlár",
+    "Leithris na mban · cábán F‑2",
+    "Bealach cúnaimh",
+    "Crith talún: aslonnaigh tríd an éalú éigeandála is gaire",
+    "Éalú éigeandála",
+    "Glao ar 911 i gceann",
+    "Ag glaoch ar 911 · ionsamhlú: ní dhéantar aon ghlao",
+    "Pointe tionóil",
+    "Duine freagrach",
+    "Bealach aistrithe",
+    "Bealach aslonnaithe"
    ]
   },
   "el": {
@@ -649,7 +814,18 @@
     "Αυτόματη μετάφραση υπό αναθεώρηση. Η επίσημη έκδοση του ιστότοπου είναι στα ισπανικά.",
     "Ακούστε σε Μορς",
     "Διακοπή",
-    "Γλώσσα"
+    "Γλώσσα",
+    "Άτομο στο πάτωμα",
+    "Τουαλέτες γυναικών · καμπίνα F‑2",
+    "Διαδρομή βοήθειας",
+    "Σεισμός: εκκενώστε από την πλησιέστερη έξοδο κινδύνου",
+    "Έξοδος κινδύνου",
+    "Κλήση στο 911 σε",
+    "Κλήση στο 911 · προσομοίωση: δεν πραγματοποιείται κλήση",
+    "Σημείο συγκέντρωσης",
+    "Υπεύθυνος",
+    "Διαδρομή μεταφοράς",
+    "Διαδρομή εκκένωσης"
    ]
   },
   "ru": {
@@ -690,7 +866,18 @@
     "Автоматический перевод на проверке. Официальная версия сайта — на испанском языке.",
     "Слушать азбукой Морзе",
     "Стоп",
-    "Язык"
+    "Язык",
+    "Человек на полу",
+    "Женский туалет · кабинка F‑2",
+    "Маршрут помощи",
+    "Землетрясение: эвакуируйтесь через ближайший аварийный выход",
+    "Аварийный выход",
+    "Звонок в 911 через",
+    "Звонок в 911 · симуляция: звонок не совершается",
+    "Место сбора",
+    "Ответственный",
+    "Маршрут транспортировки",
+    "Маршрут эвакуации"
    ]
   },
   "uk": {
@@ -731,7 +918,18 @@
     "Автоматичний переклад на перевірці. Офіційна версія сайту — іспанською мовою.",
     "Слухати абеткою Морзе",
     "Стоп",
-    "Мова"
+    "Мова",
+    "Людина на підлозі",
+    "Жіночий туалет · кабінка F‑2",
+    "Маршрут допомоги",
+    "Землетрус: евакуюйтеся через найближчий аварійний вихід",
+    "Аварійний вихід",
+    "Дзвінок до 911 через",
+    "Дзвінок до 911 · симуляція: дзвінок не здійснюється",
+    "Місце збору",
+    "Відповідальний",
+    "Маршрут транспортування",
+    "Маршрут евакуації"
    ]
   },
   "ar": {
@@ -772,7 +970,18 @@
     "ترجمة آلية قيد المراجعة. النسخة الرسمية لهذا الموقع باللغة الإسبانية.",
     "استمع بشفرة مورس",
     "إيقاف",
-    "اللغة"
+    "اللغة",
+    "شخص على الأرض",
+    "دورة مياه النساء · المقصورة ⁦F‑2⁩",
+    "مسار الإسعاف",
+    "زلزال: أخلوا المكان عبر أقرب مخرج طوارئ",
+    "مخرج الطوارئ",
+    "الاتصال بالرقم ⁦911⁩ خلال",
+    "جارٍ الاتصال بالرقم ⁦911⁩ · محاكاة: لا يتم إجراء أي اتصال",
+    "نقطة التجمع",
+    "المسؤول",
+    "مسار النقل",
+    "مسار الإخلاء"
    ]
   },
   "he": {
@@ -813,7 +1022,18 @@
     "תרגום אוטומטי בבדיקה. הגרסה הרשמית של האתר היא בספרדית.",
     "האזינו בקוד מורס",
     "עצירה",
-    "שפה"
+    "שפה",
+    "אדם על הרצפה",
+    "שירותי נשים · תא ⁦F‑2⁩",
+    "מסלול סיוע",
+    "רעידת אדמה: התפנו דרך יציאת החירום הקרובה",
+    "יציאת חירום",
+    "חיוג ל־⁦911⁩ בעוד",
+    "מחייג ל־⁦911⁩ · סימולציה: לא מתבצעת שיחה",
+    "נקודת כינוס",
+    "אחראי",
+    "מסלול פינוי רפואי",
+    "מסלול מילוט"
    ]
   },
   "hi": {
@@ -854,7 +1074,18 @@
     "स्वचालित अनुवाद समीक्षाधीन है। इस साइट का आधिकारिक संस्करण स्पेनिश में है।",
     "मोर्स में सुनें",
     "रोकें",
-    "भाषा"
+    "भाषा",
+    "फ़र्श पर व्यक्ति",
+    "महिला शौचालय · केबिन F‑2",
+    "सहायता मार्ग",
+    "भूकंप: निकटतम आपातकालीन निकास से बाहर निकलें",
+    "आपातकालीन निकास",
+    "911 पर कॉल:",
+    "911 पर कॉल हो रही है · सिमुलेशन: कोई कॉल नहीं की जाती",
+    "एकत्र होने का स्थान",
+    "प्रभारी",
+    "स्थानांतरण मार्ग",
+    "निकासी मार्ग"
    ]
   },
   "zh": {
@@ -895,7 +1126,18 @@
     "自动翻译，审核中。本网站的正式版本为西班牙语。",
     "收听摩尔斯电码",
     "停止",
-    "语言"
+    "语言",
+    "有人倒地",
+    "女卫生间 · F‑2 隔间",
+    "救助路线",
+    "地震：请从最近的紧急出口撤离",
+    "紧急出口",
+    "拨打 911 倒计时",
+    "正在拨打 911 · 模拟：不会真正拨打",
+    "集合点",
+    "负责人",
+    "转运路线",
+    "疏散路线"
    ]
   },
   "ja": {
@@ -936,7 +1178,18 @@
     "自動翻訳（確認中）。本サイトの正式版はスペイン語です。",
     "モールス符号で聞く",
     "停止",
-    "言語"
+    "言語",
+    "床に人が倒れています",
+    "女性用トイレ · F‑2 個室",
+    "救助ルート",
+    "地震：最寄りの非常口から避難してください",
+    "非常口",
+    "911 への通報まで",
+    "911 に通報中 · シミュレーション：実際の通報は行われません",
+    "集合場所",
+    "担当者",
+    "搬送ルート",
+    "避難ルート"
    ]
   }
  },
