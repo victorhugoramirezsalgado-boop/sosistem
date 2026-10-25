@@ -1,8 +1,13 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "1.9",
+      "fecha": "2026-10-24",
+      "resumen": "Cubo Morse© de 12 caras (6 exteriores y 6 interiores) con las obras registradas en Safe Creative, su número de registro y el Morse como marca de agua; vista Exterior/Interior. La pantalla también suena en Advertencia (AVISO), muestra el código que emite y hay una guía para entender el Morse."
+    },
     {
       "v": "1.8",
       "fecha": "2026-10-24",

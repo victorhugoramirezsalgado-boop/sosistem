@@ -1,31 +1,40 @@
-/* Cubo Morse© — logo en 3D · © Víctor Hugo Ramírez Salgado */
+/* Cubo Morse© de 12 caras (6 exteriores + 6 interiores) · © Víctor Hugo Ramírez Salgado
+   Las caras destellan su Morse sin sonido: el sonido solo se permite en emergencias y pruebas. */
 (() => {
   const cubo = document.getElementById("cm-cubo");
   if (!cubo) return;
-  const GIROS = {
-    sos: "rotateX(-12deg) rotateY(-12deg)", eco: "rotateX(-12deg) rotateY(-90deg)",
-    ssos: "rotateX(-12deg) rotateY(-180deg)", arsa: "rotateX(-12deg) rotateY(90deg)",
-    inter: "rotateX(-90deg) rotateY(0deg)", cont: "rotateX(90deg) rotateY(0deg)",
-  };
+  // Vista exterior: la cara mira al usuario. Vista interior: se mira la pared opuesta por dentro.
+  const EXT = { frente: "rotateX(-12deg) rotateY(-12deg)", derecha: "rotateX(-12deg) rotateY(-90deg)",
+    "atrás": "rotateX(-12deg) rotateY(-180deg)", izquierda: "rotateX(-12deg) rotateY(90deg)",
+    arriba: "rotateX(-90deg) rotateY(0deg)", abajo: "rotateX(90deg) rotateY(0deg)" };
+  const OPUESTO = { frente: "atrás", "atrás": "frente", derecha: "izquierda", izquierda: "derecha", arriba: "abajo", abajo: "arriba" };
   const botones = document.querySelectorAll(".cm-lista button");
-  function girar(id) {
-    cubo.classList.remove("auto");
-    cubo.style.transform = GIROS[id];
-    botones.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cara === id)));
+  const bExt = document.getElementById("cm-ver-ext"), bInt = document.getElementById("cm-ver-int");
+
+  function vista(interior) {
+    cubo.classList.toggle("ver-interior", interior);
+    bExt?.setAttribute("aria-pressed", String(!interior));
+    bInt?.setAttribute("aria-pressed", String(interior));
   }
   function auto() {
     cubo.style.transform = "";
     cubo.classList.add("auto");
     botones.forEach((b) => b.setAttribute("aria-pressed", "false"));
   }
-  const ORDEN = ["sos", "eco", "ssos", "arsa", "inter", "cont"];   // mismo orden que las caras en la página
-  const caras = cubo.querySelectorAll(".cm-cara");
   botones.forEach((b) => b.addEventListener("click", () => {
-    girar(b.dataset.cara);
-    // La cara destella el nombre del proyecto en Morse (sin sonido: la regla solo permite sonido en emergencias y pruebas)
-    const nombre = (b.querySelector("b")?.textContent || "").replace(/[™©.]/g, "");
-    if (window.SOSMorse) SOSMorse.reproducir(nombre, caras[ORDEN.indexOf(b.dataset.cara)], { boton: b });
+    const interior = b.dataset.capa === "int";
+    vista(interior);
+    cubo.classList.remove("auto");
+    cubo.style.transform = interior ? EXT[OPUESTO[b.dataset.lado]] : EXT[b.dataset.lado];
+    botones.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    const capa = cubo.querySelector(`.cm-capa[data-cara="${b.dataset.cara}"]`);
+    const palabra = (b.querySelector("span")?.textContent || "");
+    const texto = b.querySelector("b").textContent.replace(/^\d+\.\s*/, "").replace(/[™©.]/g, "");
+    if (window.SOSMorse && capa) SOSMorse.reproducir(texto, capa, { boton: b });
+    b.title = palabra;
   }));
+  bExt?.addEventListener("click", () => vista(false));
+  bInt?.addEventListener("click", () => vista(true));
   document.getElementById("cm-auto")?.addEventListener("click", () => { window.SOSMorse?.detener(); auto(); });
   auto();
 })();

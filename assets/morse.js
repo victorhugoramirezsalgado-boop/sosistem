@@ -1,9 +1,9 @@
 /* Sistema S.O.S.© — código Morse sonoro y luminoso · © Víctor Hugo Ramírez Salgado
-   REGLA DE SONIDO: solo suena en emergencia, desastre natural, prueba del administrador
+   REGLA DE SONIDO: solo suena en emergencia, desastre natural, advertencia, prueba del administrador
    o prueba del cliente en su módulo de pruebas. En cualquier otro caso solo destella.
    Uso: SOSMorse.reproducir("SOS", elementoQueDestella, { motivo: "emergencia" }) · SOSMorse.detener() */
 (() => {
-  const MOTIVOS_CON_SONIDO = new Set(["emergencia", "desastre", "prueba-admin", "prueba-cliente"]);
+  const MOTIVOS_CON_SONIDO = new Set(["emergencia", "desastre", "advertencia", "prueba-admin", "prueba-cliente"]);
   const T = { A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.", G: "--.", H: "....", I: "..", J: ".---",
     K: "-.-", L: ".-..", M: "--", N: "-.", O: "---", P: ".--.", Q: "--.-", R: ".-.", S: "...", T: "-", U: "..-",
     V: "...-", W: ".--", X: "-..-", Y: "-.--", Z: "--..", "Ñ": "--.--",

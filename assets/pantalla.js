@@ -10,7 +10,7 @@
     sismo: { gral: ["Alerta sísmica", "bad"], f2: ["Evacuar", "bad", "Puerta liberada · salga con calma"], a1: "¡Alerta sísmica! · Evacúe el área", a2: "Siga la luz blanca de evacuación. Puertas de cabinas liberadas." },
   };
   // Sonidos de la pantalla física: SOS en emergencia, SOS + SISMO en desastre natural
-  const SONIDO = { caida: "SOS SOS", sismo: "SOS SISMO SOS" };
+  const SONIDO = { advertencia: "AVISO", caida: "SOS SOS", sismo: "SOS SISMO SOS" };
   let estado = "caida", t0 = Date.now();
   const mmss = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
   const nivel = (s) => (s >= 200 ? "N3 · C5/911 notificado" : s >= 110 ? "N2 · central de monitoreo" : s >= 50 ? "N1 · encargado notificado" : s >= 20 ? "N0 · aviso por voz en cabina" : "confirmando caída (Z < 15 cm)");
@@ -42,12 +42,15 @@
     estado = b.dataset.estado; t0 = Date.now(); pinta();
     // En la web esto es una simulación: suena solo si el cliente activó su módulo de pruebas
     if (!window.SOSMorse) return;
-    const luz = P.querySelector(estado === "sismo" ? ".pt-ley .w" : ".pt-ley .r");
+    const luz = P.querySelector(estado === "sismo" ? ".pt-ley .w" : estado === "advertencia" ? ".pt-ley .y" : ".pt-ley .r");
+    const pm = document.getElementById("pt-morse");
+    if (pm) pm.innerHTML = SONIDO[estado] ? "<b>" + SONIDO[estado] + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(SONIDO[estado])) : "";
     const prueba = document.getElementById("sim-sonido")?.checked;
     if (SONIDO[estado]) SOSMorse.reproducir(SONIDO[estado], luz, { motivo: prueba ? "prueba-cliente" : "" });
     else SOSMorse.detener();
   }));
   document.getElementById("sim-sonido")?.addEventListener("change", (e) => { if (!e.target.checked) window.SOSMorse?.detener(); });
   pinta();
+  { const pm = document.getElementById("pt-morse"); if (pm && window.SOSMorse) pm.innerHTML = "<b>" + SONIDO[estado] + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(SONIDO[estado])); }
   setInterval(tick, 1000);
 })();

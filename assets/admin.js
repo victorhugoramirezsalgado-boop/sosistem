@@ -120,6 +120,7 @@
 
   // ---------- Pruebas de sonido (solo el administrador) ----------
   const PRUEBAS = [
+    ["advertencia", "Advertencia", "AVISO"],
     ["caida", "Emergencia · persona caída", "SOS SOS"],
     ["sismo", "Desastre natural · sismo", "SOS SISMO SOS"],
     ["general", "Prueba general de sirena", "PRUEBA SOS"],
@@ -127,7 +128,7 @@
   const RENDER_PRUEBAS = (el) => {
     el.innerHTML = `
       <div class="card"><h3>Pruebas de sonido Morse</h3>
-        <p>Regla del sistema: el sonido solo se emite en <b>emergencia</b>, <b>desastre natural</b>, <b>pruebas del administrador</b> y <b>pruebas del cliente</b> en su módulo de pruebas. Cada prueba queda registrada en Cambios y comentarios.</p>
+        <p>Regla del sistema: el sonido solo se emite en <b>advertencia</b>, <b>emergencia</b>, <b>desastre natural</b>, <b>pruebas del administrador</b> y <b>pruebas del cliente</b> en su módulo de pruebas. Cada prueba queda registrada en Cambios y comentarios.</p>
         <div class="filters">${PRUEBAS.map(([id, n]) => `<button class="btn" type="button" data-prueba="${id}"><span class="bm-luz" aria-hidden="true"></span> ${esc(n)}</button>`).join("")}
           <button class="btn" type="button" id="pr-stop">Detener</button></div>
         <div class="filters"><label style="flex:1">Mensaje libre en Morse<input id="pr-txt" maxlength="60" placeholder="p. ej. PRUEBA CABINA F2" style="width:100%"></label>
