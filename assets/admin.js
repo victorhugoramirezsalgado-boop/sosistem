@@ -6,6 +6,8 @@
 (() => {
   "use strict";
   const REPO = "victorhugoramirezsalgado-boop/sosistem";
+  // Respaldo cifrado de claves: solo en el repositorio PRIVADO (nunca en el sitio público)
+  const RESPALDO = { repo: "victorhugoramirezsalgado-boop/sistema-sos", ruta: "recuperacion/claves-sosistem.enc.json" };
   const RAMA = "main";
   const ITER = 600000;
   const BLOQUEO_MIN = 15;
@@ -71,7 +73,8 @@
       S.capa1 = await descifrar(k1, S.sobre.iv1, S.sobre.ct1);
       S.k1 = k1; S.salt2 = ub64(S.capa1.salt2);
       $("#c1").value = ""; msg.textContent = "";
-      $("#f1").hidden = true; $("#f2").hidden = false; $("#c2").focus();
+      $("#f1").hidden = true; $("#f2").hidden = false; $("#r-abrir").parentElement.hidden = true;
+      if (S.pendiente2) { $("#c2").value = S.pendiente2; S.pendiente2 = null; $("#f2").requestSubmit(); } else $("#c2").focus();
     } catch (err) {
       fallo(); msg.textContent = err.message.startsWith("No se") ? err.message : "Clave de pre-ingreso incorrecta.";
     } finally { btn.disabled = false; }
@@ -441,8 +444,9 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
           <label>Confirmar<input type="password" id="n1b" autocomplete="new-password"></label></div>
           <div class="filters"><label>Nueva clave de 2.ª autorización<input type="password" id="n2" autocomplete="new-password"></label>
           <label>Confirmar<input type="password" id="n2b" autocomplete="new-password"></label></div>
+          <div class="filters"><label>Frase de recuperación (para actualizar el respaldo)<input type="password" id="n-fr" autocomplete="off"></label></div>
           <p><button class="btn primary" id="n-ok" type="button">Cambiar claves y publicar</button></p>
-          <p class="note" id="n-m">Mínimo 12 caracteres cada una, distintas entre sí. Guárdelas en un gestor de contraseñas: si se pierden, los datos cifrados no se pueden recuperar.</p></div>
+          <p class="note" id="n-m">Mínimo 12 caracteres cada una, distintas entre sí. El respaldo cifrado en su repositorio privado <span class="mono">${RESPALDO.repo}</span> se actualiza con la frase de recuperación, para que pueda recuperarlas desde «¿Olvidó sus claves?» o pidiéndoselo a Claude.</p></div>
       </div>`;
     el.addEventListener("input", (e) => {
       if (e.target.dataset.cfg) { T[e.target.dataset.cfg] = Number(e.target.value); marcar(); }
@@ -455,19 +459,77 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
       if (a !== a2 || b !== b2) return (m.textContent = "Las confirmaciones no coinciden.");
       if (a === b) return (m.textContent = "Las dos claves deben ser distintas.");
       if (!sessionStorage.getItem("sos_gh")) return (m.textContent = "Primero cargue el token de GitHub.");
-      m.textContent = "Derivando llaves…";
+      const fr = $("#n-fr").value;
+      if (!fr) return (m.textContent = "Escriba su frase de recuperación para actualizar el respaldo.");
+      m.textContent = "Verificando la frase de recuperación…";
+      try { await leerRespaldo(sessionStorage.getItem("sos_gh"), fr); }
+      catch (err) { return (m.textContent = err.message); }
+      m.textContent = "Actualizando respaldo y derivando llaves…";
+      try { await guardarRespaldo(sessionStorage.getItem("sos_gh"), fr, a, b); }
+      catch (err) { return (m.textContent = "No se cambió nada: " + err.message); }
       S.salt1 = crypto.getRandomValues(new Uint8Array(16)); S.salt2 = crypto.getRandomValues(new Uint8Array(16));
       S.k1 = await llave(a, S.salt1); S.k2 = await llave(b, S.salt2);
-      $$("#n1,#n1b,#n2,#n2b").forEach((x) => (x.value = ""));
+      $$("#n1,#n1b,#n2,#n2b,#n-fr").forEach((x) => (x.value = ""));
       S.datos.cambios.push({ fecha: new Date().toLocaleString("sv-SE").slice(0, 16), tipo: "Cambio", autor: S.datos.usuarios[0]?.nombre || "Admin", texto: "Cambio de claves de acceso." });
       S.sucio = true; await publicar();
     };
   };
 
   // ---------- Publicar en GitHub ----------
-  async function gh(ruta, contenido, mensaje) {
-    const tk = sessionStorage.getItem("sos_gh");
-    const url = `https://api.github.com/repos/${REPO}/contents/${ruta}`;
+  // ---------- Respaldo de claves (repositorio privado) ----------
+  async function leerRespaldo(tk, frase) {
+    const H = { Authorization: "Bearer " + tk, Accept: "application/vnd.github.raw+json", "X-GitHub-Api-Version": "2022-11-28" };
+    let r;
+    try { r = await fetch(`https://api.github.com/repos/${RESPALDO.repo}/contents/${RESPALDO.ruta}?ref=${RAMA}&_=${Date.now()}`, { headers: H, cache: "no-store" }); }
+    catch { throw new Error("No se pudo conectar con GitHub."); }
+    if (r.status === 401) throw new Error("Token de GitHub inválido o vencido.");
+    if (r.status === 404 || r.status === 403) throw new Error("El token no tiene acceso al repositorio privado sistema-sos.");
+    if (!r.ok) throw new Error(`GitHub respondió ${r.status}.`);
+    const R = await r.json();
+    try {
+      const k = await llave(frase, ub64(R.salt));
+      return await descifrar(k, R.iv, R.ct);
+    } catch { throw new Error("Frase de recuperación incorrecta."); }
+  }
+  async function guardarRespaldo(tk, frase, pre, autorizacion) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const c = await cifrar(await llave(frase, salt), { pre, autorizacion, actualizado: new Date().toISOString() });
+    const sobre = { v: 1, alg: "AES-GCM-256 / PBKDF2-SHA256", iter: ITER, salt: b64(salt), iv: c.iv, ct: c.ct };
+    await gh(RESPALDO.ruta, JSON.stringify(sobre, null, 1) + "\n", "Panel: actualiza respaldo cifrado de claves", RESPALDO.repo, tk);
+  }
+  function iniciarRecuperacion() {
+    const ver = (modo) => {
+      $("#f1").hidden = modo !== "acceso"; $("#f2").hidden = true; $("#f0").hidden = modo !== "recuperar";
+      $("#r-abrir").parentElement.hidden = modo === "recuperar";
+    };
+    $("#r-abrir").onclick = (e) => { e.preventDefault(); ver("recuperar"); $("#r-tk").focus(); };
+    $("#r-volver").onclick = (e) => { e.preventDefault(); $("#r-out").hidden = true; ver("acceso"); };
+    $("#f0").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const m = $("#m0"), btn = $("#f0 > button");
+      const min = bloqueado(); if (min) { m.textContent = `Demasiados intentos. Espere ${min} min.`; return; }
+      btn.disabled = true; m.textContent = "Consultando su respaldo privado…";
+      try {
+        const c = await leerRespaldo($("#r-tk").value.trim(), $("#r-fr").value);
+        $("#r-fr").value = ""; m.textContent = "";
+        $("#r-p1").textContent = c.pre; $("#r-p2").textContent = c.autorizacion; $("#r-out").hidden = false;
+        sessionStorage.setItem("sos_gh", $("#r-tk").value.trim()); $("#r-tk").value = "";
+        sessionStorage.setItem("sos_fallos", 0);
+        $("#r-usar").onclick = () => {
+          $("#c1").value = c.pre; S.pendiente2 = c.autorizacion;
+          $("#r-out").hidden = true; $("#r-p1").textContent = $("#r-p2").textContent = "";
+          ver("acceso"); $("#f1").requestSubmit();
+        };
+      } catch (err) {
+        if (err.message.startsWith("Frase")) fallo();
+        m.textContent = err.message;
+      } finally { btn.disabled = false; }
+    });
+  }
+
+  async function gh(ruta, contenido, mensaje, repo = REPO, token) {
+    const tk = token || sessionStorage.getItem("sos_gh");
+    const url = `https://api.github.com/repos/${repo}/contents/${ruta}`;
     const H = { Authorization: "Bearer " + tk, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
     const g = await fetch(url + "?ref=" + RAMA, { headers: H });
     const sha = g.ok ? (await g.json()).sha : undefined;
@@ -495,5 +557,6 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
   // ---------- Arranque ----------
   $("#f1").addEventListener("submit", paso1);
   $("#f2").addEventListener("submit", paso2);
+  iniciarRecuperacion();
   if (!window.isSecureContext || !crypto.subtle) $("#m1").textContent = "Este panel requiere HTTPS.";
 })();

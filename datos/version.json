@@ -1,8 +1,13 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "1.5",
+      "fecha": "2026-10-24",
+      "resumen": "Recuperación de claves del panel con frase de recuperación; respaldo cifrado solo en el repositorio privado sistema-sos. Contador de visitas conectado (sosistem.goatcounter.com)."
+    },
     {
       "v": "1.4",
       "fecha": "2026-10-24",

@@ -55,6 +55,23 @@
         <button class="btn primary" type="submit">Entrar</button>
         <div class="msg" id="m2" role="alert"></div>
       </form>
+      <form id="f0" autocomplete="off" hidden>
+        <h2>Recuperar claves</h2>
+        <p class="note">Las claves se recuperan de un respaldo cifrado que vive solo en su repositorio privado <b>sistema-sos</b>. Se necesitan su token de GitHub y su frase de recuperación.</p>
+        <label for="r-tk" class="note">Token de GitHub (lectura de sistema-sos)</label>
+        <input type="password" id="r-tk" required autocomplete="off" placeholder="github_pat_…">
+        <label for="r-fr" class="note">Frase de recuperación</label>
+        <input type="password" id="r-fr" required autocomplete="off">
+        <button class="btn primary" type="submit">Recuperar</button>
+        <div class="msg" id="m0" role="alert"></div>
+        <div id="r-out" hidden class="card" style="margin-top:10px;box-shadow:none">
+          <p class="note">Clave de pre-ingreso</p><p class="mono" id="r-p1"></p>
+          <p class="note">Clave de 2.ª autorización</p><p class="mono" id="r-p2"></p>
+          <button class="btn" type="button" id="r-usar">Usar y continuar</button>
+        </div>
+        <p style="margin-top:10px"><a href="#" id="r-volver">Volver al acceso</a></p>
+      </form>
+      <p style="margin-top:10px"><a href="#" id="r-abrir">¿Olvidó sus claves?</a></p>
       <p class="note" style="margin-top:14px">Los datos de este panel están cifrados (AES-256). Sin ambas claves no pueden leerse, ni siquiera desde el código del sitio.</p>
     </div>
   </div>
