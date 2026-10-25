@@ -120,7 +120,7 @@
   // Versión publicada
   fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
     const el = document.getElementById("version");
-    if (el && v.version) el.textContent = T("Versión") + " " + v.version;
+    if (el && v.version) el.textContent = T("Versión") + " " + v.version.split(".").slice(0, 2).join("."); // los ajustes menores (3.8.1) no se muestran
   }).catch(() => {});
 
   // Tiempos de escalamiento configurados desde el panel de administración

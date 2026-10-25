@@ -17,4 +17,4 @@ Expediente Maestro de Propiedad Intelectual (versiones 1.0.0 a 3.8, Safe Creativ
 | SOSistem™ · versiones 1.0.0 a 3.8 | Safe Creative 2610257442171 |
 | Cubo Morse© | Safe Creative 2610257441754 |
 | sosistem.com (página certificada, NOM-151) | Safe Stamper 261025-CC4SCY |
-| Versiones 3.9 en adelante | Sellos de tiempo de esta carpeta |
+| Versiones posteriores a la 3.8 | Sellos de tiempo de esta carpeta |
