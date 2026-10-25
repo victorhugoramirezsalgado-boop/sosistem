@@ -28,6 +28,7 @@
     const a = e.target.closest("a,button"); if (!a) return;
     if (/wa\.me/.test(a.href || "")) enviar("evento/whatsapp", "Clic WhatsApp", true);
     else if (/^tel:/.test(a.href || "")) enviar("evento/telefono", "Clic teléfono", true);
+    else if (a.dataset && a.dataset.sec) enviar("pestana/" + a.dataset.sec, "Pestaña: " + a.dataset.sec, true);
     else if (a.id === "btn-presentar") enviar("evento/presentar", "Modo presentación", true);
   });
 

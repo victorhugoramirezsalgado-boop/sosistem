@@ -1,8 +1,13 @@
 {
-  "version": "2.4",
+  "version": "2.5",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.5",
+      "fecha": "2026-10-24",
+      "resumen": "Logo nuevo (sello Morse S.O.S.©) y fondo gris; el panel permite elegir fondo (blanco, beige, crema, gris, azul, negro) y logo. Pestañas chicas del sistema al borde derecho con «Ver pestañas del sistema». Diseño ajustado a iPhone, Android/Samsung, tabletas y computadoras con detección del tipo de pantalla. Fuentes de INEGI (EDR 2025 preliminar) y OMS en APA 7 debajo de los datos."
+    },
     {
       "v": "2.4",
       "fecha": "2026-10-24",

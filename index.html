@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sistema S.O.S.© · Seguridad sin cámaras</title>
 <meta name="description" content="Sistema S.O.S.© y señalética S.S.O.S.©: detección de caídas con radar mmWave sin cámaras en sanitarios y espacios confinados, 30 días de autonomía y alerta CAP v1.2 al 911.">
 <meta name="theme-color" content="#c8102e">
@@ -18,11 +18,16 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/estilo.css">
+<script>
+/* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
+try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
+if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fondo = "gris";
+</script>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio"><img class="logo-cubo" src="assets/logo.svg" width="38" height="41" alt=""><span class="logo-text">Sistema S.O.S.™</span></a>
+    <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="38" height="38" alt=""><span class="logo-text">Sistema S.O.S.™</span></a>
     <nav>
       <a class="btn ghost hide-sm" href="#funciona">Cómo funciona</a>
       <a class="btn ghost hide-sm" href="#ssos">S.S.O.S.™</a>
@@ -33,6 +38,9 @@
     </nav>
   </div>
 </header>
+
+<button class="ver-pestanas" id="ver-pestanas" type="button" aria-controls="pestanas" aria-expanded="false"><span aria-hidden="true">☰</span> <span id="ver-pestanas-t">Ver pestañas del sistema</span></button>
+<nav class="pestanas" id="pestanas" aria-label="Pestañas del sistema"></nav>
 
 <main>
 <section class="slide hero" id="inicio">
@@ -89,15 +97,24 @@
     <span class="eyebrow">Datos reales</span>
     <h2>El tamaño del riesgo, con cifras oficiales.</h2>
     <div class="grid g4">
-      <div class="card kpi"><div class="v">684,000</div><div class="l">muertes al año por caídas en el mundo</div><div class="s">Segunda causa de muerte por traumatismo involuntario · OMS</div></div>
-      <div class="card kpi"><div class="v">37.3 M</div><div class="l">caídas al año que requieren atención médica</div><div class="s">OMS</div></div>
-      <div class="card kpi"><div class="v">85,282</div><div class="l">defunciones por causas externas en México (2024)</div><div class="s">10.4 % de 819,672 · INEGI</div></div>
-      <div class="card kpi"><div class="v">39,919</div><div class="l">defunciones por accidentes en México (2024)</div><div class="s">Quinta causa de muerte · INEGI</div></div>
+      <div class="card kpi"><div class="v">684,000</div><span class="l">muertes al año por caídas en el mundo</span><span class="s">Segunda causa de muerte por traumatismo involuntario (OMS, 2021)</span></div>
+      <div class="card kpi"><div class="v">37.3 M</div><span class="l">caídas al año que requieren atención médica</span><span class="s">(OMS, 2021)</span></div>
+      <div class="card kpi"><div class="v">10.2 %</div><span class="l">de las 762,494 defunciones en México (2025) fueron por causas externas</span><span class="s">Cifras preliminares (INEGI, 2026)</span></div>
+      <div class="card kpi"><div class="v">38,166</div><span class="l">defunciones por accidentes en México (2025)</span><span class="s">Quinta causa de muerte · preliminar (INEGI, 2026)</span></div>
     </div>
     <div class="card" style="margin-top:16px">
       <h3>Exposición del patrón en 2026</h3>
       <p>La Ley Federal del Trabajo (art. 994, fr. V) sanciona con <b>250 a 5,000 UMA</b> a quien no observe las normas de seguridad e higiene. Con la UMA 2026 de $117.31, eso equivale a <b>$29,327.50 a $586,550.00 MXN</b> por infracción.</p>
       <p class="note">El tiempo de respuesta real de S.O.S.© es un indicador que se medirá en el piloto; no publicamos cifras sin medirlas.</p>
+    </div>
+    <div class="fuentes-sec">
+      <b data-i18n="fuentes_sec">Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadística de defunciones registradas (EDR) 2024</i> [Comunicado de prensa]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf</a></li>
+        <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf</a></li>
+        <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Unidad de Medida y Actualización (UMA) 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">https://www.inegi.org.mx/temas/uma/</a></li>
+        <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -391,9 +408,10 @@
     <h2>Referencias (APA 7.ª ed.)</h2>
     <ol class="refs">
       <li>Banco de México. (2026, 23 de octubre). <i>Tipos de cambio diarios (CF102)</i>. <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&amp;idCuadro=CF102&amp;sector=6&amp;locale=es" rel="noopener">banxico.org.mx</a></li>
-      <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Valor de la Unidad de Medida y Actualización 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">inegi.org.mx</a></li>
-      <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadísticas de defunciones registradas 2024</i>. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">inegi.org.mx</a></li>
-      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">who.int</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadística de defunciones registradas (EDR) 2024</i> [Comunicado de prensa]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Unidad de Medida y Actualización (UMA) 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">https://www.inegi.org.mx/temas/uma/</a></li>
+      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
       <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, 20 de marzo de 2025. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">diputados.gob.mx</a></li>
       <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
       <li>Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008</i>. <a href="https://dof.gob.mx/normasOficiales/3541/stps.htm" rel="noopener">dof.gob.mx</a></li>
@@ -414,7 +432,7 @@
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.4</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.5</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
@@ -433,6 +451,7 @@
 <script src="assets/pantalla.js"></script>
 <script src="assets/cubo-morse.js"></script>
 <script src="assets/idiomas.js"></script>
+<script src="assets/pestanas.js"></script>
 <script src="assets/rastreo.js"></script>
 </body>
 </html>

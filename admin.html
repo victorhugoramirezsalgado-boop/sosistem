@@ -10,6 +10,9 @@
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/estilo.css">
 <style>
+  .ap-op { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; font-weight: 600; }
+  .ap-op i { width: 22px; height: 22px; border-radius: 6px; border: 1px solid #8884; }
+  .ap-op:has(input:checked) { border-color: var(--brand); box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 30%, transparent); }
   .acceso { min-height: calc(100vh - 61px); display: grid; place-items: center; padding: 24px 16px; }
   .acceso[hidden], #app[hidden], form[hidden] { display: none !important; }
   .acceso .card { width: 100%; max-width: 420px; }

@@ -45,6 +45,19 @@
     setTimeout(() => ir(0), 50);
   }
 
+  // Apariencia elegida en el panel: fondo (blanco, beige, crema, gris, azul, negro) y logo
+  const FONDOS = { blanco: "#ffffff", beige: "#ece2cf", crema: "#fbf4e2", gris: "#dde0e5", azul: "#0b2240", negro: "#000000" };
+  const LOGOS = { sello: "assets/logo-sello.svg", cubo: "assets/logo.svg" };
+  function aplicarApariencia(a) {
+    a = { fondo: "gris", logo: "sello", ...(a || {}) };
+    if (!FONDOS[a.fondo]) a.fondo = "gris";
+    document.documentElement.dataset.fondo = a.fondo;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", FONDOS[a.fondo]);
+    const img = document.getElementById("logo-img"); if (img && LOGOS[a.logo]) img.src = LOGOS[a.logo];
+    try { localStorage.setItem("sos_apariencia", JSON.stringify(a)); } catch (e) {}
+  }
+  try { const ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap) aplicarApariencia(ap); } catch (e) {}
+
   // Versión publicada
   fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
     const el = document.getElementById("version");
@@ -53,6 +66,7 @@
 
   // Tiempos de escalamiento configurados desde el panel de administración
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
+    aplicarApariencia(c.apariencia);
     Object.entries(c.tiempos || {}).forEach(([k, v]) => {
       const el = document.querySelector(`[data-t="${k}"]`);
       if (el && Number(v) > 0) el.textContent = v;

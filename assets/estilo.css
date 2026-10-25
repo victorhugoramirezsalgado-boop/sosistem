@@ -410,3 +410,96 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 #ps-aqui text { fill: #ffd27a; font: 800 10px var(--font); text-anchor: middle; }
 .pm-l.otras { color: #2fd27a; opacity: .6; } .pm-l.otras i { border-top-width: 2px; }
 @media (prefers-reduced-motion: reduce) { .ps-ruta.aqui { animation: none; } }
+
+/* ======================= v2.5 ======================= */
+/* Fondos elegidos en el panel (Ajustes → Apariencia). Ganan sobre el modo claro/oscuro del teléfono. */
+:root[data-fondo="blanco"], :root[data-fondo="beige"], :root[data-fondo="crema"], :root[data-fondo="gris"] {
+  --ink: #0f1b2d; --ink-2: #4a5568; --ink-3: #6b7689; --navy: #0f2a4a;
+  --s1: #0f2a4a; --s2: #2f6fb3; --s3: #7fb0e0;
+  --shadow: 0 1px 2px rgba(15,27,45,.06), 0 6px 20px rgba(15,27,45,.07); color-scheme: light;
+}
+:root[data-fondo="blanco"] { --bg: #ffffff; --surface: #ffffff; --surface-2: #f2f4f7; --line: #e2e6ec; }
+:root[data-fondo="beige"]  { --bg: #ece2cf; --surface: #faf6ee; --surface-2: #f1e8d8; --line: #d8c9ad; --ink-2: #4f4a40; --ink-3: #74695a; }
+:root[data-fondo="crema"]  { --bg: #fbf4e2; --surface: #fffdf7; --surface-2: #f6eedb; --line: #e8dcc0; --ink-2: #50493c; }
+:root[data-fondo="gris"]   { --bg: #dde0e5; --surface: #f5f6f8; --surface-2: #e8ebef; --line: #c6ccd5; }
+:root[data-fondo="azul"], :root[data-fondo="negro"] {
+  --navy: #9cc3ef; --s1: #9cc3ef; --s2: #6aa6e8; --s3: #2f5d93;
+  --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.3); color-scheme: dark;
+}
+:root[data-fondo="azul"]  { --bg: #0b2240; --surface: #112e55; --surface-2: #163868; --ink: #eef3fa; --ink-2: #bccadf; --ink-3: #91a5c2; --line: #24497a; }
+:root[data-fondo="negro"] { --bg: #000000; --surface: #0e0f12; --surface-2: #17191d; --ink: #f2f2f2; --ink-2: #b6bac2; --ink-3: #8b9099; --line: #272a30; }
+
+/* Sin desplazamiento lateral en ningún teléfono (Android, Samsung, iPhone) */
+html, body { overflow-x: clip; max-width: 100%; }
+.sim-ctrl > * { max-width: 100%; }
+.sim-prueba { flex-wrap: wrap; }
+.sim-prueba select { max-width: 100%; min-width: 0; flex: 1 1 160px; font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.fuentes-sec .refs a, .refs a { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Áreas seguras (muesca, isla dinámica, barras de gestos de Android) */
+.top { padding-top: env(safe-area-inset-top); }
+.top .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+.wa-fab { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+footer { padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 24px)); }
+.top .logo { min-width: 0; }
+.logo-text { overflow: hidden; text-overflow: ellipsis; }
+#idioma { max-width: 9.5em; }
+@media (max-width: 420px) {
+  .logo-text { font-size: .86rem; }
+  #idioma { max-width: 4.6em; padding-inline: 6px; }
+  .top .wrap { gap: 8px; }
+  .top .btn.primary { padding: 8px 10px; }
+}
+@media (max-width: 340px) { .logo-text { display: none; } }
+/* Pantallas grandes: el contenido crece sin perder legibilidad */
+@media (min-width: 1600px) { .wrap { max-width: 1280px; } body { font-size: 17px; } }
+/* Teléfono en horizontal: barra más baja */
+:root[data-pantalla="movil"][data-orientacion="horizontal"] .top .wrap { min-height: 48px; }
+
+/* Logo */
+.logo-cubo { width: 38px; height: 38px; object-fit: contain; flex: none; }
+
+/* Fuentes debajo de cada sección (APA 7) */
+.fuentes-sec { margin-top: 16px; padding: 12px 14px; border-top: 1px solid var(--line); font-size: .8rem; color: var(--ink-3); }
+.fuentes-sec b { display: block; margin-bottom: 6px; color: var(--ink-2); font-size: .82rem; }
+.fuentes-sec .refs { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 6px; }
+.fuentes-sec .refs li { padding-left: 2em; text-indent: -2em; } /* sangría francesa APA */
+
+/* ---------- Pestañas del sistema ---------- */
+.ver-pestanas { position: fixed; z-index: 22; top: calc(var(--alto-barra, 60px) + 6px); right: max(0px, env(safe-area-inset-right));
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 12px; border: 1px solid var(--line); border-right: 0;
+  border-radius: 10px 0 0 10px; background: var(--surface); color: var(--ink); font: 600 .74rem var(--font); cursor: pointer;
+  box-shadow: var(--shadow); }
+.ver-pestanas:hover { border-color: var(--ink-3); }
+.pestanas { position: fixed; z-index: 23; right: max(0px, env(safe-area-inset-right)); top: calc(var(--alto-barra, 60px) + 40px);
+  display: grid; gap: 4px; justify-items: end; max-height: calc(var(--alto-real, 100vh) - var(--alto-barra, 60px) - 56px); overflow-y: auto;
+  padding: 4px 0 8px 8px; transform: translateX(110%); visibility: hidden; transition: transform .2s ease, visibility .2s; overscroll-behavior: contain; }
+.pestanas button { max-width: 9.5em; padding: 6px 10px 6px 12px; border: 1px solid var(--line); border-right: 0; border-radius: 10px 0 0 10px;
+  background: var(--surface); color: var(--ink-2); font: 600 .74rem/1.2 var(--font); text-align: left; cursor: pointer; box-shadow: var(--shadow);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pestanas button:hover { color: var(--ink); border-color: var(--ink-3); }
+.pestanas button[aria-current="page"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+.pestanas button.todo { margin-top: 4px; font-weight: 700; }
+.pestanas-abiertas .pestanas { transform: none; visibility: visible; }
+.pestanas-abiertas .ver-pestanas { background: var(--surface-2); }
+/* Escritorio con margen libre: pestañas fijas al costado, sin tapar el contenido */
+.pestanas-fijas .pestanas { transform: none; visibility: visible; }
+.pestanas-fijas .ver-pestanas { display: none; }
+/* Táctil: botones más altos para el dedo */
+:root[data-puntero="tactil"] .pestanas button { padding-block: 9px; font-size: .8rem; }
+:root[data-puntero="tactil"] .ver-pestanas { padding-block: 7px; }
+/* Una pestaña a la vez */
+body.modo-pestana main > section[hidden] { display: none !important; }
+body.modo-pestana main > section:not([hidden]) { min-height: calc(var(--alto-real, 100vh) - var(--alto-barra, 60px) - 120px); }
+body.modo-pestana main > section.blk { padding-top: 48px; }
+body.present .ver-pestanas, body.present .pestanas { display: none !important; }
+@media print { .ver-pestanas, .pestanas { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .pestanas { transition: none; } }
+
+/* La pestaña «Ver pestañas del sistema» cuelga de la barra superior */
+.ver-pestanas { top: var(--alto-barra, 60px); border-top: 0; border-radius: 0 0 0 10px; padding: 3px 9px 4px 10px; font-size: .7rem; }
+:root[data-puntero="tactil"] .ver-pestanas { padding-block: 5px 6px; }
+.pestanas { top: calc(var(--alto-barra, 60px) + 34px); }
+:root:not(.pestanas-fijas) main { padding-top: 22px; }
+.pestanas-abiertas .wa-fab { display: none !important; }
+.kpi span.l, .kpi span.s { display: block; }
