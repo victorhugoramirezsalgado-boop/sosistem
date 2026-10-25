@@ -1,8 +1,13 @@
 {
-  "version": "3.1",
+  "version": "3.2",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "3.2",
+      "fecha": "2026-10-25",
+      "resumen": "Logo de la barra superior: cubo rojo giratorio SOSistem™ con seis caras en código Morse (SOS, SOSISTEM, 911, AYUDA, SALIDA y AVISO); se pausa al pasar el cursor y es el logo predeterminado del panel. SOLAS corregido a «7 o más cortas + 1 larga» en todo el sitio."
+    },
     {
       "v": "3.1",
       "fecha": "2026-10-25",

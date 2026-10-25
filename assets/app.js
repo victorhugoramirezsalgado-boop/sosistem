@@ -48,16 +48,18 @@
 
   // Apariencia elegida en el panel: fondo (blanco, beige, crema, gris, azul, negro) y logo
   const FONDOS = { blanco: "#ffffff", beige: "#ece2cf", crema: "#fbf4e2", gris: "#dde0e5", azul: "#0b2240", negro: "#000000" };
-  const LOGOS = { sello: "assets/logo-sello.svg", cubo: "assets/logo.svg" };
+  const LOGOS = { giro: "assets/logo-sello.svg", sello: "assets/logo-sello.svg", cubo: "assets/logo.svg" };
   function aplicarApariencia(a) {
-    a = { fondo: "gris", logo: "sello", ...(a || {}) };
+    a = { fondo: "gris", logo: "giro", ...(a || {}) };
+    if (!LOGOS[a.logo]) a.logo = "giro";
     if (!FONDOS[a.fondo]) a.fondo = "gris";
     document.documentElement.dataset.fondo = a.fondo;
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", FONDOS[a.fondo]);
     const img = document.getElementById("logo-img"); if (img && LOGOS[a.logo]) img.src = LOGOS[a.logo];
+    if (a.logo === "giro") window.SOSLogoGiro?.poner(); else window.SOSLogoGiro?.quitar();
     try { localStorage.setItem("sos_apariencia", JSON.stringify(a)); } catch (e) {}
   }
-  try { const ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap) aplicarApariencia(ap); } catch (e) {}
+  try { aplicarApariencia(JSON.parse(localStorage.getItem("sos_apariencia") || "null")); } catch (e) { aplicarApariencia(); }
 
   // Portada: la pantalla real recorre el escalamiento N0 → N3 (911) en bucle
   (function equipo() {

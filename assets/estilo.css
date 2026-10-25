@@ -654,3 +654,22 @@ body.present .hero { padding-top: 40px; }
 .eq-ext .band-ev small { color: #4a5568; }
 .eq-cara .eq-morse { margin-bottom: 0; }
 .gal-ancha { margin: 0 0 12px; padding: 10px; } .gal-ancha img { width: 100%; height: auto; border-radius: 9px; display: block; } .gal-ancha figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 8px; }
+
+/* Logo giratorio SOSistem™: cubo rojo de 6 caras con palabras vitales en Morse (oct-2026) */
+.logo-giro { --lg: 20px; width: 40px; height: 40px; flex: none; display: block; perspective: 220px; }
+.lg-cubo { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; animation: lg-giro 18s cubic-bezier(.6,0,.3,1) infinite; }
+.lg-cara { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.lg-cara svg { width: 100%; height: 100%; display: block; }
+@keyframes lg-giro {
+  0%, 12%   { transform: rotateX(-8deg) rotateY(0deg); }
+  16.6%, 29% { transform: rotateX(-8deg) rotateY(-90deg); }
+  33.3%, 45% { transform: rotateX(-8deg) rotateY(-180deg); }
+  50%, 62%  { transform: rotateX(-8deg) rotateY(-270deg); }
+  66.6%, 79% { transform: rotateX(-90deg) rotateY(-360deg); }
+  83.3%, 95% { transform: rotateX(90deg) rotateY(-360deg); }
+  100%      { transform: rotateX(-8deg) rotateY(-360deg); }
+}
+.logo:hover .lg-cubo, .logo:focus-visible .lg-cubo { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .lg-cubo { animation-duration: 60s; } }
+@media print { .lg-cubo { animation: none; } }
+.logo-cubo[hidden] { display: none !important; }
