@@ -65,5 +65,191 @@
       "db_tras_tope": 85,
       "llamada_911_s": 0
     }
+  },
+  "modulos": [
+    {
+      "id": "caida",
+      "nombre": "Persona caída",
+      "activo": true,
+      "natural": false,
+      "sensor": "Radar mmWave 60 GHz (sin cámaras)"
+    },
+    {
+      "id": "permanencia",
+      "nombre": "Permanencia prolongada y aforo",
+      "activo": true,
+      "natural": false,
+      "sensor": "Radar mmWave + conteo en acceso"
+    },
+    {
+      "id": "sismo",
+      "nombre": "Sismo",
+      "activo": true,
+      "natural": true,
+      "sensor": "Receptor SASMEX + acelerómetro local"
+    },
+    {
+      "id": "humo",
+      "nombre": "Humo e incendio",
+      "activo": false,
+      "natural": false,
+      "sensor": "Detector fotoeléctrico / multicriterio"
+    },
+    {
+      "id": "inundacion",
+      "nombre": "Inundación y agua en el piso",
+      "activo": false,
+      "natural": true,
+      "sensor": "Sensor de nivel / fuga de agua"
+    },
+    {
+      "id": "energia",
+      "nombre": "Falta de energía eléctrica",
+      "activo": false,
+      "natural": false,
+      "sensor": "Monitor de red + respaldo LiFePO4"
+    },
+    {
+      "id": "gas",
+      "nombre": "Fuga de gas LP o natural",
+      "activo": false,
+      "natural": false,
+      "sensor": "Sensor catalítico de gas combustible"
+    },
+    {
+      "id": "co",
+      "nombre": "Monóxido de carbono",
+      "activo": false,
+      "natural": false,
+      "sensor": "Sensor electroquímico de CO"
+    },
+    {
+      "id": "oxigeno",
+      "nombre": "Falta de oxígeno (espacio confinado)",
+      "activo": false,
+      "natural": false,
+      "sensor": "Sensor electroquímico de O₂"
+    },
+    {
+      "id": "toxicos",
+      "nombre": "Amoniaco, ácido sulfhídrico o hidrógeno",
+      "activo": false,
+      "natural": false,
+      "sensor": "Sensores NH₃ / H₂S / H₂"
+    },
+    {
+      "id": "calor",
+      "nombre": "Calor extremo",
+      "activo": false,
+      "natural": true,
+      "sensor": "Temperatura y humedad (índice de calor)"
+    },
+    {
+      "id": "viento",
+      "nombre": "Vientos fuertes",
+      "activo": false,
+      "natural": true,
+      "sensor": "Anemómetro o boletín del SMN"
+    },
+    {
+      "id": "tsunami",
+      "nombre": "Tsunami",
+      "activo": false,
+      "natural": true,
+      "sensor": "Boletín oficial de alerta de tsunami"
+    },
+    {
+      "id": "voz",
+      "nombre": "Palabra «S.O.S.» por voz",
+      "activo": false,
+      "natural": false,
+      "sensor": "Micrófono con reconocimiento local, sin grabación"
+    }
+  ],
+  "recintos": [
+    {
+      "id": "R1",
+      "nombre": "Sanitarios planta baja",
+      "poligono": "P-01 Oficinas ContenedorEns",
+      "capacidad": 18,
+      "pantalla": "PNL-A04",
+      "modulos": [
+        "caida",
+        "permanencia",
+        "sismo"
+      ]
+    },
+    {
+      "id": "R2",
+      "nombre": "Oficina administrativa",
+      "poligono": "P-01 Oficinas ContenedorEns",
+      "capacidad": 8,
+      "pantalla": "PNL-A05",
+      "modulos": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "R3",
+      "nombre": "Taller de modificación",
+      "poligono": "P-02 Patio de contenedores",
+      "capacidad": 12,
+      "pantalla": "PNL-B01",
+      "modulos": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "R4",
+      "nombre": "Patio y contenedores",
+      "poligono": "P-02 Patio de contenedores",
+      "capacidad": 10,
+      "pantalla": "PNL-B02",
+      "modulos": [
+        "sismo"
+      ]
+    }
+  ],
+  "pantalla_exterior": {
+    "instalada": true,
+    "encender_con_naturales": true,
+    "encendida_por_cliente": false,
+    "mostrar_ocupacion": true,
+    "mensaje": "Siga las indicaciones de Protección Civil y diríjase al punto de reunión"
+  },
+  "nube": {
+    "nota": "El cliente decide con quién se comparte cada evento. Solo se comparten conteos, recinto y hora; nunca imágenes ni datos de identidad.",
+    "caida": {
+      "c5_911": true,
+      "central": true,
+      "proteccion_civil": false,
+      "encargados": true,
+      "otros_recintos": false,
+      "pantalla_exterior": false
+    },
+    "sismo": {
+      "c5_911": true,
+      "central": true,
+      "proteccion_civil": true,
+      "encargados": true,
+      "otros_recintos": true,
+      "pantalla_exterior": true
+    },
+    "natural": {
+      "c5_911": true,
+      "central": true,
+      "proteccion_civil": true,
+      "encargados": true,
+      "otros_recintos": true,
+      "pantalla_exterior": true
+    },
+    "otros": {
+      "c5_911": false,
+      "central": true,
+      "proteccion_civil": false,
+      "encargados": true,
+      "otros_recintos": false,
+      "pantalla_exterior": false
+    }
   }
 }

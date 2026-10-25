@@ -45,7 +45,15 @@
   "reunion",
   "encargado",
   "ruta_traslado",
-  "ruta_evac"
+  "ruta_evac",
+  "ocup_tit",
+  "dentro",
+  "fuera",
+  "todos_fuera",
+  "ext_tit",
+  "ext_off",
+  "ext_msg",
+  "nube_tit"
  ],
  "idiomas": {
   "es": {
@@ -97,7 +105,15 @@
     "Punto de reunión",
     "Encargado",
     "Ruta de traslado",
-    "Ruta de evacuación"
+    "Ruta de evacuación",
+    "Personal en todos los recintos",
+    "Dentro",
+    "Evacuadas",
+    "Todos fuera",
+    "Pantalla exterior",
+    "Apagada · se enciende solo con sismo u otro evento natural, o si el cliente la activa",
+    "Sismo en curso · no ingrese al recinto",
+    "Compartido en la nube con"
    ]
   },
   "en": {
@@ -149,7 +165,15 @@
     "Assembly point",
     "Attendant",
     "Transfer route",
-    "Evacuation route"
+    "Evacuation route",
+    "People in all areas",
+    "Inside",
+    "Evacuated",
+    "Everyone out",
+    "Outdoor screen",
+    "Off · turns on only for an earthquake or other natural event, or if the client turns it on",
+    "Earthquake in progress · do not enter the building",
+    "Shared in the cloud with"
    ]
   },
   "pt": {
@@ -201,7 +225,15 @@
     "Ponto de encontro",
     "Responsável",
     "Rota de transferência",
-    "Rota de evacuação"
+    "Rota de evacuação",
+    "Pessoas em todos os recintos",
+    "Dentro",
+    "Evacuadas",
+    "Todos fora",
+    "Tela externa",
+    "Desligada · acende só com terremoto ou outro evento natural, ou se o cliente ativar",
+    "Terremoto em curso · não entre no recinto",
+    "Compartilhado na nuvem com"
    ]
   },
   "fr": {
@@ -253,7 +285,15 @@
     "Point de rassemblement",
     "Responsable",
     "Itinéraire de transfert",
-    "Itinéraire d’évacuation"
+    "Itinéraire d’évacuation",
+    "Personnes dans toutes les zones",
+    "À l’intérieur",
+    "Évacuées",
+    "Tout le monde est sorti",
+    "Écran extérieur",
+    "Éteint · s’allume seulement en cas de séisme ou autre événement naturel, ou si le client l’active",
+    "Séisme en cours · n’entrez pas",
+    "Partagé dans le cloud avec"
    ]
   },
   "it": {
@@ -305,7 +345,15 @@
     "Punto di raccolta",
     "Responsabile",
     "Percorso di trasferimento",
-    "Percorso di evacuazione"
+    "Percorso di evacuazione",
+    "Persone in tutti gli ambienti",
+    "Dentro",
+    "Evacuate",
+    "Tutti fuori",
+    "Schermo esterno",
+    "Spento · si accende solo con terremoto o altro evento naturale, o se il cliente lo attiva",
+    "Terremoto in corso · non entrare",
+    "Condiviso nel cloud con"
    ]
   },
   "de": {
@@ -357,7 +405,15 @@
     "Sammelplatz",
     "Verantwortliche Person",
     "Transportweg",
-    "Fluchtweg"
+    "Fluchtweg",
+    "Personen in allen Bereichen",
+    "Drinnen",
+    "Evakuiert",
+    "Alle draußen",
+    "Außenbildschirm",
+    "Aus · schaltet sich nur bei Erdbeben oder anderen Naturereignissen ein oder wenn der Kunde es wünscht",
+    "Erdbeben · Gebäude nicht betreten",
+    "In der Cloud geteilt mit"
    ]
   },
   "nl": {
@@ -409,7 +465,15 @@
     "Verzamelplaats",
     "Verantwoordelijke",
     "Transportroute",
-    "Evacuatieroute"
+    "Evacuatieroute",
+    "Personen in alle ruimtes",
+    "Binnen",
+    "Geëvacueerd",
+    "Iedereen buiten",
+    "Buitenscherm",
+    "Uit · gaat alleen aan bij een aardbeving of ander natuurverschijnsel, of als de klant het inschakelt",
+    "Aardbeving bezig · ga niet naar binnen",
+    "Gedeeld in de cloud met"
    ]
   },
   "ca": {
@@ -461,7 +525,15 @@
     "Punt de trobada",
     "Encarregat",
     "Ruta de trasllat",
-    "Ruta d’evacuació"
+    "Ruta d’evacuació",
+    "Persones a tots els recintes",
+    "Dins",
+    "Evacuades",
+    "Tothom fora",
+    "Pantalla exterior",
+    "Apagada · s’encén només amb terratrèmol o un altre fenomen natural, o si el client l’activa",
+    "Terratrèmol en curs · no entreu al recinte",
+    "Compartit al núvol amb"
    ]
   },
   "gl": {
@@ -513,7 +585,15 @@
     "Punto de reunión",
     "Encargado",
     "Ruta de traslado",
-    "Ruta de evacuación"
+    "Ruta de evacuación",
+    "Persoal en todos os recintos",
+    "Dentro",
+    "Evacuadas",
+    "Todos fóra",
+    "Pantalla exterior",
+    "Apagada · acéndese só con terremoto ou outro evento natural, ou se o cliente a activa",
+    "Terremoto en curso · non entre no recinto",
+    "Compartido na nube con"
    ]
   },
   "eu": {
@@ -565,7 +645,15 @@
     "Bilgunea",
     "Arduraduna",
     "Lekualdatze-bidea",
-    "Ebakuazio-bidea"
+    "Ebakuazio-bidea",
+    "Pertsonak barruti guztietan",
+    "Barruan",
+    "Ebakuatuak",
+    "Denak kanpoan",
+    "Kanpoko pantaila",
+    "Itzalita · lurrikara edo beste gertaera natural batekin bakarrik pizten da, edo bezeroak aktibatzen badu",
+    "Lurrikara martxan · ez sartu barrutira",
+    "Hodeian partekatua honekin"
    ]
   },
   "da": {
@@ -617,7 +705,15 @@
     "Samlingssted",
     "Ansvarlig",
     "Transportrute",
-    "Evakueringsrute"
+    "Evakueringsrute",
+    "Personer i alle områder",
+    "Inde",
+    "Evakueret",
+    "Alle ude",
+    "Udendørs skærm",
+    "Slukket · tændes kun ved jordskælv eller anden naturhændelse, eller hvis kunden tænder den",
+    "Jordskælv i gang · gå ikke ind",
+    "Delt i skyen med"
    ]
   },
   "sv": {
@@ -669,7 +765,15 @@
     "Återsamlingsplats",
     "Ansvarig",
     "Transportväg",
-    "Utrymningsväg"
+    "Utrymningsväg",
+    "Personer i alla utrymmen",
+    "Inne",
+    "Utrymda",
+    "Alla ute",
+    "Utomhusskärm",
+    "Avstängd · tänds bara vid jordbävning eller annan naturhändelse, eller om kunden slår på den",
+    "Jordbävning pågår · gå inte in",
+    "Delas i molnet med"
    ]
   },
   "nb": {
@@ -721,7 +825,15 @@
     "Møteplass",
     "Ansvarlig",
     "Transportrute",
-    "Rømningsvei"
+    "Rømningsvei",
+    "Personer i alle områder",
+    "Inne",
+    "Evakuert",
+    "Alle ute",
+    "Utendørs skjerm",
+    "Av · slås bare på ved jordskjelv eller annen naturhendelse, eller hvis kunden slår den på",
+    "Jordskjelv pågår · ikke gå inn",
+    "Delt i skyen med"
    ]
   },
   "ga": {
@@ -773,7 +885,15 @@
     "Pointe tionóil",
     "Duine freagrach",
     "Bealach aistrithe",
-    "Bealach aslonnaithe"
+    "Bealach aslonnaithe",
+    "Daoine i ngach limistéar",
+    "Istigh",
+    "Aslonnaithe",
+    "Gach duine amuigh",
+    "Scáileán seachtrach",
+    "Múchta · lasann sé ach amháin le crith talún nó teagmhas nádúrtha eile, nó má chuireann an cliant ar siúl é",
+    "Crith talún ar siúl · ná téigh isteach",
+    "Roinnte sa néal le"
    ]
   },
   "el": {
@@ -825,7 +945,15 @@
     "Σημείο συγκέντρωσης",
     "Υπεύθυνος",
     "Διαδρομή μεταφοράς",
-    "Διαδρομή εκκένωσης"
+    "Διαδρομή εκκένωσης",
+    "Άτομα σε όλους τους χώρους",
+    "Μέσα",
+    "Εκκενώθηκαν",
+    "Όλοι έξω",
+    "Εξωτερική οθόνη",
+    "Σβηστή · ανάβει μόνο σε σεισμό ή άλλο φυσικό φαινόμενο, ή αν το ενεργοποιήσει ο πελάτης",
+    "Σεισμός σε εξέλιξη · μην εισέρχεστε",
+    "Κοινοποιείται στο cloud με"
    ]
   },
   "ru": {
@@ -877,7 +1005,15 @@
     "Место сбора",
     "Ответственный",
     "Маршрут транспортировки",
-    "Маршрут эвакуации"
+    "Маршрут эвакуации",
+    "Люди во всех помещениях",
+    "Внутри",
+    "Эвакуированы",
+    "Все снаружи",
+    "Наружный экран",
+    "Выключен · включается только при землетрясении или другом природном явлении, либо по решению клиента",
+    "Идёт землетрясение · не входите",
+    "Передаётся в облако:"
    ]
   },
   "uk": {
@@ -929,7 +1065,15 @@
     "Місце збору",
     "Відповідальний",
     "Маршрут транспортування",
-    "Маршрут евакуації"
+    "Маршрут евакуації",
+    "Люди в усіх приміщеннях",
+    "Усередині",
+    "Евакуйовані",
+    "Усі назовні",
+    "Зовнішній екран",
+    "Вимкнено · вмикається лише під час землетрусу чи іншого природного явища або за рішенням клієнта",
+    "Триває землетрус · не заходьте",
+    "Передається в хмару:"
    ]
   },
   "ar": {
@@ -981,7 +1125,15 @@
     "نقطة التجمع",
     "المسؤول",
     "مسار النقل",
-    "مسار الإخلاء"
+    "مسار الإخلاء",
+    "الأشخاص في جميع المرافق",
+    "بالداخل",
+    "تم إخلاؤهم",
+    "الجميع في الخارج",
+    "الشاشة الخارجية",
+    "مطفأة · تعمل فقط عند وقوع زلزال أو حدث طبيعي آخر، أو إذا شغّلها العميل",
+    "زلزال جارٍ · لا تدخلوا المبنى",
+    "تتم المشاركة عبر السحابة مع"
    ]
   },
   "he": {
@@ -1033,7 +1185,15 @@
     "נקודת כינוס",
     "אחראי",
     "מסלול פינוי רפואי",
-    "מסלול מילוט"
+    "מסלול מילוט",
+    "אנשים בכל המתחמים",
+    "בפנים",
+    "פונו",
+    "כולם בחוץ",
+    "מסך חיצוני",
+    "כבוי · נדלק רק ברעידת אדמה או באירוע טבע אחר, או אם הלקוח מפעיל אותו",
+    "רעידת אדמה מתרחשת · אין להיכנס",
+    "משותף בענן עם"
    ]
   },
   "hi": {
@@ -1085,7 +1245,15 @@
     "एकत्र होने का स्थान",
     "प्रभारी",
     "स्थानांतरण मार्ग",
-    "निकासी मार्ग"
+    "निकासी मार्ग",
+    "सभी परिसरों में लोग",
+    "अंदर",
+    "निकाले गए",
+    "सभी बाहर",
+    "बाहरी स्क्रीन",
+    "बंद · केवल भूकंप या अन्य प्राकृतिक घटना पर, या ग्राहक के चालू करने पर चालू होती है",
+    "भूकंप जारी है · परिसर में प्रवेश न करें",
+    "क्लाउड में साझा:"
    ]
   },
   "zh": {
@@ -1137,7 +1305,15 @@
     "集合点",
     "负责人",
     "转运路线",
-    "疏散路线"
+    "疏散路线",
+    "所有区域内的人员",
+    "在内",
+    "已撤离",
+    "全部撤出",
+    "室外屏幕",
+    "关闭 · 仅在地震或其他自然事件时开启，或由客户开启",
+    "地震进行中 · 请勿进入",
+    "云端共享对象"
    ]
   },
   "ja": {
@@ -1189,7 +1365,15 @@
     "集合場所",
     "担当者",
     "搬送ルート",
-    "避難ルート"
+    "避難ルート",
+    "全エリアの在室者",
+    "在室",
+    "避難済み",
+    "全員退避",
+    "屋外スクリーン",
+    "消灯 · 地震などの自然災害時、または顧客が点灯した場合のみ点灯",
+    "地震発生中 · 立ち入らないでください",
+    "クラウド共有先"
    ]
   }
  },

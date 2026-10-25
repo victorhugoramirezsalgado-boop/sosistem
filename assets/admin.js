@@ -115,7 +115,7 @@
   const PESTANAS = [
     ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["financiera", "Financiera"],
     ["tecnico", "Datos técnicos"], ["cambios", "Cambios y comentarios"], ["usuarios", "Usuarios"],
-    ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["ajustes", "Ajustes"],
+    ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["modulos", "Módulos, recintos y nube"], ["ajustes", "Ajustes"],
   ];
 
   // ---------- Sirena y Morse por estado (configuración + pruebas del administrador) ----------
@@ -211,6 +211,72 @@
   }
   const RENDER = {};
   RENDER.pruebas = (el) => RENDER_PRUEBAS(el);
+  // ---------- Módulos por cliente, recintos/polígonos, pantalla exterior y nube ----------
+  const DESTINOS = [["c5_911", "C5 / 911"], ["central", "Central de monitoreo"], ["proteccion_civil", "Protección Civil"], ["encargados", "Encargados de recinto"], ["otros_recintos", "Pantallas de los demás recintos"], ["pantalla_exterior", "Pantalla exterior"]];
+  const EVENTOS_NUBE = [["caida", "Persona caída"], ["sismo", "Sismo"], ["natural", "Otro evento natural (inundación, tsunami, viento, calor)"], ["otros", "Otros módulos (humo, gas, energía…)"]];
+  RENDER.modulos = (el) => {
+    const C = S.config;
+    C.modulos = C.modulos || []; C.recintos = C.recintos || []; C.nube = C.nube || {};
+    C.pantalla_exterior = { instalada: false, encender_con_naturales: true, encendida_por_cliente: false, mostrar_ocupacion: true, mensaje: "", ...(C.pantalla_exterior || {}) };
+    EVENTOS_NUBE.forEach(([e]) => { C.nube[e] = C.nube[e] || {}; });
+    const activos = C.modulos.filter((m) => m.activo);
+    const pinta = () => {
+      el.innerHTML = `
+      <div class="card"><h3>Módulos contratados</h3>
+        <p>Active solo los módulos que el cliente compró o necesita. Los marcados como <b>evento natural</b> encienden la pantalla exterior y avisan a todas las pantallas de todos los recintos.</p>
+        <div class="tbl-wrap"><table><thead><tr><th>Activo</th><th>Módulo</th><th>Sensor</th><th>Evento natural</th></tr></thead><tbody>
+        ${C.modulos.map((m, i) => `<tr><td><input type="checkbox" data-mod="${i}" data-k="activo" ${m.activo ? "checked" : ""} aria-label="Activar ${esc(m.nombre)}"></td><td><b>${esc(m.nombre)}</b></td><td>${esc(m.sensor || "")}</td><td><input type="checkbox" data-mod="${i}" data-k="natural" ${m.natural ? "checked" : ""} aria-label="${esc(m.nombre)} es evento natural"></td></tr>`).join("")}
+        </tbody></table></div>
+        <p class="note">${activos.length} de ${C.modulos.length} módulos activos.</p>
+        <div class="filters"><label style="flex:1">Nuevo módulo<input id="mod-n" placeholder="p. ej. Detección de cristal roto" style="width:100%"></label><label style="flex:1">Sensor<input id="mod-s" style="width:100%"></label><button class="btn" type="button" id="mod-add">Agregar</button></div>
+      </div>
+      <div class="card" style="margin-top:12px"><h3>Recintos y polígonos controlados</h3>
+        <p>En un sismo o evento natural, <b>todas las pantallas</b> muestran cuántas personas hay en cada recinto con módulos y cuántas ya salieron. Solo se cuentan personas; no se identifica a nadie.</p>
+        <div class="tbl-wrap"><table><thead><tr><th>ID</th><th>Recinto</th><th>Polígono</th><th class="num">Capacidad</th><th>Pantalla</th><th>Módulos</th><th></th></tr></thead><tbody>
+        ${C.recintos.map((r, i) => `<tr><td class="mono">${esc(r.id)}</td><td><input data-rec="${i}" data-k="nombre" value="${esc(r.nombre)}"></td><td><input data-rec="${i}" data-k="poligono" value="${esc(r.poligono)}"></td><td><input type="number" min="1" max="500" data-rec="${i}" data-k="capacidad" value="${r.capacidad}" style="width:5em"></td><td><input data-rec="${i}" data-k="pantalla" value="${esc(r.pantalla || "")}" style="width:6em"></td>
+          <td>${activos.map((m) => `<label class="al-chk"><input type="checkbox" data-recmod="${i}" value="${esc(m.id)}" ${(r.modulos || []).includes(m.id) ? "checked" : ""}> ${esc(m.nombre)}</label>`).join(" ")}</td><td><button class="btn" type="button" data-recdel="${i}">Quitar</button></td></tr>`).join("")}
+        </tbody></table></div>
+        <p><button class="btn" type="button" id="rec-add">Agregar recinto</button></p>
+      </div>
+      <div class="card" style="margin-top:12px"><h3>Pantalla exterior</h3>
+        <p>Pantalla fuera del recinto para avisar a quien llega: permanece apagada y se enciende solo con sismo u otro evento natural, salvo que el cliente decida encenderla.</p>
+        <div class="filters">
+          <label class="al-chk"><input type="checkbox" data-ext="instalada" ${C.pantalla_exterior.instalada ? "checked" : ""}> Instalada</label>
+          <label class="al-chk"><input type="checkbox" data-ext="encender_con_naturales" ${C.pantalla_exterior.encender_con_naturales ? "checked" : ""}> Encender con sismo y eventos naturales</label>
+          <label class="al-chk"><input type="checkbox" data-ext="encendida_por_cliente" ${C.pantalla_exterior.encendida_por_cliente ? "checked" : ""}> Encendida siempre (decisión del cliente)</label>
+          <label class="al-chk"><input type="checkbox" data-ext="mostrar_ocupacion" ${C.pantalla_exterior.mostrar_ocupacion ? "checked" : ""}> Mostrar ocupación de los recintos</label>
+        </div>
+        <div class="filters"><label style="flex:1">Mensaje<input data-ext="mensaje" maxlength="90" value="${esc(C.pantalla_exterior.mensaje || "")}" style="width:100%"></label></div>
+      </div>
+      <div class="card" style="margin-top:12px"><h3>Nube: ¿con quién se comparte cada evento?</h3>
+        <p>Decisión del cliente. Se comparten recinto, polígono, hora, tipo de evento y conteo de personas; nunca imágenes ni identidad (no hay cámaras).</p>
+        <div class="tbl-wrap"><table><thead><tr><th>Evento</th>${DESTINOS.map(([, n]) => `<th>${n}</th>`).join("")}</tr></thead><tbody>
+        ${EVENTOS_NUBE.map(([e, n]) => `<tr><td><b>${n}</b></td>${DESTINOS.map(([d]) => `<td><input type="checkbox" data-nube="${e}" data-k="${d}" ${C.nube[e][d] ? "checked" : ""} aria-label="${n}: ${d}"></td>`).join("")}</tr>`).join("")}
+        </tbody></table></div>
+        <p class="note">Aviso de privacidad: la información compartida debe estar descrita en el aviso de privacidad del cliente (Ley Federal de Protección de Datos Personales en Posesión de los Particulares).</p>
+      </div>`;
+    };
+    pinta();
+    el.addEventListener("change", (e) => {
+      const x = e.target, d = x.dataset;
+      if (d.mod) { C.modulos[d.mod][d.k] = x.checked; if (d.k === "activo") pinta(); }
+      else if (d.rec) C.recintos[d.rec][d.k] = x.type === "number" ? Math.max(1, Math.min(500, Number(x.value) || 1)) : x.value.trim();
+      else if (d.recmod) { const r = C.recintos[d.recmod]; r.modulos = r.modulos || []; r.modulos = x.checked ? [...new Set([...r.modulos, x.value])] : r.modulos.filter((m) => m !== x.value); }
+      else if (d.ext) C.pantalla_exterior[d.ext] = x.type === "checkbox" ? x.checked : x.value.trim();
+      else if (d.nube) C.nube[d.nube][d.k] = x.checked;
+      else return;
+      marcar();
+    });
+    el.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.id === "mod-add") { const n = $("#mod-n").value.trim(); if (!n) return; C.modulos.push({ id: n.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), nombre: n, activo: true, natural: false, sensor: $("#mod-s").value.trim() }); }
+      else if (b.id === "rec-add") { const n = C.recintos.length + 1; C.recintos.push({ id: "R" + n, nombre: "Recinto " + n, poligono: "P-01", capacidad: 10, pantalla: "", modulos: ["sismo"] }); }
+      else if (b.dataset.recdel) { if (!confirm("¿Quitar este recinto?")) return; C.recintos.splice(Number(b.dataset.recdel), 1); }
+      else return;
+      marcar(); pinta();
+    });
+  };
+
   function abrir(id) {
     $$(".tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === id));
     $$(".panel").forEach((p) => (p.hidden = p.id !== "p-" + id));

@@ -365,3 +365,25 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 .pt-noti[hidden], .pt-911[hidden], .pt-mapa[hidden] { display: none; }
 .pantalla { direction: ltr; }
 .pt-mapa svg { direction: ltr; }
+
+/* v2.3 · ocupación de todos los recintos, nube y pantalla exterior */
+.pt-ocup { margin-top: 8px; border: 1px solid #1d2430; border-radius: 10px; padding: 8px; }
+.pt-ocup h5 { margin: 0 0 6px; font-size: .85em; text-align: center; color: var(--p-ink); text-transform: uppercase; letter-spacing: .03em; }
+.pt-ocup-l { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.po-r { position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 8px; background: #2a0d0b; border: 1px solid var(--p-r); font-size: .8em; }
+.po-r span { position: relative; z-index: 1; display: grid; }
+.po-r small { color: var(--p-dim); font-weight: 500; }
+.po-r em { position: relative; z-index: 1; font-style: normal; font-weight: 800; color: #ffb4ad; white-space: nowrap; }
+.po-r i { position: absolute; inset: 0 auto 0 0; background: rgba(47,210,122,.18); transition: width .25s linear; }
+.po-r.ok { background: #0b2a17; border-color: #19a65a; } .po-r.ok em { color: #2fd27a; }
+.pt-nube { margin: 8px 0 0; text-align: center; font-size: .74em; font-weight: 600; color: #8fc3ff; }
+.pt-nube[hidden], .pt-ocup[hidden], .pantalla-ext[hidden] { display: none; }
+@media (max-width: 560px) { .pt-ocup-l { grid-template-columns: 1fr; } }
+.pantalla-ext { margin-top: 14px; border-radius: 14px; border: 6px solid #2b313b; background: #05080d; color: #4d5868; padding: 10px 14px; text-align: center; font-family: var(--font); max-width: 640px; margin-inline: auto; }
+.pe-top { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: .75em; letter-spacing: .04em; border-bottom: 1px solid #141a24; padding-bottom: 6px; margin-bottom: 8px; }
+.pe-cuerpo { display: grid; gap: 4px; font-size: .85em; min-height: 2.6em; align-content: center; }
+.pantalla-ext[data-on="1"] { color: #d9e2ee; }
+.pantalla-ext[data-on="sismo"] { color: #05080d; background: #F5F5EF; border-color: #19a65a; animation: destello-blanco 1s steps(1) infinite; }
+.pantalla-ext[data-on="sismo"] .pe-cuerpo b { font-size: 1.35em; text-transform: uppercase; }
+.pantalla-ext[data-on="sismo"] .pe-n { font: 800 1.2em var(--mono); color: #b3150c; }
+@media (prefers-reduced-motion: reduce) { .pantalla-ext[data-on="sismo"] { animation: none; } }

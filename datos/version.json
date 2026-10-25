@@ -1,8 +1,13 @@
 {
-  "version": "2.2",
+  "version": "2.3",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.3",
+      "fecha": "2026-10-24",
+      "resumen": "Panel: pestaña «Módulos, recintos y nube» (módulos opcionales por cliente: humo, inundación, falta de energía, gas, CO, oxígeno, tóxicos, calor, viento, tsunami, voz; recintos y polígonos; pantalla exterior; con quién se comparte cada evento). Simulador: en sismo todas las pantallas muestran el personal de todos los recintos y la pantalla exterior se enciende."
+    },
     {
       "v": "2.2",
       "fecha": "2026-10-24",
