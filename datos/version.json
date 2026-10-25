@@ -1,8 +1,13 @@
 {
-  "version": "2.7",
+  "version": "2.8",
   "fecha": "2026-10-24",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado.",
   "historial": [
+    {
+      "v": "2.8",
+      "fecha": "2026-10-24",
+      "resumen": "Portada: cubo de pantallas S.S.O.S.© (sanitarios, entrada, sismo, exterior, oficina y cocina); cada cara exterior es una pantalla y gira suavemente a la derecha cada 4 s; 4, 5 o 6 pantallas según el panel."
+    },
     {
       "v": "2.7",
       "fecha": "2026-10-24",

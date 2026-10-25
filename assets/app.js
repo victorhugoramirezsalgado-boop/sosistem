@@ -79,6 +79,40 @@
     paso(); if (!quieto) setInterval(paso, 250);
   })();
 
+  // Portada: cubo de pantallas. Cada cara exterior es una pantalla; gira a la derecha cada 4 s.
+  // Caras 1–4 alrededor; 5 (arriba) y 6 (abajo) solo si el cliente tiene más pantallas (config: apariencia.pantallas_portada).
+  const CUBO = (function () {
+    const E = document.getElementById("eq-escena"), C = document.getElementById("eq-cubo"); if (!E || !C) return null;
+    const NOMBRES = ["Sanitarios · persona en el suelo", "Entrada principal · aforo", "Sismo · salidas y personas", "Pantalla exterior · sismo", "Oficina · advertencia de aforo", "Cocina · gas detectado"];
+    const ATRAS = "translateZ(calc(var(--z) * -1)) "; // el cubo se aleja media arista para que la cara del frente no se salga del recuadro
+    const PASOS = ["rotateY(0deg) rotateX(0deg)", "rotateY(90deg) rotateX(0deg)", "rotateY(180deg) rotateX(0deg)", "rotateY(270deg) rotateX(0deg)", "rotateY(360deg) rotateX(-90deg)", "rotateY(360deg) rotateX(90deg)"].map((t) => ATRAS + t);
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let n = 6, k = 0, pausa = false, reloj;
+    const medir = () => E.style.setProperty("--z", E.offsetWidth / 2 + "px");
+    const puntos = document.getElementById("eq-puntos");
+    function dibujar() {
+      C.querySelectorAll(".eq-cara").forEach((f) => { f.hidden = Number(f.dataset.n) > n; });
+      puntos.innerHTML = Array.from({ length: n }, (_, i) => `<button type="button" aria-label="Pantalla ${i + 1}: ${NOMBRES[i]}" aria-current="${i === k}"></button>`).join("");
+      document.getElementById("eq-cap").textContent = `${k + 1}/${n} · ${NOMBRES[k]}`;
+    }
+    function ir(j) {
+      k = (j + n) % n;
+      if (k === 0 && /270|360/.test(C.style.transform)) { // vuelta completa: sigue a la derecha y regresa a 0 sin que se note
+        C.style.transform = ATRAS + "rotateY(360deg) rotateX(0deg)";
+        setTimeout(() => { C.classList.add("sin-trans"); C.style.transform = PASOS[0]; void C.offsetWidth; C.classList.remove("sin-trans"); }, 1150);
+      } else C.style.transform = PASOS[k];
+      dibujar();
+    }
+    function ciclo() { clearInterval(reloj); if (!quieto) reloj = setInterval(() => { if (!pausa && !document.hidden) ir(k + 1); }, 4000); }
+    puntos.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; ir([...puntos.children].indexOf(b)); ciclo(); });
+    E.addEventListener("mouseenter", () => (pausa = true)); E.addEventListener("mouseleave", () => (pausa = false));
+    E.addEventListener("focus", () => (pausa = true)); E.addEventListener("blur", () => (pausa = false));
+    E.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { ir(k + 1); ciclo(); } if (e.key === "ArrowLeft") { ir(k - 1); ciclo(); } });
+    addEventListener("resize", medir, { passive: true });
+    medir(); C.style.transform = PASOS[0]; dibujar(); ciclo();
+    return { pantallas(x) { n = Math.max(4, Math.min(6, Number(x) || 6)); if (k >= n) ir(0); else dibujar(); } };
+  })();
+
   // Versión publicada
   fetch("datos/version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
     const el = document.getElementById("version");
@@ -88,6 +122,7 @@
   // Tiempos de escalamiento configurados desde el panel de administración
   fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
     aplicarApariencia(c.apariencia);
+    CUBO?.pantallas(c.apariencia?.pantallas_portada ?? 6);
     Object.entries(c.tiempos || {}).forEach(([k, v]) => {
       if (Number(v) > 0) document.querySelectorAll(`[data-t="${k}"]`).forEach((el) => { el.textContent = v; });
     });

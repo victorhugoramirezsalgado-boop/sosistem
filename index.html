@@ -51,9 +51,12 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="lead">S.O.S.© detecta a una persona caída o sin movimiento dentro de una cabina y avisa en segundos al encargado, a la central de monitoreo y, si nadie responde, al 911.</p>
       <p><a class="btn primary" href="#contacto">Solicitar demostración</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
     </div>
-    <figure class="hero-equipo" id="hero-equipo" aria-label="Pantalla S.S.O.S.© real: persona en el suelo en la cabina F-2 y escalamiento hasta el 911">
-      <div class="eq-bisel">
-        <div class="eq-pant" data-fase="caida">
+    <figure class="hero-equipo" id="hero-equipo" aria-label="Pantallas S.S.O.S.© reales como caras de un cubo: sanitarios, entrada, sismo, exterior, oficina y cocina">
+      <div class="eq-escena" id="eq-escena" tabindex="0" aria-roledescription="carrusel" aria-label="Pantallas del sistema en distintos lugares; cambia cada 4 segundos">
+        <div class="eq-cubo" id="eq-cubo">
+          <div class="eq-cara" data-n="1" style="--pos:rotateY(0deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="caida">
           <div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span><span id="eq-hora">22:22</span> · LiFePO4 <em class="ok">100 %</em> · Red <em class="ok">OK</em></span></div>
           <div class="eq-mods">
             <div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Pediátrico 1/3<em class="ok">Libre</em></p></div>
@@ -63,8 +66,69 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
           <div class="eq-911"><span id="eq-911t">Llamada al 911 en</span> <b id="eq-911n">10 s</b><i id="eq-911b"></i></div>
           <div class="eq-morse">SOS SOS &nbsp;<span>··· ––– ··· / ··· ––– ···</span></div>
         </div>
-        <div class="eq-pie"><span>PNL-A04</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+              <div class="eq-pie"><span>PNL-A04 · Sanitarios</span><span class="eq-leds"><i class="r on"></i><i class="y"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="2" style="--pos:rotateY(-90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="normal">
+                <div class="eq-top"><b>NODO S.O.S.© · ENTRADA PRINCIPAL</b><span>Aforo del inmueble · Red <em class="ok">OK</em></span></div>
+                <div class="eq-aforo"><b>27</b><span>personas dentro de 60</span><i style="width:45%"></i></div>
+                <ul class="eq-lista"><li>R1 Sanitarios<em>9</em></li><li>R2 Oficina<em>5</em></li><li>R3 Cocina<em>3</em></li><li>R4 Bodega y taller<em>6</em></li><li>R0 Entrada<em>4</em></li></ul>
+                <div class="eq-ok">Condición segura · todos los recintos en verde</div>
+              </div>
+              <div class="eq-pie"><span>PNL-E01 · Entrada</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g on"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="3" style="--pos:rotateY(-180deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="sismo">
+                <div class="eq-sismo"><b>¡Alerta sísmica! · Evacúe</b></div>
+                <div class="eq-split">
+                  <svg viewBox="0 0 100 92" aria-hidden="true"><rect x="3" y="3" width="94" height="72" rx="3" fill="#0c111a" stroke="#6c7a8f"/><rect x="8" y="8" width="34" height="22" fill="#121a26" stroke="#3a4658"/><rect x="58" y="8" width="34" height="22" fill="rgba(255,176,32,.2)" stroke="#ffb020"/><rect x="38" y="50" width="26" height="25" fill="#121a26" stroke="#3a4658"/><polyline points="75,30 75,40 51,40 51,76" fill="none" stroke="#2fd27a" stroke-width="3" stroke-dasharray="5 4" class="eq-ruta"/><rect x="44" y="73" width="14" height="4" fill="#19a65a"/><circle cx="75" cy="30" r="3" fill="#ffb020"/><text x="51" y="88" text-anchor="middle" fill="#2fd27a" font-size="6" font-weight="700">SALIDA A · 16 m · 14 s</text></svg>
+                  <div><div class="eq-aqui"><span>Aquí con usted</span><b>8</b></div><ul class="eq-lista mini"><li>R0 Entrada<em>3</em></li><li>R2 Oficina<em>4</em></li><li>R3 Cocina<em>✓</em></li><li>R4 Bodega<em>5</em></li></ul></div>
+                </div>
+                <div class="eq-morse">SOS SISMO SOS &nbsp;<span>··· ––– ··· / ··· ·· ··· –– –––</span></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A04 · Sismo</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="4" style="--pos:rotateY(-270deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant eq-ext" data-fase="exterior">
+                <div class="eq-top"><b>PANTALLA EXTERIOR · ACCESO PRINCIPAL</b><span>Se enciende solo con sismo o evento natural</span></div>
+                <div class="eq-extmsg"><b>Sismo en curso</b><span>No ingrese al recinto</span></div>
+                <div class="eq-aforo ext"><b>12</b><span>personas siguen dentro</span></div>
+                <div class="eq-ok">Siga a Protección Civil · punto de reunión: estacionamiento</div>
+              </div>
+              <div class="eq-pie"><span>EXT-01 · Exterior</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="5" style="--pos:rotateX(90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="advertencia">
+                <div class="eq-top"><b>NODO S.O.S.© · OFICINA ADMINISTRATIVA</b><span>Módulo de permanencia y aforo</span></div>
+                <div class="eq-adv"><b>Advertencia · aforo 92 %</b><span>11 de 12 personas · ventile y evite ingresar</span></div>
+                <ul class="eq-lista"><li>Permanencia promedio<em>38 min</em></li><li>Temperatura<em>27 °C</em></li><li>Salida más cercana<em>A · 9 m</em></li></ul>
+                <div class="eq-morse">AVISO &nbsp;<span>·– ···– ·· ··· –––</span></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A05 · Oficina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="6" style="--pos:rotateX(-90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="gas">
+                <div class="eq-top"><b>NODO S.O.S.© · COCINA</b><span>Módulo opcional de gas</span></div>
+                <div class="eq-adv"><b>Gas LP detectado · 12 % LIE</b><span>No encienda aparatos · abra ventanas · salga</span></div>
+                <ul class="eq-lista"><li>Válvula de gas<em>Cerrada</em></li><li>Personas en cocina<em>2</em></li><li>Aviso<em>N1 encargado</em></li></ul>
+                <div class="eq-morse">AVISO GAS &nbsp;<span>·– ···– ·· ··· ––– / ––· ·– ···</span></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A06 · Cocina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="eq-nav"><span id="eq-cap">1/6 · Sanitarios · persona en el suelo</span><span class="eq-puntos" id="eq-puntos"></span></div>
       <ol class="eq-esc" id="eq-esc">
         <li data-n="N0"><b>N0</b> Voz en cabina <small><em data-t="N0">2</em> s</small></li>
         <li data-n="N1"><b>N1</b> Encargado <small><em data-t="N1">4</em> s</small></li>
@@ -449,7 +513,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.7</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.8</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>

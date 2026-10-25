@@ -276,6 +276,7 @@
   "recintos_regla": "Obligatorio: 1.º sistema en la entrada principal de todo el lugar; 2.º en baños; 3.º en cocina, oficina, bodega o donde el cliente lo requiera.",
   "apariencia": {
     "fondo": "gris",
-    "logo": "sello"
+    "logo": "sello",
+    "pantallas_portada": 6
   }
 }

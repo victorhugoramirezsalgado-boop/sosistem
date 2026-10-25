@@ -583,7 +583,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
   // ---------- Ajustes ----------
   RENDER.ajustes = (el) => {
     const T = S.config.tiempos;
-    const AP = S.config.apariencia = { fondo: "gris", logo: "sello", ...(S.config.apariencia || {}) };
+    const AP = S.config.apariencia = { fondo: "gris", logo: "sello", pantallas_portada: 6, ...(S.config.apariencia || {}) };
     const FONDOS = [["blanco", "Blanco", "#ffffff"], ["beige", "Beige", "#ece2cf"], ["crema", "Crema", "#fbf4e2"], ["gris", "Gris", "#dde0e5"], ["azul", "Azul", "#0b2240"], ["negro", "Negro", "#000000"]];
     const LOGOS = [["sello", "Sello Morse S.O.S.©", "assets/logo-sello.svg"], ["cubo", "Cubo Morse©", "assets/logo.svg"]];
     el.innerHTML = `
@@ -592,6 +592,8 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
         <div class="filters ap-fondos">${FONDOS.map(([v, n, c]) => `<label class="ap-op"><input type="radio" name="ap-fondo" value="${v}" ${AP.fondo === v ? "checked" : ""}><i style="background:${c}"></i>${n}</label>`).join("")}</div>
         <p>Logo de la barra superior:</p>
         <div class="filters">${LOGOS.map(([v, n, src]) => `<label class="ap-op"><input type="radio" name="ap-logo" value="${v}" ${AP.logo === v ? "checked" : ""}><img src="${src}" alt="" width="28" height="28">${n}</label>`).join("")}</div>
+        <p>Pantallas en el cubo de la portada (cada cara es una pantalla; gira a la derecha cada 4 s):</p>
+        <div class="filters">${[4, 5, 6].map((v) => `<label class="ap-op"><input type="radio" name="ap-pant" value="${v}" ${Number(AP.pantallas_portada) === v ? "checked" : ""}>${v} pantallas${v === 4 ? " (alrededor)" : v === 5 ? " (+ arriba)" : " (+ arriba y abajo)"}</label>`).join("")}</div>
         <p class="note">Se guarda en datos/config.json al pulsar «Guardar y publicar»; el sitio cambia en 1–2 minutos.</p>
       </div>
       <div class="grid g2" style="margin-top:12px">
@@ -620,6 +622,7 @@ NiMH: ${t.nimhmAh} mAh / ${t.nimhH} h = consumo medio máx. ${I.toFixed(1)} mA</
       if (e.target.id === "aj-gc") { S.config.goatcounter = e.target.value.trim(); marcar(); }
       if (e.target.name === "ap-fondo") { AP.fondo = e.target.value; marcar(); }
       if (e.target.name === "ap-logo") { AP.logo = e.target.value; marcar(); }
+      if (e.target.name === "ap-pant") { AP.pantallas_portada = Number(e.target.value); marcar(); }
     });
     $("#aj-tk-ok").onclick = () => { const v = $("#aj-tk").value.trim(); if (v) { sessionStorage.setItem("sos_gh", v); $("#aj-tk").value = ""; $("#aj-tk-m").textContent = "Token cargado para esta sesión."; } };
     $("#n-ok").onclick = async () => {
