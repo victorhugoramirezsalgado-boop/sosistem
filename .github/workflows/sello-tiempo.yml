@@ -1,0 +1,48 @@
+# Sello de tiempo automático de cada versión de SOSistem™ · © Víctor Hugo Ramírez Salgado
+# En cada publicación calcula la huella SHA-256 de todos los archivos y la sella con OpenTimestamps
+# (sello público y gratuito anclado en Bitcoin). Una vez al día completa los sellos pendientes.
+name: Sello de tiempo
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['sellos/**']
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sello-tiempo
+  cancel-in-progress: false
+jobs:
+  sellar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar cliente OpenTimestamps
+        run: pip install opentimestamps-client
+      - name: Huella SHA-256 de la versión publicada
+        if: github.event_name != 'schedule'
+        run: |
+          VER=$(python -c "import json;print(json.load(open('datos/version.json'))['version'])")
+          SHA=$(git rev-parse --short=12 HEAD)
+          F="sellos/SOSistem_v${VER}_${SHA}.sha256"
+          {
+            echo "# SOSistem™ v${VER} · commit $(git rev-parse HEAD) · $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "# © Víctor Hugo Ramírez Salgado · sosistem.com"
+            git ls-files | grep -v '^sellos/' | sort | xargs -d '\n' sha256sum
+          } > "$F"
+          ots stamp "$F"
+      - name: Completar sellos pendientes
+        run: |
+          for f in sellos/*.ots; do [ -e "$f" ] && ots upgrade "$f" || true; done
+      - name: Guardar comprobantes
+        run: |
+          git config user.name "sosistem-sellos"
+          git config user.email "sellos@users.noreply.github.com"
+          git add sellos
+          git diff --cached --quiet || git commit -m "Sello de tiempo de la versión publicada [skip ci]"
+          git push
