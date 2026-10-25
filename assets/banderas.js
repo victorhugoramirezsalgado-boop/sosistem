@@ -56,6 +56,18 @@
   window.SOSBanderas = { svg, significado: (L) => SIG[L] || "", letras: Object.keys(DIB),
     mensaje: (t, alto) => limpiar(t).split(/\s+/).filter(Boolean).map((p) => `<span class="ics-pal">${[...p].map((c) => svg(c, alto)).join("")}</span>`).join("") };
 
+  // Banderas bajo el aviso Morse de cada pantalla: <div data-banderas="SOS SOS" data-evento="W">
+  function pintarBanderas(raiz = document) {
+    raiz.querySelectorAll("[data-banderas]").forEach((el) => {
+      const ev = el.dataset.evento, alto = Number(el.dataset.alto) || 14;
+      el.innerHTML = `<span class="band-msg">${window.SOSBanderas.mensaje(el.dataset.banderas, alto)}</span>` +
+        (ev ? `<span class="band-ev">${svg(ev, alto)}<small>${ev} · ${SIG[ev]}</small></span>` : "");
+      el.setAttribute("aria-label", `Banderas del Código Internacional de Señales: ${el.dataset.banderas}${ev ? "; " + ev + ": " + SIG[ev] : ""}`);
+    });
+  }
+  window.SOSBanderas.pintar = pintarBanderas;
+  pintarBanderas();
+
   // ---------- Sección «Señales normalizadas» ----------
   const rejilla = document.getElementById("ics-rejilla");
   if (rejilla) rejilla.innerHTML = Object.keys(DIB).map((L) => `<div class="ics-c">${svg(L, 40)}<b>${L}</b><span class="mono">${window.SOSMorse ? SOSMorse.visible(SOSMorse.aMorse(L)) : ""}</span><small>${SIG[L]}</small></div>`).join("");

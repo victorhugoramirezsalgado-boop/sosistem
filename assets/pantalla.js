@@ -21,15 +21,21 @@
   function mostrarCodigo() {
     const pm = document.getElementById("pt-morse"); if (!pm || !window.SOSMorse) return;
     const a = ALERTAS[estado] || {}, txt = SONIDO[estado];
-    if (!txt || a.imagen === false || a.morse === false) { pm.innerHTML = ""; return; }
+    if (!txt || a.imagen === false || a.morse === false) {
+      // Sin alerta: identidad del sistema en Morse y banderas
+      pm.innerHTML = window.SOSBanderas ? `<span style="letter-spacing:0">Sistema S.O.S.©</span> &nbsp;··· ––– ···<div class="pt-band" data-banderas="SOS" data-alto="18"></div>` : "";
+      if (window.SOSBanderas) SOSBanderas.pintar(pm);
+      return;
+    }
     let info = "";
     if (a.sirena) info += ` · Equipo: sirena ${a.sirena_db} dB × ${a.rafaga_s} s`;
     if (a.cada_s) info += `${info ? "," : " · Equipo:"} repite cada ${a.cada_s} s`;
     if (a.sirena && a.patron && window.SOSMorse?.patrones) info += ` · ${SOSMorse.patrones[a.patron]}`;
     pm.innerHTML = "<b>" + txt + "</b> &nbsp;" + SOSMorse.visible(SOSMorse.aMorse(txt)) + "<br><span style='letter-spacing:0'>" + info.replace(/^ · /, "") + "</span>";
     // Bandera del Código Internacional de Señales (OMI) que corresponde al evento
+    // Debajo del Morse: el mismo aviso en banderas del Código Internacional de Señales (OMI) y la bandera del evento
     const BAND = { caida: "W" };
-    if (BAND[estado] && window.SOSBanderas) pm.innerHTML += `<div class="pt-band">${SOSBanderas.svg(BAND[estado], 22)}<span>${BAND[estado]} · ${SOSBanderas.significado(BAND[estado])} (CIS · OMI)</span></div>`;
+    if (window.SOSBanderas) { pm.innerHTML += `<div class="pt-band" data-banderas="${txt}" data-alto="20"${BAND[estado] ? ` data-evento="${BAND[estado]}"` : ""}></div>`; SOSBanderas.pintar(pm); }
   }
   let estado = "caida", t0 = Date.now();
   let TIEMPOS = { N0: 2, N1: 4, N2: 7, N3: 10 };

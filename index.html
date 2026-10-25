@@ -65,6 +65,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
           <div class="eq-alerta"><b>¡Persona en el suelo! · Cabina F‑2</b><span>Tiempo inmóvil <span id="eq-t">00:00</span></span></div>
           <div class="eq-911"><span id="eq-911t">Llamada al 911 en</span> <b id="eq-911n">10 s</b><i id="eq-911b"></i></div>
           <div class="eq-morse">SOS SOS &nbsp;<span>··· ––– ··· / ··· ––– ···</span></div>
+          <div class="eq-band" data-banderas="SOS SOS" data-evento="W"></div>
         </div>
               <div class="eq-pie"><span>PNL-A04 · Sanitarios</span><span class="eq-leds"><i class="r on"></i><i class="y"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -76,6 +77,8 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
                 <div class="eq-aforo"><b>27</b><span>personas dentro de 60</span><i style="width:45%"></i></div>
                 <ul class="eq-lista"><li>R1 Sanitarios<em>9</em></li><li>R2 Oficina<em>5</em></li><li>R3 Cocina<em>3</em></li><li>R4 Bodega y taller<em>6</em></li><li>R0 Entrada<em>4</em></li></ul>
                 <div class="eq-ok">Condición segura · todos los recintos en verde</div>
+                <div class="eq-morse">Sistema S.O.S.© &nbsp;<span>··· ––– ···</span></div>
+                <div class="eq-band" data-banderas="SOS"></div>
               </div>
               <div class="eq-pie"><span>PNL-E01 · Entrada</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g on"></i><i class="w"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -88,7 +91,8 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
                   <svg viewBox="0 0 100 92" aria-hidden="true"><rect x="3" y="3" width="94" height="72" rx="3" fill="#0c111a" stroke="#6c7a8f"/><rect x="8" y="8" width="34" height="22" fill="#121a26" stroke="#3a4658"/><rect x="58" y="8" width="34" height="22" fill="rgba(255,176,32,.2)" stroke="#ffb020"/><rect x="38" y="50" width="26" height="25" fill="#121a26" stroke="#3a4658"/><polyline points="75,30 75,40 51,40 51,76" fill="none" stroke="#2fd27a" stroke-width="3" stroke-dasharray="5 4" class="eq-ruta"/><rect x="44" y="73" width="14" height="4" fill="#19a65a"/><circle cx="75" cy="30" r="3" fill="#ffb020"/><text x="51" y="88" text-anchor="middle" fill="#2fd27a" font-size="6" font-weight="700">SALIDA A · 16 m · 14 s</text></svg>
                   <div><div class="eq-aqui"><span>Aquí con usted</span><b>8</b></div><ul class="eq-lista mini"><li>R0 Entrada<em>3</em></li><li>R2 Oficina<em>4</em></li><li>R3 Cocina<em>✓</em></li><li>R4 Bodega<em>5</em></li></ul></div>
                 </div>
-                <div class="eq-morse">SOS SISMO SOS &nbsp;<span>··· ––– ··· / ··· ·· ··· –– –––</span></div>
+                <div class="eq-morse">SOS SISMO SOS &nbsp;<span>··· ––– ··· / ··· ·· ··· –– ––– / ··· ––– ···</span></div>
+                <div class="eq-band" data-banderas="SOS SISMO SOS"></div>
               </div>
               <div class="eq-pie"><span>PNL-A04 · Sismo</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -100,6 +104,8 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
                 <div class="eq-extmsg"><b>Sismo en curso</b><span>No ingrese al recinto</span></div>
                 <div class="eq-aforo ext"><b>12</b><span>personas siguen dentro</span></div>
                 <div class="eq-ok">Siga a Protección Civil · punto de reunión: estacionamiento</div>
+                <div class="eq-morse">SOS SISMO &nbsp;<span>··· ––– ··· / ··· ·· ··· –– –––</span></div>
+                <div class="eq-band" data-banderas="SOS SISMO"></div>
               </div>
               <div class="eq-pie"><span>EXT-01 · Exterior</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -111,6 +117,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
                 <div class="eq-adv"><b>Advertencia · aforo 92 %</b><span>11 de 12 personas · ventile y evite ingresar</span></div>
                 <ul class="eq-lista"><li>Permanencia promedio<em>38 min</em></li><li>Temperatura<em>27 °C</em></li><li>Salida más cercana<em>A · 9 m</em></li></ul>
                 <div class="eq-morse">AVISO &nbsp;<span>·– ···– ·· ··· –––</span></div>
+                <div class="eq-band" data-banderas="AVISO"></div>
               </div>
               <div class="eq-pie"><span>PNL-A05 · Oficina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -122,6 +129,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
                 <div class="eq-adv"><b>Gas LP detectado · 12 % LIE</b><span>No encienda aparatos · abra ventanas · salga</span></div>
                 <ul class="eq-lista"><li>Válvula de gas<em>Cerrada</em></li><li>Personas en cocina<em>2</em></li><li>Aviso<em>N1 encargado</em></li></ul>
                 <div class="eq-morse">AVISO GAS &nbsp;<span>·– ···– ·· ··· ––– / ––· ·– ···</span></div>
+                <div class="eq-band" data-banderas="AVISO GAS"></div>
               </div>
               <div class="eq-pie"><span>PNL-A06 · Cocina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
             </div>
@@ -374,9 +382,32 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 
 <section class="slide blk" id="galeria">
   <div class="wrap">
-    <span class="eyebrow">Referencias visuales</span>
-    <h2>Del concepto al equipo.</h2>
+    <span class="eyebrow">Galería · sistema actual v3.0</span>
+    <h2>Así se ven hoy las pantallas del sistema.</h2>
+        <figure class="card gal-ancha"><a href="assets/img/v3-infografia.webp" target="_blank" rel="noopener"><img src="assets/img/v3-infografia.webp" alt="Infografía de la pantalla S.S.O.S. con siete funciones numeradas, otras cuatro pantallas y el escalamiento N0 a N3 hasta el 911" loading="lazy" width="1600" height="1000"></a>
+      <figcaption><b>Cómo avisa la pantalla (explicación).</b> 1 nodo y energía · 2 ocupación por cabina con radar · 3 aviso principal en 22 idiomas · 4 cuenta regresiva al 911 · 5 Morse ITU-R M.1677-1 · 6 banderas del Código Internacional de Señales (S·O·S y W) · 7 luces ISO 11429; abajo, el escalamiento N0–N3.</figcaption></figure>
     <div class="grid g3 galeria">
+      <figure class="card"><a href="assets/img/v3-sim-caida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-sim-caida.webp" alt="Simulador: persona en el suelo en cabina F-2, plano con ruta de auxilio y traslado, cuenta al 911, Morse y banderas S O S y W" loading="lazy" width="1000" height="1297"></a>
+        <figcaption><b>Persona en el suelo.</b> Aviso, plano con rutas y tiempos, 911 a los 10 s, Morse y banderas S·O·S + W.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-sim-sismo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-sim-sismo.webp" alt="Simulador en sismo: pantalla dividida con salidas de emergencia y personas por recinto, Morse y banderas SOS SISMO SOS" loading="lazy" width="1000" height="909"></a>
+        <figcaption><b>Sismo, pantalla dividida.</b> Salidas desde «usted está aquí» | personas por recinto; SOS SISMO SOS en Morse y banderas.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-sanitarios-caida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-sanitarios-caida.webp" alt="Pantalla de sanitarios con persona caída, Morse SOS SOS y banderas" loading="lazy" width="960" height="602"></a>
+        <figcaption><b>Sanitarios.</b> Caída en F‑2 · SOS SOS · bandera W.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-sismo-dividida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-sismo-dividida.webp" alt="Pantalla de sismo con plano y conteo" loading="lazy" width="960" height="728"></a>
+        <figcaption><b>Sismo.</b> Ruta a la salida A y «aquí con usted».</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-exterior-sismo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-exterior-sismo.webp" alt="Pantalla exterior encendida por sismo" loading="lazy" width="960" height="638"></a>
+        <figcaption><b>Pantalla exterior.</b> Solo con sismo o evento natural.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-entrada-aforo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-entrada-aforo.webp" alt="Pantalla de entrada principal con aforo por recinto y banderas SOS" loading="lazy" width="960" height="804"></a>
+        <figcaption><b>Entrada principal.</b> Aforo e identidad S·O·S.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-oficina-aforo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-oficina-aforo.webp" alt="Pantalla de oficina con advertencia de aforo y banderas AVISO" loading="lazy" width="960" height="582"></a>
+        <figcaption><b>Oficina.</b> Advertencia de aforo · AVISO.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-cocina-gas.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-cocina-gas.webp" alt="Pantalla de cocina con gas LP detectado y banderas AVISO GAS" loading="lazy" width="960" height="582"></a>
+        <figcaption><b>Cocina.</b> Módulo de gas · AVISO GAS.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-cubo-morse.webp" target="_blank" rel="noopener"><img src="assets/img/v3-cubo-morse.webp" alt="Cubo Morse de doce caras en colores beige y gris" loading="lazy" width="952" height="722"></a>
+        <figcaption><b>Cubo Morse©.</b> Exterior al 50 % que deja ver el interior.</figcaption></figure>
+    </div>
+    <details class="guia-morse" style="margin-top:14px"><summary>Conceptos originales (renders de referencia)</summary>
+    <div class="grid g3 galeria" style="margin-top:10px">
       <figure class="card"><a href="assets/img/ref-pantalla-sanitarios.webp" target="_blank" rel="noopener"><img src="assets/img/ref-pantalla-sanitarios.webp" alt="Render de pantalla S.O.S. en acceso a sanitarios con alerta de persona caída en cabina F-2" loading="lazy" width="512" height="279"></a>
         <figcaption><b>Pantalla de acceso a sanitarios.</b> Concepto original; la versión corregida es el simulador de arriba.</figcaption></figure>
       <figure class="card"><a href="assets/img/ref-pantalla-pasillo.webp" target="_blank" rel="noopener"><img src="assets/img/ref-pantalla-pasillo.webp" alt="Render de pantalla S.O.S. montada en pasillo con conteo por módulo" loading="lazy" width="512" height="279"></a>
@@ -389,6 +420,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
         <figcaption><b>Vista explosionada.</b> Controlador ARM Cortex-M7, radar 60/77 GHz, bocina piezo de 105 dB, bus LiFePO4 y respaldo NiMH 3×AAA.</figcaption></figure>
       <div class="card"><h3>Nota sobre los renders</h3><p>Son ilustraciones conceptuales. Rótulos y cotas son aproximados: la especificación vigente está en la sección <a href="#ssos">Módulo S.S.O.S.©</a> (pantalla interior de 60 × 60 cm; exterior de 40 × 40 o 50 × 50 cm).</p><p class="note">© Víctor Hugo Ramírez Salgado.</p></div>
     </div>
+    </details>
   </div>
 </section>
 
@@ -581,7 +613,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obra registrada en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados.</p>
-    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 2.9</span>.</p>
+    <p>Información técnica y normativa actualizada al 24 de octubre de 2026 · <span id="version">Versión 3.0</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa de piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>

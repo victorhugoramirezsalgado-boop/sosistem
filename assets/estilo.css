@@ -630,3 +630,15 @@ body.present .hero { padding-top: 40px; }
 .tbl-normas { table-layout: fixed; width: 100%; min-width: 720px; }
 .tbl-normas th, .tbl-normas td { white-space: normal; overflow-wrap: anywhere; }
 .tbl-normas th:nth-child(1) { width: 24%; } .tbl-normas th:nth-child(2) { width: 38%; }
+
+/* v3.0 · Banderas del CIS bajo el aviso Morse en cada pantalla */
+.eq-band, .pt-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 10px; margin-top: 2px; }
+.band-msg { display: inline-flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.band-msg .ics-pal { gap: 2px; }
+.band-ev { display: inline-flex; align-items: center; gap: 5px; }
+.band-ev small { font: 600 9px var(--font); color: #ffd27a; letter-spacing: 0; }
+.pt-band .band-ev small { font-size: 11px; }
+.eq-band .ics, .pt-band .ics { border-radius: 1px; box-shadow: 0 0 0 .5px rgba(255,255,255,.25); }
+.eq-ext .band-ev small { color: #4a5568; }
+.eq-cara .eq-morse { margin-bottom: 0; }
+.gal-ancha { margin: 0 0 12px; padding: 10px; } .gal-ancha img { width: 100%; height: auto; border-radius: 9px; display: block; } .gal-ancha figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 8px; }
