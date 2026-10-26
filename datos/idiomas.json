@@ -112,7 +112,8 @@
   "tab_senales",
   "tab_terminal",
   "tab_servicios",
-  "tab_fondo"
+  "tab_fondo",
+  "tab_receptor"
  ],
  "idiomas": {
   "es": {
@@ -231,7 +232,8 @@
     "Señales",
     "Terminal",
     "12 servicios",
-    "Fondo SOS"
+    "Fondo SOS",
+    "Receptor Morse"
    ]
   },
   "en": {
@@ -350,7 +352,8 @@
     "Signals",
     "Terminal",
     "12 services",
-    "SOS Fund"
+    "SOS Fund",
+    "Morse receiver"
    ]
   },
   "pt": {
@@ -469,7 +472,8 @@
     "Sinais",
     "Terminal",
     "12 serviços",
-    "Fundo SOS"
+    "Fundo SOS",
+    "Receptor Morse"
    ]
   },
   "fr": {
@@ -588,7 +592,8 @@
     "Signaux",
     "Terminal",
     "12 services",
-    "Fonds SOS"
+    "Fonds SOS",
+    "Récepteur Morse"
    ]
   },
   "it": {
@@ -707,7 +712,8 @@
     "Segnali",
     "Terminale",
     "12 servizi",
-    "Fondo SOS"
+    "Fondo SOS",
+    "Ricevitore Morse"
    ]
   },
   "de": {
@@ -826,7 +832,8 @@
     "Signale",
     "Terminal",
     "12 Dienste",
-    "SOS-Fonds"
+    "SOS-Fonds",
+    "Morse-Empfänger"
    ]
   },
   "nl": {
@@ -945,7 +952,8 @@
     "Signalen",
     "Terminal",
     "12 diensten",
-    "SOS-fonds"
+    "SOS-fonds",
+    "Morse-ontvanger"
    ]
   },
   "ca": {
@@ -1064,7 +1072,8 @@
     "Senyals",
     "Terminal",
     "12 serveis",
-    "Fons SOS"
+    "Fons SOS",
+    "Receptor Morse"
    ]
   },
   "gl": {
@@ -1183,7 +1192,8 @@
     "Sinais",
     "Terminal",
     "12 servizos",
-    "Fondo SOS"
+    "Fondo SOS",
+    "Receptor Morse"
    ]
   },
   "eu": {
@@ -1302,7 +1312,8 @@
     "Seinaleak",
     "Terminala",
     "12 zerbitzu",
-    "SOS funtsa"
+    "SOS funtsa",
+    "Morse hargailua"
    ]
   },
   "da": {
@@ -1421,7 +1432,8 @@
     "Signaler",
     "Terminal",
     "12 tjenester",
-    "SOS-fond"
+    "SOS-fond",
+    "Morse-modtager"
    ]
   },
   "sv": {
@@ -1540,7 +1552,8 @@
     "Signaler",
     "Terminal",
     "12 tjänster",
-    "SOS-fond"
+    "SOS-fond",
+    "Morsemottagare"
    ]
   },
   "nb": {
@@ -1659,7 +1672,8 @@
     "Signaler",
     "Terminal",
     "12 tjenester",
-    "SOS-fond"
+    "SOS-fond",
+    "Morsemottaker"
    ]
   },
   "ga": {
@@ -1778,7 +1792,8 @@
     "Comharthaí",
     "Teirminéal",
     "12 sheirbhís",
-    "Ciste SOS"
+    "Ciste SOS",
+    "Glacadóir Morse"
    ]
   },
   "el": {
@@ -1897,7 +1912,8 @@
     "Σήματα",
     "Τερματικό",
     "12 υπηρεσίες",
-    "Ταμείο SOS"
+    "Ταμείο SOS",
+    "Δέκτης Μορς"
    ]
   },
   "ru": {
@@ -2016,7 +2032,8 @@
     "Сигналы",
     "Терминал",
     "12 сервисов",
-    "Фонд SOS"
+    "Фонд SOS",
+    "Приёмник Морзе"
    ]
   },
   "uk": {
@@ -2135,7 +2152,8 @@
     "Сигнали",
     "Термінал",
     "12 сервісів",
-    "Фонд SOS"
+    "Фонд SOS",
+    "Приймач Морзе"
    ]
   },
   "ar": {
@@ -2254,7 +2272,8 @@
     "الإشارات",
     "المحطة",
     "12 خدمة",
-    "صندوق SOS"
+    "صندوق SOS",
+    "مستقبل مورس"
    ]
   },
   "he": {
@@ -2373,7 +2392,8 @@
     "אותות",
     "מסוף",
     "12 שירותים",
-    "קרן SOS"
+    "קרן SOS",
+    "מקלט מורס"
    ]
   },
   "hi": {
@@ -2492,7 +2512,8 @@
     "संकेत",
     "टर्मिनल",
     "12 सेवाएँ",
-    "SOS कोष"
+    "SOS कोष",
+    "मोर्स रिसीवर"
    ]
   },
   "zh": {
@@ -2611,7 +2632,8 @@
     "信号",
     "终端",
     "12 项服务",
-    "SOS 基金"
+    "SOS 基金",
+    "摩尔斯接收器"
    ]
   },
   "ja": {
@@ -2730,7 +2752,8 @@
     "信号",
     "端末",
     "12のサービス",
-    "SOS基金"
+    "SOS基金",
+    "モールス受信機"
    ]
   }
  },

@@ -641,5 +641,15 @@
 "Målen per samhälle och deras framsteg publiceras i det här avsnittet.",
 "Jag vill bidra · skriv på WhatsApp",
 "Bidrag är frivilligt stöd till ett privat projekt och är inte avdragsgilla. Fonden köper uppkoppling för nödutrustning; den säljer inte vidare internet.",
-"Skänk en satellitkommunikator: SOS-knapp med GPS och abonnemang betalt av fonden, för personer eller härbärgen utan täckning eller saldo."
+"Skänk en satellitkommunikator: SOS-knapp med GPS och abonnemang betalt av fonden, för personer eller härbärgen utan täckning eller saldo.",
+"Morsemottagare · lyssnar",
+"Din telefon lyssnar på morsekod och gör om den till text.",
+"Den fångar via mikrofonen signalen från en radio, en annan telefon eller en siren; den läser också inspelningar och det du knackar med fingret. Tar den emot ”SOS” visar den en röd varning och vibrerar.",
+"Mikrofon",
+"Hittar själv tonen (300–1300 Hz) och hastigheten (5–40 ord per minut), även med brus.",
+"Inspelningar",
+"Öppna ett röstmemo eller en WAV-, MP3- eller M4A-fil och få texten.",
+"Med fingret",
+"Håll rutan nedtryckt för att sända morse; den översätts direkt.",
+"Testverktyg: ljudet behandlas i själva enheten och spelas varken in eller skickas. Ersätter inte 911."
 ]

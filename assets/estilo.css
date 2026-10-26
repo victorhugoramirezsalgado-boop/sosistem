@@ -759,3 +759,7 @@ body.present .hero { padding-top: 40px; }
   .s12-cara b { font-size: .86rem; }
   .s12-vertices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Receptor Morse (pestaña «Receptor Morse»): usa la paleta del sitio y el fondo elegido en el panel */
+.rx-host{--fg:var(--ink);--muted:var(--ink-2);--accent:var(--navy);--accent-ink:var(--surface);--rust:var(--brand);--body:var(--font);--display:var(--font);--radius:12px;padding:6px}
+.rx-host .rx-dlg .rx-txt{background:var(--surface-2)}

@@ -641,5 +641,15 @@
 "Les objectifs par communauté et leur avancement sont publiés dans cette section.",
 "Je veux contribuer · écrire sur WhatsApp",
 "Les contributions sont un soutien volontaire à un projet privé et ne sont pas déductibles des impôts. Le fonds achète de la connexion pour l’équipement d’urgence ; il ne revend pas d’internet.",
-"Offrez un communicateur satellite : bouton SOS avec GPS et abonnement payé par le fonds, pour des personnes ou des refuges sans réseau ni crédit."
+"Offrez un communicateur satellite : bouton SOS avec GPS et abonnement payé par le fonds, pour des personnes ou des refuges sans réseau ni crédit.",
+"Récepteur Morse · à l’écoute",
+"Votre téléphone écoute le code Morse et le transforme en texte.",
+"Il capte par le micro le signal d’une radio, d’un autre téléphone ou d’une sirène ; il lit aussi les enregistrements et ce que vous tapez du doigt. S’il reçoit « SOS », il affiche une alerte rouge et vibre.",
+"Micro",
+"Détecte seul la tonalité (300–1300 Hz) et la vitesse (5–40 mots par minute), même avec du bruit.",
+"Enregistrements",
+"Ouvrez un mémo vocal ou un fichier WAV, MP3 ou M4A et obtenez le texte.",
+"Du doigt",
+"Maintenez le cadre appuyé pour envoyer du Morse ; la traduction est immédiate.",
+"Outil de test : l’audio est traité sur l’appareil, sans enregistrement ni envoi. Il ne remplace pas le 911."
 ]

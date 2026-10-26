@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=4.6">
+<link rel="stylesheet" href="assets/estilo.css?v=4.8">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -578,6 +578,30 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   </div>
 </section>
 
+<section class="slide blk" id="receptor">
+  <div class="wrap">
+    <span class="eyebrow">Receptor Morse · a la escucha</span>
+    <h2>Su celular escucha el código Morse y lo convierte en texto.</h2>
+    <p>Capta por el micrófono la señal de una radio, de otro teléfono o de una sirena; también lee grabaciones y lo que usted teclee con el dedo. Si recibe «SOS», muestra un aviso rojo y vibra.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Micrófono</h3><p>Detecta solo el tono (300–1300 Hz) y la velocidad (5–40 palabras por minuto), aunque haya ruido.</p></div>
+      <div class="card"><h3>Grabaciones</h3><p>Abra una nota de voz o un archivo WAV, MP3 o M4A y obtenga el texto.</p></div>
+      <div class="card"><h3>Con el dedo</h3><p>Mantenga presionado el recuadro para enviar Morse; se traduce al instante.</p></div>
+    </div>
+    <div class="card rx-host" id="rx-host" style="margin-top:16px"></div>
+    <p class="note">Herramienta de prueba: el audio se procesa en el propio equipo, sin grabarse ni enviarse. No sustituye al 911.</p>
+    <div class="fuentes-sec">
+      <b>Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>Goertzel, G. (1958). An algorithm for the evaluation of finite trigonometric series. <i>The American Mathematical Monthly, 65</i>(1), 34–35. <a href="https://doi.org/10.2307/2310304" rel="noopener">https://doi.org/10.2307/2310304</a></li>
+        <li>International Telecommunication Union. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I/" rel="noopener">https://www.itu.int/rec/R-REC-M.1677-1-200910-I/</a></li>
+        <li>World Wide Web Consortium. (2021). <i>Web Audio API</i> (W3C Recommendation). <a href="https://www.w3.org/TR/webaudio/" rel="noopener">https://www.w3.org/TR/webaudio/</a></li>
+        <li>World Wide Web Consortium. (s. f.). <i>Media Capture and Streams</i> (W3C Candidate Recommendation). <a href="https://www.w3.org/TR/mediacapture-streams/" rel="noopener">https://www.w3.org/TR/mediacapture-streams/</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="clientes">
   <div class="wrap">
     <span class="eyebrow">Para quién</span>
@@ -748,17 +772,20 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/logo-giro.js?v=4.6"></script>
-<script src="assets/app.js?v=4.6"></script>
-<script src="assets/cubo.js?v=4.6"></script>
-<script src="assets/morse.js?v=4.6"></script>
-<script src="assets/pantalla.js?v=4.6"></script>
-<script src="assets/cubo-morse.js?v=4.6"></script>
-<script src="assets/idiomas.js?v=4.6"></script>
-<script src="assets/banderas.js?v=4.6"></script>
-<script src="assets/servicios12.js?v=4.6"></script>
-<script src="assets/pestanas.js?v=4.6"></script>
-<script src="assets/rastreo.js?v=4.6"></script>
+<script src="assets/logo-giro.js?v=4.8"></script>
+<script src="assets/app.js?v=4.8"></script>
+<script src="assets/cubo.js?v=4.8"></script>
+<script src="assets/morse.js?v=4.8"></script>
+<script src="assets/pantalla.js?v=4.8"></script>
+<script src="assets/cubo-morse.js?v=4.8"></script>
+<script src="assets/idiomas.js?v=4.8"></script>
+<script src="assets/banderas.js?v=4.8"></script>
+<script src="assets/servicios12.js?v=4.8"></script>
+<script src="assets/pestanas.js?v=4.8"></script>
+<script src="assets/rastreo.js?v=4.8"></script>
+<script src="assets/morse-motor.js?v=4.8"></script>
+<script src="assets/receptor.js?v=4.8"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
 (function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");

@@ -1,8 +1,13 @@
 {
-  "version": "4.7",
+  "version": "4.8",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.8",
+      "fecha": "2026-10-26",
+      "resumen": "Nueva pestaña «Receptor Morse»: el celular escucha código Morse por el micrófono (radio, otro teléfono o sirena), lee grabaciones WAV, MP3 o M4A y lo que se teclee con el dedo, y lo convierte en texto; detecta solo el tono (300–1300 Hz) y la velocidad (5–40 palabras por minuto) y, si recibe «SOS», muestra un aviso rojo y vibra. El audio se procesa en el propio equipo, sin grabarse ni enviarse. Funciona sin internet. En los 22 idiomas; fuentes APA 7."
+    },
     {
       "v": "4.7",
       "fecha": "2026-10-26",

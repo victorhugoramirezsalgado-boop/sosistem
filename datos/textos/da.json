@@ -641,5 +641,15 @@
 "Målene for hvert lokalsamfund og deres fremskridt offentliggøres i denne sektion.",
 "Jeg vil bidrage · skriv på WhatsApp",
 "Bidrag er frivillig støtte til et privat projekt og er ikke fradragsberettigede. Fonden køber forbindelse til nødudstyr; den videresælger ikke internet.",
-"Donér en satellitkommunikator: SOS-knap med GPS og abonnement betalt af fonden, til personer eller nødly uden signal eller taletid."
+"Donér en satellitkommunikator: SOS-knap med GPS og abonnement betalt af fonden, til personer eller nødly uden signal eller taletid.",
+"Morse-modtager · lytter",
+"Din telefon lytter til morsekode og laver den om til tekst.",
+"Den opfanger via mikrofonen signalet fra en radio, en anden telefon eller en sirene; den læser også optagelser og det, du taster med fingeren. Modtager den “SOS”, viser den en rød advarsel og vibrerer.",
+"Mikrofon",
+"Finder selv tonen (300–1300 Hz) og hastigheden (5–40 ord i minuttet), også med støj.",
+"Optagelser",
+"Åbn et stemmememo eller en WAV-, MP3- eller M4A-fil og få teksten.",
+"Med fingeren",
+"Hold feltet nede for at sende morse; det oversættes med det samme.",
+"Testværktøj: lyden behandles på selve enheden og bliver hverken optaget eller sendt. Erstatter ikke 911."
 ]

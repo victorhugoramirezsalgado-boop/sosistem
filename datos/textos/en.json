@@ -641,5 +641,15 @@
 "Goals per community and their progress are published in this section.",
 "I want to contribute · message on WhatsApp",
 "Contributions are voluntary support for a private project and are not tax-deductible. The fund buys connectivity for emergency equipment; it does not resell internet.",
-"Donate a satellite messenger: an SOS button with GPS and a subscription paid by the fund, for people or shelters with no signal or credit."
+"Donate a satellite messenger: an SOS button with GPS and a subscription paid by the fund, for people or shelters with no signal or credit.",
+"Morse receiver · listening",
+"Your phone listens to Morse code and turns it into text.",
+"It picks up through the microphone the signal from a radio, another phone or a siren; it also reads recordings and whatever you key with your finger. If it receives “SOS”, it shows a red alert and vibrates.",
+"Microphone",
+"Detects the tone (300–1300 Hz) and the speed (5–40 words per minute) on its own, even with noise.",
+"Recordings",
+"Open a voice memo or a WAV, MP3 or M4A file and get the text.",
+"With your finger",
+"Press and hold the box to send Morse; it is translated instantly.",
+"Test tool: audio is processed on the device itself, never recorded or sent. It does not replace 911."
 ]

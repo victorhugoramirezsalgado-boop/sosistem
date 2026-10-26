@@ -641,5 +641,15 @@
 "As metas por comunidade e seu avanço são publicados nesta seção.",
 "Quero contribuir · escrever pelo WhatsApp",
 "As contribuições são um apoio voluntário a um projeto privado e não são dedutíveis de impostos. O fundo compra conexão para o equipamento de emergência; não revende internet.",
-"Doe um comunicador via satélite: botão SOS com GPS e assinatura paga pelo fundo, para pessoas ou abrigos sem sinal nem crédito."
+"Doe um comunicador via satélite: botão SOS com GPS e assinatura paga pelo fundo, para pessoas ou abrigos sem sinal nem crédito.",
+"Receptor Morse · à escuta",
+"Seu celular escuta o código Morse e o converte em texto.",
+"Capta pelo microfone o sinal de um rádio, de outro telefone ou de uma sirene; também lê gravações e o que você teclar com o dedo. Se receber «SOS», mostra um aviso vermelho e vibra.",
+"Microfone",
+"Detecta sozinho o tom (300–1300 Hz) e a velocidade (5–40 palavras por minuto), mesmo com ruído.",
+"Gravações",
+"Abra uma nota de voz ou um arquivo WAV, MP3 ou M4A e obtenha o texto.",
+"Com o dedo",
+"Mantenha pressionado o quadro para enviar Morse; é traduzido na hora.",
+"Ferramenta de teste: o áudio é processado no próprio aparelho, sem ser gravado nem enviado. Não substitui o 911."
 ]

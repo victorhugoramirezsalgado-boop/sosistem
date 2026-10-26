@@ -641,5 +641,15 @@
 "Les metes per comunitat i el seu avanç es publiquen en aquesta secció.",
 "Vull aportar · escriure per WhatsApp",
 "Les aportacions són un suport voluntari a un projecte privat i no són deduïbles d’impostos. El fons compra connexió per a l’equip d’emergència; no revèn internet.",
-"Dona un comunicador per satèl·lit: botó SOS amb GPS i subscripció pagada pel fons, per a persones o refugis sense senyal ni saldo."
+"Dona un comunicador per satèl·lit: botó SOS amb GPS i subscripció pagada pel fons, per a persones o refugis sense senyal ni saldo.",
+"Receptor Morse · a l’escolta",
+"El teu mòbil escolta el codi Morse i el converteix en text.",
+"Capta pel micròfon el senyal d’una ràdio, d’un altre telèfon o d’una sirena; també llegeix enregistraments i el que teclegis amb el dit. Si rep «SOS», mostra un avís vermell i vibra.",
+"Micròfon",
+"Detecta tot sol el to (300–1300 Hz) i la velocitat (5–40 paraules per minut), encara que hi hagi soroll.",
+"Enregistraments",
+"Obre una nota de veu o un fitxer WAV, MP3 o M4A i obtén el text.",
+"Amb el dit",
+"Mantén premut el requadre per enviar Morse; es tradueix a l’instant.",
+"Eina de prova: l’àudio es processa al mateix aparell, sense gravar-lo ni enviar-lo. No substitueix el 911."
 ]
