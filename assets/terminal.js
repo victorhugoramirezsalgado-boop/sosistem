@@ -621,12 +621,23 @@
     x.fillStyle = "#aab4c5"; x.fillText("rojo: real · azul: prueba", w - 140, 10);
   }
 
+  // ---------- Bóveda (cifrado + Código del Cubo) ----------
+  const BOV = window.SOSBoveda || { disponible: () => false, tieneClave: () => false };
+  function avisoBoveda() {
+    const el = $("boveda-aviso"); if (!el) return;
+    el.textContent = !BOV.disponible() ? "Este navegador no permite cifrar aquí." : BOV.tieneClave()
+      ? "🔒 Bóveda activa: lo que exportes o subas va cifrado como código del Cubo (33)." : "Sin bóveda: los datos salen en texto normal. Pon una frase en Ajustes para cifrarlos.";
+  }
+  const nombreArchivo = (ext) => `sosistem_${A.id}_${new Date().toISOString().slice(0, 10)}.${ext}`;
+
   // ---------- Exportar ----------
   function descargar(nombre, texto, tipo) { const b = new Blob([texto], { type: tipo }), u = URL.createObjectURL(b), a = document.createElement("a"); a.href = u; a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 2000); }
   const COLS = ["id", "inicio_iso", "tipo", "titulo", "severidad", "prueba", "modo", "terminal", "recinto", "deteccion_ms", "nivel_max", "t_N0", "t_N1", "t_N2", "t_N3", "respuesta_s", "calificacion", "datos", "ubicacion", "equipo"];
-  $("btn-csv").onclick = () => {
+  $("btn-csv").onclick = async () => {
     const cel = (v) => { const s = v == null ? "" : typeof v === "object" ? JSON.stringify(v) : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
-    descargar(`sosistem_${A.id}_${new Date().toISOString().slice(0, 10)}.csv`, "﻿" + COLS.join(",") + "\n" + EVENTOS.map((e) => COLS.map((c) => cel(e[c])).join(",")).join("\n"), "text/csv;charset=utf-8");
+    const csv = "﻿" + COLS.join(",") + "\n" + EVENTOS.map((e) => COLS.map((c) => cel(e[c])).join(",")).join("\n");
+    if (BOV.tieneClave()) descargar(nombreArchivo("cubo.txt"), await BOV.cifrarCubo({ formato: "csv", csv }), "text/plain;charset=utf-8");
+    else descargar(nombreArchivo("csv"), csv, "text/csv;charset=utf-8");
   };
   async function paquete(soloPendientes) {
     const mins = await todos("minutos"), ultimo = LS.get("sost_sync_t", 0);
@@ -637,7 +648,19 @@
       mapeo: { promedio: window.SOSMapa?.promedio() || null, recorridos: window.SOSMapa?.recorridos() || [] },
       errores: DIAG.filter((d) => !soloPendientes || !d.enviado).map(({ enviado, ...d }) => ({ ...d, categoria: DIAG_CAT[d.cat] || d.cat, iso: new Date(d.t).toISOString() })) };
   }
-  $("btn-json").onclick = async () => descargar(`sosistem_${A.id}_${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(await paquete(false), null, 2), "application/json");
+  $("btn-json").onclick = async () => {
+    const p = await paquete(false);
+    if (BOV.tieneClave()) descargar(nombreArchivo("cubo.txt"), await BOV.cifrarCubo(p), "text/plain;charset=utf-8");
+    else descargar(nombreArchivo("json"), JSON.stringify(p, null, 2), "application/json");
+  };
+  // Abrir un archivo del Cubo y descifrarlo (solo con la frase puesta en Ajustes)
+  $("btn-abrir-cubo").onclick = () => { if (!BOV.tieneClave()) { toast("Primero pon la frase de la bóveda en Ajustes."); vista("ajustes"); return; } $("arch-cubo").click(); };
+  $("arch-cubo").onchange = async (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    try { const o = await BOV.descifrarCubo(await f.text()); $("cubo-salida").textContent = o.formato === "csv" ? o.csv : JSON.stringify(o, null, 2); toast("Descifrado."); }
+    catch (err) { $("cubo-salida").textContent = ""; toast(err.message, 5000); }
+    e.target.value = "";
+  };
 
   // ---------- Envío a GitHub privado (API de contenidos) ----------
   async function sincronizar(silencioso) {
@@ -645,8 +668,10 @@
     if (!navigator.onLine) { if (!silencioso) toast("Sin conexión: se enviará después."); return; }
     const p = await paquete(true);
     if (!p.eventos.length && !p.minutos.length && !p.errores.length) { if (!silencioso) toast("No hay datos nuevos para enviar."); return; }
-    const d = new Date(), ruta = `pruebas/terminal/${d.toISOString().slice(0, 10)}/${A.id}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.json`;
-    const bytes = new TextEncoder().encode(JSON.stringify(p, null, 2)); let bin = "";
+    const cifrar = BOV.tieneClave(), ext = cifrar ? "cubo.txt" : "json";
+    const d = new Date(), ruta = `pruebas/terminal/${d.toISOString().slice(0, 10)}/${A.id}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.${ext}`;
+    const contenido = cifrar ? await BOV.cifrarCubo(p) : JSON.stringify(p, null, 2);
+    const bytes = new TextEncoder().encode(contenido); let bin = "";
     for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
     const b64 = btoa(bin);
     $("sync-estado").textContent = "Enviando…";
@@ -707,10 +732,15 @@
   // ---------- Ajustes ----------
   const F = $("f-ajustes");
   function llenarAjustes() { [...F.elements].forEach((el) => { if (!el.name) return; if (el.type === "checkbox") el.checked = !!A[el.name]; else el.value = A[el.name] ?? ""; }); }
-  F.onsubmit = (e) => { e.preventDefault();
+  // Frase de la bóveda: solo en memoria, nunca se guarda
+  const bovVer = $("a-boveda-ver"); if (bovVer) bovVer.onchange = () => { $("a-boveda").type = bovVer.checked ? "text" : "password"; };
+  async function aplicarBoveda() { const v = ($("a-boveda")?.value || "").trim(); if (v) { if (!(await BOV.fijarClave(v))) toast("La frase debe tener al menos 6 caracteres y el navegador debe permitir cifrado."); } else BOV.olvidarClave(); avisoBoveda(); }
+  F.onsubmit = async (e) => { e.preventDefault();
     [...F.elements].forEach((el) => { if (!el.name) return; A[el.name] = el.type === "checkbox" ? el.checked : el.type === "number" ? +el.value : el.value.trim(); });
     A.id = (A.id || DEF.id).replace(/[^\w-]/g, "").slice(0, 20) || DEF.id; A.det.voz = A.voz;
-    guardarAjustes(); pintarCabecera(); pintarDetectores(); toast("Ajustes guardados."); };
+    await aplicarBoveda();
+    guardarAjustes(); pintarCabecera(); pintarDetectores(); toast(BOV.tieneClave() ? "Ajustes guardados · bóveda activa 🔒" : "Ajustes guardados."); };
+  avisoBoveda();
   $("btn-borrar").onclick = async () => { if (!confirm("¿Borrar todos los eventos y lecturas guardados en este celular? Lo enviado a GitHub no se borra.")) return;
     await tx("eventos", "readwrite", (s) => s.clear()); await tx("minutos", "readwrite", (s) => s.clear()); EVENTOS = []; pintarEventos(); toast("Datos locales borrados."); };
 

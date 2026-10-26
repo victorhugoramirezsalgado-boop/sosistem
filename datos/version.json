@@ -1,8 +1,13 @@
 {
-  "version": "4.8",
+  "version": "4.9",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.9",
+      "fecha": "2026-10-26",
+      "resumen": "Privacidad de las pruebas: bóveda con Código de comunicación del Cubo (33)©. En la Terminal se pone una frase secreta (que nunca se guarda) y todo lo que se exporta o se sube a GitHub queda cifrado con AES-256-GCM y con forma de código del cubo (caras L1–L6, firma 3·3); sin la frase no se puede leer aunque se tenga el archivo o el código de la página. Botón para abrir y descifrar archivos .cubo.txt. La página mide de forma anónima cuántas visitas probablemente abren el inspector de código (indicio, no bloqueo). El receptor y el cifrado se procesan en el equipo."
+    },
     {
       "v": "4.8",
       "fecha": "2026-10-26",

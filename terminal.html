@@ -205,6 +205,12 @@
       </div>
       <button class="t-btn pri" type="button" id="btn-sync">Enviar a mi GitHub privado</button>
       <div class="t-mono" id="sync-estado">Sin envíos.</div>
+      <p class="t-nota" id="boveda-aviso"></p>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="btn-abrir-cubo">Abrir archivo del Cubo (33)</button>
+        <input type="file" id="arch-cubo" accept=".txt,.cubo,text/plain" hidden>
+      </div>
+      <div class="t-mono" id="cubo-salida" style="white-space:pre-wrap"></div>
     </div>
   </section>
 
@@ -268,8 +274,13 @@
         </ul>
       </div>
 
+      <h2>Bóveda · Código de comunicación del Cubo (33)©</h2>
+      <p class="t-nota">Escribe una frase secreta y todo lo que exportes o subas a GitHub se guardará cifrado y con forma de código del cubo. Sin la frase nadie lo lee, aunque tenga el archivo. <b>La frase no se guarda en ningún lado: si la olvidas, no se podrá recuperar lo cifrado.</b> Déjala en blanco para guardar sin cifrar.</p>
+      <label>Frase de la bóveda<input id="a-boveda" type="password" maxlength="200" spellcheck="false" autocomplete="off" placeholder="al menos 6 caracteres"></label>
+      <label class="t-chk"><input type="checkbox" id="a-boveda-ver"> Ver la frase mientras la escribo</label>
+
       <h2>Envío a GitHub (privado)</h2>
-      <p class="t-nota">Los eventos se suben como archivos JSON a tu repositorio privado, en la carpeta <code>pruebas/terminal/</code>. El token se guarda solo en este celular. Crea un token «fine-grained» con permiso <i>Contents: Read and write</i> únicamente para ese repositorio.</p>
+      <p class="t-nota">Los eventos se suben a tu repositorio privado, en la carpeta <code>pruebas/terminal/</code>. Con la bóveda activa se suben como archivos <code>.cubo.txt</code> cifrados. El token se guarda solo en este celular. Crea un token «fine-grained» con permiso <i>Contents: Read and write</i> únicamente para ese repositorio.</p>
       <label>Repositorio (dueño/repo)<input name="repo" maxlength="100" spellcheck="false"></label>
       <label>Token de GitHub<input name="token" type="password" maxlength="200" spellcheck="false" placeholder="github_pat_…"></label>
       <label class="t-chk"><input type="checkbox" name="auto"> Enviar automáticamente al terminar cada alerta</label>
@@ -296,10 +307,11 @@
   <p>Toca dos veces para volver. No bloquees el celular: Safari detiene los sensores con la pantalla bloqueada.</p>
 </div>
 
-<script src="assets/morse.js"></script>
-<script src="assets/banderas.js"></script>
-<script src="assets/pantallas6.js"></script>
-<script src="assets/mapeo.js"></script>
-<script src="assets/terminal.js"></script>
+<script src="assets/morse.js?v=4.9"></script>
+<script src="assets/banderas.js?v=4.9"></script>
+<script src="assets/pantallas6.js?v=4.9"></script>
+<script src="assets/mapeo.js?v=4.9"></script>
+<script src="assets/boveda.js?v=4.9"></script>
+<script src="assets/terminal.js?v=4.9"></script>
 </body>
 </html>

@@ -32,6 +32,26 @@
     else if (a.id === "btn-presentar") enviar("evento/presentar", "Modo presentación", true);
   });
 
+  // Indicio de inspección del código (herramientas de desarrollador abiertas).
+  // AVISO: es solo un indicio y NO impide ver ni descargar el código; el fuente de una web siempre es accesible.
+  // No identifica a la persona: solo cuenta, de forma anónima, cuántas visitas probablemente abrieron el inspector.
+  let inspeccion = false;
+  const marcarInspeccion = (via) => { if (inspeccion || !listo) return; inspeccion = true; enviar("evento/inspeccion", "Inspección del código (" + via + ")", true); };
+  // 1) salto de tiempo al evaluar un objeto con getter (el inspector "expande" la consola)
+  try {
+    const cebo = /./; cebo.toString = function () { marcarInspeccion("consola"); return "SOSistem © VHRS"; };
+    setInterval(() => { if (!inspeccion) console.debug("%c", cebo); }, 4000);
+  } catch (e) {}
+  // 2) diferencia entre tamaño de ventana y de vista (panel del inspector acoplado)
+  setInterval(() => {
+    const ancho = window.outerWidth - window.innerWidth, alto = window.outerHeight - window.innerHeight;
+    if (!inspeccion && (ancho > 180 || alto > 220) && window.outerWidth > 0) marcarInspeccion("panel");
+  }, 4000);
+  // 3) atajos típicos para ver el código
+  addEventListener("keydown", (e) => {
+    if (e.key === "F12" || ((e.ctrlKey || e.metaKey) && e.shiftKey && /^[IJC]$/i.test(e.key)) || ((e.ctrlKey || e.metaKey) && /^[US]$/i.test(e.key))) marcarInspeccion("atajo");
+  });
+
   // Tiempo de visita (una vez, al salir u ocultar la página)
   let hecho = false;
   const rango = (s) => s < 10 ? "0-10s" : s < 30 ? "10-30s" : s < 60 ? "30-60s" : s < 180 ? "1-3min" : s < 600 ? "3-10min" : "10min+";
