@@ -307,6 +307,27 @@
   <p>Toca dos veces para volver. No bloquees el celular: Safari detiene los sensores con la pantalla bloqueada.</p>
 </div>
 
+<!-- Aviso de versión de prueba: se acepta una vez por equipo; sin registro ni datos personales -->
+<div class="t-beta" id="t-beta" role="dialog" aria-modal="true" aria-labelledby="tb-tit" hidden>
+  <div class="t-beta-caja">
+    <span class="t-beta-tag">VERSIÓN DE PRUEBA · EN REVISIÓN</span>
+    <h2 id="tb-tit">Bienvenido a la terminal de pruebas de SOSistem™</h2>
+    <p>Puede usarla libremente y sin registro para conocer el sistema. Tenga presente que:</p>
+    <ul>
+      <li><b>No es el sistema terminado.</b> No está lista para operar, instalar ni aplicarse como protección real, y no sustituye al 911.</li>
+      <li>Sus lecturas se quedan en este equipo; solo se cuenta de forma anónima cuántas personas la usan.</li>
+      <li>Sus pruebas y comentarios son bienvenidos. Si quiere acelerar el equipo físico para salvar vidas, puede apoyar el proyecto.</li>
+      <li>El uso indebido (falsas alarmas al 911, acceso no autorizado, copia o venta del código) puede tener consecuencias legales.</li>
+    </ul>
+    <label class="t-beta-chk"><input type="checkbox" id="tb-chk"><span>He leído y acepto los <a href="terminos-pruebas.html" target="_blank" rel="noopener">Términos de uso de la versión de prueba</a>.</span></label>
+    <button class="t-btn pri" type="button" id="tb-ok" disabled>Aceptar y entrar a las pruebas</button>
+    <div class="t-grid2" style="margin:8px 0 0">
+      <a class="t-btn verde" href="./#apoyo">Apoyar el proyecto</a>
+      <a class="t-btn" href="https://wa.me/526462270490?text=Comentarios%20sobre%20la%20terminal%20de%20pruebas%20SOSistem%3A%20" target="_blank" rel="noopener">Enviar comentarios</a>
+    </div>
+  </div>
+</div>
+
 <script src="assets/cubo-rt.js?v=5.1"></script>
 <script src="assets/morse.js?v=5.1"></script>
 <script src="assets/banderas.js?v=5.1"></script>
@@ -314,5 +335,30 @@
 <script src="assets/mapeo.js?v=5.1"></script>
 <script src="assets/boveda.js?v=5.1"></script>
 <script src="assets/terminal.js?v=5.1"></script>
+<script>
+/* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
+   Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */
+(function(){
+  var LS={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
+  var code="sosistem", omitir=navigator.doNotTrack==="1"||/^(localhost|127\.)/.test(location.hostname);
+  var cfg=fetch("datos/config.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(c){if(c.goatcounter)code=c.goatcounter;}).catch(function(){});
+  function contar(ev,titulo){
+    if(LS.get("sost_cnt_"+ev))return; LS.set("sost_cnt_"+ev,String(Date.now())); if(omitir)return;
+    cfg.then(function(){var u="https://"+code+".goatcounter.com/count?p="+encodeURIComponent("pruebas/"+ev)+"&t="+encodeURIComponent(titulo)+"&e=true&rnd="+Math.random().toString(36).slice(2);
+      if(navigator.sendBeacon)navigator.sendBeacon(u);else new Image().src=u;});
+  }
+  contar("terminal-abierta","Terminal de pruebas abierta");
+  var standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+  if(standalone)contar("app-instalada","App de la terminal instalada");
+  addEventListener("appinstalled",function(){contar("app-instalada","App de la terminal instalada");});
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button,a");if(!b)return;
+    if(b.id==="btn-iniciar"||b.hasAttribute("data-prueba")||b.id==="btn-sos")contar("inicio-monitoreo","Prueba ejecutada");
+    else if(b.id==="btn-csv"||b.id==="btn-json"||b.id==="btn-sync")contar("datos-exportados","Datos de prueba exportados");},true);
+  var VER="2026-10-26", caja=document.getElementById("t-beta"), chk=document.getElementById("tb-chk"), ok=document.getElementById("tb-ok");
+  if(LS.get("sost_terminos")!==VER){caja.hidden=false;document.body.style.overflow="hidden";}
+  chk.addEventListener("change",function(){ok.disabled=!chk.checked;});
+  ok.addEventListener("click",function(){if(!chk.checked)return;LS.set("sost_terminos",VER);contar("acepto-terminos","Términos de prueba aceptados");caja.hidden=true;document.body.style.overflow="";});
+})();
+</script>
 </body>
 </html>

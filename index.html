@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SOSistem™ · Sistema S.O.S.© · Alerta temprana para la seguridad humana</title>
 <meta name="description" content="SOSistem™ (Sistema S.O.S.©): terminales y pantallas físicas en interiores y exteriores para la seguridad humana. Conteo de personas en tiempo real, detección sin cámaras, alerta temprana con luz, sonido y Morse, y aviso al 911 en formato CAP v1.2.">
-<meta name="theme-color" content="#c8102e">
+<meta name="theme-color" content="#005387">
 <meta property="og:title" content="SOSistem™ — Alerta temprana para salvaguardar la vida humana">
 <meta property="og:description" content="Terminales y pantallas físicas en interiores y exteriores: alerta temprana sin cámaras para salvaguardar la vida humana en recintos confinados, con aviso al 911.">
 <meta property="og:url" content="https://sosistem.com/">
@@ -30,7 +30,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
     <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="38" height="38" alt=""><span class="logo-text">SOSistem™</span></a>
     <nav>
       <button class="btn hide-xs" id="btn-presentar" type="button" title="Modo presentación (flechas para avanzar)">Presentar</button>
-      <a class="btn primary" href="#contacto"><span class="hide-xs">Solicitar demostración</span><span class="show-xs">Demostración</span></a>
+      <a class="btn primary" href="#terminal"><span class="hide-xs">Terminal de pruebas</span><span class="show-xs">Terminal</span></a>
     </nav>
   </div>
 </header>
@@ -45,7 +45,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <span class="eyebrow">Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</span>
       <h1>Alerta temprana al instante para salvaguardar la vida humana en recintos confinados.</h1>
       <p class="lead">SOSistem™ es un sistema de terminales y pantallas físicas, instaladas en interiores y exteriores, para la seguridad humana. Lleva en tiempo real el conteo de personas dentro de cada recinto, como un inventario físico para evacuación y rescate; detecta sin cámaras a quien está caído o sin movimiento, alerta con luz, sonido y código Morse, y avisa en segundos al encargado, a la central de monitoreo y al 911.</p>
-      <p><a class="btn primary" href="#contacto">Solicitar demostración</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
+      <p><a class="btn primary" href="#terminal">Probar la terminal (versión de prueba)</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
       <div class="inv-vivo" id="inv-vivo" aria-live="polite">
         <div class="iv-cab"><span class="iv-tit">Inventario de personas en tiempo real</span><em class="iv-dem">Demostración en vivo</em></div>
         <div class="iv-tot"><b id="iv-total">27</b><span>personas dentro de 60</span></div>
@@ -544,7 +544,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
           <button class="btn" type="button" id="sn-stop">Detener</button>
         </div>
         <div class="sn-luz" id="sn-luz" aria-hidden="true"></div>
-        <svg class="sn-t3" viewBox="0 0 400 46" role="img" aria-label="Patrón T-3: tres pulsos de 0.5 s y pausa de 1.5 s"><g fill="#C8102E"><rect x="10" y="10" width="40" height="20" rx="3"/><rect x="90" y="10" width="40" height="20" rx="3"/><rect x="170" y="10" width="40" height="20" rx="3"/></g><g fill="none" stroke="#7a8699"><line x1="10" y1="34" x2="330" y2="34"/></g><g font-size="9" fill="#7a8699"><text x="10" y="44">0.5 s</text><text x="54" y="44">0.5</text><text x="210" y="44">pausa 1.5 s</text><text x="300" y="44">↻ 4 s</text></g></svg>
+        <svg class="sn-t3" viewBox="0 0 400 46" role="img" aria-label="Patrón T-3: tres pulsos de 0.5 s y pausa de 1.5 s"><g fill="#9B2423"><rect x="10" y="10" width="40" height="20" rx="3"/><rect x="90" y="10" width="40" height="20" rx="3"/><rect x="170" y="10" width="40" height="20" rx="3"/></g><g fill="none" stroke="#7a8699"><line x1="10" y1="34" x2="330" y2="34"/></g><g font-size="9" fill="#7a8699"><text x="10" y="44">0.5 s</text><text x="54" y="44">0.5</text><text x="210" y="44">pausa 1.5 s</text><text x="300" y="44">↻ 4 s</text></g></svg>
       </div>
       <div class="card"><h3>Su mensaje en banderas y Morse</h3>
         <label class="sn-campo">Mensaje<input id="ics-txt" value="SOS" maxlength="24" autocomplete="off"></label>
@@ -645,6 +645,21 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
     <span class="eyebrow">Terminal de pruebas</span>
     <h2>Su celular como terminal del sistema.</h2>
     <p>Instale la app SOSistem™ Terminal y use su celular como punto de prueba: lee el acelerómetro, el giroscopio, el micrófono y la ubicación, detecta caídas, vibración tipo sismo, ruido fuerte y la palabra «S.O.S.», y escala la alerta por niveles N0–N3 como la pantalla física.</p>
+    <div class="card aviso-beta" role="note" aria-labelledby="ab-tit">
+      <span class="tag warn">Versión de prueba · en revisión</span>
+      <h3 id="ab-tit" style="margin-top:10px">Abierta a todo el público, sin registro.</h3>
+      <p>La terminal es una versión de prueba de SOSistem™. Cualquier persona puede descargarla y usarla para conocer el sistema; no pedimos nombre, correo ni teléfono. <b>No es el sistema terminado</b>: no está lista para operar, instalar ni aplicarse como medio de protección en ningún recinto, y no sustituye al 911 ni a los sistemas oficiales de alerta.</p>
+      <p>Sus pruebas y comentarios son bienvenidos y nos ayudan a mejorarla. Si desea acelerar el desarrollo del equipo físico para salvar vidas, puede apoyar el proyecto con una aportación voluntaria.</p>
+      <p>El uso de la terminal implica la aceptación de los <a href="terminos-pruebas.html">Términos de uso de la versión de prueba</a>. El uso indebido —falsas alarmas a servicios de emergencia, acceso no autorizado, copia o distribución del código— puede dar lugar a acciones legales.</p>
+      <div class="cnt-pruebas" id="cnt-pruebas" aria-live="polite">
+        <div><b data-cnt="pruebas/terminal-abierta">—</b><span>personas abrieron la terminal</span></div>
+        <div><b data-cnt="pruebas/acepto-terminos">—</b><span>aceptaron los términos de prueba</span></div>
+        <div><b data-cnt="pruebas/inicio-monitoreo">—</b><span>ejecutaron una prueba</span></div>
+        <div><b data-cnt="pruebas/app-instalada">—</b><span>instalaron la app</span></div>
+      </div>
+      <p class="note" id="cnt-nota">Conteo anónimo por equipo: no identifica a nadie, no usa cookies y se actualiza con cada uso.</p>
+      <p style="margin:0"><a class="btn primary" href="terminal.html">Abrir la terminal</a> <a class="btn verde" href="#apoyo">Apoyar el proyecto</a> <a class="btn" href="https://wa.me/526462270490?text=Comentarios%20sobre%20la%20terminal%20de%20pruebas%20SOSistem%3A%20" target="_blank" rel="noopener">Enviar comentarios</a></p>
+    </div>
     <div class="grid g3">
       <div class="card"><h3>Sensores en vivo</h3><p>Movimiento, orientación, nivel de sonido, batería, red y datos técnicos del equipo.</p></div>
       <div class="card"><h3>Eventos con estadística</h3><p>Cada evento queda con hora al milisegundo, nivel alcanzado y tiempo de respuesta; al marcarlo como válido o falsa alarma se calcula el porcentaje de error.</p></div>
@@ -654,7 +669,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <div>
         <p><a class="btn primary" href="terminal.html">Abrir la terminal</a></p>
         <p class="note">En iPhone: Safari → Compartir → «Agregar a pantalla de inicio». En Android: Chrome → «Instalar app».</p>
-        <p class="note">Herramienta de prueba: no es un dispositivo médico ni sustituye al 911.</p>
+        <p class="note">Herramienta de prueba: no es un dispositivo médico ni sustituye al 911. <a href="terminos-pruebas.html">Términos de uso</a>.</p>
       </div>
       <div class="card terminal-qr" style="text-align:center">
         <div id="qr-terminal" class="no-traducir" style="display:inline-block;background:#fff;padding:10px;border-radius:10px;min-height:40px" aria-label="Código QR de sosistem.com/terminal.html"></div>
@@ -720,9 +735,9 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 <section class="slide blk" id="contacto">
   <div class="wrap">
     <span class="eyebrow">Contacto</span>
-    <h2>Agende una demostración.</h2>
+    <h2>Hablemos de su recinto.</h2>
     <p class="lead">Le mostramos el simulador, las pantallas y el panel de estadísticas con datos de prueba, y evaluamos su recinto sin costo.</p>
-    <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20me%20interesa%20una%20demostraci%C3%B3n%20del%20Sistema%20S.O.S." target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn" href="tel:+526462270490">646 227 0490</a></p>
+    <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20me%20interesa%20el%20Sistema%20S.O.S.%20(SOSistem)" target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn" href="tel:+526462270490">646 227 0490</a></p>
   </div>
 </section>
 
@@ -760,7 +775,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obras registradas en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados. <span>Cubo Morse© registrado en Safe Creative (2610257441754).</span> <span>Plataforma SOSistem™ (versiones 1.0.0 a 3.8) registrada en Safe Creative (2610257442171).</span></p>
     <p>Información técnica y normativa actualizada al 25 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
-    <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="admin.html" rel="nofollow">Administrador</a></p>
+    <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
 </footer>
@@ -791,6 +806,16 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 (function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");
 s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";s.onload=function(){try{new QRCode(el,{text:"https://sosistem.com/terminal.html",width:150,height:150,colorDark:"#0f1b2d",colorLight:"#ffffff"});}catch(e){}};
 s.onerror=function(){el.innerHTML='<a href="terminal.html">sosistem.com/terminal.html</a>';};document.body.appendChild(s);})();
+</script>
+<script>
+/* Conteo público y anónimo de uso de la terminal de pruebas (GoatCounter, sin cookies ni datos personales) */
+(function(){var host=document.getElementById("cnt-pruebas");if(!host)return;var code="sosistem";
+var num=function(v){var n=parseInt(String(v==null?"":v).replace(/[^0-9]/g,""),10);return isNaN(n)?null:n;};
+fetch("datos/config.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(c){if(c.goatcounter)code=c.goatcounter;}).catch(function(){}).then(function(){
+var pend=[].slice.call(host.querySelectorAll("[data-cnt]")),ok=0;
+Promise.all(pend.map(function(el){return fetch("https://"+code+".goatcounter.com/counter/"+encodeURIComponent(el.dataset.cnt)+".json").then(function(r){return r.ok?r.json():null;}).then(function(j){
+var n=j?(num(j.count_unique)!=null?num(j.count_unique):num(j.count)):null;el.textContent=n==null?"0":n.toLocaleString("es-MX");if(j)ok++;}).catch(function(){el.textContent="0";});})).then(function(){
+if(!ok){var nt=document.getElementById("cnt-nota");if(nt)nt.textContent="Conteo anónimo por equipo: no identifica a nadie ni usa cookies. Las cifras se muestran en cuanto se registra el primer uso.";}});});})();
 </script>
 </body>
 </html>
