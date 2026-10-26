@@ -21,7 +21,7 @@
   // ---------- Ajustes ----------
   const DEF = { recinto: "Oficinas ContenedorEns · prueba", id: "T-" + Math.random().toString(36).slice(2, 6).toUpperCase(), modo: "prueba",
     wa: "526462270490", impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, mic_offset: 0, inmovil_min: 0,
-    sms: "", sms_auto: true, voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: true, ahorro: false,
+    sms: "", sms_auto: true, hasta: "11:00", hasta_ts: 0, usgs: false, usgs_mag: 1, usgs_km: 150, voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: true, ahorro: false,
     det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false } };
   const A = Object.assign({}, DEF, LS.get("sost_ajustes", {}));
   A.det = Object.assign({}, DEF.det, A.det || {});
@@ -266,7 +266,7 @@
   });
 
   // ---------- Alertas y escalamiento N0–N3 ----------
-  const TIPOS = { caida: ["Persona en el suelo", "✕", "alerta"], sismo: ["Vibración tipo sismo", "≋", "alerta"], ruido: ["Ruido fuerte", "!", "advertencia"],
+  const TIPOS = { caida: ["Persona en el suelo", "✕", "alerta"], sismo: ["Vibración tipo sismo", "≋", "alerta"], sismo_red: ["Sismo reportado por la red sísmica", "≋", "advertencia"], ruido: ["Ruido fuerte", "!", "advertencia"],
     voz: ["Palabra de auxilio detectada", "S", "alerta"], inmovil: ["Sin movimiento prolongado", "…", "advertencia"], manual: ["Alerta manual S.O.S.", "S", "alerta"] };
   const NIV = [["N0", "aviso por voz y Morse en el recinto"], ["N1", "encargado notificado"], ["N2", "central de monitoreo"], ["N3", "911 / C5"]];
   const ALERTA = { activa: false, ev: null, timer: 0, t0: 0 };
@@ -337,7 +337,7 @@
     ALERTA.sonandoAviso = true; ALERTA.aviso = ev;
     setTimeout(() => { ALERTA.sonandoAviso = false; ALERTA.aviso = null; if (!ALERTA.activa) { estado(monitoreando ? "monitoreo" : "detenido"); sonidoActual(null); } }, Math.max(6000, (dur + 1) * 1000));
   }
-  const perfilDe = (tipo) => ({ caida: "caida", manual: "caida", voz: "caida", sismo: "sismo", ruido: "advertencia", inmovil: "advertencia" }[tipo] || "caida");
+  const perfilDe = (tipo) => ({ caida: "caida", manual: "caida", voz: "caida", sismo: "sismo", sismo_red: "advertencia", ruido: "advertencia", inmovil: "advertencia" }[tipo] || "caida");
   // Reproduce sirena (patrón normalizado) + código Morse del perfil; devuelve la duración en segundos
   function sonarPerfil(clave, motivo, prueba) {
     const P = PERFILES[clave] || PERFILES.caida;
@@ -427,17 +427,47 @@
       nota: "Lleva el celular en la bolsa del pantalón o en la mano. Detecta tu caída (impacto + quietud), la palabra «auxilio» y si dejas de moverte 5 min." },
     bano_repisa: { recinto: "Sanitario · prueba VHRS (celular en repisa)", det: { caida: false, sismo: true, ruido: true, voz: true, inmovil: false }, sismo_sens: 2, ruido_db: 92,
       nota: "Deja el celular apoyado en una repisa o el lavabo. Detecta golpes fuertes en el piso o la pared (vibración), ruido fuerte y la palabra «auxilio»." },
+    basico: { recinto: "El Sauzal · modo básico (sismo y voz)", modo: "real", det: { caida: false, sismo: true, ruido: true, voz: true, inmovil: false }, sismo_sens: 1, ruido_db: 85, voz_sismo: true, usgs: true, usgs_mag: 1, usgs_km: 150, arrancar: true,
+      nota: "Modo básico encendido: vibración tipo sismo (máxima sensibilidad), grito o ruido fuerte, palabras «S.O.S.», «auxilio» y «está temblando», y sismos desde magnitud 1 reportados por la red sísmica a 150 km de El Sauzal. Se apaga solo a la hora indicada. Deja el celular conectado al cargador, con la pantalla encendida y apoyado en una superficie firme." },
     oficina: { recinto: "Oficinas ContenedorEns · prueba", det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false }, impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, inmovil_min: 0,
       nota: "Escritorio: caída del celular, vibración tipo sismo y ruido fuerte." } };
   document.querySelectorAll("[data-esc]").forEach((b) => b.onclick = () => {
     const e = ESC[b.dataset.esc]; if (!e) return;
     if (document.body.classList.contains("rol-pantalla")) { window.__enlOrden?.("esc:" + b.dataset.esc); document.querySelectorAll("[data-esc]").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); $("esc-nota").textContent = "Escenario enviado al celular: " + e.nota; return; }
-    const { nota, det, ...resto } = e; Object.assign(A, resto, { modo: "prueba", sonido: true, repetir: true, voz_ok: true }); A.det = Object.assign({}, A.det, det); A.voz = A.det.voz;
+    const { nota, det, arrancar, ...resto } = e; Object.assign(A, { usgs: false, hasta_ts: 0 }, resto, { modo: resto.modo || "prueba", sonido: true, repetir: true, voz_ok: true }); A.det = Object.assign({}, A.det, det); A.voz = A.det.voz;
+    if (arrancar) { A.hasta = ($("hasta")?.value || A.hasta || "11:00"); A.hasta_ts = horaObjetivo(A.hasta); }
     guardarAjustes(); pintarCabecera(); pintarDetectores();
     document.querySelectorAll("[data-esc]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     $("esc-nota").textContent = nota; log("sis", `Escenario: ${A.recinto} · detectores ${Object.entries(A.det).filter(([, v]) => v).map(([k]) => k).join(", ")}`);
-    if (monitoreando) asegurarVoz(); toast("Escenario listo. Toca «Iniciar monitoreo».");
+    if (monitoreando) asegurarVoz();
+    if (arrancar) { (monitoreando ? Promise.resolve() : iniciar()).then(() => { pintarHasta(); revisarRed(); }); log("sis", `Modo básico hasta las ${A.hasta} (${new Date(A.hasta_ts).toLocaleString("es-MX")})`); toast(`Modo básico encendido hasta las ${A.hasta}.`, 4000); }
+    else { pintarHasta(); toast("Escenario listo. Toca «Iniciar monitoreo»."); }
   });
+
+  // ---------- Modo básico: apagado programado y sismos reportados por la red sísmica ----------
+  function horaObjetivo(hhmm) { const [h, m] = String(hhmm || "11:00").split(":").map(Number), d = new Date(); d.setHours(h || 0, m || 0, 0, 0); if (d.getTime() <= Date.now()) d.setDate(d.getDate() + 1); return d.getTime(); }
+  function pintarHasta() { const el = $("hasta-est"); if (!el) return; el.textContent = A.hasta_ts && monitoreando ? `Encendido hasta las ${A.hasta} · faltan ${Math.max(0, Math.round((A.hasta_ts - Date.now()) / 60000))} min` : "Apagado programado: sin activar"; }
+  setInterval(() => { if (A.hasta_ts && monitoreando && Date.now() >= A.hasta_ts) { log("sis", `Apagado programado a las ${A.hasta}: fin del modo básico`); A.hasta_ts = 0; A.usgs = false; guardarAjustes(); detener(); toast("Modo básico terminado a la hora programada.", 5000); } pintarHasta(); }, 30000);
+  // El Sauzal, Ensenada, B.C. (referencia para la distancia)
+  const SAUZAL = { lat: 31.893, lon: -116.695 };
+  const km = (a, b, c, d) => { const r = (x) => x * Math.PI / 180, R = 6371, dLa = r(c - a), dLo = r(d - b), h = Math.sin(dLa / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(dLo / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
+  const vistosRed = new Set(LS.get("sost_usgs_vistos", []));
+  async function revisarRed() {
+    if (!monitoreando || !A.usgs || !navigator.onLine) return;
+    try {
+      const r = await fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson", { cache: "no-store" }); if (!r.ok) return;
+      const j = await r.json();
+      for (const f of j.features || []) {
+        const [lon, lat, prof] = f.geometry.coordinates, m = f.properties.mag, d = km(SAUZAL.lat, SAUZAL.lon, lat, lon);
+        if (vistosRed.has(f.id) || m == null || m < A.usgs_mag || d > A.usgs_km) continue;
+        vistosRed.add(f.id); LS.set("sost_usgs_vistos", [...vistosRed].slice(-200));
+        const datos = { fuente: "USGS / red sísmica regional", magnitud: m, tipo_magnitud: f.properties.magType, distancia_km: Math.round(d), profundidad_km: Math.round(prof), lugar: f.properties.place, hora: new Date(f.properties.time).toISOString(), url: f.properties.url };
+        log("alerta", `Sismo reportado: M${m.toFixed(1)} a ${Math.round(d)} km de El Sauzal · ${f.properties.place} · ${new Date(f.properties.time).toLocaleTimeString("es-MX")}`);
+        disparar(m >= 4 && d <= 100 ? "sismo" : "sismo_red", datos);
+      }
+    } catch (e) { log("det", "Red sísmica sin respuesta; se reintenta en 1 min"); }
+  }
+  setInterval(revisarRed, 60000);
 
   // ---------- Pruebas guiadas (con la alarma real del perfil) ----------
   document.querySelectorAll("[data-prueba]").forEach((b) => b.onclick = () => {

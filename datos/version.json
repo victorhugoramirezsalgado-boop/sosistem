@@ -1,8 +1,13 @@
 {
-  "version": "4.5",
+  "version": "4.6",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.6",
+      "fecha": "2026-10-26",
+      "resumen": "Terminal: «Modo básico · sismo y voz» con un toque: modo real, vibración tipo sismo a máxima sensibilidad, grito o ruido fuerte, palabras «S.O.S.», «auxilio» y «está temblando», y sismos desde magnitud 1 a 150 km de El Sauzal (Ensenada, B.C.) reportados por la red sísmica (USGS) cada minuto; apagado programado a la hora elegida (11:00 por omisión)."
+    },
     {
       "v": "4.5",
       "fecha": "2026-10-26",

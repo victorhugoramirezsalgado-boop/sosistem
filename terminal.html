@@ -48,8 +48,12 @@
             <button type="button" class="t-mini" data-esc="bano_bolsa" aria-pressed="false">Baño · celular conmigo</button>
             <button type="button" class="t-mini" data-esc="bano_repisa" aria-pressed="false">Baño · celular en repisa</button>
             <button type="button" class="t-mini" data-esc="oficina" aria-pressed="false">Oficina</button>
+            <button type="button" class="t-mini" data-esc="basico" aria-pressed="false">Modo básico · sismo y voz</button>
           </div>
           <p class="t-nota" id="esc-nota" style="margin:6px 0 0">Elige dónde estará el celular durante la prueba.</p>
+          <label class="t-nota" style="display:flex;gap:8px;align-items:center;margin:6px 0 0">Modo básico encendido hasta las <input id="hasta" type="time" value="11:00" style="width:auto"></label>
+          <p class="t-nota" id="hasta-est" style="margin:4px 0 0">Apagado programado: sin activar</p>
+          <p class="t-nota" style="margin:4px 0 0">El acelerómetro del celular nota sismos que se sienten (magnitud 3 o más cerca). Los de magnitud 1 y 2 llegan por la red sísmica cuando hay internet.</p>
         </div>
         <div class="t-acciones">
           <button class="t-btn pri" id="btn-iniciar" type="button">Iniciar monitoreo</button>
