@@ -1,103 +1,99 @@
 /* SOSistem™ · Las 6 pantallas del Sistema S.O.S.© en la terminal «Pantalla · ver terminal»
-   Cada pantalla reacciona en vivo al estado del celular (normal, aviso, caída, sismo) con sus tiempos reales.
-   Aforos, recintos y distancias son de demostración, iguales a los de sosistem.com.
+   Solo datos reales del celular enlazado: estado, movimiento, vibración, sonido, voz, escalamiento y equipo.
+   Nada de aforos ni recintos de demostración. Si el celular no mide algo, la pantalla lo dice («sin dato»).
    © 2026 Víctor Hugo Ramírez Salgado · Sistema S.O.S.© (Safe Creative 2609046908578) */
 (() => {
   "use strict";
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const morse = (t) => (window.SOSMorse ? SOSMorse.visible(SOSMorse.aMorse(t)) : "");
-  const pie = (id, lugar, led) => `<div class="eq-pie"><span>${id} · ${lugar}</span><span class="eq-leds">${["r", "y", "g", "w"].map((c) => `<i class="${c}${c === led ? " on" : ""}"></i>`).join("")}</span><span>S.O.S.©</span></div>`;
+  const mmss = (s) => s == null ? "—" : String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+  const hora = (t) => new Date(t).toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+  const v = (x, u = "") => (x == null || x === "" ? "sin dato" : `${x}${u}`);
+  const pie = (id, lugar, led) => `<div class="eq-pie"><span>${id} · ${esc(lugar)}</span><span class="eq-leds">${["r", "y", "g", "w"].map((c) => `<i class="${c}${c === led ? " on" : ""}"></i>`).join("")}</span><span>S.O.S.©</span></div>`;
   const aviso = (txt, ev) => `<div class="eq-morse">${esc(txt)} &nbsp;<span>${morse(txt)}</span></div><div class="eq-band" data-banderas="${esc(txt)}"${ev ? ` data-evento="${ev}"` : ""}></div>`;
-  const pant = (fase, cuerpo, piehtml, extra = "") => `<div class="p6-cara"><div class="eq-bisel"><div class="eq-pant ${extra}" data-fase="${fase}">${cuerpo}</div>${piehtml}</div></div>`;
-  const NOMBRES = ["Sanitarios", "Entrada principal", "Sismo · salidas", "Pantalla exterior", "Oficina", "Cocina"];
+  const fila = (k, etiqueta) => `<li>${etiqueta}<em data-k="${k}">—</em></li>`;
+  const NOMBRES = ["Recinto", "Escalamiento", "Sismo · vibración", "Pantalla exterior", "Sonido y voz", "Equipo"];
 
-  // modo: normal | caida | sismo | aviso
-  function modoDe(st) {
-    if (st.alerta) return st.alerta.tipo === "sismo" ? "sismo" : "caida";
-    if (st.aviso || st.e === "advertencia") return "aviso";
-    return "normal";
-  }
+  const modoDe = (st) => st.alerta ? (st.alerta.tipo === "sismo" ? "sismo" : "caida") : (st.aviso || st.e === "advertencia") ? "aviso" : "normal";
+
   function armar(st, m) {
-    const rec = esc(st.rec || "Recinto de prueba"), prueba = st.alerta?.prueba ? " · PRUEBA" : "";
-    const tituloEv = esc(st.alerta?.titulo || st.aviso?.titulo || "");
-    // 1 · Sanitarios
-    const p1 = m === "caida"
-      ? `<div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span>${rec}</span></div>
-         <div class="eq-mods"><div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Pediátrico 1/3<em class="ok">Libre</em></p></div>
-         <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p class="riesgo"><i></i>Cabina F‑2<em class="bad">Caída</em></p></div></div>
-         <div class="eq-alerta"><b>¡${tituloEv || "Persona en el suelo"}!${prueba}</b><span>Tiempo inmóvil <span data-k="t">00:00</span></span></div>
-         <div class="eq-911" data-k="b911"><span data-k="911t">Llamada al 911 en</span> <b data-k="911n">—</b><i data-k="911i"></i></div>${aviso("SOS SOS", "W")}`
-      : m === "sismo"
-      ? `<div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span>${rec}</span></div>
-         <div class="eq-sismo"><b>¡Alerta sísmica! · Salga con calma</b></div>
-         <ul class="eq-lista"><li>Puertas de cabinas<em>Liberadas</em></li><li>Luz de evacuación<em>Encendida</em></li><li>Tiempo de alerta<em data-k="t">00:00</em></li></ul>${aviso("SOS SISMO SOS")}`
-      : `<div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span>${rec}</span></div>
-         <div class="eq-mods"><div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Pediátrico 1/3<em class="ok">Libre</em></p></div>
-         <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p><i></i>Cabina F‑2<em class="ok">Libre</em></p></div></div>
-         <div class="eq-ok">${st.mon ? "Sin incidentes · sensores del celular activos" : "Sin incidentes · celular sin monitoreo"}</div>${aviso("SOS")}`;
-    // 2 · Entrada principal
-    const p2 = `<div class="eq-top"><b>NODO S.O.S.© · ENTRADA PRINCIPAL</b><span>Aforo del inmueble · Red <em class="ok">OK</em></span></div>
-      <div class="eq-aforo"><b data-k="aforo">27</b><span>${m === "sismo" ? "personas por evacuar de 60" : "personas dentro de 60"}</span><i style="width:45%"></i></div>
-      <ul class="eq-lista"><li>R1 Sanitarios<em>${m === "caida" ? "⚠ F‑2" : "9"}</em></li><li>R2 Oficina<em>5</em></li><li>R3 Cocina<em>3</em></li><li>R4 Bodega y taller<em>6</em></li><li>R0 Entrada<em>4</em></li></ul>
-      ${m === "normal" ? `<div class="eq-ok">Condición segura · todos los recintos en verde</div>${aviso("SOS")}`
-        : m === "aviso" ? `<div class="eq-adv"><b>Aviso en ${rec}</b><span>${tituloEv || "Advertencia"} · N0 voz en el recinto</span></div>${aviso("AVISO")}`
-        : m === "caida" ? `<div class="eq-alerta"><b>Alerta en sanitarios${prueba}</b><span data-k="niv">Encargado en camino</span></div>${aviso("SOS SOS", "W")}`
-        : `<div class="eq-sismo"><b>Sismo · evacúe por la salida más cercana</b></div>${aviso("SOS SISMO SOS")}`}`;
-    // 3 · Sismo · salidas y personas
-    const p3 = m === "sismo"
-      ? `<div class="eq-sismo"><b>¡Alerta sísmica! · Evacúe${prueba}</b></div>
-         <div class="eq-split"><svg viewBox="0 0 100 92" aria-hidden="true"><rect x="3" y="3" width="94" height="72" rx="3" fill="#0c111a" stroke="#6c7a8f"/><rect x="8" y="8" width="34" height="22" fill="#121a26" stroke="#3a4658"/><rect x="58" y="8" width="34" height="22" fill="rgba(255,176,32,.2)" stroke="#ffb020"/><rect x="38" y="50" width="26" height="25" fill="#121a26" stroke="#3a4658"/><polyline points="75,30 75,40 51,40 51,76" fill="none" stroke="#2fd27a" stroke-width="3" stroke-dasharray="5 4" class="eq-ruta"/><rect x="44" y="73" width="14" height="4" fill="#19a65a"/><circle cx="75" cy="30" r="3" fill="#ffb020"/><text x="51" y="88" text-anchor="middle" fill="#2fd27a" font-size="6" font-weight="700" data-k="salida">SALIDA A · 16 m · 14 s</text></svg>
-         <div><div class="eq-aqui"><span>Aquí con usted</span><b>8</b></div><ul class="eq-lista mini"><li>R0 Entrada<em>3</em></li><li>R2 Oficina<em>4</em></li><li>R3 Cocina<em>✓</em></li><li>R4 Bodega<em>5</em></li></ul></div></div>${aviso("SOS SISMO SOS")}`
-      : `<div class="eq-top"><b>NODO S.O.S.© · RUTA DE EVACUACIÓN</b><span>Se activa con sismo detectado o con la voz «está temblando»</span></div>
-         <div class="eq-split"><svg viewBox="0 0 100 92" aria-hidden="true"><rect x="3" y="3" width="94" height="72" rx="3" fill="#0c111a" stroke="#3a4658"/><rect x="8" y="8" width="34" height="22" fill="#121a26" stroke="#2a3342"/><rect x="58" y="8" width="34" height="22" fill="#121a26" stroke="#2a3342"/><rect x="38" y="50" width="26" height="25" fill="#121a26" stroke="#2a3342"/><polyline points="75,30 75,40 51,40 51,76" fill="none" stroke="#2fd27a55" stroke-width="2" stroke-dasharray="5 4"/><rect x="44" y="73" width="14" height="4" fill="#19a65a"/><text x="51" y="88" text-anchor="middle" fill="#8b96a8" font-size="6" font-weight="700">SALIDA A · 16 m</text></svg>
-         <div><ul class="eq-lista mini p6-verde"><li>R0 Entrada<em>4</em></li><li>R2 Oficina<em>5</em></li><li>R3 Cocina<em>3</em></li><li>R4 Bodega<em>6</em></li></ul></div></div>
-         <div class="eq-ok">Sin alerta sísmica · ruta lista</div>`;
-    // 4 · Pantalla exterior (solo enciende con sismo)
+    const rec = esc(st.rec || "Recinto de prueba"), pr = st.alerta?.prueba ? " · PRUEBA" : "", tit = esc(st.alerta?.titulo || st.aviso?.titulo || "");
+    const banda = { normal: `<div class="eq-ok" data-k="okmsg">Sin incidentes</div>`, aviso: `<div class="eq-adv"><b>${tit || "Aviso"}</b><span>Aviso por voz en el recinto (N0)</span></div>`,
+      caida: `<div class="eq-alerta"><b>¡${tit || "Alerta"}!${pr}</b><span>Tiempo de alerta <span data-k="t">00:00</span></span></div>`,
+      sismo: `<div class="eq-sismo"><b>¡Alerta sísmica! · Evacúe${pr}</b></div>` }[m];
+    // 1 · Recinto: estado y movimiento real del celular
+    const p1 = `<div class="eq-top"><b>NODO S.O.S.© · ${rec.toUpperCase()}</b><span data-k="desde">—</span></div>${banda}
+      ${m === "caida" ? `<div class="eq-911" data-k="b911"><span data-k="911t">Llamada al 911 en</span> <b data-k="911n">—</b><i data-k="911i"></i></div>` : ""}
+      <ul class="eq-lista">${fila("quieto", "Sin movimiento")}${fila("g", "Aceleración")}${fila("inc", "Inclinación")}${m === "caida" ? fila("pico", "Impacto registrado") : fila("giro", "Giro")}</ul>
+      ${aviso({ normal: "SOS", aviso: "AVISO", caida: "SOS SOS", sismo: "SOS SISMO SOS" }[m], m === "caida" ? "W" : "")}`;
+    // 2 · Escalamiento real N0–N3 del evento en curso o del último
+    const p2 = `<div class="eq-top"><b>NODO S.O.S.© · ESCALAMIENTO</b><span>Tiempos reales del celular</span></div>
+      <ul class="eq-lista p6-esc" data-k="esc"></ul>
+      <ul class="eq-lista">${fila("hoy", "Eventos hoy")}${fila("ultimo", "Último evento")}${fila("resp", "Atendido en")}</ul>`;
+    // 3 · Sismo: vibración real (STA/LTA del acelerómetro) y voz «está temblando»
+    const p3 = `${m === "sismo" ? `<div class="eq-sismo"><b>¡Alerta sísmica! · Evacúe${pr}</b></div>` : `<div class="eq-top"><b>NODO S.O.S.© · SISMO</b><span>Acelerómetro del celular + voz «está temblando»</span></div>`}
+      ${m === "sismo" ? `<div class="eq-aforo"><b data-k="t2">00:00</b><span data-k="origen">desde la detección</span></div>` : ""}
+      <ul class="eq-lista">${fila("sta", "Vibración STA/LTA")}${fila("rms", "Intensidad (RMS)")}${fila("detsis", "Detector de vibración")}${fila("vozsis", "Voz «está temblando»")}</ul>
+      ${m === "sismo" ? aviso("SOS SISMO SOS") : `<div class="eq-ok" data-k="sisok">Sin vibración tipo sismo</div>`}`;
+    // 4 · Exterior: solo se enciende con sismo
     const p4 = m === "sismo"
-      ? `<div class="eq-top"><b>PANTALLA EXTERIOR · ACCESO PRINCIPAL</b><span>Se enciende solo con sismo o evento natural</span></div>
+      ? `<div class="eq-top"><b>PANTALLA EXTERIOR · ${rec.toUpperCase()}</b><span>Se enciende solo con sismo o evento natural</span></div>
          <div class="eq-extmsg"><b>Sismo en curso</b><span>No ingrese al recinto</span></div>
-         <div class="eq-aforo ext"><b data-k="dentro">12</b><span>personas siguen dentro</span></div>
-         <div class="eq-ok">Siga a Protección Civil · punto de reunión: estacionamiento</div>${aviso("SOS SISMO")}`
+         <div class="eq-aforo ext"><b data-k="t3">00:00</b><span>tiempo desde la alerta</span></div>
+         <div class="eq-ok">Siga a Protección Civil</div>${aviso("SOS SISMO")}`
       : `<div class="p6-apagada"><b>Pantalla exterior</b><span>Apagada · se enciende solo con sismo o evento natural</span></div>`;
-    // 5 · Oficina · permanencia y aforo
-    const p5 = `<div class="eq-top"><b>NODO S.O.S.© · OFICINA ADMINISTRATIVA</b><span>Módulo de permanencia y aforo</span></div>
-      ${m === "aviso" ? `<div class="eq-adv"><b>Advertencia · ${tituloEv || "aviso"}</b><span>${rec} · revise el recinto</span></div>`
-        : m === "caida" ? `<div class="eq-alerta"><b>Alerta en sanitarios${prueba}</b><span>No acuda solo · espere indicaciones</span></div>`
-        : m === "sismo" ? `<div class="eq-sismo"><b>Sismo · salga por la salida A</b></div>`
-        : `<div class="eq-ok">Aforo normal · 5 de 12 personas</div>`}
-      <ul class="eq-lista"><li>Permanencia promedio<em>38 min</em></li><li>Temperatura<em>27 °C</em></li><li>Salida más cercana<em>A · 9 m</em></li></ul>${aviso(m === "normal" ? "SOS" : m === "sismo" ? "SOS SISMO SOS" : m === "caida" ? "SOS SOS" : "AVISO")}`;
-    // 6 · Cocina · gas (módulo opcional; el celular no mide gas)
-    const p6 = `<div class="eq-top"><b>NODO S.O.S.© · COCINA</b><span>Módulo opcional de gas</span></div>
-      ${m === "sismo" ? `<div class="eq-sismo"><b>Sismo · válvula de gas cerrada</b></div>` : `<div class="eq-ok">Gas LP · sin detección (0 % LIE)</div>`}
-      <ul class="eq-lista"><li>Válvula de gas<em>${m === "sismo" ? "Cerrada" : "Abierta"}</em></li><li>Personas en cocina<em>2</em></li><li>Aviso<em>${{ normal: "—", aviso: "N0 voz", caida: "N1 encargado", sismo: "Evacuar" }[m]}</em></li></ul>${aviso(m === "sismo" ? "SOS SISMO" : "SOS")}`;
-    const LED = { normal: ["g", "g", "g", "", "g", "g"], aviso: ["g", "y", "g", "", "y", "g"], caida: ["r", "r", "g", "", "r", "g"], sismo: ["w", "w", "w", "w", "w", "w"] }[m];
-    return [
-      pant(m === "caida" ? "caida" : m, p1, pie("PNL-A01", "Sanitarios", LED[0])),
-      pant("normal", p2, pie("PNL-E01", "Entrada", LED[1])),
-      pant(m === "sismo" ? "sismo" : "normal", p3, pie("PNL-A03", "Sismo", LED[2])),
-      pant("exterior", p4, pie("EXT-01", "Exterior", LED[3]), m === "sismo" ? "eq-ext" : "p6-off"),
-      pant("advertencia", p5, pie("PNL-A05", "Oficina", LED[4])),
-      pant("gas", p6, pie("PNL-A06", "Cocina", LED[5])),
-    ].map((h, i) => h.replace('<div class="p6-cara">', `<div class="p6-cara" data-n="${i + 1}" data-m="${m}"><div class="p6-num">${i + 1}/6 · ${NOMBRES[i]}</div>`)).join("");
+    // 5 · Sonido y voz reales
+    const p5 = `<div class="eq-top"><b>NODO S.O.S.© · SONIDO Y VOZ</b><span>Solo nivel de sonido; no se graba audio</span></div>
+      <div class="eq-aforo"><b data-k="db">—</b><span data-k="dbu">dB aprox.</span><i data-k="dbbar" style="width:0"></i></div>
+      ${m === "aviso" ? `<div class="eq-adv"><b>${tit || "Aviso"}</b><span>Detectado por el celular</span></div>` : ""}
+      <ul class="eq-lista">${fila("voz", "Reconocimiento de voz")}${fila("frase", "Última frase oída")}</ul>`;
+    // 6 · Equipo: el celular que está midiendo
+    const p6 = `<div class="eq-top"><b>NODO S.O.S.© · EQUIPO</b><span data-k="equipo">—</span></div>
+      <ul class="eq-lista">${fila("bat", "Batería")}${fila("red", "Red")}${fila("pmov", "Movimiento")}${fila("pmic", "Micrófono")}${fila("pwake", "Pantalla encendida")}${fila("ubic", "Ubicación")}</ul>`;
+    const L = { normal: ["g", "g", "g", "", "g", "g"], aviso: ["y", "y", "g", "", "y", "g"], caida: ["r", "r", "g", "", "g", "g"], sismo: ["w", "w", "w", "w", "w", "g"] }[m];
+    const caras = [
+      [m, p1, pie("PNL-A01", "Recinto", L[0])], ["normal", p2, pie("PNL-E01", "Escalamiento", L[1])], [m === "sismo" ? "sismo" : "normal", p3, pie("PNL-A03", "Sismo", L[2])],
+      ["exterior", p4, pie("EXT-01", "Exterior", L[3]), m === "sismo" ? "eq-ext" : "p6-off"], ["normal", p5, pie("PNL-A05", "Sonido", L[4])], ["normal", p6, pie("PNL-A06", "Equipo", L[5])]];
+    return caras.map(([fase, c, p, extra = ""], i) => `<div class="p6-cara" data-n="${i + 1}" data-m="${m}"><div class="p6-num">${i + 1}/6 · ${NOMBRES[i]}</div><div class="eq-bisel"><div class="eq-pant ${extra}" data-fase="${fase}">${c}</div>${p}</div></div>`).join("");
   }
+
   let clave = "";
-  const mmss = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(Math.floor(s % 60)).padStart(2, "0");
-  // st: { e, rec, mon, alerta:{tipo,titulo,prueba,s,n3}, aviso:{tipo,titulo} }
+  // st: foto del celular { e, rec, mon, modo, niv, esc:[{n,ms,c}], alerta:{tipo,titulo,prueba,id,s,n3,datos}, aviso:{tipo,titulo}, r:{lecturas reales} }
   function pintar(raiz, st) {
     if (!raiz) return;
-    const m = modoDe(st), k = [m, st.rec, st.mon, st.alerta?.id, st.alerta?.prueba, st.aviso?.titulo].join("|");
+    const m = modoDe(st), k = [m, st.rec, st.alerta?.id, st.alerta?.prueba, st.aviso?.titulo].join("|");
     if (k !== clave) { clave = k; raiz.innerHTML = armar(st, m); window.SOSBanderas?.pintar(raiz); }
-    const s = st.alerta?.s || 0, n3 = st.alerta?.n3 || 10, q = (n) => raiz.querySelectorAll(`[data-k="${n}"]`);
-    q("t").forEach((el) => (el.textContent = mmss(s)));
+    const r = st.r || {}, a = st.alerta, s = a?.s || 0, n3 = a?.n3 || 10;
+    const set = (n, txt) => raiz.querySelectorAll(`[data-k="${n}"]`).forEach((el) => (el.textContent = txt));
+    // Recinto
+    set("desde", r.desde ? `Monitoreo desde ${hora(r.desde)}` : st.mon === false ? "Celular sin monitoreo" : "Esperando al celular");
+    set("okmsg", st.mon ? "Sin incidentes · sensores activos" : "Celular sin monitoreo · toca «Iniciar» en el iPhone");
+    set("quieto", r.quieto_s != null ? mmss(r.quieto_s) : "sin dato"); set("g", v(r.g, " g")); set("inc", v(r.inc, "°")); set("giro", v(r.giro, " °/s"));
+    set("pico", a?.datos?.pico_g ? `${a.datos.pico_g} g` : a?.datos?.origen === "voz" ? "por voz" : "sin dato");
+    ["t", "t2", "t3"].forEach((x) => set(x, mmss(s)));
     const falta = Math.max(0, Math.ceil(n3 - s));
-    q("911n").forEach((el) => (el.textContent = falta ? `${falta} s` : ""));
-    q("911t").forEach((el) => (el.textContent = falta ? "Llamada al 911 en" : st.modo === "real" && !st.alerta?.prueba ? "Llamando al 911 · CAP v1.2" : "N3 alcanzado · modo prueba: sin llamada"));
-    q("911i").forEach((el) => (el.style.width = Math.min(100, (s / n3) * 100) + "%"));
-    q("b911").forEach((el) => el.classList.toggle("hecha", !falta));
-    q("niv").forEach((el) => (el.textContent = st.niv || "Encargado en camino"));
-    const ev = Math.max(0, 14 - Math.floor(s));
-    q("salida").forEach((el) => (el.textContent = ev ? `SALIDA A · 16 m · ${ev} s` : "SALIDA A · todos en camino"));
-    q("dentro").forEach((el) => (el.textContent = Math.max(0, 12 - Math.floor(s / 3))));
+    set("911n", falta ? `${falta} s` : ""); set("911t", falta ? "Llamada al 911 en" : st.modo === "real" && !a?.prueba ? "Llamando al 911 · CAP v1.2" : "N3 alcanzado · modo prueba: sin llamada");
+    raiz.querySelectorAll('[data-k="911i"]').forEach((el) => (el.style.width = Math.min(100, (s / n3) * 100) + "%"));
+    raiz.querySelectorAll('[data-k="b911"]').forEach((el) => el.classList.toggle("hecha", !falta));
+    // Escalamiento
+    raiz.querySelectorAll('[data-k="esc"]').forEach((el) => (el.innerHTML = (st.esc || []).map((i) => `<li class="${esc(i.c)}">${esc(i.n)}<em>${i.ms != null ? (i.ms / 1000).toFixed(1) + " s" : "—"}</em></li>`).join("")));
+    set("hoy", r.hoy != null ? `${r.hoy}${r.falsas ? ` · ${r.falsas} falsas` : ""}` : "sin dato");
+    set("ultimo", r.ultimo ? `${r.ultimo.titulo}${r.ultimo.prueba ? " (prueba)" : ""} · ${hora(r.ultimo.t)}` : "ninguno");
+    set("resp", r.ultimo?.resp != null ? `${r.ultimo.resp} s` : "—");
+    // Sismo
+    set("sta", r.sis ? `${r.sis.ratio} (umbral ${r.sis.umbral})` : "sin dato"); set("rms", r.sis ? `${r.sis.rms} m/s²` : "sin dato");
+    set("detsis", r.det ? (r.det.sismo ? "activo" : "apagado") : "sin dato"); set("vozsis", r.voz_sismo ? (r.voz === "escuchando" ? "escuchando" : "activa") : "apagada");
+    set("origen", a?.datos?.origen === "voz" ? `activado por voz: «${a.datos.frase || ""}»` : "detectado por el acelerómetro");
+    set("sisok", r.sis && r.sis.ratio > r.sis.umbral ? "Vibración por encima del umbral · confirmando" : "Sin vibración tipo sismo");
+    // Sonido y voz
+    set("db", r.db != null ? r.db : "—"); set("dbu", r.db != null ? `dB aprox. · aviso desde ${r.ruido_db} dB` : "micrófono sin datos");
+    raiz.querySelectorAll('[data-k="dbbar"]').forEach((el) => { el.style.width = r.db != null ? Math.min(100, Math.max(0, (r.db - 30) / 90 * 100)) + "%" : "0"; el.style.background = r.db >= r.ruido_db ? "#ffb020" : "#2fd27a"; });
+    set("voz", r.voz || "sin dato"); set("frase", r.frase ? `«${r.frase.x}» · ${hora(r.frase.t)}` : "ninguna");
+    // Equipo
+    set("equipo", r.equipo || "—"); set("bat", r.bat ? `${r.bat.n} %${r.bat.c ? " · cargando" : ""}` : "iPhone no comparte");
+    set("red", r.red || "sin dato"); const pm = (x) => ({ granted: "concedido", denied: "denegado", prompt: "por permitir", default: "por permitir" }[x] || x || "sin dato");
+    set("pmov", pm(r.perm?.mov)); set("pmic", pm(r.perm?.mic)); set("pwake", pm(r.perm?.wake));
+    set("ubic", r.ubic ? `${r.ubic.lat}, ${r.ubic.lon} ±${r.ubic.prec} m` : "no leída");
   }
   window.SOSPantallas6 = { pintar };
 })();

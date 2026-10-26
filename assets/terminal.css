@@ -276,3 +276,5 @@ body.rol-pantalla .p6-card{display:block}
 .p6-estado[data-m="caida"]{background:var(--rojo);color:#fff;border-color:var(--rojo)}
 .p6-estado[data-m="sismo"]{background:#f5f5ef;color:#05080d}
 .p6-estado[data-m="aviso"]{color:var(--warn);border-color:var(--warn)}
+.p6-esc li.ok em{color:#2fd27a}.p6-esc li.act{border-color:#ff4b3e;background:#3a0d16}.p6-esc li.act em{color:#fff}
+.p6-esc li.fin{border-color:#2fd27a;background:#0d2a18}.p6-esc li em{color:#8b96a8}

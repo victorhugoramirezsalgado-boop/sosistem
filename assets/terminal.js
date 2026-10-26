@@ -135,7 +135,7 @@
       const x2 = (mag - SI.media) ** 2;
       // STA ≈ 0.5 s y LTA ≈ 30 s; la LTA se congela mientras dura el disparo (práctica usual en sismología)
       SI.sta += (x2 - SI.sta) * 0.035; if (!SI.desde) SI.lta += (x2 - SI.lta) * 0.0006;
-      const ratio = SI.sta / Math.max(SI.lta, 0.00005), rms = Math.sqrt(SI.sta);
+      const ratio = SI.sta / Math.max(SI.lta, 0.00005), rms = Math.sqrt(SI.sta); S.sis = { ratio, rms, umbral: 2 + A.sismo_sens * 0.5 };
       const umbralR = 2 + A.sismo_sens * 0.5, umbralRms = 0.015 * A.sismo_sens;
       const quieto = rotMag < 6;   // el celular debe estar apoyado, no en la mano
       if (ratio > umbralR && rms > umbralRms && rms < 3 && quieto) { if (!SI.desde) { SI.desde = t; SI.pico = 0; log("det", `Vibración: STA/LTA ${ratio.toFixed(1)}, ${rms.toFixed(3)} m/s² · confirmando 2 s`); } SI.pico = Math.max(SI.pico, rms); }
@@ -194,7 +194,7 @@
         for (let i = e.resultIndex; i < e.results.length; i++) {
           const txt = e.results[i][0].transcript.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
           if (!txt) continue;
-          if (e.results[i].isFinal) log("voz", `Oído: «${txt.slice(0, 70)}»`);
+          if (e.results[i].isFinal) { log("voz", `Oído: «${txt.slice(0, 70)}»`); S.frase = { t: Date.now(), x: txt.slice(0, 70) }; }
           if (ALERTA.activa && A.voz_ok && RE_OK.test(txt)) { log("ok", `Voz «${txt.match(RE_OK)[0]}» → detener alarma`); atender("voz"); return; }
           // «está temblando»: respaldo por voz cuando el acelerómetro no alcanza a detectar el sismo
           if (!ALERTA.activa && monitoreando && A.voz_sismo && RE_SISMO.test(txt)) { log("alerta", `Voz «${txt.match(RE_SISMO)[0]}» → alerta de sismo`); disparar("sismo", { frase: txt.slice(0, 60), origen: "voz", nota: "Activado por voz; el sensor no lo confirmó" }); return; }
@@ -224,7 +224,7 @@
     addEventListener("deviceorientation", procesarOrientacion);
     await iniciarMic();   // nivel de sonido en vivo (también alimenta el detector de ruido)
     try { wakeLock = await navigator.wakeLock?.request("screen"); S.perm.wake = wakeLock ? "activo" : "no disponible"; } catch (e) { S.perm.wake = "no disponible"; }
-    monitoreando = true; asegurarVoz(); ultimoMov = Date.now(); LS.set("sost_monitor", true);
+    monitoreando = true; S.desde = Date.now(); asegurarVoz(); ultimoMov = Date.now(); LS.set("sost_monitor", true);
     log("sis", `Monitoreo iniciado · movimiento: ${S.perm.mov} · micrófono: ${S.perm.mic} · pantalla: ${S.perm.wake}`);
     estado("monitoreo"); $("btn-iniciar").textContent = "Detener monitoreo"; $("btn-iniciar").classList.remove("pri");
     setTimeout(() => { if (monitoreando && !S.mov) toast("No llegan lecturas de movimiento: revisa el permiso «Movimiento y orientación» en Ajustes de Safari.", 5000); }, 2500);
@@ -805,7 +805,17 @@
       rec: A.recinto, id: A.id, modo: A.modo, mon: monitoreando, l: ["l-acc", "l-rot", "l-inc", "l-db", "l-est", "l-voz"].map((i) => $(i).textContent),
       son: $("sonando").textContent, sonOn: $("sonando").classList.contains("on"), esc: escalaDatos(),
       acc: S.mov ? +S.mov.mag.toFixed(2) : null, db: S.db != null ? Math.round(S.db) : null, umb: [A.impacto_g * G, A.ruido_db],
-      alerta: ALERTA.activa ? { tipo: ALERTA.ev.tipo, titulo: ALERTA.ev.titulo, prueba: ALERTA.ev.prueba, id: ALERTA.ev.id, s: +((Date.now() - ALERTA.t0) / 1000).toFixed(1), n3: TIEMPOS.N3 } : null,
+      alerta: ALERTA.activa ? { tipo: ALERTA.ev.tipo, titulo: ALERTA.ev.titulo, prueba: ALERTA.ev.prueba, id: ALERTA.ev.id, s: +((Date.now() - ALERTA.t0) / 1000).toFixed(1), n3: TIEMPOS.N3, datos: ALERTA.ev.datos } : null,
+      // lecturas reales del celular para las 6 pantallas
+      r: (() => { const hoy = new Date().toDateString(), evh = EVENTOS.filter((e) => new Date(e.inicio).toDateString() === hoy), u = EVENTOS.slice().sort((a, b) => b.inicio - a.inicio)[0];
+        return { g: S.mov ? +(S.mov.mag / G).toFixed(2) : null, giro: S.rot ? Math.round(Math.hypot(S.rot.a, S.rot.b, S.rot.g)) : null, inc: S.ori?.b != null ? Math.round(S.ori.b) : null,
+          quieto_s: monitoreando ? Math.round((Date.now() - ultimoMov) / 1000) : null, desde: monitoreando ? S.desde : null, db: S.db != null ? Math.round(S.db) : null, ruido_db: A.ruido_db,
+          impacto_g: A.impacto_g, sis: S.sis ? { ratio: +S.sis.ratio.toFixed(1), rms: +S.sis.rms.toFixed(3), umbral: S.sis.umbral } : null,
+          det: A.det, voz_sismo: !!A.voz_sismo, voz: reconocedor ? "escuchando" : S.perm.voz || "apagada", frase: S.frase || null,
+          bat: S.bat ? { n: Math.round(S.bat.nivel * 100), c: S.bat.carga } : null, red: navigator.onLine ? (S.red?.efectivo || "en línea") : "sin conexión",
+          perm: { mov: S.perm.mov || "pendiente", mic: S.perm.mic || "pendiente", wake: S.perm.wake || "pendiente" }, ubic: S.ubic || null,
+          equipo: plataformaCorta(), hoy: evh.length, falsas: evh.filter((e) => e.calificacion === "falsa").length,
+          ultimo: u ? { titulo: u.titulo, t: u.inicio, resp: u.respuesta_s, prueba: u.prueba } : null }; })(),
       aviso: ALERTA.sonandoAviso && ALERTA.aviso ? { tipo: ALERTA.aviso.tipo, titulo: ALERTA.aviso.titulo } : null,
       qa: ENL.modo === "p2p" ? qa : [], qm: ENL.modo === "p2p" ? qm : [], log: ENL.modo === "p2p" ? cola : cola.slice(0, 8) };
   }
