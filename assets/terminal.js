@@ -647,17 +647,16 @@
   $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-v]"); if (b) vista(b.dataset.v); });
 
   // ---------- Enlace: el celular mide (sensores) y otra pantalla — la Mac — ve la terminal en vivo ----------
-  // Conexión directa cifrada (WebRTC, DTLS) entre los dos equipos. Para encontrarse usan un relevo público (ntfy.sh)
-  // por el que solo pasan mensajes cifrados con AES-256-GCM; la clave sale del código de 6 letras (los 6 lados del cubo)
-  // y nunca viaja. Si la conexión directa no abre (redes muy cerradas), los datos siguen por el relevo cada 15 s.
-  const RELEVO = window.SOS_RELEVO || "https://ntfy.sh/";
+  // Conexión directa cifrada (WebRTC, DTLS) entre los dos equipos. Para encontrarse usan relevos MQTT públicos (HiveMQ, EMQX y Mosquitto)
+  // por los que solo pasan mensajes cifrados con AES-256-GCM; la clave sale del código de 6 letras (los 6 lados del cubo)
+  // y nunca viaja. Si la conexión directa no abre (redes muy cerradas), los datos siguen por el relevo cada segundo.
   const ICE = { iceServers: [{ urls: ["stun:stun.l.google.com:19302", "stun:stun.cloudflare.com:3478"] }] };
   const ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ";   // sin I ni O para no confundirlas con 1 y 0
   const ROLES = { solo: "Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.",
     sensor: "Este celular mide con sus sensores y manda la terminal a la otra pantalla. Toca «Iniciar monitoreo» aquí; las pruebas se pueden lanzar desde aquí o desde la Mac.",
     pantalla: "Esta pantalla muestra en vivo la terminal del celular. Los botones de prueba, «Todo bien» y S.O.S. mandan la orden al celular." };
   const ENL = { rol: LS.get("sost_rol", "solo"), codigo: LS.get("sost_codigo", ""), yo: Math.random().toString(36).slice(2, 10),
-    clave: null, topico: "", es: null, pc: null, dc: null, modo: "off", partes: {}, tRespaldo: 0, tRelevo: 0, ultRelevo: 0, ultFoto: 0, ultDato: 0,
+    clave: null, topico: "", mq: null, tBuscar: 0, pc: null, dc: null, modo: "off", partes: {}, tRespaldo: 0, tRelevo: 0, ultRelevo: 0, ultFoto: 0, ultDato: 0,
     remoto: null, alertaRemota: null, tSonar: 0, cambio: false };
   const te = new TextEncoder(), td = new TextDecoder();
   const b64 = (u8) => { let s = ""; for (let i = 0; i < u8.length; i += 8192) s += String.fromCharCode.apply(null, u8.subarray(i, i + 8192)); return btoa(s); };
@@ -668,7 +667,7 @@
 
   async function prepararClave(cod) {
     const h = new Uint8Array(await crypto.subtle.digest("SHA-256", te.encode("sosistem-topico:" + cod)));
-    ENL.topico = "sosistem_" + [...h.slice(0, 12)].map((b) => b.toString(16).padStart(2, "0")).join("");
+    ENL.topico = "sosistem/enlace/" + [...h.slice(0, 12)].map((b) => b.toString(16).padStart(2, "0")).join("");
     const base = await crypto.subtle.importKey("raw", te.encode(cod), "PBKDF2", false, ["deriveKey"]);
     ENL.clave = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: te.encode("sosistem-enlace-v1"), iterations: 150000, hash: "SHA-256" },
       base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
@@ -678,34 +677,84 @@
 
   function estadoEnlace(e, txt) { const el = $("enl-est"); el.dataset.e = e; el.textContent = txt; }
 
-  // --- Relevo (para encontrarse y como respaldo) ---
+  // --- Relevo MQTT (para encontrarse y como respaldo) ---
+  // Cliente MQTT 3.1.1 mínimo sobre WebSocket, conectado a dos brokers públicos a la vez (si uno falla, sigue el otro).
+  // Solo viajan mensajes cifrados; cada mensaje lleva un identificador para no procesarlo dos veces.
+  const BROKERS = window.SOS_BROKERS || ["wss://broker.hivemq.com:8884/mqtt", "wss://broker.emqx.io:8084/mqtt", "wss://test.mosquitto.org:8081/mqtt"];
+  const vistos = new Set();
+  function largoVar(n) { const b = []; do { let d = n % 128; n = Math.floor(n / 128); if (n > 0) d |= 128; b.push(d); } while (n > 0); return b; }
+  const cadena = (s) => { const u = te.encode(s); return [u.length >> 8, u.length & 255, ...u]; };
+  const pqMqtt = (tipo, cuerpo) => new Uint8Array([tipo, ...largoVar(cuerpo.length), ...cuerpo]);
+  function conectarBroker(url) {
+    const c = { url, ws: null, listo: false, buf: new Uint8Array(0), ping: 0, rein: 0, vivo: true };
+    const abrir = () => {
+      if (!c.vivo) return;
+      let ws; try { ws = new WebSocket(url, "mqtt"); } catch (e) { c.rein = setTimeout(abrir, 5000); return; }
+      c.ws = ws; ws.binaryType = "arraybuffer";
+      ws.onopen = () => {
+        const id = "sos" + ENL.yo + Math.random().toString(36).slice(2, 6);
+        ws.send(pqMqtt(0x10, [...cadena("MQTT"), 4, 0x02, 0, 45, ...cadena(id)]));   // CONNECT, sesión limpia, keepalive 45 s
+      };
+      ws.onmessage = (ev) => {
+        const n = new Uint8Array(ev.data), b = new Uint8Array(c.buf.length + n.length); b.set(c.buf); b.set(n, c.buf.length); c.buf = b;
+        for (;;) {
+          if (c.buf.length < 2) break;
+          let mult = 1, largo = 0, i = 1, d;
+          do { if (i >= c.buf.length) return; d = c.buf[i++]; largo += (d & 127) * mult; mult *= 128; } while (d & 128);
+          if (c.buf.length < i + largo) break;
+          const tipo = c.buf[0], cuerpo = c.buf.slice(i, i + largo); c.buf = c.buf.slice(i + largo);
+          if ((tipo & 0xf0) === 0x20) {   // CONNACK
+            if (cuerpo[1] !== 0) { ws.close(); continue; }
+            ws.send(pqMqtt(0x82, [0, 1, ...cadena(ENL.topico), 0]));   // SUBSCRIBE QoS 0
+          } else if ((tipo & 0xf0) === 0x90) {   // SUBACK
+            c.listo = true; clearInterval(c.ping); c.ping = setInterval(() => { try { ws.send(new Uint8Array([0xc0, 0])); } catch (e) {} }, 25000);
+            relevoListo();
+          } else if ((tipo & 0xf0) === 0x30) {   // PUBLISH
+            const qos = (tipo >> 1) & 3, lt = (cuerpo[0] << 8) | cuerpo[1]; let p = 2 + lt; if (qos) p += 2;
+            mensajeRelevo(td.decode(cuerpo.slice(p)));
+          }
+        }
+      };
+      ws.onclose = () => { c.listo = false; clearInterval(c.ping); c.buf = new Uint8Array(0); if (c.vivo) c.rein = setTimeout(abrir, 3000); };
+      ws.onerror = () => {};
+    };
+    c.cerrar = () => { c.vivo = false; clearTimeout(c.rein); clearInterval(c.ping); try { c.ws?.send(new Uint8Array([0xe0, 0])); c.ws?.close(); } catch (e) {} };
+    c.enviar = (txt) => { if (!c.listo) return false; try { c.ws.send(pqMqtt(0x30, [...cadena(ENL.topico), ...te.encode(txt)])); return true; } catch (e) { return false; } };
+    abrir(); return c;
+  }
   async function publicar(o) {
-    if (!ENL.clave) return;
-    o.de = ENL.yo; const txt = await cifrar(o), id = Math.random().toString(36).slice(2, 8);
-    const trozos = txt.length > 3000 ? txt.match(/.{1,3000}/g) : [txt];
-    for (let i = 0; i < trozos.length; i++) {
-      const cuerpo = trozos.length > 1 ? `P|${id}|${i}|${trozos.length}|${trozos[i]}` : trozos[i];
-      try {
-        const r = await fetch(`${RELEVO}${ENL.topico}?cache=no&firebase=no`, { method: "POST", body: cuerpo });
-        if (r.status === 429) { estadoEnlace("lento", "El relevo pidió esperar unos segundos"); return; }
-      } catch (e) { estadoEnlace("error", "Sin conexión a internet para enlazar"); return; }
-    }
+    if (!ENL.clave || !ENL.mq) return;
+    o.de = ENL.yo; o.mid = Math.random().toString(36).slice(2, 10);
+    const txt = await cifrar(o);
+    if (!ENL.mq.map((c) => c.enviar(txt)).some(Boolean)) estadoEnlace("error", "Sin conexión al relevo · revisa internet");
+  }
+  async function mensajeRelevo(m) {
+    let o; try { o = await descifrar(m); } catch (e) { return; }   // otro código o mensaje ajeno: se ignora
+    if (o.de === ENL.yo || vistos.has(o.mid)) return;
+    vistos.add(o.mid); if (vistos.size > 500) vistos.delete(vistos.values().next().value);
+    recibir(o);
+  }
+  let avisoListo = 0;
+  function relevoListo() {
+    const n = ENL.mq ? ENL.mq.filter((c) => c.listo).length : 0;
+    if (ENL.modo === "p2p") return;
+    if (ENL.rol === "sensor") { estadoEnlace("espera", `Esperando a la pantalla · código ${ENL.codigo} (relevo ${n}/${BROKERS.length})`); publicar({ t: "listo" }); }
+    if (ENL.rol === "pantalla") { estadoEnlace("espera", `Buscando al celular ${ENL.codigo}… (relevo ${n}/${BROKERS.length})`); publicar({ t: "hola" }); }
+    clearTimeout(avisoListo);
   }
   function escuchar() {
-    try { ENL.es?.close(); } catch (e) {}
-    const es = new EventSource(`${RELEVO}${ENL.topico}/sse`); ENL.es = es;
-    es.onopen = () => { if (ENL.rol === "pantalla") publicar({ t: "hola" }); if (ENL.rol === "sensor") publicar({ t: "listo" }); };
-    es.onmessage = async (ev) => {
-      let j; try { j = JSON.parse(ev.data); } catch (e) { return; }
-      if (j.event && j.event !== "message") return;
-      let m = j.message || "";
-      if (m.startsWith("P|")) { const [, id, i, n, ...r] = m.split("|"); const c = ENL.partes[id] || (ENL.partes[id] = []); c[+i] = r.join("|");
-        if (c.filter(Boolean).length < +n) return; m = c.join(""); delete ENL.partes[id]; }
-      let o; try { o = await descifrar(m); } catch (e) { return; }   // otro código o mensaje ajeno: se ignora
-      if (o.de !== ENL.yo) recibir(o);
-    };
-    es.onerror = () => { if (ENL.modo !== "p2p" && ENL.rol !== "solo") estadoEnlace("espera", "Reconectando…"); };
+    (ENL.mq || []).forEach((c) => c.cerrar());
+    ENL.mq = BROKERS.map(conectarBroker);
+    // la pantalla insiste cada 4 s hasta encontrar al celular; si tarda, explica qué revisar
+    clearInterval(ENL.tBuscar); const t0 = Date.now();
+    ENL.tBuscar = setInterval(() => {
+      if (ENL.rol !== "pantalla" || ENL.modo !== "off") { clearInterval(ENL.tBuscar); return; }
+      publicar({ t: "hola" });
+      if (Date.now() - t0 > 12000) estadoEnlace("espera", `No encuentro al celular ${ENL.codigo}. En el iPhone: terminal abierta, «📱 Celular · sensores» y el mismo código en los 6 cuadros.`);
+    }, 4000);
+    setTimeout(() => { if (ENL.mq && !ENL.mq.some((c) => c.listo)) estadoEnlace("error", "No se pudo abrir el relevo. Revisa internet o desactiva bloqueadores/VPN y vuelve a tocar el botón."); }, 10000);
   }
+  function cerrarRelevo() { clearInterval(ENL.tBuscar); (ENL.mq || []).forEach((c) => c.cerrar()); ENL.mq = null; }
 
   // --- Conexión directa (WebRTC) ---
   function cerrarP2P() { const { dc, pc } = ENL; ENL.dc = null; ENL.pc = null; try { dc?.close(); } catch (e) {} try { pc?.close(); } catch (e) {} if (ENL.modo === "p2p") ENL.modo = "relevo"; }
@@ -729,7 +778,7 @@
     await pc.setLocalDescription(await pc.createOffer()); await esperarIce(pc);
     if (pc !== ENL.pc) return;
     publicar({ t: "oferta", sdp: pc.localDescription.sdp });
-    clearTimeout(ENL.tRespaldo); ENL.tRespaldo = setTimeout(() => { if (ENL.modo !== "p2p" && ENL.rol === "sensor") usarRelevo(); }, 15000);
+    clearTimeout(ENL.tRespaldo); ENL.tRespaldo = setTimeout(() => { if (ENL.modo !== "p2p" && ENL.rol === "sensor") usarRelevo(); }, 10000);
   }
   async function responder(sdp) {   // pantalla
     cerrarP2P(); const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
@@ -738,8 +787,8 @@
     if (pc === ENL.pc) publicar({ t: "respuesta", sdp: pc.localDescription.sdp });
   }
   function usarRelevo() {
-    ENL.modo = "relevo"; estadoEnlace("lento", "Sin conexión directa · la pantalla recibe datos cada 15 s (alertas al instante)");
-    clearInterval(ENL.tRelevo); ENL.tRelevo = setInterval(() => mandarFoto(true), 15000); mandarFoto(true);
+    ENL.modo = "relevo"; estadoEnlace("lento", "● Conectado por relevo (sin conexión directa) · datos cada segundo");
+    clearInterval(ENL.tRelevo); ENL.tRelevo = setInterval(() => mandarFoto(true), 1000); mandarFoto(true);
   }
 
   // --- Lo que manda el celular ---
@@ -756,12 +805,12 @@
   function mandarFoto(forzar) {
     if (ENL.rol !== "sensor") return;
     if (ENL.dc?.readyState === "open") { try { ENL.dc.send(JSON.stringify(foto())); } catch (e) {} return; }
-    if (ENL.modo === "relevo" && (forzar || Date.now() - ENL.ultRelevo > 15000)) { ENL.ultRelevo = Date.now(); publicar(foto()); }
+    if (ENL.modo === "relevo" && (forzar || Date.now() - ENL.ultRelevo > 1000)) { ENL.ultRelevo = Date.now(); publicar(foto()); }
   }
   setInterval(() => { if (ENL.rol === "sensor" && ENL.modo === "p2p") mandarFoto(); }, 200);
   // un cambio de estado (alerta, aviso, atendida) sale al instante, también por el relevo
   window.__enlCambio = () => { if (ENL.rol !== "sensor" || ENL.cambio) return; ENL.cambio = true;
-    const espera = ENL.modo === "relevo" ? Math.max(150, 3000 - (Date.now() - ENL.ultRelevo)) : 150;   // por el relevo, máximo uno cada 3 s; nunca se pierde
+    const espera = 150;
     setTimeout(() => { ENL.cambio = false; if (ENL.modo === "relevo") { ENL.ultRelevo = Date.now(); publicar(foto()); } else mandarFoto(); }, espera); };
   const ORDENES = new Set(["caida", "sismo", "manual", "ruido", "sonido", "detener", "atender"]);
   function ejecutarOrden(k) {
@@ -818,7 +867,7 @@
     if (ENL.rol === "pantalla") {
       if (o.t === "listo") publicar({ t: "hola" });
       else if (o.t === "oferta") { estadoEnlace("espera", "Celular encontrado · conectando…"); responder(o.sdp).catch(() => estadoEnlace("lento", "Sin conexión directa · esperando datos por relevo")); }
-      else if (o.t === "foto") { if (ENL.modo !== "p2p") { ENL.modo = ENL.dc ? ENL.modo : "relevo"; if (ENL.modo === "relevo") estadoEnlace("lento", "● Recibiendo por relevo cada 15 s (sin conexión directa)"); } aplicarFoto(o); }
+      else if (o.t === "foto") { if (ENL.modo !== "p2p") { ENL.modo = ENL.dc ? ENL.modo : "relevo"; if (ENL.modo === "relevo") estadoEnlace("lento", "● Conectado por relevo (sin conexión directa) · datos cada segundo"); } aplicarFoto(o); }
     }
   }
 
@@ -826,8 +875,8 @@
   function pintarCubo() { $("enl-cubo").innerHTML = ENL.codigo.split("").map((c, i) => `<span><small>L${i + 1}</small>${esc(c)}</span>`).join(""); }
   async function ponerRol(rol, codigo) {
     if (ENL.rol !== "solo" && ENL.clave && rol !== ENL.rol) publicar({ t: "adios" });
-    cerrarP2P(); clearInterval(ENL.tRelevo); clearTimeout(ENL.tRespaldo); clearTimeout(ENL.tSonar); try { ENL.es?.close(); } catch (e) {}
-    ENL.es = null; ENL.clave = null; ENL.modo = "off"; ENL.remoto = null; ENL.alertaRemota = null; ENL.ultDato = 0;
+    cerrarP2P(); clearInterval(ENL.tRelevo); clearTimeout(ENL.tRespaldo); clearTimeout(ENL.tSonar); cerrarRelevo();
+    ENL.clave = null; ENL.modo = "off"; ENL.remoto = null; ENL.alertaRemota = null; ENL.ultDato = 0;
     const eraPantalla = ENL.rol === "pantalla";
     ENL.rol = rol; LS.set("sost_rol", rol);
     document.body.classList.toggle("rol-pantalla", rol === "pantalla"); document.body.classList.toggle("rol-sensor", rol === "sensor");
@@ -837,7 +886,7 @@
     if (rol === "pantalla" && monitoreando) detener();
     if (eraPantalla || rol === "pantalla") { BUF.acc.length = 0; BUF.mic.length = 0; CONSOLA.length = 0; pintarConsola(); pintarCabecera(); estado("detenido"); $("btn-atender").hidden = true; pintarEscala(); }
     if (rol === "solo") { estadoEnlace("off", "Sin enlace"); return; }
-    if (!window.crypto?.subtle || !window.RTCPeerConnection || !window.EventSource) { estadoEnlace("error", "Este navegador no permite el enlace (usa Safari o Chrome actualizados)"); return; }
+    if (!window.crypto?.subtle || !window.RTCPeerConnection || !window.WebSocket) { estadoEnlace("error", "Este navegador no permite el enlace (usa Safari o Chrome actualizados)"); return; }
     if (rol === "sensor") {
       if (!ENL.codigo || codigo === "nuevo") { ENL.codigo = nuevoCodigo(); LS.set("sost_codigo", ENL.codigo); }
       pintarCubo(); estadoEnlace("espera", "Esperando a la pantalla…");
