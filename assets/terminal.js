@@ -7,7 +7,7 @@
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
-  const VERSION = "4.2";
+  const VERSION = "4.3";
   const G = 9.80665;
   const LS = { get: (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
     set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
@@ -21,7 +21,7 @@
   // ---------- Ajustes ----------
   const DEF = { recinto: "Oficinas ContenedorEns · prueba", id: "T-" + Math.random().toString(36).slice(2, 6).toUpperCase(), modo: "prueba",
     wa: "526462270490", impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, mic_offset: 0, inmovil_min: 0,
-    voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: false,
+    voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: true, ahorro: false,
     det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false } };
   const A = Object.assign({}, DEF, LS.get("sost_ajustes", {}));
   A.det = Object.assign({}, DEF.det, A.det || {});
@@ -52,6 +52,23 @@
   function pintarConsola() {
     consolaPend = false; const el = document.getElementById("consola"); if (!el || consolaPausa) return;
     el.innerHTML = CONSOLA.slice(0, 200).map((l) => `<li class="c-${l.c}"><time>${horaMs(l.t)}</time><span>${esc(l.x)}</span></li>`).join("");
+  }
+
+  // ---------- Errores y detalles de la prueba (estadística para el administrador) ----------
+  const DIAG_CAT = { hueco: "Pantalla bloqueada o app en segundo plano", permiso: "Permiso negado", sin_lecturas: "Sensor sin lecturas", voz: "Error de reconocimiento de voz",
+    enlace: "Enlace con la pantalla caído", relevo: "Sin relevo / sin internet", github: "Error al subir a GitHub", bateria: "Batería baja",
+    falsa: "Falsa alarma marcada", descartada: "Impacto descartado (movimiento después)" };
+  let DIAG = LS.get("sost_diag", []);
+  function diag(cat, det = "", dur = null) {
+    DIAG.push({ t: Date.now(), cat, det: String(det).slice(0, 120), dur, enviado: false }); if (DIAG.length > 1500) DIAG = DIAG.slice(-1500);
+    LS.set("sost_diag", DIAG); if (document.querySelector("#v-eventos[data-activa=true]")) pintarDiag();
+  }
+  function pintarDiag() {
+    const el = document.getElementById("diag-barras"); if (!el) return;
+    const n = {}; DIAG.forEach((d) => (n[d.cat] = (n[d.cat] || 0) + 1));
+    const filas = Object.entries(n).sort((a, b) => b[1] - a[1]), max = Math.max(1, ...filas.map((f) => f[1]));
+    el.innerHTML = filas.length ? filas.map(([c, k]) => `<div><span>${esc(DIAG_CAT[c] || c)}</span><i style="width:${(k / max) * 100}%"></i><b>${k}</b></div>`).join("") : '<p class="t-nota" style="margin:0">Sin errores registrados todavía.</p>';
+    document.getElementById("diag-lista").innerHTML = DIAG.slice(-15).reverse().map((d) => `<li><div class="cab"><span class="tp">${esc(DIAG_CAT[d.cat] || d.cat)}</span><time>${esc(fechaHora(d.t))}</time></div>${d.det || d.dur != null ? `<div class="dt">${esc(d.det)}${d.dur != null ? ` · ${d.dur} s sin datos` : ""}</div>` : ""}</li>`).join("");
   }
 
   // ---------- Base de datos local (IndexedDB) ----------
@@ -123,7 +140,7 @@
         if (t - CA.impacto > 400) CA.ventana.push(mag);
         if (t - CA.impacto > 400 + A.quietud_s * 1000) {
           const v = CA.ventana, m = v.reduce((s, x) => s + x, 0) / (v.length || 1), sd = Math.sqrt(v.reduce((s, x) => s + (x - m) ** 2, 0) / (v.length || 1));
-          if (!(v.length > 5 && sd < 0.6)) log("det", `Impacto descartado: hubo movimiento después (desv. ${sd.toFixed(2)} m/s² ≥ 0.6)`);
+          if (!(v.length > 5 && sd < 0.6)) { log("det", `Impacto descartado: hubo movimiento después (desv. ${sd.toFixed(2)} m/s² ≥ 0.6)`); diag("descartada", `pico ${(CA.pico / G).toFixed(2)} g · desv. ${sd.toFixed(2)}`); }
           if (v.length > 5 && sd < 0.6) disparar("caida", { pico_g: +(CA.pico / G).toFixed(2), caida_libre: CA.libre, quietud_desv: +sd.toFixed(3), confianza: CA.libre ? "alta" : "media" }, CA.impacto);
           CA.impacto = 0; CA.libreOk = 0;
         }
@@ -167,10 +184,10 @@
           else if (db >= A.ruido_db) { if (!RU.desde) { RU.desde = t; RU.pico = 0; log("det", `Ruido ${Math.round(db)} dB ≥ ${A.ruido_db} dB · confirmando 1.5 s`); } RU.pico = Math.max(RU.pico, db); } else if (RU.desde && t - RU.desde < 1500) RU.desde = 0;
           if (RU.desde && t - RU.desde >= 1500 && Date.now() - RU.ultimo > 30000) { RU.ultimo = Date.now(); disparar("ruido", { pico_db: Math.round(RU.pico), umbral_db: A.ruido_db, nota: "dB aproximados; calibra con un sonómetro" }, RU.desde, "advertencia"); RU.desde = 0; }
         }
-      }, 100) };
+      }, A.ahorro ? 250 : 100) };   // en ahorro de energía se mide 4 veces por segundo en vez de 10
       if (ctx.state === "suspended") ctx.resume();
       S.perm.mic = "concedido";
-    } catch (e) { S.perm.mic = e.name === "NotAllowedError" ? "denegado" : "error"; }
+    } catch (e) { S.perm.mic = e.name === "NotAllowedError" ? "denegado" : "error"; diag("permiso", "Micrófono: " + S.perm.mic); }
   }
   function detenerMic() { if (!audio) return; clearInterval(audio.id); audio.st.getTracks().forEach((t) => t.stop()); try { audio.ctx.close(); } catch (e) {} audio = null; S.db = null; }
 
@@ -202,7 +219,7 @@
         }
       };
       reconocedor.onend = () => { if (reconocedor && vozNecesaria()) { try { reconocedor.start(); } catch (e) {} } else reconocedor = null; };
-      reconocedor.onerror = (e) => { S.perm.voz = e.error; if (e.error !== "no-speech" && e.error !== "aborted") log("voz", `Reconocimiento de voz: ${e.error}`); };
+      reconocedor.onerror = (e) => { S.perm.voz = e.error; if (e.error !== "no-speech" && e.error !== "aborted") { log("voz", `Reconocimiento de voz: ${e.error}`); diag("voz", e.error); } };
       reconocedor.start(); S.perm.voz = "escuchando"; log("voz", ALERTA.activa ? "Escuchando «todo bien»…" : [A.det.voz ? "«S.O.S.» / «auxilio»" : "", A.voz_sismo ? "«está temblando»" : ""].filter(Boolean).join(" y ").replace(/^/, "Escuchando ") + "…");
     } catch (e) { S.perm.voz = "error"; }
   }
@@ -227,7 +244,8 @@
     monitoreando = true; S.desde = Date.now(); asegurarVoz(); ultimoMov = Date.now(); LS.set("sost_monitor", true);
     log("sis", `Monitoreo iniciado · movimiento: ${S.perm.mov} · micrófono: ${S.perm.mic} · pantalla: ${S.perm.wake}`);
     estado("monitoreo"); $("btn-iniciar").textContent = "Detener monitoreo"; $("btn-iniciar").classList.remove("pri");
-    setTimeout(() => { if (monitoreando && !S.mov) toast("No llegan lecturas de movimiento: revisa el permiso «Movimiento y orientación» en Ajustes de Safari.", 5000); }, 2500);
+    if (S.perm.mov && !/concedido/.test(S.perm.mov)) diag("permiso", "Movimiento: " + S.perm.mov);
+    setTimeout(() => { if (monitoreando && !S.mov) diag("sin_lecturas", "Movimiento y orientación"); if (monitoreando && !S.mov) toast("No llegan lecturas de movimiento: revisa el permiso «Movimiento y orientación» en Ajustes de Safari.", 5000); }, 2500);
     registrarSistema("inicio", { modo: A.modo });
   }
   function detener() {
@@ -238,9 +256,13 @@
     registrarSistema("paro", {});
   }
   $("btn-iniciar").onclick = () => { if (document.body.classList.contains("rol-pantalla")) return; monitoreando ? detener() : iniciar(); };
+  // Safari/Chrome pausan los sensores con la pantalla bloqueada: se registra el hueco y su duración, y se avisa a la pantalla remota
+  let ocultoDesde = 0;
   document.addEventListener("visibilitychange", async () => {
     if (document.visibilityState === "visible" && monitoreando && !wakeLock) { try { wakeLock = await navigator.wakeLock?.request("screen"); } catch (e) {} }
-    if (document.visibilityState === "hidden" && monitoreando) registrarSistema("segundo-plano", { nota: "Con la pantalla bloqueada el navegador pausa los sensores" });
+    if (document.visibilityState === "hidden" && monitoreando) { ocultoDesde = Date.now(); registrarSistema("segundo-plano", { nota: "Con la pantalla bloqueada el navegador pausa los sensores" }); window.__enlOculto?.(true); if (A.auto && A.token) sincronizar(true); }
+    if (document.visibilityState === "visible" && ocultoDesde) { const s = Math.round((Date.now() - ocultoDesde) / 1000); ocultoDesde = 0;
+      if (s >= 2) { diag("hueco", "La pantalla se bloqueó o la app pasó a segundo plano", s); log("det", `Hueco de ${s} s sin sensores (pantalla bloqueada o segundo plano)`); } window.__enlOculto?.(false); }
   });
 
   // ---------- Alertas y escalamiento N0–N3 ----------
@@ -436,6 +458,7 @@
     x.stroke();
   }
   function cuadro() {
+    if (document.body.classList.contains("bolsillo")) { setTimeout(() => requestAnimationFrame(cuadro), 1000); pintarBolsillo(); return; }   // pantalla negra: no se dibuja nada
     if (document.querySelector("#v-monitor[data-activa=true]")) {
       const rem = window.__enlRemoto?.();
       linea("g-acc", BUF.acc, 0, 40, "#4f8fd6", rem ? rem.umb[0] : A.impacto_g * G); linea("g-mic", BUF.mic, 30, 120, "#3fbf7f", rem ? rem.umb[1] : A.ruido_db);
@@ -536,7 +559,8 @@
     barrasHoras(ev);
   }
   $("eventos").addEventListener("click", (e) => { const b = e.target.closest("[data-cal]"); if (!b) return; const ev = EVENTOS.find((x) => x.id === b.dataset.id); if (!ev) return;
-    ev.calificacion = ev.calificacion === b.dataset.cal ? null : b.dataset.cal; ev.enviado = false; guardarEvento(ev); });
+    ev.calificacion = ev.calificacion === b.dataset.cal ? null : b.dataset.cal; ev.enviado = false; guardarEvento(ev);
+    if (ev.calificacion === "falsa") diag("falsa", `${ev.titulo} · ${fechaHora(ev.inicio)}`); });
   function barrasHoras(ev) {
     const c = $("g-horas"); if (!c.offsetWidth) return; const dpr = devicePixelRatio || 1, w = c.offsetWidth, h = 110;
     c.width = w * dpr; c.height = h * dpr; const x = c.getContext("2d"); x.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -562,7 +586,9 @@
     return { sistema: "SOSistem™ Terminal de pruebas", version: VERSION, autor: "© Víctor Hugo Ramírez Salgado", terminal: A.id, recinto: A.recinto, modo: A.modo,
       generado: new Date().toISOString(), plataforma: plataformaCompleta(), tiempos_escalamiento_s: TIEMPOS,
       umbrales: { impacto_g: A.impacto_g, quietud_s: A.quietud_s, sismo_sens: A.sismo_sens, ruido_db: A.ruido_db, mic_offset: A.mic_offset },
-      eventos: EVENTOS.filter((e) => !soloPendientes || !e.enviado), minutos: mins.filter((m) => !soloPendientes || m.t > ultimo) };
+      eventos: EVENTOS.filter((e) => !soloPendientes || !e.enviado), minutos: mins.filter((m) => !soloPendientes || m.t > ultimo),
+      mapeo: { promedio: window.SOSMapa?.promedio() || null, recorridos: window.SOSMapa?.recorridos() || [] },
+      errores: DIAG.filter((d) => !soloPendientes || !d.enviado).map(({ enviado, ...d }) => ({ ...d, categoria: DIAG_CAT[d.cat] || d.cat, iso: new Date(d.t).toISOString() })) };
   }
   $("btn-json").onclick = async () => descargar(`sosistem_${A.id}_${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(await paquete(false), null, 2), "application/json");
 
@@ -571,7 +597,7 @@
     if (!A.token || !/^[\w.-]+\/[\w.-]+$/.test(A.repo)) { if (!silencioso) { toast("Configura el repositorio y el token en Ajustes."); vista("ajustes"); } return; }
     if (!navigator.onLine) { if (!silencioso) toast("Sin conexión: se enviará después."); return; }
     const p = await paquete(true);
-    if (!p.eventos.length && !p.minutos.length) { if (!silencioso) toast("No hay datos nuevos para enviar."); return; }
+    if (!p.eventos.length && !p.minutos.length && !p.errores.length) { if (!silencioso) toast("No hay datos nuevos para enviar."); return; }
     const d = new Date(), ruta = `pruebas/terminal/${d.toISOString().slice(0, 10)}/${A.id}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.json`;
     const bytes = new TextEncoder().encode(JSON.stringify(p, null, 2)); let bin = "";
     for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
@@ -583,9 +609,11 @@
         body: JSON.stringify({ message: `Terminal ${A.id}: ${p.eventos.length} evento(s), ${p.minutos.length} minuto(s) de lecturas`, content: b64 }) });
       if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(`${r.status} ${j.message || ""}`); }
       for (const e of p.eventos) { e.enviado = true; await tx("eventos", "readwrite", (s) => s.put(e)); }
+      DIAG.forEach((d) => (d.enviado = true)); LS.set("sost_diag", DIAG);
       LS.set("sost_sync", `${fechaHora(Date.now())} → ${A.repo}/${ruta}`); LS.set("sost_sync_t", Date.now());
       pintarEventos(); if (!silencioso) toast("Enviado a tu repositorio privado.");
     } catch (e) {
+      if (!silencioso || !String(e.message).startsWith("Failed")) diag("github", e.message);
       $("sync-estado").textContent = "No se pudo enviar: " + e.message + (String(e.message).startsWith("401") ? "\nRevisa el token." : String(e.message).startsWith("404") ? "\nEl token no tiene acceso a ese repositorio." : "");
     }
   }
@@ -644,7 +672,7 @@
     document.querySelectorAll(".t-vista").forEach((s) => (s.dataset.activa = String(s.id === "v-" + v)));
     document.body.classList.toggle("vista-monitor", v === "monitor");
     document.querySelectorAll("#nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.v === v ? "page" : "false"));
-    if (v === "eventos") pintarEventos(); if (v === "plataforma") pintarPlataforma(); if (v === "ajustes") llenarAjustes();
+    if (v === "eventos") { pintarEventos(); pintarDiag(); } if (v === "plataforma") pintarPlataforma(); if (v === "ajustes") llenarAjustes();
     scrollTo({ top: 0 }); try { history.replaceState(null, "", "#" + v); } catch (e) {}
   }
   $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-v]"); if (b) vista(b.dataset.v); });
@@ -729,7 +757,7 @@
     if (!ENL.clave || !ENL.mq) return;
     o.de = ENL.yo; o.mid = Math.random().toString(36).slice(2, 10);
     const txt = await cifrar(o);
-    if (!ENL.mq.map((c) => c.enviar(txt)).some(Boolean)) estadoEnlace("error", "Sin conexión al relevo · revisa internet");
+    if (!ENL.mq.map((c) => c.enviar(txt)).some(Boolean)) { estadoEnlace("error", "Sin conexión al relevo · revisa internet"); if (Date.now() - (ENL.ultDiagRel || 0) > 60000) { ENL.ultDiagRel = Date.now(); diag("relevo", navigator.onLine ? "Relevos sin respuesta" : "Sin internet"); } }
   }
   async function mensajeRelevo(m) {
     let o; try { o = await descifrar(m); } catch (e) { return; }   // otro código o mensaje ajeno: se ignora
@@ -766,14 +794,14 @@
   const esperarIce = (pc) => new Promise((ok) => { if (pc.iceGatheringState === "complete") return ok(); const t = setTimeout(ok, 4000);
     pc.addEventListener("icegatheringstatechange", () => { if (pc.iceGatheringState === "complete") { clearTimeout(t); ok(); } }); });
   function vigilar(pc) { pc.onconnectionstatechange = () => { if (pc !== ENL.pc) return;
-    if (pc.connectionState === "failed") { log("sis", "La conexión directa falló · se usa el relevo"); cerrarP2P(); if (ENL.rol === "sensor") usarRelevo(); } }; }
+    if (pc.connectionState === "failed") { log("sis", "La conexión directa falló · se usa el relevo"); diag("enlace", "La conexión directa falló; se usó el relevo"); cerrarP2P(); if (ENL.rol === "sensor") usarRelevo(); } }; }
   function canal(dc) {
     ENL.dc = dc;
     dc.onopen = () => { ENL.modo = "p2p"; clearTimeout(ENL.tRespaldo); clearInterval(ENL.tRelevo);
       estadoEnlace("ok", ENL.rol === "sensor" ? "● Conectado directo con la pantalla" : "● Conectado directo con el celular");
       log("sis", "Enlace directo abierto (cifrado de extremo a extremo)"); if (ENL.rol === "sensor") mandarFoto(true); };
     dc.onmessage = (e) => { let o; try { o = JSON.parse(e.data); } catch (x) { return; } recibir(o); };
-    dc.onclose = () => { if (ENL.dc !== dc) return; ENL.dc = null; ENL.modo = "relevo";
+    dc.onclose = () => { if (ENL.dc !== dc) return; ENL.dc = null; ENL.modo = "relevo"; diag("enlace", "Se cerró el enlace directo con " + (ENL.rol === "sensor" ? "la pantalla" : "el celular"));
       if (ENL.rol === "sensor") { estadoEnlace("espera", "La pantalla se desconectó · esperando que vuelva"); }
       if (ENL.rol === "pantalla") { estadoEnlace("espera", "Se perdió el enlace directo · reintentando"); publicar({ t: "hola" }); } };
   }
@@ -814,7 +842,7 @@
           det: A.det, voz_sismo: !!A.voz_sismo, voz: reconocedor ? "escuchando" : S.perm.voz || "apagada", frase: S.frase || null,
           bat: S.bat ? { n: Math.round(S.bat.nivel * 100), c: S.bat.carga } : null, red: navigator.onLine ? (S.red?.efectivo || "en línea") : "sin conexión",
           perm: { mov: S.perm.mov || "pendiente", mic: S.perm.mic || "pendiente", wake: S.perm.wake || "pendiente" }, ubic: S.ubic || null,
-          equipo: plataformaCorta(), hoy: evh.length, falsas: evh.filter((e) => e.calificacion === "falsa").length,
+          equipo: plataformaCorta(), mapa: window.SOSMapa?.promedio() || null, hoy: evh.length, falsas: evh.filter((e) => e.calificacion === "falsa").length,
           ultimo: u ? { titulo: u.titulo, t: u.inicio, resp: u.respuesta_s, prueba: u.prueba } : null }; })(),
       aviso: ALERTA.sonandoAviso && ALERTA.aviso ? { tipo: ALERTA.aviso.tipo, titulo: ALERTA.aviso.titulo } : null,
       qa: ENL.modo === "p2p" ? qa : [], qm: ENL.modo === "p2p" ? qm : [], log: ENL.modo === "p2p" ? cola : cola.slice(0, 8) };
@@ -824,7 +852,13 @@
     if (ENL.dc?.readyState === "open") { try { ENL.dc.send(JSON.stringify(foto())); } catch (e) {} return; }
     if (ENL.modo === "relevo" && (forzar || Date.now() - ENL.ultRelevo > 1000)) { ENL.ultRelevo = Date.now(); publicar(foto()); }
   }
-  setInterval(() => { if (ENL.rol === "sensor" && ENL.modo === "p2p") mandarFoto(); }, 200);
+  // Ahorro de energía: 2 envíos por segundo en reposo, 5 durante una alerta, 1 en modo bolsillo (las muestras se agrupan, no se pierden)
+  let ultEnvio = 0;
+  setInterval(() => { if (ENL.rol !== "sensor" || ENL.modo !== "p2p") return;
+    const cada = ALERTA.activa || ALERTA.sonandoAviso ? 200 : A.ahorro ? 1000 : 500;
+    if (Date.now() - ultEnvio >= cada) { ultEnvio = Date.now(); mandarFoto(); } }, 200);
+  window.__enlOculto = (oculto) => { if (ENL.rol !== "sensor") return; const f = foto(); f.oculto = oculto; f.ts = Date.now();
+    if (ENL.dc?.readyState === "open") { try { ENL.dc.send(JSON.stringify(f)); } catch (e) {} } else if (ENL.clave) publicar(f); };
   // un cambio de estado (alerta, aviso, atendida) sale al instante, también por el relevo
   window.__enlCambio = () => { if (ENL.rol !== "sensor" || ENL.cambio) return; ENL.cambio = true;
     const espera = 150;
@@ -846,6 +880,9 @@
   };
   window.__enlRemoto = () => (ENL.rol === "pantalla" && ENL.remoto ? ENL.remoto : null);
   function aplicarFoto(f) {
+    if (f.oculto) { estadoEnlace("espera", `El celular bloqueó la pantalla o pasó a segundo plano a las ${horaMs(f.ts).slice(0, 8)} · sin datos hasta que vuelva`);
+      $("vivo").classList.add("off"); $("vivo").textContent = "○ CELULAR EN PAUSA"; log("det", "📱 Pantalla bloqueada: el navegador pausa los sensores", f.ts); ENL.pausado = true; return; }
+    if (ENL.pausado) { ENL.pausado = false; estadoEnlace(ENL.modo === "p2p" ? "ok" : "lento", ENL.modo === "p2p" ? "● Conectado directo con el celular" : "● Conectado por relevo"); log("ok", "📱 El celular volvió · datos en vivo otra vez"); }
     ENL.remoto = f; ENL.ultDato = Date.now();
     const p = $("pantalla"); p.dataset.e = f.e; $("estado-pill").dataset.e = f.e; $("estado-pill").textContent = f.pill;
     $("pt-icono").textContent = f.ico; $("pt-titulo").textContent = f.tit; $("pt-detalle").textContent = f.det;
@@ -885,7 +922,7 @@
     if (ENL.rol !== "pantalla" || ENL.modo === "p2p" || !ENL.respT || Date.now() - ENL.respT < 15000 || Date.now() - ENL.ultDato < 5000) return;
     ENL.respT = 0; ENL.ofertaVista = null; cerrarP2P(); estadoEnlace("espera", "Reintentando la conexión con el celular…"); publicar({ t: "hola" });
   }, 2000);
-  setInterval(() => { if (ENL.rol === "pantalla" && ENL.ultDato && ENL.modo === "p2p" && Date.now() - ENL.ultDato > 8000) estadoEnlace("espera", "Sin datos del celular (¿pantalla bloqueada o app en segundo plano?)"); }, 2000);
+  setInterval(() => { if (ENL.rol === "pantalla" && ENL.ultDato && ENL.modo === "p2p" && Date.now() - ENL.ultDato > 8000) { if (!ENL.pausado) estadoEnlace("espera", `Sin datos del celular desde las ${horaMs(ENL.ultDato).slice(0, 8)} (¿pantalla bloqueada, sin internet o sin batería?) · se conservan los últimos datos`); } }, 2000);
 
   // --- Mensajes recibidos (directo o por relevo) ---
   function recibir(o) {
@@ -954,6 +991,31 @@
     if (ENL.rol !== "solo") ponerRol(ENL.rol);
   }
 
+
+  // ---------- Modo bolsillo / ahorro de energía ----------
+  function pintarBolsillo() {
+    $("bo-hora").textContent = horaMs(Date.now()).slice(0, 5); $("bo-estado").textContent = $("estado-pill").textContent;
+    $("bo-info").textContent = monitoreando ? `Sensores activos · ${ENL.rol === "sensor" ? (ENL.modo === "p2p" ? "enviando a la pantalla" : ENL.modo === "relevo" ? "enviando por relevo" : "sin pantalla enlazada") : "guardando en este celular"}` : "Monitoreo detenido";
+  }
+  function bolsillo(on) {
+    document.body.classList.toggle("bolsillo", on); $("bolsillo").hidden = !on;
+    if (on !== !!A.ahorro) { A.ahorro = on; guardarAjustes(); if (audio) { detenerMic(); iniciarMic(); } }
+    if (on) { pintarBolsillo(); log("sis", "Modo bolsillo: pantalla negra, menos envíos y menos mediciones por segundo"); if (!monitoreando) toast("Inicia el monitoreo para que los sensores trabajen en modo bolsillo.", 4000); }
+  }
+  $("btn-bolsillo").onclick = () => bolsillo(true);
+  let toqueBo = 0;
+  $("bolsillo").addEventListener("click", () => { if (Date.now() - toqueBo < 450) bolsillo(false); toqueBo = Date.now(); });
+  // en alerta, la pantalla vuelve sola para mostrar la alarma y el botón «Todo bien»
+  const _estadoOrig = window.__enlCambio;
+  window.__enlCambio = () => { _estadoOrig?.(); if (document.body.classList.contains("bolsillo") && /alerta|advertencia/.test($("pantalla").dataset.e)) bolsillo(false); };
+  // Batería baja (Android la comparte): ahorro automático
+  setInterval(() => { if (S.bat && S.bat.nivel <= 0.2 && !S.bat.carga && monitoreando && !A.ahorro_auto) { A.ahorro_auto = true; diag("bateria", `${Math.round(S.bat.nivel * 100)} % · se activó el ahorro de energía`); bolsillo(true); } }, 60000);
+  // Sube todo a GitHub cada 10 minutos y al volver internet (eventos, minutos y errores pendientes)
+  setInterval(() => { if (A.auto && A.token && navigator.onLine) sincronizar(true); }, 600000);
+  let sinRedDesde = 0;
+  addEventListener("offline", () => { sinRedDesde = Date.now(); log("det", "Sin internet: los eventos se guardan en el celular y se suben al volver"); });
+  addEventListener("online", () => { if (sinRedDesde) { diag("relevo", "Sin internet", Math.round((Date.now() - sinRedDesde) / 1000)); sinRedDesde = 0; } });
+  $("diag-limpiar").onclick = () => { if (!confirm("¿Reiniciar el registro de errores de este celular? Lo ya enviado a GitHub no se borra.")) return; DIAG = []; LS.set("sost_diag", DIAG); pintarDiag(); };
 
   // ---------- Arranque ----------
   (async () => {

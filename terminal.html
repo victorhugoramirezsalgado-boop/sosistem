@@ -53,6 +53,7 @@
         </div>
         <div class="t-acciones">
           <button class="t-btn pri" id="btn-iniciar" type="button">Iniciar monitoreo</button>
+          <button class="t-btn" id="btn-bolsillo" type="button">🌙 Modo bolsillo · ahorro de energía</button>
           <button class="t-btn verde" id="btn-atender" type="button" hidden>Todo bien · detener alarma</button>
           <a class="t-btn rojo" id="btn-911" href="tel:911" hidden>Llamar al 911</a>
           <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
@@ -151,6 +152,26 @@
       <button class="t-btn" type="button" id="btn-ubic">Leer ubicación</button>
       <div class="t-mono" id="ubic">Sin leer.</div>
     </div>
+    <div class="t-card t-mapa">
+      <h2>Mapeo del espacio · polígono del recinto</h2>
+      <p class="t-nota">Empieza en una esquina, toca «Iniciar recorrido» y camina pegado a las paredes con el celular plano frente a ti hasta volver a la misma esquina. El celular cuenta tus pasos y toma el rumbo con la brújula. Repite el recorrido varias veces: el sistema promedia los polígonos y el plano se va ajustando al espacio real.</p>
+      <div class="t-grid2">
+        <label class="t-campo">Tu estatura (cm)<input id="mp-estatura" type="number" inputmode="numeric" min="100" max="230" placeholder="170"></label>
+        <label class="t-campo">Largo de paso (m)<input id="mp-paso" type="number" step="0.01" min="0.3" max="1.2"></label>
+      </div>
+      <button class="t-btn pri" type="button" id="mp-iniciar">Iniciar recorrido</button>
+      <div class="t-mono" id="mp-pasos" style="margin-top:8px">—</div>
+      <canvas id="mp-lienzo" class="t-mapa-c"></canvas>
+      <div class="t-nota" id="mp-res" style="margin:6px 0">Haz al menos un recorrido.</div>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="mp-alto-btn">Medir alto (piso → arriba)</button>
+        <div class="t-mono" id="mp-alto" style="margin:0;display:grid;place-items:center">sin medir</div>
+      </div>
+      <p class="t-nota" id="mp-msg" style="margin:6px 0">Naranja: recorrido actual · azul: recorridos guardados · verde: polígono promedio.</p>
+      <ol class="t-ev" id="mp-lista"></ol>
+      <button class="t-btn" type="button" id="mp-borrar">Borrar recorridos</button>
+      <p class="t-nota" style="margin:8px 0 0">Aproximado: sin GPS en interiores cada recorrido tiene de 5 a 15 % de error; los imanes y las estructuras metálicas desvían la brújula. Las subidas y bajadas se cuentan por el golpe vertical del paso (escalones).</p>
+    </div>
   </section>
 
   <!-- ============ EVENTOS ============ -->
@@ -159,6 +180,12 @@
     <div class="t-card">
       <h2>Eventos por hora (últimas 24 h)</h2>
       <canvas id="g-horas" height="110"></canvas>
+    </div>
+    <div class="t-card">
+      <div class="t-fila"><h2>Errores y detalles de la prueba</h2><button type="button" class="t-mini" id="diag-limpiar">Reiniciar</button></div>
+      <p class="t-nota">Lo que falló o interrumpió la medición: pantalla bloqueada, permisos, enlace caído, sin internet, falsas alarmas… Se sube a GitHub con los eventos.</p>
+      <div class="t-diag" id="diag-barras"></div>
+      <ol class="t-ev" id="diag-lista"></ol>
     </div>
     <div class="t-card">
       <div class="t-fila"><h2>Registro</h2><select id="filtro" aria-label="Filtrar eventos"><option value="">Todos</option></select></div>
@@ -242,10 +269,16 @@
   <button type="button" data-v="ajustes"><b>⚙</b>Ajustes</button>
 </nav>
 <div class="t-toast" id="toast" role="status" hidden></div>
+<!-- Modo bolsillo: pantalla negra (casi sin consumo en pantallas OLED) con los sensores trabajando -->
+<div class="t-bolsillo" id="bolsillo" hidden>
+  <div><b id="bo-estado">MONITOREO</b><span id="bo-hora">--:--</span><small id="bo-info">Sensores activos · datos enviándose</small></div>
+  <p>Toca dos veces para volver. No bloquees el celular: Safari detiene los sensores con la pantalla bloqueada.</p>
+</div>
 
 <script src="assets/morse.js"></script>
 <script src="assets/banderas.js"></script>
 <script src="assets/pantallas6.js"></script>
+<script src="assets/mapeo.js"></script>
 <script src="assets/terminal.js"></script>
 </body>
 </html>

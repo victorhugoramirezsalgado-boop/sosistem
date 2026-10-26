@@ -24,6 +24,7 @@
     // 1 · Recinto: estado y movimiento real del celular
     const p1 = `<div class="eq-top"><b>NODO S.O.S.© · ${rec.toUpperCase()}</b><span data-k="desde">—</span></div>${banda}
       ${m === "caida" ? `<div class="eq-911" data-k="b911"><span data-k="911t">Llamada al 911 en</span> <b data-k="911n">—</b><i data-k="911i"></i></div>` : ""}
+      <div class="p6-plano" data-k="plano"></div>
       <ul class="eq-lista">${fila("quieto", "Sin movimiento")}${fila("g", "Aceleración")}${fila("inc", "Inclinación")}${m === "caida" ? fila("pico", "Impacto registrado") : fila("giro", "Giro")}</ul>
       ${aviso({ normal: "SOS", aviso: "AVISO", caida: "SOS SOS", sismo: "SOS SISMO SOS" }[m], m === "caida" ? "W" : "")}`;
     // 2 · Escalamiento real N0–N3 del evento en curso o del último
@@ -75,6 +76,14 @@
     set("911n", falta ? `${falta} s` : ""); set("911t", falta ? "Llamada al 911 en" : st.modo === "real" && !a?.prueba ? "Llamando al 911 · CAP v1.2" : "N3 alcanzado · modo prueba: sin llamada");
     raiz.querySelectorAll('[data-k="911i"]').forEach((el) => (el.style.width = Math.min(100, (s / n3) * 100) + "%"));
     raiz.querySelectorAll('[data-k="b911"]').forEach((el) => el.classList.toggle("hecha", !falta));
+    // Plano del recinto medido caminando con el celular (polígono promedio)
+    raiz.querySelectorAll('[data-k="plano"]').forEach((el) => {
+      const mp = r.mapa; if (!mp?.poligono?.length) { el.innerHTML = ""; return; }
+      const xs = mp.poligono.map((q) => q[0]), ys = mp.poligono.map((q) => q[1]), mx = Math.min(...xs), my = Math.min(...ys), w = Math.max(...xs) - mx || 1, h = Math.max(...ys) - my || 1;
+      const pts = mp.poligono.map(([x, y]) => `${(((x - mx) / w) * 90 + 5).toFixed(1)},${(95 - ((y - my) / h) * 50).toFixed(1)}`).join(" ");
+      const k = `${mp.area}|${mp.recorridos}`; if (el.dataset.v === k) return; el.dataset.v = k;
+      el.innerHTML = `<svg viewBox="0 40 100 60" aria-hidden="true"><polygon points="${pts}" fill="rgba(47,210,122,.12)" stroke="#2fd27a" stroke-width="1.2"/></svg><span>${mp.area} m² · ${mp.largo} × ${mp.ancho} m · ${mp.recorridos} recorrido(s)</span>`;
+    });
     // Escalamiento
     raiz.querySelectorAll('[data-k="esc"]').forEach((el) => (el.innerHTML = (st.esc || []).map((i) => `<li class="${esc(i.c)}">${esc(i.n)}<em>${i.ms != null ? (i.ms / 1000).toFixed(1) + " s" : "—"}</em></li>`).join("")));
     set("hoy", r.hoy != null ? `${r.hoy}${r.falsas ? ` · ${r.falsas} falsas` : ""}` : "sin dato");

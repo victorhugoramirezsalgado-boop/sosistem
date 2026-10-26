@@ -125,7 +125,7 @@
 
   // ---------- App ----------
   const PESTANAS = [
-    ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["financiera", "Financiera"],
+    ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["terminal", "Pruebas de terminal"], ["financiera", "Financiera"],
     ["tecnico", "Datos técnicos"], ["cambios", "Cambios y comentarios"], ["usuarios", "Usuarios"],
     ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["modulos", "Módulos, recintos y nube"], ["ajustes", "Ajustes"],
   ];
@@ -445,6 +445,67 @@
     };
     $$("#fr,#fn,#fs,#fd").forEach((x) => x.addEventListener("change", pinta));
     pinta();
+  };
+
+  // ---------- Pruebas de la terminal (celulares) · lee lo que suben a GitHub ----------
+  // Cada celular sube a su repositorio privado pruebas/terminal/AAAA-MM-DD/*.json: eventos, minutos y errores.
+  const TERM_REPO = "victorhugoramirezsalgado-boop/sistema-sos";
+  RENDER.terminal = async (el) => {
+    const tk = sessionStorage.getItem("sos_gh");
+    if (!tk) { el.innerHTML = `<div class="card"><h3>Pruebas de la terminal</h3><p>Cargue su token de GitHub en <b>Ajustes</b>. Debe tener permiso <b>Contents: Read</b> sobre <span class="mono">${TERM_REPO}</span>.</p></div>`; return; }
+    el.innerHTML = `<div class="card"><p>Leyendo las pruebas de <span class="mono">${TERM_REPO}/pruebas/terminal</span>…</p></div>`;
+    const H = { Authorization: "Bearer " + tk, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
+    let rutas;
+    try {
+      const r = await fetch(`https://api.github.com/repos/${TERM_REPO}/git/trees/HEAD?recursive=1`, { headers: H, cache: "no-store" });
+      if (!r.ok) throw new Error(r.status === 404 ? "El token no tiene acceso al repositorio privado o aún no hay pruebas." : `GitHub respondió ${r.status}.`);
+      rutas = (await r.json()).tree.filter((x) => x.type === "blob" && /^pruebas\/terminal\/.+\.json$/.test(x.path)).map((x) => x.path).sort().slice(-150);
+    } catch (e) { el.innerHTML = `<div class="card"><h3>Pruebas de la terminal</h3><p class="note">${esc(e.message)}</p></div>`; return; }
+    if (!rutas.length) { el.innerHTML = `<div class="card"><h3>Pruebas de la terminal</h3><p>Aún no hay envíos. En el celular: Ajustes → token y repositorio, y «Enviar automáticamente».</p></div>`; return; }
+    const paquetes = (await Promise.all(rutas.map((p) => fetch(`https://api.github.com/repos/${TERM_REPO}/contents/${p}`, { headers: { ...H, Accept: "application/vnd.github.raw+json" }, cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null)).catch(() => null)))).filter(Boolean);
+    // une todo (el mismo evento puede subir varias veces si se calificó después: gana la última versión)
+    const EV = new Map(), ER = new Map(), terminales = new Set(), equipos = new Set();
+    paquetes.forEach((p) => { terminales.add(p.terminal); if (p.plataforma) equipos.add(`${p.plataforma.so} ${p.plataforma.version_so} · ${p.plataforma.navegador}`);
+      (p.eventos || []).forEach((e) => EV.set(e.id, e)); (p.errores || []).forEach((d) => ER.set(`${p.terminal}|${d.t}|${d.cat}`, { ...d, terminal: p.terminal })); });
+    const ev = [...EV.values()].sort((a, b) => a.inicio - b.inicio), er = [...ER.values()].sort((a, b) => a.t - b.t);
+    const reales = ev.filter((e) => !e.prueba), cal = ev.filter((e) => e.calificacion), falsas = cal.filter((e) => e.calificacion === "falsa").length;
+    const resp = ev.filter((e) => e.respuesta_s != null), det = ev.filter((e) => e.deteccion_ms);
+    const media = (L, f) => (L.length ? L.reduce((a, x) => a + f(x), 0) / L.length : null);
+    const hueco = er.filter((d) => d.cat === "hueco").reduce((a, d) => a + (d.dur || 0), 0);
+    const porCat = {}; er.forEach((d) => (porCat[d.categoria || d.cat] = (porCat[d.categoria || d.cat] || 0) + 1));
+    const porTipo = {}; ev.forEach((e) => (porTipo[e.titulo] = (porTipo[e.titulo] || 0) + 1));
+    const dia = (t) => new Date(t).toLocaleDateString("sv-SE");
+    const dias = [...new Set([...ev.map((e) => dia(e.inicio)), ...er.map((d) => dia(d.t))])].sort();
+    const porDia = dias.map((d) => [d.slice(5), er.filter((x) => dia(x.t) === d).length]);
+    const evDia = dias.map((d) => [d.slice(5), ev.filter((x) => dia(x.inicio) === d).length]);
+    const primera = dias[0];
+    const erPrimera = er.filter((d) => dia(d.t) === primera), porCatPrimera = {}; erPrimera.forEach((d) => (porCatPrimera[d.categoria || d.cat] = (porCatPrimera[d.categoria || d.cat] || 0) + 1));
+    const ord = (o) => Object.entries(o).sort((a, b) => b[1] - a[1]);
+    el.innerHTML = `
+      <div class="grid g4">
+        <div class="card kpi"><div class="v">${paquetes.length}</div><div class="l">Envíos de prueba · ${terminales.size} terminal(es)</div></div>
+        <div class="card kpi"><div class="v">${ev.length}</div><div class="l">Eventos (${reales.length} reales, ${ev.length - reales.length} de prueba)</div></div>
+        <div class="card kpi"><div class="v">${cal.length ? pct(falsas / cal.length) : "—"}</div><div class="l">% falsas alarmas (${cal.length} calificados)</div></div>
+        <div class="card kpi"><div class="v">${er.length}</div><div class="l">Errores y detalles · ${Math.round(hueco / 60)} min sin datos</div></div>
+      </div>
+      <div class="grid g4" style="margin-top:12px">
+        <div class="card kpi"><div class="v">${media(resp, (e) => e.respuesta_s)?.toFixed(1) ?? "—"} s</div><div class="l">Respuesta media (alerta → «todo bien»)</div></div>
+        <div class="card kpi"><div class="v">${media(det, (e) => e.deteccion_ms / 1000)?.toFixed(1) ?? "—"} s</div><div class="l">Confirmación media del detector</div></div>
+        <div class="card kpi"><div class="v">${ev.filter((e) => e.atendido_por === "voz").length}</div><div class="l">Alarmas detenidas por voz</div></div>
+        <div class="card kpi"><div class="v">${ev.filter((e) => e.datos?.origen === "voz" && e.tipo === "sismo").length}</div><div class="l">Sismos activados por voz</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card"><h3>Primera prueba (${esc(primera || "—")}) · errores y detalles</h3>${erPrimera.length ? barras(ord(porCatPrimera), "var(--warn, #e8a33d)") : "<p class='note'>Sin errores ese día.</p>"}</div>
+        <div class="card"><h3>Errores y detalles · todas las pruebas</h3>${er.length ? barras(ord(porCat), "var(--brand)") : "<p class='note'>Sin errores registrados.</p>"}</div>
+        <div class="card"><h3>Errores por día</h3>${barras(porDia)}</div>
+        <div class="card"><h3>Eventos por tipo</h3>${barras(ord(porTipo), "var(--brand)")}</div>
+        <div class="card"><h3>Eventos por día</h3>${barras(evDia)}</div>
+        <div class="card"><h3>Equipos que probaron</h3><ul>${[...equipos].map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>
+      </div>
+      <div class="tbl-wrap" style="margin-top:16px"><table><thead><tr><th>Fecha y hora</th><th>Terminal</th><th>Error o detalle</th><th>Detalle</th><th class="num">Sin datos</th></tr></thead>
+      <tbody>${er.slice(-200).reverse().map((d) => `<tr><td class="mono">${esc(new Date(d.t).toLocaleString("sv-SE"))}</td><td>${esc(d.terminal)}</td><td>${esc(d.categoria || d.cat)}</td><td>${esc(d.det || "")}</td><td class="num">${d.dur != null ? d.dur + " s" : ""}</td></tr>`).join("")}</tbody></table></div>
+      <p class="note" style="margin-top:8px">Fuente: ${paquetes.length} archivos de <span class="mono">${TERM_REPO}/pruebas/terminal</span>. Se actualiza al abrir esta pestaña.</p>`;
   };
 
   // ---------- Financiera (editable) ----------
