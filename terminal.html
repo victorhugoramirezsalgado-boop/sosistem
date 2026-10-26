@@ -57,6 +57,7 @@
           <button class="t-btn verde" id="btn-atender" type="button" hidden>Todo bien · detener alarma</button>
           <a class="t-btn rojo" id="btn-911" href="tel:911" hidden>Llamar al 911</a>
           <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
+          <a class="t-btn rojo" id="btn-sms" href="#" hidden>Enviar SOS por SMS a mis contactos</a>
         </div>
 
         <!-- Enlace: el celular mide con sus sensores y otra pantalla (la Mac) ve la terminal en vivo -->
@@ -246,6 +247,22 @@
       <label>Pausa entre ciclos para escuchar «todo bien» (s)<input name="pausa_s" type="number" step="0.5" min="1" max="15"></label>
       <label>Duración de la sirena en pruebas (s)<input name="sirena_prueba_s" type="number" step="1" min="1" max="60"></label>
       <label class="t-chk"><input type="checkbox" name="vibrar"> Vibrar en alertas (Android)</label>
+
+      <h2>SOS sin datos ni saldo</h2>
+      <p class="t-nota">Sin internet, la terminal sigue detectando y lee tu ubicación con el GPS del teléfono. Para avisar fuera del recinto usa estas tres vías, de la más segura a la más limitada.</p>
+      <label>Contactos de emergencia para el SMS (con lada, separados por coma)<input name="sms" inputmode="tel" maxlength="120" placeholder="6460000000, 6640000000"></label>
+      <label class="t-chk"><input type="checkbox" name="sms_auto"> Abrir el mensaje SOS por SMS al llegar a N2 (modo real)</label>
+      <p class="t-nota">El SMS necesita señal celular y saldo o plan; no necesita datos ni wifi. El navegador abre el mensaje ya escrito, con tus coordenadas en texto, y tú o quien te ayude solo toca «Enviar»: ninguna página puede enviar un SMS sola.</p>
+      <div class="t-card" style="margin:8px 0">
+        <h2 style="margin-top:0">Botón físico de emergencia del teléfono</h2>
+        <p class="t-nota">Funciona con la pantalla bloqueada, sin abrir esta terminal y sin saldo: la llamada al 911 es gratuita en México. Con el teléfono apagado ninguna app funciona.</p>
+        <ul class="t-nota" style="margin:6px 0 0;padding-left:18px">
+          <li><b>iPhone:</b> Ajustes → Emergencia SOS. Activa la llamada al mantener presionado el botón lateral y un botón de volumen, o al presionar 5 veces el botón lateral, y agrega tus contactos de emergencia en Salud → Ficha médica.</li>
+          <li><b>iPhone 14 o posterior:</b> la detección de choques llama sola al 911 tras un choque grave, y el SOS vía satélite manda tu ubicación sin señal celular (gratis en México por dos años desde la activación).</li>
+          <li><b>Apple Watch:</b> la detección de caídas llama al 911 si no respondes después de una caída fuerte.</li>
+          <li><b>Android:</b> Ajustes → Seguridad y emergencia → Emergencia SOS: presiona 5 veces el botón de encendido. En Samsung también puedes enviar mensajes SOS a tus contactos.</li>
+        </ul>
+      </div>
 
       <h2>Envío a GitHub (privado)</h2>
       <p class="t-nota">Los eventos se suben como archivos JSON a tu repositorio privado, en la carpeta <code>pruebas/terminal/</code>. El token se guarda solo en este celular. Crea un token «fine-grained» con permiso <i>Contents: Read and write</i> únicamente para ese repositorio.</p>

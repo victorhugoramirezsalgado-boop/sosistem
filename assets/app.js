@@ -178,3 +178,6 @@
     }
   }).catch(() => {});
 })();
+
+// Sitio sin internet (v4.5): guarda las páginas en el teléfono al abrirlas con conexión
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(() => {}));

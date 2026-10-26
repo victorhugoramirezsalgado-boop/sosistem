@@ -1,8 +1,13 @@
 {
-  "version": "4.4",
+  "version": "4.5",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.5",
+      "fecha": "2026-10-26",
+      "resumen": "Sitio sin internet: las páginas se guardan en el teléfono al abrirlas con conexión (el panel de administrador no se guarda). Terminal: botón «Enviar SOS por SMS a mis contactos» con la ubicación GPS en texto, que funciona sin datos ni wifi con señal celular; apertura automática del mensaje al llegar a N2 en modo real; GPS leído al disparar cada alerta; guía del botón físico de emergencia del teléfono (iPhone, Apple Watch y Android), que llama al 911 sin saldo. Fondo SOS: nueva vía de apoyo «Dona un comunicador satelital» con botón SOS, GPS y suscripción pagada por el fondo. En los 22 idiomas."
+    },
     {
       "v": "4.4",
       "fecha": "2026-10-26",

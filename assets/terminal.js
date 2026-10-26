@@ -21,7 +21,7 @@
   // ---------- Ajustes ----------
   const DEF = { recinto: "Oficinas ContenedorEns · prueba", id: "T-" + Math.random().toString(36).slice(2, 6).toUpperCase(), modo: "prueba",
     wa: "526462270490", impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, mic_offset: 0, inmovil_min: 0,
-    voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: true, ahorro: false,
+    sms: "", sms_auto: true, voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: true, ahorro: false,
     det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false } };
   const A = Object.assign({}, DEF, LS.get("sost_ajustes", {}));
   A.det = Object.assign({}, DEF.det, A.det || {});
@@ -289,6 +289,13 @@
     ALERTA.activa = true; ALERTA.ev = ev; ALERTA.t0 = ahora; ALERTA.ciclos = 0;
     estado("alerta", ev);
     $("btn-atender").hidden = false; $("btn-wa").hidden = false; $("btn-wa").href = enlaceWA(ev);
+    $("btn-sms").hidden = !A.sms; $("btn-sms").href = enlaceSMS(ev);
+    // GPS sin internet: el chip GPS del teléfono da la ubicación aunque no haya datos ni wifi
+    if (navigator.geolocation) navigator.geolocation.getCurrentPosition((p) => {
+      S.ubic = { lat: +p.coords.latitude.toFixed(6), lon: +p.coords.longitude.toFixed(6), prec: Math.round(p.coords.accuracy), alt: p.coords.altitude };
+      ev.ubicacion = { lat: S.ubic.lat, lon: S.ubic.lon, prec_m: S.ubic.prec }; guardarEvento(ev);
+      if (ALERTA.ev === ev) { $("btn-wa").href = enlaceWA(ev); $("btn-sms").href = enlaceSMS(ev); }
+    }, () => {}, { enableHighAccuracy: true, timeout: 20000, maximumAge: 60000 });
     if (A.vibrar && navigator.vibrate) try { navigator.vibrate([400, 200, 400, 200, 800]); } catch (e) {}
     $("pt-voz").hidden = !A.voz_ok; asegurarVoz();
     document.querySelector(".pane-a")?.scrollTo({ top: 0, behavior: "smooth" });   // la pantalla de alerta siempre a la vista
@@ -305,6 +312,7 @@
     if (n > (ev.nivel_max ?? -1)) {
       ev.nivel_max = n; ev["t_" + NIV[n][0]] = Math.round(s * 1000);
       log("alerta", `${NIV[n][0]} a los ${s.toFixed(1)} s · ${NIV[n][1]}`);
+      if (n === 2 && A.sms && A.sms_auto && A.modo === "real" && !ev.prueba) { log("alerta", "N2 · se abre el mensaje SOS por SMS para los contactos de emergencia"); try { location.href = enlaceSMS(ev); } catch (e) {} }
       if (n === 3) { $("btn-911").hidden = A.modo !== "real" || ev.prueba; if (A.modo !== "real" || ev.prueba) $("pt-detalle").textContent = "N3 alcanzado. Modo prueba: no se llama al 911."; }
       guardarEvento(ev);
     }
@@ -317,7 +325,7 @@
     ALERTA.activa = false; ALERTA.ev = null; ALERTA.ultimo = ev;
     log("ok", `Alarma detenida por ${origen === "voz" ? "voz («todo bien»)" : origen} a los ${ev.respuesta_s} s · ${ALERTA.ciclos} ciclo(s) de sirena y Morse`);
     sonidoActual(null); $("pt-voz").hidden = true; asegurarVoz(); pintarEscala();
-    $("btn-atender").hidden = true; $("btn-911").hidden = true; $("btn-wa").hidden = true; $("pt-nivel").hidden = true;
+    $("btn-atender").hidden = true; $("btn-911").hidden = true; $("btn-wa").hidden = true; $("btn-sms").hidden = true; $("pt-nivel").hidden = true;
     estado(monitoreando ? "monitoreo" : "detenido");
     guardarEvento(ev).then(() => { if (A.auto && A.token) sincronizar(true); });
     toast(`${origen === "voz" ? "«Todo bien» oído" : "Alerta atendida"}: ${ev.respuesta_s} s. Califícala en Eventos.`);
@@ -378,6 +386,15 @@
     const u = ev.ubicacion ? ` https://maps.google.com/?q=${ev.ubicacion.lat},${ev.ubicacion.lon}` : "";
     const msg = `${ev.prueba || A.modo === "prueba" ? "[PRUEBA] " : ""}SOSistem ${ev.terminal}: ${ev.titulo} en ${ev.recinto} a las ${horaMs(ev.inicio).slice(0, 8)}.${u}`;
     return `https://wa.me/${String(A.wa).replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`;
+  }
+
+  // SOS por SMS: funciona con señal celular mínima y sin datos; lleva las coordenadas en texto para leerse sin internet
+  function enlaceSMS(ev) {
+    const nums = String(A.sms || "").split(/[,;\s]+/).map((n) => n.replace(/[^\d+]/g, "")).filter((n) => n.length >= 8);
+    const u = ev.ubicacion ? ` Ubicación GPS: ${ev.ubicacion.lat}, ${ev.ubicacion.lon} (±${ev.ubicacion.prec_m} m) https://maps.google.com/?q=${ev.ubicacion.lat},${ev.ubicacion.lon}` : " Ubicación: sin GPS todavía.";
+    const msg = `${ev.prueba || A.modo === "prueba" ? "[PRUEBA] " : ""}SOS · ${ev.titulo} en ${ev.recinto} a las ${horaMs(ev.inicio).slice(0, 5)}. Necesito ayuda.${u} Enviado por SOSistem.`;
+    const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+    return ios ? `sms://open?addresses=${nums.join(",")}&body=${encodeURIComponent(msg)}` : `sms:${nums.join(",")}?body=${encodeURIComponent(msg)}`;
   }
 
   // ---------- Pantalla y estado ----------
