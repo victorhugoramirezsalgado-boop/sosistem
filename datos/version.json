@@ -1,8 +1,13 @@
 {
-  "version": "3.9",
+  "version": "4.0",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.0",
+      "fecha": "2026-10-25",
+      "resumen": "Terminal de pruebas con pantalla dividida: «Pruebas» (pantalla S.S.O.S., pruebas y detectores) y «Terminal de información» (lecturas en vivo, escalamiento Detección→N0–N3→Atendida, sonido en curso y consola con cada paso de la detección). Las pruebas ejecutan la sirena con su patrón normalizado y el código Morse del perfil del panel; la alarma se repite, con una pausa para escuchar, hasta que la persona dice «todo bien» (o «estoy bien») o toca el botón verde. Escenarios listos para prueba en baño (celular conmigo o en repisa) y oficina; en iPhone suena aunque esté en silencio (Safari 17+)."
+    },
     {
       "v": "3.9",
       "fecha": "2026-10-25",

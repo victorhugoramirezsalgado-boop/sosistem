@@ -23,51 +23,90 @@
 </header>
 
 <main class="t-main">
-  <!-- ============ MONITOR ============ -->
+  <!-- ============ MONITOR: pantalla dividida Pruebas | Terminal de información ============ -->
   <section class="t-vista" id="v-monitor" data-activa="true">
-    <div class="pantalla-t" id="pantalla" data-e="normal">
-      <div class="pt-cab"><span id="pt-recinto">Recinto de prueba</span><span id="pt-hora">--:--:--</span></div>
-      <div class="pt-centro">
-        <div class="pt-icono" id="pt-icono" aria-hidden="true">✓</div>
-        <div class="pt-titulo" id="pt-titulo">Monitoreo detenido</div>
-        <div class="pt-detalle" id="pt-detalle">Toca «Iniciar monitoreo» para activar los sensores de este celular.</div>
-        <div class="pt-nivel" id="pt-nivel" hidden></div>
-        <div class="pt-morse" id="pt-morse" aria-hidden="true"></div>
+    <div class="split" id="split" data-dividida="true">
+      <div class="pane pane-a" aria-label="Pruebas">
+        <div class="pane-tit"><b>Pruebas</b><button type="button" class="t-mini" id="btn-dividir" aria-pressed="true">Pantalla dividida ✓</button></div>
+        <div class="pantalla-t" id="pantalla" data-e="normal">
+          <div class="pt-cab"><span id="pt-recinto">Recinto de prueba</span><span id="pt-hora">--:--:--</span></div>
+          <div class="pt-centro">
+            <div class="pt-icono" id="pt-icono" aria-hidden="true">✓</div>
+            <div class="pt-titulo" id="pt-titulo">Monitoreo detenido</div>
+            <div class="pt-detalle" id="pt-detalle">Toca «Iniciar monitoreo» para activar los sensores de este celular.</div>
+            <div class="pt-nivel" id="pt-nivel" hidden></div>
+            <div class="pt-morse" id="pt-morse" aria-hidden="true"></div>
+            <div class="pt-voz" id="pt-voz" hidden>Diga «todo bien» para detener la alarma</div>
+          </div>
+          <div class="pt-pie"><span id="pt-modo">MODO PRUEBA</span><span id="pt-id">T-0000</span></div>
+        </div>
+
+        <div class="t-card t-compacta">
+          <h2>Escenario de la prueba</h2>
+          <div class="t-esc-sel">
+            <button type="button" class="t-mini" data-esc="bano_bolsa" aria-pressed="false">Baño · celular conmigo</button>
+            <button type="button" class="t-mini" data-esc="bano_repisa" aria-pressed="false">Baño · celular en repisa</button>
+            <button type="button" class="t-mini" data-esc="oficina" aria-pressed="false">Oficina</button>
+          </div>
+          <p class="t-nota" id="esc-nota" style="margin:6px 0 0">Elige dónde estará el celular durante la prueba.</p>
+        </div>
+        <div class="t-acciones">
+          <button class="t-btn pri" id="btn-iniciar" type="button">Iniciar monitoreo</button>
+          <button class="t-btn verde" id="btn-atender" type="button" hidden>Todo bien · detener alarma</button>
+          <a class="t-btn rojo" id="btn-911" href="tel:911" hidden>Llamar al 911</a>
+          <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
+        </div>
+
+        <div class="t-card">
+          <h2>Pruebas con alarma real</h2>
+          <p class="t-nota">Cada prueba ejecuta la sirena y el código Morse del tipo de evento (perfil del panel) y se repite hasta que digas «todo bien» o toques el botón verde. Queda registrada como «prueba».</p>
+          <div class="t-grid2">
+            <button class="t-btn" type="button" data-prueba="caida">Caída · sirena + SOS SOS</button>
+            <button class="t-btn" type="button" data-prueba="sismo">Sismo · T-3 + SOS SISMO SOS</button>
+            <button class="t-btn" type="button" data-prueba="manual">Botón S.O.S. · sirena + SOS</button>
+            <button class="t-btn" type="button" data-prueba="ruido">Ruido fuerte · aviso</button>
+          </div>
+          <div class="t-grid2">
+            <button class="t-btn" type="button" data-prueba="sonido">Solo sonido de prueba (T-3 + PRUEBA SOS)</button>
+            <button class="t-btn" type="button" data-prueba="detener">Silenciar todo</button>
+          </div>
+          <p class="t-nota">Prueba real de caída: deja caer el celular sobre un cojín o colchón desde unos 50 cm y no lo toques durante 3 segundos.</p>
+        </div>
+
+        <button class="t-sos" id="btn-sos" type="button" aria-describedby="sos-ayuda"><span>S.O.S.</span><i id="sos-carga"></i></button>
+        <p class="t-ayuda" id="sos-ayuda">Mantén presionado 2 segundos para enviar una alerta manual.</p>
+
+        <div class="t-card">
+          <h2>Detectores</h2>
+          <div class="t-det" id="detectores"></div>
+        </div>
       </div>
-      <div class="pt-pie"><span id="pt-modo">MODO PRUEBA</span><span id="pt-id">T-0000</span></div>
-    </div>
 
-    <div class="t-acciones">
-      <button class="t-btn pri" id="btn-iniciar" type="button">Iniciar monitoreo</button>
-      <button class="t-btn" id="btn-atender" type="button" hidden>Estoy bien · cancelar alerta</button>
-      <a class="t-btn rojo" id="btn-911" href="tel:911" hidden>Llamar al 911</a>
-      <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
-    </div>
-
-    <button class="t-sos" id="btn-sos" type="button" aria-describedby="sos-ayuda"><span>S.O.S.</span><i id="sos-carga"></i></button>
-    <p class="t-ayuda" id="sos-ayuda">Mantén presionado 2 segundos para enviar una alerta manual.</p>
-
-    <div class="t-card">
-      <h2>Detectores</h2>
-      <div class="t-det" id="detectores"></div>
-    </div>
-
-    <div class="t-card">
-      <h2>Señal en vivo</h2>
-      <div class="t-graf"><span>Aceleración total (m/s²)</span><b id="g-acc-v">—</b><canvas id="g-acc" height="70"></canvas></div>
-      <div class="t-graf"><span>Sonido (dB aprox.)</span><b id="g-mic-v">—</b><canvas id="g-mic" height="70"></canvas></div>
-    </div>
-
-    <div class="t-card">
-      <h2>Pruebas guiadas</h2>
-      <p class="t-nota">Sirven para medir el sistema sin poner a nadie en riesgo. Cada prueba queda registrada como «prueba» en Eventos.</p>
-      <div class="t-grid2">
-        <button class="t-btn" type="button" data-prueba="caida">Simular caída</button>
-        <button class="t-btn" type="button" data-prueba="sismo">Simular sismo</button>
-        <button class="t-btn" type="button" data-prueba="ruido">Simular ruido fuerte</button>
-        <button class="t-btn" type="button" data-prueba="morse">Probar sonido Morse</button>
+      <div class="pane pane-b" aria-label="Terminal de información">
+        <div class="pane-tit"><b>Terminal de información</b><span class="t-vivo" id="vivo">● EN VIVO</span></div>
+        <div class="t-lect" id="lecturas">
+          <div><span>Aceleración</span><b id="l-acc">—</b></div>
+          <div><span>Giro</span><b id="l-rot">—</b></div>
+          <div><span>Inclinación</span><b id="l-inc">—</b></div>
+          <div><span>Sonido</span><b id="l-db">—</b></div>
+          <div><span>Estado</span><b id="l-est">—</b></div>
+          <div><span>Voz</span><b id="l-voz">—</b></div>
+        </div>
+        <div class="t-card t-compacta">
+          <h2>Escalamiento de la alerta</h2>
+          <ol class="t-esc" id="escala"></ol>
+          <div class="t-sonando" id="sonando">Sin sonido</div>
+        </div>
+        <div class="t-card t-compacta">
+          <div class="t-graf"><span>Aceleración total (m/s²)</span><b id="g-acc-v">—</b><canvas id="g-acc" height="70"></canvas></div>
+          <div class="t-graf"><span>Sonido (dB aprox.)</span><b id="g-mic-v">—</b><canvas id="g-mic" height="70"></canvas></div>
+        </div>
+        <div class="t-card t-compacta">
+          <div class="t-fila"><h2>Consola</h2>
+            <span class="t-fila-b"><label class="t-mini-chk"><input type="checkbox" id="c-seg"> lecturas 1 s</label><button type="button" class="t-mini" id="c-pausa">Pausar</button><button type="button" class="t-mini" id="c-limpiar">Limpiar</button></span></div>
+          <ol class="t-consola" id="consola" aria-live="polite"></ol>
+        </div>
       </div>
-      <p class="t-nota">Prueba real de caída: deja caer el celular sobre un cojín o colchón desde unos 50 cm y no lo toques durante 3 segundos.</p>
     </div>
   </section>
 
@@ -141,7 +180,12 @@
       <label>Ajuste del micrófono (+/− dB)<input name="mic_offset" type="number" step="1" min="-30" max="30"></label>
       <label>Sin movimiento prolongado (min, 0 = apagado)<input name="inmovil_min" type="number" step="1" min="0" max="120"></label>
       <label class="t-chk"><input type="checkbox" name="voz"> Escuchar la palabra «S.O.S.», «auxilio» o «ayuda» (reconocimiento de voz del navegador)</label>
-      <label class="t-chk"><input type="checkbox" name="sonido"> Sonido Morse en alertas y pruebas</label>
+      <h2>Alarma</h2>
+      <label class="t-chk"><input type="checkbox" name="sonido"> Sirena y código Morse en alertas y pruebas</label>
+      <label class="t-chk"><input type="checkbox" name="repetir"> Repetir la alarma hasta oír «todo bien» o tocar el botón verde</label>
+      <label class="t-chk"><input type="checkbox" name="voz_ok"> Detener la alarma con la voz: «todo bien», «estoy bien» o «todo está bien»</label>
+      <label>Pausa entre ciclos para escuchar «todo bien» (s)<input name="pausa_s" type="number" step="0.5" min="1" max="15"></label>
+      <label>Duración de la sirena en pruebas (s)<input name="sirena_prueba_s" type="number" step="1" min="1" max="60"></label>
       <label class="t-chk"><input type="checkbox" name="vibrar"> Vibrar en alertas (Android)</label>
 
       <h2>Envío a GitHub (privado)</h2>

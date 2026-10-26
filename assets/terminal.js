@@ -7,7 +7,7 @@
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
-  const VERSION = "3.9";
+  const VERSION = "4.0";
   const G = 9.80665;
   const LS = { get: (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
     set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
@@ -21,14 +21,37 @@
   // ---------- Ajustes ----------
   const DEF = { recinto: "Oficinas ContenedorEns · prueba", id: "T-" + Math.random().toString(36).slice(2, 6).toUpperCase(), modo: "prueba",
     wa: "526462270490", impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, mic_offset: 0, inmovil_min: 0,
-    voz: false, sonido: true, vibrar: true, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: false,
+    voz: false, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: false,
     det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false } };
   const A = Object.assign({}, DEF, LS.get("sost_ajustes", {}));
   A.det = Object.assign({}, DEF.det, A.det || {});
   if (!LS.get("sost_ajustes", null)) LS.set("sost_ajustes", A);
   const guardarAjustes = () => LS.set("sost_ajustes", A);
   let TIEMPOS = { N0: 2, N1: 4, N2: 7, N3: 10 };
-  fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => { if (c.tiempos) TIEMPOS = c.tiempos; }).catch(() => {});
+  // Perfiles de alarma por estado (los mismos del panel de administrador: datos/config.json → alertas)
+  let PERFILES = {
+    caida: { sirena: true, rafaga_s: 20, morse: true, texto: "SOS SOS", volumen: 100, patron: "fsk", tope_min: 10, sirena_db: 105, db_tras_tope: 95 },
+    sismo: { sirena: true, rafaga_s: 60, morse: true, texto: "SOS SISMO SOS", volumen: 100, patron: "t3", tope_min: 10, sirena_db: 105, db_tras_tope: 95 },
+    advertencia: { sirena: false, rafaga_s: 0, morse: true, texto: "AVISO", volumen: 60, patron: "pulsos", tope_min: 10, sirena_db: 85, db_tras_tope: 85 },
+    prueba: { sirena: true, rafaga_s: 3, morse: true, texto: "PRUEBA SOS", volumen: 50, patron: "t3", tope_min: 1, sirena_db: 85, db_tras_tope: 85 } };
+  fetch("datos/config.json", { cache: "no-store" }).then((r) => r.json()).then((c) => {
+    if (c.tiempos) TIEMPOS = c.tiempos;
+    if (c.alertas) for (const k of Object.keys(PERFILES)) if (c.alertas[k]) PERFILES[k] = Object.assign({}, PERFILES[k], c.alertas[k]);
+    log("sis", `Perfiles de alarma cargados del panel · N0 ${TIEMPOS.N0} s, N1 ${TIEMPOS.N1} s, N2 ${TIEMPOS.N2} s, N3 ${TIEMPOS.N3} s`);
+  }).catch(() => log("sis", "Sin conexión al panel: se usan perfiles de alarma internos"));
+  // iPhone: que el sonido salga aunque el interruptor de silencio esté activado (Safari 17+)
+  try { if (navigator.audioSession) navigator.audioSession.type = "play-and-record"; } catch (e) {}
+
+  // ---------- Consola de la terminal de información ----------
+  const CONSOLA = []; let consolaPausa = false, consolaPend = false;
+  function log(clase, texto) {
+    CONSOLA.unshift({ t: Date.now(), c: clase, x: texto }); if (CONSOLA.length > 400) CONSOLA.pop();
+    if (!consolaPend) { consolaPend = true; requestAnimationFrame(pintarConsola); }
+  }
+  function pintarConsola() {
+    consolaPend = false; const el = document.getElementById("consola"); if (!el || consolaPausa) return;
+    el.innerHTML = CONSOLA.slice(0, 200).map((l) => `<li class="c-${l.c}"><time>${horaMs(l.t)}</time><span>${esc(l.x)}</span></li>`).join("");
+  }
 
   // ---------- Base de datos local (IndexedDB) ----------
   let idb = null;
@@ -65,7 +88,7 @@
   }
   $("detectores").addEventListener("change", (e) => {
     const k = e.target.dataset.det; if (!k) return; A.det[k] = e.target.checked; guardarAjustes();
-    if (k === "voz") { A.voz = e.target.checked; guardarAjustes(); if (monitoreando) (A.det.voz ? iniciarVoz() : detenerVoz()); }
+    if (k === "voz") { A.voz = e.target.checked; guardarAjustes(); asegurarVoz(); }
   });
 
   // Caída: |a| < 0.45 g durante ≥ 60 ms → impacto > umbral en ≤ 1.2 s → quietud (desv. < 0.6 m/s²) durante quietud_s
@@ -90,15 +113,16 @@
 
     // --- Caída ---
     if (A.det.caida) {
-      if (mag < 0.45 * G) { if (!CA.libreDesde) CA.libreDesde = t; if (t - CA.libreDesde >= 60) CA.libreOk = t; }
+      if (mag < 0.45 * G) { if (!CA.libreDesde) CA.libreDesde = t; if (t - CA.libreDesde >= 60) { if (!CA.libreOk || t - CA.libreOk > 500) log("det", `Caída libre detectada (|a| ${(mag / G).toFixed(2)} g)`); CA.libreOk = t; } }
       else CA.libreDesde = 0;
       const umbral = A.impacto_g * G;
-      if (!CA.impacto && mag > umbral && (CA.libreOk && t - CA.libreOk < 1200 || mag > umbral * 1.4)) { CA.impacto = t; CA.pico = mag; CA.ventana = []; CA.libre = !!CA.libreOk; }
+      if (!CA.impacto && mag > umbral && (CA.libreOk && t - CA.libreOk < 1200 || mag > umbral * 1.4)) { CA.impacto = t; CA.pico = mag; CA.ventana = []; CA.libre = !!CA.libreOk; log("det", `Impacto ${(mag / G).toFixed(2)} g${CA.libre ? " tras caída libre" : " sin caída libre"} · esperando quietud ${A.quietud_s} s`); }
       if (CA.impacto) {
         if (mag > CA.pico && t - CA.impacto < 400) CA.pico = mag;
         if (t - CA.impacto > 400) CA.ventana.push(mag);
         if (t - CA.impacto > 400 + A.quietud_s * 1000) {
           const v = CA.ventana, m = v.reduce((s, x) => s + x, 0) / (v.length || 1), sd = Math.sqrt(v.reduce((s, x) => s + (x - m) ** 2, 0) / (v.length || 1));
+          if (!(v.length > 5 && sd < 0.6)) log("det", `Impacto descartado: hubo movimiento después (desv. ${sd.toFixed(2)} m/s² ≥ 0.6)`);
           if (v.length > 5 && sd < 0.6) disparar("caida", { pico_g: +(CA.pico / G).toFixed(2), caida_libre: CA.libre, quietud_desv: +sd.toFixed(3), confianza: CA.libre ? "alta" : "media" }, CA.impacto);
           CA.impacto = 0; CA.libreOk = 0;
         }
@@ -113,7 +137,7 @@
       const ratio = SI.sta / Math.max(SI.lta, 0.00005), rms = Math.sqrt(SI.sta);
       const umbralR = 2 + A.sismo_sens * 0.5, umbralRms = 0.015 * A.sismo_sens;
       const quieto = rotMag < 6;   // el celular debe estar apoyado, no en la mano
-      if (ratio > umbralR && rms > umbralRms && rms < 3 && quieto) { if (!SI.desde) { SI.desde = t; SI.pico = 0; } SI.pico = Math.max(SI.pico, rms); }
+      if (ratio > umbralR && rms > umbralRms && rms < 3 && quieto) { if (!SI.desde) { SI.desde = t; SI.pico = 0; log("det", `Vibración: STA/LTA ${ratio.toFixed(1)}, ${rms.toFixed(3)} m/s² · confirmando 2 s`); } SI.pico = Math.max(SI.pico, rms); }
       else if (SI.desde) SI.desde = 0;
       if (SI.desde && t - SI.desde > 2000 && ahora - SI.ultimo > 30000) {
         SI.ultimo = ahora; disparar("sismo", { rms_ms2: +SI.pico.toFixed(3), sta_lta: +ratio.toFixed(1), aviso: "Referencia de prueba; no es un sismógrafo calibrado" }, SI.desde); SI.desde = 0;
@@ -136,9 +160,10 @@
         const dbfs = 20 * Math.log10(Math.sqrt(s / buf.length) || 1e-8), db = Math.max(20, Math.min(130, dbfs + 94 + (+A.mic_offset || 0)));
         S.db = db; BUF.mic.push(db); if (BUF.mic.length > 300) BUF.mic.shift();
         MIN.dbSum += db; MIN.nd++; if (db > MIN.dbMax) MIN.dbMax = db;
-        if (monitoreando && A.det.ruido && !ALERTA.activa) {
+        if (monitoreando && A.det.ruido && !ALERTA.activa && !ALERTA.sonandoAviso) {
           const t = performance.now();
-          if (db >= A.ruido_db) { if (!RU.desde) { RU.desde = t; RU.pico = 0; } RU.pico = Math.max(RU.pico, db); } else if (RU.desde && t - RU.desde < 1500) RU.desde = 0;
+          if (window.SOSMorse?.sonando()) { RU.desde = 0; } // la propia alarma no cuenta como ruido
+          else if (db >= A.ruido_db) { if (!RU.desde) { RU.desde = t; RU.pico = 0; log("det", `Ruido ${Math.round(db)} dB ≥ ${A.ruido_db} dB · confirmando 1.5 s`); } RU.pico = Math.max(RU.pico, db); } else if (RU.desde && t - RU.desde < 1500) RU.desde = 0;
           if (RU.desde && t - RU.desde >= 1500 && Date.now() - RU.ultimo > 30000) { RU.ultimo = Date.now(); disparar("ruido", { pico_db: Math.round(RU.pico), umbral_db: A.ruido_db, nota: "dB aproximados; calibra con un sonómetro" }, RU.desde, "advertencia"); RU.desde = 0; }
         }
       }, 100) };
@@ -148,21 +173,33 @@
   }
   function detenerMic() { if (!audio) return; clearInterval(audio.id); audio.st.getTracks().forEach((t) => t.stop()); try { audio.ctx.close(); } catch (e) {} audio = null; S.db = null; }
 
-  // ---------- Reconocimiento de voz «S.O.S.» ----------
+  // ---------- Reconocimiento de voz: «S.O.S.» para alertar y «todo bien» para detener la alarma ----------
+  const RE_SOS = /\b(s\.?\s?o\.?\s?s|ese o ese|auxilio|ayuda|socorro|help)\b/;
+  const RE_OK = /\b(todo (esta |está )?bien|estoy bien|todo en orden|todo ok|all good|i'?m ok)\b/;
+  const vozNecesaria = () => (monitoreando && A.det.voz) || (ALERTA.activa && A.voz_ok);
+  // En iPhone el reconocimiento de voz y la medición de dB compiten por el micrófono: durante la alarma se pausa la medición
+  function asegurarVoz() {
+    if (ALERTA.activa && A.voz_ok && audio) { detenerMic(); log("sis", "Medición de dB en pausa para escuchar «todo bien»"); }
+    if (!ALERTA.activa && monitoreando && !audio && S.perm.mic === "concedido") iniciarMic();
+    if (vozNecesaria()) { if (!reconocedor) iniciarVoz(); } else if (reconocedor) detenerVoz();
+  }
   function iniciarVoz() {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) { S.perm.voz = "no disponible"; toast("Este navegador no ofrece reconocimiento de voz."); return; }
+    if (!SR) { if (S.perm.voz !== "no disponible") log("voz", "Este navegador no ofrece reconocimiento de voz: usa el botón verde"); S.perm.voz = "no disponible"; return; }
     try {
       reconocedor = new SR(); reconocedor.lang = "es-MX"; reconocedor.continuous = true; reconocedor.interimResults = true;
       reconocedor.onresult = (e) => {
         for (let i = e.resultIndex; i < e.results.length; i++) {
-          const txt = e.results[i][0].transcript.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-          if (/\b(s\.?\s?o\.?\s?s|ese o ese|auxilio|ayuda|socorro|help)\b/.test(txt) && !ALERTA.activa) disparar("voz", { frase: txt.trim().slice(0, 60) });
+          const txt = e.results[i][0].transcript.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+          if (!txt) continue;
+          if (e.results[i].isFinal) log("voz", `Oído: «${txt.slice(0, 70)}»`);
+          if (ALERTA.activa && A.voz_ok && RE_OK.test(txt)) { log("ok", `Voz «${txt.match(RE_OK)[0]}» → detener alarma`); atender("voz"); return; }
+          if (!ALERTA.activa && monitoreando && A.det.voz && RE_SOS.test(txt)) disparar("voz", { frase: txt.slice(0, 60) });
         }
       };
-      reconocedor.onend = () => { if (monitoreando && A.det.voz && reconocedor) { try { reconocedor.start(); } catch (e) {} } };
-      reconocedor.onerror = (e) => { S.perm.voz = e.error; };
-      reconocedor.start(); S.perm.voz = "escuchando";
+      reconocedor.onend = () => { if (reconocedor && vozNecesaria()) { try { reconocedor.start(); } catch (e) {} } else reconocedor = null; };
+      reconocedor.onerror = (e) => { S.perm.voz = e.error; if (e.error !== "no-speech" && e.error !== "aborted") log("voz", `Reconocimiento de voz: ${e.error}`); };
+      reconocedor.start(); S.perm.voz = "escuchando"; log("voz", ALERTA.activa ? "Escuchando «todo bien»…" : "Escuchando «S.O.S.» / «auxilio»…");
     } catch (e) { S.perm.voz = "error"; }
   }
   function detenerVoz() { if (reconocedor) { const r = reconocedor; reconocedor = null; try { r.stop(); } catch (e) {} } S.perm.voz = "apagado"; }
@@ -182,9 +219,9 @@
     addEventListener("devicemotion", procesarMovimiento);
     addEventListener("deviceorientation", procesarOrientacion);
     await iniciarMic();   // nivel de sonido en vivo (también alimenta el detector de ruido)
-    if (A.det.voz) iniciarVoz();
     try { wakeLock = await navigator.wakeLock?.request("screen"); S.perm.wake = wakeLock ? "activo" : "no disponible"; } catch (e) { S.perm.wake = "no disponible"; }
-    monitoreando = true; ultimoMov = Date.now(); LS.set("sost_monitor", true);
+    monitoreando = true; asegurarVoz(); ultimoMov = Date.now(); LS.set("sost_monitor", true);
+    log("sis", `Monitoreo iniciado · movimiento: ${S.perm.mov} · micrófono: ${S.perm.mic} · pantalla: ${S.perm.wake}`);
     estado("monitoreo"); $("btn-iniciar").textContent = "Detener monitoreo"; $("btn-iniciar").classList.remove("pri");
     setTimeout(() => { if (monitoreando && !S.mov) toast("No llegan lecturas de movimiento: revisa el permiso «Movimiento y orientación» en Ajustes de Safari.", 5000); }, 2500);
     registrarSistema("inicio", { modo: A.modo });
@@ -192,7 +229,7 @@
   function detener() {
     monitoreando = false; LS.set("sost_monitor", false);
     removeEventListener("devicemotion", procesarMovimiento); removeEventListener("deviceorientation", procesarOrientacion);
-    detenerMic(); detenerVoz(); try { wakeLock?.release(); } catch (e) {} wakeLock = null;
+    detenerMic(); asegurarVoz(); log("sis", "Monitoreo detenido"); try { wakeLock?.release(); } catch (e) {} wakeLock = null;
     estado("detenido"); $("btn-iniciar").textContent = "Iniciar monitoreo"; $("btn-iniciar").classList.add("pri");
     registrarSistema("paro", {});
   }
@@ -221,12 +258,15 @@
       equipo: plataformaCorta() };
     MIN.eventos++;
     guardarEvento(ev);
+    log(ev.severidad === "advertencia" ? "det" : "alerta", `${ev.prueba ? "PRUEBA · " : ""}${titulo}${retraso ? ` · confirmada en ${retraso} ms` : ""}${detalleEv(ev) ? " · " + detalleEv(ev) : ""}`);
     if (ev.severidad === "advertencia") { mostrarAdvertencia(ev); return; }
-    ALERTA.activa = true; ALERTA.ev = ev; ALERTA.t0 = ahora;
+    ALERTA.activa = true; ALERTA.ev = ev; ALERTA.t0 = ahora; ALERTA.ciclos = 0;
     estado("alerta", ev);
     $("btn-atender").hidden = false; $("btn-wa").hidden = false; $("btn-wa").href = enlaceWA(ev);
     if (A.vibrar && navigator.vibrate) try { navigator.vibrate([400, 200, 400, 200, 800]); } catch (e) {}
-    sonarMorse(prueba ? "prueba-admin" : tipo === "sismo" ? "desastre" : "emergencia");
+    $("pt-voz").hidden = !A.voz_ok; asegurarVoz();
+    document.querySelector(".pane-a")?.scrollTo({ top: 0, behavior: "smooth" });   // la pantalla de alerta siempre a la vista
+    cicloAlarma();
     clearInterval(ALERTA.timer);
     ALERTA.timer = setInterval(tickAlerta, 250); tickAlerta();
   }
@@ -238,31 +278,72 @@
     el.textContent = n < 0 ? `Confirmando… ${s.toFixed(1)} s` : `${NIV[n][0]} · ${NIV[n][1]} · ${s.toFixed(0)} s`;
     if (n > (ev.nivel_max ?? -1)) {
       ev.nivel_max = n; ev["t_" + NIV[n][0]] = Math.round(s * 1000);
-      if (n >= 1 && A.sonido) sonarMorse(ev.prueba ? "prueba-admin" : "emergencia");
+      log("alerta", `${NIV[n][0]} a los ${s.toFixed(1)} s · ${NIV[n][1]}`);
       if (n === 3) { $("btn-911").hidden = A.modo !== "real" || ev.prueba; if (A.modo !== "real" || ev.prueba) $("pt-detalle").textContent = "N3 alcanzado. Modo prueba: no se llama al 911."; }
       guardarEvento(ev);
     }
+    pintarEscala();
   }
-  function atender() {
+  function atender(origen = "botón") {
     if (!ALERTA.activa) return;
-    const ev = ALERTA.ev; clearInterval(ALERTA.timer); window.SOSMorse?.detener();
-    ev.atendido = Date.now(); ev.respuesta_s = +((ev.atendido - ev.inicio) / 1000).toFixed(2);
-    ALERTA.activa = false; ALERTA.ev = null;
+    const ev = ALERTA.ev; clearInterval(ALERTA.timer); clearTimeout(ALERTA.ciclo); window.SOSMorse?.detener();
+    ev.atendido = Date.now(); ev.respuesta_s = +((ev.atendido - ev.inicio) / 1000).toFixed(2); ev.atendido_por = origen; ev.ciclos_alarma = ALERTA.ciclos;
+    ALERTA.activa = false; ALERTA.ev = null; ALERTA.ultimo = ev;
+    log("ok", `Alarma detenida por ${origen === "voz" ? "voz («todo bien»)" : "botón"} a los ${ev.respuesta_s} s · ${ALERTA.ciclos} ciclo(s) de sirena y Morse`);
+    sonidoActual(null); $("pt-voz").hidden = true; asegurarVoz(); pintarEscala();
     $("btn-atender").hidden = true; $("btn-911").hidden = true; $("btn-wa").hidden = true; $("pt-nivel").hidden = true;
     estado(monitoreando ? "monitoreo" : "detenido");
     guardarEvento(ev).then(() => { if (A.auto && A.token) sincronizar(true); });
-    toast(`Alerta atendida en ${ev.respuesta_s} s. Califícala en Eventos.`);
+    toast(`${origen === "voz" ? "«Todo bien» oído" : "Alerta atendida"}: ${ev.respuesta_s} s. Califícala en Eventos.`);
   }
-  $("btn-atender").onclick = atender;
+  $("btn-atender").onclick = () => atender("botón");
   function mostrarAdvertencia(ev) {
     estado("advertencia", ev);
-    if (A.sonido) sonarMorse(ev.prueba ? "prueba-admin" : "advertencia", "AVISO");
-    setTimeout(() => { if (!ALERTA.activa) estado(monitoreando ? "monitoreo" : "detenido"); }, 6000);
+    const dur = sonarPerfil("advertencia", ev.prueba ? "prueba-admin" : "advertencia", ev.prueba);
+    ALERTA.sonandoAviso = true;
+    setTimeout(() => { ALERTA.sonandoAviso = false; if (!ALERTA.activa) { estado(monitoreando ? "monitoreo" : "detenido"); sonidoActual(null); } }, Math.max(6000, (dur + 1) * 1000));
   }
-  function sonarMorse(motivo, texto = "SOS") {
-    if (!A.sonido || !window.SOSMorse) return;
-    const m = SOSMorse.aMorse(texto); $("pt-morse").textContent = SOSMorse.visible(m);
-    SOSMorse.reproducir(texto, $("pantalla"), { motivo, vibrar: A.vibrar, alTerminar: () => { if (!ALERTA.activa) $("pt-morse").textContent = ""; } });
+  const perfilDe = (tipo) => ({ caida: "caida", manual: "caida", voz: "caida", sismo: "sismo", ruido: "advertencia", inmovil: "advertencia" }[tipo] || "caida");
+  // Reproduce sirena (patrón normalizado) + código Morse del perfil; devuelve la duración en segundos
+  function sonarPerfil(clave, motivo, prueba) {
+    const P = PERFILES[clave] || PERFILES.caida;
+    if (!A.sonido || !window.SOSMorse) { sonidoActual(`Sonido apagado en Ajustes · perfil ${clave}`); return 0; }
+    let sir = P.sirena ? +P.rafaga_s || 0 : 0;
+    if (prueba && sir) sir = Math.min(sir, +A.sirena_prueba_s || 6);
+    // NOM-011-STPS-2001: después de tope_min minutos baja del nivel máximo
+    const minutos = ALERTA.activa ? (Date.now() - ALERTA.t0) / 60000 : 0;
+    let vol = Math.max(0.05, Math.min(1, (+P.volumen || 100) / 100));
+    if (P.tope_min && minutos > P.tope_min && P.sirena_db) vol *= Math.pow(10, ((+P.db_tras_tope || P.sirena_db) - P.sirena_db) / 20);
+    const texto = P.morse ? P.texto || "SOS" : "";
+    const m = SOSMorse.aMorse(texto); $("pt-morse").textContent = texto ? SOSMorse.visible(m) : "";
+    const pat = (SOSMorse.patrones || {})[P.patron] || P.patron;
+    const dur = SOSMorse.reproducir(texto, $("pantalla"), { motivo, vibrar: A.vibrar, volumen: vol, sirenaSeg: sir, sirenaVolumen: vol, patron: P.patron,
+      alTerminar: () => { if (!ALERTA.activa && !ALERTA.sonandoAviso) { $("pt-morse").textContent = ""; sonidoActual(null); } } }) || 0;
+    const desc = `${sir ? `Sirena ${pat} ${sir} s` : "Sin sirena"}${texto ? ` + Morse «${texto}» ${SOSMorse.visible(m)}` : ""} · vol ${Math.round(vol * 100)} %${prueba ? " · prueba" : ""}`;
+    sonidoActual(desc); log("sonido", desc);
+    return dur;
+  }
+  // Ciclo de alarma: sirena + Morse; se repite (con una pausa para escuchar «todo bien») hasta que alguien atienda
+  function cicloAlarma() {
+    if (!ALERTA.activa) return;
+    const ev = ALERTA.ev; ALERTA.ciclos++;
+    const dur = sonarPerfil(perfilDe(ev.tipo), ev.prueba ? "prueba-admin" : ev.tipo === "sismo" ? "desastre" : "emergencia", ev.prueba);
+    if (A.repetir) {
+      const espera = Math.max(2, dur + (+A.pausa_s || 3));
+      ALERTA.ciclo = setTimeout(() => { if (ALERTA.activa) { log("voz", `Pausa de ${A.pausa_s} s para escuchar «todo bien» · ciclo ${ALERTA.ciclos + 1}`); cicloAlarma(); } }, espera * 1000);
+    }
+  }
+  function sonidoActual(t) { const el = $("sonando"); if (!el) return; el.textContent = t ? "🔊 " + t : "Sin sonido"; el.classList.toggle("on", !!t); }
+  // Escalamiento: Detección → N0 → N1 → N2 → N3 → Atendida
+  function pintarEscala() {
+    const el = $("escala"); if (!el) return;
+    const ev = ALERTA.activa ? ALERTA.ev : ALERTA.ultimo, act = ALERTA.activa;
+    const paso = (nombre, ms, ok, actual, fin) => `<li class="${fin ? "fin" : actual ? "act" : ok ? "ok" : ""}">${nombre}<small>${ms != null ? (ms / 1000).toFixed(1) + " s" : "—"}</small></li>`;
+    if (!ev) { el.innerHTML = ["Detec.", "N0", "N1", "N2", "N3", "Atendida"].map((n) => paso(n, null)).join(""); return; }
+    const nm = ev.nivel_max ?? -1;
+    el.innerHTML = paso("Detec.", ev.deteccion_ms || 0, true, act && nm < 0) +
+      NIV.map(([n], i) => paso(n, ev["t_" + n] ?? null, nm >= i, act && nm === i)).join("") +
+      paso(ev.atendido_por === "voz" ? "Todo bien" : "Atendida", ev.respuesta_s != null ? ev.respuesta_s * 1000 : null, !!ev.atendido, false, !!ev.atendido);
   }
   function enlaceWA(ev) {
     const u = ev.ubicacion ? ` https://maps.google.com/?q=${ev.ubicacion.lat},${ev.ubicacion.lon}` : "";
@@ -293,12 +374,31 @@
   const sb = $("btn-sos"); sb.addEventListener("pointerdown", sosAbajo); ["pointerup", "pointerleave", "pointercancel"].forEach((n) => sb.addEventListener(n, sosArriba));
   sb.addEventListener("contextmenu", (e) => e.preventDefault());
 
-  // ---------- Pruebas guiadas ----------
+  // ---------- Escenarios de prueba (preajustes) ----------
+  const ESC = {
+    bano_bolsa: { recinto: "Sanitario · prueba VHRS (celular en la bolsa)", det: { caida: true, sismo: false, ruido: true, voz: true, inmovil: true }, impacto_g: 2.3, quietud_s: 2, ruido_db: 92, inmovil_min: 5,
+      nota: "Lleva el celular en la bolsa del pantalón o en la mano. Detecta tu caída (impacto + quietud), la palabra «auxilio» y si dejas de moverte 5 min." },
+    bano_repisa: { recinto: "Sanitario · prueba VHRS (celular en repisa)", det: { caida: false, sismo: true, ruido: true, voz: true, inmovil: false }, sismo_sens: 2, ruido_db: 92,
+      nota: "Deja el celular apoyado en una repisa o el lavabo. Detecta golpes fuertes en el piso o la pared (vibración), ruido fuerte y la palabra «auxilio»." },
+    oficina: { recinto: "Oficinas ContenedorEns · prueba", det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false }, impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, inmovil_min: 0,
+      nota: "Escritorio: caída del celular, vibración tipo sismo y ruido fuerte." } };
+  document.querySelectorAll("[data-esc]").forEach((b) => b.onclick = () => {
+    const e = ESC[b.dataset.esc]; if (!e) return;
+    const { nota, det, ...resto } = e; Object.assign(A, resto, { modo: "prueba", sonido: true, repetir: true, voz_ok: true }); A.det = Object.assign({}, A.det, det); A.voz = A.det.voz;
+    guardarAjustes(); pintarCabecera(); pintarDetectores();
+    document.querySelectorAll("[data-esc]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    $("esc-nota").textContent = nota; log("sis", `Escenario: ${A.recinto} · detectores ${Object.entries(A.det).filter(([, v]) => v).map(([k]) => k).join(", ")}`);
+    if (monitoreando) asegurarVoz(); toast("Escenario listo. Toca «Iniciar monitoreo».");
+  });
+
+  // ---------- Pruebas guiadas (con la alarma real del perfil) ----------
   document.querySelectorAll("[data-prueba]").forEach((b) => b.onclick = () => {
     const k = b.dataset.prueba;
-    if (k === "morse") { const old = A.sonido; A.sonido = true; sonarMorse("prueba-admin"); A.sonido = old; return; }
+    if (k === "detener") { if (ALERTA.activa) atender("botón"); window.SOSMorse?.detener(); sonidoActual(null); log("sis", "Sonido silenciado"); return; }
+    if (k === "sonido") { const old = A.sonido; A.sonido = true; sonarPerfil("prueba", "prueba-admin", true); A.sonido = old; return; }
     if (k === "caida") disparar("caida", { pico_g: 3.1, caida_libre: true, simulada: true }, null, null, true);
     if (k === "sismo") disparar("sismo", { rms_ms2: 0.2, simulada: true }, null, null, true);
+    if (k === "manual") disparar("manual", { origen: "prueba", simulada: true }, null, null, true);
     if (k === "ruido") disparar("ruido", { pico_db: 96, simulada: true }, null, "advertencia", true);
   });
 
@@ -329,10 +429,42 @@
     if (document.querySelector("#v-monitor[data-activa=true]")) {
       linea("g-acc", BUF.acc, 0, 40, "#4f8fd6", A.impacto_g * G); linea("g-mic", BUF.mic, 30, 120, "#3fbf7f", A.ruido_db);
       $("g-acc-v").textContent = S.mov ? S.mov.mag.toFixed(2) : "—"; $("g-mic-v").textContent = S.db != null ? Math.round(S.db) : "—";
+      pintarLecturas();
     }
     if (document.querySelector("#v-sensores[data-activa=true]")) pintarSensores();
     requestAnimationFrame(cuadro);
   }
+
+  // ---------- Lecturas rápidas de la terminal de información ----------
+  let ultLect = 0;
+  function pintarLecturas() {
+    if (performance.now() - ultLect < 120) return; ultLect = performance.now();
+    const r = S.rot ? Math.hypot(S.rot.a, S.rot.b, S.rot.g) : null;
+    $("l-acc").textContent = S.mov ? `${(S.mov.mag / G).toFixed(2)} g` : "—";
+    $("l-rot").textContent = r != null ? `${r.toFixed(0)} °/s` : "—";
+    $("l-inc").textContent = S.ori && S.ori.b != null ? `${(+S.ori.b).toFixed(0)}°` : "—";
+    $("l-db").textContent = S.db != null ? `${Math.round(S.db)} dB` : "—";
+    $("l-est").textContent = $("estado-pill").textContent;
+    $("l-voz").textContent = reconocedor ? (ALERTA.activa ? "«todo bien»" : "escucha") : "apagada";
+    $("vivo").classList.toggle("off", !monitoreando); $("vivo").textContent = monitoreando ? "● EN VIVO" : "○ DETENIDO";
+  }
+  setInterval(() => { if (monitoreando && $("c-seg")?.checked) log("seg", `|a| ${S.mov ? (S.mov.mag / G).toFixed(2) : "—"} g · giro ${S.rot ? Math.hypot(S.rot.a, S.rot.b, S.rot.g).toFixed(0) : "—"} °/s · ${S.db != null ? Math.round(S.db) : "—"} dB`); }, 1000);
+  $("c-pausa").onclick = (e) => { consolaPausa = !consolaPausa; e.target.textContent = consolaPausa ? "Seguir" : "Pausar"; if (!consolaPausa) pintarConsola(); };
+  $("c-limpiar").onclick = () => { CONSOLA.length = 0; pintarConsola(); };
+
+  // ---------- Pantalla dividida ----------
+  function medirSplit() {
+    const top = document.querySelector(".t-top")?.offsetHeight || 56, nav = $("nav")?.offsetHeight || 64;
+    document.documentElement.style.setProperty("--alto-split", `${innerHeight - top - nav}px`);
+  }
+  function aplicarDivision() {
+    const on = A.dividida !== false; $("split").dataset.dividida = String(on);
+    document.body.classList.toggle("dividida", on);
+    const b = $("btn-dividir"); b.setAttribute("aria-pressed", String(on)); b.textContent = on ? "Pantalla dividida ✓" : "Pantalla dividida";
+    medirSplit();
+  }
+  $("btn-dividir").onclick = () => { A.dividida = A.dividida === false; guardarAjustes(); aplicarDivision(); };
+  addEventListener("resize", medirSplit, { passive: true }); addEventListener("orientationchange", () => setTimeout(medirSplit, 250));
 
   // ---------- Vista Sensores ----------
   const f2 = (v) => (v == null || isNaN(v) ? "—" : (+v).toFixed(2));
@@ -499,6 +631,7 @@
   // ---------- Navegación ----------
   function vista(v) {
     document.querySelectorAll(".t-vista").forEach((s) => (s.dataset.activa = String(s.id === "v-" + v)));
+    document.body.classList.toggle("vista-monitor", v === "monitor");
     document.querySelectorAll("#nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.v === v ? "page" : "false"));
     if (v === "eventos") pintarEventos(); if (v === "plataforma") pintarPlataforma(); if (v === "ajustes") llenarAjustes();
     scrollTo({ top: 0 }); try { history.replaceState(null, "", "#" + v); } catch (e) {}
@@ -508,12 +641,14 @@
   // ---------- Arranque ----------
   (async () => {
     idb = await abrir(); EVENTOS = await todos("eventos");
-    pintarCabecera(); pintarDetectores(); estado("detenido"); pintarEventos();
+    document.body.classList.add("vista-monitor"); aplicarDivision();
+    pintarCabecera(); pintarDetectores(); estado("detenido"); pintarEventos(); pintarEscala();
+    log("sis", `SOSistem™ Terminal ${VERSION} · ${A.id} · ${A.recinto} · ${A.modo === "real" ? "modo real" : "modo prueba"}`);
     const h = location.hash.slice(1); if (["monitor", "sensores", "eventos", "plataforma", "ajustes"].includes(h)) vista(h);
     if (LS.get("sost_monitor", false)) toast("Toca «Iniciar monitoreo» para reanudar (el celular pide permiso cada vez).", 4000);
     requestAnimationFrame(cuadro);
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./terminal" }).catch(() => {});
   })();
   // Para pruebas desde la consola o el panel: SOSTerminal.disparar("caida")
-  window.SOSTerminal = { disparar: (t, d) => disparar(t, d || {}, null, null, true), estado: () => ({ monitoreando, alerta: ALERTA.activa, S }), version: VERSION };
+  window.SOSTerminal = { disparar: (t, d) => disparar(t, d || {}, null, null, true), atender, estado: () => ({ monitoreando, alerta: ALERTA.activa, ciclos: ALERTA.ciclos, S }), version: VERSION, log };
 })();
