@@ -194,3 +194,85 @@ body.rol-pantalla .pane-b .pane-tit b::after{content:" · celular remoto";color:
   body.rol-pantalla .t-lect b{font-size:1.15rem}
   body.rol-pantalla .t-graf canvas{height:120px}
 }
+
+/* ===== Las 6 pantallas del sistema en «Pantalla · ver terminal» (estilos de sosistem.com) · v4.2 ===== */
+.eq-bisel { background: linear-gradient(160deg, #2a313c, #11151b); border-radius: 18px; padding: 12px 12px 8px; box-shadow: 0 18px 40px rgba(15,27,45,.28), inset 0 1px 0 rgba(255,255,255,.08); }
+.eq-pant { background: #05080d; color: #e8edf5; border-radius: 10px; padding: 10px; font: 600 12px/1.3 var(--font); display: grid; gap: 7px; }
+.eq-top { display: grid; gap: 1px; text-align: center; border-bottom: 1px solid #1d2430; padding-bottom: 6px; }
+.eq-top b { font-size: 11px; letter-spacing: .03em; } .eq-top span { color: #8b96a8; font-size: 10px; }
+.eq-pant em { font-style: normal; } .eq-pant .ok { color: #2fd27a; } .eq-pant .bad { color: #ff4b3e; }
+.eq-mods { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.eq-mod { border: 1px solid #1d2430; border-radius: 7px; overflow: hidden; }
+.eq-mod h4 { margin: 0; padding: 3px; font-size: 10px; text-align: center; text-transform: uppercase; letter-spacing: .05em; }
+.eq-mod.m h4 { background: #123a7a; } .eq-mod.f h4 { background: #6b1450; }
+.eq-mod p { margin: 0; display: grid; grid-template-columns: 10px 1fr auto; gap: 6px; align-items: center; padding: 5px 7px; border-top: 1px solid #141a24; color: #e8edf5; font-size: 11px; }
+.eq-mod p i { width: 8px; height: 8px; border-radius: 50%; background: #2fd27a; }
+.eq-mod p em { font-size: 10px; border: 1px solid currentColor; border-radius: 99px; padding: 0 6px; }
+.eq-mod p.riesgo i { background: #ff2a1f; animation: destello .5s steps(1) infinite; }
+.eq-alerta { background: #c8102e; color: #fff; border-radius: 7px; padding: 7px; text-align: center; display: grid; gap: 1px; text-transform: uppercase; animation: destello .5s steps(1) infinite; }
+.eq-alerta b { font-size: 12.5px; } .eq-alerta span { font-size: 10px; }
+.eq-911 { position: relative; overflow: hidden; border: 1px solid #2a3342; border-radius: 7px; padding: 5px; text-align: center; font-size: 11px; }
+.eq-911 b { color: #ffb020; font: 800 14px var(--mono); position: relative; } .eq-911 span { position: relative; }
+.eq-911 i { position: absolute; inset: 0 auto 0 0; width: 0; background: rgba(255,42,31,.3); transition: width .25s linear; }
+.eq-911.hecha { background: #c8102e; border-color: #c8102e; } .eq-911.hecha i { display: none; } .eq-911.hecha b { color: #fff; }
+.eq-morse { text-align: center; font-size: 10px; color: #8b96a8; } .eq-morse span { font-family: var(--mono); letter-spacing: .12em; }
+.eq-pie { display: flex; justify-content: space-between; align-items: center; color: #8b96a8; font: 600 9px var(--mono); letter-spacing: .08em; padding: 6px 4px 0; }
+.eq-leds { display: flex; gap: 5px; } .eq-leds i { width: 7px; height: 7px; border-radius: 50%; opacity: .35; }
+.eq-leds .r { background: #ff2a1f; opacity: 1; box-shadow: 0 0 8px #ff2a1f; animation: destello .5s steps(1) infinite; } .eq-leds .y { background: #ffb020; } .eq-leds .g { background: #2fd27a; } .eq-leds .w { background: #f5f5ef; }
+.eq-leds .r { opacity: .35; box-shadow: none; animation: none; }
+.eq-leds i.on { opacity: 1; box-shadow: 0 0 8px currentColor; animation: destello .5s steps(1) infinite; }
+.eq-leds .r.on { color: #ff2a1f; } .eq-leds .y.on { color: #ffb020; } .eq-leds .g.on { color: #2fd27a; animation: none; } .eq-leds .w.on { color: #f5f5ef; }
+.eq-aforo { position: relative; overflow: hidden; border: 1px solid #1d2430; border-radius: 8px; padding: 10px; text-align: center; display: grid; }
+.eq-aforo b { font: 800 34px/1 var(--mono); color: #2fd27a; } .eq-aforo span { font-size: 11px; color: #8b96a8; }
+.eq-aforo i { position: absolute; left: 0; bottom: 0; height: 4px; background: #2fd27a; }
+.eq-aforo.ext b { color: #b3150c; }
+.eq-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.eq-lista li { display: flex; justify-content: space-between; gap: 8px; padding: 5px 8px; border: 1px solid #1d2430; border-radius: 6px; font-size: 11px; }
+.eq-lista li em { font-style: normal; color: #2fd27a; font-family: var(--mono); }
+.eq-lista.mini li { padding: 3px 6px; font-size: 10px; } .eq-lista.mini li em { color: #ff8a80; }
+.eq-ok { border-radius: 7px; padding: 6px; text-align: center; font-size: 11px; background: #0d2a18; color: #2fd27a; border: 1px solid #19a65a; }
+.eq-sismo { background: #F5F5EF; color: #05080D; border-radius: 7px; padding: 7px; text-align: center; text-transform: uppercase; font-size: 12.5px; animation: destello-blanco .5s steps(1) infinite; }
+.eq-split { display: grid; grid-template-columns: 1.15fr .85fr; gap: 6px; align-items: start; }
+.eq-split svg { width: 100%; height: auto; display: block; }
+.eq-ruta { animation: pm-avanza 1s linear infinite; }
+.eq-aqui { border: 2px solid #ffb020; border-radius: 7px; padding: 4px; text-align: center; display: grid; margin-bottom: 4px; background: #2a0d0b; }
+.eq-aqui span { font-size: 8.5px; color: #ffd27a; text-transform: uppercase; } .eq-aqui b { font: 800 22px/1 var(--mono); }
+.eq-ext { background: #F5F5EF; color: #05080D; }
+.eq-ext .eq-top { border-color: #c6ccd5; } .eq-ext .eq-top span { color: #4a5568; }
+.eq-extmsg { display: grid; text-align: center; gap: 2px; padding: 10px 6px; border: 2px solid #19a65a; border-radius: 8px; text-transform: uppercase; animation: destello-blanco 1s steps(1) infinite; }
+.eq-extmsg b { font-size: 17px; } .eq-extmsg span { font-size: 12px; font-weight: 700; }
+.eq-ext .eq-aforo { border-color: #c6ccd5; } .eq-ext .eq-aforo span { color: #4a5568; }
+.eq-ext .eq-ok { background: #e6f6ec; color: #11633a; }
+.pt-band { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; letter-spacing: 0; font-family: var(--font); }
+.eq-band, .pt-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 10px; margin-top: 2px; }
+.band-msg { display: inline-flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.band-msg .ics-pal { gap: 2px; }
+.band-ev { display: inline-flex; align-items: center; gap: 5px; }
+.band-ev small { font: 600 9px var(--font); color: #ffd27a; letter-spacing: 0; }
+.pt-band .band-ev small { font-size: 11px; }
+.eq-band .ics, .pt-band .ics { border-radius: 1px; box-shadow: 0 0 0 .5px rgba(255,255,255,.25); }
+.eq-ext .band-ev small { color: #4a5568; }
+.eq-adv { background: #2e2205; border: 2px solid #ffb020; color: #ffb020; border-radius: 8px; padding: 9px; text-align: center; display: grid; gap: 2px; }
+.eq-adv b { font-size: 13px; text-transform: uppercase; } .eq-adv span { font-size: 10.5px; color: #ffd27a; }
+@keyframes destello { 50% { background: #5c0b07; } }
+@keyframes destello-blanco { 50% { background: #3A3F47; color: #F5F5EF; } }
+@keyframes pm-avanza { to { stroke-dashoffset: -17; } }
+.ics { display: inline-block; vertical-align: middle; border-radius: 2px; }
+.ics-pal { display: inline-flex; gap: 4px; }
+.p6-card{display:none}
+body.rol-pantalla .p6-card{display:block}
+.p6-rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin:8px 0}
+.p6-cara{display:flex;flex-direction:column;gap:4px;min-width:0}
+.p6-cara .eq-bisel{flex:1;display:flex;flex-direction:column}
+.p6-cara .eq-pant{flex:1;align-content:start;min-height:260px}
+.p6-num{font:600 .72rem var(--mono);color:var(--ink3);letter-spacing:.04em}
+.p6-cara[data-m="caida"][data-n="1"] .eq-bisel,.p6-cara[data-m="sismo"] .eq-bisel{box-shadow:0 0 0 2px var(--rojo),0 10px 30px #e0243e44}
+.p6-cara[data-m="aviso"][data-n="5"] .eq-bisel{box-shadow:0 0 0 2px var(--warn)}
+.p6-off{display:grid;place-items:center}
+.p6-apagada{display:grid;gap:4px;text-align:center;color:#3c4656}
+.p6-apagada b{font-size:13px;letter-spacing:.06em;text-transform:uppercase}.p6-apagada span{font-size:11px}
+.p6-verde li em{color:#2fd27a!important}
+.p6-estado{font:700 .66rem var(--mono);letter-spacing:.08em;border-radius:99px;padding:3px 9px;border:1px solid var(--line);color:var(--ok)}
+.p6-estado[data-m="caida"]{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+.p6-estado[data-m="sismo"]{background:#f5f5ef;color:#05080d}
+.p6-estado[data-m="aviso"]{color:var(--warn);border-color:var(--warn)}

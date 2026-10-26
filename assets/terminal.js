@@ -7,7 +7,7 @@
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
-  const VERSION = "4.1";
+  const VERSION = "4.2";
   const G = 9.80665;
   const LS = { get: (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
     set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
@@ -21,7 +21,7 @@
   // ---------- Ajustes ----------
   const DEF = { recinto: "Oficinas ContenedorEns · prueba", id: "T-" + Math.random().toString(36).slice(2, 6).toUpperCase(), modo: "prueba",
     wa: "526462270490", impacto_g: 2.5, quietud_s: 2, sismo_sens: 3, ruido_db: 85, mic_offset: 0, inmovil_min: 0,
-    voz: false, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: false,
+    voz: false, voz_sismo: true, sonido: true, vibrar: true, repetir: true, voz_ok: true, pausa_s: 3, sirena_prueba_s: 6, repo: "victorhugoramirezsalgado-boop/sistema-sos", token: "", auto: false,
     det: { caida: true, sismo: true, ruido: true, voz: false, inmovil: false } };
   const A = Object.assign({}, DEF, LS.get("sost_ajustes", {}));
   A.det = Object.assign({}, DEF.det, A.det || {});
@@ -176,8 +176,9 @@
 
   // ---------- Reconocimiento de voz: «S.O.S.» para alertar y «todo bien» para detener la alarma ----------
   const RE_SOS = /\b(s\.?\s?o\.?\s?s|ese o ese|auxilio|ayuda|socorro|help)\b/;
+  const RE_SISMO = /\b(esta temblando|ya esta temblando|tiembla|temblor|terremoto|sismo)\b/;
   const RE_OK = /\b(todo (esta |está )?bien|estoy bien|todo en orden|todo ok|all good|i'?m ok)\b/;
-  const vozNecesaria = () => (monitoreando && A.det.voz) || (ALERTA.activa && A.voz_ok);
+  const vozNecesaria = () => (monitoreando && (A.det.voz || A.voz_sismo)) || (ALERTA.activa && A.voz_ok);
   // En iPhone el reconocimiento de voz y la medición de dB compiten por el micrófono: durante la alarma se pausa la medición
   function asegurarVoz() {
     if (ALERTA.activa && A.voz_ok && audio) { detenerMic(); log("sis", "Medición de dB en pausa para escuchar «todo bien»"); }
@@ -195,12 +196,14 @@
           if (!txt) continue;
           if (e.results[i].isFinal) log("voz", `Oído: «${txt.slice(0, 70)}»`);
           if (ALERTA.activa && A.voz_ok && RE_OK.test(txt)) { log("ok", `Voz «${txt.match(RE_OK)[0]}» → detener alarma`); atender("voz"); return; }
+          // «está temblando»: respaldo por voz cuando el acelerómetro no alcanza a detectar el sismo
+          if (!ALERTA.activa && monitoreando && A.voz_sismo && RE_SISMO.test(txt)) { log("alerta", `Voz «${txt.match(RE_SISMO)[0]}» → alerta de sismo`); disparar("sismo", { frase: txt.slice(0, 60), origen: "voz", nota: "Activado por voz; el sensor no lo confirmó" }); return; }
           if (!ALERTA.activa && monitoreando && A.det.voz && RE_SOS.test(txt)) disparar("voz", { frase: txt.slice(0, 60) });
         }
       };
       reconocedor.onend = () => { if (reconocedor && vozNecesaria()) { try { reconocedor.start(); } catch (e) {} } else reconocedor = null; };
       reconocedor.onerror = (e) => { S.perm.voz = e.error; if (e.error !== "no-speech" && e.error !== "aborted") log("voz", `Reconocimiento de voz: ${e.error}`); };
-      reconocedor.start(); S.perm.voz = "escuchando"; log("voz", ALERTA.activa ? "Escuchando «todo bien»…" : "Escuchando «S.O.S.» / «auxilio»…");
+      reconocedor.start(); S.perm.voz = "escuchando"; log("voz", ALERTA.activa ? "Escuchando «todo bien»…" : [A.det.voz ? "«S.O.S.» / «auxilio»" : "", A.voz_sismo ? "«está temblando»" : ""].filter(Boolean).join(" y ").replace(/^/, "Escuchando ") + "…");
     } catch (e) { S.perm.voz = "error"; }
   }
   function detenerVoz() { if (reconocedor) { const r = reconocedor; reconocedor = null; try { r.stop(); } catch (e) {} } S.perm.voz = "apagado"; }
@@ -301,8 +304,8 @@
   function mostrarAdvertencia(ev) {
     estado("advertencia", ev);
     const dur = sonarPerfil("advertencia", ev.prueba ? "prueba-admin" : "advertencia", ev.prueba);
-    ALERTA.sonandoAviso = true;
-    setTimeout(() => { ALERTA.sonandoAviso = false; if (!ALERTA.activa) { estado(monitoreando ? "monitoreo" : "detenido"); sonidoActual(null); } }, Math.max(6000, (dur + 1) * 1000));
+    ALERTA.sonandoAviso = true; ALERTA.aviso = ev;
+    setTimeout(() => { ALERTA.sonandoAviso = false; ALERTA.aviso = null; if (!ALERTA.activa) { estado(monitoreando ? "monitoreo" : "detenido"); sonidoActual(null); } }, Math.max(6000, (dur + 1) * 1000));
   }
   const perfilDe = (tipo) => ({ caida: "caida", manual: "caida", voz: "caida", sismo: "sismo", ruido: "advertencia", inmovil: "advertencia" }[tipo] || "caida");
   // Reproduce sirena (patrón normalizado) + código Morse del perfil; devuelve la duración en segundos
@@ -747,8 +750,10 @@
     ENL.mq = BROKERS.map(conectarBroker);
     // la pantalla insiste cada 4 s hasta encontrar al celular; si tarda, explica qué revisar
     clearInterval(ENL.tBuscar); const t0 = Date.now();
+    ENL.encontrado = false;
     ENL.tBuscar = setInterval(() => {
       if (ENL.rol !== "pantalla" || ENL.modo !== "off") { clearInterval(ENL.tBuscar); return; }
+      if (ENL.encontrado) return;
       publicar({ t: "hola" });
       if (Date.now() - t0 > 12000) estadoEnlace("espera", `No encuentro al celular ${ENL.codigo}. En el iPhone: terminal abierta, «📱 Celular · sensores» y el mismo código en los 6 cuadros.`);
     }, 4000);
@@ -773,18 +778,19 @@
       if (ENL.rol === "pantalla") { estadoEnlace("espera", "Se perdió el enlace directo · reintentando"); publicar({ t: "hola" }); } };
   }
   async function ofrecer() {   // celular
-    cerrarP2P(); const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
+    cerrarP2P(); ENL.ofertaT = Date.now(); ENL.ultOferta = null; const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
     canal(pc.createDataChannel("sosistem", { ordered: true }));
     await pc.setLocalDescription(await pc.createOffer()); await esperarIce(pc);
     if (pc !== ENL.pc) return;
-    publicar({ t: "oferta", sdp: pc.localDescription.sdp });
+    ENL.ultOferta = pc.localDescription.sdp;
+    publicar({ t: "oferta", sdp: ENL.ultOferta });
     clearTimeout(ENL.tRespaldo); ENL.tRespaldo = setTimeout(() => { if (ENL.modo !== "p2p" && ENL.rol === "sensor") usarRelevo(); }, 10000);
   }
   async function responder(sdp) {   // pantalla
     cerrarP2P(); const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
     pc.ondatachannel = (e) => canal(e.channel);
     await pc.setRemoteDescription({ type: "offer", sdp }); await pc.setLocalDescription(await pc.createAnswer()); await esperarIce(pc);
-    if (pc === ENL.pc) publicar({ t: "respuesta", sdp: pc.localDescription.sdp });
+    if (pc === ENL.pc) { ENL.respT = Date.now(); publicar({ t: "respuesta", sdp: pc.localDescription.sdp }); }
   }
   function usarRelevo() {
     ENL.modo = "relevo"; estadoEnlace("lento", "● Conectado por relevo (sin conexión directa) · datos cada segundo");
@@ -799,7 +805,8 @@
       rec: A.recinto, id: A.id, modo: A.modo, mon: monitoreando, l: ["l-acc", "l-rot", "l-inc", "l-db", "l-est", "l-voz"].map((i) => $(i).textContent),
       son: $("sonando").textContent, sonOn: $("sonando").classList.contains("on"), esc: escalaDatos(),
       acc: S.mov ? +S.mov.mag.toFixed(2) : null, db: S.db != null ? Math.round(S.db) : null, umb: [A.impacto_g * G, A.ruido_db],
-      alerta: ALERTA.activa ? { tipo: ALERTA.ev.tipo, prueba: ALERTA.ev.prueba, id: ALERTA.ev.id } : null,
+      alerta: ALERTA.activa ? { tipo: ALERTA.ev.tipo, titulo: ALERTA.ev.titulo, prueba: ALERTA.ev.prueba, id: ALERTA.ev.id, s: +((Date.now() - ALERTA.t0) / 1000).toFixed(1), n3: TIEMPOS.N3 } : null,
+      aviso: ALERTA.sonandoAviso && ALERTA.aviso ? { tipo: ALERTA.aviso.tipo, titulo: ALERTA.aviso.titulo } : null,
       qa: ENL.modo === "p2p" ? qa : [], qm: ENL.modo === "p2p" ? qm : [], log: ENL.modo === "p2p" ? cola : cola.slice(0, 8) };
   }
   function mandarFoto(forzar) {
@@ -843,10 +850,19 @@
     for (const [t, c, x] of (f.log || []).reverse()) log(c, "📱 " + x, t);
     $("vivo").classList.toggle("off", !f.mon); $("vivo").textContent = f.mon ? "● EN VIVO · CELULAR" : "○ CELULAR SIN MONITOREO";
     $("btn-atender").hidden = !f.alerta;
+    pintarPantallas6(f);
     // alarma también en la Mac: empieza con la alerta del celular y se calla cuando la atienden
     const antes = ENL.alertaRemota?.id, ahora = f.alerta?.id;
     if (ahora && ahora !== antes) { ENL.alertaRemota = f.alerta; sonarRemoto(); }
     if (!ahora && antes) { ENL.alertaRemota = null; clearTimeout(ENL.tSonar); window.SOSMorse?.detener(); }
+  }
+  // Las 6 pantallas del sistema (como en sosistem.com) siguen el estado del celular
+  function pintarPantallas6(f) {
+    if (!window.SOSPantallas6) return;
+    const st = f || { e: "detenido", rec: "Esperando al celular", mon: false };
+    SOSPantallas6.pintar($("p6"), { ...st, niv: f?.niv });
+    const m = st.alerta ? (st.alerta.tipo === "sismo" ? "sismo" : "caida") : st.aviso || st.e === "advertencia" ? "aviso" : "normal";
+    const el = $("p6-estado"); el.dataset.m = m; el.textContent = { normal: "NORMAL", aviso: "AVISO", caida: "ALERTA", sismo: "SISMO" }[m] + (st.alerta?.prueba ? " · PRUEBA" : "");
   }
   function sonarRemoto() {
     clearTimeout(ENL.tSonar); const a = ENL.alertaRemota;
@@ -854,20 +870,28 @@
     const dur = sonarPerfil(perfilDe(a.tipo), a.prueba ? "prueba-admin" : a.tipo === "sismo" ? "desastre" : "emergencia", a.prueba);
     ENL.tSonar = setTimeout(sonarRemoto, Math.max(2, dur + (+A.pausa_s || 3)) * 1000);
   }
+  // la pantalla vuelve a pedir conexión si respondió y a los 15 s no llega nada del celular
+  setInterval(() => {
+    if (ENL.rol !== "pantalla" || ENL.modo === "p2p" || !ENL.respT || Date.now() - ENL.respT < 15000 || Date.now() - ENL.ultDato < 5000) return;
+    ENL.respT = 0; ENL.ofertaVista = null; cerrarP2P(); estadoEnlace("espera", "Reintentando la conexión con el celular…"); publicar({ t: "hola" });
+  }, 2000);
   setInterval(() => { if (ENL.rol === "pantalla" && ENL.ultDato && ENL.modo === "p2p" && Date.now() - ENL.ultDato > 8000) estadoEnlace("espera", "Sin datos del celular (¿pantalla bloqueada o app en segundo plano?)"); }, 2000);
 
   // --- Mensajes recibidos (directo o por relevo) ---
   function recibir(o) {
     if (ENL.rol === "sensor") {
-      if (o.t === "hola") { estadoEnlace("espera", "Pantalla encontrada · abriendo conexión directa…"); ofrecer().catch(() => usarRelevo()); }
+      if (o.t === "hola") {
+        // si ya hay una oferta reciente en curso, se reenvía la misma en vez de empezar de cero (la pantalla insiste cada 4 s)
+        if (ENL.modo !== "p2p" && ENL.pc && ENL.pc.signalingState === "have-local-offer" && Date.now() - ENL.ofertaT < 12000) { if (ENL.ultOferta) publicar({ t: "oferta", sdp: ENL.ultOferta }); return; }
+        estadoEnlace("espera", "Pantalla encontrada · abriendo conexión directa…"); ofrecer().catch(() => usarRelevo()); }
       else if (o.t === "respuesta" && ENL.pc && ENL.pc.signalingState === "have-local-offer") ENL.pc.setRemoteDescription({ type: "answer", sdp: o.sdp }).catch(() => {});
       else if (o.t === "orden" && typeof o.k === "string") { log("sis", `Orden de la pantalla remota: ${o.k}`); ejecutarOrden(o.k); }
       else if (o.t === "adios") { cerrarP2P(); clearInterval(ENL.tRelevo); ENL.modo = "off"; estadoEnlace("espera", "La pantalla se desconectó · esperando…"); }
     }
     if (ENL.rol === "pantalla") {
       if (o.t === "listo") publicar({ t: "hola" });
-      else if (o.t === "oferta") { estadoEnlace("espera", "Celular encontrado · conectando…"); responder(o.sdp).catch(() => estadoEnlace("lento", "Sin conexión directa · esperando datos por relevo")); }
-      else if (o.t === "foto") { if (ENL.modo !== "p2p") { ENL.modo = ENL.dc ? ENL.modo : "relevo"; if (ENL.modo === "relevo") estadoEnlace("lento", "● Conectado por relevo (sin conexión directa) · datos cada segundo"); } aplicarFoto(o); }
+      else if (o.t === "oferta") { if (ENL.pc && ENL.ofertaVista === o.sdp) return; ENL.ofertaVista = o.sdp; ENL.encontrado = true; estadoEnlace("espera", "Celular encontrado · conectando…"); responder(o.sdp).catch(() => estadoEnlace("lento", "Sin conexión directa · esperando datos por relevo")); }
+      else if (o.t === "foto") { ENL.encontrado = true; if (ENL.modo !== "p2p") { ENL.modo = ENL.dc ? ENL.modo : "relevo"; if (ENL.modo === "relevo") estadoEnlace("lento", "● Conectado por relevo (sin conexión directa) · datos cada segundo"); } aplicarFoto(o); }
     }
   }
 
@@ -884,6 +908,7 @@
     $("enl-nota").textContent = ROLES[rol]; $("enl-sensor").hidden = rol !== "sensor"; $("enl-pantalla").hidden = rol !== "pantalla";
     window.__enlCola = rol === "sensor" ? [] : null; window.__enlAcc = rol === "sensor" ? [] : null; window.__enlMic = rol === "sensor" ? [] : null;
     if (rol === "pantalla" && monitoreando) detener();
+    if (rol === "pantalla") pintarPantallas6(null);
     if (eraPantalla || rol === "pantalla") { BUF.acc.length = 0; BUF.mic.length = 0; CONSOLA.length = 0; pintarConsola(); pintarCabecera(); estado("detenido"); $("btn-atender").hidden = true; pintarEscala(); }
     if (rol === "solo") { estadoEnlace("off", "Sin enlace"); return; }
     if (!window.crypto?.subtle || !window.RTCPeerConnection || !window.WebSocket) { estadoEnlace("error", "Este navegador no permite el enlace (usa Safari o Chrome actualizados)"); return; }
@@ -910,6 +935,7 @@
     try { if (navigator.share) { await navigator.share({ title: "SOSistem™ · ver terminal", text: `Código ${ENL.codigo}`, url }); return; } } catch (e) { if (e.name === "AbortError") return; }
     try { await navigator.clipboard.writeText(url); toast("Enlace copiado. Pégalo en Safari de la Mac."); } catch (e) { toast(url, 6000); }
   };
+  window.__enlDiag = () => ({ rol: ENL.rol, modo: ENL.modo, senal: ENL.pc?.signalingState, ice: ENL.pc?.iceGatheringState, con: ENL.pc?.connectionState, canal: ENL.dc?.readyState, relevo: (ENL.mq || []).map((c) => c.listo) });
   function iniciarEnlace(h) {
     const m = /^ver=([A-Za-z]{6})$/.exec(h || "");
     if (m) { ponerRol("pantalla", m[1]); toast("Haz clic en cualquier parte para activar el sonido de la alarma en esta pantalla.", 4500);

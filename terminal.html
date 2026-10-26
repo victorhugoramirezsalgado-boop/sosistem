@@ -110,6 +110,11 @@
 
       <div class="pane pane-b" aria-label="Terminal de información">
         <div class="pane-tit"><b>Terminal de información</b><span class="t-vivo" id="vivo">● EN VIVO</span></div>
+        <div class="t-card t-compacta p6-card" id="p6-card">
+          <div class="t-fila"><h2>Pantallas del sistema · 6</h2><span class="p6-estado" id="p6-estado" data-m="normal">NORMAL</span></div>
+          <div class="p6-rejilla" id="p6" aria-live="polite"></div>
+          <p class="t-nota" style="margin:0">El estado, el tipo de evento y los tiempos vienen en vivo del celular. Aforos, recintos y distancias son de demostración, como en sosistem.com.</p>
+        </div>
         <div class="t-lect" id="lecturas">
           <div><span>Aceleración</span><b id="l-acc">—</b></div>
           <div><span>Giro</span><b id="l-rot">—</b></div>
@@ -206,6 +211,7 @@
       <label>Ajuste del micrófono (+/− dB)<input name="mic_offset" type="number" step="1" min="-30" max="30"></label>
       <label>Sin movimiento prolongado (min, 0 = apagado)<input name="inmovil_min" type="number" step="1" min="0" max="120"></label>
       <label class="t-chk"><input type="checkbox" name="voz"> Escuchar la palabra «S.O.S.», «auxilio» o «ayuda» (reconocimiento de voz del navegador)</label>
+      <label class="t-chk"><input type="checkbox" name="voz_sismo"> Activar la alerta de sismo al oír «está temblando», «temblor» o «sismo», aunque el sensor no lo detecte</label>
       <h2>Alarma</h2>
       <label class="t-chk"><input type="checkbox" name="sonido"> Sirena y código Morse en alertas y pruebas</label>
       <label class="t-chk"><input type="checkbox" name="repetir"> Repetir la alarma hasta oír «todo bien» o tocar el botón verde</label>
@@ -238,6 +244,8 @@
 <div class="t-toast" id="toast" role="status" hidden></div>
 
 <script src="assets/morse.js"></script>
+<script src="assets/banderas.js"></script>
+<script src="assets/pantallas6.js"></script>
 <script src="assets/terminal.js"></script>
 </body>
 </html>
