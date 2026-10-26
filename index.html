@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css">
+<link rel="stylesheet" href="assets/estilo.css?v=4.3">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -174,39 +174,39 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 <section class="slide blk" id="servicios">
   <div class="wrap">
     <span class="eyebrow">Cubo de servicios SOSistem™</span>
-    <h2>Por fuera salva vidas; por dentro, es un negocio rentable.</h2>
-    <p>Doce servicios en un solo cubo: las 6 caras exteriores protegen a las personas y las 6 interiores convierten los datos de ocupación en valor para el cliente.</p>
+    <h2>Doce servicios para proteger la vida y sostener la operación.</h2>
+    <p>SOSistem™ integra en una sola plataforma doce servicios de alerta temprana y gestión de ocupación: seis protegen directamente la vida de las personas y seis generan información para la toma de decisiones y la sostenibilidad financiera del servicio.</p>
+    <p>Contribuye a la meta G del Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030, a la iniciativa Alertas Tempranas para Todos de las Naciones Unidas y a los Objetivos de Desarrollo Sostenible 3 y 11.</p>
     <div class="grid g2 s12-valor">
-      <div class="card s12-v ext"><b>Salvar vidas</b><span>Alerta en segundos ante caídas, sismos, gases y amenazas, sin cámaras.</span></div>
-      <div class="card s12-v int"><b>Negocio rentable</b><span>Un mismo equipo vende 12 servicios: seguridad, cumplimiento y datos para decidir, con una sola instalación.</span></div>
+      <div class="card s12-v ext"><b>Protección de la vida</b><span>Detección y alerta en segundos ante caídas, sismos, fugas de gas y situaciones de violencia, sin cámaras y con respeto a la privacidad.</span></div>
+      <div class="card s12-v int"><b>Sostenibilidad y escalabilidad</b><span>Una sola instalación ofrece servicios de seguridad, cumplimiento normativo y analítica de ocupación, con un modelo replicable en espacios públicos y privados.</span></div>
     </div>
     <div class="s12">
       <div class="s12-vista">
         <div class="s12-capas" role="group">
-          <button type="button" class="btn s12-bext" id="s12-ver-ext" aria-pressed="true">Exterior: salvar vidas</button>
-          <button type="button" class="btn s12-bint" id="s12-ver-int" aria-pressed="false">Interior: negocio rentable</button>
+          <button type="button" class="btn s12-bext" id="s12-ver-ext" aria-pressed="true">Seguridad humana</button>
+          <button type="button" class="btn s12-bint" id="s12-ver-int" aria-pressed="false">Gestión y datos</button>
         </div>
         <div class="s12-esc" id="s12-esc"><div class="s12-3d" id="s12-3d"></div></div>
-        <p class="note s12-hint">Gire el cubo con el dedo y toque una cara.</p>
       </div>
       <div class="s12-lista" id="s12-lista">
-      <button type="button" class="card s12-card" data-a="4,5" data-n="1" data-capa="int"><span class="s12-n no-traducir">1</span><small class="s12-tag int">Genera valor</small><b>Inventario de personas</b><small class="s12-caras"><span>Personas</span> + <span>Datos</span></small><span class="s12-d">Conteo en tiempo real en cada entrada y recinto, listo para evacuación, rescate y auditoría.</span></button>
-      <button type="button" class="card s12-card" data-a="5,6" data-n="2" data-capa="int"><span class="s12-n no-traducir">2</span><small class="s12-tag int">Genera valor</small><b>Segregación y clasificación</b><small class="s12-caras"><span>Personas</span> + <span>Espacio</span></small><span class="s12-d">Ubica a cada persona sin identificarla: zona, altura, distancia entre personas y tiempo de permanencia.</span></button>
-      <button type="button" class="card s12-card" data-a="6,7" data-n="3" data-capa="ext"><span class="s12-n no-traducir">3</span><small class="s12-tag ext">Salva vidas</small><b>Persona en el suelo</b><small class="s12-caras"><span>Personas</span> + <span>Emergencia</span></small><span class="s12-d">Detecta a quien cae o deja de moverse y escala del aviso en cabina (N0) al encargado (N1).</span></button>
-      <button type="button" class="card s12-card" data-a="7,4" data-n="4" data-capa="int"><span class="s12-n no-traducir">4</span><small class="s12-tag int">Genera valor</small><b>Aforo máximo excedido</b><small class="s12-caras"><span>Personas</span> + <span>Comunicación</span></small><span class="s12-d">Compara el conteo con la capacidad del recinto y avisa en pantallas interiores y exteriores.</span></button>
-      <button type="button" class="card s12-card" data-a="1,5" data-n="5" data-capa="int"><span class="s12-n no-traducir">5</span><small class="s12-tag int">Genera valor</small><b>Zonas en m² y m³</b><small class="s12-caras"><span>Espacio</span> + <span>Datos</span></small><span class="s12-d">Divide el polígono del recinto en subzonas y espacios confinados, cada uno con su ocupación.</span></button>
-      <button type="button" class="card s12-card" data-a="0,4" data-n="6" data-capa="int"><span class="s12-n no-traducir">6</span><small class="s12-tag int">Genera valor</small><b>Pantallas ejecutivas</b><small class="s12-caras"><span>Comunicación</span> + <span>Datos</span></small><span class="s12-d">Vista resumida para seguridad, responsables, 911, Cruz Roja y bomberos, según el rol.</span></button>
-      <button type="button" class="card s12-card" data-a="2,6" data-n="7" data-capa="ext"><span class="s12-n no-traducir">7</span><small class="s12-tag ext">Salva vidas</small><b>Sismo, explosión y voz de auxilio</b><small class="s12-caras"><span>Espacio</span> + <span>Emergencia</span></small><span class="s12-d">Vibración, golpes, gritos, palabras como «ayuda» o «S.O.S.», agua en el piso y puertas abiertas fuera de horario.</span></button>
-      <button type="button" class="card s12-card" data-a="3,7" data-n="8" data-capa="ext"><span class="s12-n no-traducir">8</span><small class="s12-tag ext">Salva vidas</small><b>Gases y oxígeno</b><small class="s12-caras"><span>Ambiente</span> + <span>Emergencia</span></small><span class="s12-d">Gas LP, CO, amoniaco, humo, falta de oxígeno y ruido excesivo; cierra la válvula de gas y avisa.</span></button>
-      <button type="button" class="card s12-card" data-a="0,3" data-n="9" data-capa="ext"><span class="s12-n no-traducir">9</span><small class="s12-tag ext">Salva vidas</small><b>911 y nube</b><small class="s12-caras"><span>Comunicación</span> + <span>Emergencia</span></small><span class="s12-d">Bitácora cifrada de todo lo ocurrido; el 911 recibe solo eventos confirmados por dos sensores.</span></button>
-      <button type="button" class="card s12-card" data-a="1,2" data-n="10" data-capa="int"><span class="s12-n no-traducir">10</span><small class="s12-tag int">Genera valor</small><b>Estadística ejecutiva</b><small class="s12-caras"><span>Ambiente</span> + <span>Datos</span></small><span class="s12-d">Ocupación y uso de espacios preferentes por hora, día, zona y evento, con su valor económico.</span></button>
-      <button type="button" class="card s12-card" data-a="2,3" data-n="11" data-capa="ext"><span class="s12-n no-traducir">11</span><small class="s12-tag ext">Salva vidas</small><b>Desastre y comité</b><small class="s12-caras"><span>Ambiente</span> + <span>Comunicación</span></small><span class="s12-d">Apoyo al comité de atención a desastres con rutas, conteo y avisos en pantallas interior y exterior.</span></button>
-      <button type="button" class="card s12-card" data-a="0,1" data-n="12" data-capa="ext"><span class="s12-n no-traducir">12</span><small class="s12-tag ext">Salva vidas</small><b>Luz, Morse y bocina</b><small class="s12-caras"><span>Personas</span> + <span>Ambiente</span></small><span class="s12-d">Contacto con el personal interior y exterior, identificación del lugar y aviso ante riñas o amenazas.</span></button>
+      <button type="button" class="card s12-card" data-n="1" data-capa="int"><span class="s12-n no-traducir">1</span><small class="s12-tag int">Gestión y datos</small><b>Inventario de personas</b><span class="s12-d">Conteo en tiempo real por acceso y recinto, disponible para evacuación, rescate y auditoría.</span></button>
+      <button type="button" class="card s12-card" data-n="2" data-capa="int"><span class="s12-n no-traducir">2</span><small class="s12-tag int">Gestión y datos</small><b>Distribución y permanencia</b><span class="s12-d">Ubicación anónima por zona, altura, distancia entre personas y tiempo de permanencia.</span></button>
+      <button type="button" class="card s12-card" data-n="3" data-capa="ext"><span class="s12-n no-traducir">3</span><small class="s12-tag ext">Seguridad humana</small><b>Persona en el suelo</b><span class="s12-d">Detección de caídas e inmovilidad con escalamiento del aviso en cabina (N0) al responsable (N1).</span></button>
+      <button type="button" class="card s12-card" data-n="4" data-capa="int"><span class="s12-n no-traducir">4</span><small class="s12-tag int">Gestión y datos</small><b>Aforo máximo excedido</b><span class="s12-d">Comparación continua con la capacidad autorizada y aviso en pantallas interiores y exteriores.</span></button>
+      <button type="button" class="card s12-card" data-n="5" data-capa="int"><span class="s12-n no-traducir">5</span><small class="s12-tag int">Gestión y datos</small><b>Zonas en m² y m³</b><span class="s12-d">Subdivisión del recinto en zonas y espacios confinados, cada una con su ocupación.</span></button>
+      <button type="button" class="card s12-card" data-n="6" data-capa="int"><span class="s12-n no-traducir">6</span><small class="s12-tag int">Gestión y datos</small><b>Pantallas ejecutivas</b><span class="s12-d">Información resumida para seguridad, responsables, 911, Cruz Roja y bomberos, según su función.</span></button>
+      <button type="button" class="card s12-card" data-n="7" data-capa="ext"><span class="s12-n no-traducir">7</span><small class="s12-tag ext">Seguridad humana</small><b>Sismo, explosión y voz de auxilio</b><span class="s12-d">Vibración, impactos, gritos, solicitudes de ayuda, agua en el piso y accesos abiertos fuera de horario.</span></button>
+      <button type="button" class="card s12-card" data-n="8" data-capa="ext"><span class="s12-n no-traducir">8</span><small class="s12-tag ext">Seguridad humana</small><b>Gases y oxígeno</b><span class="s12-d">Gas LP, CO, amoniaco, humo, deficiencia de oxígeno y ruido excesivo, con cierre de válvula y aviso.</span></button>
+      <button type="button" class="card s12-card" data-n="9" data-capa="ext"><span class="s12-n no-traducir">9</span><small class="s12-tag ext">Seguridad humana</small><b>Enlace al 911 y bitácora</b><span class="s12-d">Registro cifrado de cada evento; al 911 solo llegan alertas confirmadas por dos sensores.</span></button>
+      <button type="button" class="card s12-card" data-n="10" data-capa="int"><span class="s12-n no-traducir">10</span><small class="s12-tag int">Gestión y datos</small><b>Estadística ejecutiva</b><span class="s12-d">Ocupación y uso de espacios por hora, día, zona y evento, para planear y valorar la operación.</span></button>
+      <button type="button" class="card s12-card" data-n="11" data-capa="ext"><span class="s12-n no-traducir">11</span><small class="s12-tag ext">Seguridad humana</small><b>Desastre y comité</b><span class="s12-d">Apoyo al comité de atención a desastres con rutas, conteo de personas y avisos interiores y exteriores.</span></button>
+      <button type="button" class="card s12-card" data-n="12" data-capa="ext"><span class="s12-n no-traducir">12</span><small class="s12-tag ext">Seguridad humana</small><b>Luz, Morse y megafonía</b><span class="s12-d">Comunicación con el personal interior y exterior, identificación del lugar y aviso ante situaciones de violencia.</span></button>
       </div>
     </div>
-    <h3 class="s12-vt">Los 8 vértices: a quién llega el aviso</h3>
-    <ul class="s12-vertices"><li><b class="no-traducir">N0</b> <span>Voz en cabina</span></li><li><b class="no-traducir">N1</b> <span>Encargado</span></li><li><b class="no-traducir">N2</b> <span>Central</span></li><li><b class="no-traducir">N3</b> <span>911</span></li><li><span>Cruz Roja</span></li><li><span>Bomberos</span></li><li><span>Protección Civil</span></li><li><span>Autoridad y auditoría</span></li></ul>
-    <p class="note">El aviso al 911 sale solo con doble confirmación de sensores y por convenio con el C4/C5. La voz se procesa en el propio equipo, sin grabarla ni enviarla.</p>
+    <h3 class="s12-vt">Cadena de alerta y respuesta</h3>
+    <ul class="s12-vertices"><li><b class="no-traducir">N0</b> <span>Voz en cabina</span></li><li><b class="no-traducir">N1</b> <span>Responsable</span></li><li><b class="no-traducir">N2</b> <span>Central de monitoreo</span></li><li><b class="no-traducir">N3</b> <span>911</span></li><li><span>Cruz Roja</span></li><li><span>Bomberos</span></li><li><span>Protección Civil</span></li><li><span>Autoridad y auditoría</span></li></ul>
+    <p class="note">La alerta a los servicios de emergencia (911) se emite solo con doble confirmación de sensores y mediante convenio con los centros C4/C5. El audio se procesa en el propio equipo, sin grabación ni transmisión de voz.</p>
     <p class="note no-traducir">Sistema S.O.S.© · SOSistem™ · © Víctor Hugo Ramírez Salgado</p>
   </div>
 </section>
@@ -684,6 +684,9 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <li>Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008</i>. <a href="https://dof.gob.mx/normasOficiales/3541/stps.htm" rel="noopener">dof.gob.mx</a></li>
       <li>Secretaría del Trabajo y Previsión Social. (2010). <i>NOM-002-STPS-2010</i>. <a href="https://platiica.economia.gob.mx/normalizacion/NOM-002-STPS-2010" rel="noopener">economia.gob.mx</a></li>
       <li>Secretaría del Trabajo y Previsión Social. (2015). <i>NOM-033-STPS-2015</i>. <a href="https://www.dof.gob.mx" rel="noopener">dof.gob.mx</a></li>
+      <li>Naciones Unidas. (2015). <i>Transformar nuestro mundo: la Agenda 2030 para el Desarrollo Sostenible</i> (A/RES/70/1). <a href="https://www.un.org/sustainabledevelopment/es/" rel="noopener">un.org</a></li>
+      <li>Naciones Unidas. (s. f.). <i>Early Warnings for All</i>. Recuperado el 25 de octubre de 2026, de <a href="https://www.un.org/en/node/207773" rel="noopener">un.org</a></li>
+      <li>Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" rel="noopener">undrr.org</a></li>
       <li>OASIS. (2010). <i>Common Alerting Protocol Version 1.2</i>. <a href="https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html" rel="noopener">oasis-open.org</a></li>
       <li>Rosenberg, J., et al. (2002). <i>SIP: Session Initiation Protocol</i> (RFC 3261). <a href="https://www.rfc-editor.org/rfc/rfc3261" rel="noopener">rfc-editor.org</a></li>
       <li>Eleos Compliance. (2025, 20 de octubre). <i>Mexico’s IFT ceases operations</i>. <a href="https://www.eleoscompliance.com/en/article/mexico-mexico%E2%80%99s-ift-ceases-operations" rel="noopener">eleoscompliance.com</a></li>
@@ -712,17 +715,17 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/logo-giro.js"></script>
-<script src="assets/app.js"></script>
-<script src="assets/cubo.js"></script>
-<script src="assets/morse.js"></script>
-<script src="assets/pantalla.js"></script>
-<script src="assets/cubo-morse.js"></script>
-<script src="assets/idiomas.js"></script>
-<script src="assets/banderas.js"></script>
-<script src="assets/servicios12.js"></script>
-<script src="assets/pestanas.js"></script>
-<script src="assets/rastreo.js"></script>
+<script src="assets/logo-giro.js?v=4.3"></script>
+<script src="assets/app.js?v=4.3"></script>
+<script src="assets/cubo.js?v=4.3"></script>
+<script src="assets/morse.js?v=4.3"></script>
+<script src="assets/pantalla.js?v=4.3"></script>
+<script src="assets/cubo-morse.js?v=4.3"></script>
+<script src="assets/idiomas.js?v=4.3"></script>
+<script src="assets/banderas.js?v=4.3"></script>
+<script src="assets/servicios12.js?v=4.3"></script>
+<script src="assets/pestanas.js?v=4.3"></script>
+<script src="assets/rastreo.js?v=4.3"></script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
 (function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");

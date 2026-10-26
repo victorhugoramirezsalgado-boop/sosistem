@@ -1,8 +1,13 @@
 {
-  "version": "4.2",
+  "version": "4.3",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.3",
+      "fecha": "2026-10-25",
+      "resumen": "Pestaña «12 servicios» en lenguaje institucional para presentación ante BID, OEA y ONU: «Doce servicios para proteger la vida y sostener la operación», caras de Seguridad humana y de Gestión y datos, cadena de alerta y respuesta, y contribución a la meta G del Marco de Sendai 2015-2030, a la iniciativa Alertas Tempranas para Todos y a los ODS 3 y 11 (fuentes APA 7). Se fuerza la descarga de estilos y scripts nuevos en cada versión para que los celulares no muestren la página sin formato. En los 22 idiomas."
+    },
     {
       "v": "4.2",
       "fecha": "2026-10-25",

@@ -738,7 +738,7 @@ body.present .hero { padding-top: 40px; }
 .s12-hint { text-align: center; margin: 2px 0 6px; }
 .s12-lista { display: grid; gap: 8px; }
 .s12-card { display: grid; grid-template-columns: 30px 1fr; column-gap: 10px; row-gap: 2px; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 10px 12px; border: 1px solid var(--line); }
-.s12-card .s12-n { grid-row: span 4; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: .85rem; }
+.s12-card .s12-n { grid-row: span 3; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: .85rem; }
 .s12-card .s12-tag { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
 .s12-card .s12-tag.ext { color: var(--brand); }
 .s12-card .s12-tag.int { color: var(--navy); }
