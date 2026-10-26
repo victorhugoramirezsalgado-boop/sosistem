@@ -127,7 +127,7 @@
   const PESTANAS = [
     ["resumen", "Resumen"], ["visitas", "Visitas e interés"], ["eventos", "Eventos"], ["terminal", "Pruebas de terminal"], ["financiera", "Financiera"],
     ["tecnico", "Datos técnicos"], ["cambios", "Cambios y comentarios"], ["usuarios", "Usuarios"],
-    ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["modulos", "Módulos, recintos y nube"], ["ajustes", "Ajustes"],
+    ["ejecutivo", "Ejecutivo"], ["pruebas", "Sirena y Morse"], ["modulos", "Módulos, recintos y nube"], ["supervisor", "Supervisor de sensores"], ["ajustes", "Ajustes"],
   ];
 
   // ---------- Sirena y Morse por estado (configuración + pruebas del administrador) ----------
@@ -228,6 +228,8 @@
   }
   const RENDER = {};
   RENDER.pruebas = (el) => RENDER_PRUEBAS(el);
+  // Supervisor de sensores (assets/supervisor.js): semáforo, latidos firmados, ronda acústica y bitácora de auditoría
+  RENDER.supervisor = (el) => window.SOSSupervisor ? window.SOSSupervisor.render(el, { S, marcar, esc }) : (el.innerHTML = '<div class="card"><p>No se pudo cargar el supervisor de sensores.</p></div>');
   // ---------- Módulos por cliente, recintos/polígonos, pantalla exterior y nube ----------
   const DESTINOS = [["c5_911", "C5 / 911"], ["central", "Central de monitoreo"], ["proteccion_civil", "Protección Civil"], ["encargados", "Encargados de recinto"], ["otros_recintos", "Pantallas de los demás recintos"], ["pantalla_exterior", "Pantalla exterior"]];
   const EVENTOS_NUBE = [["caida", "Persona caída"], ["sismo", "Sismo"], ["natural", "Otro evento natural (inundación, tsunami, viento, calor)"], ["otros", "Otros módulos (humo, gas, energía…)"]];

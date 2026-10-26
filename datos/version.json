@@ -1,8 +1,13 @@
 {
-  "version": "4.6",
+  "version": "4.7",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.7",
+      "fecha": "2026-10-26",
+      "resumen": "Panel de administrador: nueva pestaña «Supervisor de sensores». Cada sensor (radar mmWave, láser/ToF, ultrasonido, vibración, gases) envía un latido firmado (HMAC-SHA256, secuencia y hora) que el celular o la Mac verifican; semáforo por sensor (activo, revisar, falla, sin datos) según latido, señal Wi-Fi calibrada (RSSI), batería y manipulación; ronda acústica en la que el micrófono del celular confirma el tono propio de cada sensor (18–19.75 kHz, 15 dB sobre el ruido); el celular puede actuar como nodo de prueba con datos reales; descarga del config.h de cada nodo ESP32 y bitácora de auditoría cifrada exportable a CSV para supervisar al administrador del lugar."
+    },
     {
       "v": "4.6",
       "fecha": "2026-10-26",
