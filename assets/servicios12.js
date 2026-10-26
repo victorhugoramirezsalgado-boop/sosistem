@@ -1,73 +1,78 @@
-/* Sistema S.O.S.© — Cubo de 12 servicios (una arista por servicio, 8 vértices de aviso) · © Víctor Hugo Ramírez Salgado
-   Los textos viven en el HTML (se traducen con el selector de idioma); este script solo dibuja y enlaza el cubo. */
+/* Sistema S.O.S.© — Cubo de 12 servicios: 6 caras exteriores (salvar vidas) y 6 interiores (negocio rentable)
+   © Víctor Hugo Ramírez Salgado. Los títulos se leen de las tarjetas del HTML, así cambian con el idioma elegido. */
 (() => {
-  const svg = document.getElementById("s12-cubo"), lista = document.getElementById("s12-lista");
-  if (!svg || !lista) return;
-  const NS = "http://www.w3.org/2000/svg";
-  const V = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+  const cubo = document.getElementById("s12-3d"), esc = document.getElementById("s12-esc"), lista = document.getElementById("s12-lista");
+  if (!cubo || !esc || !lista) return;
   const cards = [...lista.querySelectorAll(".s12-card")];
-  const A = cards.map((c) => c.dataset.a.split(",").map(Number));
+  const bExt = document.getElementById("s12-ver-ext"), bInt = document.getElementById("s12-ver-int");
   const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let rx = -0.45, ry = 0.6, sel = 0, tocado = false, arrastre = null, movido = false;
+  // Caras del cubo y el giro que las pone de frente
+  const LADOS = [
+    { c: "frente", t: "rotateY(0deg)", v: [0, 0] }, { c: "derecha", t: "rotateY(90deg)", v: [0, -90] },
+    { c: "atras", t: "rotateY(180deg)", v: [0, -180] }, { c: "izquierda", t: "rotateY(-90deg)", v: [0, 90] },
+    { c: "arriba", t: "rotateX(90deg)", v: [-90, 0] }, { c: "abajo", t: "rotateX(-90deg)", v: [90, 0] }];
+  const capa = (k) => cards.map((c, i) => [c, i]).filter(([c]) => c.dataset.capa === k).map(([, i]) => i);
+  const GRUPO = { ext: capa("ext"), int: capa("int") };
+  let interior = false, sel = -1, rx = -18, ry = -28, tocado = false, arrastre = null, movido = false;
 
-  function proy([x, y, z]) {
-    let c = Math.cos(ry), s = Math.sin(ry); [x, z] = [x * c + z * s, -x * s + z * c];
-    c = Math.cos(rx); s = Math.sin(rx); [y, z] = [y * c - z * s, y * s + z * c];
-    const k = 92 / (1 + z * 0.18);
-    return [190 + x * k, 150 + y * k, z];
-  }
-  function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; }
+  cubo.innerHTML = LADOS.map((l, j) => `<div class="s12-cara" data-j="${j}" style="transform:${l.t} translateZ(var(--s12-m))"><span class="s12-cn"></span><b></b><small></small></div>`).join("");
+  const caras = [...cubo.children];
 
-  function dibujar() {
-    const p = V.map(proy);
-    const prof = (i) => (p[A[i][0]][2] + p[A[i][1]][2]) / 2;
-    const orden = A.map((_, i) => i).sort((a, b) => prof(b) - prof(a));
-    svg.textContent = "";
-    for (const i of orden) {
-      const [a, b] = A[i];
-      svg.append(el("line", { x1: p[a][0], y1: p[a][1], x2: p[b][0], y2: p[b][1], class: "s12-ar" + (prof(i) > 0.3 ? " atras" : "") + (i === sel ? " on" : "") }));
-    }
-    p.forEach((q) => svg.append(el("circle", { cx: q[0], cy: q[1], r: 4, class: "s12-vx" })));
-    for (const i of orden) {
-      const [a, b] = A[i], mx = (p[a][0] + p[b][0]) / 2, my = (p[a][1] + p[b][1]) / 2;
-      const g = el("g", { class: "s12-bt" + (i === sel ? " on" : ""), "data-i": i, role: "button", tabindex: "0", "aria-label": String(i + 1) });
-      g.append(el("circle", { cx: mx, cy: my, r: 13 }));
-      const t = el("text", { x: mx, y: my + 4.5, "text-anchor": "middle" }); t.textContent = i + 1; g.append(t);
-      svg.append(g);
-    }
+  function textos() {
+    const g = GRUPO[interior ? "int" : "ext"];
+    caras.forEach((f, j) => {
+      const c = cards[g[j]]; if (!c) return;
+      f.dataset.i = g[j];
+      f.querySelector(".s12-cn").textContent = c.dataset.n;
+      f.querySelector("b").textContent = c.querySelector("b").textContent;
+      f.querySelector("small").textContent = c.querySelector(".s12-tag").textContent;
+      f.classList.toggle("on", g[j] === sel);
+    });
+    cubo.classList.toggle("int", interior);
+    bExt.setAttribute("aria-pressed", String(!interior));
+    bInt.setAttribute("aria-pressed", String(interior));
   }
+  const pintar = () => { cubo.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`; };
+
+  function vista(int) { interior = int; textos(); }
   function elegir(i, desde) {
     sel = i;
-    cards.forEach((c, j) => { c.classList.toggle("on", j === i); c.setAttribute("aria-pressed", j === i ? "true" : "false"); });
-    dibujar();
-    if (desde === "cubo") cards[i].scrollIntoView({ behavior: quieto ? "auto" : "smooth", block: "nearest" });
+    const int = cards[i].dataset.capa === "int";
+    if (int !== interior) vista(int); else textos();
+    cards.forEach((c, j) => { c.classList.toggle("on", j === i); c.setAttribute("aria-pressed", String(j === i)); });
+    if (desde === "lista") {
+      tocado = true;
+      const j = GRUPO[int ? "int" : "ext"].indexOf(i);
+      [rx, ry] = LADOS[j].v; rx = rx || -12; ry = ry === 0 || Math.abs(ry) === 180 ? ry - 12 : ry;
+      cubo.classList.add("anim"); pintar(); setTimeout(() => cubo.classList.remove("anim"), 600);
+    } else cards[i].scrollIntoView({ behavior: quieto ? "auto" : "smooth", block: "nearest" });
   }
 
-  svg.addEventListener("pointerdown", (e) => { tocado = true; movido = false; arrastre = [e.clientX, e.clientY]; svg.setPointerCapture(e.pointerId); });
-  svg.addEventListener("pointermove", (e) => {
+  esc.addEventListener("pointerdown", (e) => { tocado = true; movido = false; arrastre = [e.clientX, e.clientY]; esc.setPointerCapture(e.pointerId); });
+  esc.addEventListener("pointermove", (e) => {
     if (!arrastre) return;
     const dx = e.clientX - arrastre[0], dy = e.clientY - arrastre[1];
-    if (Math.abs(dx) + Math.abs(dy) > 3) movido = true;
-    ry += dx * 0.01; rx = Math.max(-1.4, Math.min(1.4, rx - dy * 0.01));
-    arrastre = [e.clientX, e.clientY]; dibujar();
+    if (Math.abs(dx) + Math.abs(dy) > 4) movido = true;
+    ry += dx * 0.5; rx = Math.max(-90, Math.min(90, rx - dy * 0.5));
+    arrastre = [e.clientX, e.clientY]; pintar();
   });
-  svg.addEventListener("pointerup", (e) => {
+  esc.addEventListener("pointerup", (e) => {
     arrastre = null;
     if (movido) return;
-    const g = document.elementFromPoint(e.clientX, e.clientY)?.closest(".s12-bt");
-    if (g) elegir(+g.dataset.i, "cubo");
+    esc.releasePointerCapture?.(e.pointerId);
+    const f = document.elementFromPoint(e.clientX, e.clientY)?.closest(".s12-cara");
+    if (f && f.dataset.i) elegir(+f.dataset.i, "cubo");
   });
-  svg.addEventListener("pointercancel", () => { arrastre = null; });
-  svg.addEventListener("keydown", (e) => {
-    const g = e.target.closest?.(".s12-bt");
-    if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); elegir(+g.dataset.i, "cubo"); }
-  });
-  cards.forEach((c, i) => c.addEventListener("click", () => { tocado = true; elegir(i, "lista"); }));
+  esc.addEventListener("pointercancel", () => { arrastre = null; });
+  bExt.addEventListener("click", () => vista(false));
+  bInt.addEventListener("click", () => vista(true));
+  cards.forEach((c, i) => c.addEventListener("click", () => elegir(i, "lista")));
+  // Al cambiar de idioma se traducen las tarjetas: se copian de nuevo a las caras
+  new MutationObserver(() => requestAnimationFrame(textos)).observe(lista, { subtree: true, characterData: true, childList: true });
 
-  // Giro suave hasta que la persona toque el cubo (se detiene si prefiere menos movimiento)
   if (!quieto) {
-    const girar = () => { if (!tocado && !svg.closest("section").hidden) { ry += 0.004; dibujar(); } requestAnimationFrame(girar); };
+    const girar = () => { if (!tocado && !esc.closest("section").hidden) { ry -= 0.25; pintar(); } requestAnimationFrame(girar); };
     requestAnimationFrame(girar);
   }
-  elegir(0);
+  textos(); pintar();
 })();

@@ -1,8 +1,13 @@
 {
-  "version": "4.1",
+  "version": "4.2",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.2",
+      "fecha": "2026-10-25",
+      "resumen": "Pestaña «12 servicios» como cubo de venta: 6 caras exteriores para salvar vidas (persona en el suelo; sismo, explosión y voz de auxilio; gases y oxígeno; 911 y nube; desastre y comité; luz, Morse y bocina) y 6 interiores de negocio rentable (inventario de personas; segregación y clasificación; aforo excedido; zonas en m² y m³; pantallas ejecutivas; estadística ejecutiva), cada una con su título; botones Exterior/Interior, cubo 3D que se gira con el dedo y tarjetas enlazadas. En los 22 idiomas."
+    },
     {
       "v": "4.1",
       "fecha": "2026-10-25",
