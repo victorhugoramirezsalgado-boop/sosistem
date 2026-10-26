@@ -171,3 +171,26 @@ body.vista-monitor.dividida .t-nav{position:fixed}
 .t-consola .c-voz{color:#9cc3ef}.t-consola .c-det{color:var(--ink)}.t-consola .c-seg{color:var(--ink3)}
 .t-esc-sel{display:flex;flex-wrap:wrap;gap:6px}
 .t-esc-sel .t-mini[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+/* ===== Enlace celular (sensores) → pantalla (Mac) · v4.1 ===== */
+.t-enlace .t-esc-sel .t-mini[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.t-cubo6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.t-cubo6 span{position:relative;aspect-ratio:1;display:grid;place-items:center;border-radius:10px;background:linear-gradient(145deg,#1d2b46,#0f1829);
+  border:1px solid #3a4b68;font:800 clamp(1.2rem,6vw,2rem) var(--mono);color:#fff;box-shadow:inset 0 -4px 0 #0006}
+.t-cubo6 small{position:absolute;top:3px;left:5px;font:600 .55rem var(--mono);color:var(--ink3)}
+.t-enl-form{display:grid;gap:8px;margin-top:8px}
+.t-enl-form label{display:grid;gap:4px;font-size:.84rem;color:var(--ink2)}
+.t-enl-form input#enl-codigo{min-height:48px;border-radius:10px;border:1px solid var(--line);background:#07101d;padding:8px 12px;
+  font:800 1.5rem var(--mono);letter-spacing:.35em;text-transform:uppercase;text-align:center}
+.t-enl-est{margin-top:8px;font:600 .74rem var(--mono);border-radius:8px;padding:6px 8px;border:1px solid var(--line);background:#07101d;color:var(--ink3)}
+.t-enl-est[data-e="ok"]{color:var(--ok);border-color:var(--ok)}
+.t-enl-est[data-e="espera"],.t-enl-est[data-e="lento"]{color:var(--warn);border-color:var(--warn)}
+.t-enl-est[data-e="error"]{color:#ff8a98;border-color:var(--rojo)}
+/* La Mac como pantalla: la terminal de información gana espacio; los controles mandan órdenes al celular */
+body.rol-pantalla #btn-iniciar,body.rol-pantalla .t-det-card{display:none}
+body.rol-pantalla .pane-b .pane-tit b::after{content:" · celular remoto";color:var(--azul);text-transform:none;letter-spacing:0}
+@media (min-width:1000px){
+  body.rol-pantalla .split[data-dividida="true"]{grid-template-columns:minmax(340px,1fr) minmax(0,1.7fr)}
+  body.rol-pantalla .t-lect{grid-template-columns:repeat(6,minmax(0,1fr))}
+  body.rol-pantalla .t-lect b{font-size:1.15rem}
+  body.rol-pantalla .t-graf canvas{height:120px}
+}

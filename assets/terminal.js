@@ -7,7 +7,7 @@
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
-  const VERSION = "4.0";
+  const VERSION = "4.1";
   const G = 9.80665;
   const LS = { get: (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
     set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
@@ -44,8 +44,9 @@
 
   // ---------- Consola de la terminal de información ----------
   const CONSOLA = []; let consolaPausa = false, consolaPend = false;
-  function log(clase, texto) {
-    CONSOLA.unshift({ t: Date.now(), c: clase, x: texto }); if (CONSOLA.length > 400) CONSOLA.pop();
+  function log(clase, texto, t = Date.now()) {
+    CONSOLA.unshift({ t, c: clase, x: texto }); if (CONSOLA.length > 400) CONSOLA.pop();
+    if (window.__enlCola) window.__enlCola.push([t, clase, texto]);
     if (!consolaPend) { consolaPend = true; requestAnimationFrame(pintarConsola); }
   }
   function pintarConsola() {
@@ -105,7 +106,7 @@
     const gx = +g.x || 0, gy = +g.y || 0, gz = +g.z || 0, mag = Math.hypot(gx, gy, gz);
     S.mov = { gx, gy, gz, ax: +a.x || 0, ay: +a.y || 0, az: +a.z || 0, mag, int: e.interval };
     S.rot = { a: +r.alpha || 0, b: +r.beta || 0, g: +r.gamma || 0 };
-    BUF.acc.push(mag); if (BUF.acc.length > 300) BUF.acc.shift();
+    BUF.acc.push(mag); if (BUF.acc.length > 300) BUF.acc.shift(); if (window.__enlAcc) window.__enlAcc.push(+mag.toFixed(2));
     MIN.n++; MIN.accSum += mag; if (mag > MIN.accMax) MIN.accMax = mag;
     const rotMag = Math.hypot(S.rot.a, S.rot.b, S.rot.g);
     if (Math.abs(mag - G) > 0.8 || rotMag > 25) ultimoMov = ahora;
@@ -158,7 +159,7 @@
       audio = { st, ctx, an, buf, id: setInterval(() => {
         an.getFloatTimeDomainData(buf); let s = 0; for (let i = 0; i < buf.length; i++) s += buf[i] * buf[i];
         const dbfs = 20 * Math.log10(Math.sqrt(s / buf.length) || 1e-8), db = Math.max(20, Math.min(130, dbfs + 94 + (+A.mic_offset || 0)));
-        S.db = db; BUF.mic.push(db); if (BUF.mic.length > 300) BUF.mic.shift();
+        S.db = db; BUF.mic.push(db); if (BUF.mic.length > 300) BUF.mic.shift(); if (window.__enlMic) window.__enlMic.push(Math.round(db));
         MIN.dbSum += db; MIN.nd++; if (db > MIN.dbMax) MIN.dbMax = db;
         if (monitoreando && A.det.ruido && !ALERTA.activa && !ALERTA.sonandoAviso) {
           const t = performance.now();
@@ -233,7 +234,7 @@
     estado("detenido"); $("btn-iniciar").textContent = "Iniciar monitoreo"; $("btn-iniciar").classList.add("pri");
     registrarSistema("paro", {});
   }
-  $("btn-iniciar").onclick = () => (monitoreando ? detener() : iniciar());
+  $("btn-iniciar").onclick = () => { if (document.body.classList.contains("rol-pantalla")) return; monitoreando ? detener() : iniciar(); };
   document.addEventListener("visibilitychange", async () => {
     if (document.visibilityState === "visible" && monitoreando && !wakeLock) { try { wakeLock = await navigator.wakeLock?.request("screen"); } catch (e) {} }
     if (document.visibilityState === "hidden" && monitoreando) registrarSistema("segundo-plano", { nota: "Con la pantalla bloqueada el navegador pausa los sensores" });
@@ -289,14 +290,14 @@
     const ev = ALERTA.ev; clearInterval(ALERTA.timer); clearTimeout(ALERTA.ciclo); window.SOSMorse?.detener();
     ev.atendido = Date.now(); ev.respuesta_s = +((ev.atendido - ev.inicio) / 1000).toFixed(2); ev.atendido_por = origen; ev.ciclos_alarma = ALERTA.ciclos;
     ALERTA.activa = false; ALERTA.ev = null; ALERTA.ultimo = ev;
-    log("ok", `Alarma detenida por ${origen === "voz" ? "voz («todo bien»)" : "botón"} a los ${ev.respuesta_s} s · ${ALERTA.ciclos} ciclo(s) de sirena y Morse`);
+    log("ok", `Alarma detenida por ${origen === "voz" ? "voz («todo bien»)" : origen} a los ${ev.respuesta_s} s · ${ALERTA.ciclos} ciclo(s) de sirena y Morse`);
     sonidoActual(null); $("pt-voz").hidden = true; asegurarVoz(); pintarEscala();
     $("btn-atender").hidden = true; $("btn-911").hidden = true; $("btn-wa").hidden = true; $("pt-nivel").hidden = true;
     estado(monitoreando ? "monitoreo" : "detenido");
     guardarEvento(ev).then(() => { if (A.auto && A.token) sincronizar(true); });
     toast(`${origen === "voz" ? "«Todo bien» oído" : "Alerta atendida"}: ${ev.respuesta_s} s. Califícala en Eventos.`);
   }
-  $("btn-atender").onclick = () => atender("botón");
+  $("btn-atender").onclick = () => { if (document.body.classList.contains("rol-pantalla")) { window.__enlOrden?.("atender"); return; } atender("botón"); };
   function mostrarAdvertencia(ev) {
     estado("advertencia", ev);
     const dur = sonarPerfil("advertencia", ev.prueba ? "prueba-admin" : "advertencia", ev.prueba);
@@ -335,15 +336,18 @@
   }
   function sonidoActual(t) { const el = $("sonando"); if (!el) return; el.textContent = t ? "🔊 " + t : "Sin sonido"; el.classList.toggle("on", !!t); }
   // Escalamiento: Detección → N0 → N1 → N2 → N3 → Atendida
-  function pintarEscala() {
-    const el = $("escala"); if (!el) return;
+  function escalaDatos() {
     const ev = ALERTA.activa ? ALERTA.ev : ALERTA.ultimo, act = ALERTA.activa;
-    const paso = (nombre, ms, ok, actual, fin) => `<li class="${fin ? "fin" : actual ? "act" : ok ? "ok" : ""}">${nombre}<small>${ms != null ? (ms / 1000).toFixed(1) + " s" : "—"}</small></li>`;
-    if (!ev) { el.innerHTML = ["Detec.", "N0", "N1", "N2", "N3", "Atendida"].map((n) => paso(n, null)).join(""); return; }
+    const paso = (n, ms, ok, actual, fin) => ({ n, ms, c: fin ? "fin" : actual ? "act" : ok ? "ok" : "" });
+    if (!ev) return ["Detec.", "N0", "N1", "N2", "N3", "Atendida"].map((n) => paso(n, null));
     const nm = ev.nivel_max ?? -1;
-    el.innerHTML = paso("Detec.", ev.deteccion_ms || 0, true, act && nm < 0) +
-      NIV.map(([n], i) => paso(n, ev["t_" + n] ?? null, nm >= i, act && nm === i)).join("") +
-      paso(ev.atendido_por === "voz" ? "Todo bien" : "Atendida", ev.respuesta_s != null ? ev.respuesta_s * 1000 : null, !!ev.atendido, false, !!ev.atendido);
+    return [paso("Detec.", ev.deteccion_ms || 0, true, act && nm < 0), ...NIV.map(([n], i) => paso(n, ev["t_" + n] ?? null, nm >= i, act && nm === i)),
+      paso(ev.atendido_por === "voz" ? "Todo bien" : "Atendida", ev.respuesta_s != null ? ev.respuesta_s * 1000 : null, !!ev.atendido, false, !!ev.atendido)];
+  }
+  function pintarEscala(items) {
+    const el = $("escala"); if (!el) return;
+    if (!items && document.body.classList.contains("rol-pantalla")) return;   // en la Mac lo pinta el celular remoto
+    el.innerHTML = (items || escalaDatos()).map((i) => `<li class="${esc(i.c)}">${esc(i.n)}<small>${i.ms != null ? (i.ms / 1000).toFixed(1) + " s" : "—"}</small></li>`).join("");
   }
   function enlaceWA(ev) {
     const u = ev.ubicacion ? ` https://maps.google.com/?q=${ev.ubicacion.lat},${ev.ubicacion.lon}` : "";
@@ -359,6 +363,7 @@
       advertencia: ["AVISO", "!", ev?.titulo || "Advertencia", detalleEv(ev)], alerta: ["ALERTA", (TIPOS[ev?.tipo] || [])[1] || "S", ev?.titulo || "Alerta", detalleEv(ev)] }[e];
     $("estado-pill").textContent = T[0]; $("pt-icono").textContent = T[1]; $("pt-titulo").textContent = T[2]; $("pt-detalle").textContent = T[3];
     if (e !== "alerta") $("pt-morse").textContent = "";
+    window.__enlCambio?.();
   }
   function detalleEv(ev) { if (!ev) return ""; const d = ev.datos || {};
     return [ev.recinto, d.pico_g ? `impacto ${d.pico_g} g` : "", d.pico_db ? `${d.pico_db} dB` : "", d.frase ? `«${d.frase}»` : "", ev.prueba ? "PRUEBA" : ""].filter(Boolean).join(" · "); }
@@ -368,7 +373,7 @@
   // ---------- Botón S.O.S. (mantener 2 s) ----------
   let sosT = 0, sosRaf = 0;
   const sosAbajo = (e) => { e.preventDefault(); const t0 = performance.now();
-    const paso = () => { const p = Math.min(1, (performance.now() - t0) / 2000); $("sos-carga").style.height = p * 100 + "%"; if (p >= 1) { sosArriba(); disparar("manual", { origen: "botón" }, null, null, A.modo === "prueba"); } else sosRaf = requestAnimationFrame(paso); };
+    const paso = () => { const p = Math.min(1, (performance.now() - t0) / 2000); $("sos-carga").style.height = p * 100 + "%"; if (p >= 1) { sosArriba(); if (document.body.classList.contains("rol-pantalla")) window.__enlOrden?.("manual"); else disparar("manual", { origen: "botón" }, null, null, A.modo === "prueba"); } else sosRaf = requestAnimationFrame(paso); };
     sosRaf = requestAnimationFrame(paso); };
   const sosArriba = () => { cancelAnimationFrame(sosRaf); $("sos-carga").style.height = "0"; };
   const sb = $("btn-sos"); sb.addEventListener("pointerdown", sosAbajo); ["pointerup", "pointerleave", "pointercancel"].forEach((n) => sb.addEventListener(n, sosArriba));
@@ -384,6 +389,7 @@
       nota: "Escritorio: caída del celular, vibración tipo sismo y ruido fuerte." } };
   document.querySelectorAll("[data-esc]").forEach((b) => b.onclick = () => {
     const e = ESC[b.dataset.esc]; if (!e) return;
+    if (document.body.classList.contains("rol-pantalla")) { window.__enlOrden?.("esc:" + b.dataset.esc); document.querySelectorAll("[data-esc]").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); $("esc-nota").textContent = "Escenario enviado al celular: " + e.nota; return; }
     const { nota, det, ...resto } = e; Object.assign(A, resto, { modo: "prueba", sonido: true, repetir: true, voz_ok: true }); A.det = Object.assign({}, A.det, det); A.voz = A.det.voz;
     guardarAjustes(); pintarCabecera(); pintarDetectores();
     document.querySelectorAll("[data-esc]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
@@ -394,6 +400,7 @@
   // ---------- Pruebas guiadas (con la alarma real del perfil) ----------
   document.querySelectorAll("[data-prueba]").forEach((b) => b.onclick = () => {
     const k = b.dataset.prueba;
+    if (document.body.classList.contains("rol-pantalla")) { window.__enlOrden?.(k); return; }
     if (k === "detener") { if (ALERTA.activa) atender("botón"); window.SOSMorse?.detener(); sonidoActual(null); log("sis", "Sonido silenciado"); return; }
     if (k === "sonido") { const old = A.sonido; A.sonido = true; sonarPerfil("prueba", "prueba-admin", true); A.sonido = old; return; }
     if (k === "caida") disparar("caida", { pico_g: 3.1, caida_libre: true, simulada: true }, null, null, true);
@@ -427,9 +434,10 @@
   }
   function cuadro() {
     if (document.querySelector("#v-monitor[data-activa=true]")) {
-      linea("g-acc", BUF.acc, 0, 40, "#4f8fd6", A.impacto_g * G); linea("g-mic", BUF.mic, 30, 120, "#3fbf7f", A.ruido_db);
-      $("g-acc-v").textContent = S.mov ? S.mov.mag.toFixed(2) : "—"; $("g-mic-v").textContent = S.db != null ? Math.round(S.db) : "—";
-      pintarLecturas();
+      const rem = window.__enlRemoto?.();
+      linea("g-acc", BUF.acc, 0, 40, "#4f8fd6", rem ? rem.umb[0] : A.impacto_g * G); linea("g-mic", BUF.mic, 30, 120, "#3fbf7f", rem ? rem.umb[1] : A.ruido_db);
+      if (rem) { $("g-acc-v").textContent = rem.acc ?? "—"; $("g-mic-v").textContent = rem.db ?? "—"; }
+      else { $("g-acc-v").textContent = S.mov ? S.mov.mag.toFixed(2) : "—"; $("g-mic-v").textContent = S.db != null ? Math.round(S.db) : "—"; pintarLecturas(); }
     }
     if (document.querySelector("#v-sensores[data-activa=true]")) pintarSensores();
     requestAnimationFrame(cuadro);
@@ -638,6 +646,230 @@
   }
   $("nav").addEventListener("click", (e) => { const b = e.target.closest("button[data-v]"); if (b) vista(b.dataset.v); });
 
+  // ---------- Enlace: el celular mide (sensores) y otra pantalla — la Mac — ve la terminal en vivo ----------
+  // Conexión directa cifrada (WebRTC, DTLS) entre los dos equipos. Para encontrarse usan un relevo público (ntfy.sh)
+  // por el que solo pasan mensajes cifrados con AES-256-GCM; la clave sale del código de 6 letras (los 6 lados del cubo)
+  // y nunca viaja. Si la conexión directa no abre (redes muy cerradas), los datos siguen por el relevo cada 15 s.
+  const RELEVO = window.SOS_RELEVO || "https://ntfy.sh/";
+  const ICE = { iceServers: [{ urls: ["stun:stun.l.google.com:19302", "stun:stun.cloudflare.com:3478"] }] };
+  const ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ";   // sin I ni O para no confundirlas con 1 y 0
+  const ROLES = { solo: "Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.",
+    sensor: "Este celular mide con sus sensores y manda la terminal a la otra pantalla. Toca «Iniciar monitoreo» aquí; las pruebas se pueden lanzar desde aquí o desde la Mac.",
+    pantalla: "Esta pantalla muestra en vivo la terminal del celular. Los botones de prueba, «Todo bien» y S.O.S. mandan la orden al celular." };
+  const ENL = { rol: LS.get("sost_rol", "solo"), codigo: LS.get("sost_codigo", ""), yo: Math.random().toString(36).slice(2, 10),
+    clave: null, topico: "", es: null, pc: null, dc: null, modo: "off", partes: {}, tRespaldo: 0, tRelevo: 0, ultRelevo: 0, ultFoto: 0, ultDato: 0,
+    remoto: null, alertaRemota: null, tSonar: 0, cambio: false };
+  const te = new TextEncoder(), td = new TextDecoder();
+  const b64 = (u8) => { let s = ""; for (let i = 0; i < u8.length; i += 8192) s += String.fromCharCode.apply(null, u8.subarray(i, i + 8192)); return btoa(s); };
+  const deb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const limpiarCodigo = (c) => String(c || "").toUpperCase().replace(/[^A-Z]/g, "").replace(/I/g, "J").replace(/O/g, "Q").slice(0, 6);
+  const nuevoCodigo = () => [...crypto.getRandomValues(new Uint8Array(6))].map((b) => ABC[b % ABC.length]).join("");
+  const enlaceVer = () => `${location.origin}${location.pathname}#ver=${ENL.codigo}`;
+
+  async function prepararClave(cod) {
+    const h = new Uint8Array(await crypto.subtle.digest("SHA-256", te.encode("sosistem-topico:" + cod)));
+    ENL.topico = "sosistem_" + [...h.slice(0, 12)].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const base = await crypto.subtle.importKey("raw", te.encode(cod), "PBKDF2", false, ["deriveKey"]);
+    ENL.clave = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: te.encode("sosistem-enlace-v1"), iterations: 150000, hash: "SHA-256" },
+      base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  }
+  async function cifrar(o) { const iv = crypto.getRandomValues(new Uint8Array(12)); return b64(iv) + "." + b64(new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, ENL.clave, te.encode(JSON.stringify(o))))); }
+  async function descifrar(s) { const [a, b] = s.split("."); return JSON.parse(td.decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: deb64(a) }, ENL.clave, deb64(b)))); }
+
+  function estadoEnlace(e, txt) { const el = $("enl-est"); el.dataset.e = e; el.textContent = txt; }
+
+  // --- Relevo (para encontrarse y como respaldo) ---
+  async function publicar(o) {
+    if (!ENL.clave) return;
+    o.de = ENL.yo; const txt = await cifrar(o), id = Math.random().toString(36).slice(2, 8);
+    const trozos = txt.length > 3000 ? txt.match(/.{1,3000}/g) : [txt];
+    for (let i = 0; i < trozos.length; i++) {
+      const cuerpo = trozos.length > 1 ? `P|${id}|${i}|${trozos.length}|${trozos[i]}` : trozos[i];
+      try {
+        const r = await fetch(`${RELEVO}${ENL.topico}?cache=no&firebase=no`, { method: "POST", body: cuerpo });
+        if (r.status === 429) { estadoEnlace("lento", "El relevo pidió esperar unos segundos"); return; }
+      } catch (e) { estadoEnlace("error", "Sin conexión a internet para enlazar"); return; }
+    }
+  }
+  function escuchar() {
+    try { ENL.es?.close(); } catch (e) {}
+    const es = new EventSource(`${RELEVO}${ENL.topico}/sse`); ENL.es = es;
+    es.onopen = () => { if (ENL.rol === "pantalla") publicar({ t: "hola" }); if (ENL.rol === "sensor") publicar({ t: "listo" }); };
+    es.onmessage = async (ev) => {
+      let j; try { j = JSON.parse(ev.data); } catch (e) { return; }
+      if (j.event && j.event !== "message") return;
+      let m = j.message || "";
+      if (m.startsWith("P|")) { const [, id, i, n, ...r] = m.split("|"); const c = ENL.partes[id] || (ENL.partes[id] = []); c[+i] = r.join("|");
+        if (c.filter(Boolean).length < +n) return; m = c.join(""); delete ENL.partes[id]; }
+      let o; try { o = await descifrar(m); } catch (e) { return; }   // otro código o mensaje ajeno: se ignora
+      if (o.de !== ENL.yo) recibir(o);
+    };
+    es.onerror = () => { if (ENL.modo !== "p2p" && ENL.rol !== "solo") estadoEnlace("espera", "Reconectando…"); };
+  }
+
+  // --- Conexión directa (WebRTC) ---
+  function cerrarP2P() { const { dc, pc } = ENL; ENL.dc = null; ENL.pc = null; try { dc?.close(); } catch (e) {} try { pc?.close(); } catch (e) {} if (ENL.modo === "p2p") ENL.modo = "relevo"; }
+  const esperarIce = (pc) => new Promise((ok) => { if (pc.iceGatheringState === "complete") return ok(); const t = setTimeout(ok, 4000);
+    pc.addEventListener("icegatheringstatechange", () => { if (pc.iceGatheringState === "complete") { clearTimeout(t); ok(); } }); });
+  function vigilar(pc) { pc.onconnectionstatechange = () => { if (pc !== ENL.pc) return;
+    if (pc.connectionState === "failed") { log("sis", "La conexión directa falló · se usa el relevo"); cerrarP2P(); if (ENL.rol === "sensor") usarRelevo(); } }; }
+  function canal(dc) {
+    ENL.dc = dc;
+    dc.onopen = () => { ENL.modo = "p2p"; clearTimeout(ENL.tRespaldo); clearInterval(ENL.tRelevo);
+      estadoEnlace("ok", ENL.rol === "sensor" ? "● Conectado directo con la pantalla" : "● Conectado directo con el celular");
+      log("sis", "Enlace directo abierto (cifrado de extremo a extremo)"); if (ENL.rol === "sensor") mandarFoto(true); };
+    dc.onmessage = (e) => { let o; try { o = JSON.parse(e.data); } catch (x) { return; } recibir(o); };
+    dc.onclose = () => { if (ENL.dc !== dc) return; ENL.dc = null; ENL.modo = "relevo";
+      if (ENL.rol === "sensor") { estadoEnlace("espera", "La pantalla se desconectó · esperando que vuelva"); }
+      if (ENL.rol === "pantalla") { estadoEnlace("espera", "Se perdió el enlace directo · reintentando"); publicar({ t: "hola" }); } };
+  }
+  async function ofrecer() {   // celular
+    cerrarP2P(); const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
+    canal(pc.createDataChannel("sosistem", { ordered: true }));
+    await pc.setLocalDescription(await pc.createOffer()); await esperarIce(pc);
+    if (pc !== ENL.pc) return;
+    publicar({ t: "oferta", sdp: pc.localDescription.sdp });
+    clearTimeout(ENL.tRespaldo); ENL.tRespaldo = setTimeout(() => { if (ENL.modo !== "p2p" && ENL.rol === "sensor") usarRelevo(); }, 15000);
+  }
+  async function responder(sdp) {   // pantalla
+    cerrarP2P(); const pc = new RTCPeerConnection(ICE); ENL.pc = pc; vigilar(pc);
+    pc.ondatachannel = (e) => canal(e.channel);
+    await pc.setRemoteDescription({ type: "offer", sdp }); await pc.setLocalDescription(await pc.createAnswer()); await esperarIce(pc);
+    if (pc === ENL.pc) publicar({ t: "respuesta", sdp: pc.localDescription.sdp });
+  }
+  function usarRelevo() {
+    ENL.modo = "relevo"; estadoEnlace("lento", "Sin conexión directa · la pantalla recibe datos cada 15 s (alertas al instante)");
+    clearInterval(ENL.tRelevo); ENL.tRelevo = setInterval(() => mandarFoto(true), 15000); mandarFoto(true);
+  }
+
+  // --- Lo que manda el celular ---
+  function foto() {
+    const cola = (window.__enlCola || []).splice(0), qa = (window.__enlAcc || []).splice(0), qm = (window.__enlMic || []).splice(0);
+    return { t: "foto", ts: Date.now(), e: $("pantalla").dataset.e, pill: $("estado-pill").textContent, ico: $("pt-icono").textContent, tit: $("pt-titulo").textContent,
+      det: $("pt-detalle").textContent, niv: $("pt-nivel").hidden ? "" : $("pt-nivel").textContent, morse: $("pt-morse").textContent, voz: !$("pt-voz").hidden,
+      rec: A.recinto, id: A.id, modo: A.modo, mon: monitoreando, l: ["l-acc", "l-rot", "l-inc", "l-db", "l-est", "l-voz"].map((i) => $(i).textContent),
+      son: $("sonando").textContent, sonOn: $("sonando").classList.contains("on"), esc: escalaDatos(),
+      acc: S.mov ? +S.mov.mag.toFixed(2) : null, db: S.db != null ? Math.round(S.db) : null, umb: [A.impacto_g * G, A.ruido_db],
+      alerta: ALERTA.activa ? { tipo: ALERTA.ev.tipo, prueba: ALERTA.ev.prueba, id: ALERTA.ev.id } : null,
+      qa: ENL.modo === "p2p" ? qa : [], qm: ENL.modo === "p2p" ? qm : [], log: ENL.modo === "p2p" ? cola : cola.slice(0, 8) };
+  }
+  function mandarFoto(forzar) {
+    if (ENL.rol !== "sensor") return;
+    if (ENL.dc?.readyState === "open") { try { ENL.dc.send(JSON.stringify(foto())); } catch (e) {} return; }
+    if (ENL.modo === "relevo" && (forzar || Date.now() - ENL.ultRelevo > 15000)) { ENL.ultRelevo = Date.now(); publicar(foto()); }
+  }
+  setInterval(() => { if (ENL.rol === "sensor" && ENL.modo === "p2p") mandarFoto(); }, 200);
+  // un cambio de estado (alerta, aviso, atendida) sale al instante, también por el relevo
+  window.__enlCambio = () => { if (ENL.rol !== "sensor" || ENL.cambio) return; ENL.cambio = true;
+    const espera = ENL.modo === "relevo" ? Math.max(150, 3000 - (Date.now() - ENL.ultRelevo)) : 150;   // por el relevo, máximo uno cada 3 s; nunca se pierde
+    setTimeout(() => { ENL.cambio = false; if (ENL.modo === "relevo") { ENL.ultRelevo = Date.now(); publicar(foto()); } else mandarFoto(); }, espera); };
+  const ORDENES = new Set(["caida", "sismo", "manual", "ruido", "sonido", "detener", "atender"]);
+  function ejecutarOrden(k) {
+    if (k === "atender") { atender("pantalla remota"); return; }
+    if (k === "manual") { disparar("manual", { origen: "pantalla remota", simulada: true }, null, null, true); return; }
+    if (k.startsWith("esc:")) { const b = document.querySelector(`[data-esc="${CSS.escape(k.slice(4))}"]`); if (b) b.click(); return; }
+    if (ORDENES.has(k)) document.querySelector(`[data-prueba="${k}"]`)?.click();
+  }
+
+  // --- Lo que hace la pantalla (Mac) ---
+  window.__enlOrden = (k) => {
+    if (ENL.rol !== "pantalla") return;
+    const o = { t: "orden", k };
+    if (ENL.dc?.readyState === "open") ENL.dc.send(JSON.stringify(o)); else if (ENL.clave) publicar(o); else { toast("Primero conecta con el celular."); return; }
+    toast(k === "atender" ? "«Todo bien» enviado al celular" : "Orden enviada al celular"); log("sis", `Orden a la terminal remota: ${k}`);
+  };
+  window.__enlRemoto = () => (ENL.rol === "pantalla" && ENL.remoto ? ENL.remoto : null);
+  function aplicarFoto(f) {
+    ENL.remoto = f; ENL.ultDato = Date.now();
+    const p = $("pantalla"); p.dataset.e = f.e; $("estado-pill").dataset.e = f.e; $("estado-pill").textContent = f.pill;
+    $("pt-icono").textContent = f.ico; $("pt-titulo").textContent = f.tit; $("pt-detalle").textContent = f.det;
+    $("pt-nivel").hidden = !f.niv; $("pt-nivel").textContent = f.niv; $("pt-morse").textContent = f.morse; $("pt-voz").hidden = !f.voz;
+    $("pt-recinto").textContent = f.rec; $("pt-id").textContent = `${f.id} · remoto`; $("pt-modo").textContent = f.modo === "real" ? "MODO REAL" : "MODO PRUEBA";
+    ["l-acc", "l-rot", "l-inc", "l-db", "l-est", "l-voz"].forEach((i, n) => ($(i).textContent = f.l[n]));
+    $("sonando").textContent = f.son; $("sonando").classList.toggle("on", !!f.sonOn); pintarEscala(f.esc);
+    for (const v of f.qa || []) { BUF.acc.push(v); if (BUF.acc.length > 300) BUF.acc.shift(); }
+    for (const v of f.qm || []) { BUF.mic.push(v); if (BUF.mic.length > 300) BUF.mic.shift(); }
+    if (!f.qa?.length && f.acc != null) { BUF.acc.push(f.acc); if (BUF.acc.length > 300) BUF.acc.shift(); }
+    if (!f.qm?.length && f.db != null) { BUF.mic.push(f.db); if (BUF.mic.length > 300) BUF.mic.shift(); }
+    for (const [t, c, x] of (f.log || []).reverse()) log(c, "📱 " + x, t);
+    $("vivo").classList.toggle("off", !f.mon); $("vivo").textContent = f.mon ? "● EN VIVO · CELULAR" : "○ CELULAR SIN MONITOREO";
+    $("btn-atender").hidden = !f.alerta;
+    // alarma también en la Mac: empieza con la alerta del celular y se calla cuando la atienden
+    const antes = ENL.alertaRemota?.id, ahora = f.alerta?.id;
+    if (ahora && ahora !== antes) { ENL.alertaRemota = f.alerta; sonarRemoto(); }
+    if (!ahora && antes) { ENL.alertaRemota = null; clearTimeout(ENL.tSonar); window.SOSMorse?.detener(); }
+  }
+  function sonarRemoto() {
+    clearTimeout(ENL.tSonar); const a = ENL.alertaRemota;
+    if (!a || !$("enl-sonar").checked || !A.sonido) return;
+    const dur = sonarPerfil(perfilDe(a.tipo), a.prueba ? "prueba-admin" : a.tipo === "sismo" ? "desastre" : "emergencia", a.prueba);
+    ENL.tSonar = setTimeout(sonarRemoto, Math.max(2, dur + (+A.pausa_s || 3)) * 1000);
+  }
+  setInterval(() => { if (ENL.rol === "pantalla" && ENL.ultDato && ENL.modo === "p2p" && Date.now() - ENL.ultDato > 8000) estadoEnlace("espera", "Sin datos del celular (¿pantalla bloqueada o app en segundo plano?)"); }, 2000);
+
+  // --- Mensajes recibidos (directo o por relevo) ---
+  function recibir(o) {
+    if (ENL.rol === "sensor") {
+      if (o.t === "hola") { estadoEnlace("espera", "Pantalla encontrada · abriendo conexión directa…"); ofrecer().catch(() => usarRelevo()); }
+      else if (o.t === "respuesta" && ENL.pc && ENL.pc.signalingState === "have-local-offer") ENL.pc.setRemoteDescription({ type: "answer", sdp: o.sdp }).catch(() => {});
+      else if (o.t === "orden" && typeof o.k === "string") { log("sis", `Orden de la pantalla remota: ${o.k}`); ejecutarOrden(o.k); }
+      else if (o.t === "adios") { cerrarP2P(); clearInterval(ENL.tRelevo); ENL.modo = "off"; estadoEnlace("espera", "La pantalla se desconectó · esperando…"); }
+    }
+    if (ENL.rol === "pantalla") {
+      if (o.t === "listo") publicar({ t: "hola" });
+      else if (o.t === "oferta") { estadoEnlace("espera", "Celular encontrado · conectando…"); responder(o.sdp).catch(() => estadoEnlace("lento", "Sin conexión directa · esperando datos por relevo")); }
+      else if (o.t === "foto") { if (ENL.modo !== "p2p") { ENL.modo = ENL.dc ? ENL.modo : "relevo"; if (ENL.modo === "relevo") estadoEnlace("lento", "● Recibiendo por relevo cada 15 s (sin conexión directa)"); } aplicarFoto(o); }
+    }
+  }
+
+  // --- Elegir la función de este equipo (pestaña Pruebas) ---
+  function pintarCubo() { $("enl-cubo").innerHTML = ENL.codigo.split("").map((c, i) => `<span><small>L${i + 1}</small>${esc(c)}</span>`).join(""); }
+  async function ponerRol(rol, codigo) {
+    if (ENL.rol !== "solo" && ENL.clave && rol !== ENL.rol) publicar({ t: "adios" });
+    cerrarP2P(); clearInterval(ENL.tRelevo); clearTimeout(ENL.tRespaldo); clearTimeout(ENL.tSonar); try { ENL.es?.close(); } catch (e) {}
+    ENL.es = null; ENL.clave = null; ENL.modo = "off"; ENL.remoto = null; ENL.alertaRemota = null; ENL.ultDato = 0;
+    const eraPantalla = ENL.rol === "pantalla";
+    ENL.rol = rol; LS.set("sost_rol", rol);
+    document.body.classList.toggle("rol-pantalla", rol === "pantalla"); document.body.classList.toggle("rol-sensor", rol === "sensor");
+    document.querySelectorAll("[data-rol]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.rol === rol)));
+    $("enl-nota").textContent = ROLES[rol]; $("enl-sensor").hidden = rol !== "sensor"; $("enl-pantalla").hidden = rol !== "pantalla";
+    window.__enlCola = rol === "sensor" ? [] : null; window.__enlAcc = rol === "sensor" ? [] : null; window.__enlMic = rol === "sensor" ? [] : null;
+    if (rol === "pantalla" && monitoreando) detener();
+    if (eraPantalla || rol === "pantalla") { BUF.acc.length = 0; BUF.mic.length = 0; CONSOLA.length = 0; pintarConsola(); pintarCabecera(); estado("detenido"); $("btn-atender").hidden = true; pintarEscala(); }
+    if (rol === "solo") { estadoEnlace("off", "Sin enlace"); return; }
+    if (!window.crypto?.subtle || !window.RTCPeerConnection || !window.EventSource) { estadoEnlace("error", "Este navegador no permite el enlace (usa Safari o Chrome actualizados)"); return; }
+    if (rol === "sensor") {
+      if (!ENL.codigo || codigo === "nuevo") { ENL.codigo = nuevoCodigo(); LS.set("sost_codigo", ENL.codigo); }
+      pintarCubo(); estadoEnlace("espera", "Esperando a la pantalla…");
+    } else {
+      const c = limpiarCodigo(codigo || LS.get("sost_codigo_ver", ""));
+      $("enl-codigo").value = c;
+      if (c.length !== 6) { estadoEnlace("off", "Escribe el código de 6 letras que aparece en el celular"); return; }
+      ENL.codigo = c; LS.set("sost_codigo_ver", c); estadoEnlace("espera", "Buscando al celular…");
+      $("vivo").textContent = "○ ESPERANDO CELULAR"; $("vivo").classList.add("off");
+    }
+    await prepararClave(ENL.codigo); escuchar();
+    log("sis", rol === "sensor" ? `Enlace listo · código ${ENL.codigo}` : `Buscando la terminal ${ENL.codigo}…`);
+  }
+  document.querySelectorAll("[data-rol]").forEach((b) => (b.onclick = () => ponerRol(b.dataset.rol)));
+  $("enl-nuevo").onclick = () => ponerRol("sensor", "nuevo");
+  $("enl-pantalla").onsubmit = (e) => { e.preventDefault(); ponerRol("pantalla", $("enl-codigo").value);
+    if (A.sonido && window.SOSMorse) SOSMorse.reproducir("E", null, { motivo: "prueba-admin", volumen: 0.01, vibrar: false }); };   // desbloquea el sonido de la Mac
+  $("enl-codigo").addEventListener("input", (e) => { const c = limpiarCodigo(e.target.value); if (e.target.value !== c) e.target.value = c; });
+  $("enl-compartir").onclick = async () => {
+    const url = enlaceVer();
+    try { if (navigator.share) { await navigator.share({ title: "SOSistem™ · ver terminal", text: `Código ${ENL.codigo}`, url }); return; } } catch (e) { if (e.name === "AbortError") return; }
+    try { await navigator.clipboard.writeText(url); toast("Enlace copiado. Pégalo en Safari de la Mac."); } catch (e) { toast(url, 6000); }
+  };
+  function iniciarEnlace(h) {
+    const m = /^ver=([A-Za-z]{6})$/.exec(h || "");
+    if (m) { ponerRol("pantalla", m[1]); toast("Haz clic en cualquier parte para activar el sonido de la alarma en esta pantalla.", 4500);
+      addEventListener("pointerdown", () => { if (A.sonido && window.SOSMorse) SOSMorse.reproducir("E", null, { motivo: "prueba-admin", volumen: 0.01, vibrar: false }); }, { once: true });
+      try { history.replaceState(null, "", "#monitor"); } catch (e) {} return; }
+    if (ENL.rol !== "solo") ponerRol(ENL.rol);
+  }
+
+
   // ---------- Arranque ----------
   (async () => {
     idb = await abrir(); EVENTOS = await todos("eventos");
@@ -645,6 +877,7 @@
     pintarCabecera(); pintarDetectores(); estado("detenido"); pintarEventos(); pintarEscala();
     log("sis", `SOSistem™ Terminal ${VERSION} · ${A.id} · ${A.recinto} · ${A.modo === "real" ? "modo real" : "modo prueba"}`);
     const h = location.hash.slice(1); if (["monitor", "sensores", "eventos", "plataforma", "ajustes"].includes(h)) vista(h);
+    iniciarEnlace(h);
     if (LS.get("sost_monitor", false)) toast("Toca «Iniciar monitoreo» para reanudar (el celular pide permiso cada vez).", 4000);
     requestAnimationFrame(cuadro);
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./terminal" }).catch(() => {});

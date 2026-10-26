@@ -28,6 +28,7 @@
     <div class="split" id="split" data-dividida="true">
       <div class="pane pane-a" aria-label="Pruebas">
         <div class="pane-tit"><b>Pruebas</b><button type="button" class="t-mini" id="btn-dividir" aria-pressed="true">Pantalla dividida ✓</button></div>
+
         <div class="pantalla-t" id="pantalla" data-e="normal">
           <div class="pt-cab"><span id="pt-recinto">Recinto de prueba</span><span id="pt-hora">--:--:--</span></div>
           <div class="pt-centro">
@@ -57,6 +58,31 @@
           <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
         </div>
 
+        <!-- Enlace: el celular mide con sus sensores y otra pantalla (la Mac) ve la terminal en vivo -->
+        <div class="t-card t-compacta t-enlace" id="enlace">
+          <h2>¿Qué hace este equipo?</h2>
+          <div class="t-esc-sel" role="group" aria-label="Función de este equipo">
+            <button type="button" class="t-mini" data-rol="solo" aria-pressed="true">Solo este equipo</button>
+            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱 Celular · sensores</button>
+            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥 Pantalla · ver terminal</button>
+          </div>
+          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.</p>
+          <div id="enl-sensor" hidden>
+            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la Mac o mándale el enlace.</p>
+            <div class="t-cubo6" id="enl-cubo" aria-label="Código de enlace"></div>
+            <div class="t-grid2" style="margin:8px 0 0">
+              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la Mac</button>
+              <button class="t-btn" type="button" id="enl-nuevo">Código nuevo</button>
+            </div>
+          </div>
+          <form id="enl-pantalla" class="t-enl-form" hidden autocomplete="off">
+            <label>Código del celular<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
+            <button class="t-btn pri" type="submit">Conectar</button>
+            <label class="t-mini-chk"><input type="checkbox" id="enl-sonar" checked> Sonar la alarma también en esta pantalla</label>
+          </form>
+          <div class="t-enl-est" id="enl-est" data-e="off">Sin enlace</div>
+        </div>
+
         <div class="t-card">
           <h2>Pruebas con alarma real</h2>
           <p class="t-nota">Cada prueba ejecuta la sirena y el código Morse del tipo de evento (perfil del panel) y se repite hasta que digas «todo bien» o toques el botón verde. Queda registrada como «prueba».</p>
@@ -76,7 +102,7 @@
         <button class="t-sos" id="btn-sos" type="button" aria-describedby="sos-ayuda"><span>S.O.S.</span><i id="sos-carga"></i></button>
         <p class="t-ayuda" id="sos-ayuda">Mantén presionado 2 segundos para enviar una alerta manual.</p>
 
-        <div class="t-card">
+        <div class="t-card t-det-card">
           <h2>Detectores</h2>
           <div class="t-det" id="detectores"></div>
         </div>
