@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=4.3">
+<link rel="stylesheet" href="assets/estilo.css?v=4.4">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -640,6 +640,38 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   </div>
 </section>
 
+<section class="slide blk" id="fondo">
+  <div class="wrap">
+    <span class="eyebrow">Fondo SOS · Conectividad humanitaria</span>
+    <h2>Conexión para pedir auxilio donde no hay señal.</h2>
+    <p class="lead">El fondo convierte aportaciones en conexión para el sistema S.O.S.: estaciones, puertas de enlace y antenas comunitarias que transmiten alertas desde lugares sin cobertura en desastres naturales y emergencias personales.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Alerta por mensaje de texto</h3><p>Enviar «SOS» por SMS funciona con señal mínima y sin datos móviles.</p></div>
+      <div class="card"><h3>Puertas de enlace donadas</h3><p>Un teléfono o una estación con internet retransmite al panel y al 911 las alertas de su zona, sin compartir el internet de su dueño.</p></div>
+      <div class="card"><h3>Red en malla sin internet</h3><p>Nodos de radio LoRa en bandas libres enlazan alertas de texto de 2 a 5 km por nodo.</p></div>
+      <div class="card"><h3>Bolsa de datos del fondo</h3><p>SIM para dispositivos con datos compartidos mantienen conectadas las estaciones; el crédito queda en la cuenta del fondo.</p></div>
+      <div class="card"><h3>Antena satelital por refugio</h3><p>Una antena en espera se activa con el fondo durante un desastre y da conexión a todo el refugio.</p></div>
+      <div class="card"><h3>SOS satelital del teléfono</h3><p>Los teléfonos compatibles envían mensajes de emergencia por satélite sin cobertura celular.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h3>Cómo apoyar</h3>
+        <ol class="steps">
+          <li><div>Dona dinero: todo va al fondo, con entradas y salidas publicadas.</div></li>
+          <li><div>10 % solidario: el 10 % de cada servicio contratado con SOSistem™ se destina al fondo.</div></li>
+          <li><div>Dona megas o recargas directamente al número de un beneficiario registrado, desde la aplicación de tu compañía telefónica.</div></li>
+          <li><div>Dona tu conexión: registra tu teléfono como puerta de enlace para alertas de tu zona.</div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <p>Las metas por comunidad y su avance se publican en esta sección.</p>
+        <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20quiero%20aportar%20al%20Fondo%20SOS%20de%20SOSistem" target="_blank" rel="noopener">Quiero aportar · escribir por WhatsApp</a></p>
+        <p class="note">Las aportaciones son un apoyo voluntario a un proyecto privado y no son deducibles de impuestos. El fondo compra conexión para el equipo de emergencia; no revende internet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="apoyo">
   <div class="wrap">
     <span class="eyebrow">Apoya el proyecto</span>
@@ -715,17 +747,17 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/logo-giro.js?v=4.3"></script>
-<script src="assets/app.js?v=4.3"></script>
-<script src="assets/cubo.js?v=4.3"></script>
-<script src="assets/morse.js?v=4.3"></script>
-<script src="assets/pantalla.js?v=4.3"></script>
-<script src="assets/cubo-morse.js?v=4.3"></script>
-<script src="assets/idiomas.js?v=4.3"></script>
-<script src="assets/banderas.js?v=4.3"></script>
-<script src="assets/servicios12.js?v=4.3"></script>
-<script src="assets/pestanas.js?v=4.3"></script>
-<script src="assets/rastreo.js?v=4.3"></script>
+<script src="assets/logo-giro.js?v=4.4"></script>
+<script src="assets/app.js?v=4.4"></script>
+<script src="assets/cubo.js?v=4.4"></script>
+<script src="assets/morse.js?v=4.4"></script>
+<script src="assets/pantalla.js?v=4.4"></script>
+<script src="assets/cubo-morse.js?v=4.4"></script>
+<script src="assets/idiomas.js?v=4.4"></script>
+<script src="assets/banderas.js?v=4.4"></script>
+<script src="assets/servicios12.js?v=4.4"></script>
+<script src="assets/pestanas.js?v=4.4"></script>
+<script src="assets/rastreo.js?v=4.4"></script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
 (function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");

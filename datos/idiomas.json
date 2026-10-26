@@ -111,7 +111,8 @@
   "fn_25",
   "tab_senales",
   "tab_terminal",
-  "tab_servicios"
+  "tab_servicios",
+  "tab_fondo"
  ],
  "idiomas": {
   "es": {
@@ -229,7 +230,8 @@
     "Simulacros de sonido, caída y sismo para el administrador y el cliente, registrados en bitácora.",
     "Señales",
     "Terminal",
-    "12 servicios"
+    "12 servicios",
+    "Fondo SOS"
    ]
   },
   "en": {
@@ -347,7 +349,8 @@
     "Sound, fall and earthquake drills for the administrator and the client, logged.",
     "Signals",
     "Terminal",
-    "12 services"
+    "12 services",
+    "SOS Fund"
    ]
   },
   "pt": {
@@ -465,7 +468,8 @@
     "Simulações de som, queda e terremoto para o administrador e o cliente, registradas em log.",
     "Sinais",
     "Terminal",
-    "12 serviços"
+    "12 serviços",
+    "Fundo SOS"
    ]
   },
   "fr": {
@@ -583,7 +587,8 @@
     "Exercices de son, de chute et de séisme pour l’administrateur et le client, enregistrés.",
     "Signaux",
     "Terminal",
-    "12 services"
+    "12 services",
+    "Fonds SOS"
    ]
   },
   "it": {
@@ -701,7 +706,8 @@
     "Esercitazioni di suono, caduta e terremoto per l’amministratore e il cliente, registrate.",
     "Segnali",
     "Terminale",
-    "12 servizi"
+    "12 servizi",
+    "Fondo SOS"
    ]
   },
   "de": {
@@ -819,7 +825,8 @@
     "Ton-, Sturz- und Erdbebenübungen für Administrator und Kunde, protokolliert.",
     "Signale",
     "Terminal",
-    "12 Dienste"
+    "12 Dienste",
+    "SOS-Fonds"
    ]
   },
   "nl": {
@@ -937,7 +944,8 @@
     "",
     "Signalen",
     "Terminal",
-    "12 diensten"
+    "12 diensten",
+    "SOS-fonds"
    ]
   },
   "ca": {
@@ -1055,7 +1063,8 @@
     "",
     "Senyals",
     "Terminal",
-    "12 serveis"
+    "12 serveis",
+    "Fons SOS"
    ]
   },
   "gl": {
@@ -1173,7 +1182,8 @@
     "",
     "Sinais",
     "Terminal",
-    "12 servizos"
+    "12 servizos",
+    "Fondo SOS"
    ]
   },
   "eu": {
@@ -1291,7 +1301,8 @@
     "",
     "Seinaleak",
     "Terminala",
-    "12 zerbitzu"
+    "12 zerbitzu",
+    "SOS funtsa"
    ]
   },
   "da": {
@@ -1409,7 +1420,8 @@
     "",
     "Signaler",
     "Terminal",
-    "12 tjenester"
+    "12 tjenester",
+    "SOS-fond"
    ]
   },
   "sv": {
@@ -1527,7 +1539,8 @@
     "",
     "Signaler",
     "Terminal",
-    "12 tjänster"
+    "12 tjänster",
+    "SOS-fond"
    ]
   },
   "nb": {
@@ -1645,7 +1658,8 @@
     "",
     "Signaler",
     "Terminal",
-    "12 tjenester"
+    "12 tjenester",
+    "SOS-fond"
    ]
   },
   "ga": {
@@ -1763,7 +1777,8 @@
     "",
     "Comharthaí",
     "Teirminéal",
-    "12 sheirbhís"
+    "12 sheirbhís",
+    "Ciste SOS"
    ]
   },
   "el": {
@@ -1881,7 +1896,8 @@
     "",
     "Σήματα",
     "Τερματικό",
-    "12 υπηρεσίες"
+    "12 υπηρεσίες",
+    "Ταμείο SOS"
    ]
   },
   "ru": {
@@ -1999,7 +2015,8 @@
     "Учения по звуку, падению и землетрясению для администратора и клиента с записью в журнал.",
     "Сигналы",
     "Терминал",
-    "12 сервисов"
+    "12 сервисов",
+    "Фонд SOS"
    ]
   },
   "uk": {
@@ -2117,7 +2134,8 @@
     "",
     "Сигнали",
     "Термінал",
-    "12 сервісів"
+    "12 сервісів",
+    "Фонд SOS"
    ]
   },
   "ar": {
@@ -2235,7 +2253,8 @@
     "تمارين للصوت والسقوط والزلزال للمسؤول والعميل، مع تسجيلها.",
     "الإشارات",
     "المحطة",
-    "12 خدمة"
+    "12 خدمة",
+    "صندوق SOS"
    ]
   },
   "he": {
@@ -2353,7 +2372,8 @@
     "",
     "אותות",
     "מסוף",
-    "12 שירותים"
+    "12 שירותים",
+    "קרן SOS"
    ]
   },
   "hi": {
@@ -2471,7 +2491,8 @@
     "",
     "संकेत",
     "टर्मिनल",
-    "12 सेवाएँ"
+    "12 सेवाएँ",
+    "SOS कोष"
    ]
   },
   "zh": {
@@ -2589,7 +2610,8 @@
     "为管理员和客户提供声音、跌倒和地震演练，并记录日志。",
     "信号",
     "终端",
-    "12 项服务"
+    "12 项服务",
+    "SOS 基金"
    ]
   },
   "ja": {
@@ -2707,7 +2729,8 @@
     "管理者と顧客向けの音・転倒・地震の訓練を記録付きで実施。",
     "信号",
     "端末",
-    "12のサービス"
+    "12のサービス",
+    "SOS基金"
    ]
   }
  },

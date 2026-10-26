@@ -1,8 +1,13 @@
 {
-  "version": "4.3",
-  "fecha": "2026-10-25",
+  "version": "4.4",
+  "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.4",
+      "fecha": "2026-10-26",
+      "resumen": "Nueva pestaña «Fondo SOS · Conectividad humanitaria»: el fondo convierte aportaciones en conexión para el sistema (alerta por SMS, puertas de enlace donadas, red en malla LoRa, bolsa de datos IoT, antena satelital por refugio y SOS satelital del teléfono) y cuatro vías de apoyo: dinero, 10 % solidario, megas o recargas directas a beneficiarios registrados y conexión donada como puerta de enlace. En los 22 idiomas."
+    },
     {
       "v": "4.3",
       "fecha": "2026-10-25",
