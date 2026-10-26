@@ -1,8 +1,13 @@
 {
-  "version": "4.9",
+  "version": "5.0",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.0",
+      "fecha": "2026-10-26",
+      "resumen": "Los scripts de la página se publican en Código de comunicación del Cubo (33)©: un cargador ligero los descifra al abrir el sitio y se ven como código del cubo en el repositorio público, para que no se analicen a la primera (es ocultamiento, no cifrado; el original legible vive en el repositorio privado). Quedan en claro, por necesidad técnica, la captura de audio del receptor y los dos archivos de funcionamiento sin internet. El cifrado real de los datos de prueba sigue en la bóveda (AES-256-GCM)."
+    },
     {
       "v": "4.9",
       "fecha": "2026-10-26",

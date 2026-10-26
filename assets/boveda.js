@@ -1,78 +1,11 @@
-/* SOSistem™ · Bóveda: cifra los datos de las pruebas y los muestra como Código de comunicación del Cubo (33)©.
-   El contenido se cifra de verdad con AES-256-GCM; la clave sale de una frase que solo tú conoces (PBKDF2,
-   200 000 iteraciones). La frase NUNCA se guarda: vive solo en memoria mientras la Terminal está abierta.
-   Lo que se guarda, exporta o sube a GitHub es el texto del cubo: sin la frase no se puede leer, aunque se
-   tenga el archivo o el código de la página.  © Víctor Hugo Ramírez Salgado */
-(function (raiz) {
-"use strict";
-const subtle = (globalThis.crypto && globalThis.crypto.subtle) || null;
-const B32 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";                 // alfabeto del cubo (26 letras + 2–7)
-const te = new TextEncoder(), td = new TextDecoder();
-
-function b32enc(u8) {
-  let bits = 0, val = 0, out = "";
-  for (let i = 0; i < u8.length; i++) { val = (val << 8) | u8[i]; bits += 8; while (bits >= 5) { out += B32[(val >>> (bits - 5)) & 31]; bits -= 5; } }
-  if (bits > 0) out += B32[(val << (5 - bits)) & 31];
-  return out;
-}
-function b32dec(s) {
-  s = s.toUpperCase().replace(/[^A-Z2-7]/g, "");
-  let bits = 0, val = 0; const out = [];
-  for (const c of s) { const i = B32.indexOf(c); if (i < 0) continue; val = (val << 5) | i; bits += 5; if (bits >= 8) { out.push((val >>> (bits - 8)) & 255); bits -= 8; } }
-  return new Uint8Array(out);
-}
-// Firma "3 inicio · 3 final" del sistema 33 (suma de verificación de 6 letras del cubo)
-function firma33(u8) { let h = 2166136261 >>> 0; for (let i = 0; i < u8.length; i++) { h ^= u8[i]; h = Math.imul(h, 16777619) >>> 0; } return b32enc(new Uint8Array([h & 255, (h >>> 8) & 255, (h >>> 16) & 255, (h >>> 24) & 255])).slice(0, 6); }
-
-let clave = null, pista = "";
-
-async function derivar(frase, salt) {
-  const base = await subtle.importKey("raw", te.encode(frase), "PBKDF2", false, ["deriveKey"]);
-  return subtle.deriveKey({ name: "PBKDF2", salt, iterations: 200000, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
-}
-
-// Presenta las letras del cubo en 6 caras (L1…L6), en pares, con la firma 3·3 al inicio y al final.
-function enCubo(letras) {
-  const f = firma33(te.encode(letras));
-  const cuerpo = letras.replace(/(.{2})/g, "$1 ").trim();
-  const partes = cuerpo.split(" ");
-  const porCara = Math.ceil(partes.length / 6);
-  let s = "CUBO·33 ◇ " + f.slice(0, 3) + " ▸\n";
-  for (let c = 0; c < 6; c++) { const trozo = partes.slice(c * porCara, (c + 1) * porCara).join(" "); if (trozo) s += "L" + (c + 1) + " " + trozo + "\n"; }
-  s += "◂ " + f.slice(3, 6) + " · © Cubo (33)";
-  return s;
-}
-
-const api = {
-  disponible: () => !!subtle,
-  tieneClave: () => !!clave,
-  async fijarClave(frase) { if (!subtle || !frase || frase.length < 6) { clave = null; return false; } pista = frase.slice(0, 2) + "…"; clave = { frase }; return true; },
-  olvidarClave() { clave = null; pista = ""; },
-  pista: () => pista,
-
-  // objeto → texto del cubo (cifrado). Cada cifrado usa su propia sal e IV.
-  async cifrarCubo(obj) {
-    if (!clave) throw new Error("Falta la frase de la bóveda (Ajustes → Bóveda).");
-    const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
-    const k = await derivar(clave.frase, salt);
-    const ct = new Uint8Array(await subtle.encrypt({ name: "AES-GCM", iv }, k, te.encode(JSON.stringify(obj))));
-    const todo = new Uint8Array(1 + salt.length + iv.length + ct.length);
-    todo[0] = 0x21; todo.set(salt, 1); todo.set(iv, 17); todo.set(ct, 29);        // 0x21 = versión 1
-    return enCubo(b32enc(todo));
-  },
-
-  // texto del cubo → objeto (descifrado). Lanza si la frase no corresponde.
-  async descifrarCubo(txt) {
-    if (!clave) throw new Error("Falta la frase de la bóveda.");
-    // Toma solo el contenido de las caras L1…L6 (sin encabezado, etiquetas ni firma).
-    const caras = String(txt).split(/\r?\n/).map((l) => (l.match(/^\s*L\d\s+(.*)$/) || [])[1]).filter(Boolean);
-    const u = b32dec((caras.length ? caras.join(" ") : txt).replace(/^.*?▸|◂.*$/gs, ""));
-    if (u[0] !== 0x21) throw new Error("Esto no es un código de bóveda del Cubo (33).");
-    const salt = u.slice(1, 17), iv = u.slice(17, 29), ct = u.slice(29);
-    const k = await derivar(clave.frase, salt);
-    try { return JSON.parse(td.decode(new Uint8Array(await subtle.decrypt({ name: "AES-GCM", iv }, k, ct)))); }
-    catch (e) { throw new Error("La frase no coincide o el código está dañado."); }
-  }
-};
-if (typeof module !== "undefined" && module.exports) module.exports = api; else raiz.SOSBoveda = api;
-})(typeof self !== "undefined" ? self : this);
+/* © Código de comunicación del Cubo (33)© · SOSistem™ · Víctor Hugo Ramírez Salgado · original legible en el repositorio privado */
+CUBO33.run(`
+CUBO·33 ◇ FG5 ▸
+L1 F4 VC AU 2P KN UX G5 DF NX RI JI RA YK 3S AQ WD WN 3G KZ DB HI QG G2 LG OJ QS A3 DP OM QG IY LU N5 ZS AZ DF EB WG C4 ZA OB ZH KZ LC MF ZS A6 JA NR XX GI DN OV SX G5 DS ME QG G3 3N N4 QE HQ 5T MR UW O3 ZA MR SS AY 3P NV 2W 42 LD MF RW TQ 5T NY QG IZ LM EB BX KY TP EA UD GM ZJ YK US 4C RA EA QE K3 BA MN XW 45 DF NZ UW I3 ZA ON SS AY 3J MZ ZG CI DE MU QH MZ LS MR QW II DD N5 XC AQ KF KM WT EN JW FV DU GT J3 EB WG CI DD NR QX MZ JA ON QW YZ JA MR SS A5 LO ME QG M4 TB ON SS A4 LV MU QH G3 3M N4 QH JQ 52 EB RW 63 TP MN SX GI BI KB BE WR CG GI WA UI BA EA ZD AM BA GA YD AI DJ OR SX EY LD NF XW 4Z LT FE XC AT DB EB TH EY LT MU QE 4V KO IN AS A4 3F EB TX KY LS MR QT UI DW NF 3G KI DT N5 WG 6I DF NY QG 2Z LN N5 ZG SY JA NV UW K3 TU OJ QX GI DM ME QF IZ LS NV UW 4Y LM EB SX G5 GD UE QG CY TJ MV ZH IY JO BI QC AI CM N4 QH C5 LF EB ZW KI DH OV QX EZ DB FQ QG K6 DQ N5 ZH IY JA N4 QH G5 LC MU QG CI CH NF 2E Q5 LC EB SX GI DF NQ QH IZ LY OR XS AZ DF NQ QG G5 LC N4 5C A4 3J NY QG YY JA MZ ZG C4 3F EB XG 6I DT MU QH A5 LF MR SS A3 DF MV ZC YI DB OV XH C5 LF EB ZW KC RA EA QH IZ LO M5 QS AZ LM EB QX EY 3I NF 3G 6I DP EB SW YI DD YO ZW I2 LH N4 QG IZ JA NR QS A4 GD UF TW S3 TB FY QC BQ VJ EB LM HL LD OR XX EI CI OV TW 6I CS MF W4 HL LS MV 5C AU 3B NR TW CZ DP EA VC 6C RI MZ 2W 4Y 3U NF XW 4I BI OJ QW S6 RJ EB 5Q UI TV ON SS A4 3U OJ UW G5 BC HM FG G3 3O ON 2C A4 3V MJ 2G YZ JA HU QC QZ 3M N5 RG C3 CU NB UX GL TD OJ 4X A5 DP EA TC MI DH NR XW EY LM KR UG S4 ZO MN ZH S4 DU N4 XH G5 LC OR WG KK JA PR 6C A3 TV NR WD WC TD N5 XH G5 BA II ZT EI B5 EA RE CQ SD IR CU MR 2I JF FE WT CN JZ HV AU KS KN KF KV SX LB MV UM RT GQ 2T MN ZC HM QC AI BA EA QC AI BA EA QC AI BA EA QC AL ZP EB QW YZ TB MJ SX I3 ZA MR SW YI DD OV RG 6I BI GI 3C A3 DF OR ZG C4 ZA FM QD FY UA SM 3S SC TD N5 XH G5 BA OR SS AP JA NZ SX OI CU MV 4H IR LO MN XW IZ LS FA US YI DU MQ QD 2I DO MV 3S AV DF
+L2 PB 2E IZ LD N5 SG K4 RI FE 5Q UC TG OV XG G5 DJ N5 XC AY RT GJ SW 4Y ZI OU 4C SI D3 BI QC A3 DF OQ QG E2 LU OM QD 2I BQ FQ QH MY LM EA 6S AM BM EB XX K5 BA HU QC EI R3 BI QC AZ TP OI QC Q3 DF OQ QG SI B5 EA YD WI DJ EA 6C A5 JY FZ WG K3 TH OR UD WI DJ FM VS SI D3 EB 3G C3 BA HU QC Q5 TB NQ QD YP BA HA US A7 BA OU 4F W2 K5 HM QG E2 LU OM QC WP JA HA 5S A5 3I NF WG KI BI MJ UX I4 ZA HY 6S AN JJ EB 5S A3 3V OQ QC WP JA II ZT EW ZI OZ QW YI B6 HY 7C AK DC NF 2H GI BN EA 2S SK JA EY QD GM K5 HM QG E2 LU OM QC 2P JA GU 5S A7 JA PU FC AI DJ MY QC QY TJ OR ZS AP RA GA US A3 3V OQ QC WP JA II ZT EW ZI OZ QW YI B4 HQ QC QN JA FU QG E2 LU OM US SI BG EA ZT CX J3 BI QC A4 TF OR 2X E3 RA N5 2X IO YK PU FG M5 LO MN 2G S3 3O EB RD GM TE MV RS Q4 ZJ EB 5Q UI BA OM QD 2I DT FZ 2G 6V LQ OB SX EQ 3B ON SS QK JO OJ SX A3 DB MN SS QL 23 LZ AS 2W RS FU 3V 2L 3H FQ QC EI RJ HM FC AI DM MV 2C AY TJ OR ZS AP JA GA WC A5 TB NQ QD 2I BQ HM QG G3 3O ON 2C A3 3V OQ QD 2I C3 LU 5Q UI BA MZ XX EI BI MN XW 44 3U EB RS A3 3G EB ZS SI D3 EB RW 63 TT OQ QG SI B5 EB BD GM RO NF XG IZ LY J5 TC QY ZJ HM QG SZ RA FB US AP BA GA US AY 3P NZ 2G S3 TV MU 5S A5 TB NQ QD 2I BI OZ QW YI B4 HQ QD KK JA PQ QG SO ZA MJ UX I4 ZA FM 6S AN J3 EB UW MI BI MJ UX I4 ZA HY 6S AO BJ EB 5S A3 3V OQ XH A5 LT NA UC Q5 TB NQ QD 4P R6 EA UG E2 LU OM QC 2I BY FE US AJ RA GI 2T KK J3 EB RG S5 DT EA WT 2I BY HM QH 2I D5 BI QC A4 TF OR 2X E3 RA NZ SX OI CV NF XH IO CB OJ ZG C6 JI N5 2X IK J3 BJ 6Q UL ZP EB DG S4 TN ME QC EM ZA NF XG SY 3J N4 QM FN ZA GM QG M2 LO MF WC EI DE MV WC A4 3J ON 2G K3 LB EA ZT GI BI ON 2W 2Y JA MR SS A5 TF OJ UW M2 LD MF RW TQ 5T NY QG IZ JA GY QG YZ LU OJ QX GI DE MV WC AY 3V MJ XS SC TG OV XG G5 DJ N5 XC AZ TJ OJ WW CM ZT FB 2T QK JA PM QG YZ LU EB UC AP JA GI YT MN RR GM 3D EN RR EA 7D 4P RA GA 5S AZ TP OI QC Q3 DF OQ QG SI B5 EA YD WI DJ EA 6C A5 JY FZ WG K3 TH OR UD WI DJ
+L3 FM VS SI D3 EB UC AX R5 EB 2T QW 3J LU 5S A2 BA HU QE 2Y LU NA XG S3 LV NQ UG QL BA GE 3D ON ZX GY YT SK JA HY 7D 4I BQ HM QH 2I DS MV 2H K4 TO EB RD GM TF NZ RS Q3 TF O4 QF K2 LO OQ 4E C4 TS MF 4S QW 3I EA TC AM RV GU WC AK DI EA 7D 4P RA HA US AJ RA GI 2T KL BA FB UC AP R6 HY QD CN RJ EA TC AM RV GU WC AK DI EA 7D 4P RA GI 2C SI BG EA ZD KN K5 FE US 44 3M NF RW KK BQ FQ QD MK J3 EB 6Q UC TM MV 2C AY 3M MF 3G KI B5 EB XH K3 DM FQ QH A2 LT OR QS AP JA EI RD WC QK MF ZX S3 TD EB TH K3 TD OR UW 63 RA MR SX E2 LW MF ZC QZ TS MF ZW KL BA ON QW Y5 BJ EB 5Q UI BA MN XW 44 3U EB RG C4 3F EA 6S AY LX MF UX II DT OV RH I3 DF FZ UW 24 DP OJ 2E WZ LZ FA RH EY LX EI WC A5 DF FZ SW 4Y 3P MR SS QZ TS MF ZW KK JM EA RF AQ SL IR DD EI RM EB TG C3 DT MU WC AW ZC MR SX E2 LW MV FW K6 JC LU UT WC RA EB ZG K5 DV OJ XC A4 3V MJ 2G YZ JO MR SX E2 LW MV FW K6 JI PM QG 4Y LN MU 5C AI SQ IJ FU IR RS EI WC A4 3B NR 2C YI DJ OR SX EY LU NF XW 44 Z2 EA ZD AM BQ GA YC YI DI MF ZW QO RA EJ JU QQ JN GI 2T MI RA PU WC AY TB ON SS YI D3 EB XG C3 LF HI QC EQ KF KM WU OQ 2N EI WC A3 DF NZ TX I2 B2 EA ZD KN RA PU WC AZ TB NR ZW KL BA LM RG K3 TD OJ 4X A5 BC FQ QC EZ DF MN ZH S4 DU EJ OS SO YK PU FA UL ZP EB IH EZ LT MV XH IY JA NR QX GI DM MV 2H EY LT EB SG K3 BA MN 2W E3 ZA MV XC AN RA MN QX EY LT EA UE YM PC QC TE YN RJ FQ QG K3 RA OB QX EZ LT FQ QG G3 3O EB WG CI DG NF ZG 2Y JA GP BL OM ZA MF WC A2 LO NF RW S3 ZA PE QG C3 BA MZ UW 4Y LM FY FG M5 LO MN 2G S3 3O EB SW 4Q 3V MJ XS Q3 DF OR ZG C4 ZJ EB 5Q UI BA MN XW 44 3U EB TC AP JA MZ UX E3 LB GM ZS Q5 DF FZ SW 4Y 3P MR SS Q3 DF OR ZG C4 ZJ FE 5Q UI BA MN XW 44 3U EB RX KZ LS OB XS AP JA NR SX I4 TB OM XH EZ LQ NR QW GZ JI F4 UC 46 ZS PU US 6Z ZM EA RC IM JA EI US 45 DS NF WS QK J3 BI QC AY 3P NZ ZX II DQ MF ZH IZ LT EA 6S AY 3V MV ZH A3 ZO ON YG Y2 LU FA RC AI RJ HM FC AI DD N5 XH G5 BA OB XX EQ 3B OJ QS AP JA JV QX I2 BO
+L4 MN SW S3 BI OB QX E5 DF OM XG YZ LO M5 2G QI BP EA 3C SO YK EA QG YZ LU EB ZS AP JA EJ BV KQ SP YK 3T GM ZA 4K LY OI BC EA VS AZ RO ON WG SY 3F FA YC YI BT FE QC WI BC ED RJ NO C4 NY RD WC RA EB TG 64 RA FB WG K5 BA MM QD 2I BQ HM QG GI B4 EA 3D WI DD FM VS SI D3 EB RW 63 TT OQ QH I4 TP PJ XS AP JA OB QX E5 DF OM XH G3 DJ MN SS QY ZA FI QH A3 3S IN QX EY JM EA UG GI BL EA YS SI BK EB YG 64 SD MF ZG CK JO NJ XW S3 RI EI QC EK J3 EB UW MI BI OR ZG 66 TP FE QH GI BL HU QC ET BC EA VS AK DD EA VS AM JJ EA VS AI RA EI QC WI DU OJ XX U3 ZA FM QC EX DO EI 5S A7 IK EA QH GI BL HU QC FY UX QI QC EI BL EB TC 44 3M NF RW KK BT FQ QD MK JA FM QC EI GC W4 QM FK JA IN 2W E3 ZA FA ZT GK JC HM FC AI DS MV 2H K4 TO EB ZT WC T5 BI FG G3 3O ON 2C AY LQ NE QD 2I D3 BI QC AZ DJ ON YG 63 TJ MJ WG KO RA FA US AP J6 EA QS C4 3V MJ 2G YZ JM BI QC A5 DJ MV XG KQ 3M MF 3G KO RA FA US AP J6 EA QS CY 3M MF 3G KL AK EA QG C4 3Z NZ RS AZ TJ NJ QX EQ 3M MF 3G KK DG OJ QX GZ JJ EB 5S A2 LG EA UC C4 3V MJ 2G YZ JA PR 6C AI LG OJ QX GZ JA PR 6C AZ TS MF ZW KL TM MV XG O5 DI EA 6C AN RJ EB 5S AY 3M MF 3G KI B5 EB XH K3 DM HM QH EZ LU OV ZG 4I DG MF WH GZ J3 EB 6S A4 DJ ON 2G CI B5 EB TH EY LT MU XH G3 DJ MN SS QM BM EA ZC SI BL EA RO FA FG EI 5S AY 3M MF 3G KI B5 EB 5S AZ TS MF ZW KI D5 HM QH EZ LU OV ZG 4I DU OJ 2W KO ZA PU WA UI BA N5 WH M2 LE MF ZE G3 DB OZ SS QK JA PM QG G3 DB OZ SS AP JA NZ 2W Y3 B3 EB YG S4 3U ME QD 2I BC EI 5S A7 JM BI QC A4 DJ ON 2G CO RA FA US AP J6 EB YG S4 3U ME WA UC RA EA XS 6I DP MJ VG K5 DP ED RI NE RA OR SX Q5 DP EB SG K3 BA MN 2W E3 ZA FB RW SZ TS MF SG 6K JO EB BW CZ DB EB RW SZ TS MF SG 6I DV ON QS A4 3V EB YH E3 3Q NF QS A4 3B NQ QG KI CJ KY XA UI BA MF ZX S3 TD EB RW SZ TS MF ZE G5 LC N4 UG 6Y TK FE QH WC RA EA QC A2 LG EA UC CY 3M MF 3G KK JA OR UH E3 3X EB XG K5 ZA IV ZH E3 3S FA RE MY LM OR QS A3 DB EB TH EY LT MU QG IZ JA NR QS AY WD
+L5 WN 3G KZ DB EA UE C2 TV ON 2G K4 ZA 4K DJ EI CC YO ZX MZ LE ME US 4I RJ HM FC AI BA EB RW 63 TT OQ QH GY LM OQ QD 2I DD OJ 4X A5 DP FZ TW K5 CS MF XG I3 3N KZ QW Y5 LF OM UG 4Z LX EB KW S3 TU HB AX E4 TB PE UD CN RJ FE WC A2 LW EA 6S AY 3S PF YH I3 ZO M5 SX IU TB NZ SG 63 KW MF WH KZ LT FB XG K5 ZA KV UW 45 BY IF ZH EY LZ FA YT EK JJ HM FC AI BA EB RW 63 TT OQ QG WI B5 EB QX OY LJ OQ QG IZ LS NF 3G C4 RI MN WG C5 TF FZ TH EY LT MU WC A4 3B NR 2C SO YK EA QC AI DD N5 XH G5 BA MN 2C AP JA NZ SX OI CV NF XH IO CB OJ ZG C6 JI MF 3W C2 LU EB ZX KY TU NR SS 4Z LO MN ZH S4 DU FB 5S A3 TB NV ST UI BC IF CV GL KH IN GS EL BA NF 3C A7 JM EB VS YI DU MU XG K3 TD N5 SG KK CK KN HU 4L TT OR ZG S3 TH NF TH SK DP MJ VC SK JJ FE 5Q UI BA EA QG G3 3O ON 2C A5 DP MR XS AP JA NZ SX OI CV NF XH IO CB OJ ZG C6 JI GE QC WI DT MF WH IL TM MV XG O5 DI EA VS A2 LW FZ WG K3 TH OR UC AK ZA MN 2C 43 DF NZ TX I2 BJ HM FC AI BA EB 2G 6Z DP LM YF 2I B5 EA YH QM RR HM QH I3 3E N4 XH GZ LU FB ZW C3 DU FQ QD CK J3 EB 2G 6Z DP FZ ZW K5 BI NF 3C YI BR G4 UT WI DU N5 SG 6L TT MV 2C QY 3U FQ QD EO JJ HM QC AI BA EA QC AI BP F4 QD A6 BS GE QD 2I DW MV ZH G2 OD WN XC AM IK EA QC AI DS MV 2H K4 TO EB SW 4Q 3V MJ XS QY RT GJ SW 4Y ZI OR XW I3 ZJ FE 5Q UI BA PU WA UC RA EA XS 6I DU MV 4H I3 ZA MR SW YI DD OV RG 6I HC Q2 JC A3 3C NJ SX I3 ZA FB SG K4 3D NF TH EY LE N4 US 4I CM MF XH UY JA ON US A3 DB EB TH EY LT MU QG 43 ZA MN XX E4 TF ON YG 63 TE MU XA UI BA MF ZX S3 TD EB SG K4 3D NF TH EY LS IN 2W E3 ZI OR 4H IK JA PM FC AI BA EB UW MI BI EF RW YY LW MU US A5 DI OJ XX OI DO MV 3S AR LS OJ XX EK BC IZ QW Y5 DB EB WG CI DG OJ QX GZ JA MR SS A3 DB EB RM HM 3W MV SG CL RC FE 5Q UI BA EA QC 6L ZA KR XW 2Y JA ON XW Y3 ZA MV WC AY 3P NZ 2G K3 TJ MR XS AZ DF EB WG C4 ZA MN QX EY LT EB GD DY UA UZ GD MI BI ON UW 4I DF NZ RW CY TF PJ QW I3 ZM EB SX I2 LR OV SX IY LT EB XG SI DG NF ZG 2Y JJ
+L6 FY FC AI BA EB RW 63 TT OQ QG GY LS MF ZS AP JA KN 2H E2 LO M4 UH I6 DU FE XH G4 DM NF 2C QL 24 OI 7V Y3 RP FE XG 2Y LQ FA UG YK JA HU 7C AK DM FZ WW C5 DD NA UC 6X S4 OM VE YX DE LR ZS WK BO FI US IL ZJ EB 6H YI C3 LU UV WM K5 FE XG M2 LM OR SX EK CC N5 XW YZ LB NY UT WC RA EA QC AY 3P NZ ZX II DV EA 6S AY RT GJ SG KY ZI FB RW C4 TB OM XG YZ LO M5 2G QI B7 EB RW C4 TB OM XG U3 3J NY UC EI BC FE QD UI DU PB 2C SL TS MV YG YY LD MU UC 6X RO FI 76 FF VY PT RJ PA RO FI SC 6Z 3T FQ QC EI RJ FE 5Q UI BA EA QG SZ RA FB 2V WM C5 EA QT 2P JA GB 4D EM JJ EB 2G Q4 TP O4 QG 4Z LX EB CX E4 TP OI UC ER LT OR XS A3 TP EB SX GI DV NY QG HQ 5T MR UW O3 ZA MR SS AY WD WN 3G KZ DB EB SG K3 BA IN 2W E3 ZA FA ZT GK JO EI UT WC RA EA QC AY 3P NZ ZX II DT MF WH II B5 EB 2S 44 3M NF RW KK BR FQ QD CN ZJ FQ QG S5 RA HU QH KL TT NR UW GZ JI GE 3S YI BS HE US YI DD OQ QD 2I DV FZ ZW Y2 LD MU UD EO JJ HM FC AI BA EB RW 63 TT OQ QG WI B5 EB QX OY LJ OQ QG IZ LS NF 3G C4 RI MN WG C5 TF FZ TH EY LT MU WC A4 3B NR 2C SO YK EA QC AI DU OJ 4S A6 ZA OJ SX I5 LS NY QE UU 2P JY XH AY LS ON SS Q5 DE FZ SG KY 3P MR SS Q3 TF O4 QF K2 LO OQ 4E C4 TS MF 4S QY LX MF UX II DT OV RH I3 DF FZ SG KY 3S PF YH IK D3 EB XG C3 LF HI QC EQ KF KM WU OQ 2N EI WC A2 LW EB 6S YI DL FQ QG G5 BJ FE US SO ZA PU FC AI BA EB RW C5 DD NA QC QZ JJ EB 5S A5 DI OJ XX OI DO MV 3S AR LS OJ XX EK BC JR QS AZ TS MF ZW KI DO N4 QG G3 3J NZ RW SZ DF EB XS AZ LM EB R4 HM 3E NF TW 6I DF ON 2M HI JA MR Q4 HM LB MR XS 4I RJ HM QH 2C RA EB 6Q U7 J3 BJ UW MI BI OR 4X AZ LP MY QG 23 3E OV WG KI BB HU 6S AI TV NZ SG KZ TJ NZ SW II RA EY TC A3 LP MR 2W YZ JO MV 4H A3 3S OR ZS SI DN N5 SH K3 DF FZ SX Q4 DP OJ 2H GI B5 EB QX A2 J3 EB SW Y4 3F EB ZG C2 L2 FZ JU 6U 2C N5 3G KZ DB EA 6S AY LQ NE 5Q U7 JJ FB 2H S4 DF N5 TC A4 3F NR TC AI J5 HU QC E5 LO MR SW M2 LO MV SC EI B7 EB ZW K3 DG EA 5C A5 DI NF ZS SO YK
+◂ SSO · © Cubo (33)
+`, "assets/boveda.js");

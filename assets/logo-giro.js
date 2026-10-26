@@ -1,86 +1,11 @@
-/* SOSistem™ — logo giratorio: cubo rojo de 6 caras con palabras vitales en código Morse (UIT-R M.1677-1)
-   © Víctor Hugo Ramírez Salgado · Sistema S.O.S.© (Safe Creative 2609046908578)
-   Caras: SOS · SOSISTEM · 911 · AYUDA · SALIDA · AVISO. No suena: el Morse de S.O.S.© solo suena en emergencia o pruebas. */
-(() => {
-  const CARAS = ["SOS", "SOSISTEM", "911", "AYUDA", "SALIDA", "AVISO"];
-  const M = { A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.", G: "--.", H: "....", I: "..", J: ".---", K: "-.-", L: ".-..", M: "--",
-    N: "-.", O: "---", P: ".--.", Q: "--.-", R: ".-.", S: "...", T: "-", U: "..-", V: "...-", W: ".--", X: "-..-", Y: "-.--", Z: "--..",
-    0: "-----", 1: ".----", 2: "..---", 3: "...--", 4: "....-", 5: ".....", 6: "-....", 7: "--...", 8: "---..", 9: "----." };
-  const f = (v) => +v.toFixed(2);
-
-  // Morse en renglones centrados dentro de la banda inferior de la cara (viewBox 100 × 100)
-  function morse(palabra, y0, y1) {
-    const letras = [...palabra].map((c) => M[c]).filter(Boolean);
-    for (const e of [1, .85, .72, .6, .5]) {
-      const r = 3.4 * e, dw = 13 * e, h = 6.8 * e, gi = 3.6 * e, gl = 9 * e, lh = 15 * e;
-      const filas = []; let fila = [], x = 0;
-      letras.forEach((cod) => {
-        const w = [...cod].reduce((a, c) => a + (c === "." ? 2 * r : dw), 0) + gi * (cod.length - 1);
-        let sep = fila.length ? gl : 0;
-        if (fila.length && x + sep + w > 84) { filas.push({ fila, x }); fila = []; x = 0; sep = 0; }
-        fila.push({ x: x + sep, cod }); x += sep + w;
-      });
-      if (fila.length) filas.push({ fila, x });
-      if (filas.length * lh > y1 - y0) continue;
-      let out = "", yc = y0 + ((y1 - y0) - filas.length * lh) / 2 + lh / 2;
-      filas.forEach(({ fila, x: ancho }) => {
-        const dx = 8 + (84 - ancho) / 2;
-        fila.forEach(({ x, cod }) => {
-          let px = dx + x;
-          [...cod].forEach((c) => {
-            out += c === "." ? `<circle cx="${f(px + r)}" cy="${f(yc)}" r="${f(r)}"/>` : `<rect x="${f(px)}" y="${f(yc - h / 2)}" width="${f(dw)}" height="${f(h)}" rx="${f(h / 2)}"/>`;
-            px += (c === "." ? 2 * r : dw) + gi;
-          });
-        });
-        yc += lh;
-      });
-      return out;
-    }
-    return "";
-  }
-  // Cara del cubo: palabra arriba y su Morse abajo (o solo Morse en grande)
-  function cara(palabra, fondo = "#C8102E", tinta = "#fff", soloMorse = false) {
-    const txt = palabra.length > 7 && palabra.includes(" ") ? palabra.split(" ").slice(0, 3) : [palabra];
-    const fs = Math.min(txt.length > 1 ? 22 : 30, 84 / (0.72 * Math.max(...txt.map((t) => t.length), 1)));
-    const tex = soloMorse ? "" : txt.map((t, i) => `<text x="50" y="${f(14 + fs * .78 + i * fs * .95)}" text-anchor="middle" font-family="Archivo, Inter, Arial, sans-serif" font-weight="900" font-size="${f(fs)}" fill="${tinta}">${t}</text>`).join("");
-    const yM = soloMorse ? 12 : 18 + fs * .85 + (txt.length - 1) * fs * .95;
-    return `<svg viewBox="0 0 100 100" aria-hidden="true"><rect x="1" y="1" width="98" height="98" rx="20" fill="${fondo}"/>` +
-      `<rect x="7" y="7" width="86" height="86" rx="15" fill="none" stroke="${tinta}" stroke-opacity=".35" stroke-width="2"/>` +
-      tex + `<g fill="${tinta}">${morse(palabra.replace(/ /g, ""), yM, 90)}</g></svg>`;
-  }
-  // Texto apto para Morse internacional: mayúsculas, sin acentos ni signos (ISO/IEC 646)
-  const normal = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z0-9 ]/g, "").replace(/\s+/g, " ").trim();
-
-  const LADOS = ["translateZ(var(--lg))", "rotateY(90deg) translateZ(var(--lg))", "rotateY(180deg) translateZ(var(--lg))",
-    "rotateY(-90deg) translateZ(var(--lg))", "rotateX(90deg) translateZ(var(--lg))", "rotateX(-90deg) translateZ(var(--lg))"];
-  function crear() {
-    const el = document.createElement("span");
-    el.className = "logo-giro"; el.id = "logo-giro";
-    el.setAttribute("role", "img");
-    el.setAttribute("aria-label", "SOSistem™: cubo con SOS, SOSISTEM, 911, AYUDA, SALIDA y AVISO en código Morse");
-    el.title = CARAS.map((p) => `${p}  ${[...p].map((c) => M[c]).join(" ")}`).join("\n");
-    el.innerHTML = `<span class="lg-cubo">${CARAS.map((p, i) => `<span class="lg-cara" style="transform:${LADOS[i]}">${cara(p)}</span>`).join("")}</span>`;
-    return el;
-  }
-  // Se usa cuando el panel elige el logo «giro» (predeterminado)
-  window.SOSLogoGiro = {
-    poner() {
-      const img = document.getElementById("logo-img");
-      if (!img || document.getElementById("logo-giro")) return;
-      img.hidden = true; img.after(crear());
-    },
-    quitar() { document.getElementById("logo-giro")?.remove(); const img = document.getElementById("logo-img"); if (img) img.hidden = false; },
-    // Cubo amarillo de los separadores: gira mostrando el nombre de su pestaña y su Morse
-    separador(nombre) {
-      const p = normal(nombre) || "SOS";
-      const el = document.createElement("span");
-      el.className = "sep-giro"; el.dataset.palabra = p;
-      el.setAttribute("aria-hidden", "true");
-      el.title = `${p}  ${p.split(" ").map((w) => [...w].map((c) => M[c]).join(" ")).join(" / ")}`;
-      const caras = [cara(p, "#F4C400", "#1B1F27"), cara(p, "#F4C400", "#1B1F27", true), cara(p, "#F4C400", "#1B1F27"), cara(p, "#F4C400", "#1B1F27", true),
-        cara("SOS", "#F4C400", "#1B1F27"), cara("SOS", "#F4C400", "#1B1F27")];
-      el.innerHTML = `<span class="sg-cubo">${caras.map((c, i) => `<span class="lg-cara" style="transform:${LADOS[i]}">${c}</span>`).join("")}</span>`;
-      return el;
-    },
-  };
-})();
+/* © Código de comunicación del Cubo (33)© · SOSistem™ · Víctor Hugo Ramírez Salgado · original legible en el repositorio privado */
+CUBO33.run(`
+CUBO·33 ◇ GFY ▸
+L1 F4 VC AU 2P KN UX G5 DF NX RI JI RA 4K AJ II DM N5 TW 6I DH NF ZG C5 DP OJ UW 6O RA MN 2W E3 ZA OJ XW U3 ZA MR SS AN RA MN QX EY LT EB RW 63 RA OB QW YY LC OJ QX GI DW NF 2G C3 DF OM QG K3 RA MP B3 GZ DJ M5 XS AT LP OJ ZW KI BI KV EV IL KS EB GS 4M JW G4 3S 2M JJ BI QC AI GC VE QF NQ 5N MN 2G 64 RA JB 2W O3 ZA KJ QW 3Q 5N OJ SX UI CT MF WG OY LE N4 QM FN ZA KN UX G5 DF NV QS AU ZO J4 XF GL WC VE QC QU 3B MZ SS AQ 3S MV QX I2 LW MU QD EN RQ HE YD IN RZ GA 4D KN ZY FE FC AI BA IN QX EY LT HI QF GT 2T ED BL OI CT J5 JU SU 2U IV GS BQ VX EA 4T CM JA YK 3S AQ KZ KV CE CI GC W4 QF GQ KM JF CE CI GC W4 QE CV SJ KN HS 4I CO N4 QH G5 LF NZ QT UI DF NQ QE 23 3S ON SS AZ DF EB JS 4T ZO KM XM FK JA ON XW Y3 ZA ON 2W K3 TB EB SW 4I DF NV SX EZ 3F NZ RW SY JA N4 QH A4 TV MV RG C4 ZO EA VC 6C RI FA US AP J6 EB 5Q UI BA MN XW 44 3U EB BU CU SB KM QD 2I C3 EJ JU 6U ZC FQ QC EU 2P KN EV GV CF JU RC YI BC HE YT CI RM EA RE CW KV IR AS EL BA EJ JU CT CJ IR AS EL BA EJ AV MS KT J4 RF 2O YK EA QG G3 3O ON 2C AT JA HU QH WI CB HI QC EL RN EI WC AQ R2 EA RC 2L RO FY RC YI CD HI QC EL JO FU XC EL BA IQ 5C AI RN FY XC EL BA IU 5C AI RO EI WC AR R2 EA RC 4L RN FY RC YI CH HI QC EL JN FY RC YI CI HI QC EL RO FY XC EL BA JE 5C AI RO FY RC YI CK HI QC EL RN FU WS EL BA JM 5C AI RN FY WS EL BA JQ 5C AI RO FU XC 4I RM EB GT UI BC FU WS EL AK EA QC AI CO HI QC EL JO EI WC AT Z2 EA RC 2L JN EI WC AU B2 EA RC 4L JN FY RC YI CR HI QC EL JN FY WS EL BA KI 5C AI RO FU XC EL BA KM 5C AI RO FY XC EL BA KQ 5C AI RN EI WC AV J2 EA RC 4L RN EI WC AV R2 EA RC 4L RO FU RC YI CX HI QC EL RN FU RC YI CY HI QC EL JO FY WS EL BA LE 5C AI RN FY WS 2I RM EB ND UI BC FU WS 4L RC FQ FC AI BA EA YD UI BC FU WS 2L JN EI WC AM J2 EA RC 4L JN FU WS EL BA GI 5C AI RO FY WS 2L JC FQ QD GO RA EI XC 4L RN FU RC YI BU HI QC EL RO FY XC 2I RM EA 2T UI BC FY XC 4L RO EI WC AN R2 EA RC 2L RO FY XC EL BA G4 5C AI RN FU XC 4L RC FQ QD QO RA EI WS 2L JO FY RC YI BZ HI QC EL JN FU WS 4I RA PU 5Q UI BA MN XW 44 3U EB TC AP JA FB 3C SI B5 HY QC W5 RO OR XU M2 LY MV SC QM RJ HM FA UI BA F4 XS AT LP OJ ZW KI DF NY QH EZ LO M5 WG 63 TF OM QG GZ LO OR ZG CZ DP OM QG IZ LO OR ZG 6I DE MU QG YY JA MJ QW 4Z DB EB UW 4Z TF OJ UW 64 RA MR SS A3 DB EB RW C4 TB EA UH M2 LF O5 BG
+L2 66 BA GE YD AI GD S4 QD CM BQ FE FC AI DG OV XG G5 DJ N5 XC A3 LP OJ ZW KK DQ MF WG CY TS ME WC A6 JQ FQ QH SM JJ EB 5Q UI BA EA QG G3 3O ON 2C A3 DF OR ZG C4 ZA HU QF WL RO FZ YG C3 DB MJ ZG CX JO NV QX AK BI MM US AP J6 EB GV WY 25 FE XG M2 LM OR SX EK CC N5 XW YZ LB NY UT WC RA EA QC AZ TP OI QC QY 3P NZ ZX II DF EB XW MI C3 GE WC AL RY GU WC AL RX GI WC AL RW FQ QC 4N K5 FE QH WC RA EA QC AI BA MN XW 44 3U EB ZC AP JA GM XD II BK EB SS YI DE O4 QD 2I BR GM QC UI DF FQ QG QI B5 EA 3C 4O BA FI QG KL BA M5 US AP JA GM XD MI BK EB SS YI DH NQ QD 2I BZ EA VC AZ JM EB WG QI B5 EA YT KI BK EB ST WC RA EA QC AI BA MN XW 44 3U EB TG S3 DB OM QD 2I C3 LU 5S A3 DF OQ QG M2 LM ME QD 2I C3 LU WC A6 BA HU QD AO YK EA QC AI BA EB WG K5 DS MF ZS 4Z TP OJ CW CY 3I FA UG G3 3E FE QD 2P RA PM FC AI BA EA QC AI BA MN XW 44 3U EB 3S AP JA LM XC 4L TD N5 SF 2L TS MV SH KY 3F FA UG CL BA MM US AP J6 EB QS AK ZA FB RS AP J5 HU QC EL RC EA 7S AM RA FI QH EI B2 EB SH OK JM EA YC SI BL EB TW SI BK EA UG G3 3E FZ WG K3 TH OR UC AL JA GE UT WC RA EA QC AI BA EA QG YZ LU EB ZW K4 BA HU QG M2 LM ME XG YZ LO M5 2G QI B7 EB TW YI B2 EA YD WC RA EA QC AI BA EA QG SZ RA FB TG S3 DB FZ WG K3 TH OR UC AJ RG EB 4C AK ZA ON SX AI BL EB 3S AP RA HA 2C SI D3 EB TG S3 DB OM XH A5 LT NA UH WI DG NF WG CL BA PA QH 2K J3 EB TG S3 DB EA 6S AW 25 HM QH QI B5 EA YD WI DT MV YC AP JA GA 5S A7 IK EA QC AI BA EA QC AZ TJ NR QS 44 DV ON UC Q6 ZA PA 5C A6 BA FM QH GZ LQ FQ QG G3 3E EB 6S SO ZA PA QC WP JA ON SX AI BL EB 3T WC RA EA QC AI BA PU UT WC RA EA QC AI BA NF TC AK DG NF WG CL TM MV XG O5 DI FE QG M2 LM MF ZS 44 DV ON UC Q6 ZA MZ UW YY JM EB 4C A7 JJ HM FC AI BA EA QC A2 LG EA UG M2 LM MF ZS 43 DF NZ TX I2 BA FI QG Y2 BA HY QH SM JA FU QH SM BJ EB RW 63 TU NF XH KZ J3 BI QC AI BA EA QG YZ LU EB XX K5 BA HU QC EI RM EB 4W GI B5 EB 4T AI BL EA UC Q6 JR EA WS A6 JQ FE QC 2I DG NF WG C4 ZO NR SW 4Z 3U NA QC UI DM NA US AL ZA GI QC WI DM NA QC 6I BS HM FC AI BA EA QC AZ TJ NR QX GL TG N5 ZE KY LD NA UC Q6 ZA MZ UW YY JM EB 4D UI DB NZ RW Q3 ZA PU US AP J6 EB 5Q UI BA EA QC AI BA EB RW 63 TT OQ QG I6 BA HU QD QI BL EA UD QN BA FU QG C3 TD NB XS SI BP EA ZD WC RA EA QC AI BA EA QG M2 LM ME XG M3 3S IV QW G2 BI FB 5S A6 BM EB RW 6Z BA PU US AP J6
+L3 EB 5Q UI BA EA QC AI BA EA QC A3 DF OQ QH A6 BA HU QG I6 BA FM QH QO YK EA QC AI BA EA QC AI BA LM XC 4L TD N5 SF 2L TG N5 ZE KY LD NA UC QY ZJ EA 6T 4I D3 BI QC AI BA EA QC AI BA EA QC A3 3V OQ QC WP JA MM QD 2P J5 EA RC 4I RA H4 QG AP DD NF ZG G3 DF EB RX QP JC ER 5W MK DQ PA QC WI DS FF 6S EI DD PE 6S EJ D3 MY UH SY ZJ PU RC A4 R5 EI SH WZ RI OI UX 2I RP HZ QC AO RA MA 6H EZ LD OQ QH QP JC ER 5W MK DQ PA UX 2I RA PE 6S EJ D3 MY UH SY ZA FU QG QI BP EA ZC S7 JC EB 3W SZ DU NA 6S EJ D3 MY UG I5 ZJ PU RC A2 DF NF TW Q5 B5 EI SH WZ RI NA UX 2I RA OJ 4D 2I RE PN TC Q2 BA F4 QD EK L5 EI XT 4Y B3 BI QC AI BA EA QC AI BA EA QC A4 DY EA VT 2I BI MM QD 2P J5 EA RC 4I RA H4 QD EI BK EB ZC AO RA MR 3S SI BL EB TW SO YK EA QC AI BA EA QC AI BA PU UT WC RA EA QC AI BA EA QH 2K J3 BI QC AI BA EA QC AI DZ MM QC WP JA NR UD WC RA EA QC AI BA PU UT WC RA EA QC AI BA OJ SX I5 LS NY QG 65 LU HM FC AI BA EB 6Q UI BA EA QH EZ LU OV ZG 4I BC EI 5Q UI BA PU FC AI BP F4 QE GY LS ME QG IZ LM EB RX KY TP HI QH AY LM MF RH EY JA MF ZH E2 LC ME QH SI DT OU QE 23 3S ON SS AY LC MF VG 6I BI N4 QH G3 3M N4 QE 23 3S ON SS AZ LO EB TX EY LO MR SS SC RA EB TH K3 TD OR UW 63 RA MN QX EY JI OB QW YY LC OJ QS YI DG N5 XG I3 ZA HU QC EI 2D HA YT AM SF EI WC A5 DJ NZ 2G CI B5 EA RC GZ TG MY RC YI DT N5 WG 6T LP OJ ZW KI B5 EB TG C3 DT MU US A6 YK EA QC AI DD N5 XH G5 BA OR 4H II B5 EB YG C3 DB MJ ZG CL TM MV XG O5 DI EA 7C AN ZA EY TC A4 DB NR QW E4 TB FZ UW 4Y 3M OV SG K4 ZI EI QC EK JA H4 QH AY LM MF RH EY JO ON YG Y2 LU FA RC AI RJ FZ ZW Y2 LD MU UD AL BA GM US AO RA LN YG C3 DB MJ ZG CX J3 BI QC AI BA MN XW 44 3U EB TH GI B5 EB GW C5 DI FZ WW S3 RI OR 4H IL TM MV XG O5 DI EA 7C AM JA H4 QD EM RA HI QD GM BM EA 4D II BP EA UD AL RX GI QC UI CN MF 2G QL TN MF 4C QL RO FZ 2H Q5 BO NV QX AK BI OQ US AP J6 EB 2C 43 DF NZ TX I2 BJ FQ QD CK JJ FE 5Q UI BA EA QG G3 3O ON 2C A5 DF PA QD 2I DT N5 WG 6T LP OJ ZW KI B7 EA RC EI B2 EB 2H Q5 BO NV QX AK BI OQ WC A2 JJ EA 6T 4I DA HR 2G K6 DU EB 4D 2I RV GA RC A6 J5 EI SH WZ RI GE 2C AK ZA MZ ZS AK RA FY 3T QI BL EB US AK RA MZ ZS AK RA FY 4T KK L5 EI QH IZ LY OQ WW C3 TD NB XX EP JC NV UW IZ DM MU RC AZ TP NZ 2C 2Z TB NV UW Y6 J5 EJ AX EY 3I NF 3G 6L BA JF XH IZ LS FQ QE C4 TJ MF WC YI DT MF XH
+L4 GL LT MV ZG SZ RC EB TG 63 TU FV 3W K2 LH NB 2D 2I RZ GA YC EI DG N5 XH IL LT NF 5G KP JC ER 5W MK DG OM UX 2I RA MZ UW Y3 B5 EI SH W5 DJ NZ 2G C7 JC HY SH W5 D5 HQ XX IZ LY OQ 7G AK JO NJ XW S3 RI EI RC SO YK EA QC AI DD N5 XH G5 BA PF GS AP JA ON XW Y3 2N N5 ZH GZ JA H4 QD CM RA HI QD CO BA FM QG M4 ZA FI QC 4O BV EA VS AK DU PB 2C 43 DF NZ TX I2 BA FU QD CK JA FI QG M4 ZA FI QC 4O JV HM FC AI BA EB ZG K5 DV OJ XC AY B4 ON 3G OI DW NF SX OQ TP PA 6S EM BA GA QD CM BQ EA YT AM BC EB QX E2 LB FV UG SZ DE MV XD 2I TU OJ 2W KI R6 HR ZG KY 3U EB 4D 2I RR EI QH SP JC GE RC A5 3J MR 2G QP JC HE 4C EI DI MV UW O2 DU HU RD SO BC EB ZH QP JC GI YC EI DG NF WG YP JC ER 5W M3 3O MR XX 2I RP HZ QC AK YK EA QC AI BA EB QD Y4 TF MN 2C A6 B5 EI 3S EI DZ HU RD OI RA O5 UW I5 DI HU RD QN RC EB UG K2 LH NB 2D 2I RY GY RC A4 TY HU RD CN JC EB TG S3 DM HU RG 43 3O MU RC A4 3U OJ XW WZ J5 EI SH W5 DJ NZ 2G C7 JC EB ZX I4 TP NN SS 23 3Q MF RW S5 DZ HU RC 4M ZV EI QH G5 DS N5 VW KL LX NF SH I2 B5 EI ZC EL Z6 MA QC WC RA EA QC AI BA OR SX QI BL EB QD YZ ZA MZ UW Y3 B5 EI SH W5 DJ NZ 2G C7 JC HY SH W3 LP OJ ZW KK DQ MF WG CY TS ME XH EZ LQ NR QW GZ JI F4 QC 6Z ZM EA RC EK JM EB 4U 2L BA HE YC S7 J4 F5 TT 4P BP ON 3G OP TA HM FC AI D5 BI QC AL ZP EB KG K6 DU N4 QG C4 DU N4 QH AY LS ME QE 23 3S ON SS A2 LO OR SX E3 TB MN UW 63 TB NQ 5C A3 LB PH B3 U4 3D OV WG C4 ZM EB ZW S3 RA MF RW K3 TU N5 ZS A3 TJ EB ZW SZ 3O N5 ZS AK CJ KN HS 6S KF IM QD MN BW FE FC AI DD N5 XH G5 BA NZ XX E3 LB NQ QD 2I BI OQ US AP J6 EB 2C 43 TP OJ WW C3 DJ PJ SS QI SO IZ CC EK JO OJ SX A3 DB MN SS QL 23 LR 2T AM ZQ GA WV Y5 JQ GM 3G MX JP M4 WC AI RC FE XH I3 2V OB YG K4 SD MF ZW KK BJ FZ ZG K4 DM MF RW KK BP LN PE CL K2 GA WT SI C5 F5 TS YI BC EI US 44 TF OB WG CY 3F FA XV Y4 ZL F5 TS YI BC EA RC SL TU OJ UW 2K BJ HM FA UI BA MN XW 44 3U EB GE CR CP KM QD 2I C3 EJ 2H EY LO ON WG C5 DF LI UH MY LS FA WS 23 DH FE US EL BA EJ ZG 65 DB OR SV SK BZ GB SG KZ ZJ EB 2H EY LO ON WG C5 DF LI UH MY LS FA WS 23 DH FE US EL BA EJ ZG 65 DB OR SV SK BR HA YG IZ LH FE QH I4 TB NZ ZW YY LU MV NC Q5 TB OI UC 2L LM M4 US SI RM BI QC AI BA EJ ZG 65 DB OR SV SK BN HE YG IZ LH FE QH I4 TB NZ ZW YY LU MV NC Q5 TB OI UC 2L LM M4 US SI RM EA RH E3 3U MF 2G KW BI HE YG IZ LH
+L5 FE QH I4 TB NZ ZW YY LU MV NC Q5 TB OI UC 2L LM M4 US SI RM EA RH E3 3U MF 2G KW BI FU 4T AZ DF M4 US A5 DS MF XH G3 DB OR SV UK DW MF ZC QL JN NR TS SK JC LU 5Q UI BA MZ 2W 4Y 3U NF XW 4I DD OJ SW C4 RI FE QH WC RA EA QC AY 3P NZ ZX II DF NQ QD 2I DE N5 RX K3 LF NZ 2C 4Y 3S MV QX IZ KF NR SW 2Z LO OQ UC E4 3Q MF XC EK J3 BI QC AI BA MV WC 4Y 3M MF ZX GT TB NV SS AP JA EJ WG 6Z 3P FV TW S4 TP EI 5S AZ LM FZ UW II B5 EA RG Y3 3H N4 WW O2 LS N4 RD WC RA EA QC AZ LM FZ ZW K5 CB OR 2H E2 LC OV 2G KK BC OJ XW YZ JC FQ QC E2 LN M4 RC SO YK EA QC AI DF NQ XH GZ LU IF 2H I4 TJ MJ 2X IZ JI EJ QX E2 LB FV WG CY TF NQ RC YI BC KN HV G2 LT OR SW 3Y UE UI 5C AY 3V MJ XS AY 3P NY QF GT 2T FQ QF GT 2T JF JV IR KN FQ QD SM JR FQ QE CW KV IR AS YI CT IF GE SR CB EB 4S AQ KW JF JU 6I DF NY QG HQ 5T MR UW O3 ZA JV XX E4 3F EI UT WC RA EA QC AZ LM FZ 2G S5 DM MU QD 2I CD IF JE CU ZO NV QX AK BI OA US AP J6 EB QC I6 3Q PU QC AJ D3 LM XC 4L TQ LU XG 2Y LQ FA UG GK JA HU 7C AT K3 MN OS SL TK N5 UW 4K BC EA RC S7 LA FE XG U3 3J NY UC EX DO EI UT WC RA EA QC AZ LM FZ UW 43 TF OJ EF IT KM EA 6S AY B4 ON YG C3 RA MN WG C4 3T HU RG YZ ZN MN 2W E3 ZC HY SH WQ 2B KJ AV GL TN MF YC QK DQ FQ QG SK JA HU 7C AY B4 ON YG C3 RA MN WG C4 3T HU RG YZ ZN MN QX EY JC EB ZX I6 LM MU 6S E5 DS MF XH GZ TP OJ WT UJ D3 JR AU IT 2T LN UV 27 JC HY SH WY 3B OJ QS Q4 BJ PU 6C 64 3Q MF XD 4Y BJ FZ VG 62 LO FA RC EK L5 HQ XX G4 DB NY 7G AO YK EA QC AI DS MV 2H K4 TO EB SW YO YK EA QH 2C RA EA XS 6I CT MU QH K4 3B EB RX KY LO MR XS AZ LM EB YG C3 TF NQ QG K3 DJ M5 SS AZ LM EB WG 6Z 3P ED BK WZ 3J OJ X4 FO ZA FB YH EZ LE MV 2G K4 TN NF XG CZ DP FE FC AI DX NF XG I3 3X FZ JU 6U 2M N5 TW 6R 3J OJ XS AP JA PM FC AI BA EB YG 63 TF OI UC SI D3 BI QC AI BA EA QG G3 3O ON 2C A2 LN M4 QD 2I DE N5 RX K3 LF NZ 2C 4Z 3F OR CW YZ LN MV XH IQ TZ JF SC QI TM N5 TW 6L LJ NV TS EK J3 BI QC AI BA EA QG SZ RA FA QW S3 LH EB 6H YI DE N5 RX K3 LF NZ 2C 4Z 3F OR CW YZ LN MV XH IQ TZ JF SC QI TM N5 TW 6L LH NF ZG 6I RJ FE QH EZ LU OV ZG 4O YK EA QC AI BA EB UW 2Z ZO NB UW IZ DF NY QD 2I DU OJ 2W KO ZA NF WW OL TB MZ 2G K4 RI MN ZG KY LS FA US SO YK EA QC AI D5 FQ FC AI BA EB YX K2 LU MF ZC QK JA PM QG I3 3D OV WW K3 TU FZ TW K5 CF NR SW 2Z LO OR BH SS LE FA RG Y3 3H N4 WW
+L6 O2 LS N4 RC SP ZO OJ SW 23 3W MU UC SO ZA MN XW 44 3U EB UW 2Z ZA HU QG I3 3D OV WW K3 TU FZ TW K5 CF NR SW 2Z LO OR BH SS LE FA RG Y3 3H N4 WW S3 LH EI UT WI DJ MY QC Q2 LN M4 US A2 LN M4 XG Q2 LE MR SW 4I B5 EB TG C3 DT MU 5S A7 JM BI QC AI BA F4 XS AQ 3V MJ XS AY LN MF ZG S3 DM N4 QG IZ JA NR XX GI DT MV YG C4 TB MR XX EZ LT HI QG O2 LS ME QG 23 3T OR ZG C3 TE N4 QG K3 BA NZ XW 2Y TS MU QG IZ JA ON 2S A4 DF ON 2G DQ 5R ME QH SI DT OU QE 23 3S ON SQ UI BA EA QH GZ LQ MF ZG CZ DP OI UG 43 3N MJ ZG KK JA PM FC AI BA EA QC AY 3P NZ ZX II DQ EA 6S A3 TP OJ WW C3 BI NZ XW 2Y TS MU US A7 D4 EA RF GT 2T EI 5Q UI BA EA QC AI DD N5 XH G5 BA MV WC AP JA MR XW G5 LN MV XH IL TD OJ SW C5 DF IV WG K3 LF NZ 2C QI TT OB QW 4I RJ HM FC AI BA EA QC AZ LM FZ RW YY LT ON HG C3 LF EA 6S AI TT MV YC 2Z 3J OJ XS EO ZA MV WC 4Z DB OR QX GZ LU FZ YG C3 DB MJ ZG CI B5 EB YD WC RA EA QC AI BA MV WC 44 3F OR AX I5 DS NF RH K5 DF FA RG C4 TJ ME WW Q2 LE MR SW 4I RM EA RH I4 TV MU RC SO YK EA QC AI BA EB SW YL TU NF 2G YZ JA HU QG AJ D3 OB 6S AI BE PN YC 44 3Q NR UX IK BC EA RC SL TN MF YC QK DX FE QD 2P RA LM XC 4L TX LU XG 2Y LQ FA UG GK JA HU 7C AT K3 MN OS SL TK N5 UW 4K BC EA RC SK JO NJ XW S3 RI EI QC 6I BC FF 6W AO YK EA QC AI BA EB RW 63 TT OQ QG GY LS MF ZS AP JA LN RW C4 TB FB YC YI BC EN DD IQ ZU GA YC EL BA EI RT CQ RR IY ZD OI RJ FQ QG GY LS ME UH AL BA EI RU MN CD GQ YD AI RM EA RC GM KC GF DD EN ZC FQ QH I4 TV MU US YI DD MF ZG CK DQ FQ QC EI 2G GR BT IM BQ EI WC AI RD GF BD CR RS G4 RC SL BA MN QX EY JI OA WC AI RD IY 2E GN BQ GA RC YI BC EM YU EM KG GI 3S EL BA OR ZH KZ JJ FQ FC AI BA EA QC AI BA MN QX EY JI EJ JU 6U ZC FQ QC EI 2G GR BT IM BQ EI WC AI RD GF BD CR RS G4 RC SL BA MN QX EY JI EJ JU 6U ZC FQ QC EI 2G GR BT IM BQ EI WC AI RD GF BD CR RS G4 RC SX J3 BI QC AI BA EA QG K3 BO NF XG 4Z LS JB KE 2T BA HU QG AP DT OB QW 4I DD NR QX G4 Z5 EJ ZW OL LD OV RG 6I R6 ER 5W GY LS MF ZS 43 LB OA UC QY ZM EB US SI B5 HY QG AP DT OB QW 4I DD NR QX G4 Z5 EJ WG OL LD MF ZG CI RA ON 2H S3 DF HU RH I4 TB NZ ZW M3 3S NU 5C I6 2M IF CE 6U 23 NF OX 2I R6 ER 5W G7 J4 F5 ZX AY LO HZ QC SL TK N5 UW 4K BC EI UX 2P BP ON YG C3 R6 MA 5Q UI BA EA QC AI DS MV 2H K4 TO EB SW YO YK EA QC AI D5 FQ FC AI D5 HM FH 2K JI FE 5Q U
+◂ F4F · © Cubo (33)
+`, "assets/logo-giro.js");

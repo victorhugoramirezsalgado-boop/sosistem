@@ -1,40 +1,11 @@
-/* Cubo Morse© de 12 caras (6 exteriores + 6 interiores) · © Víctor Hugo Ramírez Salgado
-   Al tocar una cara se escucha y destella su Morse (motivo «cubo»). */
-(() => {
-  const cubo = document.getElementById("cm-cubo");
-  if (!cubo) return;
-  // Vista exterior: la cara mira al usuario. Vista interior: se mira la pared opuesta por dentro.
-  const EXT = { frente: "rotateX(-12deg) rotateY(-12deg)", derecha: "rotateX(-12deg) rotateY(-90deg)",
-    "atrás": "rotateX(-12deg) rotateY(-180deg)", izquierda: "rotateX(-12deg) rotateY(90deg)",
-    arriba: "rotateX(-90deg) rotateY(0deg)", abajo: "rotateX(90deg) rotateY(0deg)" };
-  const OPUESTO = { frente: "atrás", "atrás": "frente", derecha: "izquierda", izquierda: "derecha", arriba: "abajo", abajo: "arriba" };
-  const botones = document.querySelectorAll(".cm-lista button");
-  const bExt = document.getElementById("cm-ver-ext"), bInt = document.getElementById("cm-ver-int");
-
-  function vista(interior) {
-    cubo.classList.toggle("ver-interior", interior);
-    bExt?.setAttribute("aria-pressed", String(!interior));
-    bInt?.setAttribute("aria-pressed", String(interior));
-  }
-  function auto() {
-    cubo.style.transform = "";
-    cubo.classList.add("auto");
-    botones.forEach((b) => b.setAttribute("aria-pressed", "false"));
-  }
-  botones.forEach((b) => b.addEventListener("click", () => {
-    const interior = b.dataset.capa === "int";
-    vista(interior);
-    cubo.classList.remove("auto");
-    cubo.style.transform = interior ? EXT[OPUESTO[b.dataset.lado]] : EXT[b.dataset.lado];
-    botones.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    const capa = cubo.querySelector(`.cm-capa[data-cara="${b.dataset.cara}"]`);
-    const palabra = (b.querySelector("span")?.textContent || "");
-    const texto = b.querySelector("b").textContent.replace(/^\d+\.\s*/, "").replace(/[™©.]/g, "");
-    if (window.SOSMorse && capa) SOSMorse.reproducir(texto, capa, { boton: b, motivo: "cubo", volumen: 0.8 });
-    b.title = palabra;
-  }));
-  bExt?.addEventListener("click", () => vista(false));
-  bInt?.addEventListener("click", () => vista(true));
-  document.getElementById("cm-auto")?.addEventListener("click", () => { window.SOSMorse?.detener(); auto(); });
-  auto();
-})();
+/* © Código de comunicación del Cubo (33)© · SOSistem™ · Víctor Hugo Ramírez Salgado · original legible en el repositorio privado */
+CUBO33.run(`
+CUBO·33 ◇ COH ▸
+L1 F4 VC AQ 3V MJ XS AT LP OJ ZW LQ VJ EB SG KI BR GI QG GY LS MF ZS AK BW EB SX Q5 DF OJ UW 64 TF OM QC WI BW EB UW 45 DF OJ UW 64 TF OM US BQ VX ED BK SI CW YO WW G5 DP OI QE Q5 LH N4 QF EY LN YO WX EZ L2 EB JW C3 DH MF SG 6C RA EA QE C3 BA OR XW GY LS EB 2W 4Y JA MN QX EY JA ON SS AZ LT MN 2W G2 DB EB 4S AZ DF ON 2G K3 DM ME QH G5 JA JV XX E4 3F EA UG 23 3U NF 3G 6I GC VN RX KY TP YK 5S SL RA FI XQ UK BI FE QD 2P RA PM FC AI DD N5 XH G5 BA MN 2W E3 ZA HU QG I3 3D OV WW K3 TU FZ TW K5 CF NR SW 2Z LO OR BH SS LE FA RG G3 JN MN 2W E3 ZC FE 5Q UI BA NF TC AK BB MN 2W E3 ZJ EB ZG K5 DV OJ XD WC RA EA XS 6I CW NF ZX IY JA MV 4H IZ LS NF XX EO RA NR QS AY 3B OJ QS A3 LJ OJ QS AY LM EB 2X G5 LB OJ UW 6L RA KZ UX G5 DB EB UW 45 DF OJ UW 64 R2 EB ZW KI DN NF ZG CI DM ME QH AY LS MV SC A3 3Q OV SX G5 DB EB YG 64 RA MR SW 45 DS N4 XA UI BA MN XW 44 3U EB CV QV BA HU QH WI DG OJ SW 45 DF HI QC E4 TP OR
+L2 QX IZ KY FA WT CM TE MV TS SI DS N5 2G C5 DF LE UC 2M JS MR SW OK JC FQ QG IZ LS MV RW QY J2 EA RH E3 3U MF 2G KW BI FU YT EZ DF M4 US A4 TP OR QX IZ KZ FA WT SM DE MV TS SI RM BI QC AI BA EJ QX I4 WD UF ZS EO RA EJ ZG 65 DB OR SV QK BN GE ZG IZ LH FE QH E3 3U MF 2G KW JI FU YT QM DE MV TS SI RM EB UX U4 LV NF SX EZ DB HI QC E4 TP OR QX IZ KY FA WT CM TE MV TS SI DS N5 2G C5 DF LE UD SM DE MV TS SI RM BI QC AI BA MF ZH E2 LC ME 5C AI TS N5 2G C5 DF LA UC 2O JQ MR SW OK JA OJ XX IY LU MV MS QM DE MV TS SI RM EB QW EY LK N4 5C AI TS N5 2G C5 DF LA UD SM DE MV TS SI DS N5 2G C5 DF LE UD AZ DF M4 US EI D5 HM FC AI DD N5 XH G5 BA J5 IF KR KT KR HS AP JA PM QG M4 TF NZ 2G KO RA EJ QX I4 WD UF ZS EL BA EJ QX I4 WD UF ZS EO RA EJ TH EZ LO OR SS EL BA MR SX EZ LD NB QT UI BC NF 5H C5 LJ MV ZG IY JC FQ QG S6 TR OV UW K4 TE ME 5C AI TE MV ZG KY 3I ME RC YI DB OJ ZG SY TB HI QC EY LC MF VG 6I RM EB QW
+L3 EY LK N4 5C AI TB OJ ZG SY TB EI QH 2O YK EA QG G3 3O ON 2C AY TP OR XW 4Z LT EA 6S AZ DP MN 2W 2Z LO OQ XH C5 LF OJ 4V GZ LM MV RX I3 3S IF WG YK BC FZ RW 2L LM NF ZX IY JA MJ 2X I5 DP NY RC SO YK EA QG G3 3O ON 2C AY SF PB 2C AP JA MR XW G5 LN MV XH IL TH MV 2E K3 DF NV SW 45 CC PF EW IK BC MN WS 25 TF OI WW K6 DU EI US YI DC JF XH II B5 EB SG 6Y 3V NV SW 45 BO M5 SX IR LM MV WW K3 TU IJ 4U SZ BI EJ RW 2L LW MV ZC 22 LO OQ RC SO YK BI QC AZ TV NZ RX I2 LP NY QH M2 LT OR QS Q2 LO OR SX E2 LP OI US A6 YK EA QC AI DD OV RG 6L TD NR QX G4 2M NF ZX IL TU N5 TW O3 DF FA RH MZ LS FV UW 45 DF OJ UW 64 RC FQ QG S3 TU MV ZG S3 3S FE 5Q UI BA EA QG ER LY OQ 7S 44 3F OR AX I5 DS NF RH K5 DF FA RG C4 TJ ME WX A4 TF ON ZW KZ BC FQ QF G5 DS NF XG OK BB NF XH IZ LS NF XX EK JJ HM FC AI BA EB RE S3 TU H4 XH GZ LU IF 2H I4 TJ MJ 2X IZ JI EJ QX E2 LB FV YH EZ LT ON SW II RM EB JX I4 TJ NZ TS Q2 LO OR SX E2
+L4 LP OI US SO YK EA QH 2C RA EB TH K3 TD OR UW 63 RA MF 2X I3 ZI FE QH WC RA EA QC AY 3V MJ XS 44 3U PF WG KL TU OJ QW 44 3G N5 ZG 2I B5 EA RC EO YK EA QC AI DD OV RG 6L TD NR QX G4 2M NF ZX IL TB MR SC QI TB OV 2G 6I RJ HM FC AI BA EB RG 65 DP NZ SX GL TG N5 ZE KY LD NA UC QY RJ EA 6T 4I DC FZ ZW K5 CB OR 2H E2 LC OV 2G KK BC MF ZG SY JN OB ZG K4 3T MV SC EL BA EJ TG C3 DT MU RC SK J3 BI QC A7 IK EA QG E3 3U N5 XG K4 ZO MZ XX ER LB MN UC QK DC FE QD 2P RA MI XG CZ DE IV 3G K3 TU JR UX G5 DF NZ SX EK BC MN WG SY 3L EI WC AK BJ EA 6T 4I D3 BI QC AI BA MN XW 44 3U EB UW 45 DF OJ UW 64 RA HU QG EL TE MF 2G C4 3F OQ XG GY LQ ME QD 2P J5 EA RG S3 TU EI 5Q UI BA EA QH M2 LT OR QS Q2 LO OR SX E2 LP OI UT WC RA EA QC AY 3V MJ XS 4Y 3M MF ZX GT DJ ON 2C 44 TF NV XX MZ JI EJ QX K5 DP EI UT WC RA EA QC AY 3V MJ XS 44 3U PF WG KL TU OJ QW 44 3G N5 ZG 2I B5 EB UW 45 DF OJ UW 64 RA H4 QE KW CU LN HV AV KF
+L5 KN KE 6W 3C FZ SG C5 DB ON SX IL TM MF SG 6X K5 EA 5C AR KY KR NW EL TE MF 2G C4 3F OQ XG YY LE N5 OT WC RA EA QC AY TP OR XW 4Z LT FZ TG 64 SF MF RW QK BI PA US AP J6 EB 4C 44 3F OR AX I5 DS NF RH K5 DF FA RG C4 TJ ME WX A4 TF ON ZW KZ BC FQ QF G5 DS NF XG OK DY EA 6T 2P JA MI US SK J3 BI QC AI BA MN XW 44 3U EB RW C4 DB EA 6S AY 3V MJ XS 44 LV MV ZH SU 3F NR SW G5 DP OI UG AL TD NU WW GY LQ MF NW IY LU ME WW GY LS ME 6S EJ D3 MI XG IY LU MF ZW K5 BO MN QX EY L5 EJ OW AK J3 BI QC AI BA MN XW 44 3U EB YG C3 DB MJ ZG CI B5 EA UG EL TR OV SX E6 KT MV WG KY 3U N5 ZC QI TT OB QW 4I RJ H4 XH IZ LY OR BW 63 TU MV XH II D4 PQ QC EI RJ HM FC AI BA EB RW 63 TT OQ QH IZ LY OR XS AP JA MI XH C5 LF OJ 4V GZ LM MV RX I3 3S FA RG EI RJ FZ 2G K6 DU IN XW 45 DF NZ 2C 44 TF OB WG CY 3F FA XV 4X DE FN OC 4X DT FI XS YI BC EI US 44 TF OB WG CY 3F FA XV XY UE UL BK SL S5 F5 TS YI BC EI UT WC RA EA QC A2 LG EA
+L6 UH O2 LO MR XX OL ST J5 JU 23 3S ON SS AJ RG EB RW C4 DB FE QF GT 2T JV XX E4 3F FZ ZG K4 DS N5 SH KY 3J OI UH IZ LY OR XS YI DD MF YG CL BA PM QG E3 3U N5 XD UI DC FQ QG 23 3U NF 3G 6O RA EJ RX KY TP EI WC A5 TP NR 2W 2Z LO HI QD AL RY EB 6S SO YK EA QC AI DC FZ 2G S5 DM MU QD 2I DQ MF WG CY TS ME 5Q UI BA PU US SO YK EA QG ER LY OQ 7S 4Y LE MR CX MZ LO OR GG S4 3U MV XG K4 RI EJ RW Y2 LD NM RC YI BI FE QD 2P RA OZ UX G5 DB FB TG C3 DT MU US SO YK EA QG ES LO OQ 7S 4Y LE MR CX MZ LO OR GG S4 3U MV XG K4 RI EJ RW Y2 LD NM RC YI BI FE QD 2P RA OZ UX G5 DB FB 2H E5 LF FE UT WC RA EB SG 6Y 3V NV SW 45 BO M5 SX IR LM MV WW K3 TU IJ 4U SZ BI EJ RW 2L LB OV 2G 6I RJ H4 XG CZ DE IV 3G K3 TU JR UX G5 DF NZ SX EK BC MN WG SY 3L EI WC AK BJ EA 6T 4I D3 EB 3W S3 TE N5 3S 4U 2P KN GW 64 TT MU 7S 4Z DF OR SW 4Z LS FA UT WI DB OV 2G 6K BJ HM QH 2K J3 BI QC AY LV OR XS QK J3 BJ 6S SK BJ HM FA
+◂ EMO · © Cubo (33)
+`, "assets/cubo-morse.js");
