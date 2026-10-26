@@ -1,8 +1,13 @@
 {
-  "version": "4.0",
+  "version": "4.1",
   "fecha": "2026-10-25",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "4.1",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «12 servicios»: cubo interactivo de 12 aristas, una por servicio (inventario de personas, segregación y clasificación, persona en el suelo, aforo excedido, zonas en m² y m³, pantallas ejecutivas, sismo y voz de auxilio, gases y oxígeno, 911 y nube, estadística ejecutiva, desastre y comité, luz, Morse y bocina); cada arista une dos temas del sistema (personas, espacio, ambiente, emergencia, comunicación y datos) y los 8 vértices son los destinatarios del aviso (N0–N3, Cruz Roja, bomberos, Protección Civil y autoridad). El aviso al 911 exige doble confirmación de sensores y la voz se procesa en el equipo sin grabarse. En los 22 idiomas."
+    },
     {
       "v": "4.0",
       "fecha": "2026-10-25",

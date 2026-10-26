@@ -110,7 +110,8 @@
   "fn_24",
   "fn_25",
   "tab_senales",
-  "tab_terminal"
+  "tab_terminal",
+  "tab_servicios"
  ],
  "idiomas": {
   "es": {
@@ -227,7 +228,8 @@
     "Módulo de pruebas",
     "Simulacros de sonido, caída y sismo para el administrador y el cliente, registrados en bitácora.",
     "Señales",
-    "Terminal"
+    "Terminal",
+    "12 servicios"
    ]
   },
   "en": {
@@ -344,7 +346,8 @@
     "Test module",
     "Sound, fall and earthquake drills for the administrator and the client, logged.",
     "Signals",
-    "Terminal"
+    "Terminal",
+    "12 services"
    ]
   },
   "pt": {
@@ -461,7 +464,8 @@
     "Módulo de testes",
     "Simulações de som, queda e terremoto para o administrador e o cliente, registradas em log.",
     "Sinais",
-    "Terminal"
+    "Terminal",
+    "12 serviços"
    ]
   },
   "fr": {
@@ -578,7 +582,8 @@
     "Module de tests",
     "Exercices de son, de chute et de séisme pour l’administrateur et le client, enregistrés.",
     "Signaux",
-    "Terminal"
+    "Terminal",
+    "12 services"
    ]
   },
   "it": {
@@ -695,7 +700,8 @@
     "Modulo di prova",
     "Esercitazioni di suono, caduta e terremoto per l’amministratore e il cliente, registrate.",
     "Segnali",
-    "Terminale"
+    "Terminale",
+    "12 servizi"
    ]
   },
   "de": {
@@ -812,7 +818,8 @@
     "Testmodul",
     "Ton-, Sturz- und Erdbebenübungen für Administrator und Kunde, protokolliert.",
     "Signale",
-    "Terminal"
+    "Terminal",
+    "12 Dienste"
    ]
   },
   "nl": {
@@ -929,7 +936,8 @@
     "",
     "",
     "Signalen",
-    "Terminal"
+    "Terminal",
+    "12 diensten"
    ]
   },
   "ca": {
@@ -1046,7 +1054,8 @@
     "",
     "",
     "Senyals",
-    "Terminal"
+    "Terminal",
+    "12 serveis"
    ]
   },
   "gl": {
@@ -1163,7 +1172,8 @@
     "",
     "",
     "Sinais",
-    "Terminal"
+    "Terminal",
+    "12 servizos"
    ]
   },
   "eu": {
@@ -1280,7 +1290,8 @@
     "",
     "",
     "Seinaleak",
-    "Terminala"
+    "Terminala",
+    "12 zerbitzu"
    ]
   },
   "da": {
@@ -1397,7 +1408,8 @@
     "",
     "",
     "Signaler",
-    "Terminal"
+    "Terminal",
+    "12 tjenester"
    ]
   },
   "sv": {
@@ -1514,7 +1526,8 @@
     "",
     "",
     "Signaler",
-    "Terminal"
+    "Terminal",
+    "12 tjänster"
    ]
   },
   "nb": {
@@ -1631,7 +1644,8 @@
     "",
     "",
     "Signaler",
-    "Terminal"
+    "Terminal",
+    "12 tjenester"
    ]
   },
   "ga": {
@@ -1748,7 +1762,8 @@
     "",
     "",
     "Comharthaí",
-    "Teirminéal"
+    "Teirminéal",
+    "12 sheirbhís"
    ]
   },
   "el": {
@@ -1865,7 +1880,8 @@
     "",
     "",
     "Σήματα",
-    "Τερματικό"
+    "Τερματικό",
+    "12 υπηρεσίες"
    ]
   },
   "ru": {
@@ -1982,7 +1998,8 @@
     "Тестовый модуль",
     "Учения по звуку, падению и землетрясению для администратора и клиента с записью в журнал.",
     "Сигналы",
-    "Терминал"
+    "Терминал",
+    "12 сервисов"
    ]
   },
   "uk": {
@@ -2099,7 +2116,8 @@
     "",
     "",
     "Сигнали",
-    "Термінал"
+    "Термінал",
+    "12 сервісів"
    ]
   },
   "ar": {
@@ -2216,7 +2234,8 @@
     "وحدة الاختبار",
     "تمارين للصوت والسقوط والزلزال للمسؤول والعميل، مع تسجيلها.",
     "الإشارات",
-    "المحطة"
+    "المحطة",
+    "12 خدمة"
    ]
   },
   "he": {
@@ -2333,7 +2352,8 @@
     "",
     "",
     "אותות",
-    "מסוף"
+    "מסוף",
+    "12 שירותים"
    ]
   },
   "hi": {
@@ -2450,7 +2470,8 @@
     "",
     "",
     "संकेत",
-    "टर्मिनल"
+    "टर्मिनल",
+    "12 सेवाएँ"
    ]
   },
   "zh": {
@@ -2567,7 +2588,8 @@
     "测试模块",
     "为管理员和客户提供声音、跌倒和地震演练，并记录日志。",
     "信号",
-    "终端"
+    "终端",
+    "12 项服务"
    ]
   },
   "ja": {
@@ -2684,7 +2706,8 @@
     "テストモジュール",
     "管理者と顧客向けの音・転倒・地震の訓練を記録付きで実施。",
     "信号",
-    "端末"
+    "端末",
+    "12のサービス"
    ]
   }
  },

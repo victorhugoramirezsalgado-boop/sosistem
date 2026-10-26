@@ -28,11 +28,11 @@
   addEventListener("orientationchange", () => setTimeout(medir, 200));
 
   // ---------- Pestañas ----------
-  const ETIQ = { inicio: "tab_inicio", funciones: "tab_funciones", problema: "tab_problema", datos: "tab_datos", funciona: "tab_funciona", ventajas: "tab_ventajas",
+  const ETIQ = { inicio: "tab_inicio", funciones: "tab_funciones", servicios: "tab_servicios", problema: "tab_problema", datos: "tab_datos", funciona: "tab_funciona", ventajas: "tab_ventajas",
     "pantalla-demo": "tab_pantalla", galeria: "tab_galeria", normativa: "tab_normativa", senales: "tab_senales", clientes: "tab_clientes", piloto: "tab_piloto",
     terminal: "tab_terminal", apoyo: "tab_apoyo", contacto: "tab_contacto", fuentes: "tab_fuentes" };
   const FIJAS = { ssos: "S.S.O.S.©", "cubo-morse": "Cubo Morse©" };
-  const ES = { tab_inicio: "Inicio", tab_funciones: "Funciones", tab_problema: "Problema", tab_datos: "Datos", tab_funciona: "Cómo funciona", tab_ventajas: "Ventajas",
+  const ES = { tab_inicio: "Inicio", tab_funciones: "Funciones", tab_servicios: "12 servicios", tab_problema: "Problema", tab_datos: "Datos", tab_funciona: "Cómo funciona", tab_ventajas: "Ventajas",
     tab_pantalla: "Pantalla", tab_galeria: "Galería", tab_normativa: "Normativa", tab_senales: "Señales", tab_clientes: "Clientes", tab_piloto: "Piloto",
     tab_terminal: "Terminal", tab_apoyo: "Apoyar", tab_contacto: "Contacto", tab_fuentes: "Fuentes", ver_pestanas: "Ver pestañas del sistema", ver_todo: "Ver todo", pestanas: "Pestañas del sistema" };
   const tr = (k) => (window.SOSIdioma && SOSIdioma.texto(k)) || ES[k] || k;
