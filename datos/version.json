@@ -1,8 +1,13 @@
 {
-  "version": "5.0",
+  "version": "5.1",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.1",
+      "fecha": "2026-10-26",
+      "resumen": "Ajustes de la portada: se quita el botón flotante de WhatsApp (el contacto por WhatsApp sigue en la sección de contacto); el selector de idioma de la barra muestra el nombre completo del idioma (código + nombre, sin la lista de países), bien legible en celular; el logo cambia de rojo a naranja (tipo Holanda, un tono más sobrio) en el cubo giratorio y en el sello; el cubo giratorio del logo se mueve también cuando el teléfono tiene activado «Reducir movimiento» (giro más lento en vez de casi detenido)."
+    },
     {
       "v": "5.0",
       "fecha": "2026-10-26",

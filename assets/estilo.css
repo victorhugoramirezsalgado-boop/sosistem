@@ -277,7 +277,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 .cm-lista button.morse-sonando { border-color: var(--brand); }
 .pt-ley i.morse-luz { box-shadow: 0 0 10px #ff2a1f; transform: scale(1.4); }
 @media (prefers-reduced-motion: reduce) { .cm-capa.morse-luz svg { filter: brightness(1.2); } }
-@media (max-width: 600px) { .idioma select { max-width: 64px; padding: 6px 4px; } }
+@media (max-width: 600px) { .idioma select { max-width: 12em; padding: 6px 8px; } }
 
 /* Simulador: alerta sísmica y módulo de pruebas */
 .sim-prueba { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 12px; border-radius: 10px;
@@ -445,10 +445,10 @@ html, body { overflow-x: clip; max-width: 100%; }
 footer { padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 24px)); }
 .top .logo { min-width: 0; }
 .logo-text { overflow: hidden; text-overflow: ellipsis; }
-#idioma { max-width: 9.5em; }
+#idioma { max-width: none; }
 @media (max-width: 420px) {
   .logo-text { font-size: .86rem; }
-  #idioma { max-width: 4.6em; padding-inline: 6px; }
+  #idioma { max-width: 12em; padding-inline: 8px; }
   .top .wrap { gap: 8px; }
   .top .btn.primary { padding: 8px 10px; }
 }
@@ -670,7 +670,7 @@ body.present .hero { padding-top: 40px; }
   100%      { transform: rotateX(-8deg) rotateY(-360deg); }
 }
 .logo:hover .lg-cubo, .logo:focus-visible .lg-cubo { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .lg-cubo { animation-duration: 60s; } }
+@media (prefers-reduced-motion: reduce) { .lg-cubo { animation-duration: 36s; } }
 @media print { .lg-cubo { animation: none; } }
 .logo-cubo[hidden] { display: none !important; }
 
