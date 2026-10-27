@@ -1,8 +1,13 @@
 {
-  "version": "5.3",
+  "version": "5.4",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.4",
+      "fecha": "2026-10-26",
+      "resumen": "Pestañas agrupadas por tema: de 21 a 9 (Inicio; El sistema: funciones, 12 servicios, cómo funciona y ventajas; Problema y datos; S.S.O.S.© y pantallas: módulo, pantalla y galería; Señales y Morse: Cubo Morse©, señales y receptor; Normativa y fuentes; Clientes, piloto y terminal; Fondo y apoyo; Contacto), cada una con su color en el borde izquierdo y en el título de sus secciones, en los 22 idiomas. En computadora (Mac o PC desde 1100 px) las pestañas quedan siempre visibles sin tapar el contenido; la portada sube el cubo de pantallas y quita espacio vacío arriba. La Terminal en computadora deja el diseño de celular: menú lateral, contenido a todo lo ancho y tarjetas en dos columnas."
+    },
     {
       "v": "5.3",
       "fecha": "2026-10-26",

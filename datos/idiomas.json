@@ -113,7 +113,16 @@
   "tab_terminal",
   "tab_servicios",
   "tab_fondo",
-  "tab_receptor"
+  "tab_receptor",
+  "grp_inicio",
+  "grp_sistema",
+  "grp_problema",
+  "grp_ssos",
+  "grp_senales",
+  "grp_normas",
+  "grp_clientes",
+  "grp_apoyo",
+  "grp_contacto"
  ],
  "idiomas": {
   "es": {
@@ -233,7 +242,16 @@
     "Terminal",
     "12 servicios",
     "Fondo SOS",
-    "Receptor Morse"
+    "Receptor Morse",
+    "Inicio",
+    "El sistema",
+    "Problema y datos",
+    "S.S.O.S.© y pantallas",
+    "Señales y Morse",
+    "Normativa y fuentes",
+    "Clientes, piloto y terminal",
+    "Fondo y apoyo",
+    "Contacto"
    ]
   },
   "en": {
@@ -353,7 +371,16 @@
     "Terminal",
     "12 services",
     "SOS Fund",
-    "Morse receiver"
+    "Morse receiver",
+    "Home",
+    "The system",
+    "Problem and data",
+    "S.S.O.S.© and displays",
+    "Signals and Morse",
+    "Regulations and sources",
+    "Clients, pilot and terminal",
+    "Fund and support",
+    "Contact"
    ]
   },
   "pt": {
@@ -473,7 +500,16 @@
     "Terminal",
     "12 serviços",
     "Fundo SOS",
-    "Receptor Morse"
+    "Receptor Morse",
+    "Início",
+    "O sistema",
+    "Problema e dados",
+    "S.S.O.S.© e telas",
+    "Sinais e Morse",
+    "Normas e fontes",
+    "Clientes, piloto e terminal",
+    "Fundo e apoio",
+    "Contato"
    ]
   },
   "fr": {
@@ -593,7 +629,16 @@
     "Terminal",
     "12 services",
     "Fonds SOS",
-    "Récepteur Morse"
+    "Récepteur Morse",
+    "Accueil",
+    "Le système",
+    "Problème et données",
+    "S.S.O.S.© et écrans",
+    "Signaux et morse",
+    "Normes et sources",
+    "Clients, pilote et terminal",
+    "Fonds et soutien",
+    "Contact"
    ]
   },
   "it": {
@@ -713,7 +758,16 @@
     "Terminale",
     "12 servizi",
     "Fondo SOS",
-    "Ricevitore Morse"
+    "Ricevitore Morse",
+    "Home",
+    "Il sistema",
+    "Problema e dati",
+    "S.S.O.S.© e schermi",
+    "Segnali e Morse",
+    "Normativa e fonti",
+    "Clienti, pilota e terminale",
+    "Fondo e sostegno",
+    "Contatti"
    ]
   },
   "de": {
@@ -833,7 +887,16 @@
     "Terminal",
     "12 Dienste",
     "SOS-Fonds",
-    "Morse-Empfänger"
+    "Morse-Empfänger",
+    "Start",
+    "Das System",
+    "Problem und Daten",
+    "S.S.O.S.© und Anzeigen",
+    "Signale und Morse",
+    "Normen und Quellen",
+    "Kunden, Pilot und Terminal",
+    "Fonds und Unterstützung",
+    "Kontakt"
    ]
   },
   "nl": {
@@ -953,7 +1016,16 @@
     "Terminal",
     "12 diensten",
     "SOS-fonds",
-    "Morse-ontvanger"
+    "Morse-ontvanger",
+    "Start",
+    "Het systeem",
+    "Probleem en gegevens",
+    "S.S.O.S.© en schermen",
+    "Signalen en morse",
+    "Regelgeving en bronnen",
+    "Klanten, pilot en terminal",
+    "Fonds en steun",
+    "Contact"
    ]
   },
   "ca": {
@@ -1073,7 +1145,16 @@
     "Terminal",
     "12 serveis",
     "Fons SOS",
-    "Receptor Morse"
+    "Receptor Morse",
+    "Inici",
+    "El sistema",
+    "Problema i dades",
+    "S.S.O.S.© i pantalles",
+    "Senyals i Morse",
+    "Normativa i fonts",
+    "Clients, pilot i terminal",
+    "Fons i suport",
+    "Contacte"
    ]
   },
   "gl": {
@@ -1193,7 +1274,16 @@
     "Terminal",
     "12 servizos",
     "Fondo SOS",
-    "Receptor Morse"
+    "Receptor Morse",
+    "Inicio",
+    "O sistema",
+    "Problema e datos",
+    "S.S.O.S.© e pantallas",
+    "Sinais e Morse",
+    "Normativa e fontes",
+    "Clientes, piloto e terminal",
+    "Fondo e apoio",
+    "Contacto"
    ]
   },
   "eu": {
@@ -1313,7 +1403,16 @@
     "Terminala",
     "12 zerbitzu",
     "SOS funtsa",
-    "Morse hargailua"
+    "Morse hargailua",
+    "Hasiera",
+    "Sistema",
+    "Arazoa eta datuak",
+    "S.S.O.S.© eta pantailak",
+    "Seinaleak eta Morse",
+    "Araudia eta iturriak",
+    "Bezeroak, pilotua eta terminala",
+    "Funtsa eta laguntza",
+    "Harremana"
    ]
   },
   "da": {
@@ -1433,7 +1532,16 @@
     "Terminal",
     "12 tjenester",
     "SOS-fond",
-    "Morse-modtager"
+    "Morse-modtager",
+    "Forside",
+    "Systemet",
+    "Problem og data",
+    "S.S.O.S.© og skærme",
+    "Signaler og morse",
+    "Regler og kilder",
+    "Kunder, pilot og terminal",
+    "Fond og støtte",
+    "Kontakt"
    ]
   },
   "sv": {
@@ -1553,7 +1661,16 @@
     "Terminal",
     "12 tjänster",
     "SOS-fond",
-    "Morsemottagare"
+    "Morsemottagare",
+    "Start",
+    "Systemet",
+    "Problem och data",
+    "S.S.O.S.© och skärmar",
+    "Signaler och morse",
+    "Regler och källor",
+    "Kunder, pilot och terminal",
+    "Fond och stöd",
+    "Kontakt"
    ]
   },
   "nb": {
@@ -1673,7 +1790,16 @@
     "Terminal",
     "12 tjenester",
     "SOS-fond",
-    "Morsemottaker"
+    "Morsemottaker",
+    "Hjem",
+    "Systemet",
+    "Problem og data",
+    "S.S.O.S.© og skjermer",
+    "Signaler og morse",
+    "Regelverk og kilder",
+    "Kunder, pilot og terminal",
+    "Fond og støtte",
+    "Kontakt"
    ]
   },
   "ga": {
@@ -1793,7 +1919,16 @@
     "Teirminéal",
     "12 sheirbhís",
     "Ciste SOS",
-    "Glacadóir Morse"
+    "Glacadóir Morse",
+    "Baile",
+    "An córas",
+    "Fadhb agus sonraí",
+    "S.S.O.S.© agus scáileáin",
+    "Comharthaí agus Morse",
+    "Rialacháin agus foinsí",
+    "Cliaint, píolóta agus teirminéal",
+    "Ciste agus tacaíocht",
+    "Teagmháil"
    ]
   },
   "el": {
@@ -1913,7 +2048,16 @@
     "Τερματικό",
     "12 υπηρεσίες",
     "Ταμείο SOS",
-    "Δέκτης Μορς"
+    "Δέκτης Μορς",
+    "Αρχική",
+    "Το σύστημα",
+    "Πρόβλημα και δεδομένα",
+    "S.S.O.S.© και οθόνες",
+    "Σήματα και Μορς",
+    "Κανονισμοί και πηγές",
+    "Πελάτες, πιλοτικό και τερματικό",
+    "Ταμείο και υποστήριξη",
+    "Επικοινωνία"
    ]
   },
   "ru": {
@@ -2033,7 +2177,16 @@
     "Терминал",
     "12 сервисов",
     "Фонд SOS",
-    "Приёмник Морзе"
+    "Приёмник Морзе",
+    "Главная",
+    "Система",
+    "Проблема и данные",
+    "S.S.O.S.© и экраны",
+    "Сигналы и Морзе",
+    "Нормы и источники",
+    "Клиенты, пилот и терминал",
+    "Фонд и поддержка",
+    "Контакты"
    ]
   },
   "uk": {
@@ -2153,7 +2306,16 @@
     "Термінал",
     "12 сервісів",
     "Фонд SOS",
-    "Приймач Морзе"
+    "Приймач Морзе",
+    "Головна",
+    "Система",
+    "Проблема і дані",
+    "S.S.O.S.© і екрани",
+    "Сигнали і Морзе",
+    "Норми і джерела",
+    "Клієнти, пілот і термінал",
+    "Фонд і підтримка",
+    "Контакти"
    ]
   },
   "ar": {
@@ -2273,7 +2435,16 @@
     "المحطة",
     "12 خدمة",
     "صندوق SOS",
-    "مستقبل مورس"
+    "مستقبل مورس",
+    "الرئيسية",
+    "النظام",
+    "المشكلة والبيانات",
+    "S.S.O.S.© والشاشات",
+    "الإشارات ومورس",
+    "اللوائح والمصادر",
+    "العملاء والتجربة والمحطة",
+    "الصندوق والدعم",
+    "اتصل بنا"
    ]
   },
   "he": {
@@ -2393,7 +2564,16 @@
     "מסוף",
     "12 שירותים",
     "קרן SOS",
-    "מקלט מורס"
+    "מקלט מורס",
+    "דף הבית",
+    "המערכת",
+    "הבעיה והנתונים",
+    "S.S.O.S.© ומסכים",
+    "אותות ומורס",
+    "תקנות ומקורות",
+    "לקוחות, פיילוט ומסוף",
+    "קרן ותמיכה",
+    "צור קשר"
    ]
   },
   "hi": {
@@ -2513,7 +2693,16 @@
     "टर्मिनल",
     "12 सेवाएँ",
     "SOS कोष",
-    "मोर्स रिसीवर"
+    "मोर्स रिसीवर",
+    "मुखपृष्ठ",
+    "प्रणाली",
+    "समस्या और आँकड़े",
+    "S.S.O.S.© और स्क्रीन",
+    "संकेत और मोर्स",
+    "नियम और स्रोत",
+    "ग्राहक, पायलट और टर्मिनल",
+    "कोष और सहयोग",
+    "संपर्क"
    ]
   },
   "zh": {
@@ -2633,7 +2822,16 @@
     "终端",
     "12 项服务",
     "SOS 基金",
-    "摩尔斯接收器"
+    "摩尔斯接收器",
+    "首页",
+    "系统",
+    "问题与数据",
+    "S.S.O.S.© 与显示屏",
+    "信号与摩尔斯",
+    "法规与来源",
+    "客户、试点与终端",
+    "基金与支持",
+    "联系"
    ]
   },
   "ja": {
@@ -2753,7 +2951,16 @@
     "端末",
     "12のサービス",
     "SOS基金",
-    "モールス受信機"
+    "モールス受信機",
+    "ホーム",
+    "システム",
+    "課題とデータ",
+    "S.S.O.S.© と表示画面",
+    "信号とモールス",
+    "規制と出典",
+    "顧客・パイロット・端末",
+    "基金と支援",
+    "お問い合わせ"
    ]
   }
  },
