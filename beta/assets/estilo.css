@@ -1144,3 +1144,14 @@ body { padding-bottom: 28px; }
 .pest-izq .pestanas { right: auto; left: max(0px, env(safe-area-inset-left)); justify-items: start; padding: 4px 8px 8px 0; transform: translateX(-110%); }
 .pest-izq.pestanas-abiertas .pestanas { transform: none; }
 .pest-izq .pestanas button { border-right: 1px solid var(--line); border-left: 0; border-radius: 0 10px 10px 0; }
+
+/* Beta · pestañas del lado izquierdo: pegadas a la orilla, mismo ancho y con el color de su grupo */
+.pest-izq .pestanas { left: 0; right: auto; width: 11.5em; justify-items: stretch; padding: 4px 0 8px 0; }
+.pest-izq .pestanas button { width: 100%; max-width: none; margin: 0; text-align: left;
+  border-left: 0; border-right: 6px solid var(--gc, var(--line)); border-radius: 0 10px 10px 0; }
+.pest-izq .pestanas button[aria-current="page"] { background: var(--gc, var(--iso-azul)); border-color: var(--gc, var(--iso-azul)); color: #fff; }
+.pest-izq .ver-pestanas { left: 0 !important; }
+/* Lado derecho: también mismo ancho y pegadas a la orilla */
+html:not(.pest-izq) .pestanas { width: 11.5em; justify-items: stretch; padding-left: 0; }
+html:not(.pest-izq) .pestanas button { width: 100%; max-width: none; margin: 0; }
+.beta-claude { font-weight: 800; }
