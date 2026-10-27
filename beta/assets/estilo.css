@@ -1134,3 +1134,13 @@ section[id] { scroll-margin-top: 96px; }
 /* Beta: el aviso va abajo para no mover la barra ni las pestañas */
 .beta-aviso { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; font-size: .75rem; padding: 4px 10px calc(4px + env(safe-area-inset-bottom)); }
 body { padding-bottom: 28px; }
+
+/* Beta · botón «Pestañas» movible: se pega al borde izquierdo o derecho */
+.ver-pestanas { touch-action: none; user-select: none; -webkit-user-select: none; }
+.pest-moviendo .ver-pestanas { box-shadow: 0 8px 22px rgba(15,27,45,.35); transform: scale(1.06); cursor: grabbing; }
+.pest-cinta { box-sizing: border-box; text-align: left; }
+.pest-izq .ver-pestanas, .pest-izq .pest-cinta { border-right: 1px solid var(--line); border-left: 0; border-radius: 0 0 10px 0; }
+.pest-izq .pest-cinta { border-left: 0; border-right: 3px solid var(--gc, var(--line)); border-radius: 0 0 8px 0; }
+.pest-izq .pestanas { right: auto; left: max(0px, env(safe-area-inset-left)); justify-items: start; padding: 4px 8px 8px 0; transform: translateX(-110%); }
+.pest-izq.pestanas-abiertas .pestanas { transform: none; }
+.pest-izq .pestanas button { border-right: 1px solid var(--line); border-left: 0; border-radius: 0 10px 10px 0; }
