@@ -6,7 +6,7 @@ const BASE = ["./", "index.html", "assets/estilo.css", "assets/cubo-rt.js", "ass
   "assets/pantalla.js", "assets/cubo-morse.js", "assets/idiomas.js", "assets/banderas.js", "assets/servicios12.js", "assets/pestanas.js",
   "assets/rastreo.js", "assets/morse-motor.js", "assets/morse-toma.js", "assets/receptor.js", "assets/logo.svg", "assets/icono.svg", "assets/icono-180.png", "assets/icono-192.png",
   "datos/idiomas.json", "datos/config.json", "datos/version.json", "datos/textos/es.json", "terminal.html", "terminos-pruebas.html"];
-const NUNCA = /admin|\.enc\.json/;
+const NUNCA = /admin|\.enc\.json|beta-acceso/;
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.all(BASE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
 });

@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "alg": "PBKDF2-SHA256",
+  "iter": 310000,
+  "sal": null,
+  "hash": null,
+  "ver": null,
+  "nota": "Sin clave: la primera clave que fije el administrador (con token de GitHub) quedará como contraseña de la Página Beta."
+}
