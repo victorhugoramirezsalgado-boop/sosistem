@@ -33,7 +33,7 @@
   // Llave de sesión: se deriva de la clave con otra sal; en el repositorio solo queda su SHA-256 (no sirve para entrar)
   const sal2 = (sal) => Uint8Array.from(sal).reverse();
   const sha = async (t) => b64(await crypto.subtle.digest("SHA-256", te.encode(t)));
-  const abrir = () => { H.classList.remove("beta-cerrada"); document.getElementById("beta-puerta")?.remove(); };
+  const abrir = () => { H.classList.remove("beta-cerrada"); document.getElementById("beta-puerta")?.remove(); requestAnimationFrame(() => dispatchEvent(new Event("resize"))); };
   const leerLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const leerSS = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
 
