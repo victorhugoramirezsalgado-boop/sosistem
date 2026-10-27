@@ -311,3 +311,16 @@ body.bolsillo{overflow:hidden}
 .t-beta-tag{display:inline-block;background:var(--iso-amarillo);color:#000;font:800 .7rem var(--mono);letter-spacing:.06em;border-radius:6px;padding:4px 8px}
 .t-beta-chk{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;margin:0 0 12px;cursor:pointer}
 .t-beta-chk input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--iso-azul)}
+
+/* Enlace 5.3: vinculación por frase del recinto, dispositivos y sensores de la pantalla */
+.t-enl-fila{display:grid;grid-template-columns:1fr auto;gap:6px}
+.t-enl-fila input{min-height:44px;border-radius:10px;border:1px solid var(--line);background:#07101d;color:var(--ink);padding:8px 12px;font:600 .9rem var(--mono);min-width:0}
+.t-enl-disp{display:grid;gap:6px}
+.t-enl-disp button{display:flex;justify-content:space-between;gap:8px;align-items:center;text-align:left;border:1px solid var(--line);border-radius:10px;background:var(--sf2);color:var(--ink);padding:9px 10px;font:600 .82rem var(--font);cursor:pointer}
+.t-enl-disp button[aria-pressed="true"]{border-color:#DB641C;box-shadow:inset 0 0 0 1px #DB641C}
+.t-enl-disp small{color:var(--ink3);font-weight:500}
+.t-enl-disp i{font-style:normal;font:700 .65rem var(--mono);color:var(--ok)}
+.t-enl-disp i.off{color:var(--ink3)}
+
+/* 5.3 · Logo naranja 1.5× */
+.t-logo img{width:45px;height:45px}

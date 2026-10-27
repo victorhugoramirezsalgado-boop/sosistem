@@ -18,7 +18,7 @@
 </head>
 <body>
 <header class="t-top">
-  <a class="t-logo" href="./" aria-label="Ir a sosistem.com"><img src="assets/icono.svg" alt="" width="30" height="30"><span><b>SOSistem™</b><small>Terminal de pruebas</small></span></a>
+  <a class="t-logo" href="./" aria-label="Ir a sosistem.com"><img src="assets/icono.svg" alt="" width="45" height="45"><span><b>SOSistem™</b><small>Terminal de pruebas</small></span></a>
   <span class="t-pill" id="estado-pill" data-e="detenido">DETENIDO</span>
 </header>
 
@@ -87,6 +87,21 @@
             <label class="t-mini-chk"><input type="checkbox" id="enl-sonar" checked> Sonar la alarma también en esta pantalla</label>
           </form>
           <div class="t-enl-est" id="enl-est" data-e="off">Sin enlace</div>
+          <div class="t-enl-auto" id="enl-auto">
+            <p class="t-nota" style="margin:10px 0 6px"><b>Vincular sin enviar código:</b> escribe la misma frase del recinto en el celular y en la pantalla, una sola vez. Desde ahí se encuentran solos cada vez que abran la terminal, sin AirDrop ni mensajes.</p>
+            <div class="t-enl-fila"><input id="enl-frase" type="password" autocomplete="off" spellcheck="false" placeholder="Frase del recinto (mín. 8 letras)"><button class="t-btn" type="button" id="enl-vincular">Vincular</button></div>
+            <p class="t-nota" id="enl-frase-est" style="margin:4px 0 0"></p>
+            <button class="t-btn" type="button" id="enl-reconectar" style="margin-top:8px">↻ Conectar ahora</button>
+          </div>
+          <div id="enl-disp-caja" hidden>
+            <p class="t-nota" style="margin:10px 0 6px"><b>Dispositivos en el recinto</b> · toca uno para verlo. Si el actual se apaga, la pantalla pasa sola al que siga activo.</p>
+            <div class="t-enl-disp" id="enl-disp"></div>
+          </div>
+          <div id="enl-verif-caja" hidden>
+            <label class="t-mini-chk" style="margin-top:10px;font-size:.8rem"><input type="checkbox" id="enl-verif"> Verificar con los sensores de esta pantalla (micrófono y, si los tiene, movimiento)</label>
+            <div class="t-mono" id="enl-verif-est" style="margin-top:6px">Sensores de la pantalla apagados.</div>
+            <ol class="t-ev" id="enl-verif-lista"></ol>
+          </div>
         </div>
 
         <div class="t-card">
@@ -334,14 +349,15 @@
   </div>
 </div>
 
-<script src="assets/cubo-rt.js?v=5.2"></script>
-<script src="assets/morse.js?v=5.2"></script>
-<script src="assets/banderas.js?v=5.2"></script>
-<script src="assets/pantallas6.js?v=5.2"></script>
-<script src="assets/mapeo.js?v=5.2"></script>
-<script src="assets/boveda.js?v=5.2"></script>
-<script src="assets/estadisticas.js?v=5.2"></script>
-<script src="assets/terminal.js?v=5.2"></script>
+<script src="assets/cubo-rt.js?v=5.3"></script>
+<script src="assets/morse.js?v=5.3"></script>
+<script src="assets/banderas.js?v=5.3"></script>
+<script src="assets/pantallas6.js?v=5.3"></script>
+<script src="assets/mapeo.js?v=5.3"></script>
+<script src="assets/boveda.js?v=5.3"></script>
+<script src="assets/cabecera.js?v=5.3"></script>
+<script src="assets/estadisticas.js?v=5.3"></script>
+<script src="assets/terminal.js?v=5.3"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */

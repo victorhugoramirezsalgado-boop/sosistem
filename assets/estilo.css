@@ -64,11 +64,11 @@ p { margin: 0 0 1em; color: var(--ink-2); }
 /* Barra superior */
 .top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; gap: 12px; min-height: 60px; }
+.top .wrap { display: flex; align-items: center; gap: 12px; min-height: 80px; padding-block: 6px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; color: var(--ink); white-space: nowrap; flex: none; }
 .top nav .btn { white-space: nowrap; }
 .show-xs { display: none; }
-.logo-mark { width: 34px; height: 34px; border-radius: 9px; background: var(--brand); color: #fff; display: grid;
+.logo-mark { width: 51px; height: 51px; border-radius: 9px; background: var(--brand); color: #fff; display: grid;
   place-items: center; font-size: .6rem; letter-spacing: 0; white-space: nowrap; flex: none; }
 .top nav { margin-left: auto; display: flex; gap: 6px; align-items: center; }
 .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface);
@@ -242,7 +242,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .82
 }
 
 /* Logo en el encabezado */
-.logo-cubo { width: 38px; height: 41px; flex: none; display: block; }
+.logo-cubo { width: 57px; height: 62px; flex: none; display: block; }
 
 /* Cubo Morse© en 3D */
 .cm-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
@@ -476,7 +476,7 @@ footer { padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 24px)); }
 :root[data-pantalla="movil"][data-orientacion="horizontal"] .top .wrap { min-height: 48px; }
 
 /* Logo */
-.logo-cubo { width: 38px; height: 38px; object-fit: contain; flex: none; }
+.logo-cubo { width: 57px; height: 57px; object-fit: contain; flex: none; }
 
 /* Fuentes debajo de cada sección (APA 7) */
 .fuentes-sec { margin-top: 16px; padding: 12px 14px; border-top: 1px solid var(--line); font-size: .8rem; color: var(--ink-3); }
@@ -582,7 +582,7 @@ section.blk { padding: 22px 0 30px; border-top: 0; }
 section.blk h2 { margin-bottom: .4em; }
 .sep-sec { display: flex; align-items: center; gap: 10px; max-width: 1120px; margin: 0 auto 18px; padding: 0 16px; }
 .sep-sec .sep-l { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent); }
-.sep-sec img { width: 18px; height: 19px; opacity: .85; }
+.sep-sec img { width: 27px; height: 29px; opacity: .85; }
 .sep-sec b { font: 700 .72rem var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 @media (min-width: 1600px) { .sep-sec { max-width: 1280px; } }
 @media (max-width: 600px) { section.blk { padding: 16px 0 24px; } .sep-sec { margin-bottom: 12px; } }
@@ -673,7 +673,7 @@ body.present .hero { padding-top: 40px; }
 .gal-ancha { margin: 0 0 12px; padding: 10px; } .gal-ancha img { width: 100%; height: auto; border-radius: 9px; display: block; } .gal-ancha figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 8px; }
 
 /* Logo giratorio SOSistem™: cubo rojo de 6 caras con palabras vitales en Morse (oct-2026) */
-.logo-giro { --lg: 20px; width: 40px; height: 40px; flex: none; display: block; perspective: 220px; }
+.logo-giro { --lg: 30px; width: 60px; height: 60px; flex: none; display: block; perspective: 330px; }
 .lg-cubo { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; animation: lg-giro 18s cubic-bezier(.6,0,.3,1) infinite; }
 .lg-cara { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .lg-cara svg { width: 100%; height: 100%; display: block; }
@@ -692,7 +692,7 @@ body.present .hero { padding-top: 40px; }
 .logo-cubo[hidden] { display: none !important; }
 
 /* Separadores de sección: cubo amarillo giratorio con el nombre de la pestaña en Morse (oct-2026) */
-.sep-giro { --lg: 14px; width: 28px; height: 28px; flex: none; display: block; perspective: 160px; }
+.sep-giro { --lg: 21px; width: 42px; height: 42px; flex: none; display: block; perspective: 240px; }
 .sg-cubo { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; animation: sg-giro 12s cubic-bezier(.6,0,.3,1) infinite; }
 @keyframes sg-giro {
   0%, 20% { transform: rotateX(-10deg) rotateY(0deg); }
@@ -795,3 +795,16 @@ body.present .hero { padding-top: 40px; }
   .top nav { min-width: 0; }
   .top nav .btn.primary { flex: none; }
 }
+
+/* 5.3 · Separadores de pestaña: cubo naranja, nombre, Morse y banderas del Código Internacional de Señales; logos 1.5× */
+.sep-sec { flex-wrap: wrap; row-gap: 8px; }
+.sep-sec .sep-t { display: grid; justify-items: center; gap: 2px; }
+.sep-sec .sep-m { font: 700 .74rem ui-monospace, Menlo, monospace; letter-spacing: .12em; color: #DB641C; white-space: nowrap; }
+.sep-sec .sep-band { flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; }
+.sep-sec .sep-band .ics-pal { display: inline-flex; gap: 2px; }
+.sep-sec .sep-band svg { height: 18px; width: auto; border-radius: 1px; box-shadow: 0 0 0 .5px rgba(128,128,128,.6); }
+.sep-sec .sep-band[hidden] { display: none; }
+@media (max-width: 600px) { .logo-cubo { width: 48px; height: 48px; } .logo-giro { --lg: 24px; width: 48px; height: 48px; } .sep-sec .sep-m { white-space: normal; text-align: center; font-size: .68rem; } }
+html { scroll-padding-top: 96px; }
+section[id] { scroll-margin-top: 96px; }
+.sep-sec .sep-band .ics-pal { flex-wrap: wrap; justify-content: center; }

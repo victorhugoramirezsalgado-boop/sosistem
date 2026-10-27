@@ -1,8 +1,13 @@
 {
-  "version": "5.2",
+  "version": "5.3",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.3",
+      "fecha": "2026-10-26",
+      "resumen": "Identidad: el logo rojo pasa a naranja SOSistem™ en el ícono de la Terminal, el favicon, los íconos de la app y el Cubo Morse del panel; todos los logos 1.5 veces más grandes. Cada pestaña (sitio, Terminal y panel de administrador) muestra el logo naranja con letras, su nombre, su código Morse y el nombre en banderas del Código Internacional de Señales. Enlace de la Terminal: vinculación por frase del recinto (la misma frase en el celular y en la pantalla, una sola vez, sin enviar código), reconexión automática al volver a la página o al recuperar internet, botón «Conectar ahora», lista de dispositivos del recinto con cambio de celular en un toque y cambio automático si el actual se apaga; la pantalla puede usar sus propios sensores (micrófono y movimiento si los tiene) para verificar cada alerta o prueba que reporta el celular."
+    },
     {
       "v": "5.2",
       "fecha": "2026-10-26",
