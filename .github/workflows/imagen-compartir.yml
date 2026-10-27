@@ -1,0 +1,38 @@
+# Imagen para compartir de SOSistem™ (WhatsApp, Instagram, Facebook, LinkedIn) · © Víctor Hugo Ramírez Salgado
+# En cada cambio del sitio vuelve a tomar la foto de la terminal NODO S.O.S.© y la compone con el Cubo Morse© naranja;
+# la liga de la imagen lleva la versión para que las redes sociales no muestren una imagen vieja.
+name: Imagen para compartir
+on:
+  push:
+    branches: [main]
+    paths: ['index.html', 'assets/**', 'datos/**', 'herramientas/og.mjs']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: imagen-compartir
+  cancel-in-progress: true
+jobs:
+  og:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Navegador
+        run: |
+          npm i --no-save playwright@1.47.2
+          npx playwright install --with-deps chromium
+      - name: Generar imagen
+        run: |
+          python3 -m http.server 8765 >/dev/null 2>&1 &
+          sleep 2
+          node herramientas/og.mjs
+      - name: Guardar
+        run: |
+          git config user.name "SOSistem imagen"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/og-sosistem.png index.html
+          git diff --cached --quiet || (git commit -m "Imagen para compartir actualizada [skip ci]" && git push)
