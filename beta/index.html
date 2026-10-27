@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOSistem™ · Sistema S.O.S.© · Alerta temprana para la seguridad humana</title>
+<meta name="description" content="SOSistem™ (Sistema S.O.S.©): terminales y pantallas físicas en interiores y exteriores para la seguridad humana. Conteo de personas en tiempo real, detección sin cámaras, alerta temprana con luz, sonido y Morse, y aviso al 911 en formato CAP v1.2.">
+<meta name="theme-color" content="#005387">
+<meta property="og:title" content="SOSistem™ — Alerta temprana para salvaguardar la vida humana">
+<meta property="og:description" content="Terminales y pantallas físicas en interiores y exteriores: alerta temprana sin cámaras para salvaguardar la vida humana en recintos confinados, con aviso al 911.">
+<meta property="og:url" content="https://sosistem.com/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://sosistem.com/">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icono-180.png">
+<meta property="og:image" content="https://sosistem.com/assets/og-sosistem.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b">
+<script>
+/* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
+try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
+if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fondo = "gris";
+/* Fondo de las pantallas NODO S.O.S.© (automático por hora hasta que cargue el script) */
+try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); var hh = new Date().getHours(); document.documentElement.dataset.ptema = pt && pt !== "auto" ? pt : (hh >= 20 || hh < 7 ? "noche" : "interior"); } catch (e) {}
+</script>
+</head>
+<body>
+<div class="beta-aviso no-traducir" role="note"><b>Página Beta</b> · cambios en revisión; no es la versión publicada. <a href="../">Ir al sitio oficial</a></div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text">SOSistem™</span></a>
+    <nav>
+      <button class="btn hide-xs" id="btn-presentar" type="button" title="Modo presentación (flechas para avanzar)">Presentar</button>
+      <a class="btn primary" href="#terminal"><span class="hide-xs">Terminal de pruebas</span><span class="show-xs">Terminal</span></a>
+    </nav>
+  </div>
+</header>
+
+<button class="ver-pestanas" id="ver-pestanas" type="button" aria-controls="pestanas" aria-expanded="false"><span aria-hidden="true">☰</span> <span id="ver-pestanas-t">Ver pestañas del sistema</span></button>
+<nav class="pestanas" id="pestanas" aria-label="Pestañas del sistema"></nav>
+
+<main>
+<section class="slide hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</span>
+      <h1>Alerta temprana al instante para salvaguardar la vida humana en recintos confinados.</h1>
+      <p class="lead">SOSistem™ es un sistema de terminales y pantallas físicas, instaladas en interiores y exteriores, para la seguridad humana. Lleva en tiempo real el conteo de personas dentro de cada recinto, como un inventario físico para evacuación y rescate; detecta sin cámaras a quien está caído o sin movimiento, alerta con luz, sonido y código Morse, y avisa en segundos al encargado, a la central de monitoreo y al 911.</p>
+      <p><a class="btn primary" href="#terminal">Probar la terminal (versión de prueba)</a> <a class="btn" href="#funciona">Ver cómo funciona</a></p>
+      <div class="inv-vivo" id="inv-vivo" aria-live="polite">
+        <div class="iv-cab"><span class="iv-tit">Inventario de personas en tiempo real</span><em class="iv-dem">Demostración en vivo</em></div>
+        <div class="iv-tot"><b id="iv-total">27</b><span>personas dentro de 60</span></div>
+        <div class="iv-barra"><i id="iv-barra" style="width:45%"></i></div>
+        <ul class="iv-lista" id="iv-lista"></ul>
+      </div>
+    </div>
+    <figure class="hero-equipo" id="hero-equipo" aria-label="Pantallas S.S.O.S.© reales como caras de un cubo: sanitarios, entrada, sismo, exterior, oficina y cocina">
+      <div class="eq-escena" id="eq-escena" tabindex="0" aria-roledescription="carrusel" aria-label="Pantallas del sistema en distintos lugares; cambia cada 4 segundos">
+        <div class="eq-cubo" id="eq-cubo">
+          <div class="eq-cara" data-n="1" style="--pos:rotateY(0deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="caida">
+          <div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span><span id="eq-hora">22:22</span> · LiFePO4 <em class="ok">100 %</em> · Red <em class="ok">OK</em></span></div>
+          <div class="eq-mods">
+            <div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Infantil 1/3<em class="ok">Libre</em></p></div>
+            <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p class="riesgo"><i></i>Infantil F‑2<em class="bad">Caída</em></p></div>
+          </div>
+          <div class="eq-alerta"><b>¡Persona en el suelo! · Cabina F‑2</b><span>Tiempo inmóvil <span id="eq-t">00:00</span></span></div>
+          <div class="eq-911"><span id="eq-911t">Llamada al 911 en</span> <b id="eq-911n">10 s</b><i id="eq-911b"></i></div>
+          <div class="eq-morse">SOS SOS &nbsp;<span>··· ––– ··· / ··· ––– ···</span></div>
+          <div class="eq-band" data-banderas="SOS SOS" data-evento="W"></div>
+        </div>
+              <div class="eq-pie"><span>PNL-A04 · Sanitarios</span><span class="eq-leds"><i class="r on"></i><i class="y"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="2" style="--pos:rotateY(-90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="normal">
+                <div class="eq-top"><b>NODO S.O.S.© · ENTRADA PRINCIPAL</b><span>Aforo del inmueble · Red <em class="ok">OK</em></span></div>
+                <div class="eq-aforo"><b>27</b><span>personas dentro de 60</span><i style="width:45%"></i></div>
+                <ul class="eq-lista"><li>R1 Sanitarios<em>9</em></li><li>R2 Oficina<em>5</em></li><li>R3 Cocina<em>3</em></li><li>R4 Bodega y taller<em>6</em></li><li>R0 Entrada<em>4</em></li></ul>
+                <div class="eq-ok">Condición segura · todos los recintos en verde</div>
+                <div class="eq-morse">Sistema S.O.S.© &nbsp;<span>··· ––– ···</span></div>
+                <div class="eq-band" data-banderas="SOS"></div>
+              </div>
+              <div class="eq-pie"><span>PNL-E01 · Entrada</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g on"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="3" style="--pos:rotateY(-180deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="sismo">
+                <div class="eq-sismo"><b>¡Alerta sísmica! · Evacúe</b></div>
+                <div class="eq-split">
+                  <svg viewBox="0 0 100 92" aria-hidden="true"><rect x="3" y="3" width="94" height="72" rx="3" fill="#0c111a" stroke="#6c7a8f"/><rect x="8" y="8" width="34" height="22" fill="#121a26" stroke="#3a4658"/><rect x="58" y="8" width="34" height="22" fill="rgba(255,176,32,.2)" stroke="#ffb020"/><rect x="38" y="50" width="26" height="25" fill="#121a26" stroke="#3a4658"/><polyline points="75,30 75,40 51,40 51,76" fill="none" stroke="#2fd27a" stroke-width="3" stroke-dasharray="5 4" class="eq-ruta"/><rect x="44" y="73" width="14" height="4" fill="#19a65a"/><circle cx="75" cy="30" r="3" fill="#ffb020"/><text x="51" y="88" text-anchor="middle" fill="#2fd27a" font-size="6" font-weight="700">SALIDA A · 16 m · 14 s</text></svg>
+                  <div><div class="eq-aqui"><span>Aquí con usted</span><b>8</b></div><ul class="eq-lista mini"><li>R0 Entrada<em>3</em></li><li>R2 Oficina<em>4</em></li><li>R3 Cocina<em>✓</em></li><li>R4 Bodega<em>5</em></li></ul></div>
+                </div>
+                <div class="eq-morse">SOS SISMO SOS &nbsp;<span>··· ––– ··· / ··· ·· ··· –– ––– / ··· ––– ···</span></div>
+                <div class="eq-band" data-banderas="SOS SISMO SOS"></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A04 · Sismo</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="4" style="--pos:rotateY(-270deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant eq-ext" data-fase="exterior">
+                <div class="eq-top"><b>PANTALLA EXTERIOR · ACCESO PRINCIPAL</b><span>Se enciende solo con sismo o evento natural</span></div>
+                <div class="eq-extmsg"><b>Sismo en curso</b><span>No ingrese al recinto</span></div>
+                <div class="eq-aforo ext"><b>12</b><span>personas siguen dentro</span></div>
+                <div class="eq-ok">Siga a Protección Civil · punto de reunión: estacionamiento</div>
+                <div class="eq-morse">SOS SISMO &nbsp;<span>··· ––– ··· / ··· ·· ··· –– –––</span></div>
+                <div class="eq-band" data-banderas="SOS SISMO"></div>
+              </div>
+              <div class="eq-pie"><span>EXT-01 · Exterior</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g"></i><i class="w on"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="5" style="--pos:rotateX(90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="advertencia">
+                <div class="eq-top"><b>NODO S.O.S.© · OFICINA ADMINISTRATIVA</b><span>Módulo de permanencia y aforo</span></div>
+                <div class="eq-adv"><b>Advertencia · aforo 92 %</b><span>11 de 12 personas · ventile y evite ingresar</span></div>
+                <ul class="eq-lista"><li>Permanencia promedio<em>38 min</em></li><li>Temperatura<em>27 °C</em></li><li>Salida más cercana<em>A · 9 m</em></li></ul>
+                <div class="eq-morse">AVISO &nbsp;<span>·– ···– ·· ··· –––</span></div>
+                <div class="eq-band" data-banderas="AVISO"></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A05 · Oficina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+          <div class="eq-cara" data-n="6" style="--pos:rotateX(-90deg)">
+            <div class="eq-bisel">
+              <div class="eq-pant" data-fase="gas">
+                <div class="eq-top"><b>NODO S.O.S.© · COCINA</b><span>Módulo opcional de gas</span></div>
+                <div class="eq-adv"><b>Gas LP detectado · 12 % LIE</b><span>No encienda aparatos · abra ventanas · salga</span></div>
+                <ul class="eq-lista"><li>Válvula de gas<em>Cerrada</em></li><li>Personas en cocina<em>2</em></li><li>Aviso<em>N1 encargado</em></li></ul>
+                <div class="eq-morse">AVISO GAS &nbsp;<span>·– ···– ·· ··· ––– / ––· ·– ···</span></div>
+                <div class="eq-band" data-banderas="AVISO GAS"></div>
+              </div>
+              <div class="eq-pie"><span>PNL-A06 · Cocina</span><span class="eq-leds"><i class="r"></i><i class="y on"></i><i class="g"></i><i class="w"></i></span><span>S.O.S.©</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="eq-nav"><span id="eq-cap">1/6 · Sanitarios · persona en el suelo</span><span class="eq-puntos" id="eq-puntos"></span></div>
+      <ol class="eq-esc" id="eq-esc">
+        <li data-n="N0"><b>N0</b> Voz en cabina <small><em data-t="N0">2</em> s</small></li>
+        <li data-n="N1"><b>N1</b> Encargado <small><em data-t="N1">4</em> s</small></li>
+        <li data-n="N2"><b>N2</b> Central <small><em data-t="N2">7</em> s</small></li>
+        <li data-n="N3"><b>N3</b> 911 · CAP <small><em data-t="N3">10</em> s</small></li>
+      </ol>
+      <figcaption>Sin cámaras ni micrófonos que graben: radar mmWave, solo estados y medidas.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide blk" id="funciones">
+  <div class="wrap">
+    <span class="eyebrow">Funciones del Sistema S.O.S.©</span>
+    <h2>Todo lo que puede hacer el sistema, en breve.</h2>
+    <div class="grid g3 funciones">
+      <div class="card fn"><b>Caída sin cámaras</b><span>Un radar mmWave de 60 GHz detecta presencia, postura y falta de movimiento en cada cabina, sin imagen ni grabación.</span></div>
+      <div class="card fn"><b>Escalamiento automático</b><span>Voz en cabina (N0), encargado (N1), central (N2) y 911 (N3) con mensaje CAP v1.2; el cliente fija los segundos de cada nivel.</span></div>
+      <div class="card fn"><b>Pantalla de ocupación</b><span>Cabinas libres u ocupadas por módulo, permanencia mayor de 10 min y aforo, con los colores de la NOM-026-STPS-2008.</span></div>
+      <div class="card fn"><b>Sirena y Morse</b><span>Sirena de hasta 105 dB y código Morse con luz y sonido: AVISO, SOS y SOS SISMO SOS; volumen y repetición configurables.</span></div>
+      <div class="card fn"><b>Sismo y evacuación</b><span>Con alerta sísmica, todas las pantallas se dividen: salidas de emergencia desde «usted está aquí» y personas por recinto.</span></div>
+      <div class="card fn"><b>Pantalla exterior</b><span>Se enciende solo con sismo o evento natural (o si el cliente lo decide) para avisar a quien llega cuántas personas siguen dentro.</span></div>
+      <div class="card fn"><b>Módulos a la medida</b><span>Humo, inundación, falta de energía, gas, CO, oxígeno, tóxicos, calor, viento, tsunami y palabra «S.O.S.» por voz.</span></div>
+      <div class="card fn"><b>30 días sin luz</b><span>Batería LiFePO4 y enlace celular propio (eSIM): sigue avisando aunque falle la energía o el internet del inmueble.</span></div>
+      <div class="card fn"><b>Nube con permiso</b><span>El cliente decide con quién se comparte cada evento (C5/911, central, Protección Civil, encargados); solo conteos, sin identidad.</span></div>
+      <div class="card fn"><b>Panel de administración</b><span>Eventos, tiempos de respuesta, estadísticas, usuarios, reportes y ajustes protegidos con doble clave.</span></div>
+      <div class="card fn"><b>22 idiomas + 2 en preparación</b><span>Avisos en el idioma elegido, con código Morse universal; lengua de señas mexicana (LSM) y americana (ASL) en desarrollo.</span></div>
+      <div class="card fn"><b>Módulo de pruebas</b><span>Simulacros de sonido, caída y sismo para el administrador y el cliente, registrados en bitácora.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="servicios">
+  <div class="wrap">
+    <span class="eyebrow">Cubo de servicios SOSistem™</span>
+    <h2>Doce servicios para proteger la vida y sostener la operación.</h2>
+    <p>SOSistem™ integra en una sola plataforma doce servicios de alerta temprana y gestión de ocupación: seis protegen directamente la vida de las personas y seis generan información para la toma de decisiones y la sostenibilidad financiera del servicio.</p>
+    <p>Contribuye a la meta G del Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030, a la iniciativa Alertas Tempranas para Todos de las Naciones Unidas y a los Objetivos de Desarrollo Sostenible 3 y 11.</p>
+    <div class="grid g2 s12-valor">
+      <div class="card s12-v ext"><b>Protección de la vida</b><span>Detección y alerta en segundos ante caídas, sismos, fugas de gas y situaciones de violencia, sin cámaras y con respeto a la privacidad.</span></div>
+      <div class="card s12-v int"><b>Sostenibilidad y escalabilidad</b><span>Una sola instalación ofrece servicios de seguridad, cumplimiento normativo y analítica de ocupación, con un modelo replicable en espacios públicos y privados.</span></div>
+    </div>
+    <div class="s12">
+      <div class="s12-vista">
+        <div class="s12-capas" role="group">
+          <button type="button" class="btn s12-bext" id="s12-ver-ext" aria-pressed="true">Seguridad humana</button>
+          <button type="button" class="btn s12-bint" id="s12-ver-int" aria-pressed="false">Gestión y datos</button>
+        </div>
+        <div class="s12-esc" id="s12-esc"><div class="s12-3d" id="s12-3d"></div></div>
+      </div>
+      <div class="s12-lista" id="s12-lista">
+      <button type="button" class="card s12-card" data-n="1" data-capa="int"><span class="s12-n no-traducir">1</span><small class="s12-tag int">Gestión y datos</small><b>Inventario de personas</b><span class="s12-d">Conteo en tiempo real por acceso y recinto, disponible para evacuación, rescate y auditoría.</span></button>
+      <button type="button" class="card s12-card" data-n="2" data-capa="int"><span class="s12-n no-traducir">2</span><small class="s12-tag int">Gestión y datos</small><b>Distribución y permanencia</b><span class="s12-d">Ubicación anónima por zona, altura, distancia entre personas y tiempo de permanencia.</span></button>
+      <button type="button" class="card s12-card" data-n="3" data-capa="ext"><span class="s12-n no-traducir">3</span><small class="s12-tag ext">Seguridad humana</small><b>Persona en el suelo</b><span class="s12-d">Detección de caídas e inmovilidad con escalamiento del aviso en cabina (N0) al responsable (N1).</span></button>
+      <button type="button" class="card s12-card" data-n="4" data-capa="int"><span class="s12-n no-traducir">4</span><small class="s12-tag int">Gestión y datos</small><b>Aforo máximo excedido</b><span class="s12-d">Comparación continua con la capacidad autorizada y aviso en pantallas interiores y exteriores.</span></button>
+      <button type="button" class="card s12-card" data-n="5" data-capa="int"><span class="s12-n no-traducir">5</span><small class="s12-tag int">Gestión y datos</small><b>Zonas en m² y m³</b><span class="s12-d">Subdivisión del recinto en zonas y espacios confinados, cada una con su ocupación.</span></button>
+      <button type="button" class="card s12-card" data-n="6" data-capa="int"><span class="s12-n no-traducir">6</span><small class="s12-tag int">Gestión y datos</small><b>Pantallas ejecutivas</b><span class="s12-d">Información resumida para seguridad, responsables, 911, Cruz Roja y bomberos, según su función.</span></button>
+      <button type="button" class="card s12-card" data-n="7" data-capa="ext"><span class="s12-n no-traducir">7</span><small class="s12-tag ext">Seguridad humana</small><b>Sismo, explosión y voz de auxilio</b><span class="s12-d">Vibración, impactos, gritos, solicitudes de ayuda, agua en el piso y accesos abiertos fuera de horario.</span></button>
+      <button type="button" class="card s12-card" data-n="8" data-capa="ext"><span class="s12-n no-traducir">8</span><small class="s12-tag ext">Seguridad humana</small><b>Gases y oxígeno</b><span class="s12-d">Gas LP, CO, amoniaco, humo, deficiencia de oxígeno y ruido excesivo, con cierre de válvula y aviso.</span></button>
+      <button type="button" class="card s12-card" data-n="9" data-capa="ext"><span class="s12-n no-traducir">9</span><small class="s12-tag ext">Seguridad humana</small><b>Enlace al 911 y bitácora</b><span class="s12-d">Registro cifrado de cada evento; al 911 solo llegan alertas confirmadas por dos sensores.</span></button>
+      <button type="button" class="card s12-card" data-n="10" data-capa="int"><span class="s12-n no-traducir">10</span><small class="s12-tag int">Gestión y datos</small><b>Estadística ejecutiva</b><span class="s12-d">Ocupación y uso de espacios por hora, día, zona y evento, para planear y valorar la operación.</span></button>
+      <button type="button" class="card s12-card" data-n="11" data-capa="ext"><span class="s12-n no-traducir">11</span><small class="s12-tag ext">Seguridad humana</small><b>Desastre y comité</b><span class="s12-d">Apoyo al comité de atención a desastres con rutas, conteo de personas y avisos interiores y exteriores.</span></button>
+      <button type="button" class="card s12-card" data-n="12" data-capa="ext"><span class="s12-n no-traducir">12</span><small class="s12-tag ext">Seguridad humana</small><b>Luz, Morse y megafonía</b><span class="s12-d">Comunicación con el personal interior y exterior, identificación del lugar y aviso ante situaciones de violencia.</span></button>
+      </div>
+    </div>
+    <h3 class="s12-vt">Cadena de alerta y respuesta</h3>
+    <ul class="s12-vertices"><li><b class="no-traducir">N0</b> <span>Voz en cabina</span></li><li><b class="no-traducir">N1</b> <span>Responsable</span></li><li><b class="no-traducir">N2</b> <span>Central de monitoreo</span></li><li><b class="no-traducir">N3</b> <span>911</span></li><li><span>Cruz Roja</span></li><li><span>Bomberos</span></li><li><span>Protección Civil</span></li><li><span>Autoridad y auditoría</span></li></ul>
+    <p class="note">La alerta a los servicios de emergencia (911) se emite solo con doble confirmación de sensores y mediante convenio con los centros C4/C5. El audio se procesa en el propio equipo, sin grabación ni transmisión de voz.</p>
+    <p class="note no-traducir">Sistema S.O.S.© · SOSistem™ · © Víctor Hugo Ramírez Salgado</p>
+  </div>
+</section>
+
+<section class="slide blk" id="foda">
+  <div class="wrap">
+    <span class="eyebrow">FODA · Análisis estratégico</span>
+    <h2>Todo el sistema tiene un solo objetivo: salvar vidas.</h2>
+    <p class="lead fo-lead">Fortalezas, oportunidades, debilidades y amenazas de SOSistem™, con base en lo que el sistema ya hace y en lo que falta por medir en el piloto. Las pestañas Problema, Datos y Ventajas forman ahora parte de este análisis.</p>
+    <div class="fo-grid">
+      <div class="card fo-q fo-f"><div class="fo-h"><span class="fo-l" aria-hidden="true">F</span><div><h3>Fortalezas</h3><small>Lo que el sistema ya aporta para salvar vidas</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Ve lo que nadie puede ver</b><span>Un radar mmWave detecta a una persona en el piso o sin movimiento en sanitarios, vestidores y espacios confinados, donde no se permiten cámaras.</span></li>
+          <li><b>Ayuda en segundos, no en horas</b><span>La alerta sube sola: voz en la cabina (N0), encargado (N1), central (N2) y 911 (N3) con mensaje CAP v1.2; el cliente fija los segundos de cada nivel.</span></li>
+          <li><b>Aviso de sismo en el lugar</b><span>Acelerómetros con confirmación cruzada avisan en todas las cabinas ocupadas, liberan las puertas y muestran la salida más cercana.</span></li>
+          <li><b>Sabe quién falta</b><span>Cuenta a las personas de cada recinto para que la brigada y los rescatistas sepan dónde sigue alguien dentro.</span></li>
+          <li><b>Funciona cuando todo falla</b><span>Batería LiFePO4 para 30 días y enlace celular propio: sigue avisando sin luz y sin el internet del inmueble.</span></li>
+          <li><b>Señales que todos entienden</b><span>Colores de seguridad ISO 3864 y NOM-026, patrón de evacuación T-3, Morse, banderas y 22 idiomas: luz para quien no oye y sonido para quien no ve.</span></li>
+          <li><b>Privacidad por diseño</b><span>Sin imágenes ni audio grabado; solo estados y medidas. Por eso puede instalarse donde más se necesita.</span></li>
+          <li><b>Experiencia en seguridad operativa</b><span>Diseñado por un autor con 21 años en la operación portuaria mexicana, comités de operación y atención a emergencias.</span></li>
+        </ul></div>
+      <div class="card fo-q fo-o"><div class="fo-h"><span class="fo-l" aria-hidden="true">O</span><div><h3>Oportunidades</h3><small>Lo que el entorno ofrece</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Alertas tempranas para todos</b><span>La iniciativa de la ONU busca que toda persona esté protegida por alertas tempranas; el Marco de Sendai (meta G) y los ODS 3 y 11 la respaldan.</span></li>
+          <li><b>Cobertura sísmica limitada en Baja California</b><span>Las personas en recintos cerrados necesitan un aviso local que no dependa de la red pública.</span></li>
+          <li><b>Más caídas con el envejecimiento</b><span>La OMS estima 684,000 muertes al año por caídas; las personas mayores son las más expuestas.</span></li>
+          <li><b>Obligación legal de prevenir</b><span>La Ley Federal del Trabajo y las NOM de seguridad exigen medidas preventivas y aviso inmediato.</span></li>
+          <li><b>Fondos de impacto social</b><span>Fondos BC, BID, OEA y programas de la ONU apoyan proyectos de alerta temprana y protección civil.</span></li>
+          <li><b>Mercados prioritarios</b><span>Restaurantes, turismo médico, maquiladoras IMMEX, puertos, escuelas, hospitales y albergues.</span></li>
+        </ul></div>
+      <div class="card fo-q fo-d"><div class="fo-h"><span class="fo-l" aria-hidden="true">D</span><div><h3>Debilidades</h3><small>Lo que debemos resolver</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Etapa piloto</b><span>El tiempo real de respuesta y el porcentaje de falsas alarmas se medirán en el piloto; no publicamos cifras sin medirlas.</span></li>
+          <li><b>Certificaciones en trámite</b><span>El equipo aún no tiene certificaciones de producto; los módulos de radio son homologados.</span></li>
+          <li><b>Enlace directo con el 911</b><span>La conexión con el C5/911 requiere convenio con las autoridades de cada estado.</span></li>
+          <li><b>Costo inicial por equipo</b><span>Cerca de USD 1,500 por equipo de calidad; se buscan proveedores y fondos para bajar el costo.</span></li>
+          <li><b>Traducciones por revisar</b><span>Los 22 idiomas requieren revisión de hablantes nativos antes de su uso institucional.</span></li>
+        </ul></div>
+      <div class="card fo-q fo-a"><div class="fo-h"><span class="fo-l" aria-hidden="true">A</span><div><h3>Amenazas</h3><small>Los riesgos que el sistema enfrenta</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Emergencias que nadie ve</b><span>Un desmayo, una caída o una crisis médica dentro de una cabina pueden pasar inadvertidos durante minutos.</span></li>
+          <li><b>Sismos sin aviso previo</b><span>Quien está en una cabina cerrada es el último en enterarse.</span></li>
+          <li><b>Falsas alarmas</b><span>Si saturan al 911 o al encargado, se pierde la confianza; por eso se exige doble confirmación de sensores.</span></li>
+          <li><b>Percepción de vigilancia</b><span>Aunque no hay cámaras, debe explicarse con claridad que no se graban imágenes ni voz.</span></li>
+          <li><b>Competencia</b><span>Sensores domésticos de bajo costo y grandes marcas de seguridad.</span></li>
+          <li><b>Fallas de red en desastres</b><span>Se mitigan con batería, eSIM, SMS y, a futuro, enlace satelital.</span></li>
+        </ul></div>
+    </div>
+    <h3 style="margin-top:22px">Estrategias para salvar más vidas</h3>
+    <div class="grid g4 fo-est">
+      <div class="card fo-e"><b>FO · Crecer</b><span>Llevar el piloto a escuelas, hospitales y albergues con fondos de alerta temprana.</span></div>
+      <div class="card fo-e"><b>DO · Fortalecer</b><span>Medir el piloto, certificar el equipo y firmar convenios con el C5/911.</span></div>
+      <div class="card fo-e"><b>FA · Defender</b><span>Doble confirmación de sensores y privacidad comprobable para evitar falsas alarmas y desconfianza.</span></div>
+      <div class="card fo-e"><b>DA · Proteger</b><span>Respaldo de energía y comunicación para seguir avisando aunque falle todo lo demás.</span></div>
+    </div>
+    <p class="note">Fuentes: OMS (2021), INEGI (2026), ONU (Early Warnings for All) y UNDRR (Marco de Sendai), citadas en la pestaña Normativa y fuentes.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="problema">
+  <div class="wrap">
+    <span class="eyebrow">El problema</span>
+    <h2>Donde hay privacidad, nadie ve una emergencia a tiempo.</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Minutos sin ayuda</h3><p>Un desmayo, una caída o una crisis médica dentro de una cabina pueden pasar inadvertidos, porque nadie puede vigilar ese espacio.</p></div>
+      <div class="card"><h3>Cámaras, imposibles</h3><p>En sanitarios y vestidores no se pueden instalar cámaras. Los botones de pánico solo sirven si la persona puede usarlos.</p></div>
+      <div class="card"><h3>Sismos sin aviso</h3><p>En Baja California, la alerta sísmica pública no tiene cobertura. Las personas en cabinas cerradas son las últimas en enterarse.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="datos">
+  <div class="wrap">
+    <span class="eyebrow">Datos reales</span>
+    <h2>El tamaño del riesgo, con cifras oficiales.</h2>
+    <div class="grid g4">
+      <div class="card kpi"><div class="v">684,000</div><span class="l">muertes al año por caídas en el mundo</span><span class="s">Segunda causa de muerte por traumatismos no intencionales (OMS, 2021)</span></div>
+      <div class="card kpi"><div class="v">37.3 M</div><span class="l">caídas al año que requieren atención médica</span><span class="s">(OMS, 2021)</span></div>
+      <div class="card kpi"><div class="v">10.2 %</div><span class="l">de las 762,494 defunciones en México (2025) fueron por causas externas</span><span class="s">Cifras preliminares (INEGI, 2026)</span></div>
+      <div class="card kpi"><div class="v">38,166</div><span class="l">defunciones por accidentes en México (2025)</span><span class="s">Quinta causa de muerte · preliminar (INEGI, 2026)</span></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Exposición del patrón en 2026</h3>
+      <p>La Ley Federal del Trabajo (art. 994, fr. V) sanciona con <b>250 a 5,000 UMA</b> a quien no observe las normas de seguridad e higiene. Con la UMA 2026 de $117.31, eso equivale a <b>$29,327.50 a $586,550.00 MXN</b> por infracción.</p>
+      <p class="note">El tiempo de respuesta real de S.O.S.© es un indicador que se medirá en el piloto; no publicamos cifras sin medirlas.</p>
+    </div>
+    <div class="fuentes-sec">
+      <b data-i18n="fuentes_sec">Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadística de defunciones registradas (EDR) 2024</i> [Comunicado de prensa]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf</a></li>
+        <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf</a></li>
+        <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Unidad de Medida y Actualización (UMA) 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">https://www.inegi.org.mx/temas/uma/</a></li>
+        <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="funciona">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2>Escalamiento automático en cuatro niveles.</h2>
+    <p>Un nodo en cada cabina detecta si hay una persona, su postura y si se mueve. Si detecta riesgo sostenido, la estación central escala la alerta hasta que alguien responde.</p>
+    <div class="ladder" id="ladder">
+      <div class="rung"><b>Sospecha</b><span>Persona en el piso o sin movimiento</span></div>
+      <div class="rung"><b>N0 · Cabina</b><span>Aviso por voz: «¿Está bien?» · a los <em data-t="N0">20</em> s</span></div>
+      <div class="rung"><b>N1 · Encargado</b><span>App del administrador · a los <em data-t="N1">50</em> s</span></div>
+      <div class="rung"><b>N2 · Central</b><span>Central de monitoreo · a los <em data-t="N2">110</em> s</span></div>
+      <div class="rung n3"><b>N3 · 911</b><span>Mensaje CAP v1.2 y llamada · a los <em data-t="N3">200</em> s</span></div>
+    </div>
+    <p class="note" style="margin-top:12px">Tiempos de la versión 1.0.0, configurables por recinto; para menores de edad se reducen a la mitad. Se calibran en el piloto.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="ventajas">
+  <div class="wrap">
+    <span class="eyebrow">Por qué S.O.S.©</span>
+    <h2>Diseñado para lugares donde otros sistemas no pueden entrar.</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Privacidad total</h3><p>Radar y sensores de distancia: sin imágenes, sin audio grabado. Las medidas se usan al momento y no se guardan.</p></div>
+      <div class="card"><h3>Alerta sísmica en sitio</h3><p>Acelerómetros con confirmación cruzada detectan la onda P, abren cerraduras y avisan en todas las cabinas ocupadas.</p></div>
+      <div class="card"><h3>Conteo de evacuación</h3><p>Sabe cuántas personas entraron, cuántas salieron y en qué zona falta alguien. La brigada lo ve en pantalla.</p></div>
+      <div class="card"><h3>Estándar internacional</h3><p>Alertas en formato CAP v1.2 (OASIS), el mismo que usan los sistemas oficiales de emergencia.</p></div>
+      <div class="card"><h3>30 días sin luz</h3><p>Bus de 12 V con banco LiFePO4 de 250 Ah: 3.2 W × 720 h = 2,304 Wh. Un circuito NiMH de respaldo mantiene reloj, memoria y sirena.</p></div>
+      <div class="card"><h3>Riesgos ambientales</h3><p>Versión S2: humo, fuego, amoniaco, falta de oxígeno, hidrógeno, agua en el piso y la palabra «S.O.S.».</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>¿En qué se distingue de un sensor doméstico?</h3>
+      <p>Ya existen sensores mmWave de consumo con detección de caídas que avisan a una app del hogar. S.O.S.© está hecho para recintos públicos y centros de trabajo: escala la alerta hasta el 911 con mensaje CAP v1.2 y llamada SIP, opera 30 días sin red eléctrica y muestra la señal de ocupación y emergencia con los colores de seguridad de la NOM-026-STPS-2008.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="ssos">
+  <div class="wrap">
+    <span class="eyebrow">Módulo S.S.O.S.© · Señalética Sobre Ocupación y Salvaguarda</span>
+    <h2>La señal de «ocupado» se convierte en un nodo salvavidas.</h2>
+    <p>Pantalla micro-LED en el acceso y sensores de radar en cada sanitario. Si alguien queda en el piso, la pantalla cambia a rojo, suena la sirena y la alerta sale hacia el encargado y el 911.</p>
+    <div class="grid g4">
+      <div class="card kpi"><div class="v">60 / 77 GHz</div><div class="l">Radar FMCW de onda milimétrica</div><div class="s">Antena en chip; sin imagen ni audio</div></div>
+      <div class="card kpi"><div class="v">≤ 5 s</div><div class="l">Confirmación de caída (objetivo)</div><div class="s">Cota vertical &lt; 15 cm sostenida</div></div>
+      <div class="card kpi"><div class="v">720 h</div><div class="l">Autonomía sin red eléctrica</div><div class="s">LiFePO4 250 Ah, &gt; 4,000 ciclos</div></div>
+      <div class="card kpi"><div class="v">105 dB</div><div class="l">Sirena bifrecuencia a 1 m</div><div class="s">Balizamiento blanco autónomo</div></div>
+    </div>
+    <h3 style="margin-top:22px">Pantallas por tipo de recinto</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Entorno</th><th>Aforo</th><th>Medidas</th><th>Pitch</th><th class="num">Luminancia</th><th>Protección</th></tr></thead>
+        <tbody>
+          <tr><td>Interior: restaurantes y baños</td><td>Hasta 100 p.</td><td>60 × 60 cm</td><td>4.0 mm</td><td class="num">≥ 1,200 cd/m²</td><td>IP65 / IK08</td></tr>
+          <tr><td>Interior: naves industriales</td><td>101 a 499 p.</td><td>70 × 70 cm</td><td>5.0 mm</td><td class="num">≥ 1,200 cd/m²</td><td>IP65 / IK08</td></tr>
+          <tr><td>Exterior: acceso primario (Fase 1)</td><td>—</td><td>40 × 40 cm</td><td>3.0 mm</td><td class="num">≥ 5,500 cd/m²</td><td>IP67 / IK09</td></tr>
+          <tr><td>Exterior: fachada o vialidad (Fase 2)</td><td>—</td><td>50 × 50 cm</td><td>3.5 mm</td><td class="num">≥ 6,500 cd/m²</td><td>IP67 / IK09, niebla salina</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend"><span><i style="background:var(--f-caida)"></i>Rojo: emergencia</span><span><i style="background:var(--f-perm)"></i>Ámbar: precaución / aforo &gt; 90 %</span><span><i style="background:var(--f-seguro)"></i>Verde: libre</span></p>
+  </div>
+</section>
+
+<section class="slide blk" id="pantalla-demo">
+  <div class="wrap">
+    <span class="eyebrow">Pantalla S.S.O.S.© · simulador</span>
+    <h2>Así se ve un evento en la pantalla de acceso.</h2>
+    <p>Elija un estado para ver cómo cambia la señal. Los colores siguen la NOM-026-STPS-2008; el rojo parpadea a 2 Hz, por debajo del umbral de riesgo fotosensible de 3 Hz. El fondo se adapta a la luz del lugar: claro con mucha luz, oscuro y atenuado de noche, o de alto contraste.</p>
+    <div class="sim-ctrl" role="group" aria-label="Estado de la simulación">
+      <button class="btn" type="button" data-estado="normal">Normal</button>
+      <button class="btn" type="button" data-estado="advertencia">Advertencia</button>
+      <button class="btn primary" type="button" data-estado="caida">Persona caída</button>
+      <button class="btn" type="button" data-estado="sismo">Sismo</button>
+      <label class="sim-prueba">Tipo de área <select id="sim-area" aria-label="Tipo de área"></select></label>
+      <label class="sim-prueba">Pantalla instalada en <select id="sim-lugar" aria-label="Lugar donde está instalada la pantalla"></select></label>
+      <label class="sim-prueba"><input type="checkbox" id="sim-sonido"> Módulo de pruebas: activar sonido</label>
+    </div>
+    <p class="note">El sonido Morse solo se emite en advertencias, emergencias, desastres naturales o pruebas autorizadas. Aquí es una prueba: actívela para escucharlo.</p>
+    <details class="pt-seg" id="pt-seg" open><summary>Conceptos de segregación del área</summary><div class="pt-seg-c" id="pt-seg-c"></div></details>
+    <div class="pt-ajustes">
+      <div class="pt-temas" role="group" aria-label="Fondo de la pantalla">
+        <span class="pt-aj-tit">Fondo de la pantalla</span>
+        <button type="button" data-ptema="auto" aria-pressed="true">Automático</button>
+        <button type="button" data-ptema="interior" aria-pressed="false">Interior</button>
+        <button type="button" data-ptema="dia" aria-pressed="false">Día · mucha luz</button>
+        <button type="button" data-ptema="noche" aria-pressed="false">Noche · poca luz</button>
+        <button type="button" data-ptema="contraste" aria-pressed="false">Alto contraste</button>
+        <span class="pt-tema-act" id="pt-tema-act" hidden><span>Ahora:</span> <b id="pt-tema-nom">Interior</b></span>
+      </div>
+      <details class="pt-colores" id="pt-colores">
+        <summary>Colores por falla</summary>
+        <p class="note">Toque un color para cambiarlo. Cada falla debe conservar su familia de color de seguridad (ISO 3864-1 y NOM-026-STPS-2008); si el tono sale de la familia o pierde contraste, se marca en ámbar. Los cambios se guardan en este equipo.</p>
+        <div class="pc-lista" id="pc-lista">
+          <label class="pc-fila" data-falla="caida"><input type="color" data-falla="caida" aria-label="Persona en el suelo"><span class="pc-nom"><b>Persona en el suelo</b><small>Rojo</small></span><span class="pc-est" data-est="caida"></span></label>
+          <label class="pc-fila" data-falla="perm"><input type="color" data-falla="perm" aria-label="Permanencia prolongada"><span class="pc-nom"><b>Permanencia prolongada</b><small>Ámbar</small></span><span class="pc-est" data-est="perm"></span></label>
+          <label class="pc-fila" data-falla="aforo"><input type="color" data-falla="aforo" aria-label="Aforo excedido"><span class="pc-nom"><b>Aforo excedido</b><small>Ámbar</small></span><span class="pc-est" data-est="aforo"></span></label>
+          <label class="pc-fila" data-falla="gas"><input type="color" data-falla="gas" aria-label="Gas o humo"><span class="pc-nom"><b>Gas o humo</b><small>Amarillo</small></span><span class="pc-est" data-est="gas"></span></label>
+          <label class="pc-fila" data-falla="sismo"><input type="color" data-falla="sismo" aria-label="Sismo y evacuación"><span class="pc-nom"><b>Sismo y evacuación</b><small>Blanco</small></span><span class="pc-est" data-est="sismo"></span></label>
+          <label class="pc-fila" data-falla="equipo"><input type="color" data-falla="equipo" aria-label="Falla de sensor o equipo"><span class="pc-nom"><b>Falla de sensor o equipo</b><small>Azul</small></span><span class="pc-est" data-est="equipo"></span></label>
+          <label class="pc-fila" data-falla="seguro"><input type="color" data-falla="seguro" aria-label="Condición segura"><span class="pc-nom"><b>Condición segura</b><small>Verde</small></span><span class="pc-est" data-est="seguro"></span></label>
+        </div>
+        <p><button class="btn" type="button" id="pc-reset">Restablecer colores ISO</button></p>
+      </details>
+    </div>
+    <div class="pantalla" id="pantalla" data-estado="caida" aria-live="polite">
+      <div class="pt-top">
+        <b>NODO S.O.S.© — MONITOREO DE ESPACIOS CERRADOS</b>
+        <span><span id="pt-hora">--:--</span> · Batería LiFePO4 <b class="ok">100 %</b> · Red <b class="ok">OK</b> · Estado: <b id="pt-gral">—</b></span>
+      </div>
+      <div class="pt-mods">
+        <div class="pt-mod m"><h4>Módulo masculino</h4>
+          <div class="pt-row"><i class="pict a"></i><span>Adultos <b>3 / 6</b></span><em class="st ok">Libre</em></div>
+          <div class="pt-row"><i class="pict n"></i><span>Infantil <b>1 / 3</b></span><em class="st ok">Libre</em></div>
+        </div>
+        <div class="pt-mod f"><h4>Módulo femenino</h4>
+          <div class="pt-row"><i class="pict a"></i><span>Adultas <b>4 / 6</b></span><em class="st ok">Libre</em></div>
+          <div class="pt-row" id="pt-f2"><i class="pict n"></i><span>Infantil <b>1 / 3</b><small id="pt-f2t"></small></span><em class="st" id="pt-f2s">—</em></div>
+        </div>
+      </div>
+      <div class="pt-alerta" id="pt-alerta"><b id="pt-a1">—</b><span id="pt-a2"></span></div>
+      <div class="pt-split" id="pt-split">
+        <div class="pt-izq">
+      <div class="pt-noti" id="pt-noti" role="alert" hidden><b id="pt-n1"></b><span id="pt-n2"></span></div>
+      <div class="pt-911" id="pt-911" hidden><span id="pt-911t"></span><b id="pt-911n"></b><i id="pt-911b"></i></div>
+      <figure class="pt-mapa" id="pt-mapa" hidden>
+        <svg viewBox="0 0 400 236" role="img" aria-labelledby="pt-mapa-tit"><title id="pt-mapa-tit">Plano del recinto con rutas</title>
+          <rect class="pm-muro" x="10" y="10" width="380" height="196" rx="4"/>
+          <rect class="pm-mod m" x="20" y="20" width="165" height="96" rx="3"/><text class="pm-t" x="102" y="36">M</text>
+          <rect class="pm-cab" x="28" y="44" width="34" height="34"/><rect class="pm-cab" x="66" y="44" width="34" height="34"/><rect class="pm-cab" x="104" y="44" width="34" height="34"/><rect class="pm-cab" x="142" y="44" width="34" height="34"/>
+          <rect class="pm-mod f" x="215" y="20" width="165" height="96" rx="3"/><text class="pm-t" x="297" y="36">F</text>
+          <rect class="pm-cab" x="223" y="44" width="34" height="34"/><rect class="pm-cab" x="261" y="44" width="34" height="34"/><rect class="pm-cab" x="299" y="44" width="34" height="34"/>
+          <rect class="pm-cab pm-f2" id="pm-f2" x="337" y="44" width="36" height="34"/><text class="pm-t pm-f2t" x="355" y="66">F‑2</text>
+          <rect class="pm-pnl" x="190" y="128" width="20" height="12" rx="2"/><text class="pm-s" x="200" y="152">PNL-A04</text>
+          <circle class="pm-enc" cx="44" cy="176" r="7"/><text class="pm-s" x="44" y="196" id="pm-enc">Encargado</text>
+          <rect class="pm-salida" x="178" y="202" width="44" height="8"/><text class="pm-sal" x="200" y="226" id="pm-salA">Salida A</text>
+          <rect class="pm-salida" x="386" y="148" width="8" height="40"/><text class="pm-sal" x="392" y="226" style="text-anchor:end" id="pm-salB">Salida B</text>
+          <g class="pm-reunion"><circle cx="14" cy="226" r="4"/><text class="pm-s" x="22" y="229" style="text-anchor:start" id="pm-reu">Punto de reunión</text></g>
+          <polyline class="pm-ruta aux" id="pm-aux" points="44,176 200,176 355,176 355,82"/>
+          <polyline class="pm-ruta tra" id="pm-tra" points="355,82 355,168 390,168"/>
+          <polyline class="pm-ruta evm" id="pm-ev1" points="102,116 102,170 200,170 200,206"/>
+          <polyline class="pm-ruta evf" id="pm-ev2" points="297,116 297,168 390,168"/>
+          <polyline class="pm-ruta evf" id="pm-ev3" points="355,82 355,168 390,168"/>
+        </svg>
+        <figcaption id="pt-mapa-ley"></figcaption>
+      </figure>
+      <figure class="pt-mapa pt-sitio" id="pt-sitio" hidden>
+        <svg viewBox="0 0 400 272" role="img" aria-labelledby="pt-sitio-tit"><title id="pt-sitio-tit">Plano general con salidas de emergencia</title>
+          <rect class="pm-muro" x="10" y="10" width="380" height="220" rx="4"/>
+          <g class="ps-rec" data-rec="R2"><rect x="20" y="20" width="130" height="70" rx="3"/><text x="85" y="58">R2</text></g>
+          <g class="ps-rec" data-rec="R1"><rect x="250" y="20" width="130" height="70" rx="3"/><text x="315" y="58">R1</text></g>
+          <g class="ps-rec" data-rec="R3"><rect x="20" y="130" width="100" height="60" rx="3"/><text x="70" y="164">R3</text></g>
+          <g class="ps-rec" data-rec="R0"><rect x="150" y="150" width="100" height="80" rx="3"/><text x="200" y="184">R0</text></g>
+          <g class="ps-rec" data-rec="R4"><rect x="280" y="130" width="110" height="80" rx="3"/><text x="335" y="164">R4</text></g>
+          <rect class="pm-salida" x="178" y="226" width="44" height="8"/><text class="pm-sal" x="200" y="248" id="ps-salA">Salida A</text>
+          <rect class="pm-salida" x="386" y="160" width="8" height="34"/><text class="pm-sal" x="392" y="262" style="text-anchor:end" id="ps-salB">Salida B</text>
+          <g class="pm-reunion"><circle cx="18" cy="258" r="4"/><text class="pm-s" x="26" y="261" style="text-anchor:start" id="ps-reu">Punto de reunión</text></g>
+          <polyline class="ps-ruta" data-rec="R0" points="200,200 200,232"/>
+          <polyline class="ps-ruta" data-rec="R1" points="315,90 315,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R2" points="85,90 85,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R3" points="70,130 70,110 200,110 200,232"/>
+          <polyline class="ps-ruta" data-rec="R4" points="335,177 392,177"/>
+          <g id="ps-aqui"><circle r="9"/><text y="-13" id="ps-aqui-t">Usted está aquí</text></g>
+        </svg>
+        <figcaption id="pt-sitio-ley"></figcaption>
+      </figure>
+        </div>
+        <div class="pt-der">
+          <div class="pt-aqui" id="pt-aqui" hidden><span id="pt-aqui-t"></span><b id="pt-aqui-n"></b></div>
+      <div class="pt-ocup" id="pt-ocup" hidden><h5 id="pt-ocup-t"></h5><div class="pt-ocup-l" id="pt-ocup-l"></div></div>
+      <p class="pt-nube" id="pt-nube" hidden></p>
+        </div>
+      </div>
+      <div class="pt-ley">
+        <span data-falla="caida"><i class="r"></i>Persona en el suelo</span>
+        <span data-falla="perm"><i class="y"></i>Permanencia prolongada</span>
+        <span data-falla="aforo"><i class="aforo"></i>Aforo excedido</span>
+        <span data-falla="gas"><i class="gas"></i>Gas o humo</span>
+        <span data-falla="sismo"><i class="w"></i>Sismo y evacuación</span>
+        <span data-falla="equipo"><i class="equipo"></i>Falla de sensor o equipo</span>
+        <span data-falla="seguro"><i class="g"></i>Condición segura</span>
+      </div>
+      <div class="pt-morse" id="pt-morse" aria-live="polite"></div>
+      <div class="pt-pie"><span><span id="pt-pie-l">PNL-A04 · Planta baja</span> · <span id="pt-pie-a">Baños públicos</span></span><span>S.O.S.© PROJECT</span></div>
+    </div>
+    <div class="pantalla-ext" id="pantalla-ext" data-on="0" aria-live="polite">
+      <div class="pe-top"><b id="pe-tit">Pantalla exterior</b><span>EXT-01 · Acceso principal ContenedorEns</span></div>
+      <div class="pe-cuerpo" id="pe-cuerpo"></div>
+    </div>
+    <details class="guia-morse">
+      <summary>Cómo entender el código Morse de la pantalla</summary>
+      <p>Cada letra es una combinación de <b>puntos</b> (tono corto) y <b>rayas</b> (tono largo, tres veces un punto). Entre las señales de una letra hay una pausa corta; entre letras, una pausa de tres puntos, y entre palabras, una de siete. La pantalla emite un tono de 650 Hz a 15 palabras por minuto y, al mismo tiempo, destella con el color de la alerta.</p>
+      <div class="guia-senal">
+        <div><b>Advertencia</b><code>·– ···– ·· ··· –––</code><span class="note">AVISO · luz ámbar · permanencia &gt; 10 min o aforo &gt; 90 %</span></div>
+        <div><b>Persona caída</b><code>··· ––– ··· / ··· ––– ···</code><span class="note">SOS dos veces · luz roja a 2 Hz</span></div>
+        <div><b>Sismo</b><code>··· ––– ··· / ··· ·· ··· –– ––– / ··· ––– ···</code><span class="note">SOS · SISMO · SOS · luz blanca de evacuación</span></div>
+      </div>
+      <p class="note">Alfabeto Morse internacional (sin acentos):</p>
+      <div class="alfabeto-morse"><span><b>A</b>·–</span><span><b>B</b>–···</span><span><b>C</b>–·–·</span><span><b>D</b>–··</span><span><b>E</b>·</span><span><b>F</b>··–·</span><span><b>G</b>––·</span><span><b>H</b>····</span><span><b>I</b>··</span><span><b>J</b>·–––</span><span><b>K</b>–·–</span><span><b>L</b>·–··</span><span><b>M</b>––</span><span><b>N</b>–·</span><span><b>Ñ</b>––·––</span><span><b>O</b>–––</span><span><b>P</b>·––·</span><span><b>Q</b>––·–</span><span><b>R</b>·–·</span><span><b>S</b>···</span><span><b>T</b>–</span><span><b>U</b>··–</span><span><b>V</b>···–</span><span><b>W</b>·––</span><span><b>X</b>–··–</span><span><b>Y</b>–·––</span><span><b>Z</b>––··</span><span><b>0</b>–––––</span><span><b>1</b>·––––</span><span><b>2</b>··–––</span><span><b>3</b>···––</span><span><b>4</b>····–</span><span><b>5</b>·····</span><span><b>6</b>–····</span><span><b>7</b>––···</span><span><b>8</b>–––··</span><span><b>9</b>––––·</span></div>
+    </details>
+    <p class="note" style="margin-top:10px">Versión mejorada de los renders de referencia: textos legibles, unidades corregidas (antes mezclaban RGB con nanómetros) y aviso al C5/911, que es la central que opera en Baja California.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="galeria">
+  <div class="wrap">
+    <span class="eyebrow">Galería · sistema actual v3.0</span>
+    <h2>Así se ven hoy las pantallas del sistema.</h2>
+        <figure class="card gal-ancha"><a href="assets/img/v3-infografia.webp" target="_blank" rel="noopener"><img src="assets/img/v3-infografia.webp" alt="Infografía de la pantalla S.S.O.S. con siete funciones numeradas, otras cuatro pantallas y el escalamiento N0 a N3 hasta el 911" loading="lazy" width="1600" height="1000"></a>
+      <figcaption><b>Cómo avisa la pantalla (explicación).</b> 1 nodo y energía · 2 ocupación por cabina con radar · 3 aviso principal en 22 idiomas · 4 cuenta regresiva al 911 · 5 Morse ITU-R M.1677-1 · 6 banderas del Código Internacional de Señales (S·O·S y W) · 7 luces ISO 11429; abajo, el escalamiento N0–N3.</figcaption></figure>
+    <div class="grid g3 galeria">
+      <figure class="card"><a href="assets/img/v3-sim-caida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-sim-caida.webp" alt="Simulador: persona en el suelo en cabina F-2, plano con ruta de auxilio y traslado, cuenta al 911, Morse y banderas S O S y W" loading="lazy" width="1000" height="1297"></a>
+        <figcaption><b>Persona en el suelo.</b> Aviso, plano con rutas y tiempos, 911 a los 10 s, Morse y banderas S·O·S + W.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-sim-sismo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-sim-sismo.webp" alt="Simulador en sismo: pantalla dividida con salidas de emergencia y personas por recinto, Morse y banderas SOS SISMO SOS" loading="lazy" width="1000" height="909"></a>
+        <figcaption><b>Sismo, pantalla dividida.</b> Salidas desde «usted está aquí» | personas por recinto; SOS SISMO SOS en Morse y banderas.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-sanitarios-caida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-sanitarios-caida.webp" alt="Pantalla de sanitarios con persona caída, Morse SOS SOS y banderas" loading="lazy" width="960" height="602"></a>
+        <figcaption><b>Sanitarios.</b> Caída en F‑2 · SOS SOS · bandera W.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-sismo-dividida.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-sismo-dividida.webp" alt="Pantalla de sismo con plano y conteo" loading="lazy" width="960" height="728"></a>
+        <figcaption><b>Sismo.</b> Ruta a la salida A y «aquí con usted».</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-exterior-sismo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-exterior-sismo.webp" alt="Pantalla exterior encendida por sismo" loading="lazy" width="960" height="638"></a>
+        <figcaption><b>Pantalla exterior.</b> Solo con sismo o evento natural.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-entrada-aforo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-entrada-aforo.webp" alt="Pantalla de entrada principal con aforo por recinto y banderas SOS" loading="lazy" width="960" height="804"></a>
+        <figcaption><b>Entrada principal.</b> Aforo e identidad S·O·S.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-oficina-aforo.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-oficina-aforo.webp" alt="Pantalla de oficina con advertencia de aforo y banderas AVISO" loading="lazy" width="960" height="582"></a>
+        <figcaption><b>Oficina.</b> Advertencia de aforo · AVISO.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-pantalla-cocina-gas.webp" target="_blank" rel="noopener"><img src="assets/img/v3-pantalla-cocina-gas.webp" alt="Pantalla de cocina con gas LP detectado y banderas AVISO GAS" loading="lazy" width="960" height="582"></a>
+        <figcaption><b>Cocina.</b> Módulo de gas · AVISO GAS.</figcaption></figure>
+      <figure class="card"><a href="assets/img/v3-cubo-morse.webp" target="_blank" rel="noopener"><img src="assets/img/v3-cubo-morse.webp" alt="Cubo Morse© de doce caras en colores beige y gris" loading="lazy" width="952" height="722"></a>
+        <figcaption><b>Cubo Morse©.</b> Exterior al 50 % que deja ver el interior.</figcaption></figure>
+    </div>
+    <details class="guia-morse" style="margin-top:14px"><summary>Conceptos originales (renders de referencia)</summary>
+    <div class="grid g3 galeria" style="margin-top:10px">
+      <figure class="card"><a href="assets/img/ref-pantalla-sanitarios.webp" target="_blank" rel="noopener"><img src="assets/img/ref-pantalla-sanitarios.webp" alt="Render de pantalla S.O.S. en acceso a sanitarios con alerta de persona caída en cabina F-2" loading="lazy" width="512" height="279"></a>
+        <figcaption><b>Pantalla de acceso a sanitarios.</b> Concepto original; la versión corregida es el simulador de arriba.</figcaption></figure>
+      <figure class="card"><a href="assets/img/ref-pantalla-pasillo.webp" target="_blank" rel="noopener"><img src="assets/img/ref-pantalla-pasillo.webp" alt="Render de pantalla S.O.S. montada en pasillo con conteo por módulo" loading="lazy" width="512" height="279"></a>
+        <figcaption><b>Pantalla de pasillo.</b> Conteo por módulo y tabla de ocupación por tipo de usuario.</figcaption></figure>
+      <figure class="card"><a href="assets/img/ref-restaurante.webp" target="_blank" rel="noopener"><img src="assets/img/ref-restaurante.webp" alt="Render de restaurante familiar con la pantalla S.O.S. instalada sobre el pasillo a sanitarios" loading="lazy" width="512" height="279"></a>
+        <figcaption><b>Instalación en restaurante.</b> Pantalla maestra visible desde el salón, sobre el pasillo a sanitarios.</figcaption></figure>
+      <figure class="card"><a href="assets/img/ref-equipo-frontal.webp" target="_blank" rel="noopener"><img src="assets/img/ref-equipo-frontal.webp" alt="Render de la unidad central S.O.S. con radar mmWave, sirena direccional y enlaces CAP v1.2 y SIP" loading="lazy" width="512" height="286"></a>
+        <figcaption><b>Unidad central.</b> Radar mmWave, sirena direccional, botones de prueba y reconocimiento; enlaces CAP v1.2 y SIP/VoIP.</figcaption></figure>
+      <figure class="card"><a href="assets/img/ref-despiece.webp" target="_blank" rel="noopener"><img src="assets/img/ref-despiece.webp" alt="Vista explosionada de la unidad S.O.S.: carcasa, controlador Cortex-M7, módulo radar 60/77 GHz, bocina piezoeléctrica, baterías y panel micro-LED" loading="lazy" width="512" height="512"></a>
+        <figcaption><b>Vista de despiece.</b> Controlador ARM Cortex-M7, radar 60/77 GHz, bocina piezo de 105 dB, bus LiFePO4 y respaldo NiMH 3×AAA.</figcaption></figure>
+      <div class="card"><h3>Nota sobre los renders</h3><p>Son ilustraciones conceptuales. Rótulos y cotas son aproximados: la especificación vigente está en la sección <a href="#ssos">Módulo S.S.O.S.©</a> (pantalla interior de 60 × 60 cm; exterior de 40 × 40 o 50 × 50 cm).</p><p class="note">© Víctor Hugo Ramírez Salgado.</p></div>
+    </div>
+    </details>
+  </div>
+</section>
+
+<section class="slide blk" id="cubo-morse">
+  <div class="wrap cm-grid">
+    <div>
+      <span class="eyebrow">Identidad SOSistem · Cubo Morse©</span>
+      <h2>Un cubo, doce caras, un solo código.</h2>
+      <p>El logo de S.O.S.™ es un cubo escrito en <b>código Morse internacional</b>: cada cara es un proyecto de la misma familia. El punto y la raya se leen igual impresos, en pantalla o con una luz que parpadea.</p>
+      <p class="note">Por fuera, las obras de identidad y código (Sistema S.O.S.©, S.S.O.S.™, Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Cubo Morse©); por dentro, las empresas y proyectos (ContenedorEns©, Arsa Bodegas©, Intertopía©, CuboPY©, 1ntertopía©, Econotopía©). El exterior es una marca de agua al 50 %: abajo se lee la cara de fuera y arriba se alcanza a ver la cara interior de la pared de enfrente. Toque una cara para escucharla en Morse.</p>
+      <div class="cm-modo" role="group" aria-label="Vista del cubo">
+        <button type="button" id="cm-ver-ext" aria-pressed="true">Exterior</button>
+        <button type="button" id="cm-ver-int" aria-pressed="false">Interior</button>
+        <button type="button" id="cm-auto">Girar solo</button>
+      </div>
+      <h3 class="cm-sub">Exterior</h3>
+      <div class="cm-lista" role="group" aria-label="Caras exteriores"><button type="button" data-cara="sos" data-capa="ext" data-lado="frente"><img class="cm-logo" src="assets/logos/sos.svg" alt="" width="36" height="36" loading="lazy"><b>1. SOSistem</b><span>··· ––– ··· ·· ··· – · ––</span><small>Sistema S.O.S.© · Safe Creative 2609046908578</small></button><button type="button" data-cara="ssos" data-capa="ext" data-lado="derecha"><img class="cm-logo" src="assets/logos/ssos.svg" alt="" width="36" height="36" loading="lazy"><b>2. S.S.O.S.™</b><span>··· ··· ––– ···</span><small>Obra derivada de 2609046908578</small></button><button type="button" data-cara="ccub" data-capa="ext" data-lado="atrás"><img class="cm-logo" src="assets/logos/ccub.svg" alt="" width="36" height="36" loading="lazy"><b>3. Código Cúbico©</b><span>–·–· ––– –·· ·· ––· ––– –·–· ··– –··· ·· –·–· –––</span><small>Safe Creative 2610097276721</small></button><button type="button" data-cara="cint" data-capa="ext" data-lado="izquierda"><img class="cm-logo" src="assets/logos/cint.svg" alt="" width="36" height="36" loading="lazy"><b>4. Cubo Interior©</b><span>–·–· ··– –··· ––– ·· –· – · ·–· ·· ––– ·–·</span><small>Safe Creative 2610097277049</small></button><button type="button" data-cara="omni" data-capa="ext" data-lado="arriba"><img class="cm-logo" src="assets/logos/omni.svg" alt="" width="36" height="36" loading="lazy"><b>5. Código Omnigráfico©</b><span>––– –– –· ·· ––· ·–· ·– ··–· ·· –·–· –––</span><small>Safe Creative · prueba 2610257441013</small></button><button type="button" data-cara="cmor" data-capa="ext" data-lado="abajo"><img class="cm-logo" src="assets/logos/cmor.svg" alt="" width="36" height="36" loading="lazy"><b>6. Cubo Morse©</b><span>–·–· ··– –··· ––– –– ––– ·–· ··· ·</span><small>Safe Creative 2610257441754</small></button></div>
+      <h3 class="cm-sub">Interior</h3>
+      <div class="cm-lista" role="group" aria-label="Caras interiores"><button type="button" data-cara="cont" data-capa="int" data-lado="frente"><img class="cm-logo" src="assets/logos/cont.svg" alt="" width="36" height="36" loading="lazy"><b>7. ContenedorEns©</b><span>–·–· ––– –· – · –· · –·· ––– ·–· · –· ···</span><small>Safe Creative 2609046908752</small></button><button type="button" data-cara="arsa" data-capa="int" data-lado="derecha"><img class="cm-logo" src="assets/logos/arsa.svg" alt="" width="36" height="36" loading="lazy"><b>8. Arsa Bodegas©</b><span>·– ·–· ··· ·– –··· ––– –·· · ––· ·– ···</span><small>Safe Creative 2609046908806</small></button><button type="button" data-cara="inter" data-capa="int" data-lado="atrás"><img class="cm-logo" src="assets/logos/inter.svg" alt="" width="36" height="36" loading="lazy"><b>9. Intertopía©</b><span>·· –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2602144563892</small></button><button type="button" data-cara="cpy" data-capa="int" data-lado="izquierda"><img class="cm-logo" src="assets/logos/cpy.svg" alt="" width="36" height="36" loading="lazy"><b>10. CuboPY©</b><span>–·–· ··– –··· ––– ·––· –·––</span><small>Safe Creative 2610097275281</small></button><button type="button" data-cara="uno" data-capa="int" data-lado="arriba"><img class="cm-logo" src="assets/logos/uno.svg" alt="" width="36" height="36" loading="lazy"><b>11. 1ntertopía©</b><span>·–––– –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2606096034080</small></button><button type="button" data-cara="eco" data-capa="int" data-lado="abajo"><img class="cm-logo" src="assets/logos/eco.svg" alt="" width="36" height="36" loading="lazy"><b>12. Econotopía©</b><span>· –·–· ––– –· ––– – ––– ·––· ·· ·–</span><small>Safe Creative 2610077261709</small></button></div>
+      <p style="margin-top:14px"><a class="btn" href="assets/cubo-morse-armable.pdf" target="_blank" rel="noopener">Descargar cubo para armar (PDF carta)</a></p>
+      <p class="note">Código Cúbico© y Cubo 33© van en Morse en la banda del cubo impreso. El Morse internacional no lleva acentos.</p>
+    </div>
+    <div class="cm-escena"><div class="cm-cubo" id="cm-cubo"><div class="cm-cara" style="transform:translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="sos"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 1: SOSistem, Safe Creative 2609046908578"><rect width="100" height="100" fill="#EFE6D6" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 1</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Safe Creative 2609046908578</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#2B3442">SOSistem</text><text x="50" y="72.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#2B3442" fill-opacity=".85">Sistema S.O.S.© · Arquitectura electrónica</text><g fill="#2B3442" fill-opacity=".92"><circle cx="9.85" cy="81.95" r="1.15"/><circle cx="13.55" cy="81.95" r="1.15"/><circle cx="17.25" cy="81.95" r="1.15"/><rect x="22" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="28.6" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="35.2" y="80.8" width="5.2" height="2.3" rx="1.15"/><circle cx="45.15" cy="81.95" r="1.15"/><circle cx="48.85" cy="81.95" r="1.15"/><circle cx="52.55" cy="81.95" r="1.15"/><circle cx="58.45" cy="81.95" r="1.15"/><circle cx="62.15" cy="81.95" r="1.15"/><circle cx="68.05" cy="81.95" r="1.15"/><circle cx="71.75" cy="81.95" r="1.15"/><circle cx="75.45" cy="81.95" r="1.15"/><rect x="80.2" y="80.8" width="5.2" height="2.3" rx="1.15"/><circle cx="90.15" cy="81.95" r="1.15"/><rect x="44.1" y="86.4" width="5.2" height="2.3" rx="1.15"/><rect x="50.7" y="86.4" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="cont"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 7: ContenedorEns©, Safe Creative 2609046908752"><rect width="100" height="100" fill="#FAF5EA" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 7</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2609046908752</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="10.24" fill="#3C4554">ContenedorEns©</text><g fill="#3C4554" fill-opacity=".92"><rect x="6.6" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="14.35" cy="29.95" r="1.15"/><rect x="16.9" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="24.65" cy="29.95" r="1.15"/><rect x="29.4" y="28.8" width="5.2" height="2.3" rx="1.15"/><rect x="36" y="28.8" width="5.2" height="2.3" rx="1.15"/><rect x="42.6" y="28.8" width="5.2" height="2.3" rx="1.15"/><rect x="51.4" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="59.15" cy="29.95" r="1.15"/><rect x="63.9" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="73.85" cy="29.95" r="1.15"/><rect x="78.6" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="86.35" cy="29.95" r="1.15"/><circle cx="92.25" cy="29.95" r="1.15"/><rect x="8.75" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="16.5" cy="35.55" r="1.15"/><circle cx="20.2" cy="35.55" r="1.15"/><rect x="24.95" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="31.55" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="38.15" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="48.1" cy="35.55" r="1.15"/><rect x="50.65" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="58.4" cy="35.55" r="1.15"/><circle cx="64.3" cy="35.55" r="1.15"/><rect x="69.05" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="76.8" cy="35.55" r="1.15"/><circle cx="82.7" cy="35.55" r="1.15"/><circle cx="86.4" cy="35.55" r="1.15"/><circle cx="90.1" cy="35.55" r="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div><div class="cm-cara" style="transform:rotateY(90deg) translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="ssos"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 2: S.S.O.S.™, Obra derivada de 2609046908578"><rect width="100" height="100" fill="#E3E6EA" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 2</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Obra derivada de 2609046908578</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#2B3442">S.S.O.S.™</text><text x="50" y="72.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#2B3442" fill-opacity=".85">Señalética de salvaguarda</text><g fill="#2B3442" fill-opacity=".92"><circle cx="22" cy="84.75" r="1.15"/><circle cx="25.7" cy="84.75" r="1.15"/><circle cx="29.4" cy="84.75" r="1.15"/><circle cx="35.3" cy="84.75" r="1.15"/><circle cx="39" cy="84.75" r="1.15"/><circle cx="42.7" cy="84.75" r="1.15"/><rect x="47.45" y="83.6" width="5.2" height="2.3" rx="1.15"/><rect x="54.05" y="83.6" width="5.2" height="2.3" rx="1.15"/><rect x="60.65" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="70.6" cy="84.75" r="1.15"/><circle cx="74.3" cy="84.75" r="1.15"/><circle cx="78" cy="84.75" r="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="arsa"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 8: Arsa Bodegas©, Safe Creative 2609046908806"><rect width="100" height="100" fill="#D8DCE2" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 8</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2609046908806</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#3C4554">Arsa Bodegas©</text><g fill="#3C4554" fill-opacity=".92"><circle cx="14.05" cy="29.95" r="1.15"/><rect x="16.6" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="26.55" cy="29.95" r="1.15"/><rect x="29.1" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="36.85" cy="29.95" r="1.15"/><circle cx="42.75" cy="29.95" r="1.15"/><circle cx="46.45" cy="29.95" r="1.15"/><circle cx="50.15" cy="29.95" r="1.15"/><circle cx="56.05" cy="29.95" r="1.15"/><rect x="58.6" y="28.8" width="5.2" height="2.3" rx="1.15"/><rect x="70.8" y="28.8" width="5.2" height="2.3" rx="1.15"/><circle cx="78.55" cy="29.95" r="1.15"/><circle cx="82.25" cy="29.95" r="1.15"/><circle cx="85.95" cy="29.95" r="1.15"/><rect x="7.3" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="13.9" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="20.5" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="29.3" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="37.05" cy="35.55" r="1.15"/><circle cx="40.75" cy="35.55" r="1.15"/><circle cx="46.65" cy="35.55" r="1.15"/><rect x="51.4" y="34.4" width="5.2" height="2.3" rx="1.15"/><rect x="58" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="65.75" cy="35.55" r="1.15"/><circle cx="71.65" cy="35.55" r="1.15"/><rect x="74.2" y="34.4" width="5.2" height="2.3" rx="1.15"/><circle cx="84.15" cy="35.55" r="1.15"/><circle cx="87.85" cy="35.55" r="1.15"/><circle cx="91.55" cy="35.55" r="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div><div class="cm-cara" style="transform:rotateY(180deg) translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="ccub"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 3: Código Cúbico©, Safe Creative 2610097276721"><rect width="100" height="100" fill="#EFE6D6" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 3</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Safe Creative 2610097276721</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="10.24" fill="#2B3442">Código Cúbico©</text><g fill="#2B3442" fill-opacity=".92"><rect x="6.95" y="76" width="5.2" height="2.3" rx="1.15"/><circle cx="14.7" cy="77.15" r="1.15"/><rect x="17.25" y="76" width="5.2" height="2.3" rx="1.15"/><circle cx="25" cy="77.15" r="1.15"/><rect x="29.75" y="76" width="5.2" height="2.3" rx="1.15"/><rect x="36.35" y="76" width="5.2" height="2.3" rx="1.15"/><rect x="42.95" y="76" width="5.2" height="2.3" rx="1.15"/><rect x="51.75" y="76" width="5.2" height="2.3" rx="1.15"/><circle cx="59.5" cy="77.15" r="1.15"/><circle cx="63.2" cy="77.15" r="1.15"/><circle cx="69.1" cy="77.15" r="1.15"/><circle cx="72.8" cy="77.15" r="1.15"/><rect x="77.55" y="76" width="5.2" height="2.3" rx="1.15"/><rect x="84.15" y="76" width="5.2" height="2.3" rx="1.15"/><circle cx="91.9" cy="77.15" r="1.15"/><rect x="9.65" y="81.6" width="5.2" height="2.3" rx="1.15"/><rect x="16.25" y="81.6" width="5.2" height="2.3" rx="1.15"/><rect x="22.85" y="81.6" width="5.2" height="2.3" rx="1.15"/><rect x="35.05" y="81.6" width="5.2" height="2.3" rx="1.15"/><circle cx="42.8" cy="82.75" r="1.15"/><rect x="45.35" y="81.6" width="5.2" height="2.3" rx="1.15"/><circle cx="53.1" cy="82.75" r="1.15"/><circle cx="59" cy="82.75" r="1.15"/><circle cx="62.7" cy="82.75" r="1.15"/><rect x="65.25" y="81.6" width="5.2" height="2.3" rx="1.15"/><rect x="74.05" y="81.6" width="5.2" height="2.3" rx="1.15"/><circle cx="81.8" cy="82.75" r="1.15"/><circle cx="85.5" cy="82.75" r="1.15"/><circle cx="89.2" cy="82.75" r="1.15"/><circle cx="25.75" cy="88.35" r="1.15"/><circle cx="29.45" cy="88.35" r="1.15"/><rect x="34.2" y="87.2" width="5.2" height="2.3" rx="1.15"/><circle cx="41.95" cy="88.35" r="1.15"/><rect x="44.5" y="87.2" width="5.2" height="2.3" rx="1.15"/><circle cx="52.25" cy="88.35" r="1.15"/><rect x="57" y="87.2" width="5.2" height="2.3" rx="1.15"/><rect x="63.6" y="87.2" width="5.2" height="2.3" rx="1.15"/><rect x="70.2" y="87.2" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="inter"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 9: Intertopía©, Safe Creative 2602144563892"><rect width="100" height="100" fill="#FAF5EA" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 9</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2602144563892</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#3C4554">Intertopía©</text><text x="50" y="22.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#3C4554" fill-opacity=".85">Literaria · formación</text><g fill="#3C4554" fill-opacity=".92"><circle cx="11.05" cy="31.95" r="1.15"/><circle cx="14.75" cy="31.95" r="1.15"/><rect x="19.5" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="27.25" cy="31.95" r="1.15"/><rect x="32" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="41.95" cy="31.95" r="1.15"/><circle cx="47.85" cy="31.95" r="1.15"/><rect x="50.4" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="58.15" cy="31.95" r="1.15"/><rect x="62.9" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="71.7" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="78.3" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="84.9" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="30.5" cy="37.55" r="1.15"/><rect x="33.05" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="39.65" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="47.4" cy="37.55" r="1.15"/><circle cx="53.3" cy="37.55" r="1.15"/><circle cx="57" cy="37.55" r="1.15"/><circle cx="62.9" cy="37.55" r="1.15"/><rect x="65.45" y="36.4" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div><div class="cm-cara" style="transform:rotateY(-90deg) translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="cint"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 4: Cubo Interior©, Safe Creative 2610097277049"><rect width="100" height="100" fill="#E3E6EA" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 4</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Safe Creative 2610097277049</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="10.24" fill="#2B3442">Cubo Interior©</text><text x="50" y="72.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#2B3442" fill-opacity=".85">Econotopía segura</text><g fill="#2B3442" fill-opacity=".92"><rect x="11.35" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="19.1" cy="79.15" r="1.15"/><rect x="21.65" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="29.4" cy="79.15" r="1.15"/><circle cx="35.3" cy="79.15" r="1.15"/><circle cx="39" cy="79.15" r="1.15"/><rect x="41.55" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="50.35" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="58.1" cy="79.15" r="1.15"/><circle cx="61.8" cy="79.15" r="1.15"/><circle cx="65.5" cy="79.15" r="1.15"/><rect x="70.25" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="76.85" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="83.45" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="10.65" cy="84.75" r="1.15"/><circle cx="14.35" cy="84.75" r="1.15"/><rect x="19.1" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="26.85" cy="84.75" r="1.15"/><rect x="31.6" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="41.55" cy="84.75" r="1.15"/><circle cx="47.45" cy="84.75" r="1.15"/><rect x="50" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="57.75" cy="84.75" r="1.15"/><circle cx="63.65" cy="84.75" r="1.15"/><circle cx="67.35" cy="84.75" r="1.15"/><rect x="72.1" y="83.6" width="5.2" height="2.3" rx="1.15"/><rect x="78.7" y="83.6" width="5.2" height="2.3" rx="1.15"/><rect x="85.3" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="44.85" cy="90.35" r="1.15"/><rect x="47.4" y="89.2" width="5.2" height="2.3" rx="1.15"/><circle cx="55.15" cy="90.35" r="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="cpy"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 10: CuboPY©, Safe Creative 2610097275281"><rect width="100" height="100" fill="#D8DCE2" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 10</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2610097275281</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#3C4554">CuboPY©</text><text x="50" y="22.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#3C4554" fill-opacity=".85">Software</text><g fill="#3C4554" fill-opacity=".92"><rect x="11.35" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="19.1" cy="31.95" r="1.15"/><rect x="21.65" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="29.4" cy="31.95" r="1.15"/><circle cx="35.3" cy="31.95" r="1.15"/><circle cx="39" cy="31.95" r="1.15"/><rect x="41.55" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="50.35" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="58.1" cy="31.95" r="1.15"/><circle cx="61.8" cy="31.95" r="1.15"/><circle cx="65.5" cy="31.95" r="1.15"/><rect x="70.25" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="76.85" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="83.45" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="28.7" cy="37.55" r="1.15"/><rect x="31.25" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="37.85" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="45.6" cy="37.55" r="1.15"/><rect x="50.35" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="58.1" cy="37.55" r="1.15"/><rect x="60.65" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="67.25" y="36.4" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div><div class="cm-cara" style="transform:rotateX(90deg) translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="omni"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 5: Código Omnigráfico©, Safe Creative · prueba 2610257441013"><rect width="100" height="100" fill="#EFE6D6" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 5</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Safe Creative · prueba 2610257441013</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="7.54" fill="#2B3442">Código Omnigráfico©</text><text x="50" y="72.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#2B3442" fill-opacity=".85">Código del Cubo (33)©</text><g fill="#2B3442" fill-opacity=".92"><rect x="12.5" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="19.1" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="25.7" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="34.5" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="41.1" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="49.9" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="57.65" cy="79.15" r="1.15"/><circle cx="63.55" cy="79.15" r="1.15"/><circle cx="67.25" cy="79.15" r="1.15"/><rect x="72" y="78" width="5.2" height="2.3" rx="1.15"/><rect x="78.6" y="78" width="5.2" height="2.3" rx="1.15"/><circle cx="86.35" cy="79.15" r="1.15"/><circle cx="12.45" cy="84.75" r="1.15"/><rect x="15" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="22.75" cy="84.75" r="1.15"/><circle cx="28.65" cy="84.75" r="1.15"/><rect x="31.2" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="41.15" cy="84.75" r="1.15"/><circle cx="44.85" cy="84.75" r="1.15"/><rect x="47.4" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="55.15" cy="84.75" r="1.15"/><circle cx="61.05" cy="84.75" r="1.15"/><circle cx="64.75" cy="84.75" r="1.15"/><rect x="69.5" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="77.25" cy="84.75" r="1.15"/><rect x="79.8" y="83.6" width="5.2" height="2.3" rx="1.15"/><circle cx="87.55" cy="84.75" r="1.15"/><rect x="40.8" y="89.2" width="5.2" height="2.3" rx="1.15"/><rect x="47.4" y="89.2" width="5.2" height="2.3" rx="1.15"/><rect x="54" y="89.2" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="uno"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 11: 1ntertopía©, Safe Creative 2606096034080"><rect width="100" height="100" fill="#FAF5EA" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 11</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2606096034080</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#3C4554">1ntertopía©</text><text x="50" y="22.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#3C4554" fill-opacity=".85">Software y base de datos</text><g fill="#3C4554" fill-opacity=".92"><circle cx="10.7" cy="31.95" r="1.15"/><rect x="13.25" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="19.85" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="26.45" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="33.05" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="41.85" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="49.6" cy="31.95" r="1.15"/><rect x="54.35" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="64.3" cy="31.95" r="1.15"/><circle cx="70.2" cy="31.95" r="1.15"/><rect x="72.75" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="80.5" cy="31.95" r="1.15"/><rect x="85.25" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="18.35" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="24.95" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="31.55" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="41.5" cy="37.55" r="1.15"/><rect x="44.05" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="50.65" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="58.4" cy="37.55" r="1.15"/><circle cx="64.3" cy="37.55" r="1.15"/><circle cx="68" cy="37.55" r="1.15"/><circle cx="73.9" cy="37.55" r="1.15"/><rect x="76.45" y="36.4" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div><div class="cm-cara" style="transform:rotateX(-90deg) translateZ(var(--m))"><div class="cm-capa cm-ext" data-cara="cmor"><svg viewBox="0 0 100 100" role="img" aria-label="Exterior 6: Cubo Morse©, Safe Creative 2610257441754"><rect width="100" height="100" fill="#E3E6EA" fill-opacity="0.5"/><line x1="6" y1="50" x2="94" y2="50" stroke="#2B3442" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="56" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#2B3442" fill-opacity=".8">EXTERIOR · 6</text><text x="94" y="56" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#2B3442" fill-opacity=".85">Safe Creative 2610257441754</text><text x="50" y="67.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#2B3442">Cubo Morse©</text><text x="50" y="72.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#2B3442" fill-opacity=".85">Identidad SOSistem</text><g fill="#2B3442" fill-opacity=".92"><rect x="11.35" y="80.8" width="5.2" height="2.3" rx="1.15"/><circle cx="19.1" cy="81.95" r="1.15"/><rect x="21.65" y="80.8" width="5.2" height="2.3" rx="1.15"/><circle cx="29.4" cy="81.95" r="1.15"/><circle cx="35.3" cy="81.95" r="1.15"/><circle cx="39" cy="81.95" r="1.15"/><rect x="41.55" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="50.35" y="80.8" width="5.2" height="2.3" rx="1.15"/><circle cx="58.1" cy="81.95" r="1.15"/><circle cx="61.8" cy="81.95" r="1.15"/><circle cx="65.5" cy="81.95" r="1.15"/><rect x="70.25" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="76.85" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="83.45" y="80.8" width="5.2" height="2.3" rx="1.15"/><rect x="15.4" y="86.4" width="5.2" height="2.3" rx="1.15"/><rect x="22" y="86.4" width="5.2" height="2.3" rx="1.15"/><rect x="30.8" y="86.4" width="5.2" height="2.3" rx="1.15"/><rect x="37.4" y="86.4" width="5.2" height="2.3" rx="1.15"/><rect x="44" y="86.4" width="5.2" height="2.3" rx="1.15"/><circle cx="53.95" cy="87.55" r="1.15"/><rect x="56.5" y="86.4" width="5.2" height="2.3" rx="1.15"/><circle cx="64.25" cy="87.55" r="1.15"/><circle cx="70.15" cy="87.55" r="1.15"/><circle cx="73.85" cy="87.55" r="1.15"/><circle cx="77.55" cy="87.55" r="1.15"/><circle cx="83.45" cy="87.55" r="1.15"/></g><text x="50" y="98" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#2B3442" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div><div class="cm-capa cm-int" data-cara="eco"><svg viewBox="0 0 100 100" role="img" aria-label="Interior 12: Econotopía©, Safe Creative 2610077261709"><rect width="100" height="100" fill="#D8DCE2" fill-opacity="0.92"/><line x1="6" y1="50" x2="94" y2="50" stroke="#3C4554" stroke-opacity=".22" stroke-width=".4" stroke-dasharray="1.5 1.5"/><text x="6" y="6" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="3.3" letter-spacing=".4" fill="#3C4554" fill-opacity=".8">INTERIOR · 12</text><text x="94" y="6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.1" fill="#3C4554" fill-opacity=".85">Safe Creative 2610077261709</text><text x="50" y="17.5" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="11" fill="#3C4554">Econotopía©</text><text x="50" y="22.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="3.6" fill="#3C4554" fill-opacity=".85">Cubo de la Comunicación</text><g fill="#3C4554" fill-opacity=".92"><circle cx="10.35" cy="31.95" r="1.15"/><rect x="15.1" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="22.85" cy="31.95" r="1.15"/><rect x="25.4" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="33.15" cy="31.95" r="1.15"/><rect x="37.9" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="44.5" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="51.1" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="59.9" y="30.8" width="5.2" height="2.3" rx="1.15"/><circle cx="67.65" cy="31.95" r="1.15"/><rect x="72.4" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="79" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="85.6" y="30.8" width="5.2" height="2.3" rx="1.15"/><rect x="13.95" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="22.75" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="29.35" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="35.95" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="45.9" cy="37.55" r="1.15"/><rect x="48.45" y="36.4" width="5.2" height="2.3" rx="1.15"/><rect x="55.05" y="36.4" width="5.2" height="2.3" rx="1.15"/><circle cx="62.8" cy="37.55" r="1.15"/><circle cx="68.7" cy="37.55" r="1.15"/><circle cx="72.4" cy="37.55" r="1.15"/><circle cx="78.3" cy="37.55" r="1.15"/><rect x="80.85" y="36.4" width="5.2" height="2.3" rx="1.15"/></g><text x="50" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="2.7" fill="#3C4554" fill-opacity=".7">© Víctor Hugo Ramírez Salgado</text></svg></div></div></div></div>
+  </div>
+</section>
+
+<section class="slide blk" id="normativa">
+  <div class="wrap">
+    <span class="eyebrow">Marco normativo vigente · octubre 2026</span>
+    <h2>Pensado para cumplir, no para sustituir.</h2>
+    <div class="tbl-wrap">
+      <table class="wrap-cells">
+        <thead><tr><th>Norma o ley</th><th>Qué exige</th><th>Cómo ayuda S.O.S.©</th></tr></thead>
+        <tbody>
+          <tr><td><b>NOM-026-STPS-2008</b></td><td>Colores y señales de seguridad e higiene.</td><td>Pantalla con colores de seguridad según su significado normativo.</td></tr>
+          <tr><td><b>NOM-002-STPS-2010</b></td><td>Prevención y protección contra incendios.</td><td>Complementa la alarma y la señal de evacuación; no sustituye detectores certificados.</td></tr>
+          <tr><td><b>NOM-033-STPS-2015</b></td><td>Trabajos en espacios confinados.</td><td>Monitoreo de «hombre caído» en cuartos técnicos, cisternas y fosas, dentro del plan de rescate.</td></tr>
+          <tr><td><b>Ley Federal del Trabajo</b></td><td>Seguridad e higiene y primeros auxilios (arts. 132, 504 y 994).</td><td>Evidencia de medidas preventivas y aviso inmediato.</td></tr>
+          <tr><td><b>LFPDPPP 2025</b></td><td>Protección de datos personales; autoridad: Secretaría Anticorrupción y Buen Gobierno.</td><td>Sin cámaras ni grabación; aviso de privacidad y retención mínima de eventos.</td></tr>
+          <tr><td><b>Ley en Materia de Telecomunicaciones y Radiodifusión</b></td><td>Homologación de equipos de radio ante la Comisión Reguladora de Telecomunicaciones.</td><td>Módulos de radio y conectividad ya homologados.</td></tr>
+          <tr><td><b>CAP v1.2 (OASIS) · SIP (RFC 3261)</b></td><td>Formatos estándar de alerta y voz.</td><td>La alerta llega estructurada: qué pasó, dónde y con qué urgencia.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="senales">
+  <div class="wrap">
+    <span class="eyebrow">Señales normalizadas · ISO, UIT y OMI</span>
+    <h2>Cada sonido, luz, color y código del sistema sigue una norma internacional.</h2>
+    <p>S.O.S.© usa señales que cualquier persona, brigada o tripulación reconoce sin entrenamiento previo: el patrón de evacuación T-3, la alarma general de los buques, el código Morse internacional y las banderas del Código Internacional de Señales.</p>
+    <div class="tbl-wrap"><table class="tbl-normas">
+      <thead><tr><th>Norma</th><th>Qué establece</th><th>Cómo la aplica S.O.S.©</th></tr></thead>
+      <tbody>
+        <tr><td><b>ISO 7010:2019</b><br><small>Señales de seguridad registradas · con Amd. 1–11 (Amd. 11:2026)</small></td><td>Catálogo internacional de señales de seguridad con su pictograma, color y forma: salvamento y evacuación (E, verde), protección contra incendios (F, rojo), obligación (M, azul), prohibición (P, rojo) y advertencia (W, amarillo).</td><td>Pantallas, luces y botones usan esos colores según el estado; la señalética física del recinto usa los pictogramas registrados, como E001/E002 salida de emergencia, E003 primeros auxilios, E007 punto de reunión y W001 advertencia general. Nueva edición en preparación (ISO/DIS 7010).</td></tr>
+        <tr><td><b>ISO 3864-1:2011</b><br><small>Principios de diseño de señales y marcas de seguridad · confirmada en 2022</small></td><td>Define los colores de seguridad, sus colores de contraste y las formas geométricas: círculo con banda diagonal para prohibición, círculo para obligación, triángulo para advertencia y cuadrado o rectángulo para condición segura y equipo contra incendio.</td><td>Cada estado tiene un solo par de colores: rojo con blanco (emergencia), amarillo con negro (advertencia), verde con blanco (seguro) y azul con blanco (información); colorimetría de referencia en ISO 3864-4 (RAL 3001, 1003, 6032 y 5005).</td></tr>
+        <tr><td><b>ISO 3864-3:2024</b><br><small>Diseño de símbolos gráficos para señales de seguridad · 3.ª ed., sustituye a la de 2012</small></td><td>Reglas para dibujar pictogramas de seguridad: área del símbolo, grosor de trazo, figura humana normalizada y legibilidad a distancia.</td><td>Los símbolos propios de S.O.S.© (persona en el suelo, sismo y aforo) se dibujan con estas reglas; no son señales registradas en ISO 7010 y se identifican como símbolos del sistema.</td></tr>
+        <tr><td><b>ISO 7731:2003</b><br><small>Señales auditivas de peligro</small></td><td>La señal debe ser audible, identificable e inconfundible: al menos <b>15 dB por encima del ruido de fondo</b> en toda la zona y tonos principales entre 500 y 1500 Hz.</td><td>Sirena bitonal 800/1250 Hz y Morse a 650 Hz. El panel pide el ruido medido en cada recinto y marca ✓ si la sirena lo supera en 15 dB o más, y ✗ si no.</td></tr>
+        <tr><td><b>ISO 8201:2017</b><br><small>Señal de evacuación</small></td><td>Patrón temporal <b>T-3</b>: 0.5 s sonido, 0.5 s silencio, tres veces, y 1.5 s de pausa (ciclo de 4 s); equivalente al de NFPA 72.</td><td>Patrón por defecto en <b>sismo y evacuación</b>; la luz blanca destella al mismo ritmo.</td></tr>
+        <tr><td><b>ISO 11429:1996</b><br><small>Señales sonoras y visuales</small> <small>(confirmada en 2014)</small></td><td>Sistema de señales de peligro e información según el grado de urgencia, con sonido y luz coherentes entre sí.</td><td>Cada estado tiene un solo par sonido-luz: rojo en emergencia, ámbar en advertencia, verde seguro y blanco de evacuación (NOM-026-STPS-2008); la luz sigue el mismo ritmo que el sonido.</td></tr>
+        <tr><td><b>SOLAS, cap. III, regla 34 · Código IDS (LSA) 7.2.1</b><br><small>OMI</small></td><td>Alarma general de emergencia en buques: <b>siete o más pitadas cortas y una larga</b>.</td><td>Patrón opcional «SOLAS» para recintos portuarios y a bordo (propuesta Puerto de Ensenada, previa autorización).</td></tr>
+        <tr><td><b>Código de Alertas e Indicadores, 2009</b><br><small>OMI, res. A.1021(26)</small></td><td>Prioridades, colores y señales visuales y sonoras de alarmas a bordo.</td><td>Referencia para las pantallas instaladas en buques o terminales.</td></tr>
+        <tr><td><b>ITU-R M.1677-1 (2009)</b><br><small>Código Morse internacional</small></td><td>Alfabeto Morse; la raya dura 3 puntos; espacios de 1 punto entre señales, 3 entre letras y 7 entre palabras.</td><td>Motor Morse a 15 palabras por minuto (punto ≈ 80 ms), con luz y sonido.</td></tr>
+        <tr><td><b>ISO/IEC 646:1991</b><br><small>Caracteres de 7 bits</small></td><td>Conjunto básico de letras, cifras y signos para intercambio de información.</td><td>Los avisos se normalizan a mayúsculas sin acentos antes de pasarlos a Morse y a banderas.</td></tr>
+        <tr><td><b>Código Internacional de Señales</b><br><small>OMI, res. A.80(IV)</small></td><td>Banderas A–Z con significado de una letra (p. ej. O: hombre al agua; V: necesito auxilio; W: necesito asistencia médica).</td><td>La pantalla muestra la bandera que corresponde al evento: <b>W</b> en persona caída y <b>V</b> si se pide auxilio.</td></tr>
+        <tr><td><b>ISO 639-3</b><br><small>Códigos de lenguas</small></td><td>Identifica cada lengua de señas: <b>mfs</b> Lengua de Señas Mexicana, <b>ssp</b> Lengua de Signos Española, <b>ase</b> Lengua de Señas Americana, <b>ils</b> Señas Internacionales.</td><td>Base para el futuro selector de lengua de señas por país.</td></tr>
+        <tr><td><b>Convención sobre los Derechos de las Personas con Discapacidad</b><br><small>ONU, arts. 2, 9, 21 y 24</small></td><td>Reconoce las lenguas de señas y obliga a dar información accesible.</td><td>Avisos con luz, texto, Morse y sonido; lengua de señas en desarrollo.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Aclaración: la ISO 8384 corresponde a «Buques y tecnología marina — Dragas — Vocabulario»; las señales visuales a bordo se rigen por el Código de Alertas e Indicadores de la OMI. Las lenguas de señas no tienen una norma ISO: cada país tiene la suya.</p>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><h3>Escuche los patrones</h3>
+        <p class="note">Módulo de pruebas: suena solo al tocar, con volumen bajo. En el equipo real la sirena llega a 105 dB.</p>
+        <div class="sn-btns">
+          <button class="btn" type="button" data-patron-prueba="t3">T-3 · ISO 8201</button>
+          <button class="btn" type="button" data-patron-prueba="solas">7 o más cortas + 1 larga · SOLAS</button>
+          <button class="btn" type="button" data-patron-prueba="pulsos">Pulsos · ISO 7731</button>
+          <button class="btn" type="button" data-patron-prueba="fsk">Bitonal 800/1250 Hz</button>
+          <button class="btn" type="button" data-patron-prueba="morse">SOS · ITU-R M.1677-1</button>
+          <button class="btn" type="button" id="sn-stop">Detener</button>
+        </div>
+        <div class="sn-luz" id="sn-luz" aria-hidden="true"></div>
+        <svg class="sn-t3" viewBox="0 0 400 46" role="img" aria-label="Patrón T-3: tres pulsos de 0.5 s y pausa de 1.5 s"><g fill="#9B2423"><rect x="10" y="10" width="40" height="20" rx="3"/><rect x="90" y="10" width="40" height="20" rx="3"/><rect x="170" y="10" width="40" height="20" rx="3"/></g><g fill="none" stroke="#7a8699"><line x1="10" y1="34" x2="330" y2="34"/></g><g font-size="9" fill="#7a8699"><text x="10" y="44">0.5 s</text><text x="54" y="44">0.5</text><text x="210" y="44">pausa 1.5 s</text><text x="300" y="44">↻ 4 s</text></g></svg>
+      </div>
+      <div class="card"><h3>Su mensaje en banderas y Morse</h3>
+        <label class="sn-campo">Mensaje<input id="ics-txt" value="SOS" maxlength="24" autocomplete="off"></label>
+        <div class="ics-sal" id="ics-sal" aria-live="polite"></div>
+        <p class="mono ics-morse" id="ics-morse"></p>
+        <button class="btn" type="button" id="ics-oir">Escuchar en Morse (prueba)</button>
+      </div>
+    </div>
+
+    <details class="guia-morse" style="margin-top:14px"><summary>Banderas del Código Internacional de Señales (A–Z)</summary>
+      <div class="ics-rejilla" id="ics-rejilla"></div>
+    </details>
+
+    <div class="fuentes-sec">
+      <b>Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>International Organization for Standardization. (1991). <i>Information technology — ISO 7-bit coded character set for information interchange</i> (ISO/IEC 646:1991). <a href="https://www.iso.org/standard/4777.html" rel="noopener">https://www.iso.org/standard/4777.html</a></li>
+        <li>International Organization for Standardization. (1996). <i>Ergonomics — System of auditory and visual danger and information signals</i> (ISO 11429:1996; confirmada en 2014). <a href="https://www.iso.org/standard/19369.html" rel="noopener">https://www.iso.org/standard/19369.html</a></li>
+        <li>International Organization for Standardization. (2003). <i>Ergonomics — Danger signals for public and work areas — Auditory danger signals</i> (ISO 7731:2003). <a href="https://www.iso.org/standard/33590.html" rel="noopener">https://www.iso.org/standard/33590.html</a></li>
+        <li>International Organization for Standardization. (2017). <i>Acoustics — Audible and other emergency evacuation signals</i> (ISO 8201:2017). <a href="https://webstore.ansi.org/standards/iso/iso82012017" rel="noopener">https://webstore.ansi.org/standards/iso/iso82012017</a></li>
+        <li>International Organization for Standardization. (2018). <i>Ships and marine technology — Dredgers — Vocabulary</i> (ISO 8384:2018). <a href="https://www.austrian-standards.at/de/shop/iso-8384-2018-2018-08-10~p2400991" rel="noopener">https://www.austrian-standards.at/de/shop/iso-8384-2018-2018-08-10~p2400991</a></li>
+        <li>International Telecommunication Union. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I/" rel="noopener">https://www.itu.int/rec/R-REC-M.1677-1-200910-I/</a></li>
+        <li>Organización Marítima Internacional. (1965). <i>Código Internacional de Señales</i> (Resolución A.80(IV); edición vigente 2005).</li>
+        <li>Organización Marítima Internacional. (1996). <i>Código internacional de dispositivos de salvamento (Código IDS)</i> (Resolución MSC.48(66)), párr. 7.2.1; Convenio SOLAS 1974, cap. III, regla 34.</li>
+        <li>Organización Marítima Internacional. (2009). <i>Código de alertas e indicadores, 2009</i> (Resolución A.1021(26)). <a href="https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.1021(26).pdf" rel="noopener">https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.1021(26).pdf</a></li>
+        <li>Organización de las Naciones Unidas. (2006). <i>Convención sobre los Derechos de las Personas con Discapacidad</i>. <a href="https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf" rel="noopener">https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf</a></li>
+        <li>SIL International. (s. f.). <i>ISO 639-3 code tables</i> [mfs, ssp, ase, ils]. <a href="https://iso639-3.sil.org/" rel="noopener">https://iso639-3.sil.org/</a></li>
+        <li>Flags of the World. (s. f.). <i>International Code of Signals</i>. <a href="https://crwflags.com/fotw/flags/xf-ics.html" rel="noopener">https://crwflags.com/fotw/flags/xf-ics.html</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="aprende">
+  <div class="wrap">
+    <span class="eyebrow">Aprendizaje · Comunicación para todos</span>
+    <h2>Aprenda a pedir ayuda de cuatro maneras.</h2>
+    <p class="lead fo-lead">En una emergencia, no todas las personas pueden oír, ver o hablar. Aquí puede aprender y practicar el código Morse, el braille, las banderas del Código Internacional de Señales y la lengua de señas.</p>
+    <div class="card ap-conv">
+      <label class="sn-campo"><b>Escriba un mensaje</b><input id="ap-txt" value="SOS" maxlength="30" autocomplete="off" placeholder="SOS"></label>
+      <div class="ap-prac"><button class="btn" type="button" data-practica="SOS">SOS · Auxilio</button><button class="btn" type="button" data-practica="AYUDA">AYUDA · Ayuda</button><button class="btn" type="button" data-practica="SISMO">SISMO · Sismo</button><button class="btn" type="button" data-practica="911">911 · Llamar al 911</button></div>
+      <div class="ap-sal">
+        <div><small>Morse</small><p class="mono ap-morse" id="ap-morse"></p></div>
+        <div><small>Braille</small><p class="ap-braille no-traducir" id="ap-braille"></p></div>
+        <div><small>Banderas</small><div class="ap-band no-traducir" id="ap-band"></div></div>
+        <div><small>Alfabeto fonético</small><p class="ap-fon no-traducir" id="ap-fon"></p></div>
+      </div>
+      <p><button class="btn" type="button" id="ap-oir">Escuchar en Morse</button></p>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card ap-lsm"><h3>Lengua de Señas Mexicana (LSM)</h3><p>La LSM es la lengua de la comunidad sorda en México (código ISO 639-3: mfs). Se aprende con videos y con personas sordas; por eso aquí no la dibujamos: le recomendamos los diccionarios oficiales.</p>
+        <ul><li><a href="https://educacionespecial.sep.gob.mx/storage/recursos/2023/05/xzrfl019nV-4Diccionario_lengua_%20Senas.pdf" target="_blank" rel="noopener">Diccionario de Lengua de Señas Mexicana (SEP, Educación Especial)</a></li>
+        <li><a href="https://pdh.cdmx.gob.mx/storage/app/media/banner/Dic_LSM%202.pdf" target="_blank" rel="noopener">Diccionario de LSM de la Ciudad de México (CDHCM)</a></li></ul>
+        <p class="note">Módulo de lengua de señas en las pantallas: en desarrollo (LSM y ASL).</p></div>
+      <div class="card"><h3>Braille</h3><p class="note">Braille en español (Comisión Braille Española): seis puntos por celda; los números llevan antes el signo de número ⠼.</p><p class="note">Morse internacional (UIT-R M.1677-1): el punto es corto y la raya dura tres puntos.</p><p class="note">Alfabeto fonético internacional (OACI/OTAN), el que usan radio marítima y aeronáutica para deletrear sin errores.</p></div>
+    </div>
+    <h3 style="margin-top:22px">El alfabeto en cuatro sistemas</h3>
+    <div class="tbl-wrap"><table class="ap-tabla">
+      <thead><tr><th>Letra</th><th>Morse</th><th>Braille</th><th>Bandera</th><th>Fonético</th></tr></thead>
+      <tbody id="ap-tbody"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="slide blk" id="receptor">
+  <div class="wrap">
+    <span class="eyebrow">Receptor Morse · a la escucha</span>
+    <h2>Su celular escucha el código Morse y lo convierte en texto.</h2>
+    <p>Capta por el micrófono la señal de una radio, de otro teléfono o de una sirena; también lee grabaciones y lo que usted teclee con el dedo. Si recibe «SOS», muestra un aviso rojo y vibra.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Micrófono</h3><p>Detecta solo el tono (300–1300 Hz) y la velocidad (5–40 palabras por minuto), aunque haya ruido.</p></div>
+      <div class="card"><h3>Grabaciones</h3><p>Abra una nota de voz o un archivo WAV, MP3 o M4A y obtenga el texto.</p></div>
+      <div class="card"><h3>Con el dedo</h3><p>Mantenga presionado el recuadro para enviar Morse; se traduce al instante.</p></div>
+    </div>
+    <div class="card rx-host" id="rx-host" style="margin-top:16px"></div>
+    <p class="note">Herramienta de prueba: el audio se procesa en el propio equipo, sin grabarse ni enviarse. No sustituye al 911.</p>
+    <div class="fuentes-sec">
+      <b>Fuentes de esta sección</b>
+      <ol class="refs">
+        <li>Goertzel, G. (1958). An algorithm for the evaluation of finite trigonometric series. <i>The American Mathematical Monthly, 65</i>(1), 34–35. <a href="https://doi.org/10.2307/2310304" rel="noopener">https://doi.org/10.2307/2310304</a></li>
+        <li>International Telecommunication Union. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I/" rel="noopener">https://www.itu.int/rec/R-REC-M.1677-1-200910-I/</a></li>
+        <li>World Wide Web Consortium. (2021). <i>Web Audio API</i> (W3C Recommendation). <a href="https://www.w3.org/TR/webaudio/" rel="noopener">https://www.w3.org/TR/webaudio/</a></li>
+        <li>World Wide Web Consortium. (s. f.). <i>Media Capture and Streams</i> (W3C Candidate Recommendation). <a href="https://www.w3.org/TR/mediacapture-streams/" rel="noopener">https://www.w3.org/TR/mediacapture-streams/</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="clientes">
+  <div class="wrap">
+    <span class="eyebrow">Para quién</span>
+    <h2>Recintos con cabinas, espacios confinados y alto flujo de personas.</h2>
+    <div class="grid g4">
+      <div class="card"><h3>Puertos y aduanas</h3><p>Sanitarios de acceso, casetas y oficinas operativas.</p></div>
+      <div class="card"><h3>Gobierno</h3><p>Oficinas de atención al público y edificios administrativos.</p></div>
+      <div class="card"><h3>Transporte y comercio</h3><p>Centrales de autobuses, gasolineras y plazas comerciales.</p></div>
+      <div class="card"><h3>Industria</h3><p>Vestidores, espacios confinados y minibodegas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="piloto">
+  <div class="wrap">
+    <span class="eyebrow">Piloto 2026–2027</span>
+    <h2>Prototipo y prueba real en las oficinas de ContenedorEns©.</h2>
+    <div class="grid g2">
+      <div class="card">
+        <ol class="steps">
+          <li><div><b>Prototipo.</b> Armado, calibración de umbrales y bitácora de pruebas en las oficinas de ContenedorEns©, Ensenada.</div></li>
+          <li><div><b>Prueba real.</b> Operación continua del sistema en los sanitarios de las oficinas de ContenedorEns©, con personal y visitantes reales.</div></li>
+          <li><div><b>Medición.</b> Tiempo de respuesta, falsas alarmas, disponibilidad y satisfacción del personal.</div></li>
+          <li><div><b>Validación.</b> Reporte de resultados y propuesta comercial para otros recintos.</div></li>
+        </ol>
+        <div class="demo-banner" style="margin:16px 0 0"><b>Propuesta de prueba adicional:</b> Puerto de Ensenada (oficinas y sanitarios de acceso), sujeta a la autorización previa de ASIPONA Ensenada y a la firma de un convenio de colaboración.</div>
+      </div>
+      <div class="card">
+        <h3>Modelo de servicio</h3>
+        <p><b>Equipo instalado</b> por recinto, más <b>servicio mensual</b> de monitoreo, mantenimiento y reportes estadísticos por evento, con fecha, hora, minuto y segundo.</p>
+        <p>Cada cliente recibe su panel con indicadores: alertas por nivel, tiempos de respuesta, porcentaje de error del sistema y disponibilidad.</p>
+        <p><b>Paquete de referencia para restaurante:</b> pantalla maestra de 60 × 60 cm, dos sensores de radar (sanitarios de hombres y mujeres), herrajes antivandálicos, instalación nocturna y calibración. Precio de referencia <b>USD 1,667.50</b> (≈ $31,183 MXN al FIX de Banxico del 23-oct-2026), más servicio de monitoreo de <b>USD 35 al mes</b>. Precios sin IVA; cotización final por recinto.</p>
+        <p class="note">El piloto está en gestión. Las cifras se publicarán al concluir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="terminal">
+  <div class="wrap">
+    <span class="eyebrow">Terminal de pruebas</span>
+    <h2>Su celular como terminal del sistema.</h2>
+    <p>Instale la app SOSistem™ Terminal y use su celular como punto de prueba: lee el acelerómetro, el giroscopio, el micrófono y la ubicación, detecta caídas, vibración tipo sismo, ruido fuerte y la palabra «S.O.S.», y escala la alerta por niveles N0–N3 como la pantalla física.</p>
+    <div class="card aviso-beta" role="note" aria-labelledby="ab-tit">
+      <span class="tag warn">Versión de prueba · en revisión</span>
+      <h3 id="ab-tit" style="margin-top:10px">Abierta a todo el público, sin registro.</h3>
+      <p>La terminal es una versión de prueba de SOSistem™. Cualquier persona puede descargarla y usarla para conocer el sistema; no pedimos nombre, correo ni teléfono. <b>No es el sistema terminado</b>: no está lista para operar, instalar ni aplicarse como medio de protección en ningún recinto, y no sustituye al 911 ni a los sistemas oficiales de alerta.</p>
+      <p>Sus pruebas y comentarios son bienvenidos y nos ayudan a mejorarla. Si desea acelerar el desarrollo del equipo físico para salvar vidas, puede apoyar el proyecto con una aportación voluntaria.</p>
+      <p>El uso de la terminal implica la aceptación de los <a href="terminos-pruebas.html">Términos de uso de la versión de prueba</a>. El uso indebido —falsas alarmas a servicios de emergencia, acceso no autorizado, copia o distribución del código— puede dar lugar a acciones legales.</p>
+      <div class="cnt-pruebas" id="cnt-pruebas" aria-live="polite">
+        <div><b data-cnt="pruebas/terminal-abierta">—</b><span>personas abrieron la terminal</span></div>
+        <div><b data-cnt="pruebas/acepto-terminos">—</b><span>aceptaron los términos de prueba</span></div>
+        <div><b data-cnt="pruebas/inicio-monitoreo">—</b><span>ejecutaron una prueba</span></div>
+        <div><b data-cnt="pruebas/app-instalada">—</b><span>instalaron la app</span></div>
+      </div>
+      <p class="note" id="cnt-nota">Conteo anónimo por equipo: no identifica a nadie, no usa cookies y se actualiza con cada uso.</p>
+      <p style="margin:0"><a class="btn primary" href="terminal.html">Abrir la terminal</a> <a class="btn verde" href="#apoyo">Apoyar el proyecto</a> <a class="btn" href="https://wa.me/526462270490?text=Comentarios%20sobre%20la%20terminal%20de%20pruebas%20SOSistem%3A%20" target="_blank" rel="noopener">Enviar comentarios</a></p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><h3>Sensores en vivo</h3><p>Movimiento, orientación, nivel de sonido, batería, red y datos técnicos del equipo.</p></div>
+      <div class="card"><h3>Eventos con estadística</h3><p>Cada evento queda con hora al milisegundo, nivel alcanzado y tiempo de respuesta; al marcarlo como válido o falsa alarma se calcula el porcentaje de error.</p></div>
+      <div class="card"><h3>Sus datos, en su cuenta</h3><p>Todo se guarda en el celular. Puede exportarlo en CSV o JSON, o enviarlo a su repositorio privado de GitHub.</p></div>
+    </div>
+    <div class="grid g2 terminal-grid" style="margin-top:16px;align-items:center">
+      <div>
+        <p><a class="btn primary" href="terminal.html">Abrir la terminal</a></p>
+        <p class="note">En iPhone: Safari → Compartir → «Agregar a pantalla de inicio». En Android: Chrome → «Instalar app».</p>
+        <p class="note">Herramienta de prueba: no es un dispositivo médico ni sustituye al 911. <a href="terminos-pruebas.html">Términos de uso</a>.</p>
+      </div>
+      <div class="card terminal-qr" style="text-align:center">
+        <div id="qr-terminal" class="no-traducir" style="display:inline-block;background:#fff;padding:10px;border-radius:10px;min-height:40px" aria-label="Código QR de sosistem.com/terminal.html"></div>
+        <p class="note" style="margin:8px 0 0">Escanee con su celular para abrir la terminal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="fondo">
+  <div class="wrap">
+    <span class="eyebrow">Fondo SOS · Conectividad humanitaria</span>
+    <h2>Conexión para pedir auxilio donde no hay señal.</h2>
+    <p class="lead">El fondo convierte aportaciones en conexión para el sistema S.O.S.: estaciones, puertas de enlace y antenas comunitarias que transmiten alertas desde lugares sin cobertura en desastres naturales y emergencias personales.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Alerta por mensaje de texto</h3><p>Enviar «SOS» por SMS funciona con señal mínima y sin datos móviles.</p></div>
+      <div class="card"><h3>Puertas de enlace donadas</h3><p>Un teléfono o una estación con internet retransmite al panel y al 911 las alertas de su zona, sin compartir el internet de su dueño.</p></div>
+      <div class="card"><h3>Red en malla sin internet</h3><p>Nodos de radio LoRa en bandas libres enlazan alertas de texto de 2 a 5 km por nodo.</p></div>
+      <div class="card"><h3>Bolsa de datos del fondo</h3><p>SIM para dispositivos con datos compartidos mantienen conectadas las estaciones; el crédito queda en la cuenta del fondo.</p></div>
+      <div class="card"><h3>Antena satelital por refugio</h3><p>Una antena en espera se activa con el fondo durante un desastre y da conexión a todo el refugio.</p></div>
+      <div class="card"><h3>SOS satelital del teléfono</h3><p>Los teléfonos compatibles envían mensajes de emergencia por satélite sin cobertura celular.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h3>Cómo apoyar</h3>
+        <ol class="steps">
+          <li><div>Dona dinero: todo va al fondo, con entradas y salidas publicadas.</div></li>
+          <li><div>10 % solidario: el 10 % de cada servicio contratado con SOSistem™ se destina al fondo.</div></li>
+          <li><div>Dona megas o recargas directamente al número de un beneficiario registrado, desde la aplicación de tu compañía telefónica.</div></li>
+          <li><div>Dona tu conexión: registra tu teléfono como puerta de enlace para alertas de tu zona.</div></li>
+          <li><div>Dona un comunicador satelital: botón SOS con GPS y suscripción pagada por el fondo, para personas o refugios sin señal ni saldo.</div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <p>Las metas por comunidad y su avance se publican en esta sección.</p>
+        <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20quiero%20aportar%20al%20Fondo%20SOS%20de%20SOSistem" target="_blank" rel="noopener">Quiero aportar · escribir por WhatsApp</a></p>
+        <p class="note">Las aportaciones son un apoyo voluntario a un proyecto privado y no son deducibles de impuestos. El fondo compra conexión para el equipo de emergencia; no revende internet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="apoyo">
+  <div class="wrap">
+    <span class="eyebrow">Apoya el proyecto</span>
+    <h2>Ayúdenos a instalar el primer prototipo.</h2>
+    <div class="grid g2 apoyo-grid">
+      <div>
+        <p>SOSistem™ es un proyecto independiente de seguridad humana. Su aportación financia el prototipo físico y la prueba real en las oficinas de ContenedorEns©: radares mmWave, pantallas, batería LiFePO4 y enlace celular.</p>
+        <p class="note">Las aportaciones son un apoyo voluntario a un proyecto privado; no son donativos deducibles de impuestos. El avance de la meta se actualiza en esta sección.</p>
+      </div>
+      <div class="card apoyo-card">
+        <div class="ap-meta"><b id="ap-rec">$0</b><span>de <b id="ap-meta">$50,000 MXN</b> para el prototipo</span></div>
+        <div class="iv-barra"><i id="ap-barra" style="width:0%"></i></div>
+        <p class="note" id="ap-pct">0 % de la meta</p>
+        <p><a class="btn primary" id="ap-btn" href="https://wa.me/526462270490?text=Hola%2C%20quiero%20apoyar%20el%20proyecto%20SOSistem" target="_blank" rel="noopener">Quiero apoyar · escribir por WhatsApp</a></p>
+        <p class="note" id="ap-estado">Patrocinios en línea en activación (GitHub Sponsors).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide blk" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">Contacto</span>
+    <h2>Hablemos de salvar vidas: tener para dar.</h2>
+    <p class="lead">Le mostramos el simulador, las pantallas y el panel de estadísticas con datos de prueba, y evaluamos su recinto sin costo.</p>
+    <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20me%20interesa%20el%20Sistema%20S.O.S.%20(SOSistem)" target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn" href="tel:+526462270490">646 227 0490</a></p>
+  </div>
+</section>
+
+<section class="blk no-present" id="fuentes">
+  <div class="wrap">
+    <span class="eyebrow">Fuentes</span>
+    <h2>Referencias (APA 7.ª ed.)</h2>
+    <ol class="refs">
+      <li>Banco de México. (2026, 23 de octubre). <i>Tipos de cambio diarios (CF102)</i>. <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&amp;idCuadro=CF102&amp;sector=6&amp;locale=es" rel="noopener">banxico.org.mx</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2025). <i>Estadística de defunciones registradas (EDR) 2024</i> [Comunicado de prensa]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/edr/EDR2024-def_CP.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Unidad de Medida y Actualización (UMA) 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">https://www.inegi.org.mx/temas/uma/</a></li>
+      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      <li>International Organization for Standardization. (2011). <i>Graphical symbols — Safety colours and safety signs — Part 1: Design principles for safety signs and safety markings</i> (ISO Standard No. 3864-1:2011; confirmada en 2022). <a href="https://www.iso.org/standard/51021.html" rel="noopener">https://www.iso.org/standard/51021.html</a></li>
+      <li>International Organization for Standardization. (2024). <i>Graphical symbols — Safety colours and safety signs — Part 3: Design principles for graphical symbols for use in safety signs</i> (ISO Standard No. 3864-3:2024). <a href="https://www.iso.org/standard/86048.html" rel="noopener">https://www.iso.org/standard/86048.html</a></li>
+      <li>International Organization for Standardization. (2019). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs</i> (ISO Standard No. 7010:2019). <a href="https://www.iso.org/standard/72424.html" rel="noopener">https://www.iso.org/standard/72424.html</a></li>
+      <li>International Organization for Standardization. (2026). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs — Amendment 11</i> (ISO Standard No. 7010:2019/Amd 11:2026). <a href="https://www.iso.org/standard/93739.html" rel="noopener">https://www.iso.org/standard/93739.html</a></li>
+      <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, 20 de marzo de 2025. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">diputados.gob.mx</a></li>
+      <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008</i>. <a href="https://dof.gob.mx/normasOficiales/3541/stps.htm" rel="noopener">dof.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2010). <i>NOM-002-STPS-2010</i>. <a href="https://platiica.economia.gob.mx/normalizacion/NOM-002-STPS-2010" rel="noopener">economia.gob.mx</a></li>
+      <li>Secretaría del Trabajo y Previsión Social. (2015). <i>NOM-033-STPS-2015</i>. <a href="https://www.dof.gob.mx" rel="noopener">dof.gob.mx</a></li>
+      <li>Naciones Unidas. (2015). <i>Transformar nuestro mundo: la Agenda 2030 para el Desarrollo Sostenible</i> (A/RES/70/1). <a href="https://www.un.org/sustainabledevelopment/es/" rel="noopener">un.org</a></li>
+      <li>Naciones Unidas. (s. f.). <i>Early Warnings for All</i>. Recuperado el 25 de octubre de 2026, de <a href="https://www.un.org/en/node/207773" rel="noopener">un.org</a></li>
+      <li>Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" rel="noopener">undrr.org</a></li>
+      <li>OASIS. (2010). <i>Common Alerting Protocol Version 1.2</i>. <a href="https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html" rel="noopener">oasis-open.org</a></li>
+      <li>Rosenberg, J., et al. (2002). <i>SIP: Session Initiation Protocol</i> (RFC 3261). <a href="https://www.rfc-editor.org/rfc/rfc3261" rel="noopener">rfc-editor.org</a></li>
+      <li>Eleos Compliance. (2025, 20 de octubre). <i>Mexico’s IFT ceases operations</i>. <a href="https://www.eleoscompliance.com/en/article/mexico-mexico%E2%80%99s-ift-ceases-operations" rel="noopener">eleoscompliance.com</a></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cubo-firma" data-nombre="Sistema S.O.S.©" aria-hidden="true">
+      <div class="esc"><div class="cubo"><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div><div class="cara"></div></div></div>
+      <p class="note">Código de comunicación del Cubo (33)©</p>
+    </div>
+    <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obras registradas en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados. <span>Cubo Morse© registrado en Safe Creative (2610257441754).</span> <span>Plataforma SOSistem™ (versiones 1.0.0 a 3.8) registrada en Safe Creative (2610257442171).</span></p>
+    <p>Información técnica y normativa actualizada al 27 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
+    <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
+    <p>S.O.S.© es un sistema en etapa piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
+  </div>
+</footer>
+
+
+<div class="present-bar">
+  <button class="btn" type="button" data-nav="-1">Anterior</button>
+  <button class="btn" type="button" data-nav="1">Siguiente</button>
+  <button class="btn primary" type="button" id="btn-salir">Salir</button>
+</div>
+<script src="assets/cubo-rt.js?v=5.7b"></script>
+<script src="assets/logo-giro.js?v=5.7b"></script>
+<script src="assets/app.js?v=5.7b"></script>
+<script src="assets/cubo.js?v=5.7b"></script>
+<script src="assets/morse.js?v=5.7b"></script>
+<script src="assets/pantalla.js?v=5.7b"></script>
+<script src="assets/pantalla-tema.js?v=5.7b"></script>
+<script src="assets/aprende.js?v=5.7b"></script>
+<script src="assets/cubo-morse.js?v=5.7b"></script>
+<script src="assets/idiomas.js?v=5.7b"></script>
+<script src="assets/banderas.js?v=5.7b"></script>
+<script src="assets/servicios12.js?v=5.7b"></script>
+<script src="assets/cabecera.js?v=5.7b"></script>
+<script src="assets/pestanas.js?v=5.7b"></script>
+<script src="assets/rastreo.js?v=5.7b"></script>
+<script src="assets/morse-motor.js?v=5.7b"></script>
+<script src="assets/receptor.js?v=5.7b"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
+<script>
+/* Código QR de la terminal (se genera en el navegador) */
+(function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");
+s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";s.onload=function(){try{new QRCode(el,{text:"https://sosistem.com/terminal.html",width:150,height:150,colorDark:"#0f1b2d",colorLight:"#ffffff"});}catch(e){}};
+s.onerror=function(){el.innerHTML='<a href="terminal.html">sosistem.com/terminal.html</a>';};document.body.appendChild(s);})();
+</script>
+<script>
+/* Conteo público y anónimo de uso de la terminal de pruebas (GoatCounter, sin cookies ni datos personales) */
+(function(){var host=document.getElementById("cnt-pruebas");if(!host)return;var code="sosistem";
+var num=function(v){var n=parseInt(String(v==null?"":v).replace(/[^0-9]/g,""),10);return isNaN(n)?null:n;};
+fetch("datos/config.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(c){if(c.goatcounter)code=c.goatcounter;}).catch(function(){}).then(function(){
+var pend=[].slice.call(host.querySelectorAll("[data-cnt]")),ok=0;
+Promise.all(pend.map(function(el){return fetch("https://"+code+".goatcounter.com/counter/"+encodeURIComponent(el.dataset.cnt)+".json").then(function(r){return r.ok?r.json():null;}).then(function(j){
+var n=j?(num(j.count_unique)!=null?num(j.count_unique):num(j.count)):null;el.textContent=n==null?"0":n.toLocaleString("es-MX");if(j)ok++;}).catch(function(){el.textContent="0";});})).then(function(){
+if(!ok){var nt=document.getElementById("cnt-nota");if(nt)nt.textContent="Conteo anónimo por equipo: no identifica a nadie ni usa cookies. Las cifras se muestran en cuanto se registra el primer uso.";}});});})();
+</script>
+</body>
+</html>

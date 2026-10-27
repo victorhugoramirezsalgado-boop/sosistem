@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SOSistem">
+<meta name="robots" content="noindex">
+<title>SOSistem™ Terminal de pruebas</title>
+<meta name="description" content="Terminal de pruebas de SOSistem™: usa los sensores de tu celular (movimiento, giroscopio, micrófono, ubicación) para generar eventos y estadísticas del Sistema S.O.S.©">
+<link rel="manifest" href="manifest-terminal.webmanifest">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icono-180.png">
+<link rel="stylesheet" href="assets/terminal.css">
+</head>
+<body>
+<header class="t-top">
+  <a class="t-logo" href="./" aria-label="Ir a sosistem.com"><img src="assets/icono.svg" alt="" width="45" height="45"><span><b>SOSistem™</b><small>Terminal de pruebas</small></span></a>
+  <span class="t-pill" id="estado-pill" data-e="detenido">DETENIDO</span>
+</header>
+
+<main class="t-main">
+  <!-- ============ MONITOR: pantalla dividida Pruebas | Terminal de información ============ -->
+  <section class="t-vista" id="v-monitor" data-activa="true">
+    <div class="split" id="split" data-dividida="true">
+      <div class="pane pane-a" aria-label="Pruebas">
+        <div class="pane-tit"><b>Pruebas</b><button type="button" class="t-mini" id="btn-dividir" aria-pressed="true">Pantalla dividida ✓</button></div>
+
+        <div class="pantalla-t" id="pantalla" data-e="normal">
+          <div class="pt-cab"><span id="pt-recinto">Recinto de prueba</span><span id="pt-hora">--:--:--</span></div>
+          <div class="pt-centro">
+            <div class="pt-icono" id="pt-icono" aria-hidden="true">✓</div>
+            <div class="pt-titulo" id="pt-titulo">Monitoreo detenido</div>
+            <div class="pt-detalle" id="pt-detalle">Toca «Iniciar monitoreo» para activar los sensores de este celular.</div>
+            <div class="pt-nivel" id="pt-nivel" hidden></div>
+            <div class="pt-morse" id="pt-morse" aria-hidden="true"></div>
+            <div class="pt-voz" id="pt-voz" hidden>Diga «todo bien» para detener la alarma</div>
+          </div>
+          <div class="pt-pie"><span id="pt-modo">MODO PRUEBA</span><span id="pt-id">T-0000</span></div>
+        </div>
+
+        <div class="t-card t-compacta">
+          <h2>Escenario de la prueba</h2>
+          <div class="t-esc-sel">
+            <button type="button" class="t-mini" data-esc="bano_bolsa" aria-pressed="false">Baño · celular conmigo</button>
+            <button type="button" class="t-mini" data-esc="bano_repisa" aria-pressed="false">Baño · celular en repisa</button>
+            <button type="button" class="t-mini" data-esc="oficina" aria-pressed="false">Oficina</button>
+            <button type="button" class="t-mini" data-esc="basico" aria-pressed="false">Modo básico · sismo y voz</button>
+          </div>
+          <p class="t-nota" id="esc-nota" style="margin:6px 0 0">Elige dónde estará el celular durante la prueba.</p>
+          <label class="t-nota" style="display:flex;gap:8px;align-items:center;margin:6px 0 0">Modo básico encendido hasta las <input id="hasta" type="time" value="11:00" style="width:auto"></label>
+          <p class="t-nota" id="hasta-est" style="margin:4px 0 0">Apagado programado: sin activar</p>
+          <p class="t-nota" style="margin:4px 0 0">El acelerómetro del celular nota sismos que se sienten (magnitud 3 o más cerca). Los de magnitud 1 y 2 llegan por la red sísmica cuando hay internet.</p>
+        </div>
+        <div class="t-acciones">
+          <button class="t-btn pri" id="btn-iniciar" type="button">Iniciar monitoreo</button>
+          <button class="t-btn" id="btn-bolsillo" type="button">🌙 Modo bolsillo · ahorro de energía</button>
+          <button class="t-btn verde" id="btn-atender" type="button" hidden>Todo bien · detener alarma</button>
+          <a class="t-btn rojo" id="btn-911" href="tel:911" hidden>Llamar al 911</a>
+          <a class="t-btn" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>Avisar al administrador por WhatsApp</a>
+          <a class="t-btn rojo" id="btn-sms" href="#" hidden>Enviar SOS por SMS a mis contactos</a>
+        </div>
+
+        <!-- Enlace: el celular mide con sus sensores y otra pantalla (la Mac) ve la terminal en vivo -->
+        <div class="t-card t-compacta t-enlace" id="enlace">
+          <h2>¿Qué hace este equipo?</h2>
+          <div class="t-esc-sel" role="group" aria-label="Función de este equipo">
+            <button type="button" class="t-mini" data-rol="solo" aria-pressed="true">Solo este equipo</button>
+            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱 Celular · sensores</button>
+            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥 Pantalla · ver terminal</button>
+          </div>
+          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.</p>
+          <div id="enl-sensor" hidden>
+            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la Mac o mándale el enlace.</p>
+            <div class="t-cubo6" id="enl-cubo" aria-label="Código de enlace"></div>
+            <div class="t-grid2" style="margin:8px 0 0">
+              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la Mac</button>
+              <button class="t-btn" type="button" id="enl-nuevo">Código nuevo</button>
+            </div>
+          </div>
+          <form id="enl-pantalla" class="t-enl-form" hidden autocomplete="off">
+            <label>Código del celular<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
+            <button class="t-btn pri" type="submit">Conectar</button>
+            <label class="t-mini-chk"><input type="checkbox" id="enl-sonar" checked> Sonar la alarma también en esta pantalla</label>
+          </form>
+          <div class="t-enl-est" id="enl-est" data-e="off">Sin enlace</div>
+          <div class="t-enl-auto" id="enl-auto">
+            <p class="t-nota" style="margin:10px 0 6px"><b>Vincular sin enviar código:</b> escribe la misma frase del recinto en el celular y en la pantalla, una sola vez. Desde ahí se encuentran solos cada vez que abran la terminal, sin AirDrop ni mensajes.</p>
+            <div class="t-enl-fila"><input id="enl-frase" type="password" autocomplete="off" spellcheck="false" placeholder="Frase del recinto (mín. 8 letras)"><button class="t-btn" type="button" id="enl-vincular">Vincular</button></div>
+            <p class="t-nota" id="enl-frase-est" style="margin:4px 0 0"></p>
+            <button class="t-btn" type="button" id="enl-reconectar" style="margin-top:8px">↻ Conectar ahora</button>
+          </div>
+          <div id="enl-disp-caja" hidden>
+            <p class="t-nota" style="margin:10px 0 6px"><b>Dispositivos en el recinto</b> · toca uno para verlo. Si el actual se apaga, la pantalla pasa sola al que siga activo.</p>
+            <div class="t-enl-disp" id="enl-disp"></div>
+          </div>
+          <div id="enl-verif-caja" hidden>
+            <label class="t-mini-chk" style="margin-top:10px;font-size:.8rem"><input type="checkbox" id="enl-verif"> Verificar con los sensores de esta pantalla (micrófono y, si los tiene, movimiento)</label>
+            <div class="t-mono" id="enl-verif-est" style="margin-top:6px">Sensores de la pantalla apagados.</div>
+            <ol class="t-ev" id="enl-verif-lista"></ol>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <h2>Pruebas con alarma real</h2>
+          <p class="t-nota">Cada prueba ejecuta la sirena y el código Morse del tipo de evento (perfil del panel) y se repite hasta que digas «todo bien» o toques el botón verde. Queda registrada como «prueba».</p>
+          <div class="t-grid2">
+            <button class="t-btn" type="button" data-prueba="caida">Caída · sirena + SOS SOS</button>
+            <button class="t-btn" type="button" data-prueba="sismo">Sismo · T-3 + SOS SISMO SOS</button>
+            <button class="t-btn" type="button" data-prueba="manual">Botón S.O.S. · sirena + SOS</button>
+            <button class="t-btn" type="button" data-prueba="ruido">Ruido fuerte · aviso</button>
+          </div>
+          <div class="t-grid2">
+            <button class="t-btn" type="button" data-prueba="sonido">Solo sonido de prueba (T-3 + PRUEBA SOS)</button>
+            <button class="t-btn" type="button" data-prueba="detener">Silenciar todo</button>
+          </div>
+          <p class="t-nota">Prueba real de caída: deja caer el celular sobre un cojín o colchón desde unos 50 cm y no lo toques durante 3 segundos.</p>
+        </div>
+
+        <button class="t-sos" id="btn-sos" type="button" aria-describedby="sos-ayuda"><span>S.O.S.</span><i id="sos-carga"></i></button>
+        <p class="t-ayuda" id="sos-ayuda">Mantén presionado 2 segundos para enviar una alerta manual.</p>
+
+        <div class="t-card t-det-card">
+          <h2>Detectores</h2>
+          <div class="t-det" id="detectores"></div>
+        </div>
+      </div>
+
+      <div class="pane pane-b" aria-label="Terminal de información">
+        <div class="pane-tit"><b>Terminal de información</b><span class="t-vivo" id="vivo">● EN VIVO</span></div>
+        <div class="t-card t-compacta p6-card" id="p6-card">
+          <div class="t-fila"><h2>Pantallas del sistema · 6</h2><span class="p6-estado" id="p6-estado" data-m="normal">NORMAL</span></div>
+          <div class="p6-rejilla" id="p6" aria-live="polite"></div>
+          <p class="t-nota" style="margin:0">Todo lo que ves aquí lo miden en vivo los sensores del celular enlazado. Lo que el celular no puede medir aparece como «sin dato».</p>
+        </div>
+        <div class="t-lect" id="lecturas">
+          <div><span>Aceleración</span><b id="l-acc">—</b></div>
+          <div><span>Giro</span><b id="l-rot">—</b></div>
+          <div><span>Inclinación</span><b id="l-inc">—</b></div>
+          <div><span>Sonido</span><b id="l-db">—</b></div>
+          <div><span>Estado</span><b id="l-est">—</b></div>
+          <div><span>Voz</span><b id="l-voz">—</b></div>
+        </div>
+        <div class="t-card t-compacta">
+          <h2>Escalamiento de la alerta</h2>
+          <ol class="t-esc" id="escala"></ol>
+          <div class="t-sonando" id="sonando">Sin sonido</div>
+        </div>
+        <div class="t-card t-compacta">
+          <div class="t-graf"><span>Aceleración total (m/s²)</span><b id="g-acc-v">—</b><canvas id="g-acc" height="70"></canvas></div>
+          <div class="t-graf"><span>Sonido (dB aprox.)</span><b id="g-mic-v">—</b><canvas id="g-mic" height="70"></canvas></div>
+        </div>
+        <div class="t-card t-compacta">
+          <div class="t-fila"><h2>Consola</h2>
+            <span class="t-fila-b"><label class="t-mini-chk"><input type="checkbox" id="c-seg"> lecturas 1 s</label><button type="button" class="t-mini" id="c-pausa">Pausar</button><button type="button" class="t-mini" id="c-limpiar">Limpiar</button></span></div>
+          <ol class="t-consola" id="consola" aria-live="polite"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SENSORES ============ -->
+  <section class="t-vista" id="v-sensores">
+    <div class="t-card"><h2>Sensores de este celular</h2><p class="t-nota">Las lecturas se procesan aquí mismo. No se graba audio ni video; del micrófono solo se calcula el nivel de sonido.</p></div>
+    <div class="t-sens" id="sensores"></div>
+    <div class="t-card">
+      <h2>Ubicación del recinto</h2>
+      <p class="t-nota">Opcional. Se usa para incluir el punto exacto en el aviso al administrador.</p>
+      <button class="t-btn" type="button" id="btn-ubic">Leer ubicación</button>
+      <div class="t-mono" id="ubic">Sin leer.</div>
+    </div>
+    <div class="t-card t-mapa">
+      <h2>Mapeo del espacio · polígono del recinto</h2>
+      <p class="t-nota">Empieza en una esquina, toca «Iniciar recorrido» y camina pegado a las paredes con el celular plano frente a ti hasta volver a la misma esquina. El celular cuenta tus pasos y toma el rumbo con la brújula. Repite el recorrido varias veces: el sistema promedia los polígonos y el plano se va ajustando al espacio real.</p>
+      <div class="t-grid2">
+        <label class="t-campo">Tu estatura (cm)<input id="mp-estatura" type="number" inputmode="numeric" min="100" max="230" placeholder="170"></label>
+        <label class="t-campo">Largo de paso (m)<input id="mp-paso" type="number" step="0.01" min="0.3" max="1.2"></label>
+      </div>
+      <button class="t-btn pri" type="button" id="mp-iniciar">Iniciar recorrido</button>
+      <div class="t-mono" id="mp-pasos" style="margin-top:8px">—</div>
+      <canvas id="mp-lienzo" class="t-mapa-c"></canvas>
+      <div class="t-nota" id="mp-res" style="margin:6px 0">Haz al menos un recorrido.</div>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="mp-alto-btn">Medir alto (piso → arriba)</button>
+        <div class="t-mono" id="mp-alto" style="margin:0;display:grid;place-items:center">sin medir</div>
+      </div>
+      <p class="t-nota" id="mp-msg" style="margin:6px 0">Naranja: recorrido actual · azul: recorridos guardados · verde: polígono promedio.</p>
+      <ol class="t-ev" id="mp-lista"></ol>
+      <button class="t-btn" type="button" id="mp-borrar">Borrar recorridos</button>
+      <p class="t-nota" style="margin:8px 0 0">Aproximado: sin GPS en interiores cada recorrido tiene de 5 a 15 % de error; los imanes y las estructuras metálicas desvían la brújula. Las subidas y bajadas se cuentan por el golpe vertical del paso (escalones).</p>
+    </div>
+  </section>
+
+  <!-- ============ EVENTOS ============ -->
+  <section class="t-vista" id="v-eventos">
+    <div class="t-kpis" id="kpis"></div>
+    <div class="t-card">
+      <h2>Eventos por hora (últimas 24 h)</h2>
+      <canvas id="g-horas" height="110"></canvas>
+    </div>
+    <div class="t-card">
+      <div class="t-fila"><h2>Errores y detalles de la prueba</h2><button type="button" class="t-mini" id="diag-limpiar">Reiniciar</button></div>
+      <p class="t-nota">Lo que falló o interrumpió la medición: pantalla bloqueada, permisos, enlace caído, sin internet, falsas alarmas… Se sube a GitHub con los eventos.</p>
+      <div class="t-diag" id="diag-barras"></div>
+      <ol class="t-ev" id="diag-lista"></ol>
+    </div>
+    <div class="t-card">
+      <div class="t-fila"><h2>Registro</h2><select id="filtro" aria-label="Filtrar eventos"><option value="">Todos</option></select></div>
+      <p class="t-nota">Marca cada evento como válido o falsa alarma: así se calcula el porcentaje de error del sistema.</p>
+      <ol class="t-ev" id="eventos"></ol>
+    </div>
+    <div class="t-card">
+      <h2>Exportar y enviar</h2>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="btn-csv">Descargar CSV</button>
+        <button class="t-btn" type="button" id="btn-json">Descargar JSON</button>
+      </div>
+      <button class="t-btn pri" type="button" id="btn-sync">Enviar a mi GitHub privado</button>
+      <div class="t-mono" id="sync-estado">Sin envíos.</div>
+      <p class="t-nota" id="boveda-aviso"></p>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="btn-abrir-cubo">Abrir archivo del Cubo (33)</button>
+        <input type="file" id="arch-cubo" accept=".txt,.cubo,text/plain" hidden>
+      </div>
+      <div class="t-mono" id="cubo-salida" style="white-space:pre-wrap"></div>
+    </div>
+  </section>
+
+  <!-- ============ ESTADÍSTICAS: hoja completa (naranja real · gris prueba) ============ -->
+  <section class="t-vista" id="v-estad">
+    <div id="estad"></div>
+  </section>
+
+  <!-- ============ PLATAFORMA ============ -->
+  <section class="t-vista" id="v-plataforma">
+    <div class="t-card"><h2>Información de la plataforma</h2><p class="t-nota">Datos técnicos de este celular y de lo que su navegador permite usar. Útil para comparar equipos en el piloto.</p></div>
+    <div class="t-card"><h2>Equipo</h2><dl class="t-dl" id="plat-equipo"></dl></div>
+    <div class="t-card"><h2>Capacidades disponibles</h2><ul class="t-cap" id="plat-cap"></ul></div>
+    <div class="t-card"><h2>Instalar como app</h2>
+      <ol class="t-pasos" id="instalar">
+        <li><b>iPhone:</b> abre esta página en Safari → botón Compartir → «Agregar a pantalla de inicio».</li>
+        <li><b>Android / Samsung:</b> en Chrome toca ⋮ → «Instalar app» o el botón de abajo.</li>
+        <li>La app abre a pantalla completa, funciona sin internet y guarda los eventos en el celular.</li>
+      </ol>
+      <button class="t-btn pri" type="button" id="btn-instalar" hidden>Instalar SOSistem Terminal</button>
+    </div>
+    <button class="t-btn" type="button" id="btn-informe">Copiar informe técnico</button>
+  </section>
+
+  <!-- ============ AJUSTES ============ -->
+  <section class="t-vista" id="v-ajustes">
+    <form class="t-card t-form" id="f-ajustes" autocomplete="off">
+      <h2>Terminal</h2>
+      <label>Nombre del recinto<input name="recinto" maxlength="60"></label>
+      <label>Identificador de la terminal<input name="id" maxlength="20"></label>
+      <label>Modo
+        <select name="modo"><option value="prueba">Prueba (no se llama al 911)</option><option value="real">Real (muestra el botón 911 en N3)</option></select>
+      </label>
+      <label>WhatsApp del administrador (con lada)<input name="wa" inputmode="tel" maxlength="16"></label>
+
+      <h2>Detección</h2>
+      <label>Impacto mínimo para caída (g)<input name="impacto_g" type="number" step="0.1" min="1.5" max="6"></label>
+      <label>Quietud después del impacto (s)<input name="quietud_s" type="number" step="0.5" min="1" max="10"></label>
+      <label>Sensibilidad de vibración tipo sismo (1 = alta, 5 = baja)<input name="sismo_sens" type="number" step="1" min="1" max="5"></label>
+      <label>Ruido fuerte a partir de (dB aprox.)<input name="ruido_db" type="number" step="1" min="60" max="120"></label>
+      <label>Ajuste del micrófono (+/− dB)<input name="mic_offset" type="number" step="1" min="-30" max="30"></label>
+      <label>Sin movimiento prolongado (min, 0 = apagado)<input name="inmovil_min" type="number" step="1" min="0" max="120"></label>
+      <label class="t-chk"><input type="checkbox" name="voz"> Escuchar la palabra «S.O.S.», «auxilio» o «ayuda» (reconocimiento de voz del navegador)</label>
+      <label class="t-chk"><input type="checkbox" name="voz_sismo"> Activar la alerta de sismo al oír «está temblando», «temblor» o «sismo», aunque el sensor no lo detecte</label>
+      <h2>Alarma</h2>
+      <label class="t-chk"><input type="checkbox" name="sonido"> Sirena y código Morse en alertas y pruebas</label>
+      <label class="t-chk"><input type="checkbox" name="repetir"> Repetir la alarma hasta oír «todo bien» o tocar el botón verde</label>
+      <label class="t-chk"><input type="checkbox" name="voz_ok"> Detener la alarma con la voz: «todo bien», «estoy bien» o «todo está bien»</label>
+      <label>Pausa entre ciclos para escuchar «todo bien» (s)<input name="pausa_s" type="number" step="0.5" min="1" max="15"></label>
+      <label>Duración de la sirena en pruebas (s)<input name="sirena_prueba_s" type="number" step="1" min="1" max="60"></label>
+      <label class="t-chk"><input type="checkbox" name="vibrar"> Vibrar en alertas (Android)</label>
+
+      <h2>SOS sin datos ni saldo</h2>
+      <p class="t-nota">Sin internet, la terminal sigue detectando y lee tu ubicación con el GPS del teléfono. Para avisar fuera del recinto usa estas tres vías, de la más segura a la más limitada.</p>
+      <label>Contactos de emergencia para el SMS (con lada, separados por coma)<input name="sms" inputmode="tel" maxlength="120" placeholder="6460000000, 6640000000"></label>
+      <label class="t-chk"><input type="checkbox" name="sms_auto"> Abrir el mensaje SOS por SMS al llegar a N2 (modo real)</label>
+      <p class="t-nota">El SMS necesita señal celular y saldo o plan; no necesita datos ni wifi. El navegador abre el mensaje ya escrito, con tus coordenadas en texto, y tú o quien te ayude solo toca «Enviar»: ninguna página puede enviar un SMS sola.</p>
+      <div class="t-card" style="margin:8px 0">
+        <h2 style="margin-top:0">Botón físico de emergencia del teléfono</h2>
+        <p class="t-nota">Funciona con la pantalla bloqueada, sin abrir esta terminal y sin saldo: la llamada al 911 es gratuita en México. Con el teléfono apagado ninguna app funciona.</p>
+        <ul class="t-nota" style="margin:6px 0 0;padding-left:18px">
+          <li><b>iPhone:</b> Ajustes → Emergencia SOS. Activa la llamada al mantener presionado el botón lateral y un botón de volumen, o al presionar 5 veces el botón lateral, y agrega tus contactos de emergencia en Salud → Ficha médica.</li>
+          <li><b>iPhone 14 o posterior:</b> la detección de choques llama sola al 911 tras un choque grave, y el SOS vía satélite manda tu ubicación sin señal celular (gratis en México por dos años desde la activación).</li>
+          <li><b>Apple Watch:</b> la detección de caídas llama al 911 si no respondes después de una caída fuerte.</li>
+          <li><b>Android:</b> Ajustes → Seguridad y emergencia → Emergencia SOS: presiona 5 veces el botón de encendido. En Samsung también puedes enviar mensajes SOS a tus contactos.</li>
+        </ul>
+      </div>
+
+      <h2>Bóveda · Código de comunicación del Cubo (33)©</h2>
+      <p class="t-nota">Escribe una frase secreta y todo lo que exportes o subas a GitHub se guardará cifrado y con forma de código del cubo. Sin la frase nadie lo lee, aunque tenga el archivo. <b>La frase no se guarda en ningún lado: si la olvidas, no se podrá recuperar lo cifrado.</b> Déjala en blanco para guardar sin cifrar.</p>
+      <label>Frase de la bóveda<input id="a-boveda" type="password" maxlength="200" spellcheck="false" autocomplete="off" placeholder="al menos 6 caracteres"></label>
+      <label class="t-chk"><input type="checkbox" id="a-boveda-ver"> Ver la frase mientras la escribo</label>
+
+      <h2>Envío a GitHub (privado)</h2>
+      <p class="t-nota">Los eventos se suben a tu repositorio privado, en la carpeta <code>pruebas/terminal/</code>. Con la bóveda activa se suben como archivos <code>.cubo.txt</code> cifrados. El token se guarda solo en este celular. Crea un token «fine-grained» con permiso <i>Contents: Read and write</i> únicamente para ese repositorio.</p>
+      <label>Repositorio (dueño/repo)<input name="repo" maxlength="100" spellcheck="false"></label>
+      <label>Token de GitHub<input name="token" type="password" maxlength="200" spellcheck="false" placeholder="github_pat_…"></label>
+      <label class="t-chk"><input type="checkbox" name="auto"> Enviar automáticamente al terminar cada alerta</label>
+      <a class="t-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Crear token en GitHub ↗</a>
+
+      <button class="t-btn pri" type="submit">Guardar ajustes</button>
+      <button class="t-btn" type="button" id="btn-borrar">Borrar eventos de este celular</button>
+    </form>
+    <p class="t-legal">© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© (Safe Creative 2609046908578) · Plataforma SOSistem™ (2610257442171) · Cubo Morse© (2610257441754). Terminal en etapa piloto: no es un dispositivo médico ni sustituye al 911. En una emergencia, llama al 911.</p>
+  </section>
+</main>
+
+<nav class="t-nav" id="nav">
+  <button type="button" data-v="monitor" aria-current="page"><b>◉</b>Monitor</button>
+  <button type="button" data-v="sensores"><b>⌁</b>Sensores</button>
+  <button type="button" data-v="eventos"><b>≡</b>Eventos<i id="nav-n"></i></button>
+  <button type="button" data-v="estad"><b>◔</b>Estadísticas</button>
+  <button type="button" data-v="plataforma"><b>▣</b>Plataforma</button>
+  <button type="button" data-v="ajustes"><b>⚙</b>Ajustes</button>
+</nav>
+<div class="t-toast" id="toast" role="status" hidden></div>
+<!-- Modo bolsillo: pantalla negra (casi sin consumo en pantallas OLED) con los sensores trabajando -->
+<div class="t-bolsillo" id="bolsillo" hidden>
+  <div><b id="bo-estado">MONITOREO</b><span id="bo-hora">--:--</span><small id="bo-info">Sensores activos · datos enviándose</small></div>
+  <p>Toca dos veces para volver. No bloquees el celular: Safari detiene los sensores con la pantalla bloqueada.</p>
+</div>
+
+<!-- Aviso de versión de prueba: se acepta una vez por equipo; sin registro ni datos personales -->
+<div class="t-beta" id="t-beta" role="dialog" aria-modal="true" aria-labelledby="tb-tit" hidden>
+  <div class="t-beta-caja">
+    <span class="t-beta-tag">VERSIÓN DE PRUEBA · EN REVISIÓN</span>
+    <h2 id="tb-tit">Bienvenido a la terminal de pruebas de SOSistem™</h2>
+    <p>Puede usarla libremente y sin registro para conocer el sistema. Tenga presente que:</p>
+    <ul>
+      <li><b>No es el sistema terminado.</b> No está lista para operar, instalar ni aplicarse como protección real, y no sustituye al 911.</li>
+      <li>Sus lecturas se quedan en este equipo; solo se cuenta de forma anónima cuántas personas la usan.</li>
+      <li>Sus pruebas y comentarios son bienvenidos. Si quiere acelerar el equipo físico para salvar vidas, puede apoyar el proyecto.</li>
+      <li>El uso indebido (falsas alarmas al 911, acceso no autorizado, copia o venta del código) puede tener consecuencias legales.</li>
+    </ul>
+    <label class="t-beta-chk"><input type="checkbox" id="tb-chk"><span>He leído y acepto los <a href="terminos-pruebas.html" target="_blank" rel="noopener">Términos de uso de la versión de prueba</a>.</span></label>
+    <button class="t-btn pri" type="button" id="tb-ok" disabled>Aceptar y entrar a las pruebas</button>
+    <div class="t-grid2" style="margin:8px 0 0">
+      <a class="t-btn verde" href="./#apoyo">Apoyar el proyecto</a>
+      <a class="t-btn" href="https://wa.me/526462270490?text=Comentarios%20sobre%20la%20terminal%20de%20pruebas%20SOSistem%3A%20" target="_blank" rel="noopener">Enviar comentarios</a>
+    </div>
+  </div>
+</div>
+
+<script src="assets/cubo-rt.js?v=5.7b"></script>
+<script src="assets/morse.js?v=5.7b"></script>
+<script src="assets/banderas.js?v=5.7b"></script>
+<script src="assets/pantallas6.js?v=5.7b"></script>
+<script src="assets/mapeo.js?v=5.7b"></script>
+<script src="assets/boveda.js?v=5.7b"></script>
+<script src="assets/cabecera.js?v=5.7b"></script>
+<script src="assets/estadisticas.js?v=5.7b"></script>
+<script src="assets/terminal.js?v=5.7b"></script>
+<script>
+/* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
+   Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */
+(function(){
+  var LS={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
+  var code="sosistem", omitir=navigator.doNotTrack==="1"||/^(localhost|127\.)/.test(location.hostname);
+  var cfg=fetch("datos/config.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(c){if(c.goatcounter)code=c.goatcounter;}).catch(function(){});
+  function contar(ev,titulo){
+    if(LS.get("sost_cnt_"+ev))return; LS.set("sost_cnt_"+ev,String(Date.now())); if(omitir)return;
+    cfg.then(function(){var u="https://"+code+".goatcounter.com/count?p="+encodeURIComponent("pruebas/"+ev)+"&t="+encodeURIComponent(titulo)+"&e=true&rnd="+Math.random().toString(36).slice(2);
+      if(navigator.sendBeacon)navigator.sendBeacon(u);else new Image().src=u;});
+  }
+  contar("terminal-abierta","Terminal de pruebas abierta");
+  var standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+  if(standalone)contar("app-instalada","App de la terminal instalada");
+  addEventListener("appinstalled",function(){contar("app-instalada","App de la terminal instalada");});
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button,a");if(!b)return;
+    if(b.id==="btn-iniciar"||b.hasAttribute("data-prueba")||b.id==="btn-sos")contar("inicio-monitoreo","Prueba ejecutada");
+    else if(b.id==="btn-csv"||b.id==="btn-json"||b.id==="btn-sync")contar("datos-exportados","Datos de prueba exportados");},true);
+  var VER="2026-10-26", caja=document.getElementById("t-beta"), chk=document.getElementById("tb-chk"), ok=document.getElementById("tb-ok");
+  if(LS.get("sost_terminos")!==VER){caja.hidden=false;document.body.style.overflow="hidden";}
+  chk.addEventListener("change",function(){ok.disabled=!chk.checked;});
+  ok.addEventListener("click",function(){if(!chk.checked)return;LS.set("sost_terminos",VER);contar("acepto-terminos","Términos de prueba aceptados");caja.hidden=true;document.body.style.overflow="";});
+})();
+</script>
+</body>
+</html>

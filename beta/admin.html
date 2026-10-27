@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Administrador · SOSistem™</title>
+<meta name="theme-color" content="#0f2a4a">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/estilo.css">
+<style>
+  .ap-op { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; font-weight: 600; }
+  .ap-op i { width: 22px; height: 22px; border-radius: 6px; border: 1px solid #8884; }
+  .ap-op:has(input:checked) { border-color: var(--brand); box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 30%, transparent); }
+  .acceso { min-height: calc(100vh - 61px); display: grid; place-items: center; padding: 24px 16px; }
+  .acceso[hidden], #app[hidden], form[hidden] { display: none !important; }
+  .acceso .card { width: 100%; max-width: 420px; }
+  .acceso input { width: 100%; font: 500 1rem var(--font); padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); margin: 6px 0 12px; }
+  .acceso button { width: 100%; justify-content: center; }
+  .pasos { display: flex; gap: 6px; margin-bottom: 14px; }
+  .pasos span { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
+  .pasos span.on { background: var(--brand); }
+  .msg { min-height: 1.2em; font-size: .88rem; color: var(--bad); margin-top: 8px; }
+  .barra-app { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; padding-top: 18px; }
+  .filters input:not([type]), .filters input[type="number"], .filters input[type="password"] { font: 500 .9rem var(--font); padding: 8px 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); min-width: 120px; }
+  .filters input[type="number"] { width: 130px; }
+  .card pre { white-space: pre-wrap; word-break: break-word; margin: 8px 0 0; }
+  .aviso-legal { margin-top: 14px; padding: 12px 14px; border: 1px solid color-mix(in srgb, var(--bad) 45%, var(--line)); border-left: 4px solid var(--bad); border-radius: 10px; background: color-mix(in srgb, var(--bad) 6%, var(--surface)); font-size: .82rem; line-height: 1.45; text-align: left; hyphens: auto; }
+  .aviso-legal b { display: block; margin-bottom: 4px; color: var(--bad); }
+  .aviso-legal p { margin: 6px 0 0; }
+  @media print { .barra-app, #acceso { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.svg" width="57" height="62" alt="" style="display:block"><span class="logo-text">SOSistem™ <small style="font-weight:600;opacity:.75">· Administrador</small></span></a>
+    <nav><a class="btn ghost" href="index.html">Ver sitio público</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="acceso" id="acceso">
+    <div class="card">
+      <form id="f1" autocomplete="off">
+        <div class="pasos"><span class="on"></span><span></span></div>
+        <h2>Pre-ingreso</h2>
+        <p class="note">Paso 1 de 2. Abre la primera capa cifrada.</p>
+        <label for="c1" class="note">Clave de pre-ingreso</label>
+        <input type="password" id="c1" required autocomplete="current-password">
+        <button class="btn primary" type="submit">Continuar</button>
+        <div class="msg" id="m1" role="alert"></div>
+      </form>
+      <form id="f2" autocomplete="off" hidden>
+        <div class="pasos"><span class="on"></span><span class="on"></span></div>
+        <h2>2.ª autorización</h2>
+        <p class="note">Paso 2 de 2. Confirma la autenticación y abre los datos.</p>
+        <label for="c2" class="note">Clave de 2.ª autorización</label>
+        <input type="password" id="c2" required autocomplete="off">
+        <button class="btn primary" type="submit">Entrar</button>
+        <div class="msg" id="m2" role="alert"></div>
+      </form>
+      <form id="f0" autocomplete="off" hidden>
+        <h2>Recuperar claves</h2>
+        <p class="note">La recuperación de claves es exclusiva del titular y solo puede hacerse desde su cuenta de GitHub.</p>
+        <label for="r-tk" class="note">Credencial del titular</label>
+        <input type="password" id="r-tk" required autocomplete="off">
+        <label for="r-fr" class="note">Frase del titular</label>
+        <input type="password" id="r-fr" required autocomplete="off">
+        <button class="btn primary" type="submit">Recuperar</button>
+        <div class="msg" id="m0" role="alert"></div>
+        <div id="r-out" hidden class="card" style="margin-top:10px;box-shadow:none">
+          <p class="note">Clave de pre-ingreso</p><p class="mono" id="r-p1"></p>
+          <p class="note">Clave de 2.ª autorización</p><p class="mono" id="r-p2"></p>
+          <button class="btn" type="button" id="r-usar">Usar y continuar</button>
+        </div>
+        <p style="margin-top:10px"><a href="#" id="r-volver">Volver al acceso</a></p>
+      </form>
+      <p style="margin-top:10px"><a href="#" id="r-abrir">¿Olvidó sus claves?</a></p>
+      <p class="note" style="margin-top:14px">Los datos de este panel están cifrados (AES-256). Sin ambas claves no pueden leerse, ni siquiera desde el código del sitio.</p>
+      <div class="aviso-legal" role="note">
+        <b>Aviso legal · acceso restringido</b>
+        <p>Este panel es de uso exclusivo de su titular. Todo intento de ingreso, correcto o fallido, queda registrado automáticamente por el sistema con fecha, hora, navegador, sistema operativo, tamaño de pantalla y ubicación aproximada del dispositivo; estos datos se tratan conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (2025) con fines de seguridad.</p>
+        <p>El acceso no autorizado a sistemas informáticos protegidos es un delito (Código Penal Federal, arts. 211 bis 1 a 211 bis 7). Los registros de quien intente ingresar sin autorización se conservarán como evidencia y podrán entregarse a la autoridad competente para iniciar el proceso legal correspondiente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="app" hidden>
+    <div class="barra-app">
+      <div id="estado"><span class="tag ok">Sesión abierta · se cierra tras 15 min sin actividad</span></div>
+      <div><button class="btn primary" id="btn-publicar" type="button">Guardar y publicar</button> <button class="btn" id="btn-salir" type="button">Cerrar sesión</button></div>
+    </div>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div id="paneles"></div>
+  </div>
+</main>
+
+<footer><div class="wrap"><p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© — Safe Creative 2609046908578. Acceso restringido.</p></div></footer>
+<script src="assets/cubo-rt.js?v=5.7b"></script>
+<script src="assets/morse.js?v=5.7b"></script>
+<script src="assets/supervisor.js?v=5.7b"></script>
+<script src="assets/banderas.js?v=5.7b"></script>
+<script src="assets/cabecera.js?v=5.7b"></script>
+<script src="assets/estadisticas.js?v=5.7b"></script>
+<script src="assets/admin.js?v=5.7b"></script>
+</body>
+</html>

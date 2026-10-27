@@ -1,0 +1,24 @@
+{
+  "name": "BETA · SOSistem™ Terminal de pruebas",
+  "short_name": "SOSistem",
+  "description": "Terminal de pruebas del Sistema S.O.S.©: usa los sensores del celular para generar eventos y estadísticas. © Víctor Hugo Ramírez Salgado.",
+  "lang": "es-MX",
+  "id": "/terminal.html",
+  "start_url": "/beta/terminal.html#monitor",
+  "scope": "/beta/terminal",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    { "src": "assets/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icono.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "BETA · Eventos", "url": "/beta/terminal.html#eventos" },
+    { "name": "BETA · Sensores", "url": "/beta/terminal.html#sensores" }
+  ]
+}

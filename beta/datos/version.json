@@ -1,0 +1,257 @@
+{
+  "version": "5.7 beta",
+  "fecha": "2026-10-27",
+  "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
+  "historial": [
+    {
+      "v": "5.7 beta",
+      "fecha": "2026-10-27",
+      "resumen": "Página Beta (sosistem.com/beta/). Nueva pestaña «FODA» con el objetivo de salvar vidas: fortalezas reales del sistema, oportunidades, debilidades, amenazas y estrategias; Problema, Datos y Ventajas pasan a esta pestaña. Nueva pestaña «Aprendizaje»: Morse, braille en español, banderas del Código Internacional de Señales, alfabeto fonético OACI/OTAN y Lengua de Señas Mexicana; el Receptor Morse pasa a esta pestaña. Cubo SOSistem™ a los lados de cada terminal NODO S.O.S.© que cambia de color: verde normal, ámbar advertencia, rojo auxilio urgente y blanco con vibración en sismo. Simulador: «Tipo de área» con 59 áreas en 10 grupos y sus conceptos de segregación. En los 22 idiomas."
+    },
+    {
+      "v": "5.6.1",
+      "fecha": "2026-10-27",
+      "resumen": "Logos de ContenedorEns© y Arsa Bodegas© redibujados en vector a partir de sus registros en Safe Creative (2609046908752 y 2609046908806) en las tarjetas del Cubo Morse©; la cara 7 muestra el número de registro de ContenedorEns©."
+    },
+    {
+      "v": "5.6",
+      "fecha": "2026-10-27",
+      "resumen": "Pantallas NODO S.O.S.© rediseñadas (sanitarios y portada): diseño más limpio, módulos con franja de color, estados en píldoras rellenas y fondo según la luz del lugar: automático (por hora o sensor de luz), interior, día · mucha luz (fondo claro), noche · poca luz (oscuro y atenuado) y alto contraste. Colores por falla al lado de cada una (persona en el suelo, permanencia prolongada, aforo excedido, gas o humo, sismo y evacuación, falla de sensor o equipo y condición segura), editables por el usuario con aviso si salen de la familia ISO 3864-1 / NOM-026-STPS-2008 o pierden contraste. «Pediátrico» pasa a «Infantil» (cabinas para niñas y niños). Cubo Morse©: logo de cada obra en la esquina superior derecha de su tarjeta. En los 22 idiomas."
+    },
+    {
+      "v": "5.5",
+      "fecha": "2026-10-26",
+      "resumen": "Contacto: «Hablemos de salvar vidas: tener para dar.» Señales normalizadas: se agregan ISO 7010:2019 con sus enmiendas 1–11 (la 11 publicada en marzo de 2026; nueva edición ISO/DIS 7010 en preparación), ISO 3864-1:2011 (confirmada en 2022: colores de seguridad, contraste y formas) e ISO 3864-3:2024 (3.ª ed., sustituye a la de 2012: diseño de símbolos gráficos), con su aplicación en pantallas, luces, botones y señalética. Colores del sitio validados contra la colorimetría de ISO 3864-4 (RAL 3001, 1003, 6032 y 5005). Fuentes APA 7. En los 22 idiomas."
+    },
+    {
+      "v": "5.4",
+      "fecha": "2026-10-26",
+      "resumen": "Pestañas agrupadas por tema: de 21 a 9 (Inicio; El sistema: funciones, 12 servicios, cómo funciona y ventajas; Problema y datos; S.S.O.S.© y pantallas: módulo, pantalla y galería; Señales y Morse: Cubo Morse©, señales y receptor; Normativa y fuentes; Clientes, piloto y terminal; Fondo y apoyo; Contacto), cada una con su color en el borde izquierdo y en el título de sus secciones, en los 22 idiomas. En computadora (Mac o PC desde 1100 px) las pestañas quedan siempre visibles sin tapar el contenido; la portada sube el cubo de pantallas y quita espacio vacío arriba. La Terminal en computadora deja el diseño de celular: menú lateral, contenido a todo lo ancho y tarjetas en dos columnas."
+    },
+    {
+      "v": "5.3",
+      "fecha": "2026-10-26",
+      "resumen": "Identidad: el logo rojo pasa a naranja SOSistem™ en el ícono de la Terminal, el favicon, los íconos de la app y el Cubo Morse del panel; todos los logos 1.5 veces más grandes. Cada pestaña (sitio, Terminal y panel de administrador) muestra el logo naranja con letras, su nombre, su código Morse y el nombre en banderas del Código Internacional de Señales. Enlace de la Terminal: vinculación por frase del recinto (la misma frase en el celular y en la pantalla, una sola vez, sin enviar código), reconexión automática al volver a la página o al recuperar internet, botón «Conectar ahora», lista de dispositivos del recinto con cambio de celular en un toque y cambio automático si el actual se apaga; la pantalla puede usar sus propios sensores (micrófono y movimiento si los tiene) para verificar cada alerta o prueba que reporta el celular."
+    },
+    {
+      "v": "5.2",
+      "fecha": "2026-10-26",
+      "resumen": "Terminal y panel de administrador: nueva «Hoja de estadísticas» con gráfica grande (pantalla completa) por día, hora, minuto, segundo, milésima de hora (3.6 s) o milisegundo, en naranja los eventos reales y en gris las pruebas del sistema; conteo histórico y del filtro (reales y pruebas), gráficas de pastel (reales vs. pruebas, tipo, calificación, nivel, sismos verificados y franja horaria), filtros por fechas, días de la semana y horas, hoja diaria imprimible o en PDF y CSV de hojas diarias. Cada sismo se verifica contra los catálogos FDSN de USGS y EMSC (−15/+5 min, 400 km), con ligas a SSN-UNAM, RESNOM-CICESE, CENAPRED y CIRES para el cotejo; contexto regional de los últimos 30 días a 150 km de El Sauzal. Hoja diaria automática en el repositorio privado. Fuentes APA 7."
+    },
+    {
+      "v": "5.1",
+      "fecha": "2026-10-26",
+      "resumen": "Ajustes de la portada: se quita el botón flotante de WhatsApp (el contacto por WhatsApp sigue en la sección de contacto); el selector de idioma de la barra muestra el nombre completo del idioma (código + nombre, sin la lista de países), bien legible en celular; el logo cambia de rojo a naranja (tipo Holanda, un tono más sobrio) en el cubo giratorio y en el sello; el cubo giratorio del logo se mueve también cuando el teléfono tiene activado «Reducir movimiento» (giro más lento en vez de casi detenido)."
+    },
+    {
+      "v": "5.0",
+      "fecha": "2026-10-26",
+      "resumen": "Los scripts de la página se publican en Código de comunicación del Cubo (33)©: un cargador ligero los descifra al abrir el sitio y se ven como código del cubo en el repositorio público, para que no se analicen a la primera (es ocultamiento, no cifrado; el original legible vive en el repositorio privado). Quedan en claro, por necesidad técnica, la captura de audio del receptor y los dos archivos de funcionamiento sin internet. El cifrado real de los datos de prueba sigue en la bóveda (AES-256-GCM)."
+    },
+    {
+      "v": "4.9",
+      "fecha": "2026-10-26",
+      "resumen": "Privacidad de las pruebas: bóveda con Código de comunicación del Cubo (33)©. En la Terminal se pone una frase secreta (que nunca se guarda) y todo lo que se exporta o se sube a GitHub queda cifrado con AES-256-GCM y con forma de código del cubo (caras L1–L6, firma 3·3); sin la frase no se puede leer aunque se tenga el archivo o el código de la página. Botón para abrir y descifrar archivos .cubo.txt. La página mide de forma anónima cuántas visitas probablemente abren el inspector de código (indicio, no bloqueo). El receptor y el cifrado se procesan en el equipo."
+    },
+    {
+      "v": "4.8",
+      "fecha": "2026-10-26",
+      "resumen": "Nueva pestaña «Receptor Morse»: el celular escucha código Morse por el micrófono (radio, otro teléfono o sirena), lee grabaciones WAV, MP3 o M4A y lo que se teclee con el dedo, y lo convierte en texto; detecta solo el tono (300–1300 Hz) y la velocidad (5–40 palabras por minuto) y, si recibe «SOS», muestra un aviso rojo y vibra. El audio se procesa en el propio equipo, sin grabarse ni enviarse. Funciona sin internet. En los 22 idiomas; fuentes APA 7."
+    },
+    {
+      "v": "4.7",
+      "fecha": "2026-10-26",
+      "resumen": "Panel de administrador: nueva pestaña «Supervisor de sensores». Cada sensor (radar mmWave, láser/ToF, ultrasonido, vibración, gases) envía un latido firmado (HMAC-SHA256, secuencia y hora) que el celular o la Mac verifican; semáforo por sensor (activo, revisar, falla, sin datos) según latido, señal Wi-Fi calibrada (RSSI), batería y manipulación; ronda acústica en la que el micrófono del celular confirma el tono propio de cada sensor (18–19.75 kHz, 15 dB sobre el ruido); el celular puede actuar como nodo de prueba con datos reales; descarga del config.h de cada nodo ESP32 y bitácora de auditoría cifrada exportable a CSV para supervisar al administrador del lugar."
+    },
+    {
+      "v": "4.6",
+      "fecha": "2026-10-26",
+      "resumen": "Terminal: «Modo básico · sismo y voz» con un toque: modo real, vibración tipo sismo a máxima sensibilidad, grito o ruido fuerte, palabras «S.O.S.», «auxilio» y «está temblando», y sismos desde magnitud 1 a 150 km de El Sauzal (Ensenada, B.C.) reportados por la red sísmica (USGS) cada minuto; apagado programado a la hora elegida (11:00 por omisión)."
+    },
+    {
+      "v": "4.5",
+      "fecha": "2026-10-26",
+      "resumen": "Sitio sin internet: las páginas se guardan en el teléfono al abrirlas con conexión (el panel de administrador no se guarda). Terminal: botón «Enviar SOS por SMS a mis contactos» con la ubicación GPS en texto, que funciona sin datos ni wifi con señal celular; apertura automática del mensaje al llegar a N2 en modo real; GPS leído al disparar cada alerta; guía del botón físico de emergencia del teléfono (iPhone, Apple Watch y Android), que llama al 911 sin saldo. Fondo SOS: nueva vía de apoyo «Dona un comunicador satelital» con botón SOS, GPS y suscripción pagada por el fondo. En los 22 idiomas."
+    },
+    {
+      "v": "4.4",
+      "fecha": "2026-10-26",
+      "resumen": "Nueva pestaña «Fondo SOS · Conectividad humanitaria»: el fondo convierte aportaciones en conexión para el sistema (alerta por SMS, puertas de enlace donadas, red en malla LoRa, bolsa de datos IoT, antena satelital por refugio y SOS satelital del teléfono) y cuatro vías de apoyo: dinero, 10 % solidario, megas o recargas directas a beneficiarios registrados y conexión donada como puerta de enlace. En los 22 idiomas."
+    },
+    {
+      "v": "4.3",
+      "fecha": "2026-10-25",
+      "resumen": "Pestaña «12 servicios» en lenguaje institucional para presentación ante BID, OEA y ONU: «Doce servicios para proteger la vida y sostener la operación», caras de Seguridad humana y de Gestión y datos, cadena de alerta y respuesta, y contribución a la meta G del Marco de Sendai 2015-2030, a la iniciativa Alertas Tempranas para Todos y a los ODS 3 y 11 (fuentes APA 7). Se fuerza la descarga de estilos y scripts nuevos en cada versión para que los celulares no muestren la página sin formato. En los 22 idiomas."
+    },
+    {
+      "v": "4.2",
+      "fecha": "2026-10-25",
+      "resumen": "Pestaña «12 servicios» como cubo de venta: 6 caras exteriores para salvar vidas (persona en el suelo; sismo, explosión y voz de auxilio; gases y oxígeno; 911 y nube; desastre y comité; luz, Morse y bocina) y 6 interiores de negocio rentable (inventario de personas; segregación y clasificación; aforo excedido; zonas en m² y m³; pantallas ejecutivas; estadística ejecutiva), cada una con su título; botones Exterior/Interior, cubo 3D que se gira con el dedo y tarjetas enlazadas. En los 22 idiomas."
+    },
+    {
+      "v": "4.1",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «12 servicios»: cubo interactivo de 12 aristas, una por servicio (inventario de personas, segregación y clasificación, persona en el suelo, aforo excedido, zonas en m² y m³, pantallas ejecutivas, sismo y voz de auxilio, gases y oxígeno, 911 y nube, estadística ejecutiva, desastre y comité, luz, Morse y bocina); cada arista une dos temas del sistema (personas, espacio, ambiente, emergencia, comunicación y datos) y los 8 vértices son los destinatarios del aviso (N0–N3, Cruz Roja, bomberos, Protección Civil y autoridad). El aviso al 911 exige doble confirmación de sensores y la voz se procesa en el equipo sin grabarse. En los 22 idiomas."
+    },
+    {
+      "v": "4.0",
+      "fecha": "2026-10-25",
+      "resumen": "Terminal de pruebas con pantalla dividida: «Pruebas» (pantalla S.S.O.S., pruebas y detectores) y «Terminal de información» (lecturas en vivo, escalamiento Detección→N0–N3→Atendida, sonido en curso y consola con cada paso de la detección). Las pruebas ejecutan la sirena con su patrón normalizado y el código Morse del perfil del panel; la alarma se repite, con una pausa para escuchar, hasta que la persona dice «todo bien» (o «estoy bien») o toca el botón verde. Escenarios listos para prueba en baño (celular conmigo o en repisa) y oficina; en iPhone suena aunque esté en silencio (Safari 17+)."
+    },
+    {
+      "v": "3.9",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «Terminal» y app instalable SOSistem™ Terminal de pruebas (terminal.html): el celular funciona como terminal del sistema con acelerómetro, giroscopio, orientación, micrófono (solo nivel de sonido), ubicación, batería y red; detecta caída, vibración tipo sismo, ruido fuerte, palabra «S.O.S.», sin movimiento prolongado y botón manual; escala N0–N3 con los tiempos del panel; registra cada evento al milisegundo con nivel, tiempo de respuesta y calificación (válido / falsa alarma) para calcular el % de error; exporta CSV/JSON y envía a un repositorio privado de GitHub. Funciona sin internet. Se restituye la portada 3.8, que había sido reemplazada por una carga manual."
+    },
+    {
+      "v": "3.8.1",
+      "fecha": "2026-10-25",
+      "resumen": "Pie de página con el registro de la plataforma SOSistem™ (versiones 1.0.0 a 3.8) en Safe Creative (2610257442171) en los 22 idiomas; tabla de registros en la carpeta de sellos."
+    },
+    {
+      "v": "3.8",
+      "fecha": "2026-10-25",
+      "resumen": "Los 22 idiomas con la página completa: se agregan griego, ruso, ucraniano, árabe, hebreo, hindi, chino y japonés a los 14 que ya estaban; 2 idiomas adicionales en preparación (maya yucateco y una lengua africana) y lengua de señas mexicana (LSM) y americana (ASL) en desarrollo."
+    },
+    {
+      "v": "3.7",
+      "fecha": "2026-10-25",
+      "resumen": "Cubo Morse© registrado en Safe Creative (2610257441754): se restituye el © en todo el sitio, la cara 6 del cubo y la pestaña muestran el número de registro, y el pie de página lo cita en los 14 idiomas. Sello de tiempo automático (OpenTimestamps) en cada versión publicada, carpeta sellos/."
+    },
+    {
+      "v": "3.6",
+      "fecha": "2026-10-25",
+      "resumen": "Nueva pestaña «Apoyar»: meta del prototipo ($50,000 MXN), barra de avance editable desde el panel y botón de GitHub Sponsors (activable al aprobarse la cuenta; mientras tanto, WhatsApp). Botón «Sponsor» en el repositorio (.github/FUNDING.yml). Revisión ortográfica y gramatical del sitio: comillas angulares, «mayor de», «inconfundible», «minibodegas», «vista de despiece», «etapa piloto», concordancias y puntuación."
+    },
+    {
+      "v": "3.5",
+      "fecha": "2026-10-25",
+      "resumen": "Portada: el resumen incluye el conteo de personas en tiempo real dentro de cada recinto (inventario físico para evacuación y rescate) en los 22 idiomas, y un panel «Inventario de personas en tiempo real» con total, aforo, barra de ocupación y desglose por recinto, sincronizado con la pantalla de Entrada principal (demostración)."
+    },
+    {
+      "v": "3.4",
+      "fecha": "2026-10-25",
+      "resumen": "Portada con resumen ejecutivo: «Alerta temprana al instante para salvaguardar la vida humana en recintos confinados» y descripción de SOSistem™ como sistema de terminales y pantallas físicas en interiores y exteriores para la seguridad humana, en los 22 idiomas; título y descripción para buscadores y redes actualizados."
+    },
+    {
+      "v": "3.3",
+      "fecha": "2026-10-25",
+      "resumen": "Separadores de sección con cubo amarillo giratorio: cada uno muestra el nombre de su pestaña y su código Morse (cambia con el idioma elegido)."
+    },
+    {
+      "v": "3.2",
+      "fecha": "2026-10-25",
+      "resumen": "Logo de la barra superior: cubo rojo giratorio SOSistem™ con seis caras en código Morse (SOS, SOSISTEM, 911, AYUDA, SALIDA y AVISO); se pausa al pasar el cursor y es el logo predeterminado del panel. SOLAS corregido a «7 o más cortas + 1 larga» en todo el sitio."
+    },
+    {
+      "v": "3.1",
+      "fecha": "2026-10-25",
+      "resumen": "Pestañas del sistema justificadas de arriba hacia abajo al costado (misma anchura, repartidas en todo el alto) y sin pestañas en la barra superior. Marca SOSistem™ en el logo principal, el panel de administrador y la cara 1 del Cubo Morse. Cubo Morse sin © hasta su registro. Caras del cubo rehechas: exterior en la mitad inferior e interior en la mitad superior, con el Morse completo y legible. Panel: recuperación de claves exclusiva del titular y aviso legal con registro de cada intento de ingreso."
+    },
+    {
+      "v": "3.0",
+      "fecha": "2026-10-24",
+      "resumen": "Banderas del Código Internacional de Señales bajo el aviso Morse en todas las pantallas (mensaje, identidad S·O·S del sistema y bandera del evento). Galería nueva del sistema actual: infografía explicativa, simulador en caída y sismo, seis pantallas y Cubo Morse©; los renders originales quedan como conceptos."
+    },
+    {
+      "v": "2.9",
+      "fecha": "2026-10-24",
+      "resumen": "Señales normalizadas: patrones de sirena T-3 (ISO 8201), 7 cortas + 1 larga (SOLAS/Código IDS 7.2.1), pulsos (ISO 7731) y bitonal, con luz sincronizada (ISO 11429); verificación de 15 dB sobre el ruido de fondo en el panel; banderas del Código Internacional de Señales A–Z y mensaje en banderas y Morse (ITU-R M.1677-1); códigos ISO 639-3 de lenguas de señas; fuentes APA 7."
+    },
+    {
+      "v": "2.8",
+      "fecha": "2026-10-24",
+      "resumen": "Portada: cubo de pantallas S.S.O.S.© (sanitarios, entrada, sismo, exterior, oficina y cocina); cada cara exterior es una pantalla y gira suavemente a la derecha cada 4 s; 4, 5 o 6 pantallas según el panel."
+    },
+    {
+      "v": "2.7",
+      "fecha": "2026-10-24",
+      "resumen": "Portada con la pantalla S.S.O.S.© real animada (persona en el suelo y escalamiento N0–N3 al 911); nueva sección «Funciones» con todas las funciones del sistema en breve; espacios más compactos y separador de tema (línea, cubo y título) entre secciones, también en modo presentación."
+    },
+    {
+      "v": "2.6",
+      "fecha": "2026-10-24",
+      "resumen": "Cubo Morse©: suena en Morse al tocar cada cara; exterior con obras de identidad y código (marca de agua al 50 % que deja ver el interior) e interior con ContenedorEns©, Arsa Bodegas©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía©; colores claros beige y gris, sin rojo. PDF armable y memoria de registro actualizados."
+    },
+    {
+      "v": "2.5",
+      "fecha": "2026-10-24",
+      "resumen": "Logo nuevo (sello Morse S.O.S.©) y fondo gris; el panel permite elegir fondo (blanco, beige, crema, gris, azul, negro) y logo. Pestañas chicas del sistema al borde derecho con «Ver pestañas del sistema». Diseño ajustado a iPhone, Android/Samsung, tabletas y computadoras con detección del tipo de pantalla. Fuentes de INEGI (EDR 2025 preliminar) y OMS en APA 7 debajo de los datos."
+    },
+    {
+      "v": "2.4",
+      "fecha": "2026-10-24",
+      "resumen": "Pantalla dividida en sismo o evento natural: a un lado las salidas de emergencia desde el lugar donde está instalada la pantalla («Usted está aquí»), al otro las personas en cada recinto, incluida la entrada principal, y cuántas están con usted. Sistemas obligatorios: entrada principal y baños; el tercero donde el cliente lo requiera."
+    },
+    {
+      "v": "2.3",
+      "fecha": "2026-10-24",
+      "resumen": "Panel: pestaña «Módulos, recintos y nube» (módulos opcionales por cliente: humo, inundación, falta de energía, gas, CO, oxígeno, tóxicos, calor, viento, tsunami, voz; recintos y polígonos; pantalla exterior; con quién se comparte cada evento). Simulador: en sismo todas las pantallas muestran el personal de todos los recintos y la pantalla exterior se enciende."
+    },
+    {
+      "v": "2.2",
+      "fecha": "2026-10-24",
+      "resumen": "Simulador: aviso «persona en el suelo» con recinto y cabina en el idioma elegido, plano con rutas de auxilio, traslado y evacuación con metros y tiempos, pantalla de salidas de emergencia en sismo y cuenta regresiva de la llamada al 911 configurable por el cliente (web: caída 10 s, sismo 5 s)."
+    },
+    {
+      "v": "2.1",
+      "fecha": "2026-10-24",
+      "resumen": "Panel: pestaña «Sirena y Morse» para configurar por estado la sirena (hasta 105 dB, duración de ráfaga, tope a nivel máximo según NOM-011-STPS-2001), el Morse (mensaje, volumen, cada cuántos segundos se repite), si el código se ve en pantalla y si se repite hasta que alguien atienda. Cubo para armar de 12 caras a doble cara."
+    },
+    {
+      "v": "2.0",
+      "fecha": "2026-10-24",
+      "resumen": "Cara interior 11 del Cubo Morse: Código Omnigráfico© con su prueba en Safe Creative (2610257441013), como parte del Código de Comunicación del Cubo (33)©."
+    },
+    {
+      "v": "1.9",
+      "fecha": "2026-10-24",
+      "resumen": "Cubo Morse© de 12 caras (6 exteriores y 6 interiores) con las obras registradas en Safe Creative, su número de registro y el Morse como marca de agua; vista Exterior/Interior. La pantalla también suena en Advertencia (AVISO), muestra el código que emite y hay una guía para entender el Morse."
+    },
+    {
+      "v": "1.8",
+      "fecha": "2026-10-24",
+      "resumen": "Regla de sonido: el Morse solo suena en emergencia, desastre natural, pruebas del administrador (pestaña Pruebas de sonido) y módulo de pruebas del cliente; en el resto solo destella. Estado «Sismo» en el simulador."
+    },
+    {
+      "v": "1.7",
+      "fecha": "2026-10-24",
+      "resumen": "Código Morse sonoro y luminoso al tocar (cubo, secciones y alerta del simulador); selector de 22 idiomas con traducción automática en revisión (árabe y hebreo de derecha a izquierda)."
+    },
+    {
+      "v": "1.6",
+      "fecha": "2026-10-24",
+      "resumen": "Logo Cubo Morse© (seis proyectos en código Morse) en encabezado, favicon y panel; cubo 3D interactivo; cubo para armar en PDF; imagen de vista previa para WhatsApp y redes."
+    },
+    {
+      "v": "1.5",
+      "fecha": "2026-10-24",
+      "resumen": "Recuperación de claves del panel con frase de recuperación; respaldo cifrado solo en el repositorio privado sistema-sos. Contador de visitas conectado (sosistem.goatcounter.com)."
+    },
+    {
+      "v": "1.4",
+      "fecha": "2026-10-24",
+      "resumen": "Prototipo y prueba real en oficinas de ContenedorEns©; Puerto de Ensenada como propuesta de prueba adicional, previa autorización y convenio."
+    },
+    {
+      "v": "1.3",
+      "fecha": "2026-10-24",
+      "resumen": "Simulador de la pantalla S.S.O.S. (normal, advertencia, caída), galería de referencias visuales y control de versiones."
+    },
+    {
+      "v": "1.2",
+      "fecha": "2026-10-24",
+      "resumen": "Panel de administrador con doble clave cifrada, visitas anónimas, eventos, financiera, técnico, usuarios, ejecutivo y ajustes."
+    },
+    {
+      "v": "1.1",
+      "fecha": "2026-10-24",
+      "resumen": "Expediente S.S.O.S. v1.1: datos reales (OMS, INEGI), módulo S.S.O.S., normativa vigente y fuentes APA 7."
+    },
+    {
+      "v": "1.0",
+      "fecha": "2026-10",
+      "resumen": "Sitio inicial con diseño adaptable para celular, tableta y escritorio."
+    }
+  ]
+}
