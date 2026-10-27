@@ -1,8 +1,13 @@
 {
-  "version": "5.6",
+  "version": "5.6.1",
   "fecha": "2026-10-27",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.6.1",
+      "fecha": "2026-10-27",
+      "resumen": "Logos de ContenedorEns© y Arsa Bodegas© redibujados en vector a partir de sus registros en Safe Creative (2609046908752 y 2609046908806) en las tarjetas del Cubo Morse©; la cara 7 muestra el número de registro de ContenedorEns©."
+    },
     {
       "v": "5.6",
       "fecha": "2026-10-27",

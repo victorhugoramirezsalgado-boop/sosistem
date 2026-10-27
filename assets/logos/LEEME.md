@@ -1,6 +1,6 @@
 # Logos de las caras del Cubo Morse©
 
-Emblemas provisionales (64 × 64). Para usar el logo oficial de cada obra, reemplace el archivo **con el mismo nombre** (SVG recomendado; también sirve PNG cambiando la extensión en `index.html`).
+Íconos de 64 × 64. ContenedorEns© (cont.svg) y Arsa Bodegas© (arsa.svg) están redibujados en vector a partir de sus registros en Safe Creative (2609046908752 y 2609046908806); los logos completos con texto son contenedorens-logo.svg y arsabodegas-logo.svg. Los demás son emblemas provisionales. Para usar el logo oficial de cada obra, reemplace el archivo **con el mismo nombre** (SVG recomendado; también sirve PNG cambiando la extensión en `index.html`).
 
 | Archivo | Obra |
 |---|---|
