@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.4">
+<link rel="stylesheet" href="assets/estilo.css?v=5.5">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -513,11 +513,14 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 <section class="slide blk" id="senales">
   <div class="wrap">
     <span class="eyebrow">Señales normalizadas · ISO, UIT y OMI</span>
-    <h2>Cada sonido, luz y código del sistema sigue una norma internacional.</h2>
+    <h2>Cada sonido, luz, color y código del sistema sigue una norma internacional.</h2>
     <p>S.O.S.© usa señales que cualquier persona, brigada o tripulación reconoce sin entrenamiento previo: el patrón de evacuación T-3, la alarma general de los buques, el código Morse internacional y las banderas del Código Internacional de Señales.</p>
     <div class="tbl-wrap"><table class="tbl-normas">
       <thead><tr><th>Norma</th><th>Qué establece</th><th>Cómo la aplica S.O.S.©</th></tr></thead>
       <tbody>
+        <tr><td><b>ISO 7010:2019</b><br><small>Señales de seguridad registradas · con Amd. 1–11 (Amd. 11:2026)</small></td><td>Catálogo internacional de señales de seguridad con su pictograma, color y forma: salvamento y evacuación (E, verde), protección contra incendios (F, rojo), obligación (M, azul), prohibición (P, rojo) y advertencia (W, amarillo).</td><td>Pantallas, luces y botones usan esos colores según el estado; la señalética física del recinto usa los pictogramas registrados, como E001/E002 salida de emergencia, E003 primeros auxilios, E007 punto de reunión y W001 advertencia general. Nueva edición en preparación (ISO/DIS 7010).</td></tr>
+        <tr><td><b>ISO 3864-1:2011</b><br><small>Principios de diseño de señales y marcas de seguridad · confirmada en 2022</small></td><td>Define los colores de seguridad, sus colores de contraste y las formas geométricas: círculo con banda diagonal para prohibición, círculo para obligación, triángulo para advertencia y cuadrado o rectángulo para condición segura y equipo contra incendio.</td><td>Cada estado tiene un solo par de colores: rojo con blanco (emergencia), amarillo con negro (advertencia), verde con blanco (seguro) y azul con blanco (información); colorimetría de referencia en ISO 3864-4 (RAL 3001, 1003, 6032 y 5005).</td></tr>
+        <tr><td><b>ISO 3864-3:2024</b><br><small>Diseño de símbolos gráficos para señales de seguridad · 3.ª ed., sustituye a la de 2012</small></td><td>Reglas para dibujar pictogramas de seguridad: área del símbolo, grosor de trazo, figura humana normalizada y legibilidad a distancia.</td><td>Los símbolos propios de S.O.S.© (persona en el suelo, sismo y aforo) se dibujan con estas reglas; no son señales registradas en ISO 7010 y se identifican como símbolos del sistema.</td></tr>
         <tr><td><b>ISO 7731:2003</b><br><small>Señales auditivas de peligro</small></td><td>La señal debe ser audible, identificable e inconfundible: al menos <b>15 dB por encima del ruido de fondo</b> en toda la zona y tonos principales entre 500 y 1500 Hz.</td><td>Sirena bitonal 800/1250 Hz y Morse a 650 Hz. El panel pide el ruido medido en cada recinto y marca ✓ si la sirena lo supera en 15 dB o más, y ✗ si no.</td></tr>
         <tr><td><b>ISO 8201:2017</b><br><small>Señal de evacuación</small></td><td>Patrón temporal <b>T-3</b>: 0.5 s sonido, 0.5 s silencio, tres veces, y 1.5 s de pausa (ciclo de 4 s); equivalente al de NFPA 72.</td><td>Patrón por defecto en <b>sismo y evacuación</b>; la luz blanca destella al mismo ritmo.</td></tr>
         <tr><td><b>ISO 11429:1996</b><br><small>Señales sonoras y visuales</small> <small>(confirmada en 2014)</small></td><td>Sistema de señales de peligro e información según el grado de urgencia, con sonido y luz coherentes entre sí.</td><td>Cada estado tiene un solo par sonido-luz: rojo en emergencia, ámbar en advertencia, verde seguro y blanco de evacuación (NOM-026-STPS-2008); la luz sigue el mismo ritmo que el sonido.</td></tr>
@@ -735,7 +738,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 <section class="slide blk" id="contacto">
   <div class="wrap">
     <span class="eyebrow">Contacto</span>
-    <h2>Hablemos de su recinto.</h2>
+    <h2>Hablemos de salvar vidas: tener para dar.</h2>
     <p class="lead">Le mostramos el simulador, las pantallas y el panel de estadísticas con datos de prueba, y evaluamos su recinto sin costo.</p>
     <p><a class="btn primary" href="https://wa.me/526462270490?text=Hola%2C%20me%20interesa%20el%20Sistema%20S.O.S.%20(SOSistem)" target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn" href="tel:+526462270490">646 227 0490</a></p>
   </div>
@@ -751,6 +754,10 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf</a></li>
       <li>Instituto Nacional de Estadística y Geografía. (2026, 9 de enero). <i>Unidad de Medida y Actualización (UMA) 2026</i>. <a href="https://www.inegi.org.mx/temas/uma/" rel="noopener">https://www.inegi.org.mx/temas/uma/</a></li>
       <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      <li>International Organization for Standardization. (2011). <i>Graphical symbols — Safety colours and safety signs — Part 1: Design principles for safety signs and safety markings</i> (ISO Standard No. 3864-1:2011; confirmada en 2022). <a href="https://www.iso.org/standard/51021.html" rel="noopener">https://www.iso.org/standard/51021.html</a></li>
+      <li>International Organization for Standardization. (2024). <i>Graphical symbols — Safety colours and safety signs — Part 3: Design principles for graphical symbols for use in safety signs</i> (ISO Standard No. 3864-3:2024). <a href="https://www.iso.org/standard/86048.html" rel="noopener">https://www.iso.org/standard/86048.html</a></li>
+      <li>International Organization for Standardization. (2019). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs</i> (ISO Standard No. 7010:2019). <a href="https://www.iso.org/standard/72424.html" rel="noopener">https://www.iso.org/standard/72424.html</a></li>
+      <li>International Organization for Standardization. (2026). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs — Amendment 11</i> (ISO Standard No. 7010:2019/Amd 11:2026). <a href="https://www.iso.org/standard/93739.html" rel="noopener">https://www.iso.org/standard/93739.html</a></li>
       <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, 20 de marzo de 2025. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">diputados.gob.mx</a></li>
       <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
       <li>Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008</i>. <a href="https://dof.gob.mx/normasOficiales/3541/stps.htm" rel="noopener">dof.gob.mx</a></li>
@@ -774,7 +781,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obras registradas en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados. <span>Cubo Morse© registrado en Safe Creative (2610257441754).</span> <span>Plataforma SOSistem™ (versiones 1.0.0 a 3.8) registrada en Safe Creative (2610257442171).</span></p>
-    <p>Información técnica y normativa actualizada al 25 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
+    <p>Información técnica y normativa actualizada al 26 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
@@ -786,21 +793,21 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.4"></script>
-<script src="assets/logo-giro.js?v=5.4"></script>
-<script src="assets/app.js?v=5.4"></script>
-<script src="assets/cubo.js?v=5.4"></script>
-<script src="assets/morse.js?v=5.4"></script>
-<script src="assets/pantalla.js?v=5.4"></script>
-<script src="assets/cubo-morse.js?v=5.4"></script>
-<script src="assets/idiomas.js?v=5.4"></script>
-<script src="assets/banderas.js?v=5.4"></script>
-<script src="assets/servicios12.js?v=5.4"></script>
-<script src="assets/cabecera.js?v=5.4"></script>
-<script src="assets/pestanas.js?v=5.4"></script>
-<script src="assets/rastreo.js?v=5.4"></script>
-<script src="assets/morse-motor.js?v=5.4"></script>
-<script src="assets/receptor.js?v=5.4"></script>
+<script src="assets/cubo-rt.js?v=5.5"></script>
+<script src="assets/logo-giro.js?v=5.5"></script>
+<script src="assets/app.js?v=5.5"></script>
+<script src="assets/cubo.js?v=5.5"></script>
+<script src="assets/morse.js?v=5.5"></script>
+<script src="assets/pantalla.js?v=5.5"></script>
+<script src="assets/cubo-morse.js?v=5.5"></script>
+<script src="assets/idiomas.js?v=5.5"></script>
+<script src="assets/banderas.js?v=5.5"></script>
+<script src="assets/servicios12.js?v=5.5"></script>
+<script src="assets/cabecera.js?v=5.5"></script>
+<script src="assets/pestanas.js?v=5.5"></script>
+<script src="assets/rastreo.js?v=5.5"></script>
+<script src="assets/morse-motor.js?v=5.5"></script>
+<script src="assets/receptor.js?v=5.5"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

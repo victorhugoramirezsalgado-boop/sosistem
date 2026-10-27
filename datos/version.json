@@ -1,8 +1,13 @@
 {
-  "version": "5.4",
+  "version": "5.5",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.5",
+      "fecha": "2026-10-26",
+      "resumen": "Contacto: «Hablemos de salvar vidas: tener para dar.» Señales normalizadas: se agregan ISO 7010:2019 con sus enmiendas 1–11 (la 11 publicada en marzo de 2026; nueva edición ISO/DIS 7010 en preparación), ISO 3864-1:2011 (confirmada en 2022: colores de seguridad, contraste y formas) e ISO 3864-3:2024 (3.ª ed., sustituye a la de 2012: diseño de símbolos gráficos), con su aplicación en pantallas, luces, botones y señalética. Colores del sitio validados contra la colorimetría de ISO 3864-4 (RAL 3001, 1003, 6032 y 5005). Fuentes APA 7. En los 22 idiomas."
+    },
     {
       "v": "5.4",
       "fecha": "2026-10-26",
