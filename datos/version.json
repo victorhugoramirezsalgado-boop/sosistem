@@ -1,8 +1,13 @@
 {
-  "version": "5.1",
+  "version": "5.2",
   "fecha": "2026-10-26",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.2",
+      "fecha": "2026-10-26",
+      "resumen": "Terminal y panel de administrador: nueva «Hoja de estadísticas» con gráfica grande (pantalla completa) por día, hora, minuto, segundo, milésima de hora (3.6 s) o milisegundo, en naranja los eventos reales y en gris las pruebas del sistema; conteo histórico y del filtro (reales y pruebas), gráficas de pastel (reales vs. pruebas, tipo, calificación, nivel, sismos verificados y franja horaria), filtros por fechas, días de la semana y horas, hoja diaria imprimible o en PDF y CSV de hojas diarias. Cada sismo se verifica contra los catálogos FDSN de USGS y EMSC (−15/+5 min, 400 km), con ligas a SSN-UNAM, RESNOM-CICESE, CENAPRED y CIRES para el cotejo; contexto regional de los últimos 30 días a 150 km de El Sauzal. Hoja diaria automática en el repositorio privado. Fuentes APA 7."
+    },
     {
       "v": "5.1",
       "fecha": "2026-10-26",
