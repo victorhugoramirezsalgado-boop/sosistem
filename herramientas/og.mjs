@@ -13,6 +13,8 @@ await p.addInitScript(() => { localStorage.setItem("sos_idioma", "es"); localSto
 await p.goto(SITIO + "index.html", { waitUntil: "networkidle" });
 await p.addStyleTag({ content: ".top,.pestanas,#ver-pestanas{display:none!important} .eq-cubo{transition:none!important} .eq-alerta,.eq-leds i{animation:none!important}" });
 await p.waitForTimeout(1200);
+// Hora y tiempos fijos para que la imagen solo cambie cuando cambia el diseño
+await p.evaluate(() => { const f = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t; }; f("eq-hora", "12:00"); f("eq-t", "00:04"); f("eq-911n", "6 s"); const b = document.getElementById("eq-911b"); if (b) b.style.width = "40%"; });
 const cara = await p.$('.eq-cara[data-n="1"] .eq-bisel');
 const terminal = (await cara.screenshot({ type: "png" })).toString("base64");
 const logo = fs.readFileSync("assets/logo.svg", "utf8");
