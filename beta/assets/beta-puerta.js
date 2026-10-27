@@ -9,8 +9,8 @@
   H.classList.add("beta-cerrada");
   const st = document.createElement("style");
   st.textContent = `html.beta-cerrada body > *:not(#beta-puerta){display:none!important}
-#beta-puerta{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#0E1218;color:#EEF2F7;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:16px}
-#beta-puerta .bp{width:min(420px,100%);background:#151B24;border:1px solid #263142;border-radius:16px;padding:22px;display:grid;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+#beta-puerta{position:fixed;inset:0;z-index:99999;display:grid;place-items:start center;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:#0E1218;color:#EEF2F7;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:16px}
+#beta-puerta .bp{width:min(420px,100%);margin:auto 0;background:#151B24;border:1px solid #263142;border-radius:16px;padding:22px;display:grid;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
 #beta-puerta h1{font-size:1.2rem;margin:0}#beta-puerta p{margin:0;color:#93A0B2;font-size:.9rem}
 #beta-puerta label{display:grid;gap:4px;font-size:.85rem;font-weight:600}
 #beta-puerta input{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid #263142;background:#0E1218;color:#EEF2F7}
