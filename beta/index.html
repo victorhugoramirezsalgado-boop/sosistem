@@ -19,7 +19,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b2">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -410,6 +410,8 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
           <label class="pc-fila" data-falla="equipo"><input type="color" data-falla="equipo" aria-label="Falla de sensor o equipo"><span class="pc-nom"><b>Falla de sensor o equipo</b><small>Azul</small></span><span class="pc-est" data-est="equipo"></span></label>
           <label class="pc-fila" data-falla="seguro"><input type="color" data-falla="seguro" aria-label="Condición segura"><span class="pc-nom"><b>Condición segura</b><small>Verde</small></span><span class="pc-est" data-est="seguro"></span></label>
         </div>
+        <h4 class="pc-cod-t">Códigos de color</h4>
+        <div class="tbl-wrap"><table class="pc-cod"><thead><tr><th>Color</th><th>Uso</th><th>HEX</th><th>RGB</th><th>RAL</th><th>Luz LED</th></tr></thead><tbody id="pc-codigos"></tbody></table></div>
         <p><button class="btn" type="button" id="pc-reset">Restablecer colores ISO</button></p>
       </details>
     </div>
@@ -914,23 +916,23 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7b"></script>
-<script src="assets/logo-giro.js?v=5.7b"></script>
-<script src="assets/app.js?v=5.7b"></script>
-<script src="assets/cubo.js?v=5.7b"></script>
-<script src="assets/morse.js?v=5.7b"></script>
-<script src="assets/pantalla.js?v=5.7b"></script>
-<script src="assets/pantalla-tema.js?v=5.7b"></script>
-<script src="assets/aprende.js?v=5.7b"></script>
-<script src="assets/cubo-morse.js?v=5.7b"></script>
-<script src="assets/idiomas.js?v=5.7b"></script>
-<script src="assets/banderas.js?v=5.7b"></script>
-<script src="assets/servicios12.js?v=5.7b"></script>
-<script src="assets/cabecera.js?v=5.7b"></script>
-<script src="assets/pestanas.js?v=5.7b"></script>
-<script src="assets/rastreo.js?v=5.7b"></script>
-<script src="assets/morse-motor.js?v=5.7b"></script>
-<script src="assets/receptor.js?v=5.7b"></script>
+<script src="assets/cubo-rt.js?v=5.7b2"></script>
+<script src="assets/logo-giro.js?v=5.7b2"></script>
+<script src="assets/app.js?v=5.7b2"></script>
+<script src="assets/cubo.js?v=5.7b2"></script>
+<script src="assets/morse.js?v=5.7b2"></script>
+<script src="assets/pantalla.js?v=5.7b2"></script>
+<script src="assets/pantalla-tema.js?v=5.7b2"></script>
+<script src="assets/aprende.js?v=5.7b2"></script>
+<script src="assets/cubo-morse.js?v=5.7b2"></script>
+<script src="assets/idiomas.js?v=5.7b2"></script>
+<script src="assets/banderas.js?v=5.7b2"></script>
+<script src="assets/servicios12.js?v=5.7b2"></script>
+<script src="assets/cabecera.js?v=5.7b2"></script>
+<script src="assets/pestanas.js?v=5.7b2"></script>
+<script src="assets/rastreo.js?v=5.7b2"></script>
+<script src="assets/morse-motor.js?v=5.7b2"></script>
+<script src="assets/receptor.js?v=5.7b2"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

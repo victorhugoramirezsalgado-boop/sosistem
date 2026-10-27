@@ -1104,3 +1104,13 @@ section[id] { scroll-margin-top: 96px; }
 .seg-r li { font-size: .88rem; padding-left: 16px; position: relative; } .seg-r li::before { content: ""; position: absolute; left: 0; top: .45em; width: 8px; height: 8px; border-radius: 2px; background: var(--f-perm); }
 #sim-area { max-width: 15em; }
 @media (max-width: 640px) { .seg-cols { grid-template-columns: 1fr; } }
+
+/* Beta · códigos de color junto a cada falla */
+.pt-ley span[data-falla] { flex-wrap: wrap; }
+.pt-ley .ley-cod { flex-basis: 100%; padding-left: 22px; font-size: .86em; font-weight: 500; color: var(--p-dim); }
+.pt-ley .ley-cod code { font: 600 1em var(--mono); color: var(--p-ink); }
+.pc-cod-t { margin: 12px 0 6px; font-size: .9rem; }
+.pc-cod td, .pc-cod th { white-space: nowrap; font-size: .85rem; }
+.pc-cod code { font: 600 .85rem var(--mono); }
+.pc-mu { display: inline-block; width: 16px; height: 16px; border-radius: 4px; margin-right: 8px; vertical-align: -3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); }
+.pt-ley .ley-cod span { display: inline; }
