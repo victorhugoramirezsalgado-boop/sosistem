@@ -1,8 +1,13 @@
 {
-  "version": "5.5",
-  "fecha": "2026-10-26",
+  "version": "5.6",
+  "fecha": "2026-10-27",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.6",
+      "fecha": "2026-10-27",
+      "resumen": "Pantallas NODO S.O.S.© rediseñadas (sanitarios y portada): diseño más limpio, módulos con franja de color, estados en píldoras rellenas y fondo según la luz del lugar: automático (por hora o sensor de luz), interior, día · mucha luz (fondo claro), noche · poca luz (oscuro y atenuado) y alto contraste. Colores por falla al lado de cada una (persona en el suelo, permanencia prolongada, aforo excedido, gas o humo, sismo y evacuación, falla de sensor o equipo y condición segura), editables por el usuario con aviso si salen de la familia ISO 3864-1 / NOM-026-STPS-2008 o pierden contraste. «Pediátrico» pasa a «Infantil» (cabinas para niñas y niños). Cubo Morse©: logo de cada obra en la esquina superior derecha de su tarjeta. En los 22 idiomas."
+    },
     {
       "v": "5.5",
       "fecha": "2026-10-26",

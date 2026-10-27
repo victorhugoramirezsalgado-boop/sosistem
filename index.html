@@ -17,11 +17,13 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.5">
+<link rel="stylesheet" href="assets/estilo.css?v=5.6">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
 if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fondo = "gris";
+/* Fondo de las pantallas NODO S.O.S.© (automático por hora hasta que cargue el script) */
+try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); var hh = new Date().getHours(); document.documentElement.dataset.ptema = pt && pt !== "auto" ? pt : (hh >= 20 || hh < 7 ? "noche" : "interior"); } catch (e) {}
 </script>
 </head>
 <body>
@@ -61,8 +63,8 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
               <div class="eq-pant" data-fase="caida">
           <div class="eq-top"><b>NODO S.O.S.© · SANITARIOS PLANTA BAJA</b><span><span id="eq-hora">22:22</span> · LiFePO4 <em class="ok">100 %</em> · Red <em class="ok">OK</em></span></div>
           <div class="eq-mods">
-            <div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Pediátrico 1/3<em class="ok">Libre</em></p></div>
-            <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p class="riesgo"><i></i>Pediátrico F‑2<em class="bad">Caída</em></p></div>
+            <div class="eq-mod m"><h4>Masculino</h4><p><i></i>Adultos 3/6<em class="ok">Libre</em></p><p><i></i>Infantil 1/3<em class="ok">Libre</em></p></div>
+            <div class="eq-mod f"><h4>Femenino</h4><p><i></i>Adultas 4/6<em class="ok">Libre</em></p><p class="riesgo"><i></i>Infantil F‑2<em class="bad">Caída</em></p></div>
           </div>
           <div class="eq-alerta"><b>¡Persona en el suelo! · Cabina F‑2</b><span>Tiempo inmóvil <span id="eq-t">00:00</span></span></div>
           <div class="eq-911"><span id="eq-911t">Llamada al 911 en</span> <b id="eq-911n">10 s</b><i id="eq-911b"></i></div>
@@ -308,7 +310,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
         </tbody>
       </table>
     </div>
-    <p class="legend"><span><i style="background:var(--brand)"></i>Rojo: emergencia</span><span><i style="background:var(--warn)"></i>Ámbar: precaución / aforo &gt; 90 %</span><span><i style="background:var(--ok)"></i>Verde: libre</span></p>
+    <p class="legend"><span><i style="background:var(--f-caida)"></i>Rojo: emergencia</span><span><i style="background:var(--f-perm)"></i>Ámbar: precaución / aforo &gt; 90 %</span><span><i style="background:var(--f-seguro)"></i>Verde: libre</span></p>
   </div>
 </section>
 
@@ -316,7 +318,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <div class="wrap">
     <span class="eyebrow">Pantalla S.S.O.S.© · simulador</span>
     <h2>Así se ve un evento en la pantalla de acceso.</h2>
-    <p>Elija un estado para ver cómo cambia la señal. Los colores siguen la NOM-026-STPS-2008; el rojo parpadea a 2 Hz, por debajo del umbral de riesgo fotosensible de 3 Hz.</p>
+    <p>Elija un estado para ver cómo cambia la señal. Los colores siguen la NOM-026-STPS-2008; el rojo parpadea a 2 Hz, por debajo del umbral de riesgo fotosensible de 3 Hz. El fondo se adapta a la luz del lugar: claro con mucha luz, oscuro y atenuado de noche, o de alto contraste.</p>
     <div class="sim-ctrl" role="group" aria-label="Estado de la simulación">
       <button class="btn" type="button" data-estado="normal">Normal</button>
       <button class="btn" type="button" data-estado="advertencia">Advertencia</button>
@@ -326,6 +328,31 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <label class="sim-prueba"><input type="checkbox" id="sim-sonido"> Módulo de pruebas: activar sonido</label>
     </div>
     <p class="note">El sonido Morse solo se emite en advertencias, emergencias, desastres naturales o pruebas autorizadas. Aquí es una prueba: actívela para escucharlo.</p>
+    <div class="pt-ajustes">
+      <div class="pt-temas" role="group" aria-label="Fondo de la pantalla">
+        <span class="pt-aj-tit">Fondo de la pantalla</span>
+        <button type="button" data-ptema="auto" aria-pressed="true">Automático</button>
+        <button type="button" data-ptema="interior" aria-pressed="false">Interior</button>
+        <button type="button" data-ptema="dia" aria-pressed="false">Día · mucha luz</button>
+        <button type="button" data-ptema="noche" aria-pressed="false">Noche · poca luz</button>
+        <button type="button" data-ptema="contraste" aria-pressed="false">Alto contraste</button>
+        <span class="pt-tema-act" id="pt-tema-act" hidden><span>Ahora:</span> <b id="pt-tema-nom">Interior</b></span>
+      </div>
+      <details class="pt-colores" id="pt-colores">
+        <summary>Colores por falla</summary>
+        <p class="note">Toque un color para cambiarlo. Cada falla debe conservar su familia de color de seguridad (ISO 3864-1 y NOM-026-STPS-2008); si el tono sale de la familia o pierde contraste, se marca en ámbar. Los cambios se guardan en este equipo.</p>
+        <div class="pc-lista" id="pc-lista">
+          <label class="pc-fila" data-falla="caida"><input type="color" data-falla="caida" aria-label="Persona en el suelo"><span class="pc-nom"><b>Persona en el suelo</b><small>Rojo</small></span><span class="pc-est" data-est="caida"></span></label>
+          <label class="pc-fila" data-falla="perm"><input type="color" data-falla="perm" aria-label="Permanencia prolongada"><span class="pc-nom"><b>Permanencia prolongada</b><small>Ámbar</small></span><span class="pc-est" data-est="perm"></span></label>
+          <label class="pc-fila" data-falla="aforo"><input type="color" data-falla="aforo" aria-label="Aforo excedido"><span class="pc-nom"><b>Aforo excedido</b><small>Ámbar</small></span><span class="pc-est" data-est="aforo"></span></label>
+          <label class="pc-fila" data-falla="gas"><input type="color" data-falla="gas" aria-label="Gas o humo"><span class="pc-nom"><b>Gas o humo</b><small>Amarillo</small></span><span class="pc-est" data-est="gas"></span></label>
+          <label class="pc-fila" data-falla="sismo"><input type="color" data-falla="sismo" aria-label="Sismo y evacuación"><span class="pc-nom"><b>Sismo y evacuación</b><small>Blanco</small></span><span class="pc-est" data-est="sismo"></span></label>
+          <label class="pc-fila" data-falla="equipo"><input type="color" data-falla="equipo" aria-label="Falla de sensor o equipo"><span class="pc-nom"><b>Falla de sensor o equipo</b><small>Azul</small></span><span class="pc-est" data-est="equipo"></span></label>
+          <label class="pc-fila" data-falla="seguro"><input type="color" data-falla="seguro" aria-label="Condición segura"><span class="pc-nom"><b>Condición segura</b><small>Verde</small></span><span class="pc-est" data-est="seguro"></span></label>
+        </div>
+        <p><button class="btn" type="button" id="pc-reset">Restablecer colores ISO</button></p>
+      </details>
+    </div>
     <div class="pantalla" id="pantalla" data-estado="caida" aria-live="polite">
       <div class="pt-top">
         <b>NODO S.O.S.© — MONITOREO DE ESPACIOS CERRADOS</b>
@@ -334,11 +361,11 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <div class="pt-mods">
         <div class="pt-mod m"><h4>Módulo masculino</h4>
           <div class="pt-row"><i class="pict a"></i><span>Adultos <b>3 / 6</b></span><em class="st ok">Libre</em></div>
-          <div class="pt-row"><i class="pict n"></i><span>Pediátrico <b>1 / 3</b></span><em class="st ok">Libre</em></div>
+          <div class="pt-row"><i class="pict n"></i><span>Infantil <b>1 / 3</b></span><em class="st ok">Libre</em></div>
         </div>
         <div class="pt-mod f"><h4>Módulo femenino</h4>
           <div class="pt-row"><i class="pict a"></i><span>Adultas <b>4 / 6</b></span><em class="st ok">Libre</em></div>
-          <div class="pt-row" id="pt-f2"><i class="pict n"></i><span>Pediátrico <b>1 / 3</b><small id="pt-f2t"></small></span><em class="st" id="pt-f2s">—</em></div>
+          <div class="pt-row" id="pt-f2"><i class="pict n"></i><span>Infantil <b>1 / 3</b><small id="pt-f2t"></small></span><em class="st" id="pt-f2s">—</em></div>
         </div>
       </div>
       <div class="pt-alerta" id="pt-alerta"><b id="pt-a1">—</b><span id="pt-a2"></span></div>
@@ -395,10 +422,13 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
         </div>
       </div>
       <div class="pt-ley">
-        <span><i class="r"></i>Rojo ≈ 625 nm, destello 2 Hz: caída o sismo</span>
-        <span><i class="y"></i>Ámbar ≈ 590 nm: permanencia &gt; 10 min o aforo &gt; 90 %</span>
-        <span><i class="g"></i>Verde ≈ 525 nm: condición segura</span>
-        <span><i class="w"></i>Blanco 5,500 K: balizamiento de evacuación</span>
+        <span data-falla="caida"><i class="r"></i>Persona en el suelo</span>
+        <span data-falla="perm"><i class="y"></i>Permanencia prolongada</span>
+        <span data-falla="aforo"><i class="aforo"></i>Aforo excedido</span>
+        <span data-falla="gas"><i class="gas"></i>Gas o humo</span>
+        <span data-falla="sismo"><i class="w"></i>Sismo y evacuación</span>
+        <span data-falla="equipo"><i class="equipo"></i>Falla de sensor o equipo</span>
+        <span data-falla="seguro"><i class="g"></i>Condición segura</span>
       </div>
       <div class="pt-morse" id="pt-morse" aria-live="polite"></div>
       <div class="pt-pie"><span id="pt-pie-l">PNL-A04 · Planta baja</span><span>S.O.S.© PROJECT</span></div>
@@ -479,9 +509,9 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
         <button type="button" id="cm-auto">Girar solo</button>
       </div>
       <h3 class="cm-sub">Exterior</h3>
-      <div class="cm-lista" role="group" aria-label="Caras exteriores"><button type="button" data-cara="sos" data-capa="ext" data-lado="frente"><b>1. SOSistem</b><span>··· ––– ··· ·· ··· – · ––</span><small>Sistema S.O.S.© · Safe Creative 2609046908578</small></button><button type="button" data-cara="ssos" data-capa="ext" data-lado="derecha"><b>2. S.S.O.S.™</b><span>··· ··· ––– ···</span><small>Obra derivada de 2609046908578</small></button><button type="button" data-cara="ccub" data-capa="ext" data-lado="atrás"><b>3. Código Cúbico©</b><span>–·–· ––– –·· ·· ––· ––– –·–· ··– –··· ·· –·–· –––</span><small>Safe Creative 2610097276721</small></button><button type="button" data-cara="cint" data-capa="ext" data-lado="izquierda"><b>4. Cubo Interior©</b><span>–·–· ··– –··· ––– ·· –· – · ·–· ·· ––– ·–·</span><small>Safe Creative 2610097277049</small></button><button type="button" data-cara="omni" data-capa="ext" data-lado="arriba"><b>5. Código Omnigráfico©</b><span>––– –– –· ·· ––· ·–· ·– ··–· ·· –·–· –––</span><small>Safe Creative · prueba 2610257441013</small></button><button type="button" data-cara="cmor" data-capa="ext" data-lado="abajo"><b>6. Cubo Morse©</b><span>–·–· ··– –··· ––– –– ––– ·–· ··· ·</span><small>Safe Creative 2610257441754</small></button></div>
+      <div class="cm-lista" role="group" aria-label="Caras exteriores"><button type="button" data-cara="sos" data-capa="ext" data-lado="frente"><img class="cm-logo" src="assets/logos/sos.svg" alt="" width="36" height="36" loading="lazy"><b>1. SOSistem</b><span>··· ––– ··· ·· ··· – · ––</span><small>Sistema S.O.S.© · Safe Creative 2609046908578</small></button><button type="button" data-cara="ssos" data-capa="ext" data-lado="derecha"><img class="cm-logo" src="assets/logos/ssos.svg" alt="" width="36" height="36" loading="lazy"><b>2. S.S.O.S.™</b><span>··· ··· ––– ···</span><small>Obra derivada de 2609046908578</small></button><button type="button" data-cara="ccub" data-capa="ext" data-lado="atrás"><img class="cm-logo" src="assets/logos/ccub.svg" alt="" width="36" height="36" loading="lazy"><b>3. Código Cúbico©</b><span>–·–· ––– –·· ·· ––· ––– –·–· ··– –··· ·· –·–· –––</span><small>Safe Creative 2610097276721</small></button><button type="button" data-cara="cint" data-capa="ext" data-lado="izquierda"><img class="cm-logo" src="assets/logos/cint.svg" alt="" width="36" height="36" loading="lazy"><b>4. Cubo Interior©</b><span>–·–· ··– –··· ––– ·· –· – · ·–· ·· ––– ·–·</span><small>Safe Creative 2610097277049</small></button><button type="button" data-cara="omni" data-capa="ext" data-lado="arriba"><img class="cm-logo" src="assets/logos/omni.svg" alt="" width="36" height="36" loading="lazy"><b>5. Código Omnigráfico©</b><span>––– –– –· ·· ––· ·–· ·– ··–· ·· –·–· –––</span><small>Safe Creative · prueba 2610257441013</small></button><button type="button" data-cara="cmor" data-capa="ext" data-lado="abajo"><img class="cm-logo" src="assets/logos/cmor.svg" alt="" width="36" height="36" loading="lazy"><b>6. Cubo Morse©</b><span>–·–· ··– –··· ––– –– ––– ·–· ··· ·</span><small>Safe Creative 2610257441754</small></button></div>
       <h3 class="cm-sub">Interior</h3>
-      <div class="cm-lista" role="group" aria-label="Caras interiores"><button type="button" data-cara="cont" data-capa="int" data-lado="frente"><b>7. ContenedorEns©</b><span>–·–· ––– –· – · –· · –·· ––– ·–· · –· ···</span><small>Safe Creative · registro por confirmar</small></button><button type="button" data-cara="arsa" data-capa="int" data-lado="derecha"><b>8. Arsa Bodegas©</b><span>·– ·–· ··· ·– –··· ––– –·· · ––· ·– ···</span><small>Safe Creative 2609046908806</small></button><button type="button" data-cara="inter" data-capa="int" data-lado="atrás"><b>9. Intertopía©</b><span>·· –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2602144563892</small></button><button type="button" data-cara="cpy" data-capa="int" data-lado="izquierda"><b>10. CuboPY©</b><span>–·–· ··– –··· ––– ·––· –·––</span><small>Safe Creative 2610097275281</small></button><button type="button" data-cara="uno" data-capa="int" data-lado="arriba"><b>11. 1ntertopía©</b><span>·–––– –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2606096034080</small></button><button type="button" data-cara="eco" data-capa="int" data-lado="abajo"><b>12. Econotopía©</b><span>· –·–· ––– –· ––– – ––– ·––· ·· ·–</span><small>Safe Creative 2610077261709</small></button></div>
+      <div class="cm-lista" role="group" aria-label="Caras interiores"><button type="button" data-cara="cont" data-capa="int" data-lado="frente"><img class="cm-logo" src="assets/logos/cont.svg" alt="" width="36" height="36" loading="lazy"><b>7. ContenedorEns©</b><span>–·–· ––– –· – · –· · –·· ––– ·–· · –· ···</span><small>Safe Creative · registro por confirmar</small></button><button type="button" data-cara="arsa" data-capa="int" data-lado="derecha"><img class="cm-logo" src="assets/logos/arsa.svg" alt="" width="36" height="36" loading="lazy"><b>8. Arsa Bodegas©</b><span>·– ·–· ··· ·– –··· ––– –·· · ––· ·– ···</span><small>Safe Creative 2609046908806</small></button><button type="button" data-cara="inter" data-capa="int" data-lado="atrás"><img class="cm-logo" src="assets/logos/inter.svg" alt="" width="36" height="36" loading="lazy"><b>9. Intertopía©</b><span>·· –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2602144563892</small></button><button type="button" data-cara="cpy" data-capa="int" data-lado="izquierda"><img class="cm-logo" src="assets/logos/cpy.svg" alt="" width="36" height="36" loading="lazy"><b>10. CuboPY©</b><span>–·–· ··– –··· ––– ·––· –·––</span><small>Safe Creative 2610097275281</small></button><button type="button" data-cara="uno" data-capa="int" data-lado="arriba"><img class="cm-logo" src="assets/logos/uno.svg" alt="" width="36" height="36" loading="lazy"><b>11. 1ntertopía©</b><span>·–––– –· – · ·–· – ––– ·––· ·· ·–</span><small>Safe Creative 2606096034080</small></button><button type="button" data-cara="eco" data-capa="int" data-lado="abajo"><img class="cm-logo" src="assets/logos/eco.svg" alt="" width="36" height="36" loading="lazy"><b>12. Econotopía©</b><span>· –·–· ––– –· ––– – ––– ·––· ·· ·–</span><small>Safe Creative 2610077261709</small></button></div>
       <p style="margin-top:14px"><a class="btn" href="assets/cubo-morse-armable.pdf" target="_blank" rel="noopener">Descargar cubo para armar (PDF carta)</a></p>
       <p class="note">Código Cúbico© y Cubo 33© van en Morse en la banda del cubo impreso. El Morse internacional no lleva acentos.</p>
     </div>
@@ -781,7 +811,7 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
       <p class="note">Código de comunicación del Cubo (33)©</p>
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obras registradas en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados. <span>Cubo Morse© registrado en Safe Creative (2610257441754).</span> <span>Plataforma SOSistem™ (versiones 1.0.0 a 3.8) registrada en Safe Creative (2610257442171).</span></p>
-    <p>Información técnica y normativa actualizada al 26 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
+    <p>Información técnica y normativa actualizada al 27 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
     <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
@@ -793,21 +823,22 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.5"></script>
-<script src="assets/logo-giro.js?v=5.5"></script>
-<script src="assets/app.js?v=5.5"></script>
-<script src="assets/cubo.js?v=5.5"></script>
-<script src="assets/morse.js?v=5.5"></script>
-<script src="assets/pantalla.js?v=5.5"></script>
-<script src="assets/cubo-morse.js?v=5.5"></script>
-<script src="assets/idiomas.js?v=5.5"></script>
-<script src="assets/banderas.js?v=5.5"></script>
-<script src="assets/servicios12.js?v=5.5"></script>
-<script src="assets/cabecera.js?v=5.5"></script>
-<script src="assets/pestanas.js?v=5.5"></script>
-<script src="assets/rastreo.js?v=5.5"></script>
-<script src="assets/morse-motor.js?v=5.5"></script>
-<script src="assets/receptor.js?v=5.5"></script>
+<script src="assets/cubo-rt.js?v=5.6"></script>
+<script src="assets/logo-giro.js?v=5.6"></script>
+<script src="assets/app.js?v=5.6"></script>
+<script src="assets/cubo.js?v=5.6"></script>
+<script src="assets/morse.js?v=5.6"></script>
+<script src="assets/pantalla.js?v=5.6"></script>
+<script src="assets/pantalla-tema.js?v=5.6"></script>
+<script src="assets/cubo-morse.js?v=5.6"></script>
+<script src="assets/idiomas.js?v=5.6"></script>
+<script src="assets/banderas.js?v=5.6"></script>
+<script src="assets/servicios12.js?v=5.6"></script>
+<script src="assets/cabecera.js?v=5.6"></script>
+<script src="assets/pestanas.js?v=5.6"></script>
+<script src="assets/rastreo.js?v=5.6"></script>
+<script src="assets/morse-motor.js?v=5.6"></script>
+<script src="assets/receptor.js?v=5.6"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
