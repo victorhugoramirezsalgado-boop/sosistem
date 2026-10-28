@@ -3,6 +3,7 @@
 // para que el manual siempre esté actualizado. Uso: node herramientas/manual.mjs  →  assets/manual-configuracion-sosistem.pdf
 import { createRequire } from "module";
 import fs from "fs";
+import { logoSello, emblemaCss, marcas } from "./marca.mjs";
 const { chromium } = createRequire(import.meta.url)("playwright");
 
 const V = JSON.parse(fs.readFileSync("datos/version.json", "utf8"));
@@ -46,7 +47,7 @@ const IDX = [
 
 const hojas = [
 `<section class="h">
-  <div class="port"><img src="data:image/svg+xml;base64,${Buffer.from(fs.readFileSync("assets/logo.svg")).toString("base64")}" alt=""><div><h1>Manual de configuración · SOSistem™</h1>
+  <div class="port emb"><div class="emb-logo"><img src="${logoSello()}" alt="SOSistem™"><b>SOS</b></div><div><h1>Manual de configuración · SOSistem™</h1>
   <p class="sub">Sistema S.O.S.© · versión ${esc(ver)} · actualizado el ${hoy} · se regenera con cada versión del sitio</p></div></div>
   <h2>Índice</h2>
   <table class="idx"><thead><tr><th>Sección</th><th>Hoja</th><th>Dónde está en el sistema</th></tr></thead><tbody>
@@ -142,7 +143,7 @@ const hojas = [
 </section>`,
 ];
 
-const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Manual de configuración · SOSistem ${esc(ver)}</title><style>
+const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Manual de configuración · SOSistem™ ${esc(ver)}</title><style>
 @page{size:letter;margin:.45in .5in .5in}*{box-sizing:border-box}body{margin:0;font:9.4pt/1.38 Inter,"Segoe UI",Roboto,Arial,sans-serif;color:#0f1b2d}
 .h{page-break-after:always;min-height:9.9in;display:flex;flex-direction:column}.h:last-child{page-break-after:auto}
 .port{display:flex;gap:14px;align-items:center;border-bottom:4px solid #DB641C;padding-bottom:8px}.port img{width:58px;height:62px}
@@ -152,11 +153,11 @@ table{width:100%;border-collapse:collapse;margin:4px 0 6px;font-size:8.6pt}th,td
 .idx td:nth-child(2){text-align:center;width:3em}a{color:#005387}code{font:8.4pt ui-monospace,Menlo,monospace;background:#eef1f5;padding:0 3px;border-radius:3px}
 ul,ol{margin:4px 0 6px;padding-left:18px}li{margin:1px 0}.pasos li::marker{font-weight:700;color:#DB641C}.nota{font-size:8.4pt;color:#4a5568;margin:4px 0}
 footer.f{margin-top:auto;border-top:1px solid #0f1b2d;padding-top:4px;font-size:7.4pt;color:#4a5568}footer.f ol{margin:2px 0 0;padding-left:16px}footer.f li{padding-left:1.6em;text-indent:-1.6em;list-style:none}
-</style></head><body>${hojas.join("")}</body></html>`;
+${emblemaCss}</style></head><body>${hojas.join("")}</body></html>`;
 
 const b = await chromium.launch();
 const p = await b.newPage();
-await p.setContent(html, { waitUntil: "load" });
+await p.setContent(marcas(html), { waitUntil: "load" });
 await p.pdf({ path: "assets/manual-configuracion-sosistem.pdf", format: "Letter", printBackground: true, outline: true,
   displayHeaderFooter: true, headerTemplate: "<span></span>",
   footerTemplate: `<div style="width:100%;font:7pt Arial;color:#7a8699;padding:0 .5in;display:flex;justify-content:space-between"><span>Manual de configuración · SOSistem™ ${esc(ver)} · ${hoy}</span><span>Hoja <span class="pageNumber"></span> de <span class="totalPages"></span></span></div>`,

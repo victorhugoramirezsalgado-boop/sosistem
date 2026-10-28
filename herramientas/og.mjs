@@ -1,10 +1,11 @@
 // SOSistem™ · Imagen para compartir (Open Graph, 1200 × 630) · © Víctor Hugo Ramírez Salgado
-// Toma una foto real de la terminal NODO S.O.S.© del sitio y la compone con el Cubo Morse© naranja.
+// Toma una foto real de la terminal NODO S.O.S.© del sitio y la compone con el logo naranja vigente (sello S.O.S.©).
 // Uso: servir la raíz del sitio en http://localhost:8765 y correr: node herramientas/og.mjs
 // Escribe assets/og-sosistem.png y pone en index.html la versión en la liga de la imagen (rompe la caché de redes sociales).
 import { createRequire } from "module";
 const { chromium } = createRequire(import.meta.url)("playwright");
 import fs from "fs";
+import { logoSelloSvg, marcas } from "./marca.mjs";
 const SITIO = process.env.SITIO || "http://localhost:8765/";
 const ver = JSON.parse(fs.readFileSync("datos/version.json", "utf8")).version;
 const b = await chromium.launch();
@@ -17,12 +18,12 @@ await p.waitForTimeout(1200);
 await p.evaluate(() => { const f = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t; }; f("eq-hora", "12:00"); f("eq-t", "00:04"); f("eq-911n", "6 s"); const b = document.getElementById("eq-911b"); if (b) b.style.width = "40%"; });
 const cara = await p.$('.eq-cara[data-n="1"] .eq-bisel');
 const terminal = (await cara.screenshot({ type: "png" })).toString("base64");
-const logo = fs.readFileSync("assets/logo.svg", "utf8");
+const logo = logoSelloSvg();
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;overflow:hidden;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;
 background:radial-gradient(1200px 630px at 15% 20%,#1b2433 0,#0b1018 60%);color:#EEF2F7;position:relative}
 .izq{position:absolute;left:64px;top:64px;width:600px}
-.logo{width:120px;height:130px}.logo svg{width:100%;height:100%}
+.logo{display:flex;align-items:center;gap:18px;height:120px}.logo svg{width:120px;height:120px}.logo b{font:900 64px/1 Inter,Arial,sans-serif;letter-spacing:.16em;color:#DB641C}
 h1{font-size:76px;line-height:1;margin:18px 0 10px;font-weight:800;letter-spacing:-.01em}h1 span{color:#DB641C}
 h2{font-size:30px;margin:0 0 14px;font-weight:700;color:#fff}
 p{font-size:23px;line-height:1.35;color:#AEB9C8;margin:0 0 22px}
@@ -31,14 +32,14 @@ p{font-size:23px;line-height:1.35;color:#AEB9C8;margin:0 0 22px}
 .term{position:absolute;right:46px;top:44px;width:470px;filter:drop-shadow(0 24px 40px rgba(0,0,0,.55));transform:perspective(1400px) rotateY(-12deg)}
 .term img{width:100%;display:block;border-radius:20px}
 .pie{position:absolute;left:64px;bottom:26px;font-size:14px;color:#6B7687}</style></head><body>
-<div class="izq"><div class="logo">${logo}</div><h1>SOS<span>istem</span>™</h1><h2>Alerta temprana para salvar vidas</h2>
+<div class="izq"><div class="logo">${logo}<b>SOS</b></div><h1>SOS<span>istem</span>™</h1><h2>Alerta temprana para salvar vidas</h2>
 <p>Terminales sin cámaras que detectan a una persona en el suelo, avisan de sismos y escalan la alerta hasta el 911.</p>
 <div class="url">sosistem.com</div>
 <div class="ley"><span><i style="background:#15803D"></i>Normal</span><span><i style="background:#F9A900"></i>Advertencia</span><span><i style="background:#D9221A"></i>Auxilio urgente</span><span><i style="background:#F5F5EF"></i>Sismo</span></div></div>
 <div class="term"><img src="data:image/png;base64,${terminal}"></div>
 <div class="pie">© Víctor Hugo Ramírez Salgado · Sistema S.O.S.© · versión ${ver}</div></body></html>`;
 const o = await b.newPage({ viewport: { width: 1200, height: 630 } });
-await o.setContent(html, { waitUntil: "load" });
+await o.setContent(marcas(html), { waitUntil: "load" });
 await o.screenshot({ path: "assets/og-sosistem.png" });
 await b.close();
 // Liga versionada en index.html para que WhatsApp, Instagram y Facebook pidan la imagen nueva

@@ -4,6 +4,7 @@
 // Uso: node herramientas/ejecutiva.mjs  →  assets/presentacion-ejecutiva-sosistem.pdf
 import { createRequire } from "module";
 import fs from "fs";
+import { emblema, emblemaCss, banderas, marcas } from "./marca.mjs";
 const { chromium } = createRequire(import.meta.url)("playwright");
 
 const V = JSON.parse(fs.readFileSync("datos/version.json", "utf8"));
@@ -16,7 +17,8 @@ const S = "https://sosistem.com/";
 const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
 const L = (url, txt) => `<a href="${url}">${esc(txt || url.replace("https://", ""))}</a>`;
 const autor = ES.find((t) => typeof t === "string" && t.startsWith("Creado por Víctor Hugo Ramírez Salgado")) || "";
-const logo = "data:image/svg+xml;base64," + fs.readFileSync("assets/logo.svg").toString("base64");
+const b = await chromium.launch();
+const flags = await banderas(b, "SOS", 30);
 
 // Referencias (APA 7.ª ed.)
 const R = [
@@ -48,8 +50,7 @@ const SERV = [
 ];
 
 const hoja1 = `<section class="h">
-  <div class="port"><img src="${logo}" alt=""><div><h1>Presentación ejecutiva · SOSistem™</h1>
-  <p class="sub">Sistema S.O.S.© · Alerta temprana para salvar vidas en recintos confinados · versión ${esc(ver)} · ${hoy}</p></div></div>
+  ${emblema({ titulo: "Presentación ejecutiva · SOSistem™", sub: `Sistema S.O.S.© · Alerta temprana para salvar vidas en recintos confinados · versión ${esc(ver)} · ${hoy}`, flags })}
   <p class="lead"><b>SOSistem™</b> detecta en segundos a una persona en el suelo, un sismo, una fuga de gas o una situación de violencia en sanitarios, vestidores, cabinas y espacios confinados, <b>sin cámaras ni grabación</b>, y escala la alerta hasta el 911. Está diseñado para recintos públicos y centros de trabajo donde la privacidad impide la videovigilancia.</p>
   <h2>El problema</h2>
   <div class="kpis">
@@ -72,7 +73,7 @@ const hoja1 = `<section class="h">
       <tr><td><b>N3</b></td><td>${T.N3} min</td><td>911 · mensaje CAP v1.2</td></tr></tbody></table>
       <p class="nota">Ante una caída confirmada o un sismo, el aviso es inmediato.</p></div>
   </div>
-  <h2>Doce servicios del Cubo SOSistem™</h2>
+  <h2>Doce servicios del Cubo Morse© de SOSistem™</h2>
   <div class="serv">${SERV.map(([n, d], i) => `<div><i>${i + 1}</i><b>${n}</b><span>${d}</span></div>`).join("")}</div>
   <h2>Arquitectura</h2>
   <ul class="cols">
@@ -115,7 +116,7 @@ const hoja2 = `<section class="h">
   <footer class="f"><b>Referencias (APA 7.ª ed.)</b><ol>${R.map((x) => `<li>${x}</li>`).join("")}</ol></footer>
 </section>`;
 
-const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Presentación ejecutiva · SOSistem ${esc(ver)}</title><style>
+const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Presentación ejecutiva · SOSistem™ ${esc(ver)}</title><style>
 @page{size:letter}*{box-sizing:border-box}body{margin:0;font:9pt/1.36 Inter,"Segoe UI",Roboto,Arial,sans-serif;color:#0f1b2d}
 .h{page-break-after:always;height:9.85in;display:flex;flex-direction:column;overflow:hidden}.h:last-child{page-break-after:auto}
 .port{display:flex;gap:14px;align-items:center;border-bottom:4px solid #DB641C;padding-bottom:7px}.port img{width:54px;height:58px}
@@ -135,11 +136,10 @@ table{width:100%;border-collapse:collapse;font-size:8.4pt}th,td{border:1px solid
 .cta div:last-child{white-space:nowrap}.cta{display:flex;justify-content:space-between;gap:10px;background:#0f2a4a;color:#fff;border-radius:6px;padding:6px 10px;margin-top:6px;font-size:8.6pt}.cta a{color:#ffd29e}
 a{color:#005387}
 footer.f{margin-top:auto;border-top:1px solid #0f1b2d;padding-top:4px;font-size:7pt;color:#4a5568}footer.f ol{margin:2px 0 0;padding-left:0}footer.f li{padding-left:1.6em;text-indent:-1.6em;list-style:none;margin:0}
-</style></head><body>${hoja1}${hoja2}</body></html>`;
+${emblemaCss}</style></head><body>${hoja1}${hoja2}</body></html>`;
 
-const b = await chromium.launch();
 const p = await b.newPage();
-await p.setContent(html, { waitUntil: "load" });
+await p.setContent(marcas(html), { waitUntil: "load" });
 await p.pdf({ path: "assets/presentacion-ejecutiva-sosistem.pdf", format: "Letter", printBackground: true,
   displayHeaderFooter: true, headerTemplate: "<span></span>",
   footerTemplate: `<div style="width:100%;font:7pt Arial;color:#7a8699;padding:0 .5in;display:flex;justify-content:space-between"><span>Presentación ejecutiva · SOSistem™ ${esc(ver)} · ${hoy}</span><span>Hoja <span class="pageNumber"></span> de <span class="totalPages"></span></span></div>`,
