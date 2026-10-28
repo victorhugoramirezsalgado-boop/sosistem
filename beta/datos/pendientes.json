@@ -60,7 +60,15 @@
   "titulo": "«Escuchar en Morse» con sonido al tocar",
   "que": "El botón «Escuchar en Morse» junto al título de cada sección hoy solo destella (regla: solo suena en emergencias y pruebas). En Beta suena únicamente cuando la persona lo toca; nada suena solo.",
   "espacio": "Todas las secciones · botón junto a cada título.",
-  "modificacion": "Agrega «toque» a los motivos con sonido. Si se autoriza, pasa al sitio oficial.",
+  "modificacion": "Autorizado: ya suena al tocar en el sitio oficial (Aprendizaje, receptor Morse y botones «Escuchar en Morse»). La Terminal conserva su regla: solo emergencias y pruebas.",
+  "estado": "Aplicado"
+ },
+ {
+  "id": 119,
+  "titulo": "Botones con borde más marcado",
+  "que": "Todo lo que se puede tocar (botones, tarjetas de los 12 servicios, caras del Cubo Morse©, fondos de pantalla, «Escuchar en Morse», Pestañas) lleva borde de 2 px en azul de información y realce al pasar o tocar, para que se reconozca como botón.",
+  "espacio": "Todo el sitio.",
+  "modificacion": "Estilo nuevo al final de estilo.css de la Beta.",
   "estado": "Por autorizar"
  }
 ]
