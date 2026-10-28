@@ -383,5 +383,14 @@
   "modificacion": "Antes la palabra «S.O.S.» venía apagada.",
   "estado": "Publicado",
   "resolucion": "Por indicación directa del autor (27-oct-2026) se publicó en el sitio oficial sin pasar por autorización en Beta (6.0.1). El navegador pide una sola vez el permiso del micrófono."
+ },
+ {
+  "id": 125,
+  "titulo": "Marca de la Página Beta",
+  "que": "En todas las páginas de la Beta: sello fijo «BETA»; lo naranja de SOSistem™ se ve en gris; y la palabra «BETA» en beige al 50 %, como gota de agua en un cubo, recorre la pantalla en sentido de reloj (polígono exterior y luego el cubo interior) y en cada vuelta cambia de idioma hasta pasar por los 22.",
+  "espacio": "Solo Beta: portada, Terminal, administrador y términos.",
+  "modificacion": "Por tu indicación (27-oct-2026). No pasa al sitio oficial.",
+  "estado": "Aplicado",
+  "resolucion": "Aplicado solo en la Beta; el sitio oficial conserva el naranja."
  }
 ]
