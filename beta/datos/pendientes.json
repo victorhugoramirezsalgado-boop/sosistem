@@ -76,7 +76,15 @@
   "titulo": "«Ver todo» en el inicio",
   "que": "Botón «Ver todo» junto a «Ver cómo funciona» en la portada, y «Ver todo» como primera opción del menú de Pestañas: muestra todas las secciones en una sola página.",
   "espacio": "Inicio (portada) y menú de Pestañas.",
-  "modificacion": "Antes «Ver todo» estaba al final del menú.",
+  "modificacion": "Retirado por indicación del autor: «Ver todo» se quita del menú y de la portada; la última pestaña pasa a ser «Resumen ejecutivo».",
+  "estado": "Retirado"
+ },
+ {
+  "id": 121,
+  "titulo": "Pestaña «Resumen ejecutivo» (presentación mundial)",
+  "que": "Última pestaña del menú con cifras mundiales verificadas (ONU, OMS, OIT, UIT, OMM, SEP) y descarga del Resumen ejecutivo global en PDF (9 hojas con índice y referencias APA 7.ª ed.) y de la presentación para banca de desarrollo (3 hojas).",
+  "espacio": "Menú de Pestañas · última opción, después de Contacto.",
+  "modificacion": "Sección nueva; el PDF se regenera con cada versión.",
   "estado": "Por autorizar"
  }
 ]

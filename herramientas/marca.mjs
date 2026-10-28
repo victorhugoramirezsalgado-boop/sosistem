@@ -78,3 +78,18 @@ export const idiomasCss = `
 .idi-t b{font:800 8.4pt Inter,Arial,sans-serif;color:#005387;white-space:nowrap}
 .idi-l{display:flex;flex-wrap:wrap;gap:2px 4px;font-size:7.2pt;line-height:1.35}.idi-l span{padding:0 4px;border-radius:4px;background:#fff;border:1px solid #dbe3ee}
 .idi-s{display:flex;flex-direction:column;align-items:flex-start;border-left:3px solid ${NAR};padding-left:7px}.idi-s b{font:800 8pt Inter,Arial,sans-serif;color:${NAR};white-space:nowrap}.idi-s span{font-size:7pt;color:#4a5568;white-space:nowrap}`;
+
+// Foto real de la Terminal SOSistem™ en un celular (prueba de «Persona en el suelo»); "" si no hay servidor local
+export async function fotoTerminal(navegador) {
+  try {
+    const t = await navegador.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+    await t.addInitScript(() => localStorage.setItem("sos_idioma", "es"));
+    await t.goto((process.env.SITIO || "http://localhost:8765/") + "terminal.html", { waitUntil: "networkidle", timeout: 15000 });
+    await t.evaluate(() => { const h = [...document.querySelectorAll("h1,h2,h3")].find((e) => /Bienvenido/.test(e.textContent)); let e = h; while (e && e.parentElement !== document.body) e = e.parentElement; if (e) e.remove(); document.body.style.overflow = "auto"; });
+    const bt = await t.$("text=Caída · sirena + SOS SOS"); if (bt) { await bt.click(); await t.waitForTimeout(1500); }
+    await t.evaluate(() => { window.SOSMorse?.detener?.(); scrollTo(0, 0); });
+    const png = (await t.screenshot({ type: "png", clip: { x: 0, y: 0, width: 390, height: 780 } })).toString("base64");
+    await t.close();
+    return "data:image/png;base64," + png;
+  } catch (e) { console.warn("Sin foto de la Terminal:", e.message); return ""; }
+}

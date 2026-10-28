@@ -2,7 +2,8 @@
 # En cada cambio del sitio vuelve a tomar la foto de la terminal NODO S.O.S.© y la compone con el Cubo Morse© naranja;
 # la liga de la imagen lleva la versión para que las redes sociales no muestren una imagen vieja.
 # También regenera el Manual de configuración (assets/manual-configuracion-sosistem.pdf, 5 hojas, APA 7)
-# y la Presentación ejecutiva (assets/presentacion-ejecutiva-sosistem.pdf, 3 hojas, APA 7).
+# la Presentación ejecutiva (assets/presentacion-ejecutiva-sosistem.pdf, 3 hojas, APA 7)
+# y el Resumen ejecutivo global (assets/resumen-ejecutivo-global-sosistem.pdf, con índice, APA 7).
 name: Imagen para compartir y manual
 on:
   push:
@@ -34,11 +35,12 @@ jobs:
           node herramientas/og.mjs
           node herramientas/manual.mjs
           node herramientas/ejecutiva.mjs
+          node herramientas/ejecutiva-global.mjs
       - name: Guardar
         run: |
           git config user.name "SOSistem imagen"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/og-sosistem.png assets/manual-configuracion-sosistem.pdf assets/presentacion-ejecutiva-sosistem.pdf index.html
+          git add assets/og-sosistem.png assets/manual-configuracion-sosistem.pdf assets/presentacion-ejecutiva-sosistem.pdf assets/resumen-ejecutivo-global-sosistem.pdf index.html
           if ! git diff --cached --quiet; then
             git commit -m "Imagen para compartir y manual actualizados [skip ci]"
             for i in 1 2 3; do git pull --rebase -q origin main && git push && break; sleep 5; done
