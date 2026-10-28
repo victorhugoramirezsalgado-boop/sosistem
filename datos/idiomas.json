@@ -122,7 +122,13 @@
   "grp_normas",
   "grp_clientes",
   "grp_apoyo",
-  "grp_contacto"
+  "grp_contacto",
+  "grp_foda",
+  "grp_aprende",
+  "tab_foda",
+  "tab_aprende",
+  "tab_modalidades",
+  "tab_pendientes"
  ],
  "idiomas": {
   "es": {
@@ -198,7 +204,7 @@
     "Piloto",
     "Contacto",
     "Fuentes",
-    "Ver pestañas del sistema",
+    "Pestañas",
     "Ver todo",
     "Pestañas del sistema",
     "Fuentes de esta sección",
@@ -251,7 +257,13 @@
     "Normativa y fuentes",
     "Clientes, piloto y terminal",
     "Fondo y apoyo",
-    "Contacto"
+    "Contacto",
+    "FODA",
+    "Aprendizaje",
+    "FODA",
+    "Aprendizaje",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "en": {
@@ -327,7 +339,7 @@
     "Pilot",
     "Contact",
     "Sources",
-    "View system tabs",
+    "Tabs",
     "View all",
     "System tabs",
     "Sources for this section",
@@ -380,7 +392,13 @@
     "Regulations and sources",
     "Clients, pilot and terminal",
     "Fund and support",
-    "Contact"
+    "Contact",
+    "SWOT",
+    "Learning",
+    "SWOT",
+    "Learning",
+    "Architecture",
+    "Pendientes Beta"
    ]
   },
   "pt": {
@@ -456,7 +474,7 @@
     "Piloto",
     "Contato",
     "Fontes",
-    "Ver abas do sistema",
+    "Abas",
     "Ver tudo",
     "Abas do sistema",
     "Fontes desta seção",
@@ -509,7 +527,13 @@
     "Normas e fontes",
     "Clientes, piloto e terminal",
     "Fundo e apoio",
-    "Contato"
+    "Contato",
+    "FOFA",
+    "Aprendizagem",
+    "FOFA",
+    "Aprendizagem",
+    "Arquitetura",
+    "Pendientes Beta"
    ]
   },
   "fr": {
@@ -585,7 +609,7 @@
     "Pilote",
     "Contact",
     "Sources",
-    "Voir les onglets du système",
+    "Onglets",
     "Tout voir",
     "Onglets du système",
     "Sources de cette section",
@@ -638,7 +662,13 @@
     "Normes et sources",
     "Clients, pilote et terminal",
     "Fonds et soutien",
-    "Contact"
+    "Contact",
+    "FFOM",
+    "Apprentissage",
+    "FFOM",
+    "Apprentissage",
+    "Architecture",
+    "Pendientes Beta"
    ]
   },
   "it": {
@@ -714,7 +744,7 @@
     "Pilota",
     "Contatti",
     "Fonti",
-    "Vedi schede del sistema",
+    "Schede",
     "Vedi tutto",
     "Schede del sistema",
     "Fonti di questa sezione",
@@ -767,7 +797,13 @@
     "Normativa e fonti",
     "Clienti, pilota e terminale",
     "Fondo e sostegno",
-    "Contatti"
+    "Contatti",
+    "SWOT",
+    "Apprendimento",
+    "SWOT",
+    "Apprendimento",
+    "Architettura",
+    "Pendientes Beta"
    ]
   },
   "de": {
@@ -843,7 +879,7 @@
     "Pilot",
     "Kontakt",
     "Quellen",
-    "Systemreiter anzeigen",
+    "Reiter",
     "Alles anzeigen",
     "Systemreiter",
     "Quellen dieses Abschnitts",
@@ -896,7 +932,13 @@
     "Normen und Quellen",
     "Kunden, Pilot und Terminal",
     "Fonds und Unterstützung",
-    "Kontakt"
+    "Kontakt",
+    "SWOT",
+    "Lernen",
+    "SWOT",
+    "Lernen",
+    "Architektur",
+    "Pendientes Beta"
    ]
   },
   "nl": {
@@ -972,7 +1014,7 @@
     "Pilot",
     "Contact",
     "Bronnen",
-    "Systeemtabbladen tonen",
+    "Tabbladen",
     "Alles tonen",
     "Systeemtabbladen",
     "Bronnen van deze sectie",
@@ -1025,7 +1067,13 @@
     "Regelgeving en bronnen",
     "Klanten, pilot en terminal",
     "Fonds en steun",
-    "Contact"
+    "Contact",
+    "SWOT",
+    "Leren",
+    "SWOT",
+    "Leren",
+    "Architectuur",
+    "Pendientes Beta"
    ]
   },
   "ca": {
@@ -1101,7 +1149,7 @@
     "Pilot",
     "Contacte",
     "Fonts",
-    "Veure pestanyes del sistema",
+    "Pestanyes",
     "Veure-ho tot",
     "Pestanyes del sistema",
     "Fonts d’aquesta secció",
@@ -1154,7 +1202,13 @@
     "Normativa i fonts",
     "Clients, pilot i terminal",
     "Fons i suport",
-    "Contacte"
+    "Contacte",
+    "DAFO",
+    "Aprenentatge",
+    "DAFO",
+    "Aprenentatge",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "gl": {
@@ -1230,7 +1284,7 @@
     "Piloto",
     "Contacto",
     "Fontes",
-    "Ver lapelas do sistema",
+    "Lapelas",
     "Ver todo",
     "Lapelas do sistema",
     "Fontes desta sección",
@@ -1283,7 +1337,13 @@
     "Normativa e fontes",
     "Clientes, piloto e terminal",
     "Fondo e apoio",
-    "Contacto"
+    "Contacto",
+    "DAFO",
+    "Aprendizaxe",
+    "DAFO",
+    "Aprendizaxe",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "eu": {
@@ -1359,7 +1419,7 @@
     "Pilotua",
     "Harremana",
     "Iturriak",
-    "Ikusi sistemaren fitxak",
+    "Fitxak",
     "Ikusi dena",
     "Sistemaren fitxak",
     "Atal honen iturriak",
@@ -1412,7 +1472,13 @@
     "Araudia eta iturriak",
     "Bezeroak, pilotua eta terminala",
     "Funtsa eta laguntza",
-    "Harremana"
+    "Harremana",
+    "AMIA",
+    "Ikaskuntza",
+    "AMIA",
+    "Ikaskuntza",
+    "Arkitektura",
+    "Pendientes Beta"
    ]
   },
   "da": {
@@ -1488,7 +1554,7 @@
     "Pilot",
     "Kontakt",
     "Kilder",
-    "Vis systemfaner",
+    "Faner",
     "Vis alt",
     "Systemfaner",
     "Kilder til dette afsnit",
@@ -1541,7 +1607,13 @@
     "Regler og kilder",
     "Kunder, pilot og terminal",
     "Fond og støtte",
-    "Kontakt"
+    "Kontakt",
+    "SWOT",
+    "Læring",
+    "SWOT",
+    "Læring",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "sv": {
@@ -1617,7 +1689,7 @@
     "Pilot",
     "Kontakt",
     "Källor",
-    "Visa systemflikar",
+    "Flikar",
     "Visa allt",
     "Systemflikar",
     "Källor för detta avsnitt",
@@ -1670,7 +1742,13 @@
     "Regler och källor",
     "Kunder, pilot och terminal",
     "Fond och stöd",
-    "Kontakt"
+    "Kontakt",
+    "SWOT",
+    "Lärande",
+    "SWOT",
+    "Lärande",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "nb": {
@@ -1746,7 +1824,7 @@
     "Pilot",
     "Kontakt",
     "Kilder",
-    "Vis systemfaner",
+    "Faner",
     "Vis alt",
     "Systemfaner",
     "Kilder for denne delen",
@@ -1799,7 +1877,13 @@
     "Regelverk og kilder",
     "Kunder, pilot og terminal",
     "Fond og støtte",
-    "Kontakt"
+    "Kontakt",
+    "SWOT",
+    "Læring",
+    "SWOT",
+    "Læring",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "ga": {
@@ -1875,7 +1959,7 @@
     "Píolóta",
     "Teagmháil",
     "Foinsí",
-    "Féach cluaisíní an chórais",
+    "Cluaisíní",
     "Féach gach rud",
     "Cluaisíní an chórais",
     "Foinsí don chuid seo",
@@ -1928,7 +2012,13 @@
     "Rialacháin agus foinsí",
     "Cliaint, píolóta agus teirminéal",
     "Ciste agus tacaíocht",
-    "Teagmháil"
+    "Teagmháil",
+    "SWOT",
+    "Foghlaim",
+    "SWOT",
+    "Foghlaim",
+    "Ailtireacht",
+    "Pendientes Beta"
    ]
   },
   "el": {
@@ -2004,7 +2094,7 @@
     "Πιλοτικό",
     "Επικοινωνία",
     "Πηγές",
-    "Δείτε τις καρτέλες",
+    "Καρτέλες",
     "Όλα",
     "Καρτέλες συστήματος",
     "Πηγές ενότητας",
@@ -2057,7 +2147,13 @@
     "Κανονισμοί και πηγές",
     "Πελάτες, πιλοτικό και τερματικό",
     "Ταμείο και υποστήριξη",
-    "Επικοινωνία"
+    "Επικοινωνία",
+    "SWOT",
+    "Μάθηση",
+    "SWOT",
+    "Μάθηση",
+    "Αρχιτεκτονική",
+    "Pendientes Beta"
    ]
   },
   "ru": {
@@ -2133,7 +2229,7 @@
     "Пилот",
     "Контакты",
     "Источники",
-    "Вкладки системы",
+    "Вкладки",
     "Показать всё",
     "Вкладки системы",
     "Источники раздела",
@@ -2186,7 +2282,13 @@
     "Нормы и источники",
     "Клиенты, пилот и терминал",
     "Фонд и поддержка",
-    "Контакты"
+    "Контакты",
+    "SWOT",
+    "Обучение",
+    "SWOT",
+    "Обучение",
+    "Архитектура",
+    "Pendientes Beta"
    ]
   },
   "uk": {
@@ -2262,7 +2364,7 @@
     "Пілот",
     "Контакти",
     "Джерела",
-    "Вкладки системи",
+    "Вкладки",
     "Показати все",
     "Вкладки системи",
     "Джерела розділу",
@@ -2315,7 +2417,13 @@
     "Норми і джерела",
     "Клієнти, пілот і термінал",
     "Фонд і підтримка",
-    "Контакти"
+    "Контакти",
+    "SWOT",
+    "Навчання",
+    "SWOT",
+    "Навчання",
+    "Архітектура",
+    "Pendientes Beta"
    ]
   },
   "ar": {
@@ -2391,7 +2499,7 @@
     "التجربة",
     "اتصل بنا",
     "المصادر",
-    "عرض علامات تبويب النظام",
+    "علامات التبويب",
     "عرض الكل",
     "علامات تبويب النظام",
     "مصادر هذا القسم",
@@ -2444,7 +2552,13 @@
     "اللوائح والمصادر",
     "العملاء والتجربة والمحطة",
     "الصندوق والدعم",
-    "اتصل بنا"
+    "اتصل بنا",
+    "SWOT",
+    "التعلّم",
+    "SWOT",
+    "التعلّم",
+    "البنية",
+    "Pendientes Beta"
    ]
   },
   "he": {
@@ -2520,7 +2634,7 @@
     "פיילוט",
     "צור קשר",
     "מקורות",
-    "הצג את לשוניות המערכת",
+    "לשוניות",
     "הצג הכול",
     "לשוניות המערכת",
     "מקורות לחלק זה",
@@ -2573,7 +2687,13 @@
     "תקנות ומקורות",
     "לקוחות, פיילוט ומסוף",
     "קרן ותמיכה",
-    "צור קשר"
+    "צור קשר",
+    "SWOT",
+    "למידה",
+    "SWOT",
+    "למידה",
+    "ארכיטקטורה",
+    "Pendientes Beta"
    ]
   },
   "hi": {
@@ -2649,7 +2769,7 @@
     "पायलट",
     "संपर्क",
     "स्रोत",
-    "सिस्टम टैब देखें",
+    "टैब",
     "सब देखें",
     "सिस्टम टैब",
     "इस भाग के स्रोत",
@@ -2702,7 +2822,13 @@
     "नियम और स्रोत",
     "ग्राहक, पायलट और टर्मिनल",
     "कोष और सहयोग",
-    "संपर्क"
+    "संपर्क",
+    "SWOT",
+    "अधिगम",
+    "SWOT",
+    "अधिगम",
+    "आर्किटेक्चर",
+    "Pendientes Beta"
    ]
   },
   "zh": {
@@ -2778,7 +2904,7 @@
     "试点",
     "联系",
     "来源",
-    "查看系统标签",
+    "标签",
     "查看全部",
     "系统标签",
     "本节来源",
@@ -2831,7 +2957,13 @@
     "法规与来源",
     "客户、试点与终端",
     "基金与支持",
-    "联系"
+    "联系",
+    "SWOT",
+    "学习",
+    "SWOT",
+    "学习",
+    "架构",
+    "Pendientes Beta"
    ]
   },
   "ja": {
@@ -2907,7 +3039,7 @@
     "パイロット",
     "お問い合わせ",
     "出典",
-    "システムのタブを表示",
+    "タブ",
     "すべて表示",
     "システムのタブ",
     "この項目の出典",
@@ -2960,7 +3092,13 @@
     "規制と出典",
     "顧客・パイロット・端末",
     "基金と支援",
-    "お問い合わせ"
+    "お問い合わせ",
+    "SWOT",
+    "学習",
+    "SWOT",
+    "学習",
+    "構成",
+    "Pendientes Beta"
    ]
   }
  },

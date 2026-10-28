@@ -16,11 +16,11 @@
 <meta property="og:image" content="https://sosistem.com/assets/og-sosistem.png?v=5.6.1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
-<meta property="og:site_name" content="SOSistem™">
 <meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="SOSistem™">
+<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.6.1">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -40,7 +40,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </header>
 
-<button class="ver-pestanas" id="ver-pestanas" type="button" aria-controls="pestanas" aria-expanded="false"><span aria-hidden="true">☰</span> <span id="ver-pestanas-t">Ver pestañas del sistema</span></button>
+<button class="ver-pestanas" id="ver-pestanas" type="button" aria-controls="pestanas" aria-expanded="false"><span class="vp-punto" aria-hidden="true"></span><span aria-hidden="true">☰</span> <span id="ver-pestanas-t">Pestañas</span></button>
 <nav class="pestanas" id="pestanas" aria-label="Pestañas del sistema"></nav>
 
 <main>
@@ -216,6 +216,61 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="foda">
+  <div class="wrap">
+    <span class="eyebrow">FODA · Análisis estratégico</span>
+    <h2>Todo el sistema tiene un solo objetivo: salvar vidas.</h2>
+    <p class="lead fo-lead">Fortalezas, oportunidades, debilidades y amenazas de SOSistem™, con base en lo que el sistema ya hace y en lo que falta por medir en el piloto. Las pestañas Problema, Datos y Ventajas forman ahora parte de este análisis.</p>
+    <div class="fo-grid">
+      <div class="card fo-q fo-f"><div class="fo-h"><span class="fo-l" aria-hidden="true">F</span><div><h3>Fortalezas</h3><small>Lo que el sistema ya aporta para salvar vidas</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Ve lo que nadie puede ver</b><span>Un radar mmWave detecta a una persona en el piso o sin movimiento en sanitarios, vestidores y espacios confinados, donde no se permiten cámaras.</span></li>
+          <li><b>Ayuda en segundos, no en horas</b><span>La alerta sube sola: voz en la cabina (N0), encargado (N1), central (N2) y 911 (N3) con mensaje CAP v1.2; el cliente fija los segundos de cada nivel.</span></li>
+          <li><b>Aviso de sismo en el lugar</b><span>Acelerómetros con confirmación cruzada avisan en todas las cabinas ocupadas, liberan las puertas y muestran la salida más cercana.</span></li>
+          <li><b>Sabe quién falta</b><span>Cuenta a las personas de cada recinto para que la brigada y los rescatistas sepan dónde sigue alguien dentro.</span></li>
+          <li><b>Funciona cuando todo falla</b><span>Batería LiFePO4 para 30 días y enlace celular propio: sigue avisando sin luz y sin el internet del inmueble.</span></li>
+          <li><b>Señales que todos entienden</b><span>Colores de seguridad ISO 3864 y NOM-026, patrón de evacuación T-3, Morse, banderas y 22 idiomas: luz para quien no oye y sonido para quien no ve.</span></li>
+          <li><b>Privacidad por diseño</b><span>Sin imágenes ni audio grabado; solo estados y medidas. Por eso puede instalarse donde más se necesita.</span></li>
+          <li><b>Experiencia que respalda el sistema</b><span>Creado por Víctor Hugo Ramírez Salgado, MBA (CETYS): más de 20 años en la operación portuaria mexicana, exsubgerente de Operaciones de API Ensenada y presidente en turno de su Comité de Operación; coordinador del 1.er Simposio Nacional de Recintos Fiscalizados; formación internacional con múltiples cursos de la OEA y certificación nacional de competencias CONOCER (SEP).</span></li>
+        </ul></div>
+      <div class="card fo-q fo-o"><div class="fo-h"><span class="fo-l" aria-hidden="true">O</span><div><h3>Oportunidades</h3><small>Lo que el entorno ofrece</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Alertas tempranas para todos</b><span>La iniciativa de la ONU busca que toda persona esté protegida por alertas tempranas; el Marco de Sendai (meta G) y los ODS 3 y 11 la respaldan.</span></li>
+          <li><b>Cobertura sísmica limitada en Baja California</b><span>Las personas en recintos cerrados necesitan un aviso local que no dependa de la red pública.</span></li>
+          <li><b>Más caídas con el envejecimiento</b><span>La OMS estima 684,000 muertes al año por caídas; las personas mayores son las más expuestas.</span></li>
+          <li><b>Obligación legal de prevenir</b><span>La Ley Federal del Trabajo y las NOM de seguridad exigen medidas preventivas y aviso inmediato.</span></li>
+          <li><b>Fondos de impacto social</b><span>Fondos BC, BID, OEA y programas de la ONU apoyan proyectos de alerta temprana y protección civil.</span></li>
+          <li><b>Mercados prioritarios</b><span>Restaurantes, turismo médico, maquiladoras IMMEX, puertos, escuelas, hospitales y albergues.</span></li>
+        </ul></div>
+      <div class="card fo-q fo-d"><div class="fo-h"><span class="fo-l" aria-hidden="true">D</span><div><h3>Debilidades</h3><small>Lo que debemos resolver</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Etapa piloto</b><span>El tiempo real de respuesta y el porcentaje de falsas alarmas se medirán en el piloto; no publicamos cifras sin medirlas.</span></li>
+          <li><b>Trámites de certificación pendientes</b><span>Trámite pendiente ante organismos reguladores, verificadores y certificadores, además de los que exija cada país según sus regulaciones.</span></li>
+          <li><b>Enlace directo con el 911</b><span>La conexión con el C5/911 requiere convenio con las autoridades de cada estado.</span></li>
+          <li><b>Costo inicial por equipo</b><span>Cerca de USD 1,500 por equipo de calidad; se buscan proveedores y fondos para bajar el costo.</span></li>
+          <li><b>Traducciones por revisar</b><span>Los 22 idiomas requieren revisión de hablantes nativos antes de su uso institucional.</span></li>
+        </ul></div>
+      <div class="card fo-q fo-a"><div class="fo-h"><span class="fo-l" aria-hidden="true">A</span><div><h3>Amenazas</h3><small>Los riesgos que el sistema enfrenta</small></div></div>
+        <ul class="fo-lista">
+          <li><b>Emergencias que nadie ve</b><span>Un desmayo, una caída o una crisis médica dentro de una cabina pueden pasar inadvertidos durante minutos.</span></li>
+          <li><b>Sismos sin aviso previo</b><span>Quien está en una cabina cerrada es el último en enterarse.</span></li>
+          <li><b>Falsas alarmas</b><span>Si saturan al 911 o al encargado, se pierde la confianza; por eso se exige doble confirmación de sensores.</span></li>
+          <li><b>Percepción de vigilancia</b><span>Aunque no hay cámaras, debe explicarse con claridad que no se graban imágenes ni voz.</span></li>
+          <li><b>Competencia</b><span>Sensores domésticos de bajo costo y grandes marcas de seguridad.</span></li>
+          <li><b>Fallas de red en desastres</b><span>Se mitigan con batería, eSIM, SMS y, a futuro, enlace satelital.</span></li>
+        </ul></div>
+    </div>
+    <h3 style="margin-top:22px">Estrategias para salvar más vidas</h3>
+    <div class="grid g4 fo-est">
+      <div class="card fo-e"><b>FO · Crecer</b><span>Llevar el piloto a escuelas, hospitales y albergues con fondos de alerta temprana.</span></div>
+      <div class="card fo-e"><b>DO · Fortalecer</b><span>Medir el piloto, certificar el equipo y firmar convenios con el C5/911.</span></div>
+      <div class="card fo-e"><b>FA · Defender</b><span>Doble confirmación de sensores y privacidad comprobable para evitar falsas alarmas y desconfianza.</span></div>
+      <div class="card fo-e"><b>DA · Proteger</b><span>Respaldo de energía y comunicación para seguir avisando aunque falle todo lo demás.</span></div>
+    </div>
+    <p class="note">Fuentes: OMS (2021), INEGI (2026), ONU (Early Warnings for All) y UNDRR (Marco de Sendai), citadas en la pestaña Normativa y fuentes.</p>
+  </div>
+</section>
+
 <section class="slide blk" id="problema">
   <div class="wrap">
     <span class="eyebrow">El problema</span>
@@ -268,6 +323,25 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <div class="rung n3"><b>N3 · 911</b><span>Mensaje CAP v1.2 y llamada · a los <em data-t="N3">200</em> s</span></div>
     </div>
     <p class="note" style="margin-top:12px">Tiempos de la versión 1.0.0, configurables por recinto; para menores de edad se reducen a la mitad. Se calibran en el piloto.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="modalidades">
+  <div class="wrap">
+    <span class="eyebrow">Arquitectura del sistema</span>
+    <h2>Una sola plataforma, de un celular a todo un inmueble.</h2>
+    <p class="lead fo-lead">SOSistem™ funciona en dos modalidades y se muestra en las pantallas que el cliente ya tiene. Los sensores se instalan según la necesidad de cada cliente.</p>
+    <div class="grid g2 md-dos">
+      <div class="card md-c md-rapida"><span class="md-i" aria-hidden="true">📱</span><h3>Modalidad rápida · celulares</h3><p>Cualquier celular funciona como terminal con sus propios sensores de movimiento, sonido y ubicación. Es la forma más rápida, funcional y operativa de empezar: sin instalación, para pruebas, eventos temporales o emergencias.</p></div>
+      <div class="card md-c md-fija"><span class="md-i" aria-hidden="true">▣</span><h3>Modalidad principal · sensores fijos</h3><p>Sensores instalados en cabinas, sanitarios, recintos confinados y espacios de trabajo, con pantallas S.S.O.S.© fabricadas para cada lugar. Es la operación permanente del sistema.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card md-c"><h3>Pantallas: también las que usted ya tiene</h3><p>La información se ve en pantallas S.S.O.S.©, iPad y tabletas, celulares, computadoras y monitores de oficina, con un módulo lector conectado al sistema.</p></div>
+      <div class="card md-c"><h3>Administración en dos niveles</h3><p>Un administrador principal y uno secundario (director general, director de operaciones o encargado de seguridad) tienen las mismas facultades: autorizar los módulos de instalación, de vista y de lectura de cada recinto en sus pantallas.</p></div>
+    </div>
+    <div class="card md-c" style="margin-top:14px"><h3>Sensores a la medida del cliente</h3><p>Se instalan y adquieren según la necesidad del cliente principal: el paquete completo, con todos los niveles de lectura del sistema, o solo los sensores básicos que elija.</p>
+      <ul class="md-chips"><li>Humo</li><li>Gas</li><li>Movimiento</li><li>Nivel de sonido</li><li>Calor</li><li>Frío</li><li>Oxígeno</li><li>Hidrógeno</li><li>Monóxido de carbono</li><li>Agua en el piso</li><li>Vibración y sismo</li><li>Inventario de personas</li><li>Tiempo promedio de permanencia del personal</li><li>Masa y peso</li><li>Volumen y espacio (m³)</li><li>Capacidad mínima y máxima</li></ul>
+      <p class="note">Paquete completo: todos los niveles de lectura del sistema · Paquete básico: los sensores que el cliente elija.</p></div>
   </div>
 </section>
 
@@ -353,6 +427,8 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
           <label class="pc-fila" data-falla="equipo"><input type="color" data-falla="equipo" aria-label="Falla de sensor o equipo"><span class="pc-nom"><b>Falla de sensor o equipo</b><small>Azul</small></span><span class="pc-est" data-est="equipo"></span></label>
           <label class="pc-fila" data-falla="seguro"><input type="color" data-falla="seguro" aria-label="Condición segura"><span class="pc-nom"><b>Condición segura</b><small>Verde</small></span><span class="pc-est" data-est="seguro"></span></label>
         </div>
+        <h4 class="pc-cod-t">Códigos de color</h4>
+        <div class="tbl-wrap"><table class="pc-cod"><thead><tr><th>Color</th><th>Uso</th><th>HEX</th><th>RGB</th><th>RAL</th><th>Luz LED</th></tr></thead><tbody id="pc-codigos"></tbody></table></div>
         <p><button class="btn" type="button" id="pc-reset">Restablecer colores ISO</button></p>
       </details>
     </div>
@@ -614,6 +690,37 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="aprende">
+  <div class="wrap">
+    <span class="eyebrow">Aprendizaje · Comunicación para todos</span>
+    <h2>Aprenda a pedir ayuda de cuatro maneras.</h2>
+    <p class="lead fo-lead">En una emergencia, no todas las personas pueden oír, ver o hablar. Aquí puede aprender y practicar el código Morse, el braille, las banderas del Código Internacional de Señales y la lengua de señas.</p>
+    <div class="card ap-conv">
+      <label class="sn-campo"><b>Escriba un mensaje</b><input id="ap-txt" value="SOS" maxlength="30" autocomplete="off" placeholder="SOS"></label>
+      <div class="ap-prac"><button class="btn" type="button" data-practica="SOS">SOS · Auxilio</button><button class="btn" type="button" data-practica="AYUDA">AYUDA · Ayuda</button><button class="btn" type="button" data-practica="SISMO">SISMO · Sismo</button><button class="btn" type="button" data-practica="911">911 · Llamar al 911</button></div>
+      <div class="ap-sal">
+        <div><small>Morse</small><p class="mono ap-morse" id="ap-morse"></p></div>
+        <div><small>Braille</small><p class="ap-braille no-traducir" id="ap-braille"></p></div>
+        <div><small>Banderas</small><div class="ap-band no-traducir" id="ap-band"></div></div>
+        <div><small>Alfabeto fonético</small><p class="ap-fon no-traducir" id="ap-fon"></p></div>
+      </div>
+      <p><button class="btn" type="button" id="ap-oir">Escuchar en Morse</button></p>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card ap-lsm"><h3>Lengua de Señas Mexicana (LSM)</h3><p>La LSM es la lengua de la comunidad sorda en México (código ISO 639-3: mfs). Se aprende con videos y con personas sordas; por eso aquí no la dibujamos: le recomendamos los diccionarios oficiales.</p>
+        <ul><li><a href="https://educacionespecial.sep.gob.mx/storage/recursos/2023/05/xzrfl019nV-4Diccionario_lengua_%20Senas.pdf" target="_blank" rel="noopener">Diccionario de Lengua de Señas Mexicana (SEP, Educación Especial)</a></li>
+        <li><a href="https://pdh.cdmx.gob.mx/storage/app/media/banner/Dic_LSM%202.pdf" target="_blank" rel="noopener">Diccionario de LSM de la Ciudad de México (CDHCM)</a></li></ul>
+        <p class="note">Módulo de lengua de señas en las pantallas: en desarrollo (LSM y ASL).</p></div>
+      <div class="card"><h3>Braille</h3><p class="note">Braille en español (Comisión Braille Española): seis puntos por celda; los números llevan antes el signo de número ⠼.</p><p class="note">Morse internacional (UIT-R M.1677-1): el punto es corto y la raya dura tres puntos.</p><p class="note">Alfabeto fonético internacional (OACI/OTAN), el que usan radio marítima y aeronáutica para deletrear sin errores.</p></div>
+    </div>
+    <h3 style="margin-top:22px">El alfabeto en cuatro sistemas</h3>
+    <div class="tbl-wrap"><table class="ap-tabla">
+      <thead><tr><th>Letra</th><th>Morse</th><th>Braille</th><th>Bandera</th><th>Fonético</th></tr></thead>
+      <tbody id="ap-tbody"></tbody>
+    </table></div>
+  </div>
+</section>
+
 <section class="slide blk" id="receptor">
   <div class="wrap">
     <span class="eyebrow">Receptor Morse · a la escucha</span>
@@ -826,22 +933,23 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.6.1"></script>
-<script src="assets/logo-giro.js?v=5.6.1"></script>
-<script src="assets/app.js?v=5.6.1"></script>
-<script src="assets/cubo.js?v=5.6.1"></script>
-<script src="assets/morse.js?v=5.6.1"></script>
-<script src="assets/pantalla.js?v=5.6.1"></script>
-<script src="assets/pantalla-tema.js?v=5.6.1"></script>
-<script src="assets/cubo-morse.js?v=5.6.1"></script>
-<script src="assets/idiomas.js?v=5.6.1"></script>
-<script src="assets/banderas.js?v=5.6.1"></script>
-<script src="assets/servicios12.js?v=5.6.1"></script>
-<script src="assets/cabecera.js?v=5.6.1"></script>
-<script src="assets/pestanas.js?v=5.6.1"></script>
-<script src="assets/rastreo.js?v=5.6.1"></script>
-<script src="assets/morse-motor.js?v=5.6.1"></script>
-<script src="assets/receptor.js?v=5.6.1"></script>
+<script src="assets/cubo-rt.js?v=5.7"></script>
+<script src="assets/logo-giro.js?v=5.7"></script>
+<script src="assets/app.js?v=5.7"></script>
+<script src="assets/cubo.js?v=5.7"></script>
+<script src="assets/morse.js?v=5.7"></script>
+<script src="assets/pantalla.js?v=5.7"></script>
+<script src="assets/pantalla-tema.js?v=5.7"></script>
+<script src="assets/aprende.js?v=5.7"></script>
+<script src="assets/cubo-morse.js?v=5.7"></script>
+<script src="assets/idiomas.js?v=5.7"></script>
+<script src="assets/banderas.js?v=5.7"></script>
+<script src="assets/servicios12.js?v=5.7"></script>
+<script src="assets/cabecera.js?v=5.7"></script>
+<script src="assets/pestanas.js?v=5.7"></script>
+<script src="assets/rastreo.js?v=5.7"></script>
+<script src="assets/morse-motor.js?v=5.7"></script>
+<script src="assets/receptor.js?v=5.7"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
