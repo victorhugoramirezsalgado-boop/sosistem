@@ -429,5 +429,21 @@
   "modificacion": "Cambio directo por indicación del autor (28-oct-2026).",
   "estado": "Publicado",
   "resolucion": "Publicado en 6.0.3."
+ },
+ {
+  "id": 130,
+  "titulo": "Cinta del recinto en las pantallas del monitor",
+  "que": "Franja horizontal abajo (o esquina, a elegir) que alterna cada 2.5 s el tipo de recinto en el idioma elegido, Morse, braille, Lengua de Señas Mexicana (LSM), banderas del Código Internacional de Señales y los otros 21 idiomas; pictogramas del lugar con aforo y lugares para silla de ruedas.",
+  "espacio": "Terminal: pantalla principal y las 6 pantallas del sistema.",
+  "modificacion": "Solicitud del autor (28-oct-2026).",
+  "estado": "Por autorizar"
+ },
+ {
+  "id": 131,
+  "titulo": "Configurador de terminal",
+  "que": "Pestaña nueva para armar la terminal de cada lugar: 28 tipos de lugar en 22 idiomas, nombre, medidas (m², m³, m² por persona), aforo máximo, lugares para silla de ruedas, 18 pictogramas con su norma (ISO 7010, ISO 7001), posición de la cinta, vista previa, aplicar a la terminal y enlace para otro equipo.",
+  "espacio": "Pestaña «Configurador» (grupo Clientes, piloto y terminal).",
+  "modificacion": "Solicitud del autor (28-oct-2026).",
+  "estado": "Por autorizar"
  }
 ]

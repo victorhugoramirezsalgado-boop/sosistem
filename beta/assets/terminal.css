@@ -343,3 +343,30 @@ body.bolsillo{overflow:hidden}
 @media (min-width:1500px) and (pointer:fine){ .t-main{max-width:1600px} }
 body.dividida #v-monitor > .sos-cab{margin:10px 12px 0}
 @media (min-width:1000px) and (pointer:fine){.t-vista > .t-legal,.t-vista > p{grid-column:1/-1}}
+/* ---- Lugar de la terminal: pictogramas y cinta del recinto (idioma, Morse, braille, LSM, banderas) · 5.7b22 ---- */
+.lg-con { position: relative; }
+.lg-pictos { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.lg-pf { margin: 0; display: flex; align-items: center; gap: 5px; border: 0; background: none; }
+.lg-picto { width: 34px; height: 34px; flex: none; border-radius: 4px; }
+.lg-pf figcaption { display: flex; flex-direction: column; line-height: 1.15; background: none; padding: 0; color: inherit; }
+.lg-pf figcaption b { font-size: 13px; } .lg-pf figcaption small { font-size: 9px; opacity: .8; max-width: 9em; }
+.lg-cinta { display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 8px; border-radius: 6px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); overflow: hidden; color: inherit; }
+.lg-cinta[data-pos="esquina"] { position: absolute; right: 8px; bottom: 8px; max-width: 58%; flex-direction: column; align-items: flex-end;
+  gap: 2px; background: rgba(5,8,13,.86); z-index: 2; }
+.lg-et { flex: none; font: 700 8.5px/1 var(--mono, ui-monospace, monospace); letter-spacing: .1em; text-transform: uppercase; color: #8b96a8; font-style: normal; }
+.lg-cont { flex: 1; min-width: 0; display: flex; justify-content: space-between; align-items: center; overflow: hidden; white-space: nowrap; }
+.lg-cinta[data-pos="esquina"] .lg-cont { justify-content: flex-end; max-width: 100%; }
+.lg-txt { font-size: 16px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; margin-left: auto; }
+.lg-morse { font: 700 15px var(--mono, ui-monospace, monospace); letter-spacing: .12em; margin-left: auto; overflow: hidden; text-overflow: ellipsis; }
+.lg-brs, .lg-lsms, .lg-band { display: flex; align-items: center; gap: 3px; margin-left: auto; }
+.lg-br { width: 13px; height: 19px; flex: none; }
+.lg-lsm { height: 28px; width: 28px; background: #fff; border-radius: 4px; flex: none; object-fit: contain; }
+.lg-lsms b { font-size: 11px; margin: 0 2px 0 -2px; }
+.lg-band svg { height: 20px; width: auto; flex: none; }
+.lg-esp { display: inline-block; width: 8px; flex: none; }
+.lg-otros { display: flex; justify-content: space-between; gap: 10px; width: 100%; font-size: 11px; font-weight: 700; }
+.lg-otros > span { white-space: nowrap; } .lg-otros i { font-style: normal; font-size: 8px; color: #8b96a8; margin-right: 2px; }
+.lg-cinta[data-pos="esquina"] .lg-otros { flex-wrap: wrap; justify-content: flex-end; white-space: normal; gap: 2px 8px; }
+:root[data-ptema="dia"] .lg-cinta { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.14); }
+:root[data-ptema="dia"] .lg-cinta[data-pos="esquina"] { background: rgba(255,255,255,.92); }
