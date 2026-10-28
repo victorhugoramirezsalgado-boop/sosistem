@@ -934,6 +934,11 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
     </table></div>
     <p><button class="btn primary" type="button" id="pb-enviar">Enviar autorizaciones al sistema</button> <button class="btn" type="button" id="pb-copiar">Copiar decisiones para Claude</button> <a class="btn" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Abrir chat con Claude</a> <button class="btn" type="button" id="pb-borrar">Borrar decisiones</button></p>
     <p class="note" id="pb-msg" role="status"></p>
+    <details class="pb-hist" open><summary><b>Historial de cambios</b> · <span id="pb-hist-n"></span> renglones resueltos (no se borran)</summary>
+    <div class="tbl-wrap"><table class="pb-tabla">
+      <thead><tr><th>#</th><th>Cambio</th><th>Espacio</th><th>Estado</th><th>Resolución</th></tr></thead>
+      <tbody id="pb-hist"></tbody>
+    </table></div></details>
   </div>
 </section>
 
@@ -1046,7 +1051,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/pantalla-tema.js?v=5.7b12"></script>
 <script src="assets/aprende.js?v=5.7b12"></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
-<script src="assets/pendientes-beta.js?v=5.7b12"></script>
+<script src="assets/pendientes-beta.js?v=5.7b17"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <script src="assets/codigo-cubico.js?v=5.7b12"></script>
 <script src="assets/constancia.js?v=5.7b12" defer></script>

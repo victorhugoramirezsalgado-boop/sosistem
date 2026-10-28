@@ -1266,3 +1266,11 @@ tr.pb-si { background: color-mix(in srgb, var(--iso-verde) 7%, transparent); } t
   outline: 3px solid color-mix(in srgb, var(--brand) 55%, transparent); outline-offset: 2px; }
 .btn:active, .btn-morse:active, .s12-card:active, button[data-cara]:active, button[data-ptema]:active { transform: translateY(1px); }
 button.tab { border-width: 0 0 2px; box-shadow: none; }
+
+/* Beta · historial de pendientes resueltos (no se borran) */
+.pb-hist { margin-top: 18px; }
+.pb-hist summary { cursor: pointer; padding: 6px 0; }
+.pb-hist .pb-publicado { background: #15803D; color: #fff; }
+.pb-hist .pb-aplicado { background: #1F6FB2; color: #fff; }
+.pb-hist .pb-sustituido { background: #F9A900; color: #000; }
+.pb-hist .pb-retirado { background: #5B6170; color: #fff; }
