@@ -70,5 +70,13 @@
   "espacio": "Todo el sitio.",
   "modificacion": "Estilo nuevo al final de estilo.css de la Beta.",
   "estado": "Por autorizar"
+ },
+ {
+  "id": 120,
+  "titulo": "«Ver todo» en el inicio",
+  "que": "Botón «Ver todo» junto a «Ver cómo funciona» en la portada, y «Ver todo» como primera opción del menú de Pestañas: muestra todas las secciones en una sola página.",
+  "espacio": "Inicio (portada) y menú de Pestañas.",
+  "modificacion": "Antes «Ver todo» estaba al final del menú.",
+  "estado": "Por autorizar"
  }
 ]
