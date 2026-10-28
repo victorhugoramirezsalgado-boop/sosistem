@@ -2,7 +2,7 @@
 # En cada cambio del sitio vuelve a tomar la foto de la terminal NODO S.O.S.© y la compone con el Cubo Morse© naranja;
 # la liga de la imagen lleva la versión para que las redes sociales no muestren una imagen vieja.
 # También regenera el Manual de configuración (assets/manual-configuracion-sosistem.pdf, 5 hojas, APA 7)
-# y la Presentación ejecutiva (assets/presentacion-ejecutiva-sosistem.pdf, 2 hojas, APA 7).
+# y la Presentación ejecutiva (assets/presentacion-ejecutiva-sosistem.pdf, 3 hojas, APA 7).
 name: Imagen para compartir y manual
 on:
   push:

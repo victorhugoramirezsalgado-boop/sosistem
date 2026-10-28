@@ -1,5 +1,5 @@
-// SOSistem™ · Presentación ejecutiva (PDF, 2 hojas, APA 7.ª ed.) · © Víctor Hugo Ramírez Salgado
-// Resume todo el sistema en dos hojas para instituciones (BID, OEA-CIP, ONU, CEPAL), autoridades y clientes.
+// SOSistem™ · Presentación ejecutiva (PDF, 3 hojas, APA 7.ª ed.) · © Víctor Hugo Ramírez Salgado
+// Resume todo el sistema en tres hojas para instituciones (BID, OEA-CIP, ONU, CEPAL), autoridades y clientes.
 // Se regenera sola con los datos vigentes del sitio (versión, tiempos de escalamiento y experiencia del autor).
 // Uso: node herramientas/ejecutiva.mjs  →  assets/presentacion-ejecutiva-sosistem.pdf
 import { createRequire } from "module";
@@ -18,6 +18,18 @@ const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<
 const L = (url, txt) => `<a href="${url}">${esc(txt || url.replace("https://", ""))}</a>`;
 const b = await chromium.launch();
 const flags = await banderas(b, "SOS", 30);
+// Foto real de la Terminal en un celular (prueba de caída); si no hay servidor local, la hoja 3 sale sin foto
+let celular = "";
+try {
+  const t = await b.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  await t.addInitScript(() => localStorage.setItem("sos_idioma", "es"));
+  await t.goto((process.env.SITIO || "http://localhost:8765/") + "terminal.html", { waitUntil: "networkidle", timeout: 15000 });
+  await t.evaluate(() => { const h = [...document.querySelectorAll("h1,h2,h3")].find((e) => /Bienvenido/.test(e.textContent)); let e = h; while (e && e.parentElement !== document.body) e = e.parentElement; if (e) e.remove(); document.body.style.overflow = "auto"; });
+  const bt = await t.$("text=Caída · sirena + SOS SOS"); if (bt) { await bt.click(); await t.waitForTimeout(1500); }
+  await t.evaluate(() => { window.SOSMorse?.detener?.(); scrollTo(0, 0); });
+  celular = "data:image/png;base64," + (await t.screenshot({ type: "png", clip: { x: 0, y: 0, width: 390, height: 780 } })).toString("base64");
+  await t.close();
+} catch (e) { console.warn("Sin foto de la Terminal:", e.message); }
 
 // Referencias (APA 7.ª ed.)
 const R = [
@@ -128,6 +140,42 @@ const hoja2 = `<section class="h">
   <footer class="f"><b>Referencias (APA 7.ª ed.)</b><ol>${R.map((x) => `<li>${x}</li>`).join("")}</ol></footer>
 </section>`;
 
+const SENS_CEL = [["Acelerómetro", "caída, impacto y vibración tipo sismo"], ["Giroscopio", "giro e inclinación del cuerpo"], ["Micrófono", "solo reconoce «S.O.S.», «auxilio» y «todo bien», y ruido fuerte; no graba"],
+  ["Ubicación", "solo si el usuario la autoriza, para orientar la ayuda"], ["Inmovilidad", "tiempo sin movimiento después de una caída"], ["Modo bolsillo", "vigilancia continua con ahorro de energía"]];
+const SENS_FIJ = ["Radar mmWave (persona en el suelo, inmovilidad y conteo)", "Movimiento y distancia", "Volumen de sonido", "Humo", "Gas", "Oxígeno", "Hidrógeno", "Amoniaco",
+  "Calor y frío", "Luz y oscuridad", "Agua en el piso", "Masa", "Espacio y capacidad (m² y m³)", "Inventario de personas", "Tiempos de permanencia del personal"];
+const hoja3 = `<section class="h">
+  <h2 style="margin-top:0">SOSistem™ en cada celular: ayuda familiar las 24 horas</h2>
+  <p class="lead">Los <b>celulares, tabletas, computadoras y demás equipos, conectados a red o sin red</b>, pueden funcionar como <b>sensores</b>, como <b>terminales (pantallas) de observación e información</b>, o como <b>ambos a la vez</b>.</p>
+  <div class="imp"><b>Impacto</b>Cada persona puede descargar SOSistem™ en su celular, activarlo y enlazarlo con un familiar las 24 horas, los 7 días: ante una caída, ante las palabras «S.O.S.» o «auxilio», o cuando el propio sistema detecta la caída, el familiar recibe el aviso al momento y puede observar el estado de su ser querido. <span>Sin grabar video, voz ni conversaciones: solo es ayuda al momento.</span></div>
+  <div class="cel">
+    <div>
+      <h2>Cómo funciona</h2>
+      <ol class="ruta">
+        <li><b>Descargar y activar</b> SOSistem™ en el celular, sin registro.</li>
+        <li><b>Enlazar con un familiar</b> escribiendo la misma frase en ambos equipos, una sola vez, sin enviar códigos.</li>
+        <li><b>Detectar:</b> el celular reconoce la caída, las palabras de auxilio o la inmovilidad, aunque la persona no pueda tocar la pantalla.</li>
+        <li><b>Avisar al momento:</b> el familiar ve el tipo de evento, la hora y el nivel de alerta; si nadie atiende, el aviso escala por niveles hasta el 911.</li>
+        <li><b>Cancelar con la voz:</b> «todo bien» o un toque detiene la alerta si fue una falsa alarma.</li>
+      </ol>
+      <h2>Sensores del celular · opciones actuales</h2>
+      <table class="sens"><tbody>${SENS_CEL.map(([n, d]) => `<tr><th>${n}</th><td>${d}</td></tr>`).join("")}</tbody></table>
+      <h2>Sensores fijos · opciones actuales</h2>
+      <p class="chips">${SENS_FIJ.map((x) => `<span>${x}</span>`).join("")}</p>
+      <p class="nota">El cliente elige el paquete completo o solo los sensores que necesita.</p>
+    </div>
+    ${celular ? `<figure class="tel"><img src="${celular}" alt=""><figcaption>Terminal SOSistem™ en un celular: prueba de «Persona en el suelo» con escalamiento N0–N3</figcaption></figure>` : ""}
+  </div>
+  <div class="dos2">
+    <div><h2>Quién observa</h2>
+      <ul><li><b>Familiar:</b> recibe el aviso y ve el estado al momento.</li><li><b>Encargado del lugar y central de monitoreo</b>, cuando el celular está en un recinto con SOSistem™.</li><li><b>911:</b> mensaje CAP v1.2 si nadie atiende la alerta.</li></ul></div>
+    <div class="priv"><h2>Privacidad</h2>
+      <ul><li>Sin cámaras; no se graba video ni voz.</li><li>La voz solo se escucha en el propio equipo para reconocer palabras de auxilio.</li><li>Solo se envía el aviso del momento: tipo de evento, hora y, si se autoriza, ubicación (LFPDPPP, 2025).</li></ul></div>
+  </div>
+  <p class="estado"><b>Estado:</b> la Terminal en el celular ya funciona en versión de prueba abierta al público (${L(S + "terminal.html", "sosistem.com/terminal.html")}), con enlace entre celular y pantalla por frase. El enlace familiar permanente 24/7 está en desarrollo. SOSistem™ no sustituye a los servicios oficiales de emergencia.</p>
+  <footer class="f">© ${anio} Víctor Hugo Ramírez Salgado · SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Plataforma SOSistem™ (2610257442171).</footer>
+</section>`;
+
 const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Resumen ejecutivo · SOSistem™ ${esc(ver)}</title><style>
 @page{size:letter}*{box-sizing:border-box}body{margin:0;font:9pt/1.36 Inter,"Segoe UI",Roboto,Arial,sans-serif;color:#0f1b2d}
 .h{page-break-after:always;height:9.85in;display:flex;flex-direction:column;overflow:hidden}.h:last-child{page-break-after:auto}
@@ -159,7 +207,13 @@ figcaption{background:#fff;color:#334155;font-size:7.2pt;padding:2px 5px;line-he
 .firma{display:grid;grid-template-columns:1fr 1.25fr;gap:14px;margin-top:5px;padding:6px 10px;border:1px solid #c9ced6;border-left:5px solid #DB641C;border-radius:6px}
 .firma span{display:block}.fi-l .linea{border-bottom:1px solid #0f1b2d;height:22px;margin-bottom:3px;width:85%}.fi-l b{font-size:10.5pt}
 .leyenda{font-size:7.8pt;color:#8a4a20;margin-top:3px;font-style:italic}.fi-r{font-size:8pt;line-height:1.5}.fi-r .pi{font-size:7pt;color:#4a5568;margin-top:2px}
-${emblemaCss}${idiomasCss}</style></head><body>${hoja1}${hoja2}</body></html>`;
+
+.imp{margin:6px 0 4px;padding:8px 12px;border-radius:8px;background:#0f2a4a;color:#fff;font-size:10pt;line-height:1.45}.imp b{display:block;color:#ffb27a;font-size:8pt;letter-spacing:.14em;text-transform:uppercase}
+.imp span{display:block;margin-top:4px;color:#ffd29e;font-weight:700}
+.cel{display:grid;grid-template-columns:1fr 2.35in;gap:14px;align-items:start}.tel{border-radius:16px;border:3px solid #1e293b;background:#0b1018}.tel img{height:auto}
+.sens th{width:7.4em;background:#fff7f1;color:#8a4a20}.sens td,.sens th{font-size:8pt;padding:2px 6px}
+.priv{border-left:4px solid #15803D;padding-left:8px}.estado{margin:6px 0 0;font-size:8.2pt;padding:5px 8px;background:#f3f7fc;border:1px solid #c9d6e6;border-radius:6px}
+${emblemaCss}${idiomasCss}</style></head><body>${hoja1}${hoja2}${hoja3}</body></html>`;
 
 const p = await b.newPage();
 await p.setContent(marcas(html), { waitUntil: "load" });
