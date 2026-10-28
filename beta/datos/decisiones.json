@@ -1,21 +1,9 @@
 {
-  "enviado": "2026-10-28T08:45:13.196Z",
+  "enviado": "2026-10-28T10:26:19.328Z",
   "decisiones": [
     {
-      "id": 127,
-      "titulo": "Autorización con Google Authenticator",
-      "decision": "si",
-      "comentario": ""
-    },
-    {
-      "id": 114,
-      "titulo": "Tipo de área",
-      "decision": "si",
-      "comentario": "Muestra antes de poder decidir , muestra espacios como: oficina, baños, bodega, salón de juntas, casa, cuartos, almacén, y que el cliente o usuarioTenga opción de agregar un campo para describir lugar y se graben por ellos en beta."
-    },
-    {
-      "id": 123,
-      "titulo": "Deletreo en LSM en las pantallas",
+      "id": 128,
+      "titulo": "Terminal: token con Google Authenticator",
       "decision": "si",
       "comentario": ""
     }
