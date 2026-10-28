@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b6">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b7">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -882,13 +882,13 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <div class="wrap">
     <span class="eyebrow">Solo Beta · administrador</span>
     <h2>Pendientes por autorizar</h2>
-    <p class="note">Cada renglón dice qué es, dónde va (espacio) y qué cambia (modificación). Marque Autorizar, Con cambios o No; se guarda en este equipo. Al terminar, copie las decisiones y péguelas en el chat con Claude.</p>
+    <p class="note">Cada renglón dice qué es, dónde va (espacio) y qué cambia (modificación). Marque Autorizar, Con cambios o No; se guarda en este equipo. Al terminar, pulse «Enviar autorizaciones al sistema»: quedan guardadas en el repositorio y lo autorizado pasa al sitio oficial (módulo principal).</p>
     <div class="pb-res" id="pb-res"></div>
     <div class="tbl-wrap"><table class="pb-tabla">
       <thead><tr><th>#</th><th>Pendiente</th><th>Espacio</th><th>Modificación</th><th>Estado</th><th>Decisión</th></tr></thead>
       <tbody id="pb-lista"></tbody>
     </table></div>
-    <p><button class="btn primary" type="button" id="pb-copiar">Copiar decisiones para Claude</button> <a class="btn" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Abrir chat con Claude</a> <button class="btn" type="button" id="pb-borrar">Borrar decisiones</button></p>
+    <p><button class="btn primary" type="button" id="pb-enviar">Enviar autorizaciones al sistema</button> <button class="btn" type="button" id="pb-copiar">Copiar decisiones para Claude</button> <a class="btn" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Abrir chat con Claude</a> <button class="btn" type="button" id="pb-borrar">Borrar decisiones</button></p>
     <p class="note" id="pb-msg" role="status"></p>
   </div>
 </section>
@@ -951,24 +951,24 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7b6"></script>
-<script src="assets/logo-giro.js?v=5.7b6"></script>
-<script src="assets/app.js?v=5.7b6"></script>
-<script src="assets/cubo.js?v=5.7b6"></script>
-<script src="assets/morse.js?v=5.7b6"></script>
-<script src="assets/pantalla.js?v=5.7b6"></script>
-<script src="assets/pantalla-tema.js?v=5.7b6"></script>
-<script src="assets/aprende.js?v=5.7b6"></script>
-<script src="assets/pendientes-beta.js?v=5.7b6"></script>
-<script src="assets/cubo-morse.js?v=5.7b6"></script>
-<script src="assets/idiomas.js?v=5.7b6"></script>
-<script src="assets/banderas.js?v=5.7b6"></script>
-<script src="assets/servicios12.js?v=5.7b6"></script>
-<script src="assets/cabecera.js?v=5.7b6"></script>
-<script src="assets/pestanas.js?v=5.7b6"></script>
-<script src="assets/rastreo.js?v=5.7b6"></script>
-<script src="assets/morse-motor.js?v=5.7b6"></script>
-<script src="assets/receptor.js?v=5.7b6"></script>
+<script src="assets/cubo-rt.js?v=5.7b7"></script>
+<script src="assets/logo-giro.js?v=5.7b7"></script>
+<script src="assets/app.js?v=5.7b7"></script>
+<script src="assets/cubo.js?v=5.7b7"></script>
+<script src="assets/morse.js?v=5.7b7"></script>
+<script src="assets/pantalla.js?v=5.7b7"></script>
+<script src="assets/pantalla-tema.js?v=5.7b7"></script>
+<script src="assets/aprende.js?v=5.7b7"></script>
+<script src="assets/pendientes-beta.js?v=5.7b7"></script>
+<script src="assets/cubo-morse.js?v=5.7b7"></script>
+<script src="assets/idiomas.js?v=5.7b7"></script>
+<script src="assets/banderas.js?v=5.7b7"></script>
+<script src="assets/servicios12.js?v=5.7b7"></script>
+<script src="assets/cabecera.js?v=5.7b7"></script>
+<script src="assets/pestanas.js?v=5.7b7"></script>
+<script src="assets/rastreo.js?v=5.7b7"></script>
+<script src="assets/morse-motor.js?v=5.7b7"></script>
+<script src="assets/receptor.js?v=5.7b7"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
