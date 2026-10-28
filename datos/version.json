@@ -1,8 +1,13 @@
 {
-  "version": "5.9",
+  "version": "6.0",
   "fecha": "2026-10-27",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.0",
+      "fecha": "2026-10-27",
+      "resumen": "Publicado lo autorizado en la Beta: abecedario de la Lengua de Señas Mexicana (LSM) en Aprendizaje, al escribir un mensaje y en la tabla «El alfabeto en cinco sistemas», con crédito y referencia de la SEP y Aprende.mx; caras del Cubo Morse© solo con los logos registrados en Safe Creative (ContenedorEns© y Arsa Bodegas©) y los del sistema (SOSistem™ y Cubo Morse©). En los 22 idiomas."
+    },
     {
       "v": "5.9",
       "fecha": "2026-10-27",

@@ -1,21 +1,5 @@
 [
  {
-  "id": 122,
-  "titulo": "Abecedario de la Lengua de Señas Mexicana (LSM)",
-  "que": "Las 26 letras del abecedario manual de la LSM (imágenes de la SEP y Aprende.mx, con crédito y referencia APA): al escribir un mensaje se muestra en LSM junto a Morse, braille, banderas y alfabeto fonético, y la tabla del alfabeto suma la columna LSM («cinco sistemas»). Ñ = N con movimiento; J, K, Q, X y Z llevan movimiento.",
-  "espacio": "Aprendizaje › Escriba un mensaje y «El alfabeto en cinco sistemas»; Fuentes.",
-  "modificacion": "Antes la LSM solo tenía ligas a diccionarios.",
-  "estado": "Por autorizar"
- },
- {
-  "id": 14,
-  "titulo": "PDF del cubo para armar",
-  "que": "Regenerar con el registro de ContenedorEns© (2609046908752).",
-  "espacio": "Cubo Morse© › descargar PDF.",
-  "modificacion": "Cambia una cara del PDF.",
-  "estado": "Pendiente"
- },
- {
   "id": 114,
   "titulo": "Tipo de área",
   "que": "59 áreas en 10 grupos con conceptos de segregación; te envié la imagen.",
@@ -24,12 +8,13 @@
   "estado": "Por autorizar"
  },
  {
-  "id": 115,
-  "titulo": "Logos del Cubo Morse©",
-  "que": "Por tu indicación: solo quedan los logos que están registrados en Safe Creative (ContenedorEns© y Arsa Bodegas©) y los del sistema (SOSistem™ y Cubo Morse©); las otras 8 caras quedan sin logo hasta tener su registro.",
-  "espacio": "Cubo Morse© › tarjetas.",
-  "modificacion": "Se quitan los emblemas provisionales de S.S.O.S., Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía© (solo en la Beta).",
-  "estado": "Por autorizar"
+  "id": 122,
+  "titulo": "Abecedario de la Lengua de Señas Mexicana (LSM)",
+  "que": "Las 26 letras del abecedario manual de la LSM (imágenes de la SEP y Aprende.mx, con crédito y referencia APA): al escribir un mensaje se muestra en LSM junto a Morse, braille, banderas y alfabeto fonético, y la tabla del alfabeto suma la columna LSM («cinco sistemas»). Ñ = N con movimiento; J, K, Q, X y Z llevan movimiento.",
+  "espacio": "Aprendizaje › Escriba un mensaje y «El alfabeto en cinco sistemas»; Fuentes.",
+  "modificacion": "Antes la LSM solo tenía ligas a diccionarios.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 27-oct-2026 y publicado en 6.0. Tu comentario (deletrear en LSM en las pantallas lo que está pasando) continúa en #123."
  },
  {
   "id": 121,
@@ -84,6 +69,15 @@
   "modificacion": "4 botones arriba del contenido.",
   "estado": "Retirado",
   "resolucion": "No autorizado (27-oct-2026): no se agregan botones por tipo de visitante."
+ },
+ {
+  "id": 115,
+  "titulo": "Logos del Cubo Morse©",
+  "que": "Por tu indicación: solo quedan los logos que están registrados en Safe Creative (ContenedorEns© y Arsa Bodegas©) y los del sistema (SOSistem™ y Cubo Morse©); las otras 8 caras quedan sin logo hasta tener su registro.",
+  "espacio": "Cubo Morse© › tarjetas.",
+  "modificacion": "Se quitan los emblemas provisionales de S.S.O.S., Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía© (solo en la Beta).",
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 27-oct-2026 y publicado en 6.0: solo quedan los logos registrados (ContenedorEns©, Arsa Bodegas©) y los del sistema (SOSistem™, Cubo Morse©)."
  },
  {
   "id": 113,
@@ -246,6 +240,15 @@
   "modificacion": "Función nueva.",
   "estado": "Sustituido",
   "resolucion": "Continuó en #103: constancia aplicada en la Beta y verificación pública en sosistem.com/verificar.html."
+ },
+ {
+  "id": 14,
+  "titulo": "PDF del cubo para armar",
+  "que": "Regenerar con el registro de ContenedorEns© (2609046908752).",
+  "espacio": "Cubo Morse© › descargar PDF.",
+  "modificacion": "Cambia una cara del PDF.",
+  "estado": "Aplicado",
+  "resolucion": "Autorizado el 27-oct-2026: PDF del cubo para armar regenerado con las caras actuales y el registro de ContenedorEns© 2609046908752 (assets/cubo-morse-armable.pdf)."
  },
  {
   "id": 13,
