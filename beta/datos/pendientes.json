@@ -1,5 +1,13 @@
 [
  {
+  "id": 127,
+  "titulo": "Autorización con Google Authenticator",
+  "que": "En la Beta, «Enviar autorizaciones» y «Registrar constancia» ya no piden el token de GitHub: piden el código de 6 números de Google Authenticator (cuenta «SOSistem Beta»). El token se pega una sola vez por equipo y queda cifrado en ese equipo. En el administrador de la Beta se puede activar como 3.er paso de verificación (Ajustes).",
+  "espacio": "Página Beta (pendientes y constancia) y administrador Beta: Ajustes › Verificación con Google Authenticator.",
+  "modificacion": "Tu indicación (28-oct-2026): «Que el token de sosistem para beta ese sea por la 2da autentificación».",
+  "estado": "Por autorizar"
+ },
+ {
   "id": 114,
   "titulo": "Tipo de área",
   "que": "Cada tipo de área dibuja su propio plano con el punto del incidente: oficina (escritorios), baños (cabinas), bodega y almacén (racks y pasillos), sala de juntas, casa (sala, cocina, baño), cuarto o recámara (cama y clóset) y salón. El cliente o usuario puede escribir «Describa su lugar» (p. ej. «Oficina de ventas, planta alta»); se guarda en su equipo y aparece en la pantalla.",

@@ -65,6 +65,15 @@
         <button class="btn primary" type="submit">Entrar</button>
         <div class="msg" id="m2" role="alert"></div>
       </form>
+      <form id="f3" autocomplete="off" hidden>
+        <div class="pasos"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <h2>Código de Google Authenticator</h2>
+        <p class="note">Paso 3 de 3. Escriba el código de 6 números de «SOSistem» en la app.</p>
+        <label for="c3" class="note">Código de 6 números</label>
+        <input id="c3" inputmode="numeric" maxlength="7" required autocomplete="one-time-code">
+        <button class="btn primary" type="submit">Entrar</button>
+        <div class="msg" id="m3" role="alert"></div>
+      </form>
       <form id="f0" autocomplete="off" hidden>
         <h2>Recuperar claves</h2>
         <p class="note">La recuperación de claves es exclusiva del titular y solo puede hacerse desde su cuenta de GitHub.</p>
@@ -108,6 +117,6 @@
 <script src="assets/banderas.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
-<script src="assets/admin.js?v=5.7b13"></script>
+<script src="assets/admin.js?v=5.7b22"></script>
 </body>
 </html>
