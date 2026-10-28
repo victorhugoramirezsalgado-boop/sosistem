@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b7">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b9">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -222,6 +222,16 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
     <span class="eyebrow">FODA · Análisis estratégico</span>
     <h2>Todo el sistema tiene un solo objetivo: salvar vidas.</h2>
     <p class="lead fo-lead">Fortalezas, oportunidades, debilidades y amenazas de SOSistem™, con base en lo que el sistema ya hace y en lo que falta por medir en el piloto. Las pestañas Problema, Datos y Ventajas forman ahora parte de este análisis.</p>
+    <h3 class="fm-tit">Matriz FODA</h3>
+    <div class="fo-matriz">
+      <div class="fm-esq" aria-hidden="true"></div><div class="fm-eje">Favorables</div><div class="fm-eje">Desfavorables</div>
+      <div class="fm-eje fm-v">Factores internos</div>
+      <div class="fm-c fo-f"><b><span class="fo-l">F</span>Fortalezas</b><ul><li>Ve lo que nadie puede ver</li><li>Ayuda en segundos, no en horas</li><li>Funciona cuando todo falla</li></ul></div>
+      <div class="fm-c fo-d"><b><span class="fo-l">D</span>Debilidades</b><ul><li>Etapa piloto</li><li>Trámites de certificación pendientes</li><li>Costo inicial por equipo</li></ul></div>
+      <div class="fm-eje fm-v">Factores externos</div>
+      <div class="fm-c fo-o"><b><span class="fo-l">O</span>Oportunidades</b><ul><li>Alertas tempranas para todos</li><li>Más caídas con el envejecimiento</li><li>Obligación legal de prevenir</li></ul></div>
+      <div class="fm-c fo-a"><b><span class="fo-l">A</span>Amenazas</b><ul><li>Emergencias que nadie ve</li><li>Sismos sin aviso previo</li><li>Falsas alarmas</li></ul></div>
+    </div>
     <div class="fo-grid">
       <div class="card fo-q fo-f"><div class="fo-h"><span class="fo-l" aria-hidden="true">F</span><div><h3>Fortalezas</h3><small>Lo que el sistema ya aporta para salvar vidas</small></div></div>
         <ul class="fo-lista">
@@ -268,7 +278,18 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <div class="card fo-e"><b>FA · Defender</b><span>Doble confirmación de sensores y privacidad comprobable para evitar falsas alarmas y desconfianza.</span></div>
       <div class="card fo-e"><b>DA · Proteger</b><span>Respaldo de energía y comunicación para seguir avisando aunque falle todo lo demás.</span></div>
     </div>
-    <p class="note">Fuentes: OMS (2021), INEGI (2026), ONU (Early Warnings for All) y UNDRR (Marco de Sendai), citadas en la pestaña Normativa y fuentes.</p>
+    <h4 class="fm-ref-t">Referencias del FODA</h4>
+    <p class="note">Origen del método: el FODA (en inglés, SWOT) proviene del enfoque SOFT que Robert F. Stewart desarrolló en el Stanford Research Institute en la década de 1960 (Puyt, Lie y Wilderom, 2023).</p>
+    <p class="note">Vigencia: datos consultados y actualizados al 27 de octubre de 2026; se revisan en cada versión del sitio.</p>
+    <ol class="refs fm-refs">
+      <li>Puyt, R. W., Lie, F. B., &amp; Wilderom, C. P. M. (2023). The origins of SWOT analysis. <i>Long Range Planning, 56</i>(3), 102304. <a href="https://doi.org/10.1016/j.lrp.2023.102304" rel="noopener">https://doi.org/10.1016/j.lrp.2023.102304</a></li>
+      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">inegi.org.mx</a></li>
+      <li>Naciones Unidas. (s. f.). <i>Early Warnings for All</i>. Recuperado el 27 de octubre de 2026, de <a href="https://www.un.org/en/node/207773" rel="noopener">un.org</a></li>
+      <li>Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" rel="noopener">undrr.org</a></li>
+      <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
+    </ol>
+
   </div>
 </section>
 
@@ -893,6 +914,27 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk no-traducir" id="constancia">
+  <div class="wrap">
+    <span class="eyebrow">Fondo y apoyo · administrador</span>
+    <h2>Constancia de reconocimiento para quien aporta</h2>
+    <p class="note">Llene los datos, revise la vista previa y pulse «Imprimir o guardar PDF». Cada constancia lleva folio y un código QR que se verifica en sosistem.com/beta/verificar.html (en la Beta). Para que el QR la valide, regístrela en el sistema.</p>
+    <div class="grid g2 ct-grid">
+      <form class="card ct-form" id="ct-form" autocomplete="off">
+        <label>Nombre de quien aporta<input name="nombre" required maxlength="80" placeholder="Nombre completo o razón social"></label>
+        <label>Tipo de apoyo<select name="tipo"><option>Donativo en dinero</option><option>Equipo o materiales</option><option>Conectividad (datos, recargas o puerta de enlace)</option><option>Horas de servicio profesional</option><option>Difusión y vinculación</option><option>Otro</option></select></label>
+        <label>Monto o descripción<input name="monto" maxlength="90" placeholder="Ej. $1,000 MXN · 2 sensores mmWave"></label>
+        <label>Fecha<input name="fecha" type="date" required></label>
+        <label>Folio<input name="folio" required maxlength="20"></label>
+        <label class="ct-chk"><input type="checkbox" name="mtro"> Firmar como «Mtro.»</label>
+        <p class="ct-bot"><button class="btn primary" type="button" id="ct-imprimir">Imprimir o guardar PDF</button> <button class="btn" type="button" id="ct-registrar">Registrar en el sistema</button></p>
+        <p class="note" id="ct-msg" role="status"></p>
+      </form>
+      <div class="ct-hoja" id="ct-hoja"></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="contacto">
   <div class="wrap">
     <span class="eyebrow">Contacto</span>
@@ -951,24 +993,26 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7b7"></script>
-<script src="assets/logo-giro.js?v=5.7b7"></script>
-<script src="assets/app.js?v=5.7b7"></script>
-<script src="assets/cubo.js?v=5.7b7"></script>
-<script src="assets/morse.js?v=5.7b7"></script>
-<script src="assets/pantalla.js?v=5.7b7"></script>
-<script src="assets/pantalla-tema.js?v=5.7b7"></script>
-<script src="assets/aprende.js?v=5.7b7"></script>
-<script src="assets/pendientes-beta.js?v=5.7b7"></script>
-<script src="assets/cubo-morse.js?v=5.7b7"></script>
-<script src="assets/idiomas.js?v=5.7b7"></script>
-<script src="assets/banderas.js?v=5.7b7"></script>
-<script src="assets/servicios12.js?v=5.7b7"></script>
-<script src="assets/cabecera.js?v=5.7b7"></script>
-<script src="assets/pestanas.js?v=5.7b7"></script>
-<script src="assets/rastreo.js?v=5.7b7"></script>
-<script src="assets/morse-motor.js?v=5.7b7"></script>
-<script src="assets/receptor.js?v=5.7b7"></script>
+<script src="assets/cubo-rt.js?v=5.7b9"></script>
+<script src="assets/logo-giro.js?v=5.7b9"></script>
+<script src="assets/app.js?v=5.7b9"></script>
+<script src="assets/cubo.js?v=5.7b9"></script>
+<script src="assets/morse.js?v=5.7b9"></script>
+<script src="assets/pantalla.js?v=5.7b9"></script>
+<script src="assets/pantalla-tema.js?v=5.7b9"></script>
+<script src="assets/aprende.js?v=5.7b9"></script>
+<script src="assets/pendientes-beta.js?v=5.7b9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script src="assets/constancia.js?v=5.7b9" defer></script>
+<script src="assets/cubo-morse.js?v=5.7b9"></script>
+<script src="assets/idiomas.js?v=5.7b9"></script>
+<script src="assets/banderas.js?v=5.7b9"></script>
+<script src="assets/servicios12.js?v=5.7b9"></script>
+<script src="assets/cabecera.js?v=5.7b9"></script>
+<script src="assets/pestanas.js?v=5.7b9"></script>
+<script src="assets/rastreo.js?v=5.7b9"></script>
+<script src="assets/morse-motor.js?v=5.7b9"></script>
+<script src="assets/receptor.js?v=5.7b9"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
