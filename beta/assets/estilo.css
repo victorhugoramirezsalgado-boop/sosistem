@@ -1283,3 +1283,9 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 .lsm-mov b { position: absolute; top: -2px; right: 2px; color: #D9221A; font-size: 1rem; }
 .ap-tabla td small { display: block; font-size: .7rem; opacity: .75; }
 .ap-sal-lsm { grid-column: 1 / -1; }
+
+/* Beta · deletreo en Lengua de Señas Mexicana (LSM) en las pantallas, debajo de las banderas */
+.band-lsm { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px; margin-left: 8px; vertical-align: middle; }
+.band-lsm img { display: block; border-radius: 3px; background: #fff; }
+.band-lsm small { font: 700 .62rem var(--font); letter-spacing: .06em; opacity: .8; margin: 0 3px; }
+.band-lsm .lsm-esp { width: 6px; }
