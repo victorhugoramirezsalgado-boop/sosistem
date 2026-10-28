@@ -305,7 +305,9 @@
       <h2>Envío a GitHub (privado)</h2>
       <p class="t-nota">Los eventos se suben a tu repositorio privado, en la carpeta <code>pruebas/terminal/</code>. Con la bóveda activa se suben como archivos <code>.cubo.txt</code> cifrados. El token se guarda solo en este celular. Crea un token «fine-grained» con permiso <i>Contents: Read and write</i> únicamente para ese repositorio.</p>
       <label>Repositorio (dueño/repo)<input name="repo" maxlength="100" spellcheck="false"></label>
-      <label>Token de GitHub<input name="token" type="password" maxlength="200" spellcheck="false" placeholder="github_pat_…"></label>
+      <button class="t-btn pri" type="button" id="btn-llavero">Guardar token con Google Authenticator</button>
+      <p class="t-nota" id="llavero-estado"></p>
+      <label>O escribirlo aquí (queda a la vista en este celular)<input name="token" type="password" maxlength="200" spellcheck="false" placeholder="github_pat_…"></label>
       <label class="t-chk"><input type="checkbox" name="auto"> Enviar automáticamente al terminar cada alerta</label>
       <a class="t-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Crear token en GitHub ↗</a>
 
@@ -360,7 +362,8 @@
 <script src="assets/boveda.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
-<script src="assets/terminal.js?v=5.7b20"></script>
+<script src="assets/llavero-beta.js?v=3"></script>
+<script src="assets/terminal.js?v=5.7b21"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */

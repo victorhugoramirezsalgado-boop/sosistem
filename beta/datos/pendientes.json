@@ -1,5 +1,13 @@
 [
  {
+  "id": 128,
+  "titulo": "Terminal: token con Google Authenticator",
+  "que": "En la Terminal de pruebas (celulares) el token de GitHub ya no se escribe a la vista: «Guardar token con Google Authenticator» lo guarda cifrado en el celular y se abre con el código de 6 números. Queda abierto la jornada (8 h) solo en memoria; si está cerrado, los envíos automáticos esperan y los eventos se guardan en el celular.",
+  "espacio": "Terminal › Ajustes › Envío a GitHub (privado).",
+  "modificacion": "Tu indicación (28-oct-2026) para el piloto con celulares.",
+  "estado": "Por autorizar"
+ },
+ {
   "id": 127,
   "titulo": "Autorización con Google Authenticator",
   "que": "Todo el acceso de escritura se abre con Google Authenticator. El token de GitHub se pega una sola vez por equipo y queda cifrado ahí; después la Beta (autorizaciones, constancias) y el administrador (Guardar y publicar, Currículum, Pruebas de la terminal) solo piden el código de 6 números. Con el 3.er paso activo en el administrador, una sola cuenta «SOSistem: Administrador» sirve para todo: al entrar con su código, el token se abre solo y no se pide otro código.",
