@@ -2,9 +2,9 @@
  {
   "id": 127,
   "titulo": "Autorización con Google Authenticator",
-  "que": "En la Beta, «Enviar autorizaciones» y «Registrar constancia» ya no piden el token de GitHub: piden el código de 6 números de Google Authenticator (cuenta «SOSistem Beta»). El token se pega una sola vez por equipo y queda cifrado en ese equipo. En el administrador de la Beta se puede activar como 3.er paso de verificación (Ajustes).",
-  "espacio": "Página Beta (pendientes y constancia) y administrador Beta: Ajustes › Verificación con Google Authenticator.",
-  "modificacion": "Tu indicación (28-oct-2026): «Que el token de sosistem para beta ese sea por la 2da autentificación».",
+  "que": "Todo el acceso de escritura se abre con Google Authenticator. El token de GitHub se pega una sola vez por equipo y queda cifrado ahí; después la Beta (autorizaciones, constancias) y el administrador (Guardar y publicar, Currículum, Pruebas de la terminal) solo piden el código de 6 números. Con el 3.er paso activo en el administrador, una sola cuenta «SOSistem: Administrador» sirve para todo: al entrar con su código, el token se abre solo y no se pide otro código.",
+  "espacio": "Página Beta (pendientes y constancia) y administrador Beta: acceso (3.er paso) y Ajustes › Publicación en GitHub / Verificación con Google Authenticator.",
+  "modificacion": "Tu indicación (28-oct-2026): «Que el token de sosistem para beta ese sea por la 2da autentificación». · 28-oct-2026: «Necesito sea todo el acceso por autentificador para GitHub y para sosistem.com».",
   "estado": "Por autorizar"
  },
  {
