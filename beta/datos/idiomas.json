@@ -131,7 +131,8 @@
   "tab_pendientes",
   "tab_mensajero",
   "tab_constancia",
-  "grp_resumen"
+  "grp_resumen",
+  "tab_configurador"
  ],
  "idiomas": {
   "es": {
@@ -269,7 +270,8 @@
     "Pendientes Beta",
     "Mensajero del Cubo",
     "Constancia",
-    "Resumen ejecutivo"
+    "Resumen ejecutivo",
+    "Configurador"
    ]
   },
   "en": {
@@ -407,7 +409,8 @@
     "Pendientes Beta",
     "Cube Messenger",
     "Constancia",
-    "Executive summary"
+    "Executive summary",
+    "Configurator"
    ]
   },
   "pt": {
@@ -545,7 +548,8 @@
     "Pendientes Beta",
     "Mensageiro do Cubo",
     "Constancia",
-    "Resumo executivo"
+    "Resumo executivo",
+    "Configurador"
    ]
   },
   "fr": {
@@ -683,7 +687,8 @@
     "Pendientes Beta",
     "Messager du Cube",
     "Constancia",
-    "Résumé exécutif"
+    "Résumé exécutif",
+    "Configurateur"
    ]
   },
   "it": {
@@ -821,7 +826,8 @@
     "Pendientes Beta",
     "Messaggero del Cubo",
     "Constancia",
-    "Sintesi esecutiva"
+    "Sintesi esecutiva",
+    "Configuratore"
    ]
   },
   "de": {
@@ -959,7 +965,8 @@
     "Pendientes Beta",
     "Würfel-Messenger",
     "Constancia",
-    "Zusammenfassung"
+    "Zusammenfassung",
+    "Konfigurator"
    ]
   },
   "nl": {
@@ -1097,7 +1104,8 @@
     "Pendientes Beta",
     "Kubus-berichtendienst",
     "Constancia",
-    "Managementsamenvatting"
+    "Managementsamenvatting",
+    "Configurator"
    ]
   },
   "ca": {
@@ -1235,7 +1243,8 @@
     "Pendientes Beta",
     "Missatger del Cub",
     "Constancia",
-    "Resum executiu"
+    "Resum executiu",
+    "Configurador"
    ]
   },
   "gl": {
@@ -1373,7 +1382,8 @@
     "Pendientes Beta",
     "Mensaxeiro do Cubo",
     "Constancia",
-    "Resumo executivo"
+    "Resumo executivo",
+    "Configurador"
    ]
   },
   "eu": {
@@ -1511,7 +1521,8 @@
     "Pendientes Beta",
     "Kuboaren mezularia",
     "Constancia",
-    "Laburpen exekutiboa"
+    "Laburpen exekutiboa",
+    "Konfiguratzailea"
    ]
   },
   "da": {
@@ -1649,7 +1660,8 @@
     "Pendientes Beta",
     "Kube-messenger",
     "Constancia",
-    "Resumé"
+    "Resumé",
+    "Konfigurator"
    ]
   },
   "sv": {
@@ -1787,7 +1799,8 @@
     "Pendientes Beta",
     "Kub-meddelanden",
     "Constancia",
-    "Sammanfattning"
+    "Sammanfattning",
+    "Konfigurator"
    ]
   },
   "nb": {
@@ -1925,7 +1938,8 @@
     "Pendientes Beta",
     "Kube-messenger",
     "Constancia",
-    "Sammendrag"
+    "Sammendrag",
+    "Konfigurator"
    ]
   },
   "ga": {
@@ -2063,7 +2077,8 @@
     "Pendientes Beta",
     "Teachtaire an Chiúb",
     "Constancia",
-    "Achoimre feidhmiúcháin"
+    "Achoimre feidhmiúcháin",
+    "Cumraitheoir"
    ]
   },
   "el": {
@@ -2201,7 +2216,8 @@
     "Pendientes Beta",
     "Αγγελιοφόρος του Κύβου",
     "Constancia",
-    "Συνοπτική παρουσίαση"
+    "Συνοπτική παρουσίαση",
+    "Διαμορφωτής"
    ]
   },
   "ru": {
@@ -2339,7 +2355,8 @@
     "Pendientes Beta",
     "Мессенджер Куба",
     "Constancia",
-    "Краткое резюме"
+    "Краткое резюме",
+    "Конфигуратор"
    ]
   },
   "uk": {
@@ -2477,7 +2494,8 @@
     "Pendientes Beta",
     "Месенджер Куба",
     "Constancia",
-    "Короткий огляд"
+    "Короткий огляд",
+    "Конфігуратор"
    ]
   },
   "ar": {
@@ -2615,7 +2633,8 @@
     "Pendientes Beta",
     "مراسل المكعب",
     "Constancia",
-    "الملخص التنفيذي"
+    "الملخص التنفيذي",
+    "أداة التهيئة"
    ]
   },
   "he": {
@@ -2753,7 +2772,8 @@
     "Pendientes Beta",
     "שליח הקובייה",
     "Constancia",
-    "תקציר מנהלים"
+    "תקציר מנהלים",
+    "מגדיר"
    ]
   },
   "hi": {
@@ -2891,7 +2911,8 @@
     "Pendientes Beta",
     "घन संदेशवाहक",
     "Constancia",
-    "कार्यकारी सारांश"
+    "कार्यकारी सारांश",
+    "विन्यासक"
    ]
   },
   "zh": {
@@ -3029,7 +3050,8 @@
     "Pendientes Beta",
     "立方体信使",
     "Constancia",
-    "执行摘要"
+    "执行摘要",
+    "配置器"
    ]
   },
   "ja": {
@@ -3167,7 +3189,8 @@
     "Pendientes Beta",
     "キューブ・メッセンジャー",
     "Constancia",
-    "エグゼクティブサマリー"
+    "エグゼクティブサマリー",
+    "設定ツール"
    ]
   }
  },
