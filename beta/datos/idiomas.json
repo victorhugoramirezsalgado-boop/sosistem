@@ -126,7 +126,9 @@
   "grp_foda",
   "grp_aprende",
   "tab_foda",
-  "tab_aprende"
+  "tab_aprende",
+  "tab_modalidades",
+  "tab_pendientes"
  ],
  "idiomas": {
   "es": {
@@ -259,7 +261,9 @@
     "FODA",
     "Aprendizaje",
     "FODA",
-    "Aprendizaje"
+    "Aprendizaje",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "en": {
@@ -392,7 +396,9 @@
     "SWOT",
     "Learning",
     "SWOT",
-    "Learning"
+    "Learning",
+    "Architecture",
+    "Pendientes Beta"
    ]
   },
   "pt": {
@@ -525,7 +531,9 @@
     "FOFA",
     "Aprendizagem",
     "FOFA",
-    "Aprendizagem"
+    "Aprendizagem",
+    "Arquitetura",
+    "Pendientes Beta"
    ]
   },
   "fr": {
@@ -658,7 +666,9 @@
     "FFOM",
     "Apprentissage",
     "FFOM",
-    "Apprentissage"
+    "Apprentissage",
+    "Architecture",
+    "Pendientes Beta"
    ]
   },
   "it": {
@@ -791,7 +801,9 @@
     "SWOT",
     "Apprendimento",
     "SWOT",
-    "Apprendimento"
+    "Apprendimento",
+    "Architettura",
+    "Pendientes Beta"
    ]
   },
   "de": {
@@ -924,7 +936,9 @@
     "SWOT",
     "Lernen",
     "SWOT",
-    "Lernen"
+    "Lernen",
+    "Architektur",
+    "Pendientes Beta"
    ]
   },
   "nl": {
@@ -1057,7 +1071,9 @@
     "SWOT",
     "Leren",
     "SWOT",
-    "Leren"
+    "Leren",
+    "Architectuur",
+    "Pendientes Beta"
    ]
   },
   "ca": {
@@ -1190,7 +1206,9 @@
     "DAFO",
     "Aprenentatge",
     "DAFO",
-    "Aprenentatge"
+    "Aprenentatge",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "gl": {
@@ -1323,7 +1341,9 @@
     "DAFO",
     "Aprendizaxe",
     "DAFO",
-    "Aprendizaxe"
+    "Aprendizaxe",
+    "Arquitectura",
+    "Pendientes Beta"
    ]
   },
   "eu": {
@@ -1456,7 +1476,9 @@
     "AMIA",
     "Ikaskuntza",
     "AMIA",
-    "Ikaskuntza"
+    "Ikaskuntza",
+    "Arkitektura",
+    "Pendientes Beta"
    ]
   },
   "da": {
@@ -1589,7 +1611,9 @@
     "SWOT",
     "Læring",
     "SWOT",
-    "Læring"
+    "Læring",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "sv": {
@@ -1722,7 +1746,9 @@
     "SWOT",
     "Lärande",
     "SWOT",
-    "Lärande"
+    "Lärande",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "nb": {
@@ -1855,7 +1881,9 @@
     "SWOT",
     "Læring",
     "SWOT",
-    "Læring"
+    "Læring",
+    "Arkitektur",
+    "Pendientes Beta"
    ]
   },
   "ga": {
@@ -1988,7 +2016,9 @@
     "SWOT",
     "Foghlaim",
     "SWOT",
-    "Foghlaim"
+    "Foghlaim",
+    "Ailtireacht",
+    "Pendientes Beta"
    ]
   },
   "el": {
@@ -2121,7 +2151,9 @@
     "SWOT",
     "Μάθηση",
     "SWOT",
-    "Μάθηση"
+    "Μάθηση",
+    "Αρχιτεκτονική",
+    "Pendientes Beta"
    ]
   },
   "ru": {
@@ -2254,7 +2286,9 @@
     "SWOT",
     "Обучение",
     "SWOT",
-    "Обучение"
+    "Обучение",
+    "Архитектура",
+    "Pendientes Beta"
    ]
   },
   "uk": {
@@ -2387,7 +2421,9 @@
     "SWOT",
     "Навчання",
     "SWOT",
-    "Навчання"
+    "Навчання",
+    "Архітектура",
+    "Pendientes Beta"
    ]
   },
   "ar": {
@@ -2520,7 +2556,9 @@
     "SWOT",
     "التعلّم",
     "SWOT",
-    "التعلّم"
+    "التعلّم",
+    "البنية",
+    "Pendientes Beta"
    ]
   },
   "he": {
@@ -2653,7 +2691,9 @@
     "SWOT",
     "למידה",
     "SWOT",
-    "למידה"
+    "למידה",
+    "ארכיטקטורה",
+    "Pendientes Beta"
    ]
   },
   "hi": {
@@ -2786,7 +2826,9 @@
     "SWOT",
     "अधिगम",
     "SWOT",
-    "अधिगम"
+    "अधिगम",
+    "आर्किटेक्चर",
+    "Pendientes Beta"
    ]
   },
   "zh": {
@@ -2919,7 +2961,9 @@
     "SWOT",
     "学习",
     "SWOT",
-    "学习"
+    "学习",
+    "架构",
+    "Pendientes Beta"
    ]
   },
   "ja": {
@@ -3052,7 +3096,9 @@
     "SWOT",
     "学習",
     "SWOT",
-    "学習"
+    "学習",
+    "構成",
+    "Pendientes Beta"
    ]
   }
  },

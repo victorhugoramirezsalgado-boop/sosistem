@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b5">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b6">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -324,6 +324,25 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <div class="rung n3"><b>N3 · 911</b><span>Mensaje CAP v1.2 y llamada · a los <em data-t="N3">200</em> s</span></div>
     </div>
     <p class="note" style="margin-top:12px">Tiempos de la versión 1.0.0, configurables por recinto; para menores de edad se reducen a la mitad. Se calibran en el piloto.</p>
+  </div>
+</section>
+
+<section class="slide blk" id="modalidades">
+  <div class="wrap">
+    <span class="eyebrow">Arquitectura del sistema</span>
+    <h2>Una sola plataforma, de un celular a todo un inmueble.</h2>
+    <p class="lead fo-lead">SOSistem™ funciona en dos modalidades y se muestra en las pantallas que el cliente ya tiene. Los sensores se instalan según la necesidad de cada cliente.</p>
+    <div class="grid g2 md-dos">
+      <div class="card md-c md-rapida"><span class="md-i" aria-hidden="true">📱</span><h3>Modalidad rápida · celulares</h3><p>Cualquier celular funciona como terminal con sus propios sensores de movimiento, sonido y ubicación. Es la forma más rápida, funcional y operativa de empezar: sin instalación, para pruebas, eventos temporales o emergencias.</p></div>
+      <div class="card md-c md-fija"><span class="md-i" aria-hidden="true">▣</span><h3>Modalidad principal · sensores fijos</h3><p>Sensores instalados en cabinas, sanitarios, recintos confinados y espacios de trabajo, con pantallas S.S.O.S.© fabricadas para cada lugar. Es la operación permanente del sistema.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card md-c"><h3>Pantallas: también las que usted ya tiene</h3><p>La información se ve en pantallas S.S.O.S.©, iPad y tabletas, celulares, computadoras y monitores de oficina, con un módulo lector conectado al sistema.</p></div>
+      <div class="card md-c"><h3>Administración en dos niveles</h3><p>Un administrador principal y uno secundario (director general, director de operaciones o encargado de seguridad) tienen las mismas facultades: autorizar los módulos de instalación, de vista y de lectura de cada recinto en sus pantallas.</p></div>
+    </div>
+    <div class="card md-c" style="margin-top:14px"><h3>Sensores a la medida del cliente</h3><p>Se instalan y adquieren según la necesidad del cliente principal: el paquete completo, con todos los niveles de lectura del sistema, o solo los sensores básicos que elija.</p>
+      <ul class="md-chips"><li>Humo</li><li>Gas</li><li>Movimiento</li><li>Nivel de sonido</li><li>Calor</li><li>Frío</li><li>Oxígeno</li><li>Hidrógeno</li><li>Monóxido de carbono</li><li>Agua en el piso</li><li>Vibración y sismo</li><li>Inventario de personas</li><li>Tiempo promedio de permanencia del personal</li><li>Masa y peso</li><li>Volumen y espacio (m³)</li><li>Capacidad mínima y máxima</li></ul>
+      <p class="note">Paquete completo: todos los niveles de lectura del sistema · Paquete básico: los sensores que el cliente elija.</p></div>
   </div>
 </section>
 
@@ -859,6 +878,21 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk no-traducir" id="pendientes-beta">
+  <div class="wrap">
+    <span class="eyebrow">Solo Beta · administrador</span>
+    <h2>Pendientes por autorizar</h2>
+    <p class="note">Cada renglón dice qué es, dónde va (espacio) y qué cambia (modificación). Marque Autorizar, Con cambios o No; se guarda en este equipo. Al terminar, copie las decisiones y péguelas en el chat con Claude.</p>
+    <div class="pb-res" id="pb-res"></div>
+    <div class="tbl-wrap"><table class="pb-tabla">
+      <thead><tr><th>#</th><th>Pendiente</th><th>Espacio</th><th>Modificación</th><th>Estado</th><th>Decisión</th></tr></thead>
+      <tbody id="pb-lista"></tbody>
+    </table></div>
+    <p><button class="btn primary" type="button" id="pb-copiar">Copiar decisiones para Claude</button> <a class="btn" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Abrir chat con Claude</a> <button class="btn" type="button" id="pb-borrar">Borrar decisiones</button></p>
+    <p class="note" id="pb-msg" role="status"></p>
+  </div>
+</section>
+
 <section class="slide blk" id="contacto">
   <div class="wrap">
     <span class="eyebrow">Contacto</span>
@@ -917,23 +951,24 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7b5"></script>
-<script src="assets/logo-giro.js?v=5.7b5"></script>
-<script src="assets/app.js?v=5.7b5"></script>
-<script src="assets/cubo.js?v=5.7b5"></script>
-<script src="assets/morse.js?v=5.7b5"></script>
-<script src="assets/pantalla.js?v=5.7b5"></script>
-<script src="assets/pantalla-tema.js?v=5.7b5"></script>
-<script src="assets/aprende.js?v=5.7b5"></script>
-<script src="assets/cubo-morse.js?v=5.7b5"></script>
-<script src="assets/idiomas.js?v=5.7b5"></script>
-<script src="assets/banderas.js?v=5.7b5"></script>
-<script src="assets/servicios12.js?v=5.7b5"></script>
-<script src="assets/cabecera.js?v=5.7b5"></script>
-<script src="assets/pestanas.js?v=5.7b5"></script>
-<script src="assets/rastreo.js?v=5.7b5"></script>
-<script src="assets/morse-motor.js?v=5.7b5"></script>
-<script src="assets/receptor.js?v=5.7b5"></script>
+<script src="assets/cubo-rt.js?v=5.7b6"></script>
+<script src="assets/logo-giro.js?v=5.7b6"></script>
+<script src="assets/app.js?v=5.7b6"></script>
+<script src="assets/cubo.js?v=5.7b6"></script>
+<script src="assets/morse.js?v=5.7b6"></script>
+<script src="assets/pantalla.js?v=5.7b6"></script>
+<script src="assets/pantalla-tema.js?v=5.7b6"></script>
+<script src="assets/aprende.js?v=5.7b6"></script>
+<script src="assets/pendientes-beta.js?v=5.7b6"></script>
+<script src="assets/cubo-morse.js?v=5.7b6"></script>
+<script src="assets/idiomas.js?v=5.7b6"></script>
+<script src="assets/banderas.js?v=5.7b6"></script>
+<script src="assets/servicios12.js?v=5.7b6"></script>
+<script src="assets/cabecera.js?v=5.7b6"></script>
+<script src="assets/pestanas.js?v=5.7b6"></script>
+<script src="assets/rastreo.js?v=5.7b6"></script>
+<script src="assets/morse-motor.js?v=5.7b6"></script>
+<script src="assets/receptor.js?v=5.7b6"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

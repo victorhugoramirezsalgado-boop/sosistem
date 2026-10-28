@@ -1,0 +1,154 @@
+[
+ {
+  "id": 1,
+  "titulo": "FODA",
+  "que": "Pestaña nueva «FODA» (fortalezas, oportunidades, debilidades y amenazas con el objetivo de salvar vidas).",
+  "espacio": "Pestaña nueva entre «El sistema» y «S.S.O.S.©».",
+  "modificacion": "Problema, Datos y Ventajas pasan dentro de FODA; desaparece la pestaña «Problema y datos».",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 2,
+  "titulo": "Experiencia del autor",
+  "que": "Texto de tu experiencia en Fortalezas (MBA, más de 20 años, OEA, CONOCER).",
+  "espacio": "FODA › Fortalezas, último renglón.",
+  "modificacion": "Falta el número de certificado CONOCER y confirmar el nombre de los cursos de la OEA.",
+  "estado": "Falta dato"
+ },
+ {
+  "id": 3,
+  "titulo": "Certificación pendiente",
+  "que": "Debilidad: faltan muestras físicas para un organismo certificador nacional o internacional.",
+  "espacio": "FODA › Debilidades.",
+  "modificacion": "Sustituye «Certificaciones en trámite».",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 4,
+  "titulo": "Aprendizaje",
+  "que": "Pestaña nueva: Morse, braille, banderas, alfabeto fonético y Lengua de Señas Mexicana.",
+  "espacio": "Pestaña nueva después de «Señales y Morse».",
+  "modificacion": "El Receptor Morse pasa a esta pestaña.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 5,
+  "titulo": "Arquitectura del sistema",
+  "que": "Modalidad rápida (celulares), modalidad principal (sensores fijos), pantallas que ya tiene el cliente, administración en dos niveles y sensores a la medida.",
+  "espacio": "«El sistema», después de «Cómo funciona».",
+  "modificacion": "Sección nueva; no cambia las existentes.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 6,
+  "titulo": "Cubo de estado en terminales",
+  "que": "Cubo SOSistem™ a los lados de cada terminal: verde normal, ámbar advertencia, rojo auxilio urgente, blanco sismo.",
+  "espacio": "Portada (6 pantallas) y simulador.",
+  "modificacion": "Agrega 2 cubos chicos en las esquinas superiores de cada pantalla.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 7,
+  "titulo": "Tipo de área",
+  "que": "59 áreas en 10 grupos con conceptos de segregación y riesgos que vigila.",
+  "espacio": "S.S.O.S.© y pantallas › simulador.",
+  "modificacion": "Selector nuevo y recuadro de conceptos arriba de la pantalla.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 8,
+  "titulo": "Códigos de color",
+  "que": "HEX, RGB, RAL y luz LED al lado de cada falla y tabla de códigos (incluye naranja SOSistem y negro).",
+  "espacio": "Simulador › leyenda y «Colores por falla».",
+  "modificacion": "Agrega una línea bajo cada falla de la leyenda.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 9,
+  "titulo": "Colores internacionales en cubos",
+  "que": "Cada pestaña lleva un cubo con colores del sistema internacional (rojo, amarillo, verde, azul, blanco y negro; naranja de marca).",
+  "espacio": "Menú de pestañas.",
+  "modificacion": "Cambia los colores de grupo de las pestañas.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 10,
+  "titulo": "Botón «Pestañas»",
+  "que": "Botón corto con punto naranja; cinta solo la primera vez; botón movible que recuerda su lugar.",
+  "espacio": "Esquina superior derecha (o izquierda si se mueve).",
+  "modificacion": "Sustituye «Ver pestañas del sistema».",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 11,
+  "titulo": "Pestañas a la orilla",
+  "que": "Pestañas del mismo ancho, pegadas a la orilla y con el color de su grupo.",
+  "espacio": "Menú de pestañas.",
+  "modificacion": "Solo estilo.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 12,
+  "titulo": "Ícono «SOS Beta»",
+  "que": "Ícono de app con franja BETA para no confundirlo con el oficial.",
+  "espacio": "Pantalla de inicio del teléfono.",
+  "modificacion": "Solo en la Beta; el oficial no cambia.",
+  "estado": "Listo en Beta"
+ },
+ {
+  "id": 13,
+  "titulo": "Logos del Cubo Morse©",
+  "que": "Faltan 7 logos: Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía©.",
+  "espacio": "Cubo Morse© › tarjetas.",
+  "modificacion": "Propuestas de uno en uno; Código Cúbico© tiene 3 opciones por elegir.",
+  "estado": "Pausado"
+ },
+ {
+  "id": 14,
+  "titulo": "PDF del cubo para armar",
+  "que": "Regenerar con el registro de ContenedorEns© (2609046908752).",
+  "espacio": "Cubo Morse© › descargar PDF.",
+  "modificacion": "Cambia una cara del PDF.",
+  "estado": "Pendiente"
+ },
+ {
+  "id": 15,
+  "titulo": "Constancia para quien aporte",
+  "que": "PDF con folio, QR de verificación y firma; aclara que no es recibo deducible.",
+  "espacio": "Fondo y apoyo.",
+  "modificacion": "Función nueva.",
+  "estado": "Falta dato"
+ },
+ {
+  "id": 16,
+  "titulo": "Botones por tipo de visitante",
+  "que": "Cliente · Donante · Institución · Probar ahora, en la portada.",
+  "espacio": "Inicio.",
+  "modificacion": "Agrega 4 botones arriba del contenido.",
+  "estado": "Propuesta"
+ },
+ {
+  "id": 17,
+  "titulo": "Contador GoatCounter",
+  "que": "Confirmar la cuenta «sosistem» y activar el contador público.",
+  "espacio": "Terminal de pruebas › conteo de usuarios.",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Pendiente"
+ },
+ {
+  "id": 18,
+  "titulo": "Revisión de traducciones",
+  "que": "Revisión por hablantes nativos antes de presentar ante BID, OEA y ONU.",
+  "espacio": "Todo el sitio (22 idiomas).",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Pendiente"
+ },
+ {
+  "id": 19,
+  "titulo": "Pasar la Beta al sitio oficial",
+  "que": "Publicar todo lo autorizado como versión 5.7 en sosistem.com.",
+  "espacio": "Sitio oficial.",
+  "modificacion": "Se quita el aviso Beta, la clave y la liga a Claude.",
+  "estado": "Por autorizar"
+ }
+]
