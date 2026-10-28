@@ -1,7 +1,8 @@
 # Imagen para compartir de SOSistem™ (WhatsApp, Instagram, Facebook, LinkedIn) · © Víctor Hugo Ramírez Salgado
 # En cada cambio del sitio vuelve a tomar la foto de la terminal NODO S.O.S.© y la compone con el Cubo Morse© naranja;
 # la liga de la imagen lleva la versión para que las redes sociales no muestren una imagen vieja.
-name: Imagen para compartir
+# También regenera el Manual de configuración (assets/manual-configuracion-sosistem.pdf, 5 hojas, APA 7).
+name: Imagen para compartir y manual
 on:
   push:
     branches: [main]
@@ -30,12 +31,13 @@ jobs:
           python3 -m http.server 8765 >/dev/null 2>&1 &
           sleep 2
           node herramientas/og.mjs
+          node herramientas/manual.mjs
       - name: Guardar
         run: |
           git config user.name "SOSistem imagen"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/og-sosistem.png index.html
+          git add assets/og-sosistem.png assets/manual-configuracion-sosistem.pdf index.html
           if ! git diff --cached --quiet; then
-            git commit -m "Imagen para compartir actualizada [skip ci]"
+            git commit -m "Imagen para compartir y manual actualizados [skip ci]"
             for i in 1 2 3; do git pull --rebase -q origin main && git push && break; sleep 5; done
           fi

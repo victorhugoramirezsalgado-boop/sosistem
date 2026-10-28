@@ -1,5 +1,13 @@
 [
  {
+  "id": 110,
+  "titulo": "Liga al Manual de configuración",
+  "que": "Manual de configuración en PDF (5 hojas, APA 7, índice con ligas, fuentes en cada hoja) que se regenera solo con cada versión.",
+  "espacio": "Pie de página: «Manual de configuración (PDF)».",
+  "modificacion": "Agrega una liga en el pie; el PDF ya está en sosistem.com/assets/manual-configuracion-sosistem.pdf.",
+  "estado": "Por autorizar"
+ },
+ {
   "id": 101,
   "titulo": "Matriz FODA y referencias",
   "que": "Cuadro real 2×2 (F, O, D, A) con factores internos/externos y favorables/desfavorables, referencia del origen del FODA (Puyt, Lie y Wilderom, 2023) y vigencia de los datos.",
