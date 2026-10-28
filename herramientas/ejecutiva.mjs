@@ -51,7 +51,7 @@ const SERV = [
 
 const hoja1 = `<section class="h">
   ${emblema({ titulo: "Presentación ejecutiva · SOSistem™", sub: `Sistema S.O.S.© · Alerta temprana para salvar vidas en recintos confinados · versión ${esc(ver)} · ${hoy}`, flags })}
-  <p class="lead"><b>SOSistem™</b> detecta en segundos a una persona en el suelo, un sismo, una fuga de gas o una situación de violencia en sanitarios, vestidores, cabinas y espacios confinados, <b>sin cámaras ni grabación</b>, y escala la alerta hasta el 911. Está diseñado para recintos públicos y centros de trabajo donde la privacidad impide la videovigilancia.</p>
+  <p class="lead"><b>SOSistem™</b>, mediante sensores y terminales (pantallas) de observación e información al momento, detecta en segundos a una persona en el suelo, un sismo, una fuga de gas o una situación de violencia en sanitarios, vestidores, cabinas y espacios confinados, <b>sin cámaras ni grabación</b>, y escala la alerta hasta el 911. Está diseñado para recintos públicos y centros de trabajo donde la privacidad impide la videovigilancia.</p>
   <h2>El problema</h2>
   <div class="kpis">
     <div><b>684,000</b><span>muertes al año por caídas en el mundo; segunda causa de muerte por traumatismos no intencionales (OMS, 2021)</span></div>
