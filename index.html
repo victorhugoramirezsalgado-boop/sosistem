@@ -16,11 +16,11 @@
 <meta property="og:image" content="https://sosistem.com/assets/og-sosistem.png?v=5.8">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
-<meta property="og:site_name" content="SOSistem™">
 <meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="SOSistem™">
+<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.8">
+<link rel="stylesheet" href="assets/estilo.css?v=5.9">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -742,6 +742,29 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="mensajero">
+  <div class="wrap">
+    <span class="eyebrow">Código de comunicación del Cubo (33)©</span>
+    <h2>Mensajero del Cubo</h2>
+    <p class="lead fo-lead">Escriba un mensaje y conviértalo en Código de comunicación del Cubo (33)©, o pegue un código recibido para leerlo. Todo se procesa en este equipo: no se guarda ni se envía nada.</p>
+    <div class="grid g2 mc-grid">
+      <div class="card mc-c"><h3>Enviar</h3>
+        <label class="mc-l">Mensaje<textarea id="mc-msg" rows="4" maxlength="2000" autocomplete="off"></textarea></label>
+        <p><button class="btn primary" type="button" id="mc-cod-btn">Convertir a código</button></p>
+        <div id="mc-out-caja" hidden><label class="mc-l">Código del Cubo<textarea id="mc-out" class="mc-cod" rows="7" readonly></textarea></label>
+        <p><button class="btn" type="button" id="mc-copiar">Copiar</button> <button class="btn" type="button" id="mc-wa">Compartir por WhatsApp</button> <small id="mc-est1" role="status"></small></p></div>
+      </div>
+      <div class="card mc-c"><h3>Recibir</h3>
+        <label class="mc-l">Código del Cubo<textarea id="mc-in" class="mc-cod" rows="7" autocomplete="off" placeholder="CUBO·33 ◇ … ▸ … ◂ …"></textarea></label>
+        <p><button class="btn primary" type="button" id="mc-leer">Leer código</button></p>
+        <p class="mc-est" id="mc-est2" role="status"></p>
+        <p class="mc-texto" id="mc-texto" hidden></p>
+      </div>
+    </div>
+    <p class="note">Es un código de comunicación para leer y compartir, no un cifrado de seguridad. Su lectura por cámara (Código Cúbico©) queda para una interfaz futura.</p>
+  </div>
+</section>
+
 <section class="slide blk" id="receptor">
   <div class="wrap">
     <span class="eyebrow">Receptor Morse · a la escucha</span>
@@ -905,6 +928,24 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="resumen-ejecutivo">
+  <div class="wrap">
+    <span class="eyebrow">Resumen ejecutivo · presentación mundial</span>
+    <h2>SOSistem™ en cifras para el mundo.</h2>
+    <p>Sensores y terminales (pantallas) de observación e información al momento que detectan sin cámaras a una persona en el suelo, un sismo o una fuga de gas, y escalan la alerta hasta el 911. El resumen presenta el reto mundial, dónde puede operar el sistema, su impacto y su hoja de ruta, con cifras oficiales en formato APA 7.ª ed.</p>
+    <div class="grid g3">
+      <div class="card kpi"><div class="v">8.2 mil M</div><span class="l">personas en el mundo</span><span class="s">(Naciones Unidas, 2024)</span></div>
+      <div class="card kpi"><div class="v">684,000</div><span class="l">muertes al año por caídas</span><span class="s">(OMS, 2021)</span></div>
+      <div class="card kpi"><div class="v">≈ 3 M</div><span class="l">muertes al año ligadas al trabajo</span><span class="s">(OIT, 2023)</span></div>
+      <div class="card kpi"><div class="v">82 %</div><span class="l">de las personas de 10 años o más tiene celular</span><span class="s">(UIT, 2025)</span></div>
+      <div class="card kpi"><div class="v">40 %</div><span class="l">de los países aún no tiene alerta temprana multirriesgo</span><span class="s">(OMM, 2025)</span></div>
+      <div class="card kpi"><div class="v">258,522</div><span class="l">escuelas en México</span><span class="s">(SEP, 2025)</span></div>
+    </div>
+    <p style="margin-top:16px"><a class="btn primary" href="assets/resumen-ejecutivo-global-sosistem.pdf" target="_blank" rel="noopener">Descargar el resumen ejecutivo global (PDF)</a> <a class="btn" href="assets/presentacion-ejecutiva-sosistem.pdf" target="_blank" rel="noopener">Presentación para banca de desarrollo (PDF, 3 hojas)</a></p>
+    <p class="note">Incluye índice, escenarios de adopción calculados a partir de cifras oficiales y referencias completas. Se actualiza con cada versión del sistema.</p>
+  </div>
+</section>
+
 <section class="blk no-present" id="fuentes">
   <div class="wrap">
     <span class="eyebrow">Fuentes</span>
@@ -957,24 +998,26 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.8"></script>
-<script src="assets/logo-giro.js?v=5.8"></script>
-<script src="assets/app.js?v=5.8"></script>
-<script src="assets/cubo.js?v=5.8"></script>
-<script src="assets/morse.js?v=5.8.3"></script>
-<script src="assets/pantalla.js?v=5.8"></script>
-<script src="assets/pantalla-tema.js?v=5.8"></script>
-<script src="assets/aprende.js?v=5.8"></script>
-<script src="assets/tablas.js?v=5.8"></script>
-<script src="assets/cubo-morse.js?v=5.8"></script>
-<script src="assets/idiomas.js?v=5.8.3"></script>
-<script src="assets/banderas.js?v=5.8"></script>
-<script src="assets/servicios12.js?v=5.8"></script>
-<script src="assets/cabecera.js?v=5.8"></script>
-<script src="assets/pestanas.js?v=5.8"></script>
-<script src="assets/rastreo.js?v=5.8"></script>
-<script src="assets/morse-motor.js?v=5.8"></script>
-<script src="assets/receptor.js?v=5.8"></script>
+<script src="assets/cubo-rt.js?v=5.9"></script>
+<script src="assets/logo-giro.js?v=5.9"></script>
+<script src="assets/app.js?v=5.9"></script>
+<script src="assets/cubo.js?v=5.9"></script>
+<script src="assets/morse.js?v=5.9"></script>
+<script src="assets/pantalla.js?v=5.9"></script>
+<script src="assets/pantalla-tema.js?v=5.9"></script>
+<script src="assets/aprende.js?v=5.9"></script>
+<script src="assets/tablas.js?v=5.9"></script>
+<script src="assets/codigo-cubico.js?v=5.9"></script>
+<script src="assets/mensajero.js?v=5.9" defer></script>
+<script src="assets/cubo-morse.js?v=5.9"></script>
+<script src="assets/idiomas.js?v=5.9"></script>
+<script src="assets/banderas.js?v=5.9"></script>
+<script src="assets/servicios12.js?v=5.9"></script>
+<script src="assets/cabecera.js?v=5.9"></script>
+<script src="assets/pestanas.js?v=5.9"></script>
+<script src="assets/rastreo.js?v=5.9"></script>
+<script src="assets/morse-motor.js?v=5.9"></script>
+<script src="assets/receptor.js?v=5.9"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

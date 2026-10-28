@@ -8,59 +8,19 @@
   "estado": "Pendiente"
  },
  {
-  "id": 111,
-  "titulo": "Mensajero del Cubo (33)",
-  "que": "Enviar y recibir mensajes en Código de comunicación del Cubo (33)©, con firma de 3 al inicio y 3 al final; se procesa en el equipo y no se guarda nada.",
-  "espacio": "Aprendizaje › Mensajero del Cubo (entre Aprendizaje y Receptor Morse).",
-  "modificacion": "Sección nueva.",
-  "estado": "Por autorizar"
- },
- {
-  "id": 112,
-  "titulo": "Evaluación de la conformidad en curso",
-  "que": "Texto institucional que sustituye «Trámites de certificación pendientes» (ISO, NOM, reglamentos, tratados y legislación de cada país).",
-  "espacio": "FODA › Debilidades y matriz.",
-  "modificacion": "Ya aplicado en el sitio oficial 5.8 por tu indicación; confirma o pide cambios.",
-  "estado": "Por confirmar"
- },
- {
   "id": 114,
   "titulo": "Tipo de área",
   "que": "59 áreas en 10 grupos con conceptos de segregación; te envié la imagen.",
   "espacio": "S.S.O.S.© y pantallas › simulador.",
-  "modificacion": "Selector y recuadro de conceptos.",
+  "modificacion": "Tu indicación (27-oct-2026): mostrar antes de decidir. Imagen enviada de nuevo en el chat; el plano aún dibuja sanitarios en todos los tipos de área.",
   "estado": "Por autorizar"
  },
  {
   "id": 115,
   "titulo": "Logos del Cubo Morse©",
-  "que": "Propuestas de los 7 logos faltantes enviadas en imagen; elige una por logo.",
+  "que": "Por tu indicación: solo quedan los logos que están registrados en Safe Creative (ContenedorEns© y Arsa Bodegas©) y los del sistema (SOSistem™ y Cubo Morse©); las otras 8 caras quedan sin logo hasta tener su registro.",
   "espacio": "Cubo Morse© › tarjetas.",
-  "modificacion": "Se sustituyen los emblemas provisionales.",
-  "estado": "Por elegir"
- },
- {
-  "id": 116,
-  "titulo": "Botones por tipo de visitante",
-  "que": "Cliente · Donante · Institución · Probar ahora.",
-  "espacio": "Inicio.",
-  "modificacion": "4 botones arriba del contenido.",
-  "estado": "Sin decidir"
- },
- {
-  "id": 117,
-  "titulo": "Contador GoatCounter",
-  "que": "Confirmar la cuenta «sosistem» y activar «Allow adding visitor counts».",
-  "espacio": "goatcounter.com (acción tuya).",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Tu acción"
- },
- {
-  "id": 119,
-  "titulo": "Botones con borde más marcado",
-  "que": "Todo lo que se puede tocar (botones, tarjetas de los 12 servicios, caras del Cubo Morse©, fondos de pantalla, «Escuchar en Morse», Pestañas) lleva borde de 2 px en azul de información y realce al pasar o tocar, para que se reconozca como botón.",
-  "espacio": "Todo el sitio.",
-  "modificacion": "Estilo nuevo al final de estilo.css de la Beta.",
+  "modificacion": "Se quitan los emblemas provisionales de S.S.O.S., Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía© (solo en la Beta).",
   "estado": "Por autorizar"
  },
  {
@@ -69,77 +29,249 @@
   "que": "Última pestaña del menú con cifras mundiales verificadas (ONU, OMS, OIT, UIT, OMM, SEP) y descarga del Resumen ejecutivo global en PDF (9 hojas con índice y referencias APA 7.ª ed.) y de la presentación para banca de desarrollo (3 hojas).",
   "espacio": "Menú de Pestañas · última opción, después de Contacto.",
   "modificacion": "Sección nueva; el PDF se regenera con cada versión.",
-  "estado": "Por autorizar"
- },
- {
-  "id": 1,
-  "titulo": "FODA",
-  "que": "Pestaña nueva «FODA» (fortalezas, oportunidades, debilidades y amenazas con el objetivo de salvar vidas).",
-  "espacio": "Pestaña nueva entre «El sistema» y «S.S.O.S.©».",
-  "modificacion": "Problema, Datos y Ventajas pasan dentro de FODA; desaparece la pestaña «Problema y datos».",
   "estado": "Publicado",
-  "resolucion": "Publicado en el sitio oficial (5.7); la matriz 2×2 y sus referencias, en 5.8 (#101)."
+  "resolucion": "Autorizado el 27-oct-2026 y publicado en 5.9."
  },
  {
-  "id": 2,
-  "titulo": "Experiencia del autor",
-  "que": "Texto de tu experiencia en Fortalezas (MBA, más de 20 años, OEA, CONOCER).",
-  "espacio": "FODA › Fortalezas, último renglón.",
-  "modificacion": "Falta el número de certificado CONOCER y confirmar el nombre de los cursos de la OEA.",
+  "id": 120,
+  "titulo": "«Ver todo» en el inicio",
+  "que": "Botón «Ver todo» junto a «Ver cómo funciona» en la portada, y «Ver todo» como primera opción del menú de Pestañas: muestra todas las secciones en una sola página.",
+  "espacio": "Inicio (portada) y menú de Pestañas.",
+  "modificacion": "Retirado por indicación del autor: «Ver todo» se quita del menú y de la portada; la última pestaña pasa a ser «Resumen ejecutivo».",
+  "estado": "Retirado",
+  "resolucion": "Retirado por indicación del autor: «Ver todo» se quita del menú y de la portada; la última pestaña pasa a ser «Resumen ejecutivo»."
+ },
+ {
+  "id": 119,
+  "titulo": "Botones con borde más marcado",
+  "que": "Todo lo que se puede tocar (botones, tarjetas de los 12 servicios, caras del Cubo Morse©, fondos de pantalla, «Escuchar en Morse», Pestañas) lleva borde de 2 px en azul de información y realce al pasar o tocar, para que se reconozca como botón.",
+  "espacio": "Todo el sitio.",
+  "modificacion": "Estilo nuevo al final de estilo.css de la Beta.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 27-oct-2026 y publicado en 5.9."
+ },
+ {
+  "id": 118,
+  "titulo": "«Escuchar en Morse» con sonido al tocar",
+  "que": "El botón «Escuchar en Morse» junto al título de cada sección hoy solo destella (regla: solo suena en emergencias y pruebas). En Beta suena únicamente cuando la persona lo toca; nada suena solo.",
+  "espacio": "Todas las secciones · botón junto a cada título.",
+  "modificacion": "Autorizado: ya suena al tocar en el sitio oficial (Aprendizaje, receptor Morse y botones «Escuchar en Morse»). La Terminal conserva su regla: solo emergencias y pruebas.",
+  "estado": "Aplicado",
+  "resolucion": "Autorizado: ya suena al tocar en el sitio oficial (Aprendizaje, receptor Morse y botones «Escuchar en Morse»). La Terminal conserva su regla: solo emergencias y pruebas."
+ },
+ {
+  "id": 117,
+  "titulo": "Contador GoatCounter",
+  "que": "Confirmar la cuenta «sosistem» y activar «Allow adding visitor counts».",
+  "espacio": "goatcounter.com (acción tuya).",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Aplicado",
+  "resolucion": "Autorizado el 27-oct-2026: el contador ya está en el sitio; la opción «Allow adding visitor counts» se activa en tu cuenta de GoatCounter."
+ },
+ {
+  "id": 116,
+  "titulo": "Botones por tipo de visitante",
+  "que": "Cliente · Donante · Institución · Probar ahora.",
+  "espacio": "Inicio.",
+  "modificacion": "4 botones arriba del contenido.",
+  "estado": "Retirado",
+  "resolucion": "No autorizado (27-oct-2026): no se agregan botones por tipo de visitante."
+ },
+ {
+  "id": 113,
+  "titulo": "Cédulas profesionales y CONOCER",
+  "que": "Poner solo los números: 3 cédulas profesionales y 1 certificado CONOCER.",
+  "espacio": "FODA › Fortalezas y constancia.",
+  "modificacion": "Aplicado en el sitio oficial y en Beta: cédulas 11197647, 10392206, DGETI 6226780 y CONOCER 01837017, más cursos en España (Santander 2014, ValenciaPort), auditor ISO 9001/14001, IMDG, SOLAS, MARPOL y PBIP; también en la firma de la constancia.",
+  "estado": "Aplicado",
+  "resolucion": "Aplicado en el sitio oficial y en Beta: cédulas 11197647, 10392206, DGETI 6226780 y CONOCER 01837017, más cursos en España (Santander 2014, ValenciaPort), auditor ISO 9001/14001, IMDG, SOLAS, MARPOL y PBIP; también en la firma de la constancia."
+ },
+ {
+  "id": 112,
+  "titulo": "Evaluación de la conformidad en curso",
+  "que": "Texto institucional que sustituye «Trámites de certificación pendientes» (ISO, NOM, reglamentos, tratados y legislación de cada país).",
+  "espacio": "FODA › Debilidades y matriz.",
+  "modificacion": "Ya aplicado en el sitio oficial 5.8 por tu indicación; confirma o pide cambios.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 27-oct-2026; ya estaba en el sitio oficial desde 5.8."
+ },
+ {
+  "id": 111,
+  "titulo": "Mensajero del Cubo (33)",
+  "que": "Enviar y recibir mensajes en Código de comunicación del Cubo (33)©, con firma de 3 al inicio y 3 al final; se procesa en el equipo y no se guarda nada.",
+  "espacio": "Aprendizaje › Mensajero del Cubo (entre Aprendizaje y Receptor Morse).",
+  "modificacion": "Sección nueva.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 27-oct-2026 y publicado en 5.9 (Aprendizaje › Mensajero del Cubo)."
+ },
+ {
+  "id": 110,
+  "titulo": "Liga al Manual de configuración",
+  "que": "Manual de configuración en PDF (5 hojas, APA 7, índice con ligas, fuentes en cada hoja) que se regenera solo con cada versión.",
+  "espacio": "Pie de página: «Manual de configuración (PDF)».",
+  "modificacion": "Agrega una liga en el pie; el PDF ya está en sosistem.com/assets/manual-configuracion-sosistem.pdf.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado y publicado en 5.8."
+ },
+ {
+  "id": 109,
+  "titulo": "Revisión de traducciones",
+  "que": "Autorizada: falta conseguir revisores nativos de los 22 idiomas.",
+  "espacio": "Todo el sitio.",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Aplicado",
+  "resolucion": "Referencias de estándares de idiomas publicadas (5.8); la revisión por hablantes nativos queda a tu cargo."
+ },
+ {
+  "id": 108,
+  "titulo": "Contador GoatCounter",
+  "que": "Confirmar la cuenta «sosistem» y activar «Allow adding visitor counts».",
+  "espacio": "goatcounter.com (acción tuya).",
+  "modificacion": "Sin cambio de diseño.",
   "estado": "Sustituido",
-  "resolucion": "Continuó en #104 y quedó aplicado en #113 (cédulas y CONOCER)."
+  "resolucion": "Continúa en #117."
  },
  {
-  "id": 3,
-  "titulo": "Certificación pendiente",
-  "que": "Debilidad: faltan muestras físicas para un organismo certificador nacional o internacional.",
-  "espacio": "FODA › Debilidades.",
-  "modificacion": "Sustituye «Certificaciones en trámite».",
+  "id": 107,
+  "titulo": "Botones por tipo de visitante",
+  "que": "Cliente · Donante · Institución · Probar ahora.",
+  "espacio": "Inicio.",
+  "modificacion": "4 botones arriba del contenido.",
   "estado": "Sustituido",
-  "resolucion": "Continuó en #102 y #112: «Evaluación de la conformidad en curso»."
+  "resolucion": "Continúa en #116."
  },
  {
-  "id": 4,
-  "titulo": "Aprendizaje",
-  "que": "Pestaña nueva: Morse, braille, banderas, alfabeto fonético y Lengua de Señas Mexicana.",
-  "espacio": "Pestaña nueva después de «Señales y Morse».",
-  "modificacion": "El Receptor Morse pasa a esta pestaña.",
-  "estado": "Publicado",
-  "resolucion": "Publicado en el sitio oficial (5.7)."
+  "id": 106,
+  "titulo": "Logos del Cubo Morse©",
+  "que": "Faltan 7 logos (Código Cúbico© tiene 3 propuestas).",
+  "espacio": "Cubo Morse© › tarjetas.",
+  "modificacion": "De uno en uno.",
+  "estado": "Aplicado",
+  "resolucion": "Cubos de las pestañas quitados (5.8); los logos continúan en #115."
  },
  {
-  "id": 5,
-  "titulo": "Arquitectura del sistema",
-  "que": "Modalidad rápida (celulares), modalidad principal (sensores fijos), pantallas que ya tiene el cliente, administración en dos niveles y sensores a la medida.",
-  "espacio": "«El sistema», después de «Cómo funciona».",
-  "modificacion": "Sección nueva; no cambia las existentes.",
-  "estado": "Publicado",
-  "resolucion": "Publicado en el sitio oficial (5.8, sección Arquitectura)."
- },
- {
-  "id": 6,
-  "titulo": "Cubo de estado en terminales",
-  "que": "Cubo SOSistem™ a los lados de cada terminal: verde normal, ámbar advertencia, rojo auxilio urgente, blanco sismo.",
-  "espacio": "Portada (6 pantallas) y simulador.",
-  "modificacion": "Agrega 2 cubos chicos en las esquinas superiores de cada pantalla.",
-  "estado": "Publicado",
-  "resolucion": "Publicado en el sitio oficial (5.7)."
- },
- {
-  "id": 7,
+  "id": 105,
   "titulo": "Tipo de área",
   "que": "59 áreas en 10 grupos con conceptos de segregación y riesgos que vigila.",
   "espacio": "S.S.O.S.© y pantallas › simulador.",
-  "modificacion": "Selector nuevo y recuadro de conceptos arriba de la pantalla.",
+  "modificacion": "Selector y recuadro de conceptos.",
   "estado": "Sustituido",
-  "resolucion": "Continúa en #114 (Tipo de área), en la Beta."
+  "resolucion": "Continúa en #114 con imagen para revisar."
  },
  {
-  "id": 8,
-  "titulo": "Códigos de color",
-  "que": "HEX, RGB, RAL y luz LED al lado de cada falla y tabla de códigos (incluye naranja SOSistem y negro).",
-  "espacio": "Simulador › leyenda y «Colores por falla».",
-  "modificacion": "Agrega una línea bajo cada falla de la leyenda.",
+  "id": 104,
+  "titulo": "Experiencia del autor: número CONOCER",
+  "que": "Agregar el folio y el estándar (EC) del certificado CONOCER; confirmar el nombre de los cursos de la OEA.",
+  "espacio": "FODA › Fortalezas y constancia.",
+  "modificacion": "Solo texto.",
+  "estado": "Sustituido",
+  "resolucion": "Aplicado en #113."
+ },
+ {
+  "id": 103,
+  "titulo": "Constancia para quien aporta",
+  "que": "Constancia con folio SOS-AP, huella, QR, firma y Código Cúbico© (código de barras del Código de comunicación del Cubo (33)©, Safe Creative 2610097276721); registro sin datos personales y página para verificar que muestra el mismo Código Cúbico.",
+  "espacio": "Fondo y apoyo › Constancia (solo administrador).",
+  "modificacion": "Función nueva; al publicarse, el QR apuntará a sosistem.com/verificar.html.",
+  "estado": "Aplicado",
+  "resolucion": "Autorizado: constancia en la Beta (herramienta del administrador) con Código Cúbico© y verificación pública."
+ },
+ {
+  "id": 102,
+  "titulo": "Trámites de certificación pendientes",
+  "que": "Debilidad con tu redacción: trámite pendiente ante organismos reguladores, verificadores y certificadores, además de los de cada país.",
+  "espacio": "FODA › Debilidades.",
+  "modificacion": "Ya aplicado también en el sitio oficial 5.7; confirma o pide cambios.",
+  "estado": "Publicado",
+  "resolucion": "Texto institucional publicado en 5.8; confirmación final en #112."
+ },
+ {
+  "id": 101,
+  "titulo": "Matriz FODA y referencias",
+  "que": "Cuadro real 2×2 (F, O, D, A) con factores internos/externos y favorables/desfavorables, referencia del origen del FODA (Puyt, Lie y Wilderom, 2023) y vigencia de los datos.",
+  "espacio": "FODA: cuadro arriba de los cuadrantes; referencias al final.",
+  "modificacion": "Se agrega; reemplaza la nota corta de fuentes.",
+  "estado": "Publicado",
+  "resolucion": "Autorizado y publicado en 5.8."
+ },
+ {
+  "id": 19,
+  "titulo": "Pasar la Beta al sitio oficial",
+  "que": "Publicar todo lo autorizado como versión 5.7 en sosistem.com.",
+  "espacio": "Sitio oficial.",
+  "modificacion": "Se quita el aviso Beta, la clave y la liga a Claude.",
+  "estado": "Publicado",
+  "resolucion": "Publicado como versión 5.7; después 5.8."
+ },
+ {
+  "id": 18,
+  "titulo": "Revisión de traducciones",
+  "que": "Revisión por hablantes nativos antes de presentar ante BID, OEA y ONU.",
+  "espacio": "Todo el sitio (22 idiomas).",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Sustituido",
+  "resolucion": "Continuó en #109."
+ },
+ {
+  "id": 17,
+  "titulo": "Contador GoatCounter",
+  "que": "Confirmar la cuenta «sosistem» y activar el contador público.",
+  "espacio": "Terminal de pruebas › conteo de usuarios.",
+  "modificacion": "Sin cambio de diseño.",
+  "estado": "Sustituido",
+  "resolucion": "Continúa en #117."
+ },
+ {
+  "id": 16,
+  "titulo": "Botones por tipo de visitante",
+  "que": "Cliente · Donante · Institución · Probar ahora, en la portada.",
+  "espacio": "Inicio.",
+  "modificacion": "Agrega 4 botones arriba del contenido.",
+  "estado": "Sustituido",
+  "resolucion": "Continúa en #116."
+ },
+ {
+  "id": 15,
+  "titulo": "Constancia para quien aporte",
+  "que": "PDF con folio, QR de verificación y firma; aclara que no es recibo deducible.",
+  "espacio": "Fondo y apoyo.",
+  "modificacion": "Función nueva.",
+  "estado": "Sustituido",
+  "resolucion": "Continuó en #103: constancia aplicada en la Beta y verificación pública en sosistem.com/verificar.html."
+ },
+ {
+  "id": 13,
+  "titulo": "Logos del Cubo Morse©",
+  "que": "Faltan 7 logos: Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía©.",
+  "espacio": "Cubo Morse© › tarjetas.",
+  "modificacion": "Propuestas de uno en uno; Código Cúbico© tiene 3 opciones por elegir.",
+  "estado": "Sustituido",
+  "resolucion": "Continúa en #115 (propuestas de logos por elegir)."
+ },
+ {
+  "id": 12,
+  "titulo": "Ícono «SOS Beta»",
+  "que": "Ícono de app con franja BETA para no confundirlo con el oficial.",
+  "espacio": "Pantalla de inicio del teléfono.",
+  "modificacion": "Solo en la Beta; el oficial no cambia.",
+  "estado": "Aplicado",
+  "resolucion": "Aplicado solo en la Beta (no pasa al sitio oficial)."
+ },
+ {
+  "id": 11,
+  "titulo": "Pestañas a la orilla",
+  "que": "Pestañas del mismo ancho, pegadas a la orilla y con el color de su grupo.",
+  "espacio": "Menú de pestañas.",
+  "modificacion": "Solo estilo.",
+  "estado": "Publicado",
+  "resolucion": "Publicado en el sitio oficial (5.7)."
+ },
+ {
+  "id": 10,
+  "titulo": "Botón «Pestañas»",
+  "que": "Botón corto con punto naranja; cinta solo la primera vez; botón movible que recuerda su lugar.",
+  "espacio": "Esquina superior derecha (o izquierda si se mueve).",
+  "modificacion": "Sustituye «Ver pestañas del sistema».",
   "estado": "Publicado",
   "resolucion": "Publicado en el sitio oficial (5.7)."
  },
@@ -153,201 +285,75 @@
   "resolucion": "Retirado por tu indicación en #106: se quitaron los cubos de colores de las pestañas (5.8)."
  },
  {
-  "id": 10,
-  "titulo": "Botón «Pestañas»",
-  "que": "Botón corto con punto naranja; cinta solo la primera vez; botón movible que recuerda su lugar.",
-  "espacio": "Esquina superior derecha (o izquierda si se mueve).",
-  "modificacion": "Sustituye «Ver pestañas del sistema».",
+  "id": 8,
+  "titulo": "Códigos de color",
+  "que": "HEX, RGB, RAL y luz LED al lado de cada falla y tabla de códigos (incluye naranja SOSistem y negro).",
+  "espacio": "Simulador › leyenda y «Colores por falla».",
+  "modificacion": "Agrega una línea bajo cada falla de la leyenda.",
   "estado": "Publicado",
   "resolucion": "Publicado en el sitio oficial (5.7)."
  },
  {
-  "id": 11,
-  "titulo": "Pestañas a la orilla",
-  "que": "Pestañas del mismo ancho, pegadas a la orilla y con el color de su grupo.",
-  "espacio": "Menú de pestañas.",
-  "modificacion": "Solo estilo.",
-  "estado": "Publicado",
-  "resolucion": "Publicado en el sitio oficial (5.7)."
- },
- {
-  "id": 12,
-  "titulo": "Ícono «SOS Beta»",
-  "que": "Ícono de app con franja BETA para no confundirlo con el oficial.",
-  "espacio": "Pantalla de inicio del teléfono.",
-  "modificacion": "Solo en la Beta; el oficial no cambia.",
-  "estado": "Aplicado",
-  "resolucion": "Aplicado solo en la Beta (no pasa al sitio oficial)."
- },
- {
-  "id": 13,
-  "titulo": "Logos del Cubo Morse©",
-  "que": "Faltan 7 logos: Código Cúbico©, Cubo Interior©, Código Omnigráfico©, Intertopía©, CuboPY©, 1ntertopía© y Econotopía©.",
-  "espacio": "Cubo Morse© › tarjetas.",
-  "modificacion": "Propuestas de uno en uno; Código Cúbico© tiene 3 opciones por elegir.",
-  "estado": "Sustituido",
-  "resolucion": "Continúa en #115 (propuestas de logos por elegir)."
- },
- {
-  "id": 15,
-  "titulo": "Constancia para quien aporte",
-  "que": "PDF con folio, QR de verificación y firma; aclara que no es recibo deducible.",
-  "espacio": "Fondo y apoyo.",
-  "modificacion": "Función nueva.",
-  "estado": "Sustituido",
-  "resolucion": "Continuó en #103: constancia aplicada en la Beta y verificación pública en sosistem.com/verificar.html."
- },
- {
-  "id": 16,
-  "titulo": "Botones por tipo de visitante",
-  "que": "Cliente · Donante · Institución · Probar ahora, en la portada.",
-  "espacio": "Inicio.",
-  "modificacion": "Agrega 4 botones arriba del contenido.",
-  "estado": "Sustituido",
-  "resolucion": "Continúa en #116."
- },
- {
-  "id": 17,
-  "titulo": "Contador GoatCounter",
-  "que": "Confirmar la cuenta «sosistem» y activar el contador público.",
-  "espacio": "Terminal de pruebas › conteo de usuarios.",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Sustituido",
-  "resolucion": "Continúa en #117."
- },
- {
-  "id": 18,
-  "titulo": "Revisión de traducciones",
-  "que": "Revisión por hablantes nativos antes de presentar ante BID, OEA y ONU.",
-  "espacio": "Todo el sitio (22 idiomas).",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Sustituido",
-  "resolucion": "Continuó en #109."
- },
- {
-  "id": 19,
-  "titulo": "Pasar la Beta al sitio oficial",
-  "que": "Publicar todo lo autorizado como versión 5.7 en sosistem.com.",
-  "espacio": "Sitio oficial.",
-  "modificacion": "Se quita el aviso Beta, la clave y la liga a Claude.",
-  "estado": "Publicado",
-  "resolucion": "Publicado como versión 5.7; después 5.8."
- },
- {
-  "id": 101,
-  "titulo": "Matriz FODA y referencias",
-  "que": "Cuadro real 2×2 (F, O, D, A) con factores internos/externos y favorables/desfavorables, referencia del origen del FODA (Puyt, Lie y Wilderom, 2023) y vigencia de los datos.",
-  "espacio": "FODA: cuadro arriba de los cuadrantes; referencias al final.",
-  "modificacion": "Se agrega; reemplaza la nota corta de fuentes.",
-  "estado": "Publicado",
-  "resolucion": "Autorizado y publicado en 5.8."
- },
- {
-  "id": 102,
-  "titulo": "Trámites de certificación pendientes",
-  "que": "Debilidad con tu redacción: trámite pendiente ante organismos reguladores, verificadores y certificadores, además de los de cada país.",
-  "espacio": "FODA › Debilidades.",
-  "modificacion": "Ya aplicado también en el sitio oficial 5.7; confirma o pide cambios.",
-  "estado": "Publicado",
-  "resolucion": "Texto institucional publicado en 5.8; confirmación final en #112."
- },
- {
-  "id": 103,
-  "titulo": "Constancia para quien aporta",
-  "que": "Constancia con folio SOS-AP, huella, QR, firma y Código Cúbico© (código de barras del Código de comunicación del Cubo (33)©, Safe Creative 2610097276721); registro sin datos personales y página para verificar que muestra el mismo Código Cúbico.",
-  "espacio": "Fondo y apoyo › Constancia (solo administrador).",
-  "modificacion": "Función nueva; al publicarse, el QR apuntará a sosistem.com/verificar.html.",
-  "estado": "Aplicado",
-  "resolucion": "Autorizado: constancia en la Beta (herramienta del administrador) con Código Cúbico© y verificación pública."
- },
- {
-  "id": 104,
-  "titulo": "Experiencia del autor: número CONOCER",
-  "que": "Agregar el folio y el estándar (EC) del certificado CONOCER; confirmar el nombre de los cursos de la OEA.",
-  "espacio": "FODA › Fortalezas y constancia.",
-  "modificacion": "Solo texto.",
-  "estado": "Sustituido",
-  "resolucion": "Aplicado en #113."
- },
- {
-  "id": 105,
+  "id": 7,
   "titulo": "Tipo de área",
   "que": "59 áreas en 10 grupos con conceptos de segregación y riesgos que vigila.",
   "espacio": "S.S.O.S.© y pantallas › simulador.",
-  "modificacion": "Selector y recuadro de conceptos.",
+  "modificacion": "Selector nuevo y recuadro de conceptos arriba de la pantalla.",
   "estado": "Sustituido",
-  "resolucion": "Continúa en #114 con imagen para revisar."
+  "resolucion": "Continúa en #114 (Tipo de área), en la Beta."
  },
  {
-  "id": 106,
-  "titulo": "Logos del Cubo Morse©",
-  "que": "Faltan 7 logos (Código Cúbico© tiene 3 propuestas).",
-  "espacio": "Cubo Morse© › tarjetas.",
-  "modificacion": "De uno en uno.",
-  "estado": "Aplicado",
-  "resolucion": "Cubos de las pestañas quitados (5.8); los logos continúan en #115."
- },
- {
-  "id": 107,
-  "titulo": "Botones por tipo de visitante",
-  "que": "Cliente · Donante · Institución · Probar ahora.",
-  "espacio": "Inicio.",
-  "modificacion": "4 botones arriba del contenido.",
-  "estado": "Sustituido",
-  "resolucion": "Continúa en #116."
- },
- {
-  "id": 108,
-  "titulo": "Contador GoatCounter",
-  "que": "Confirmar la cuenta «sosistem» y activar «Allow adding visitor counts».",
-  "espacio": "goatcounter.com (acción tuya).",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Sustituido",
-  "resolucion": "Continúa en #117."
- },
- {
-  "id": 109,
-  "titulo": "Revisión de traducciones",
-  "que": "Autorizada: falta conseguir revisores nativos de los 22 idiomas.",
-  "espacio": "Todo el sitio.",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Aplicado",
-  "resolucion": "Referencias de estándares de idiomas publicadas (5.8); la revisión por hablantes nativos queda a tu cargo."
- },
- {
-  "id": 110,
-  "titulo": "Liga al Manual de configuración",
-  "que": "Manual de configuración en PDF (5 hojas, APA 7, índice con ligas, fuentes en cada hoja) que se regenera solo con cada versión.",
-  "espacio": "Pie de página: «Manual de configuración (PDF)».",
-  "modificacion": "Agrega una liga en el pie; el PDF ya está en sosistem.com/assets/manual-configuracion-sosistem.pdf.",
+  "id": 6,
+  "titulo": "Cubo de estado en terminales",
+  "que": "Cubo SOSistem™ a los lados de cada terminal: verde normal, ámbar advertencia, rojo auxilio urgente, blanco sismo.",
+  "espacio": "Portada (6 pantallas) y simulador.",
+  "modificacion": "Agrega 2 cubos chicos en las esquinas superiores de cada pantalla.",
   "estado": "Publicado",
-  "resolucion": "Autorizado y publicado en 5.8."
+  "resolucion": "Publicado en el sitio oficial (5.7)."
  },
  {
-  "id": 113,
-  "titulo": "Cédulas profesionales y CONOCER",
-  "que": "Poner solo los números: 3 cédulas profesionales y 1 certificado CONOCER.",
-  "espacio": "FODA › Fortalezas y constancia.",
-  "modificacion": "Aplicado en el sitio oficial y en Beta: cédulas 11197647, 10392206, DGETI 6226780 y CONOCER 01837017, más cursos en España (Santander 2014, ValenciaPort), auditor ISO 9001/14001, IMDG, SOLAS, MARPOL y PBIP; también en la firma de la constancia.",
-  "estado": "Aplicado",
-  "resolucion": "Aplicado en el sitio oficial y en Beta: cédulas 11197647, 10392206, DGETI 6226780 y CONOCER 01837017, más cursos en España (Santander 2014, ValenciaPort), auditor ISO 9001/14001, IMDG, SOLAS, MARPOL y PBIP; también en la firma de la constancia."
+  "id": 5,
+  "titulo": "Arquitectura del sistema",
+  "que": "Modalidad rápida (celulares), modalidad principal (sensores fijos), pantallas que ya tiene el cliente, administración en dos niveles y sensores a la medida.",
+  "espacio": "«El sistema», después de «Cómo funciona».",
+  "modificacion": "Sección nueva; no cambia las existentes.",
+  "estado": "Publicado",
+  "resolucion": "Publicado en el sitio oficial (5.8, sección Arquitectura)."
  },
  {
-  "id": 118,
-  "titulo": "«Escuchar en Morse» con sonido al tocar",
-  "que": "El botón «Escuchar en Morse» junto al título de cada sección hoy solo destella (regla: solo suena en emergencias y pruebas). En Beta suena únicamente cuando la persona lo toca; nada suena solo.",
-  "espacio": "Todas las secciones · botón junto a cada título.",
-  "modificacion": "Autorizado: ya suena al tocar en el sitio oficial (Aprendizaje, receptor Morse y botones «Escuchar en Morse»). La Terminal conserva su regla: solo emergencias y pruebas.",
-  "estado": "Aplicado",
-  "resolucion": "Autorizado: ya suena al tocar en el sitio oficial (Aprendizaje, receptor Morse y botones «Escuchar en Morse»). La Terminal conserva su regla: solo emergencias y pruebas."
+  "id": 4,
+  "titulo": "Aprendizaje",
+  "que": "Pestaña nueva: Morse, braille, banderas, alfabeto fonético y Lengua de Señas Mexicana.",
+  "espacio": "Pestaña nueva después de «Señales y Morse».",
+  "modificacion": "El Receptor Morse pasa a esta pestaña.",
+  "estado": "Publicado",
+  "resolucion": "Publicado en el sitio oficial (5.7)."
  },
  {
-  "id": 120,
-  "titulo": "«Ver todo» en el inicio",
-  "que": "Botón «Ver todo» junto a «Ver cómo funciona» en la portada, y «Ver todo» como primera opción del menú de Pestañas: muestra todas las secciones en una sola página.",
-  "espacio": "Inicio (portada) y menú de Pestañas.",
-  "modificacion": "Retirado por indicación del autor: «Ver todo» se quita del menú y de la portada; la última pestaña pasa a ser «Resumen ejecutivo».",
-  "estado": "Retirado",
-  "resolucion": "Retirado por indicación del autor: «Ver todo» se quita del menú y de la portada; la última pestaña pasa a ser «Resumen ejecutivo»."
+  "id": 3,
+  "titulo": "Certificación pendiente",
+  "que": "Debilidad: faltan muestras físicas para un organismo certificador nacional o internacional.",
+  "espacio": "FODA › Debilidades.",
+  "modificacion": "Sustituye «Certificaciones en trámite».",
+  "estado": "Sustituido",
+  "resolucion": "Continuó en #102 y #112: «Evaluación de la conformidad en curso»."
+ },
+ {
+  "id": 2,
+  "titulo": "Experiencia del autor",
+  "que": "Texto de tu experiencia en Fortalezas (MBA, más de 20 años, OEA, CONOCER).",
+  "espacio": "FODA › Fortalezas, último renglón.",
+  "modificacion": "Falta el número de certificado CONOCER y confirmar el nombre de los cursos de la OEA.",
+  "estado": "Sustituido",
+  "resolucion": "Continuó en #104 y quedó aplicado en #113 (cédulas y CONOCER)."
+ },
+ {
+  "id": 1,
+  "titulo": "FODA",
+  "que": "Pestaña nueva «FODA» (fortalezas, oportunidades, debilidades y amenazas con el objetivo de salvar vidas).",
+  "espacio": "Pestaña nueva entre «El sistema» y «S.S.O.S.©».",
+  "modificacion": "Problema, Datos y Ventajas pasan dentro de FODA; desaparece la pestaña «Problema y datos».",
+  "estado": "Publicado",
+  "resolucion": "Publicado en el sitio oficial (5.7); la matriz 2×2 y sus referencias, en 5.8 (#101)."
  }
 ]

@@ -1,8 +1,13 @@
 {
-  "version": "5.8",
+  "version": "5.9",
   "fecha": "2026-10-27",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.9",
+      "fecha": "2026-10-27",
+      "resumen": "Publicado lo autorizado en la Beta: pestaña final «Resumen ejecutivo» con cifras mundiales verificadas y descarga del Resumen ejecutivo global (PDF con índice y referencias APA 7.ª ed.) y de la presentación para banca de desarrollo; Mensajero del Cubo (33) para enviar y recibir mensajes en Código de comunicación del Cubo (33)©; botones con borde más marcado para reconocerlos como botones; «Ver todo» retirado del menú. En los 22 idiomas."
+    },
     {
       "v": "5.8",
       "fecha": "2026-10-27",

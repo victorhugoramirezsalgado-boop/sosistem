@@ -130,7 +130,8 @@
   "tab_modalidades",
   "tab_pendientes",
   "tab_mensajero",
-  "tab_constancia"
+  "tab_constancia",
+  "grp_resumen"
  ],
  "idiomas": {
   "es": {
@@ -267,7 +268,8 @@
     "Arquitectura",
     "Pendientes Beta",
     "Mensajero del Cubo",
-    "Constancia"
+    "Constancia",
+    "Resumen ejecutivo"
    ]
   },
   "en": {
@@ -404,7 +406,8 @@
     "Architecture",
     "Pendientes Beta",
     "Cube Messenger",
-    "Constancia"
+    "Constancia",
+    "Executive summary"
    ]
   },
   "pt": {
@@ -541,7 +544,8 @@
     "Arquitetura",
     "Pendientes Beta",
     "Mensageiro do Cubo",
-    "Constancia"
+    "Constancia",
+    "Resumo executivo"
    ]
   },
   "fr": {
@@ -678,7 +682,8 @@
     "Architecture",
     "Pendientes Beta",
     "Messager du Cube",
-    "Constancia"
+    "Constancia",
+    "Résumé exécutif"
    ]
   },
   "it": {
@@ -815,7 +820,8 @@
     "Architettura",
     "Pendientes Beta",
     "Messaggero del Cubo",
-    "Constancia"
+    "Constancia",
+    "Sintesi esecutiva"
    ]
   },
   "de": {
@@ -952,7 +958,8 @@
     "Architektur",
     "Pendientes Beta",
     "Würfel-Messenger",
-    "Constancia"
+    "Constancia",
+    "Zusammenfassung"
    ]
   },
   "nl": {
@@ -1089,7 +1096,8 @@
     "Architectuur",
     "Pendientes Beta",
     "Kubus-berichtendienst",
-    "Constancia"
+    "Constancia",
+    "Managementsamenvatting"
    ]
   },
   "ca": {
@@ -1226,7 +1234,8 @@
     "Arquitectura",
     "Pendientes Beta",
     "Missatger del Cub",
-    "Constancia"
+    "Constancia",
+    "Resum executiu"
    ]
   },
   "gl": {
@@ -1363,7 +1372,8 @@
     "Arquitectura",
     "Pendientes Beta",
     "Mensaxeiro do Cubo",
-    "Constancia"
+    "Constancia",
+    "Resumo executivo"
    ]
   },
   "eu": {
@@ -1500,7 +1510,8 @@
     "Arkitektura",
     "Pendientes Beta",
     "Kuboaren mezularia",
-    "Constancia"
+    "Constancia",
+    "Laburpen exekutiboa"
    ]
   },
   "da": {
@@ -1637,7 +1648,8 @@
     "Arkitektur",
     "Pendientes Beta",
     "Kube-messenger",
-    "Constancia"
+    "Constancia",
+    "Resumé"
    ]
   },
   "sv": {
@@ -1774,7 +1786,8 @@
     "Arkitektur",
     "Pendientes Beta",
     "Kub-meddelanden",
-    "Constancia"
+    "Constancia",
+    "Sammanfattning"
    ]
   },
   "nb": {
@@ -1911,7 +1924,8 @@
     "Arkitektur",
     "Pendientes Beta",
     "Kube-messenger",
-    "Constancia"
+    "Constancia",
+    "Sammendrag"
    ]
   },
   "ga": {
@@ -2048,7 +2062,8 @@
     "Ailtireacht",
     "Pendientes Beta",
     "Teachtaire an Chiúb",
-    "Constancia"
+    "Constancia",
+    "Achoimre feidhmiúcháin"
    ]
   },
   "el": {
@@ -2185,7 +2200,8 @@
     "Αρχιτεκτονική",
     "Pendientes Beta",
     "Αγγελιοφόρος του Κύβου",
-    "Constancia"
+    "Constancia",
+    "Συνοπτική παρουσίαση"
    ]
   },
   "ru": {
@@ -2322,7 +2338,8 @@
     "Архитектура",
     "Pendientes Beta",
     "Мессенджер Куба",
-    "Constancia"
+    "Constancia",
+    "Краткое резюме"
    ]
   },
   "uk": {
@@ -2459,7 +2476,8 @@
     "Архітектура",
     "Pendientes Beta",
     "Месенджер Куба",
-    "Constancia"
+    "Constancia",
+    "Короткий огляд"
    ]
   },
   "ar": {
@@ -2596,7 +2614,8 @@
     "البنية",
     "Pendientes Beta",
     "مراسل المكعب",
-    "Constancia"
+    "Constancia",
+    "الملخص التنفيذي"
    ]
   },
   "he": {
@@ -2733,7 +2752,8 @@
     "ארכיטקטורה",
     "Pendientes Beta",
     "שליח הקובייה",
-    "Constancia"
+    "Constancia",
+    "תקציר מנהלים"
    ]
   },
   "hi": {
@@ -2870,7 +2890,8 @@
     "आर्किटेक्चर",
     "Pendientes Beta",
     "घन संदेशवाहक",
-    "Constancia"
+    "Constancia",
+    "कार्यकारी सारांश"
    ]
   },
   "zh": {
@@ -3007,7 +3028,8 @@
     "架构",
     "Pendientes Beta",
     "立方体信使",
-    "Constancia"
+    "Constancia",
+    "执行摘要"
    ]
   },
   "ja": {
@@ -3144,7 +3166,8 @@
     "構成",
     "Pendientes Beta",
     "キューブ・メッセンジャー",
-    "Constancia"
+    "Constancia",
+    "エグゼクティブサマリー"
    ]
   }
  },
