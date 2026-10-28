@@ -16,11 +16,11 @@
 <meta property="og:image" content="https://sosistem.com/assets/og-sosistem.png?v=6.0.2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
-<meta property="og:site_name" content="SOSistem™">
 <meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="SOSistem™">
+<meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=6.0">
+<link rel="stylesheet" href="assets/estilo.css?v=6.1">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -422,10 +422,13 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <button class="btn" type="button" data-estado="advertencia">Advertencia</button>
       <button class="btn primary" type="button" data-estado="caida">Persona caída</button>
       <button class="btn" type="button" data-estado="sismo">Sismo</button>
+      <label class="sim-prueba">Tipo de área <select id="sim-area" aria-label="Tipo de área"></select></label>
+      <label class="sim-prueba">Describa su lugar <input id="sim-desc" maxlength="60" placeholder="p. ej. Oficina de ventas, planta alta" aria-label="Describa su lugar"></label>
       <label class="sim-prueba">Pantalla instalada en <select id="sim-lugar" aria-label="Lugar donde está instalada la pantalla"></select></label>
       <label class="sim-prueba"><input type="checkbox" id="sim-sonido"> Módulo de pruebas: activar sonido</label>
     </div>
     <p class="note">El sonido Morse solo se emite en advertencias, emergencias, desastres naturales o pruebas autorizadas. Aquí es una prueba: actívela para escucharlo.</p>
+    <details class="pt-seg" id="pt-seg" open><summary>Conceptos de segregación del área</summary><div class="pt-seg-c" id="pt-seg-c"></div></details>
     <div class="pt-ajustes">
       <div class="pt-temas" role="group" aria-label="Fondo de la pantalla">
         <span class="pt-aj-tit">Fondo de la pantalla</span>
@@ -476,11 +479,13 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <figure class="pt-mapa" id="pt-mapa" hidden>
         <svg viewBox="0 0 400 236" role="img" aria-labelledby="pt-mapa-tit"><title id="pt-mapa-tit">Plano del recinto con rutas</title>
           <rect class="pm-muro" x="10" y="10" width="380" height="196" rx="4"/>
+          <g id="pm-plano">
           <rect class="pm-mod m" x="20" y="20" width="165" height="96" rx="3"/><text class="pm-t" x="102" y="36">M</text>
           <rect class="pm-cab" x="28" y="44" width="34" height="34"/><rect class="pm-cab" x="66" y="44" width="34" height="34"/><rect class="pm-cab" x="104" y="44" width="34" height="34"/><rect class="pm-cab" x="142" y="44" width="34" height="34"/>
           <rect class="pm-mod f" x="215" y="20" width="165" height="96" rx="3"/><text class="pm-t" x="297" y="36">F</text>
           <rect class="pm-cab" x="223" y="44" width="34" height="34"/><rect class="pm-cab" x="261" y="44" width="34" height="34"/><rect class="pm-cab" x="299" y="44" width="34" height="34"/>
           <rect class="pm-cab pm-f2" id="pm-f2" x="337" y="44" width="36" height="34"/><text class="pm-t pm-f2t" x="355" y="66">F‑2</text>
+          </g>
           <rect class="pm-pnl" x="190" y="128" width="20" height="12" rx="2"/><text class="pm-s" x="200" y="152">PNL-A04</text>
           <circle class="pm-enc" cx="44" cy="176" r="7"/><text class="pm-s" x="44" y="196" id="pm-enc">Encargado</text>
           <rect class="pm-salida" x="178" y="202" width="44" height="8"/><text class="pm-sal" x="200" y="226" id="pm-salA">Salida A</text>
@@ -531,7 +536,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
         <span data-falla="seguro"><i class="g"></i>Condición segura</span>
       </div>
       <div class="pt-morse" id="pt-morse" aria-live="polite"></div>
-      <div class="pt-pie"><span id="pt-pie-l">PNL-A04 · Planta baja</span><span>S.O.S.© PROJECT</span></div>
+      <div class="pt-pie"><span><span id="pt-pie-l">PNL-A04 · Planta baja</span> · <span id="pt-pie-a">Baños públicos</span></span><span>S.O.S.© PROJECT</span></div>
     </div>
     <div class="pantalla-ext" id="pantalla-ext" data-on="0" aria-live="polite">
       <div class="pe-top"><b id="pe-tit">Pantalla exterior</b><span>EXT-01 · Acceso principal ContenedorEns</span></div>
@@ -1000,26 +1005,26 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=6.0"></script>
-<script src="assets/logo-giro.js?v=6.0"></script>
-<script src="assets/app.js?v=6.0"></script>
-<script src="assets/cubo.js?v=6.0"></script>
-<script src="assets/morse.js?v=6.0"></script>
-<script src="assets/pantalla.js?v=6.0"></script>
-<script src="assets/pantalla-tema.js?v=6.0"></script>
-<script src="assets/aprende.js?v=6.0"></script>
-<script src="assets/tablas.js?v=6.0"></script>
-<script src="assets/codigo-cubico.js?v=6.0"></script>
-<script src="assets/mensajero.js?v=6.0" defer></script>
-<script src="assets/cubo-morse.js?v=6.0"></script>
-<script src="assets/idiomas.js?v=6.0.2"></script>
-<script src="assets/banderas.js?v=6.0"></script>
-<script src="assets/servicios12.js?v=6.0"></script>
-<script src="assets/cabecera.js?v=6.0"></script>
-<script src="assets/pestanas.js?v=6.0"></script>
-<script src="assets/rastreo.js?v=6.0"></script>
-<script src="assets/morse-motor.js?v=6.0"></script>
-<script src="assets/receptor.js?v=6.0"></script>
+<script src="assets/cubo-rt.js?v=6.1"></script>
+<script src="assets/logo-giro.js?v=6.1"></script>
+<script src="assets/app.js?v=6.1"></script>
+<script src="assets/cubo.js?v=6.1"></script>
+<script src="assets/morse.js?v=6.1"></script>
+<script src="assets/pantalla.js?v=6.1"></script>
+<script src="assets/pantalla-tema.js?v=6.1"></script>
+<script src="assets/aprende.js?v=6.1"></script>
+<script src="assets/tablas.js?v=6.1"></script>
+<script src="assets/codigo-cubico.js?v=6.1"></script>
+<script src="assets/mensajero.js?v=6.1" defer></script>
+<script src="assets/cubo-morse.js?v=6.1"></script>
+<script src="assets/idiomas.js?v=6.1"></script>
+<script src="assets/banderas.js?v=6.1"></script>
+<script src="assets/servicios12.js?v=6.1"></script>
+<script src="assets/cabecera.js?v=6.1"></script>
+<script src="assets/pestanas.js?v=6.1"></script>
+<script src="assets/rastreo.js?v=6.1"></script>
+<script src="assets/morse-motor.js?v=6.1"></script>
+<script src="assets/receptor.js?v=6.1"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

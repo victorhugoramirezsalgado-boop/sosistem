@@ -5,7 +5,8 @@
   "que": "Todo el acceso de escritura se abre con Google Authenticator. El token de GitHub se pega una sola vez por equipo y queda cifrado ahí; después la Beta (autorizaciones, constancias) y el administrador (Guardar y publicar, Currículum, Pruebas de la terminal) solo piden el código de 6 números. Con el 3.er paso activo en el administrador, una sola cuenta «SOSistem: Administrador» sirve para todo: al entrar con su código, el token se abre solo y no se pide otro código.",
   "espacio": "Página Beta (pendientes y constancia) y administrador Beta: acceso (3.er paso) y Ajustes › Publicación en GitHub / Verificación con Google Authenticator.",
   "modificacion": "Tu indicación (28-oct-2026): «Que el token de sosistem para beta ese sea por la 2da autentificación». · 28-oct-2026: «Necesito sea todo el acceso por autentificador para GitHub y para sosistem.com».",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en sosistem.com 6.1."
  },
  {
   "id": 114,
@@ -13,7 +14,8 @@
   "que": "Cada tipo de área dibuja su propio plano con el punto del incidente: oficina (escritorios), baños (cabinas), bodega y almacén (racks y pasillos), sala de juntas, casa (sala, cocina, baño), cuarto o recámara (cama y clóset) y salón. El cliente o usuario puede escribir «Describa su lugar» (p. ej. «Oficina de ventas, planta alta»); se guarda en su equipo y aparece en la pantalla.",
   "espacio": "Pantalla S.S.O.S.© · simulador: «Tipo de área» y «Describa su lugar».",
   "modificacion": "Tu indicación (27-oct-2026): mostrar oficina, baños, bodega, salón de juntas, casa, cuartos y almacén, y un campo para describir el lugar. Imágenes enviadas en el chat.",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en sosistem.com 6.1."
  },
  {
   "id": 123,
@@ -21,7 +23,8 @@
   "que": "Debajo de las banderas, cada pantalla deletrea en imágenes chicas de la Lengua de Señas Mexicana lo que está pasando: CAIDA, SISMO, AVISO, GAS, AFORO o LIBRE.",
   "espacio": "Pantallas del cubo de la portada y simulador de la pantalla S.S.O.S.©.",
   "modificacion": "Tu comentario al autorizar #122.",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en sosistem.com 6.1."
  },
  {
   "id": 122,
