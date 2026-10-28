@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name "SOSistem imagen"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/og-sosistem.png assets/manual-configuracion-sosistem.pdf assets/presentacion-ejecutiva-sosistem.pdf assets/resumen-ejecutivo-global-sosistem.pdf index.html
+          git add assets/og-sosistem.png assets/manual-configuracion-sosistem.pdf assets/presentacion-ejecutiva-sosistem.pdf assets/resumen-ejecutivo-global-sosistem*.pdf index.html
           if ! git diff --cached --quiet; then
             git commit -m "Imagen para compartir y manual actualizados [skip ci]"
             for i in 1 2 3; do git pull --rebase -q origin main && git push && break; sleep 5; done

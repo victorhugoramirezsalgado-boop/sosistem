@@ -1,0 +1,600 @@
+{
+ "_nota": "Contenido del Resumen ejecutivo global de SOSistem™ (herramientas/ejecutiva-global.mjs). Cada idioma tiene su archivo con las mismas claves. Se permite <b>, <i> y <br>.",
+ "lang": "es",
+ "locale": "es-MX",
+ "doc_titulo": "Resumen ejecutivo global",
+ "doc_sub": "Sistema S.O.S.© · Alerta temprana para la seguridad humana · presentación mundial",
+ "version": "versión",
+ "hoja": "Hoja",
+ "de": "de",
+ "idiomas_n": "22 idiomas",
+ "lsm_t": "Lengua de señas",
+ "lsm_d": "Abecedario LSM integrado · ASL en desarrollo",
+ "proposito_t": "Objetivo",
+ "proposito": "Mejorar la prevención, la atención y la identificación oportuna de emergencias en los espacios donde nadie puede ver, mediante sensores y terminales (pantallas) que comparten al momento información fiel a la realidad, sin cámaras ni grabación.",
+ "nivel_global": "Mundo",
+ "nivel_nacional": "México",
+ "nivel_local": "Baja California · Ensenada",
+ "k_g1_v": "684,000",
+ "k_g1_t": "muertes al año por caídas",
+ "k_g1_f": "OMS, 2021",
+ "k_g2_v": "≈ 3 M",
+ "k_g2_t": "muertes al año ligadas al trabajo",
+ "k_g2_f": "OIT, 2023",
+ "k_g3_v": "40 %",
+ "k_g3_t": "de los países aún no tiene alerta temprana multirriesgo",
+ "k_g3_f": "OMM, 2025",
+ "k_n1_v": "17.7 M",
+ "k_n1_t": "personas de 60 años o más",
+ "k_n1_f": "INEGI, 2026",
+ "k_n2_v": "258,522",
+ "k_n2_t": "escuelas en todos los niveles",
+ "k_n2_f": "SEP, 2025",
+ "k_n3_v": "33,396",
+ "k_n3_t": "sismos registrados en 2024",
+ "k_n3_f": "Pacheco, 2025 (SSN)",
+ "k_l1_v": "3.77 M",
+ "k_l1_t": "habitantes en Baja California",
+ "k_l1_f": "INEGI, 2021",
+ "k_l2_v": "443,807",
+ "k_l2_t": "habitantes en el municipio de Ensenada",
+ "k_l2_f": "Secretaría de Economía, s. f.",
+ "k_l3_v": "Piloto",
+ "k_l3_t": "prueba real en ContenedorEns; propuesta en el Puerto de Ensenada",
+ "k_l3_f": "Ramírez Salgado, 2026",
+ "graf_60_t": "Personas de 60 años o más en el mundo (miles de millones)",
+ "graf_60_f": "Fuente: OMS (2025).",
+ "graf_ew_t": "Mortalidad relativa por desastres según la cobertura de alerta temprana",
+ "graf_ew_a": "Cobertura sustancial o integral",
+ "graf_ew_b": "Cobertura limitada",
+ "graf_ew_f": "Fuente: UNDRR y OMM (2024): casi seis veces mayor donde la alerta temprana es limitada.",
+ "indice": "Índice",
+ "s0": "Siglas, símbolos y normas",
+ "s1": "1. Resumen ejecutivo",
+ "s2": "2. El reto mundial en cifras",
+ "s3": "3. Dónde puede operar: universo de atención",
+ "s4": "4. La solución: sensores, terminales y pantallas",
+ "s5": "5. Cada celular, un sensor: ayuda familiar las 24 horas",
+ "s6": "6. Accesibilidad: lengua de señas y braille",
+ "s7": "7. Impacto, alineación mundial e indicadores",
+ "s8": "8. Hoja de ruta y alianzas",
+ "refs": [
+  "Centers for Disease Control and Prevention. (2026, 4 de septiembre). <i>Older adult falls data</i>. <a href=\"https://www.cdc.gov/falls/data-research/index.html\">www.cdc.gov/falls/data-research/index.html</a>",
+  "Centre for Research on the Epidemiology of Disasters. (2025). <i>2024 disasters in numbers</i>. CRED, UCLouvain. <a href=\"https://files.emdat.be/reports/2024_EMDAT_report.pdf\">files.emdat.be/reports/2024_EMDAT_report.pdf</a>",
+  "Giga. (s. f.). <i>It began with a question: Do you know how many schools there are?</i> UNICEF y Unión Internacional de Telecomunicaciones. Recuperado el {hoy}, de <a href=\"https://giga.global/unicef-itu-partnership/our-story/\">giga.global/unicef-itu-partnership/our-story/</a>",
+  "Instituto Nacional de Estadística y Geografía. (2021). <i>Censo de Población y Vivienda 2020: Baja California</i>. <a href=\"https://www.inegi.org.mx/programas/ccpv/2020/\">www.inegi.org.mx/programas/ccpv/2020/</a>",
+  "Instituto Nacional de Estadística y Geografía. (2026). <i>Unidad de Medida y Actualización (UMA)</i>. <a href=\"https://www.inegi.org.mx/temas/uma/\">www.inegi.org.mx/temas/uma/</a>",
+  "Instituto Nacional de Estadística y Geografía. (2026, 28 de septiembre). <i>Estadísticas a propósito del Día Internacional de las Personas Adultas Mayores</i> (Comunicado de prensa 89/26). <a href=\"https://www.inegi.org.mx/contenidos/saladeprensa/aproposito/2026/EAP_Adulmayor_26.pdf\">www.inegi.org.mx/contenidos/saladeprensa/aproposito/2026/EAP_Adulmayor_26.pdf</a>",
+  "International Organization for Standardization. (2011). <i>Graphical symbols — Safety colours and safety signs — Part 1: Design principles for safety signs and safety markings</i> (ISO 3864-1:2011). <a href=\"https://www.iso.org/standard/51021.html\">www.iso.org/standard/51021.html</a>",
+  "International Organization for Standardization. (2019). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs</i> (ISO 7010:2019). <a href=\"https://www.iso.org/standard/72424.html\">www.iso.org/standard/72424.html</a>",
+  "International Organization for Standardization. (2022). <i>Quantities and units — Part 1: General</i> (ISO 80000-1:2022). <a href=\"https://www.iso.org/standard/76921.html\">www.iso.org/standard/76921.html</a>",
+  "Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, 20 de marzo de 2025. <a href=\"https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf\">www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf</a>",
+  "Ley Federal del Trabajo. (s. f.). Artículo 994. Cámara de Diputados. Recuperado el {hoy}, de <a href=\"https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf\">www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf</a>",
+  "Naciones Unidas. (2015). <i>Transformar nuestro mundo: la Agenda 2030 para el Desarrollo Sostenible</i> (A/RES/70/1). <a href=\"https://www.un.org/sustainabledevelopment/es/\">www.un.org/sustainabledevelopment/es/</a>",
+  "Naciones Unidas. (2024, 11 de julio). <i>UN projects world population to peak within this century</i> [Comunicado de prensa sobre World Population Prospects 2024]. <a href=\"https://www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/\">www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/</a>",
+  "OASIS. (2010). <i>Common Alerting Protocol version 1.2</i>. <a href=\"https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html\">docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html</a>",
+  "Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres y Organización Meteorológica Mundial. (2024). <i>Global status of multi-hazard early warning systems 2024</i>. <a href=\"https://public.wmo.int/node/24875\">public.wmo.int/node/24875</a>",
+  "Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href=\"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030\">www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a>",
+  "Organización Internacional del Trabajo. (2023, 26 de noviembre). <i>Nearly 3 million people die of work-related accidents and diseases</i>. <a href=\"https://www.ilo.org/resource/news/nearly-3-million-people-die-work-related-accidents-and-diseases\">www.ilo.org/resource/news/nearly-3-million-people-die-work-related-accidents-and-diseases</a>",
+  "Organización Meteorológica Mundial. (2025, 12 de noviembre). <i>Early warning systems reach new heights, but critical gaps jeopardize global progress</i>. <a href=\"https://public.wmo.int/node/37885\">public.wmo.int/node/37885</a>",
+  "Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/falls\">www.who.int/es/news-room/fact-sheets/detail/falls</a>",
+  "Organización Mundial de la Salud. (2025, 1 de octubre). <i>Envejecimiento y salud</i> [Nota descriptiva]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/ageing-and-health\">www.who.int/es/news-room/fact-sheets/detail/ageing-and-health</a>",
+  "Pacheco, A. (2025, 9 de enero). <i>Estados que registraron más sismos en 2024</i> [con datos del Reporte Anual del Servicio Sismológico Nacional, UNAM]. adn40. <a href=\"https://www.adn40.mx/mexico/2025-01-09/estados-registraron-mas-sismos-2024-fallas-geologicas/\">www.adn40.mx/mexico/2025-01-09/estados-registraron-mas-sismos-2024-fallas-geologicas/</a>",
+  "Ramírez Salgado, V. H. ({anio}). <i>SOSistem™: Sistema S.O.S.©, versión {ver}</i> [Sitio web y documentación técnica]. <a href=\"https://sosistem.com/\">sosistem.com/</a>",
+  "Secretaría de Economía. (2002). <i>NOM-008-SCFI-2002. Sistema General de Unidades de Medida</i>. Diario Oficial de la Federación.",
+  "Secretaría de Economía. (s. f.). <i>Ensenada: perfil del municipio</i> [DataMéxico]. Recuperado el {hoy}, de <a href=\"https://www.economia.gob.mx/datamexico/es/profile/geo/ensenada\">www.economia.gob.mx/datamexico/es/profile/geo/ensenada</a>",
+  "Secretaría de Educación Pública y Aprende.mx. (s. f.). <i>Abecedario en Lengua de Señas Mexicana</i> [Infografía]. Nueva Escuela Mexicana Digital.",
+  "Secretaría de Educación Pública. (2025). <i>Principales cifras del Sistema Educativo Nacional 2024-2025</i>. <a href=\"https://www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf\">www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf</a>",
+  "Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008. Colores y señales de seguridad e higiene, e identificación de riesgos por fluidos conducidos en tuberías</i>. <a href=\"https://dof.gob.mx/normasOficiales/3541/stps.htm\">dof.gob.mx/normasOficiales/3541/stps.htm</a>",
+  "The Logistics World. (2024, 17 de junio). <i>Infraestructura marítima en México: ¿Cuántos puertos tiene el país?</i> <a href=\"https://thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/\">thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/</a>",
+  "Unión Internacional de Telecomunicaciones. (2025). <i>Facts and Figures 2025: Mobile phone ownership</i>. <a href=\"https://www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/\">www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/</a>",
+  "World Bank. (2025). <i>Population ages 65 and above (% of total population) — World</i> [SP.POP.65UP.TO.ZS], vía Federal Reserve Bank of St. Louis. <a href=\"https://fred.stlouisfed.org/series/SPPOP65UPTOZSWLD\">fred.stlouisfed.org/series/SPPOP65UPTOZSWLD</a>"
+ ],
+ "portada_pie": "Documento institucional para gobiernos, organismos multilaterales, banca de desarrollo y aliados. Las cifras se citan en formato APA, 7.ª edición; los escenarios son cálculos propios a partir de ellas.",
+ "siglas_t": "Siglas",
+ "siglas": [
+  [
+   "ASIPONA",
+   "Administración del Sistema Portuario Nacional (México)"
+  ],
+  [
+   "ASL",
+   "Lengua de señas americana (American Sign Language)"
+  ],
+  [
+   "CAP",
+   "Protocolo Común de Alerta (Common Alerting Protocol), estándar OASIS para avisos de emergencia"
+  ],
+  [
+   "CDC",
+   "Centros para el Control y la Prevención de Enfermedades (Estados Unidos)"
+  ],
+  [
+   "CRED",
+   "Centro de Investigación sobre la Epidemiología de los Desastres (UCLouvain, Bélgica)"
+  ],
+  [
+   "EM-DAT",
+   "Base de datos internacional de desastres del CRED"
+  ],
+  [
+   "INEGI",
+   "Instituto Nacional de Estadística y Geografía (México)"
+  ],
+  [
+   "ISO",
+   "Organización Internacional de Normalización"
+  ],
+  [
+   "LFPDPPP",
+   "Ley Federal de Protección de Datos Personales en Posesión de los Particulares (México)"
+  ],
+  [
+   "LFT",
+   "Ley Federal del Trabajo (México)"
+  ],
+  [
+   "LSM",
+   "Lengua de Señas Mexicana"
+  ],
+  [
+   "mmWave",
+   "Radar de ondas milimétricas: detecta presencia y caídas sin imagen"
+  ],
+  [
+   "NOM",
+   "Norma Oficial Mexicana"
+  ],
+  [
+   "ODS",
+   "Objetivos de Desarrollo Sostenible de la Agenda 2030 de las Naciones Unidas"
+  ],
+  [
+   "OIT",
+   "Organización Internacional del Trabajo (ILO)"
+  ],
+  [
+   "OMI",
+   "Organización Marítima Internacional (IMO)"
+  ],
+  [
+   "OMM",
+   "Organización Meteorológica Mundial (WMO)"
+  ],
+  [
+   "OMS",
+   "Organización Mundial de la Salud (WHO)"
+  ],
+  [
+   "ONU",
+   "Organización de las Naciones Unidas"
+  ],
+  [
+   "SEP",
+   "Secretaría de Educación Pública (México)"
+  ],
+  [
+   "SSN",
+   "Servicio Sismológico Nacional (UNAM, México)"
+  ],
+  [
+   "UIT",
+   "Unión Internacional de Telecomunicaciones (ITU)"
+  ],
+  [
+   "UMA",
+   "Unidad de Medida y Actualización (México)"
+  ],
+  [
+   "UNDRR",
+   "Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres"
+  ]
+ ],
+ "simbolos_t": "Símbolos y criterios de las cifras",
+ "simbolos": [
+  [
+   "≈",
+   "Valor aproximado o redondeado; no es una medición exacta."
+  ],
+  [
+   "M",
+   "Millones (10⁶)."
+  ],
+  [
+   "mil M",
+   "Miles de millones (10⁹)."
+  ],
+  [
+   "%",
+   "Porcentaje sobre el total que indica la fuente."
+  ],
+  [
+   "×",
+   "Veces: proporción entre dos valores."
+  ],
+  [
+   "≤",
+   "Igual o menor que el tiempo indicado."
+  ],
+  [
+   "N0–N3",
+   "Niveles de aviso del sistema: N0 en el lugar, N1 responsable, N2 central de monitoreo, N3 911."
+  ],
+  [
+   "Cálculo propio",
+   "Resultado obtenido por el autor a partir de las fuentes citadas; se indica junto a la cifra."
+  ]
+ ],
+ "simbolos_n": "Los números y símbolos siguen la norma internacional de magnitudes y unidades ISO 80000-1 y, en México, la NOM-008-SCFI-2002 (Sistema General de Unidades de Medida). Los datos provienen de fuentes oficiales o de organismos internacionales y se citan con autor y año.",
+ "r_lead": "SOSistem™ detecta en segundos a una persona en el suelo, un sismo, una fuga de gas o una situación de violencia en sanitarios, vestidores, cabinas y espacios confinados, sin cámaras ni grabación, y escala el aviso hasta el 911.",
+ "r_prob_t": "El problema",
+ "r_prob": "Cada año mueren <b>684,000 personas por caídas</b> y <b>37.3 millones</b> de caídas requieren atención médica (OMS, 2021). Cerca de <b>3 millones de personas</b> mueren por causas ligadas al trabajo (OIT, 2023). Donde la ley y la dignidad impiden las cámaras, una emergencia puede pasar inadvertida durante minutos decisivos.",
+ "r_sol_t": "La solución",
+ "r_sol": "Sensores sin imagen (radar mmWave, gas, humo, oxígeno, sonido y vibración) y terminales que informan al momento. El aviso sube por niveles al responsable, a la central de monitoreo y al <b>911</b> con mensaje CAP, y el equipo opera hasta 30 días sin red eléctrica.",
+ "r_esc_t": "La escala",
+ "r_esc": "El <b>82 %</b> de las personas de 10 años o más tiene celular (UIT, 2025): cada teléfono puede ser sensor, pantalla o ambos. Solo en México hay <b>258,522 escuelas</b> (SEP, 2025) y <b>17.7 millones</b> de personas de 60 años o más (INEGI, 2026).",
+ "r_ali_t": "La alineación",
+ "r_ali": "Contribuye a los ODS 3, 8.8 y 11.5, a la meta G del Marco de Sendai y a la iniciativa «Alertas tempranas para todos» (ver capítulo 7). Donde la alerta temprana es limitada, la mortalidad por desastres es <b>casi seis veces mayor</b> (UNDRR y OMM, 2024).",
+ "r_dif_t": "Qué distingue a SOSistem™",
+ "r_dif": [
+  [
+   "Sin cámaras",
+   "Solo estados y medidas; no hay imagen, video ni grabación de voz."
+  ],
+  [
+   "Al momento",
+   "Aviso escalonado N0–N3; inmediato ante una caída confirmada o un sismo."
+  ],
+  [
+   "Para todos",
+   "Luz, sonido, 22 idiomas, abecedario de la Lengua de Señas Mexicana y propuesta de contacto en braille."
+  ],
+  [
+   "Resiliente",
+   "Batería de hasta 30 días; funciona con red o sin red."
+  ],
+  [
+   "Escalable",
+   "Del celular de una persona a un inmueble completo, a una ciudad o a un puerto."
+  ]
+ ],
+ "r_etapa_t": "Etapa actual",
+ "r_etapa": "Prototipo funcional y Terminal de pruebas abierta al público en sosistem.com/terminal.html. Piloto físico en las oficinas de ContenedorEns (Ensenada, Baja California, México).",
+ "c_pers_t": "Personas y envejecimiento",
+ "c_trab_t": "Caídas y trabajo",
+ "c_des_t": "Desastres y alerta temprana",
+ "c_mx_t": "México",
+ "c": {
+  "pob_v": "8.2 mil M",
+  "pob_t": "habitantes del planeta en 2024",
+  "pob_f": "Naciones Unidas, 2024",
+  "p65_v": "≈ 853 M",
+  "p65_t": "personas de 65 años o más (10.4 % de la población)",
+  "p65_f": "Cálculo propio con World Bank, 2025",
+  "p60_30_v": "1.4 mil M",
+  "p60_30_t": "personas de 60 años o más en 2030: 1 de cada 6",
+  "p60_30_f": "OMS, 2025",
+  "p80_v": "426 M",
+  "p80_t": "personas de 80 años o más en 2050",
+  "p80_f": "OMS, 2025",
+  "eua_v": "14 M",
+  "eua_t": "adultos de 65+ que caen cada año solo en Estados Unidos (1 de cada 4)",
+  "eua_f": "CDC, 2026",
+  "cel_v": "82 %",
+  "cel_t": "de las personas de 10 años o más tiene celular",
+  "cel_f": "UIT, 2025",
+  "cm_v": "684,000",
+  "cm_t": "muertes al año por caídas; segunda causa de muerte por traumatismos no intencionales",
+  "cm_f": "OMS, 2021",
+  "ca_v": "37.3 M",
+  "ca_t": "caídas al año que requieren atención médica",
+  "ca_f": "OMS, 2021",
+  "tm_v": "≈ 3 M",
+  "tm_t": "muertes al año por accidentes y enfermedades del trabajo; 330,000 por accidentes",
+  "tm_f": "OIT, 2023",
+  "tl_v": "395 M",
+  "tl_t": "personas trabajadoras con lesiones no mortales al año",
+  "tl_f": "OIT, 2023",
+  "mx_multa_v": "$586,550",
+  "mx_multa_t": "MXN, multa máxima por infracción a normas de seguridad e higiene en México (5,000 UMA)",
+  "mx_multa_f": "LFT, art. 994; INEGI, 2026",
+  "d24_v": "393",
+  "d24_t": "desastres registrados en 2024",
+  "d24_f": "CRED, 2025",
+  "dm_v": "16,753",
+  "dm_t": "muertes por desastres en 2024",
+  "dm_f": "CRED, 2025",
+  "da_v": "167 M",
+  "da_t": "personas afectadas y USD 242 mil M en pérdidas (2024)",
+  "da_f": "CRED, 2025",
+  "ew_v": "119",
+  "ew_t": "países con alerta temprana multirriesgo (60 %)",
+  "ew_f": "OMM, 2025",
+  "mx60_v": "17.7 M",
+  "mx60_t": "personas de 60 años o más en México",
+  "mx60_f": "INEGI, 2026",
+  "mxe_v": "258,522",
+  "mxe_t": "escuelas; 32.5 M de alumnos y 2.06 M de docentes",
+  "mxe_f": "SEP, 2025",
+  "mxs_v": "33,396",
+  "mxs_t": "sismos registrados en México en 2024",
+  "mxs_f": "Pacheco, 2025 (SSN)",
+  "mxp_v": "117",
+  "mxp_t": "puertos marítimos en México",
+  "mxp_f": "The Logistics World, 2024"
+ },
+ "u_lead": "SOSistem™ funciona donde hay personas en espacios que no se pueden vigilar con cámaras. La tabla presenta el <b>universo de atención</b> con cifras oficiales y un <b>escenario ilustrativo del 1 %</b> para dimensionar el alcance. No es una proyección de venta: el alcance y la inversión se definen según las necesidades de cada lugar.",
+ "u_cols": [
+  "Universo",
+  "Tamaño",
+  "Fuente",
+  "Escenario 1 %"
+ ],
+ "u_filas": [
+  [
+   "Escuelas de México (todos los niveles)",
+   "258,522",
+   "SEP, 2025",
+   "2,585 escuelas"
+  ],
+  [
+   "Alumnos y docentes en México",
+   "34,577,132",
+   "SEP, 2025",
+   "≈ 345,771 personas"
+  ],
+  [
+   "Escuelas mapeadas en el mundo",
+   "> 2.2 M",
+   "Giga, s. f. (140 países)",
+   "22,000 escuelas"
+  ],
+  [
+   "Personas de 60+ en México",
+   "17,700,000",
+   "INEGI, 2026",
+   "177,000 personas"
+  ],
+  [
+   "Personas de 65+ en el mundo",
+   "≈ 853 M",
+   "World Bank, 2025 (cálculo propio)",
+   "≈ 9 M personas"
+  ],
+  [
+   "Habitantes de Ensenada, B.C.",
+   "443,807",
+   "Secretaría de Economía, s. f.",
+   "≈ 4,438 personas"
+  ],
+  [
+   "Puertos marítimos de México",
+   "117",
+   "The Logistics World, 2024",
+   "Piloto: Puerto de Ensenada"
+  ],
+  [
+   "Gobiernos nacionales",
+   "193",
+   "Estados Miembros de la ONU",
+   "2 países"
+  ]
+ ],
+ "u_sect_t": "Sectores prioritarios",
+ "u_sect": [
+  "Escuelas y guarderías",
+  "Hospitales y turismo médico",
+  "Estancias y hogares de personas mayores",
+  "Oficinas de gobierno con atención al público",
+  "Puertos, aduanas y recintos fiscalizados",
+  "Industria y maquiladoras",
+  "Restaurantes y hoteles",
+  "Terminales de pasajeros y cruceros",
+  "Estadios, templos y salones de eventos",
+  "Albergues y refugios temporales",
+  "Bodegas y espacios confinados",
+  "Hogares: el celular de cada persona"
+ ],
+ "sol_f": [
+  "Terminal NODO S.O.S.©: pantalla, radar mmWave y sirena",
+  "Componentes y respaldo de energía de 30 días",
+  "Pantalla S.S.O.S.© en el acceso a sanitarios"
+ ],
+ "sol_p": [
+  "Persona en el suelo",
+  "Sismo: ruta de evacuación",
+  "Inventario de personas",
+  "Fuga de gas"
+ ],
+ "sol_niv_t": "Cómo avisa",
+ "sol_niv_cols": [
+  "Nivel",
+  "Tiempo",
+  "Aviso"
+ ],
+ "sol_niv": [
+  "En el lugar: luz, sonido y voz",
+  "Responsable del lugar",
+  "Central de monitoreo",
+  "911 con mensaje CAP"
+ ],
+ "sol_niv_n": "Ante una caída confirmada o un sismo, el aviso es inmediato. Colores de seguridad conforme a ISO 7010, ISO 3864-1 y NOM-026-STPS-2008.",
+ "sol_serv_t": "Doce servicios",
+ "sol_serv": [
+  "Inventario de personas",
+  "Distribución y permanencia",
+  "Persona en el suelo",
+  "Aforo máximo excedido",
+  "Zonas en m² y m³",
+  "Pantallas ejecutivas",
+  "Sismo, explosión y voz de auxilio",
+  "Gases y oxígeno",
+  "Enlace al 911 y bitácora",
+  "Estadística ejecutiva",
+  "Desastre y comité",
+  "Luz, sonido y megafonía"
+ ],
+ "img_pie": "Imágenes: renders y pantallas de referencia del sistema.",
+ "cel_lead": "Los <b>celulares, tabletas, computadoras y demás equipos, conectados a red o sin red</b>, pueden funcionar como <b>sensores</b>, como <b>terminales (pantallas) de observación e información</b>, o como <b>ambos a la vez</b>.",
+ "cel_imp_t": "Impacto",
+ "cel_imp": "Cada persona puede descargar SOSistem™ en su celular, activarlo y enlazarlo con un familiar las 24 horas, los 7 días: ante una caída, ante las palabras «S.O.S.» o «auxilio», o cuando el propio sistema detecta la caída, el familiar recibe el aviso al momento. Con el 82 % de las personas de 10 años o más con celular (UIT, 2025), la protección puede llegar a miles de millones de personas sin instalar un solo equipo.",
+ "cel_imp_b": "Sin grabar video, voz ni conversaciones: solo es ayuda al momento.",
+ "cel_como_t": "Cómo funciona",
+ "cel_como": [
+  "<b>Descargar y activar</b> SOSistem™, sin registro.",
+  "<b>Enlazar con un familiar</b> con la misma frase en ambos equipos, una sola vez.",
+  "<b>Detectar</b> la caída, las palabras de auxilio o la inmovilidad, aunque la persona no pueda tocar la pantalla.",
+  "<b>Avisar al momento</b> al familiar; si nadie atiende, el aviso escala hasta el 911.",
+  "<b>Cancelar con la voz</b>: «todo bien» detiene una falsa alarma."
+ ],
+ "cel_sens_t": "Sensores · opciones actuales",
+ "cel_sens_cel_t": "En el celular",
+ "cel_sens_cel": "Acelerómetro (caída e impacto), giroscopio (giro e inclinación), micrófono (solo reconoce «S.O.S.», «auxilio», «está temblando» y «todo bien»; no graba), ubicación con permiso, inmovilidad y modo bolsillo.",
+ "cel_sens_fij_t": "Fijos",
+ "cel_sens_fij": "Radar mmWave, movimiento, distancia, volumen de sonido, humo, gas, oxígeno, hidrógeno, amoniaco, calor, frío, luz y oscuridad, agua en el piso, masa, espacio y capacidad, inventario de personas y tiempos de permanencia.",
+ "cel_estado": "<b>Estado:</b> la Terminal en el celular funciona en versión de prueba abierta al público, con la voz siempre activa y enlace entre celular y pantalla por frase; el enlace familiar permanente 24/7 está en desarrollo.",
+ "cel_foto": "Prueba de «Persona en el suelo» con aviso N0–N3",
+ "acc_lead": "En una emergencia, no todas las personas pueden oír, ver o hablar. SOSistem™ incorpora la lengua de señas y el braille para que la alerta y la ayuda lleguen a todos.",
+ "acc_lsm_t": "Lengua de Señas Mexicana (LSM): abecedario manual",
+ "acc_lsm": "Las pantallas deletrean con el abecedario manual de la LSM lo que está pasando (por ejemplo, CAÍDA o SISMO). Las letras J, K, Ñ, Q, X y Z llevan movimiento.",
+ "acc_lsm_f": "Imágenes del abecedario: Secretaría de Educación Pública y Aprende.mx (s. f.).",
+ "acc_br_t": "Braille: cómo pedir ayuda sin ver la pantalla (propuesta)",
+ "acc_br": [
+  "<b>Placa braille</b> junto a cada terminal y en las cabinas, con la palabra «SOS» y la indicación del botón de ayuda.",
+  "<b>Botón táctil en relieve</b>: al mantenerlo presionado 3 segundos envía el aviso, aunque la persona no vea ni hable.",
+  "<b>Confirmación por vibración y sonido</b>: un patrón que se siente en la mano indica que la ayuda ya fue avisada; útil para personas ciegas o sordociegas.",
+  "<b>En el celular</b>: aviso con un gesto (triple toque) y lectura por VoiceOver o TalkBack; la pantalla braille del usuario muestra el estado del aviso."
+ ],
+ "acc_br_n": "Propuesta en desarrollo; se validará con personas ciegas, sordas y sordociegas y con sus organizaciones.",
+ "ali_cols": [
+  "Marco mundial",
+  "Qué dice (texto oficial)",
+  "Contribución de SOSistem™"
+ ],
+ "ali": [
+  [
+   "ODS 3 · Salud y bienestar",
+   "«Garantizar una vida sana y promover el bienestar para todos en todas las edades».",
+   "Reduce el tiempo entre una caída o crisis médica y la atención."
+  ],
+  [
+   "ODS 8, meta 8.8 · Trabajo decente",
+   "«Proteger los derechos laborales y promover un entorno de trabajo seguro y sin riesgos para todos los trabajadores, incluidos los trabajadores migrantes, en particular las mujeres migrantes y las personas con empleos precarios».",
+   "Vigila espacios confinados, gases y aforo en los centros de trabajo."
+  ],
+  [
+   "ODS 11, meta 11.5 · Ciudades resilientes",
+   "«De aquí a 2030, reducir significativamente el número de muertes causadas por los desastres, incluidos los relacionados con el agua, y de personas afectadas por ellos […], haciendo especial hincapié en la protección de los pobres y las personas en situaciones de vulnerabilidad».",
+   "Aviso de sismo, rutas de evacuación y conteo de personas por recinto."
+  ],
+  [
+   "Marco de Sendai, meta G",
+   "«Incrementar considerablemente la disponibilidad de los sistemas de alerta temprana sobre amenazas múltiples y de la información y las evaluaciones sobre el riesgo de desastres transmitidas a las personas, y el acceso a ellos, para 2030».",
+   "Lleva la alerta temprana al interior de los inmuebles."
+  ],
+  [
+   "Alertas tempranas para todos (ONU-OMM)",
+   "Que toda persona en el planeta esté protegida por sistemas de alerta temprana para 2027.",
+   "Lleva la alerta al «último metro»: la cabina, el sanitario y el celular de cada persona."
+  ]
+ ],
+ "ind_t": "Indicadores de resultados",
+ "ind_cols": [
+  "Indicador",
+  "Medición"
+ ],
+ "ind": [
+  [
+   "Aviso al responsable",
+   "≤ 4 min; inmediato en caída o sismo"
+  ],
+  [
+   "Aviso al 911 (CAP)",
+   "≤ 10 min"
+  ],
+  [
+   "Personas contadas por recinto",
+   "En tiempo real, sin identificarlas"
+  ],
+  [
+   "Falsas alarmas",
+   "Porcentaje por evento, con bitácora auditable"
+  ],
+  [
+   "Recintos y personas protegidas",
+   "Conteo por país, sector y periodo"
+  ]
+ ],
+ "foda_t": "Análisis FODA",
+ "foda": [
+  [
+   "Fortalezas",
+   "Ve sin cámaras · aviso en segundos · 30 días sin red · celular como sensor"
+  ],
+  [
+   "Debilidades",
+   "Etapa piloto · evaluación de la conformidad en curso · costo inicial del equipo"
+  ],
+  [
+   "Oportunidades",
+   "Alertas tempranas para todos · envejecimiento · obligación legal de prevenir"
+  ],
+  [
+   "Amenazas",
+   "Emergencias inadvertidas · sismos sin aviso · falsas alarmas (mitigadas por niveles)"
+  ]
+ ],
+ "priv_t": "Privacidad y normas",
+ "priv": "Sin cámaras ni grabación; solo se transmite el aviso del momento (tipo de evento, hora y, si se autoriza, ubicación), conforme a la LFPDPPP (2025). Normas de referencia: ISO 7010:2019, ISO 3864-1:2011, NOM-026-STPS-2008, ISO 8201, ISO 7731 y OASIS CAP 1.2.",
+ "ruta_cols": [
+  "Fase",
+  "Alcance",
+  "Resultado"
+ ],
+ "ruta": [
+  [
+   "1 · Piloto",
+   "Prototipo y prueba real en ContenedorEns (Ensenada, B.C., México).",
+   "Tiempos de aviso y falsas alarmas medidos en operación real."
+  ],
+  [
+   "2 · Puerto",
+   "Prueba adicional en el Puerto de Ensenada, sujeta a autorización de ASIPONA Ensenada.",
+   "Validación en recintos portuarios y fiscalizados."
+  ],
+  [
+   "3 · Conformidad",
+   "Evaluación de la conformidad ante organismos nacionales e internacionales.",
+   "Equipo listo para instalarse en sectores regulados."
+  ],
+  [
+   "4 · Escala",
+   "Escuelas, hospitales, gobierno y celulares en México y América Latina.",
+   "Réplica por país con aliados institucionales."
+  ]
+ ],
+ "inv_t": "Inversión y servicio",
+ "inv": "El alcance, la inversión y el servicio se definen según las necesidades de cada lugar, después de un diagnóstico sin costo. La propuesta económica se presenta por separado.",
+ "nota_911": "SOSistem™ no sustituye a los servicios oficiales de emergencia.",
+ "aliados_t": "Convocatoria a aliados",
+ "aliados": [
+  "<b>Gobiernos y protección civil:</b> pilotos en escuelas y oficinas de atención al público.",
+  "<b>Banca de desarrollo y fondos:</b> financiamiento de equipos para pilotos y evaluación de la conformidad.",
+  "<b>Organismos multilaterales:</b> réplica regional dentro de «Alertas tempranas para todos».",
+  "<b>Academia:</b> validación científica de tiempos de aviso y falsas alarmas."
+ ],
+ "firma_autor": "Autor de Sistema S.O.S.© y SOSistem™",
+ "firma_leyenda": "Más de 20 años en puertos; cursos internacionales OEA-CIP, OMI, Universidad de Cantabria, ValenciaPort y China.",
+ "firma_g": [
+  "MBA · CETYS Universidad · Cédula profesional",
+  "Lic. en Comercio Internacional · Cédula profesional",
+  "Técnico en Contabilidad · DGETI · Registro",
+  "Certificación CONOCER EC0217 · Folio"
+ ],
+ "contacto": "Contacto",
+ "terminal": "Terminal de pruebas",
+ "refs_n": "Formato APA, 7.ª edición, en orden alfabético. Las cifras sin fuente explícita son cálculos propios a partir de las fuentes citadas.",
+ "recuperado": "Recuperado el",
+ "de_url": "de",
+ "refs_t": "Referencias"
+}

@@ -1,8 +1,13 @@
 {
-  "version": "6.0",
+  "version": "6.0.2",
   "fecha": "2026-10-27",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.0.2",
+      "fecha": "2026-10-28",
+      "resumen": "Resumen ejecutivo global rehecho y publicado directamente por indicación del autor: en español, inglés, francés, italiano y portugués (el botón entrega el PDF en el idioma elegido); portada con cifras mundiales, nacionales y locales y gráfica; hoja de siglas, símbolos y normas (ISO 80000-1, NOM-008-SCFI-2002); objetivo reescrito (prevención, atención e identificación oportuna); sin precios de venta; texto oficial de los ODS 3, 8.8 y 11.5 y de la meta G de Sendai; abecedario LSM y propuesta de contacto en braille; referencias APA al final, fuera del índice."
+    },
     {
       "v": "6.0",
       "fecha": "2026-10-27",

@@ -392,5 +392,14 @@
   "modificacion": "Por tu indicación (27-oct-2026). No pasa al sitio oficial.",
   "estado": "Aplicado",
   "resolucion": "Aplicado solo en la Beta; el sitio oficial conserva el naranja."
+ },
+ {
+  "id": 126,
+  "titulo": "Resumen ejecutivo global en 5 idiomas",
+  "que": "PDF en español, inglés, francés, italiano y portugués con portada mundial/nacional/local y gráfica, siglas y símbolos, objetivo reescrito, sin precios, ODS y Sendai con texto oficial, LSM y braille, referencias al final.",
+  "espacio": "Pestaña «Resumen ejecutivo» y panel Ejecutivo.",
+  "modificacion": "Cambio directo por indicación del autor (28-oct-2026).",
+  "estado": "Publicado",
+  "resolucion": "Publicado en 6.0.2 sin pasar por autorización en Beta, por indicación del autor."
  }
 ]
