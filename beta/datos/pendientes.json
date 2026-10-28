@@ -54,5 +54,13 @@
   "espacio": "goatcounter.com (acción tuya).",
   "modificacion": "Sin cambio de diseño.",
   "estado": "Tu acción"
+ },
+ {
+  "id": 118,
+  "titulo": "«Escuchar en Morse» con sonido al tocar",
+  "que": "El botón «Escuchar en Morse» junto al título de cada sección hoy solo destella (regla: solo suena en emergencias y pruebas). En Beta suena únicamente cuando la persona lo toca; nada suena solo.",
+  "espacio": "Todas las secciones · botón junto a cada título.",
+  "modificacion": "Agrega «toque» a los motivos con sonido. Si se autoriza, pasa al sitio oficial.",
+  "estado": "Por autorizar"
  }
 ]
