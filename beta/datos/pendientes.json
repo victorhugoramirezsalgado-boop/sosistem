@@ -18,7 +18,7 @@
  {
   "id": 103,
   "titulo": "Constancia para quien aporta",
-  "que": "Constancia con folio SOS-AP, huella, QR y firma; registro sin datos personales y página para verificar.",
+  "que": "Constancia con folio SOS-AP, huella, QR, firma y Código Cúbico© (código de barras del Código de comunicación del Cubo (33)©, Safe Creative 2610097276721); registro sin datos personales y página para verificar que muestra el mismo Código Cúbico.",
   "espacio": "Fondo y apoyo › Constancia (solo administrador).",
   "modificacion": "Función nueva; al publicarse, el QR apuntará a sosistem.com/verificar.html.",
   "estado": "Por autorizar"

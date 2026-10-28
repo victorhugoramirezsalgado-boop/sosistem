@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b9">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b10">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -918,7 +918,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <div class="wrap">
     <span class="eyebrow">Fondo y apoyo · administrador</span>
     <h2>Constancia de reconocimiento para quien aporta</h2>
-    <p class="note">Llene los datos, revise la vista previa y pulse «Imprimir o guardar PDF». Cada constancia lleva folio y un código QR que se verifica en sosistem.com/beta/verificar.html (en la Beta). Para que el QR la valide, regístrela en el sistema.</p>
+    <p class="note">Llene los datos, revise la vista previa y pulse «Imprimir o guardar PDF». Cada constancia lleva folio, código QR y el Código Cúbico© (código de barras del Código de comunicación del Cubo (33)©) que se verifica en sosistem.com/beta/verificar.html (en la Beta). Para que el QR la valide, regístrela en el sistema.</p>
     <div class="grid g2 ct-grid">
       <form class="card ct-form" id="ct-form" autocomplete="off">
         <label>Nombre de quien aporta<input name="nombre" required maxlength="80" placeholder="Nombre completo o razón social"></label>
@@ -993,26 +993,27 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7b9"></script>
-<script src="assets/logo-giro.js?v=5.7b9"></script>
-<script src="assets/app.js?v=5.7b9"></script>
-<script src="assets/cubo.js?v=5.7b9"></script>
-<script src="assets/morse.js?v=5.7b9"></script>
-<script src="assets/pantalla.js?v=5.7b9"></script>
-<script src="assets/pantalla-tema.js?v=5.7b9"></script>
-<script src="assets/aprende.js?v=5.7b9"></script>
-<script src="assets/pendientes-beta.js?v=5.7b9"></script>
+<script src="assets/cubo-rt.js?v=5.7b10"></script>
+<script src="assets/logo-giro.js?v=5.7b10"></script>
+<script src="assets/app.js?v=5.7b10"></script>
+<script src="assets/cubo.js?v=5.7b10"></script>
+<script src="assets/morse.js?v=5.7b10"></script>
+<script src="assets/pantalla.js?v=5.7b10"></script>
+<script src="assets/pantalla-tema.js?v=5.7b10"></script>
+<script src="assets/aprende.js?v=5.7b10"></script>
+<script src="assets/pendientes-beta.js?v=5.7b10"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
-<script src="assets/constancia.js?v=5.7b9" defer></script>
-<script src="assets/cubo-morse.js?v=5.7b9"></script>
-<script src="assets/idiomas.js?v=5.7b9"></script>
-<script src="assets/banderas.js?v=5.7b9"></script>
-<script src="assets/servicios12.js?v=5.7b9"></script>
-<script src="assets/cabecera.js?v=5.7b9"></script>
-<script src="assets/pestanas.js?v=5.7b9"></script>
-<script src="assets/rastreo.js?v=5.7b9"></script>
-<script src="assets/morse-motor.js?v=5.7b9"></script>
-<script src="assets/receptor.js?v=5.7b9"></script>
+<script src="assets/codigo-cubico.js?v=5.7b10"></script>
+<script src="assets/constancia.js?v=5.7b10" defer></script>
+<script src="assets/cubo-morse.js?v=5.7b10"></script>
+<script src="assets/idiomas.js?v=5.7b10"></script>
+<script src="assets/banderas.js?v=5.7b10"></script>
+<script src="assets/servicios12.js?v=5.7b10"></script>
+<script src="assets/cabecera.js?v=5.7b10"></script>
+<script src="assets/pestanas.js?v=5.7b10"></script>
+<script src="assets/rastreo.js?v=5.7b10"></script>
+<script src="assets/morse-motor.js?v=5.7b10"></script>
+<script src="assets/receptor.js?v=5.7b10"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
