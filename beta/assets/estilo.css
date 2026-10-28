@@ -1274,3 +1274,12 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 .pb-hist .pb-aplicado { background: #1F6FB2; color: #fff; }
 .pb-hist .pb-sustituido { background: #F9A900; color: #000; }
 .pb-hist .pb-retirado { background: #5B6170; color: #fff; }
+
+/* Beta · abecedario de la Lengua de Señas Mexicana (LSM) en Aprendizaje */
+.ap-lsm { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.lsm-l { display: block; border-radius: 8px; background: #fff; border: 1px solid var(--line); }
+.lsm-esp { width: 14px; }
+.lsm-mov { position: relative; display: inline-flex; align-items: center; }
+.lsm-mov b { position: absolute; top: -2px; right: 2px; color: #D9221A; font-size: 1rem; }
+.ap-tabla td small { display: block; font-size: .7rem; opacity: .75; }
+.ap-sal-lsm { grid-column: 1 / -1; }
