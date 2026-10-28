@@ -4,6 +4,11 @@
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
     {
+      "v": "5.7.1",
+      "fecha": "2026-10-27",
+      "resumen": "Tablas sin desplazamiento lateral: en celular y tableta cada renglón se muestra como tarjeta con el nombre de cada columna; en computadora el texto se ajusta al ancho. Ya no hay que mover la pantalla a la derecha o a la izquierda."
+    },
+    {
       "v": "5.7",
       "fecha": "2026-10-27",
       "resumen": "Publicado lo autorizado en la Página Beta. Pestaña «FODA» con el objetivo de salvar vidas (Problema, Datos y Ventajas dentro), experiencia del autor y trámites de certificación pendientes ante organismos reguladores, verificadores y certificadores de cada país. Pestaña «Aprendizaje» (Morse, braille, banderas, alfabeto fonético y Lengua de Señas Mexicana; Receptor Morse). Sección «Arquitectura del sistema»: modalidad rápida con celulares, modalidad principal con sensores fijos, pantallas existentes, administración en dos niveles y sensores a la medida. Cubo SOSistem™ de estado en las terminales (verde, ámbar, rojo y blanco). Códigos de color HEX, RGB, RAL y luz LED por falla. Pestañas con cubos de colores del sistema internacional, botón «Pestañas» corto con punto naranja, cinta de primera vez, botón movible y pestañas pegadas a la orilla. Cubo para armar (PDF) con el registro de ContenedorEns©. En los 22 idiomas."

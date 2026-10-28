@@ -1231,3 +1231,17 @@ tr.pb-si { background: color-mix(in srgb, var(--iso-verde) 7%, transparent); } t
 .ct-cubo { display: grid; gap: 2px; font-family: var(--font); border: 1px solid #c9ced6; border-radius: 6px; padding: 8px 10px; margin-top: 8px; }
 .ct-cubo-b svg { width: 100%; height: 44px; display: block; }
 .ct-cubo-t { font: 600 .66rem var(--mono); color: #0f1b2d; overflow-wrap: anywhere; } .ct-cubo-r { font-size: .6rem; color: #4a5568; }
+
+/* 5.7.1 · Tablas sin desplazamiento lateral: en celular y tableta cada renglón es una tarjeta */
+.tbl-wrap table td, .tbl-wrap table th { overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .tbl-wrap { overflow-x: visible; border: 0; background: none; }
+  .tbl-wrap table.tabla-tarjetas { min-width: 0 !important; width: 100%; border: 0; display: block; }
+  .tabla-tarjetas thead { display: none; }
+  .tabla-tarjetas tbody { display: grid; gap: 10px; }
+  .tabla-tarjetas tr { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .tabla-tarjetas td, .tabla-tarjetas th { display: block; border: 0 !important; padding: 0 !important; white-space: normal !important; text-align: left !important; }
+  .tabla-tarjetas td[data-label]::before { content: attr(data-label); display: block; font: 700 .68rem var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+  .tabla-tarjetas tr > :first-child { font-size: 1rem; }
+  .tabla-tarjetas tr > :first-child::before { display: none; }
+}
