@@ -16,11 +16,11 @@
 <meta property="og:image" content="https://sosistem.com/assets/og-sosistem.png?v=5.7">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="es_MX">
-<meta property="og:site_name" content="SOSistem™">
 <meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
+<meta property="og:site_name" content="SOSistem™">
+<meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7.1">
+<link rel="stylesheet" href="assets/estilo.css?v=5.8">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -221,6 +221,16 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
     <span class="eyebrow">FODA · Análisis estratégico</span>
     <h2>Todo el sistema tiene un solo objetivo: salvar vidas.</h2>
     <p class="lead fo-lead">Fortalezas, oportunidades, debilidades y amenazas de SOSistem™, con base en lo que el sistema ya hace y en lo que falta por medir en el piloto. Las pestañas Problema, Datos y Ventajas forman ahora parte de este análisis.</p>
+    <h3 class="fm-tit">Matriz FODA</h3>
+    <div class="fo-matriz">
+      <div class="fm-esq" aria-hidden="true"></div><div class="fm-eje">Favorables</div><div class="fm-eje">Desfavorables</div>
+      <div class="fm-eje fm-v">Factores internos</div>
+      <div class="fm-c fo-f"><b><span class="fo-l">F</span>Fortalezas</b><ul><li>Ve lo que nadie puede ver</li><li>Ayuda en segundos, no en horas</li><li>Funciona cuando todo falla</li></ul></div>
+      <div class="fm-c fo-d"><b><span class="fo-l">D</span>Debilidades</b><ul><li>Etapa piloto</li><li>Evaluación de la conformidad en curso</li><li>Costo inicial por equipo</li></ul></div>
+      <div class="fm-eje fm-v">Factores externos</div>
+      <div class="fm-c fo-o"><b><span class="fo-l">O</span>Oportunidades</b><ul><li>Alertas tempranas para todos</li><li>Más caídas con el envejecimiento</li><li>Obligación legal de prevenir</li></ul></div>
+      <div class="fm-c fo-a"><b><span class="fo-l">A</span>Amenazas</b><ul><li>Emergencias que nadie ve</li><li>Sismos sin aviso previo</li><li>Falsas alarmas</li></ul></div>
+    </div>
     <div class="fo-grid">
       <div class="card fo-q fo-f"><div class="fo-h"><span class="fo-l" aria-hidden="true">F</span><div><h3>Fortalezas</h3><small>Lo que el sistema ya aporta para salvar vidas</small></div></div>
         <ul class="fo-lista">
@@ -245,7 +255,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <div class="card fo-q fo-d"><div class="fo-h"><span class="fo-l" aria-hidden="true">D</span><div><h3>Debilidades</h3><small>Lo que debemos resolver</small></div></div>
         <ul class="fo-lista">
           <li><b>Etapa piloto</b><span>El tiempo real de respuesta y el porcentaje de falsas alarmas se medirán en el piloto; no publicamos cifras sin medirlas.</span></li>
-          <li><b>Trámites de certificación pendientes</b><span>Trámite pendiente ante organismos reguladores, verificadores y certificadores, además de los que exija cada país según sus regulaciones.</span></li>
+          <li><b>Evaluación de la conformidad en curso</b><span>SOSistem™ se somete a la evaluación de la conformidad ante organismos reguladores, de verificación y de certificación, nacionales e internacionales, conforme a las normas ISO, las Normas Oficiales Mexicanas, los reglamentos aplicables, los tratados internacionales y la legislación de cada país en el que se implemente.</span></li>
           <li><b>Enlace directo con el 911</b><span>La conexión con el C5/911 requiere convenio con las autoridades de cada estado.</span></li>
           <li><b>Costo inicial por equipo</b><span>Cerca de USD 1,500 por equipo de calidad; se buscan proveedores y fondos para bajar el costo.</span></li>
           <li><b>Traducciones por revisar</b><span>Los 22 idiomas requieren revisión de hablantes nativos antes de su uso institucional.</span></li>
@@ -267,7 +277,18 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <div class="card fo-e"><b>FA · Defender</b><span>Doble confirmación de sensores y privacidad comprobable para evitar falsas alarmas y desconfianza.</span></div>
       <div class="card fo-e"><b>DA · Proteger</b><span>Respaldo de energía y comunicación para seguir avisando aunque falle todo lo demás.</span></div>
     </div>
-    <p class="note">Fuentes: OMS (2021), INEGI (2026), ONU (Early Warnings for All) y UNDRR (Marco de Sendai), citadas en la pestaña Normativa y fuentes.</p>
+    <h4 class="fm-ref-t">Referencias del FODA</h4>
+    <p class="note">Origen del método: el FODA (en inglés, SWOT) proviene del enfoque SOFT que Robert F. Stewart desarrolló en el Stanford Research Institute en la década de 1960 (Puyt, Lie y Wilderom, 2023).</p>
+    <p class="note">Vigencia: datos consultados y actualizados al 27 de octubre de 2026; se revisan en cada versión del sitio.</p>
+    <ol class="refs fm-refs">
+      <li>Puyt, R. W., Lie, F. B., &amp; Wilderom, C. P. M. (2023). The origins of SWOT analysis. <i>Long Range Planning, 56</i>(3), 102304. <a href="https://doi.org/10.1016/j.lrp.2023.102304" rel="noopener">https://doi.org/10.1016/j.lrp.2023.102304</a></li>
+      <li>Organización Mundial de la Salud. (2021, 26 de abril). <i>Caídas</i> [Nota descriptiva]. <a href="https://www.who.int/es/news-room/fact-sheets/detail/falls" rel="noopener">https://www.who.int/es/news-room/fact-sheets/detail/falls</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026, 7 de agosto). <i>Estadística de defunciones registradas (EDR) 2025: Información preliminar</i> (Comunicado de prensa núm. 43/26). <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/edr/EDR2025_CP.pdf" rel="noopener">inegi.org.mx</a></li>
+      <li>Naciones Unidas. (s. f.). <i>Early Warnings for All</i>. Recuperado el 27 de octubre de 2026, de <a href="https://www.un.org/en/node/207773" rel="noopener">un.org</a></li>
+      <li>Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" rel="noopener">undrr.org</a></li>
+      <li>Ley Federal del Trabajo, art. 994. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf" rel="noopener">diputados.gob.mx</a></li>
+    </ol>
+
   </div>
 </section>
 
@@ -908,6 +929,9 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <li>Oficina de las Naciones Unidas para la Reducción del Riesgo de Desastres. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href="https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030" rel="noopener">undrr.org</a></li>
       <li>OASIS. (2010). <i>Common Alerting Protocol Version 1.2</i>. <a href="https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html" rel="noopener">oasis-open.org</a></li>
       <li>Rosenberg, J., et al. (2002). <i>SIP: Session Initiation Protocol</i> (RFC 3261). <a href="https://www.rfc-editor.org/rfc/rfc3261" rel="noopener">rfc-editor.org</a></li>
+      <li>International Organization for Standardization. (2023). <i>Code for individual languages and language groups</i> (ISO Standard No. 639:2023). <a href="https://www.iso.org/standard/74575.html" rel="noopener">https://www.iso.org/standard/74575.html</a></li>
+      <li>Phillips, A., &amp; Davis, M. (Eds.). (2009). <i>Tags for identifying languages</i> (BCP 47, RFC 5646). <a href="https://www.rfc-editor.org/rfc/rfc5646" rel="noopener">https://www.rfc-editor.org/rfc/rfc5646</a></li>
+      <li>Unicode Consortium. (s. f.). <i>Unicode Common Locale Data Repository (CLDR)</i>. Recuperado el 27 de octubre de 2026, de <a href="https://cldr.unicode.org" rel="noopener">https://cldr.unicode.org</a></li>
       <li>Eleos Compliance. (2025, 20 de octubre). <i>Mexico’s IFT ceases operations</i>. <a href="https://www.eleoscompliance.com/en/article/mexico-mexico%E2%80%99s-ift-ceases-operations" rel="noopener">eleoscompliance.com</a></li>
     </ol>
   </div>
@@ -922,7 +946,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
     </div>
     <p>© 2026 Víctor Hugo Ramírez Salgado. Sistema S.O.S.© y S.S.O.S.© (Señalética Sobre Ocupación y Salvaguarda) son obras registradas en Safe Creative (2609046908578). S.O.S.™, S.S.O.S.™ y el Cubo Morse© son signos distintivos de su autor. Todos los derechos reservados. <span>Cubo Morse© registrado en Safe Creative (2610257441754).</span> <span>Plataforma SOSistem™ (versiones 1.0.0 a 3.8) registrada en Safe Creative (2610257442171).</span></p>
     <p>Información técnica y normativa actualizada al 27 de octubre de 2026 · <span id="version">Versión 3.9</span>.</p>
-    <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
+    <p>Este sitio mide visitas de forma anónima, sin cookies ni datos personales (GoatCounter). · <a href="assets/manual-configuracion-sosistem.pdf" target="_blank" rel="noopener">Manual de configuración (PDF)</a> · <a href="terminos-pruebas.html">Términos de la versión de prueba</a> · <a href="admin.html" rel="nofollow">Administrador</a></p>
     <p>S.O.S.© es un sistema en etapa piloto y no sustituye a los servicios oficiales de emergencia ni a los sistemas públicos de alerta. En una emergencia, llame al 911.</p>
   </div>
 </footer>
@@ -933,24 +957,24 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   <button class="btn" type="button" data-nav="1">Siguiente</button>
   <button class="btn primary" type="button" id="btn-salir">Salir</button>
 </div>
-<script src="assets/cubo-rt.js?v=5.7.1"></script>
-<script src="assets/logo-giro.js?v=5.7.1"></script>
-<script src="assets/app.js?v=5.7.1"></script>
-<script src="assets/cubo.js?v=5.7.1"></script>
-<script src="assets/morse.js?v=5.7.1"></script>
-<script src="assets/pantalla.js?v=5.7.1"></script>
-<script src="assets/pantalla-tema.js?v=5.7.1"></script>
-<script src="assets/aprende.js?v=5.7.1"></script>
-<script src="assets/tablas.js?v=5.7.1"></script>
-<script src="assets/cubo-morse.js?v=5.7.1"></script>
-<script src="assets/idiomas.js?v=5.7.1"></script>
-<script src="assets/banderas.js?v=5.7.1"></script>
-<script src="assets/servicios12.js?v=5.7.1"></script>
-<script src="assets/cabecera.js?v=5.7.1"></script>
-<script src="assets/pestanas.js?v=5.7.1"></script>
-<script src="assets/rastreo.js?v=5.7.1"></script>
-<script src="assets/morse-motor.js?v=5.7.1"></script>
-<script src="assets/receptor.js?v=5.7.1"></script>
+<script src="assets/cubo-rt.js?v=5.8"></script>
+<script src="assets/logo-giro.js?v=5.8"></script>
+<script src="assets/app.js?v=5.8"></script>
+<script src="assets/cubo.js?v=5.8"></script>
+<script src="assets/morse.js?v=5.8"></script>
+<script src="assets/pantalla.js?v=5.8"></script>
+<script src="assets/pantalla-tema.js?v=5.8"></script>
+<script src="assets/aprende.js?v=5.8"></script>
+<script src="assets/tablas.js?v=5.8"></script>
+<script src="assets/cubo-morse.js?v=5.8"></script>
+<script src="assets/idiomas.js?v=5.8"></script>
+<script src="assets/banderas.js?v=5.8"></script>
+<script src="assets/servicios12.js?v=5.8"></script>
+<script src="assets/cabecera.js?v=5.8"></script>
+<script src="assets/pestanas.js?v=5.8"></script>
+<script src="assets/rastreo.js?v=5.8"></script>
+<script src="assets/morse-motor.js?v=5.8"></script>
+<script src="assets/receptor.js?v=5.8"></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

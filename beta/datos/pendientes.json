@@ -1,62 +1,46 @@
 [
  {
-  "id": 110,
-  "titulo": "Liga al Manual de configuración",
-  "que": "Manual de configuración en PDF (5 hojas, APA 7, índice con ligas, fuentes en cada hoja) que se regenera solo con cada versión.",
-  "espacio": "Pie de página: «Manual de configuración (PDF)».",
-  "modificacion": "Agrega una liga en el pie; el PDF ya está en sosistem.com/assets/manual-configuracion-sosistem.pdf.",
+  "id": 111,
+  "titulo": "Mensajero del Cubo (33)",
+  "que": "Enviar y recibir mensajes en Código de comunicación del Cubo (33)©, con firma de 3 al inicio y 3 al final; se procesa en el equipo y no se guarda nada.",
+  "espacio": "Aprendizaje › Mensajero del Cubo (entre Aprendizaje y Receptor Morse).",
+  "modificacion": "Sección nueva.",
   "estado": "Por autorizar"
  },
  {
-  "id": 101,
-  "titulo": "Matriz FODA y referencias",
-  "que": "Cuadro real 2×2 (F, O, D, A) con factores internos/externos y favorables/desfavorables, referencia del origen del FODA (Puyt, Lie y Wilderom, 2023) y vigencia de los datos.",
-  "espacio": "FODA: cuadro arriba de los cuadrantes; referencias al final.",
-  "modificacion": "Se agrega; reemplaza la nota corta de fuentes.",
-  "estado": "Por autorizar"
- },
- {
-  "id": 102,
-  "titulo": "Trámites de certificación pendientes",
-  "que": "Debilidad con tu redacción: trámite pendiente ante organismos reguladores, verificadores y certificadores, además de los de cada país.",
-  "espacio": "FODA › Debilidades.",
-  "modificacion": "Ya aplicado también en el sitio oficial 5.7; confirma o pide cambios.",
+  "id": 112,
+  "titulo": "Evaluación de la conformidad en curso",
+  "que": "Texto institucional que sustituye «Trámites de certificación pendientes» (ISO, NOM, reglamentos, tratados y legislación de cada país).",
+  "espacio": "FODA › Debilidades y matriz.",
+  "modificacion": "Ya aplicado en el sitio oficial 5.8 por tu indicación; confirma o pide cambios.",
   "estado": "Por confirmar"
  },
  {
-  "id": 103,
-  "titulo": "Constancia para quien aporta",
-  "que": "Constancia con folio SOS-AP, huella, QR, firma y Código Cúbico© (código de barras del Código de comunicación del Cubo (33)©, Safe Creative 2610097276721); registro sin datos personales y página para verificar que muestra el mismo Código Cúbico.",
-  "espacio": "Fondo y apoyo › Constancia (solo administrador).",
-  "modificacion": "Función nueva; al publicarse, el QR apuntará a sosistem.com/verificar.html.",
-  "estado": "Por autorizar"
- },
- {
-  "id": 104,
-  "titulo": "Experiencia del autor: número CONOCER",
-  "que": "Agregar el folio y el estándar (EC) del certificado CONOCER; confirmar el nombre de los cursos de la OEA.",
+  "id": 113,
+  "titulo": "Cédulas profesionales y CONOCER",
+  "que": "Poner solo los números: 3 cédulas profesionales y 1 certificado CONOCER.",
   "espacio": "FODA › Fortalezas y constancia.",
   "modificacion": "Solo texto.",
   "estado": "Falta dato"
  },
  {
-  "id": 105,
+  "id": 114,
   "titulo": "Tipo de área",
-  "que": "59 áreas en 10 grupos con conceptos de segregación y riesgos que vigila.",
+  "que": "59 áreas en 10 grupos con conceptos de segregación; te envié la imagen.",
   "espacio": "S.S.O.S.© y pantallas › simulador.",
   "modificacion": "Selector y recuadro de conceptos.",
-  "estado": "Sin decidir"
+  "estado": "Por autorizar"
  },
  {
-  "id": 106,
+  "id": 115,
   "titulo": "Logos del Cubo Morse©",
-  "que": "Faltan 7 logos (Código Cúbico© tiene 3 propuestas).",
+  "que": "Propuestas de los 7 logos faltantes enviadas en imagen; elige una por logo.",
   "espacio": "Cubo Morse© › tarjetas.",
-  "modificacion": "De uno en uno.",
-  "estado": "Pausado"
+  "modificacion": "Se sustituyen los emblemas provisionales.",
+  "estado": "Por elegir"
  },
  {
-  "id": 107,
+  "id": 116,
   "titulo": "Botones por tipo de visitante",
   "que": "Cliente · Donante · Institución · Probar ahora.",
   "espacio": "Inicio.",
@@ -64,19 +48,11 @@
   "estado": "Sin decidir"
  },
  {
-  "id": 108,
+  "id": 117,
   "titulo": "Contador GoatCounter",
   "que": "Confirmar la cuenta «sosistem» y activar «Allow adding visitor counts».",
   "espacio": "goatcounter.com (acción tuya).",
   "modificacion": "Sin cambio de diseño.",
   "estado": "Tu acción"
- },
- {
-  "id": 109,
-  "titulo": "Revisión de traducciones",
-  "que": "Autorizada: falta conseguir revisores nativos de los 22 idiomas.",
-  "espacio": "Todo el sitio.",
-  "modificacion": "Sin cambio de diseño.",
-  "estado": "Tu gestión"
  }
 ]

@@ -1191,6 +1191,40 @@ tr.pb-si { background: color-mix(in srgb, var(--iso-verde) 7%, transparent); } t
   #pendientes-beta .tbl-wrap { overflow-x: visible; }
 }
 
+/* Beta · matriz FODA 2×2 */
+.fm-tit { margin: 18px 0 8px; }
+.fo-matriz { display: grid; grid-template-columns: 2.2em 1fr 1fr; gap: 6px; }
+.fm-esq { }
+.fm-eje { font: 700 .72rem var(--font); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); text-align: center; align-self: end; padding-bottom: 2px; }
+.fm-eje.fm-v { writing-mode: vertical-rl; transform: rotate(180deg); align-self: center; justify-self: center; padding: 0; }
+.fm-c { border-radius: 12px; padding: 12px 14px; background: color-mix(in srgb, var(--fo-c) 9%, var(--surface)); border: 2px solid var(--fo-c); }
+.fm-c b { display: flex; align-items: center; gap: 8px; font-size: 1rem; color: var(--ink); }
+.fm-c .fo-l { width: 28px; height: 28px; font-size: 1rem; border-radius: 7px; }
+.fm-c ul { margin: 8px 0 0; padding-left: 18px; font-size: .88rem; color: var(--ink-2); display: grid; gap: 3px; }
+.fm-ref-t { margin: 20px 0 6px; } .fm-refs { font-size: .82rem; }
+@media (max-width: 560px) { .fo-matriz { grid-template-columns: 1.6em 1fr 1fr; gap: 4px; } .fm-c { padding: 9px; } .fm-c ul { padding-left: 14px; font-size: .8rem; } }
+
+/* Beta · constancia de reconocimiento */
+.ct-form { display: grid; gap: 10px; align-content: start; } .ct-form label { display: grid; gap: 4px; font-weight: 600; font-size: .88rem; }
+.ct-form input, .ct-form select { font: inherit; padding: 9px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
+.ct-chk { display: flex !important; align-items: center; gap: 8px; } .ct-chk input { width: 18px; height: 18px; }
+.ct-doc { background: #fff; color: #0f1b2d; border: 1px solid #c9ced6; border-radius: 6px; padding: 26px 28px; aspect-ratio: 8.5 / 11; display: flex; flex-direction: column; gap: 8px; font-family: Georgia, "Times New Roman", serif;
+  box-shadow: 0 10px 30px rgba(15,27,45,.12); border-top: 8px solid #DB641C; }
+.ct-cab { display: flex; align-items: center; gap: 12px; font-family: var(--font); } .ct-cab div { display: grid; flex: 1; } .ct-cab b { font-size: 1.2rem; } .ct-cab span { font-size: .75rem; color: #4a5568; }
+.ct-folio { text-align: right; font-size: .7rem; color: #4a5568; } .ct-folio b { font-size: .95rem; color: #0f1b2d; font-family: var(--mono); }
+.ct-doc h3 { text-align: center; font-size: 1.5rem; margin: 18px 0 6px; letter-spacing: .02em; }
+.ct-txt { text-align: center; margin: 4px 0; font-size: .95rem; } .ct-nom { text-align: center; font-size: 1.6rem; font-weight: 700; margin: 6px 0; border-bottom: 1px solid #c9ced6; padding-bottom: 6px; }
+.ct-apo { text-align: center; font-size: 1.05rem; margin: 6px 0; }
+.ct-pie { margin-top: auto; display: flex; justify-content: space-between; align-items: end; gap: 16px; font-family: var(--font); }
+.ct-firma { display: grid; gap: 2px; max-width: 62%; } .ct-linea { display: block; height: 0; border-top: 1px solid #0f1b2d; margin-bottom: 4px; width: 220px; }
+.ct-firma small, .ct-qr small { font-size: .62rem; color: #4a5568; line-height: 1.35; } .ct-qr { display: grid; justify-items: center; gap: 4px; text-align: center; }
+.ct-legal { font: .62rem var(--font); color: #4a5568; border-top: 1px solid #e3e6ea; padding-top: 6px; margin: 8px 0 0; }
+@media print { html.imprime-ct body > *:not(main), html.imprime-ct main > section:not(#constancia), html.imprime-ct #constancia .wrap > *:not(.ct-grid), html.imprime-ct .ct-form { display: none !important; }
+  html.imprime-ct .ct-grid { display: block; } html.imprime-ct .ct-doc { box-shadow: none; border-radius: 0; width: 7.5in; margin: 0 auto; } html.imprime-ct section { padding: 0 !important; } }
+.ct-cubo { display: grid; gap: 2px; font-family: var(--font); border: 1px solid #c9ced6; border-radius: 6px; padding: 8px 10px; margin-top: 8px; }
+.ct-cubo-b svg { width: 100%; height: 44px; display: block; }
+.ct-cubo-t { font: 600 .66rem var(--mono); color: #0f1b2d; overflow-wrap: anywhere; } .ct-cubo-r { font-size: .6rem; color: #4a5568; }
+
 /* 5.7.1 · Tablas sin desplazamiento lateral: en celular y tableta cada renglón es una tarjeta */
 .tbl-wrap table td, .tbl-wrap table th { overflow-wrap: anywhere; }
 @media (max-width: 900px) {
@@ -1204,3 +1238,11 @@ tr.pb-si { background: color-mix(in srgb, var(--iso-verde) 7%, transparent); } t
   .tabla-tarjetas tr > :first-child { font-size: 1rem; }
   .tabla-tarjetas tr > :first-child::before { display: none; }
 }
+
+/* Beta · Mensajero del Cubo (33) */
+.mc-c { display: grid; gap: 8px; align-content: start; } .mc-c h3 { margin: 0; }
+.mc-l { display: grid; gap: 4px; font-weight: 600; font-size: .88rem; }
+.mc-l textarea { font: 1rem var(--font); padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); resize: vertical; width: 100%; }
+.mc-cod { font: 600 .9rem var(--mono) !important; letter-spacing: .06em; }
+.mc-est { font-weight: 700; margin: 0; } .mc-est.ok { color: var(--iso-verde); } .mc-est.bad { color: var(--iso-rojo); }
+.mc-texto { padding: 12px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); font-size: 1.05rem; white-space: pre-wrap; margin: 0; }

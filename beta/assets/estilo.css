@@ -1245,3 +1245,11 @@ tr.pb-si { background: color-mix(in srgb, var(--iso-verde) 7%, transparent); } t
   .tabla-tarjetas tr > :first-child { font-size: 1rem; }
   .tabla-tarjetas tr > :first-child::before { display: none; }
 }
+
+/* Beta · Mensajero del Cubo (33) */
+.mc-c { display: grid; gap: 8px; align-content: start; } .mc-c h3 { margin: 0; }
+.mc-l { display: grid; gap: 4px; font-weight: 600; font-size: .88rem; }
+.mc-l textarea { font: 1rem var(--font); padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); resize: vertical; width: 100%; }
+.mc-cod { font: 600 .9rem var(--mono) !important; letter-spacing: .06em; }
+.mc-est { font-weight: 700; margin: 0; } .mc-est.ok { color: var(--iso-verde); } .mc-est.bad { color: var(--iso-rojo); }
+.mc-texto { padding: 12px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); font-size: 1.05rem; white-space: pre-wrap; margin: 0; }

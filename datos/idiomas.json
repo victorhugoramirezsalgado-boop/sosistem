@@ -128,7 +128,9 @@
   "tab_foda",
   "tab_aprende",
   "tab_modalidades",
-  "tab_pendientes"
+  "tab_pendientes",
+  "tab_mensajero",
+  "tab_constancia"
  ],
  "idiomas": {
   "es": {
@@ -263,7 +265,9 @@
     "FODA",
     "Aprendizaje",
     "Arquitectura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Mensajero del Cubo",
+    "Constancia"
    ]
   },
   "en": {
@@ -398,7 +402,9 @@
     "SWOT",
     "Learning",
     "Architecture",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Cube Messenger",
+    "Constancia"
    ]
   },
   "pt": {
@@ -533,7 +539,9 @@
     "FOFA",
     "Aprendizagem",
     "Arquitetura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Mensageiro do Cubo",
+    "Constancia"
    ]
   },
   "fr": {
@@ -668,7 +676,9 @@
     "FFOM",
     "Apprentissage",
     "Architecture",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Messager du Cube",
+    "Constancia"
    ]
   },
   "it": {
@@ -803,7 +813,9 @@
     "SWOT",
     "Apprendimento",
     "Architettura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Messaggero del Cubo",
+    "Constancia"
    ]
   },
   "de": {
@@ -938,7 +950,9 @@
     "SWOT",
     "Lernen",
     "Architektur",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Würfel-Messenger",
+    "Constancia"
    ]
   },
   "nl": {
@@ -1073,7 +1087,9 @@
     "SWOT",
     "Leren",
     "Architectuur",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Kubus-berichtendienst",
+    "Constancia"
    ]
   },
   "ca": {
@@ -1208,7 +1224,9 @@
     "DAFO",
     "Aprenentatge",
     "Arquitectura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Missatger del Cub",
+    "Constancia"
    ]
   },
   "gl": {
@@ -1343,7 +1361,9 @@
     "DAFO",
     "Aprendizaxe",
     "Arquitectura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Mensaxeiro do Cubo",
+    "Constancia"
    ]
   },
   "eu": {
@@ -1478,7 +1498,9 @@
     "AMIA",
     "Ikaskuntza",
     "Arkitektura",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Kuboaren mezularia",
+    "Constancia"
    ]
   },
   "da": {
@@ -1613,7 +1635,9 @@
     "SWOT",
     "Læring",
     "Arkitektur",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Kube-messenger",
+    "Constancia"
    ]
   },
   "sv": {
@@ -1748,7 +1772,9 @@
     "SWOT",
     "Lärande",
     "Arkitektur",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Kub-meddelanden",
+    "Constancia"
    ]
   },
   "nb": {
@@ -1883,7 +1909,9 @@
     "SWOT",
     "Læring",
     "Arkitektur",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Kube-messenger",
+    "Constancia"
    ]
   },
   "ga": {
@@ -2018,7 +2046,9 @@
     "SWOT",
     "Foghlaim",
     "Ailtireacht",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Teachtaire an Chiúb",
+    "Constancia"
    ]
   },
   "el": {
@@ -2153,7 +2183,9 @@
     "SWOT",
     "Μάθηση",
     "Αρχιτεκτονική",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Αγγελιοφόρος του Κύβου",
+    "Constancia"
    ]
   },
   "ru": {
@@ -2288,7 +2320,9 @@
     "SWOT",
     "Обучение",
     "Архитектура",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Мессенджер Куба",
+    "Constancia"
    ]
   },
   "uk": {
@@ -2423,7 +2457,9 @@
     "SWOT",
     "Навчання",
     "Архітектура",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "Месенджер Куба",
+    "Constancia"
    ]
   },
   "ar": {
@@ -2558,7 +2594,9 @@
     "SWOT",
     "التعلّم",
     "البنية",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "مراسل المكعب",
+    "Constancia"
    ]
   },
   "he": {
@@ -2693,7 +2731,9 @@
     "SWOT",
     "למידה",
     "ארכיטקטורה",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "שליח הקובייה",
+    "Constancia"
    ]
   },
   "hi": {
@@ -2828,7 +2868,9 @@
     "SWOT",
     "अधिगम",
     "आर्किटेक्चर",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "घन संदेशवाहक",
+    "Constancia"
    ]
   },
   "zh": {
@@ -2963,7 +3005,9 @@
     "SWOT",
     "学习",
     "架构",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "立方体信使",
+    "Constancia"
    ]
   },
   "ja": {
@@ -3098,7 +3142,9 @@
     "SWOT",
     "学習",
     "構成",
-    "Pendientes Beta"
+    "Pendientes Beta",
+    "キューブ・メッセンジャー",
+    "Constancia"
    ]
   }
  },
