@@ -8,8 +8,8 @@
  "hoja": "Page",
  "de": "sur",
  "idiomas_n": "22 langues",
- "lsm_t": "Langue des signes",
- "lsm_d": "Alphabet LSM intégré · ASL en cours de développement",
+ "lsm_t": "Accessibilité",
+ "lsm_d": "Braille · Morse · langue des signes",
  "proposito_t": "Objectif",
  "proposito": "Améliorer la prévention, la prise en charge et la détection rapide des urgences dans les espaces où personne ne peut voir, grâce à des capteurs et à des terminaux (écrans) qui partagent instantanément une information fidèle à la réalité, sans caméras ni enregistrement.",
  "nivel_global": "Monde",
@@ -55,7 +55,7 @@
  "s3": "3. Où il peut opérer : univers d'intervention",
  "s4": "4. La solution : capteurs, terminaux et écrans",
  "s5": "5. Chaque téléphone, un capteur : une aide familiale 24 heures sur 24",
- "s6": "6. Accessibilité : langue des signes et braille",
+ "s6": "6. Accessibilité : 22 langues, braille, Morse et langue des signes",
  "s7": "7. Impact, alignement mondial et indicateurs",
  "s8": "8. Feuille de route et partenariats",
  "refs": [
@@ -77,17 +77,17 @@
   "Nations Unies. (2024, 11 juillet). <i>UN projects world population to peak within this century</i> [Communiqué de presse sur World Population Prospects 2024]. <a href=\"https://www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/\">www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/</a>",
   "OASIS. (2010). <i>Common Alerting Protocol version 1.2</i>. <a href=\"https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html\">docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html</a>",
   "Organisation internationale du Travail. (2023, 26 novembre). <i>Nearly 3 million people die of work-related accidents and diseases</i>. <a href=\"https://www.ilo.org/resource/news/nearly-3-million-people-die-work-related-accidents-and-diseases\">www.ilo.org/resource/news/nearly-3-million-people-die-work-related-accidents-and-diseases</a>",
-  "Organisation météorologique mondiale. (2025, 12 novembre). <i>Early warning systems reach new heights, but critical gaps jeopardize global progress</i>. <a href=\"https://public.wmo.int/node/37885\">public.wmo.int/node/37885</a>",
   "Organisation mondiale de la Santé. (2021, 26 avril). <i>Caídas</i> [Aide-mémoire]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/falls\">www.who.int/es/news-room/fact-sheets/detail/falls</a>",
   "Organisation mondiale de la Santé. (2025, 1er octobre). <i>Envejecimiento y salud</i> [Aide-mémoire]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/ageing-and-health\">www.who.int/es/news-room/fact-sheets/detail/ageing-and-health</a>",
+  "Organisation météorologique mondiale. (2025, 12 novembre). <i>Early warning systems reach new heights, but critical gaps jeopardize global progress</i>. <a href=\"https://public.wmo.int/node/37885\">public.wmo.int/node/37885</a>",
   "Pacheco, A. (2025, 9 janvier). <i>Estados que registraron más sismos en 2024</i> [d'après les données du Reporte Anual del Servicio Sismológico Nacional, UNAM]. adn40. <a href=\"https://www.adn40.mx/mexico/2025-01-09/estados-registraron-mas-sismos-2024-fallas-geologicas/\">www.adn40.mx/mexico/2025-01-09/estados-registraron-mas-sismos-2024-fallas-geologicas/</a>",
   "Ramírez Salgado, V. H. ({anio}). <i>SOSistem™: Sistema S.O.S.©, versión {ver}</i> [Site web et documentation technique]. <a href=\"https://sosistem.com/\">sosistem.com/</a>",
   "Secretaría de Economía. (2002). <i>NOM-008-SCFI-2002. Sistema General de Unidades de Medida</i>. Diario Oficial de la Federación.",
   "Secretaría de Economía. (s. d.). <i>Ensenada: perfil del municipio</i> [DataMéxico]. Consulté le {hoy}, sur <a href=\"https://www.economia.gob.mx/datamexico/es/profile/geo/ensenada\">www.economia.gob.mx/datamexico/es/profile/geo/ensenada</a>",
-  "Secretaría de Educación Pública y Aprende.mx. (s. d.). <i>Abecedario en Lengua de Señas Mexicana</i> [Infographie]. Nueva Escuela Mexicana Digital.",
   "Secretaría de Educación Pública. (2025). <i>Principales cifras del Sistema Educativo Nacional 2024-2025</i>. <a href=\"https://www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf\">www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf</a>",
   "Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008. Colores y señales de seguridad e higiene, e identificación de riesgos por fluidos conducidos en tuberías</i>. <a href=\"https://dof.gob.mx/normasOficiales/3541/stps.htm\">dof.gob.mx/normasOficiales/3541/stps.htm</a>",
   "The Logistics World. (2024, 17 juin). <i>Infraestructura marítima en México: ¿Cuántos puertos tiene el país?</i> <a href=\"https://thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/\">thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/</a>",
+  "Union internationale des télécommunications. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href=\"https://www.itu.int/rec/R-REC-M.1677-1-200910-I/\">www.itu.int/rec/R-REC-M.1677-1-200910-I/</a>",
   "Union internationale des télécommunications. (2025). <i>Facts and Figures 2025: Mobile phone ownership</i>. <a href=\"https://www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/\">www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/</a>"
  ],
  "portada_pie": "Document institutionnel destiné aux gouvernements, aux organisations multilatérales, aux banques de développement et aux partenaires. Les chiffres sont cités selon les normes APA, 7e édition ; les scénarios sont des calculs propres établis à partir de ces chiffres.",
@@ -247,7 +247,7 @@
   ],
   [
    "Pour tous",
-   "Lumière, son, 22 langues, alphabet de la Langue des signes mexicaine et proposition de contact en braille."
+   "Lumière, son, 22 langues, braille, Morse et langue des signes."
   ],
   [
    "Résilient",
@@ -454,10 +454,7 @@
  "cel_sens_fij": "Radar mmWave, mouvement, distance, volume sonore, fumée, gaz, oxygène, hydrogène, ammoniac, chaleur, froid, lumière et obscurité, eau au sol, masse, espace et capacité, inventaire des personnes et temps de présence.",
  "cel_estado": "<b>État :</b> le Terminal sur téléphone fonctionne en version d'essai ouverte au public, avec la voix toujours active et une liaison entre téléphone et écran par phrase ; la liaison familiale permanente 24 h/24, 7 j/7 est en cours de développement.",
  "cel_foto": "Essai « Personne au sol » avec alerte N0–N3",
- "acc_lead": "En situation d'urgence, tout le monde ne peut pas entendre, voir ou parler. SOSistem™ intègre la langue des signes et le braille pour que l'alerte et l'aide parviennent à tous.",
- "acc_lsm_t": "Langue des signes mexicaine (LSM) : alphabet manuel",
- "acc_lsm": "Les écrans épellent avec l'alphabet manuel de la LSM ce qui se passe (par exemple, CAÍDA [chute] ou SISMO [séisme]). Les lettres J, K, Ñ, Q, X et Z comportent un mouvement.",
- "acc_lsm_f": "Images de l'alphabet : Secretaría de Educación Pública et Aprende.mx (s. d.).",
+ "acc_lead": "En situation d'urgence, tout le monde ne peut pas entendre, voir ou parler. SOSistem™ transmet chaque alerte par quatre voies complémentaires pour que l'alerte et l'aide parviennent à tous.",
  "acc_br_t": "Braille : comment demander de l'aide sans voir l'écran (proposition)",
  "acc_br": [
   "<b>Plaque braille</b> à côté de chaque terminal et dans les cabines, portant le mot « SOS » et l'indication du bouton d'aide.",
@@ -596,5 +593,23 @@
  "refs_n": "Format APA, 7e édition, par ordre alphabétique. Les chiffres sans source explicite sont des calculs propres établis à partir des sources citées.",
  "recuperado": "Consulté le",
  "de_url": "sur",
- "refs_t": "Références"
+ "refs_t": "Références",
+ "acc_ref": [
+  [
+   "22 langues",
+   "Alertes et écrans dans la langue de chaque personne : langues officielles de l'ONU, langues européennes, asiatiques et régionales."
+  ],
+  [
+   "Braille",
+   "Signalétique tactile et moyen de demander de l'aide sans voir l'écran."
+  ],
+  [
+   "Morse",
+   "Signal universel de détresse (SOS) lumineux et sonore, conforme à l'UIT."
+  ],
+  [
+   "Langue des signes",
+   "Alertes pour les personnes sourdes : Langue des signes mexicaine (LSM) ; langue des signes américaine (ASL) en cours de développement."
+  ]
+ ]
 }

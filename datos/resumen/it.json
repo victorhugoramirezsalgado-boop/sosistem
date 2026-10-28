@@ -8,8 +8,8 @@
  "hoja": "Pagina",
  "de": "di",
  "idiomas_n": "22 lingue",
- "lsm_t": "Lingua dei segni",
- "lsm_d": "Alfabeto LSM integrato · ASL in sviluppo",
+ "lsm_t": "Accessibilità",
+ "lsm_d": "Braille · Morse · lingua dei segni",
  "proposito_t": "Obiettivo",
  "proposito": "Migliorare la prevenzione, la risposta e l'individuazione tempestiva delle emergenze negli spazi in cui nessuno può vedere, mediante sensori e terminali (schermi) che condividono all'istante informazioni fedeli alla realtà, senza telecamere né registrazione.",
  "nivel_global": "Mondo",
@@ -55,7 +55,7 @@
  "s3": "3. Dove può operare: universo di intervento",
  "s4": "4. La soluzione: sensori, terminali e schermi",
  "s5": "5. Ogni cellulare, un sensore: assistenza familiare 24 ore su 24",
- "s6": "6. Accessibilità: lingua dei segni e braille",
+ "s6": "6. Accessibilità: 22 lingue, braille, Morse e lingua dei segni",
  "s7": "7. Impatto, allineamento mondiale e indicatori",
  "s8": "8. Tabella di marcia e alleanze",
  "refs": [
@@ -82,11 +82,11 @@
   "Secretaría de Economía. (2002). <i>NOM-008-SCFI-2002. Sistema General de Unidades de Medida</i>. Diario Oficial de la Federación.",
   "Secretaría de Economía. (s.d.). <i>Ensenada: perfil del municipio</i> [DataMéxico]. Consultato il {hoy}, da <a href=\"https://www.economia.gob.mx/datamexico/es/profile/geo/ensenada\">www.economia.gob.mx/datamexico/es/profile/geo/ensenada</a>",
   "Secretaría de Educación Pública. (2025). <i>Principales cifras del Sistema Educativo Nacional 2024-2025</i>. <a href=\"https://www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf\">www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf</a>",
-  "Secretaría de Educación Pública e Aprende.mx. (s.d.). <i>Abecedario en Lengua de Señas Mexicana</i> [Infografica]. Nueva Escuela Mexicana Digital.",
   "Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008. Colores y señales de seguridad e higiene, e identificación de riesgos por fluidos conducidos en tuberías</i>. <a href=\"https://dof.gob.mx/normasOficiales/3541/stps.htm\">dof.gob.mx/normasOficiales/3541/stps.htm</a>",
   "The Logistics World. (2024, 17 giugno). <i>Infraestructura marítima en México: ¿Cuántos puertos tiene el país?</i> <a href=\"https://thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/\">thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/</a>",
-  "Ufficio delle Nazioni Unite per la riduzione del rischio di catastrofi. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href=\"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030\">www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a>",
   "Ufficio delle Nazioni Unite per la riduzione del rischio di catastrofi e Organizzazione Meteorologica Mondiale. (2024). <i>Global status of multi-hazard early warning systems 2024</i>. <a href=\"https://public.wmo.int/node/24875\">public.wmo.int/node/24875</a>",
+  "Ufficio delle Nazioni Unite per la riduzione del rischio di catastrofi. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href=\"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030\">www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a>",
+  "Unione Internazionale delle Telecomunicazioni. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href=\"https://www.itu.int/rec/R-REC-M.1677-1-200910-I/\">www.itu.int/rec/R-REC-M.1677-1-200910-I/</a>",
   "Unione Internazionale delle Telecomunicazioni. (2025). <i>Facts and Figures 2025: Mobile phone ownership</i>. <a href=\"https://www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/\">www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/</a>",
   "World Bank. (2025). <i>Population ages 65 and above (% of total population) — World</i> [SP.POP.65UP.TO.ZS], tramite Federal Reserve Bank of St. Louis. <a href=\"https://fred.stlouisfed.org/series/SPPOP65UPTOZSWLD\">fred.stlouisfed.org/series/SPPOP65UPTOZSWLD</a>"
  ],
@@ -247,7 +247,7 @@
   ],
   [
    "Per tutti",
-   "Luce, suono, 22 lingue, alfabeto della Lingua dei segni messicana e proposta di contatto in braille."
+   "Luce, suono, 22 lingue, braille, Morse e lingua dei segni."
   ],
   [
    "Resiliente",
@@ -454,10 +454,7 @@
  "cel_sens_fij": "Radar mmWave, movimento, distanza, volume sonoro, fumo, gas, ossigeno, idrogeno, ammoniaca, caldo, freddo, luce e buio, acqua sul pavimento, massa, spazio e capienza, conteggio delle persone e tempi di permanenza.",
  "cel_estado": "<b>Stato:</b> il Terminale sul cellulare funziona in versione di prova aperta al pubblico, con la voce sempre attiva e il collegamento tra cellulare e schermo tramite frase; il collegamento familiare permanente 24/7 è in fase di sviluppo.",
  "cel_foto": "Prova di «Persona a terra» con avviso N0–N3",
- "acc_lead": "In un'emergenza non tutte le persone possono sentire, vedere o parlare. SOSistem™ integra la lingua dei segni e il braille affinché l'allerta e l'aiuto raggiungano tutti.",
- "acc_lsm_t": "Lingua dei segni messicana (LSM): alfabeto manuale",
- "acc_lsm": "Gli schermi compitano con l'alfabeto manuale della LSM ciò che sta accadendo (per esempio, CAÍDA o SISMO). Le lettere J, K, Ñ, Q, X e Z prevedono un movimento.",
- "acc_lsm_f": "Immagini dell'alfabeto: Secretaría de Educación Pública e Aprende.mx (s.d.).",
+ "acc_lead": "In un'emergenza non tutte le persone possono sentire, vedere o parlare. SOSistem™ trasmette ogni allerta attraverso quattro canali complementari affinché l'allerta e l'aiuto raggiungano tutti.",
  "acc_br_t": "Braille: come chiedere aiuto senza vedere lo schermo (proposta)",
  "acc_br": [
   "<b>Targa in braille</b> accanto a ogni terminale e nelle cabine, con la parola «SOS» e l'indicazione del pulsante di aiuto.",
@@ -596,5 +593,23 @@
  "refs_n": "Stile APA, 7ª edizione, in ordine alfabetico. I dati senza fonte esplicita sono calcoli propri basati sulle fonti citate.",
  "recuperado": "Consultato il",
  "de_url": "da",
- "refs_t": "Riferimenti bibliografici"
+ "refs_t": "Riferimenti bibliografici",
+ "acc_ref": [
+  [
+   "22 lingue",
+   "Avvisi e schermi nella lingua di ogni persona: lingue ufficiali dell'ONU, lingue europee, asiatiche e regionali."
+  ],
+  [
+   "Braille",
+   "Segnaletica tattile e modo per chiedere aiuto senza vedere lo schermo."
+  ],
+  [
+   "Morse",
+   "Segnale universale di soccorso (SOS) luminoso e sonoro, conforme all'UIT."
+  ],
+  [
+   "Lingua dei segni",
+   "Avvisi per le persone sorde: Lingua dei segni messicana (LSM); lingua dei segni americana (ASL) in sviluppo."
+  ]
+ ]
 }

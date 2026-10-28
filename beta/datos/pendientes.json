@@ -420,5 +420,14 @@
   "modificacion": "Cambio directo por indicación del autor (28-oct-2026).",
   "estado": "Publicado",
   "resolucion": "Publicado en 6.0.2 sin pasar por autorización en Beta, por indicación del autor."
+ },
+ {
+  "id": 129,
+  "titulo": "Resumen ejecutivo sin abecedario de señas",
+  "que": "Se quitan las imágenes del abecedario LSM; solo se refieren 22 idiomas, braille, Morse y lengua de señas.",
+  "espacio": "Resumen ejecutivo global (PDF, 5 idiomas).",
+  "modificacion": "Cambio directo por indicación del autor (28-oct-2026).",
+  "estado": "Publicado",
+  "resolucion": "Publicado en 6.0.3."
  }
 ]

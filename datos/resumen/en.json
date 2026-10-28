@@ -8,8 +8,8 @@
  "hoja": "Page",
  "de": "of",
  "idiomas_n": "22 languages",
- "lsm_t": "Sign language",
- "lsm_d": "LSM alphabet built in · ASL in development",
+ "lsm_t": "Accessibility",
+ "lsm_d": "Braille · Morse · sign language",
  "proposito_t": "Objective",
  "proposito": "To improve the prevention, response and timely identification of emergencies in spaces where no one can see, through sensors and terminals (screens) that instantly share information true to reality, with no cameras and no recording.",
  "nivel_global": "World",
@@ -55,7 +55,7 @@
  "s3": "3. Where it can operate: scope of service",
  "s4": "4. The solution: sensors, terminals and screens",
  "s5": "5. Every phone a sensor: family help around the clock",
- "s6": "6. Accessibility: sign language and braille",
+ "s6": "6. Accessibility: 22 languages, braille, Morse and sign language",
  "s7": "7. Impact, global alignment and indicators",
  "s8": "8. Roadmap and partnerships",
  "refs": [
@@ -69,6 +69,7 @@
   "International Organization for Standardization. (2011). <i>Graphical symbols — Safety colours and safety signs — Part 1: Design principles for safety signs and safety markings</i> (ISO 3864-1:2011). <a href=\"https://www.iso.org/standard/51021.html\">www.iso.org/standard/51021.html</a>",
   "International Organization for Standardization. (2019). <i>Graphical symbols — Safety colours and safety signs — Registered safety signs</i> (ISO 7010:2019). <a href=\"https://www.iso.org/standard/72424.html\">www.iso.org/standard/72424.html</a>",
   "International Organization for Standardization. (2022). <i>Quantities and units — Part 1: General</i> (ISO 80000-1:2022). <a href=\"https://www.iso.org/standard/76921.html\">www.iso.org/standard/76921.html</a>",
+  "International Telecommunication Union. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href=\"https://www.itu.int/rec/R-REC-M.1677-1-200910-I/\">www.itu.int/rec/R-REC-M.1677-1-200910-I/</a>",
   "International Telecommunication Union. (2025). <i>Facts and Figures 2025: Mobile phone ownership</i>. <a href=\"https://www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/\">www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/</a>",
   "Ley Federal de Protección de Datos Personales en Posesión de los Particulares. (2025). <i>Diario Oficial de la Federación</i>, March 20, 2025. <a href=\"https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf\">www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf</a>",
   "Ley Federal del Trabajo. (n.d.). Article 994. Cámara de Diputados. Retrieved {hoy}, from <a href=\"https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf\">www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf</a>",
@@ -78,13 +79,12 @@
   "Secretaría de Economía. (2002). <i>NOM-008-SCFI-2002. Sistema General de Unidades de Medida</i>. Diario Oficial de la Federación.",
   "Secretaría de Economía. (n.d.). <i>Ensenada: perfil del municipio</i> [DataMéxico]. Retrieved {hoy}, from <a href=\"https://www.economia.gob.mx/datamexico/es/profile/geo/ensenada\">www.economia.gob.mx/datamexico/es/profile/geo/ensenada</a>",
   "Secretaría de Educación Pública. (2025). <i>Principales cifras del Sistema Educativo Nacional 2024-2025</i>. <a href=\"https://www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf\">www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf</a>",
-  "Secretaría de Educación Pública and Aprende.mx. (n.d.). <i>Abecedario en Lengua de Señas Mexicana</i> [Infographic]. Nueva Escuela Mexicana Digital.",
   "Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008. Colores y señales de seguridad e higiene, e identificación de riesgos por fluidos conducidos en tuberías</i>. <a href=\"https://dof.gob.mx/normasOficiales/3541/stps.htm\">dof.gob.mx/normasOficiales/3541/stps.htm</a>",
   "The Logistics World. (2024, June 17). <i>Infraestructura marítima en México: ¿Cuántos puertos tiene el país?</i> <a href=\"https://thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/\">thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/</a>",
+  "United Nations Office for Disaster Risk Reduction and World Meteorological Organization. (2024). <i>Global status of multi-hazard early warning systems 2024</i>. <a href=\"https://public.wmo.int/node/24875\">public.wmo.int/node/24875</a>",
+  "United Nations Office for Disaster Risk Reduction. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href=\"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030\">www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a>",
   "United Nations. (2015). <i>Transformar nuestro mundo: la Agenda 2030 para el Desarrollo Sostenible</i> (A/RES/70/1). <a href=\"https://www.un.org/sustainabledevelopment/es/\">www.un.org/sustainabledevelopment/es/</a>",
   "United Nations. (2024, July 11). <i>UN projects world population to peak within this century</i> [Press release on World Population Prospects 2024]. <a href=\"https://www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/\">www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/</a>",
-  "United Nations Office for Disaster Risk Reduction. (2015). <i>Marco de Sendai para la Reducción del Riesgo de Desastres 2015-2030</i>. <a href=\"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030\">www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030</a>",
-  "United Nations Office for Disaster Risk Reduction and World Meteorological Organization. (2024). <i>Global status of multi-hazard early warning systems 2024</i>. <a href=\"https://public.wmo.int/node/24875\">public.wmo.int/node/24875</a>",
   "World Bank. (2025). <i>Population ages 65 and above (% of total population) — World</i> [SP.POP.65UP.TO.ZS], via Federal Reserve Bank of St. Louis. <a href=\"https://fred.stlouisfed.org/series/SPPOP65UPTOZSWLD\">fred.stlouisfed.org/series/SPPOP65UPTOZSWLD</a>",
   "World Health Organization. (2021, April 26). <i>Caídas</i> [Fact sheet]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/falls\">www.who.int/es/news-room/fact-sheets/detail/falls</a>",
   "World Health Organization. (2025, October 1). <i>Envejecimiento y salud</i> [Fact sheet]. <a href=\"https://www.who.int/es/news-room/fact-sheets/detail/ageing-and-health\">www.who.int/es/news-room/fact-sheets/detail/ageing-and-health</a>",
@@ -247,7 +247,7 @@
   ],
   [
    "For everyone",
-   "Light, sound, 22 languages, the Mexican Sign Language alphabet and a proposed braille contact point."
+   "Light, sound, 22 languages, braille, Morse and sign language."
   ],
   [
    "Resilient",
@@ -454,10 +454,7 @@
  "cel_sens_fij": "mmWave radar, motion, distance, sound level, smoke, gas, oxygen, hydrogen, ammonia, heat, cold, light and darkness, water on the floor, mass, space and capacity, people count and dwell times.",
  "cel_estado": "<b>Status:</b> the phone Terminal is available as a public test version, with voice always active and phone-to-screen linking by phrase; the permanent 24/7 family link is under development.",
  "cel_foto": "“Person on the floor” test with N0–N3 alert",
- "acc_lead": "In an emergency, not everyone can hear, see or speak. SOSistem™ incorporates sign language and braille so that alerts and help reach everyone.",
- "acc_lsm_t": "Mexican Sign Language (LSM): manual alphabet",
- "acc_lsm": "The screens fingerspell what is happening using the LSM manual alphabet (for example, CAÍDA [fall] or SISMO [earthquake]). The letters J, K, Ñ, Q, X and Z involve movement.",
- "acc_lsm_f": "Alphabet images: Secretaría de Educación Pública and Aprende.mx (n.d.).",
+ "acc_lead": "In an emergency, not everyone can hear, see or speak. SOSistem™ delivers every alert through four complementary channels so that alerts and help reach everyone.",
  "acc_br_t": "Braille: how to call for help without seeing the screen (proposal)",
  "acc_br": [
   "<b>Braille plate</b> next to each terminal and in the cabins, with the word “SOS” and directions to the help button.",
@@ -596,5 +593,23 @@
  "refs_n": "APA style, 7th edition, in alphabetical order. Figures without an explicit source are the author's own calculations based on the cited sources.",
  "recuperado": "Retrieved",
  "de_url": "from",
- "refs_t": "References"
+ "refs_t": "References",
+ "acc_ref": [
+  [
+   "22 languages",
+   "Alerts and screens in each person's language: UN official languages plus European, Asian and regional languages."
+  ],
+  [
+   "Braille",
+   "Tactile signage and a way to call for help without seeing the screen."
+  ],
+  [
+   "Morse",
+   "Universal distress signal (SOS) in light and sound, in line with the ITU."
+  ],
+  [
+   "Sign language",
+   "Alerts for deaf people: Mexican Sign Language (LSM); American Sign Language (ASL) in development."
+  ]
+ ]
 }

@@ -109,12 +109,11 @@ function documento(L) {
   ${pie("UIT/ITU (2025) · LFPDPPP (2025)")}
 </section>`;
 
-  const LSM = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((c) => `<img src="${img("lsm/" + c.toLowerCase() + ".webp")}" alt="${c}">`).join("");
   const s6 = `<section class="h" id="s6"><h2 class="t">${L.s6}</h2>
   <p class="lead">${L.acc_lead}</p>
-  <h3>${L.acc_lsm_t}</h3><div class="lsm">${LSM}</div><p>${L.acc_lsm}</p><p class="nota">${L.acc_lsm_f}</p>
+  <table class="dif acc"><tbody>${L.acc_ref.map(([a, d]) => `<tr><th>${a}</th><td>${d}</td></tr>`).join("")}</tbody></table>
   <h3>${L.acc_br_t}</h3><ul class="br">${L.acc_br.map((x) => `<li>${x}</li>`).join("")}</ul><p class="nota">${L.acc_br_n}</p>
-  ${pie("Secretaría de Educación Pública & Aprende.mx (s. f./n.d.)")}
+  ${pie("ITU-R M.1677-1 (2009)")}
 </section>`;
 
   const s7 = `<section class="h" id="s7"><h2 class="t">${L.s7}</h2>
@@ -172,7 +171,7 @@ figcaption{background:#fff;color:#334155;font-size:7.2pt;padding:2px 5px;line-he
 .niv td:first-child{color:${NAR};font-weight:800}
 .imp{margin:6px 0;padding:9px 12px;border-radius:8px;background:#0f2a4a;color:#fff;font-size:10pt;line-height:1.45}.imp b{display:block;color:#ffb27a;font-size:8pt;letter-spacing:.14em;text-transform:uppercase}.imp span{display:block;margin-top:4px;color:#ffd29e;font-weight:700}
 .cel{display:grid;grid-template-columns:1fr 2.3in;gap:14px;align-items:start}.sens th{width:6.5em;background:#fff7f1;color:#8a4a20}ol,ul{margin:3px 0;padding-left:18px}li{margin:2px 0}
-.lsm{display:grid;grid-template-columns:repeat(9,1fr);gap:5px;margin:4px 0 6px}.lsm img{width:100%;border:1px solid #c9ced6;border-radius:6px;background:#fff}
+.acc th{width:9em}
 .br li{margin:4px 0}
 .ali td,.ali th{font-size:8.2pt}.ali td:first-child{width:22%}.ali .cita{font-style:italic;color:#334155;width:46%}
 .foda td{width:50%;font-size:8.4pt}.fo-f{border-left:4px solid #15803D}.fo-d{border-left:4px solid #F9A900}.fo-o{border-left:4px solid #1F6FB2}.fo-a{border-left:4px solid #D9221A}

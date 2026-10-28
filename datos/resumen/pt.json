@@ -8,8 +8,8 @@
  "hoja": "Página",
  "de": "de",
  "idiomas_n": "22 idiomas",
- "lsm_t": "Língua de sinais",
- "lsm_d": "Alfabeto manual da LSM integrado · ASL em desenvolvimento",
+ "lsm_t": "Acessibilidade",
+ "lsm_d": "Braille · Morse · língua de sinais",
  "proposito_t": "Objetivo",
  "proposito": "Aprimorar a prevenção, o atendimento e a identificação oportuna de emergências nos espaços onde ninguém pode ver, por meio de sensores e terminais (telas) que compartilham em tempo real informações fiéis à realidade, sem câmeras nem gravação.",
  "nivel_global": "Mundo",
@@ -55,7 +55,7 @@
  "s3": "3. Onde pode operar: universo de atendimento",
  "s4": "4. A solução: sensores, terminais e telas",
  "s5": "5. Cada celular, um sensor: ajuda familiar 24 horas",
- "s6": "6. Acessibilidade: língua de sinais e braille",
+ "s6": "6. Acessibilidade: 22 idiomas, braille, Morse e língua de sinais",
  "s7": "7. Impacto, alinhamento mundial e indicadores",
  "s8": "8. Roteiro e parcerias",
  "refs": [
@@ -84,10 +84,10 @@
   "Ramírez Salgado, V. H. ({anio}). <i>SOSistem™: Sistema S.O.S.©, versión {ver}</i> [Site e documentação técnica]. <a href=\"https://sosistem.com/\">sosistem.com/</a>",
   "Secretaría de Economía. (2002). <i>NOM-008-SCFI-2002. Sistema General de Unidades de Medida</i>. Diario Oficial de la Federación.",
   "Secretaría de Economía. (s.d.). <i>Ensenada: perfil del municipio</i> [DataMéxico]. Recuperado em {hoy}, de <a href=\"https://www.economia.gob.mx/datamexico/es/profile/geo/ensenada\">www.economia.gob.mx/datamexico/es/profile/geo/ensenada</a>",
-  "Secretaría de Educación Pública e Aprende.mx. (s.d.). <i>Abecedario en Lengua de Señas Mexicana</i> [Infográfico]. Nueva Escuela Mexicana Digital.",
   "Secretaría de Educación Pública. (2025). <i>Principales cifras del Sistema Educativo Nacional 2024-2025</i>. <a href=\"https://www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf\">www.planeacion.sep.gob.mx/Doc/estadistica_e_indicadores/principales_cifras/principales_cifras_2024_2025.pdf</a>",
   "Secretaría del Trabajo y Previsión Social. (2008). <i>NOM-026-STPS-2008. Colores y señales de seguridad e higiene, e identificación de riesgos por fluidos conducidos en tuberías</i>. <a href=\"https://dof.gob.mx/normasOficiales/3541/stps.htm\">dof.gob.mx/normasOficiales/3541/stps.htm</a>",
   "The Logistics World. (2024, 17 de junho). <i>Infraestructura marítima en México: ¿Cuántos puertos tiene el país?</i> <a href=\"https://thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/\">thelogisticsworld.com/logistica-y-distribucion/infraestructura-maritima-en-mexico-cuantos-puertos-tiene-el-pais/</a>",
+  "União Internacional de Telecomunicações. (2009). <i>International Morse code</i> (Recommendation ITU-R M.1677-1). <a href=\"https://www.itu.int/rec/R-REC-M.1677-1-200910-I/\">www.itu.int/rec/R-REC-M.1677-1-200910-I/</a>",
   "União Internacional de Telecomunicações. (2025). <i>Facts and Figures 2025: Mobile phone ownership</i>. <a href=\"https://www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/\">www.itu.int/itu-d/reports/statistics/2025/10/15/ff25-mobile-phone-ownership/</a>"
  ],
  "portada_pie": "Documento institucional para governos, organismos multilaterais, bancos de desenvolvimento e parceiros. Os números são citados no formato APA, 7ª edição; os cenários são cálculos próprios a partir deles.",
@@ -247,7 +247,7 @@
   ],
   [
    "Para todos",
-   "Luz, som, 22 idiomas, alfabeto manual da Língua de Sinais Mexicana e proposta de contato em braille."
+   "Luz, som, 22 idiomas, braille, Morse e língua de sinais."
   ],
   [
    "Resiliente",
@@ -454,10 +454,7 @@
  "cel_sens_fij": "Radar mmWave, movimento, distância, volume de som, fumaça, gás, oxigênio, hidrogênio, amônia, calor, frio, luz e escuridão, água no piso, massa, espaço e capacidade, inventário de pessoas e tempos de permanência.",
  "cel_estado": "<b>Status:</b> o Terminal no celular funciona em versão de teste aberta ao público, com a voz sempre ativa e vinculação entre celular e tela por frase; o vínculo familiar permanente 24/7 está em desenvolvimento.",
  "cel_foto": "Teste de “Pessoa caída no chão” com aviso N0–N3",
- "acc_lead": "Em uma emergência, nem todas as pessoas podem ouvir, ver ou falar. O SOSistem™ incorpora a língua de sinais e o braille para que o alerta e a ajuda cheguem a todos.",
- "acc_lsm_t": "Língua de Sinais Mexicana (LSM): alfabeto manual",
- "acc_lsm": "As telas soletram com o alfabeto manual da LSM o que está acontecendo (por exemplo, CAÍDA ou SISMO). As letras J, K, Ñ, Q, X e Z envolvem movimento.",
- "acc_lsm_f": "Imagens do alfabeto: Secretaría de Educación Pública e Aprende.mx (s.d.).",
+ "acc_lead": "Em uma emergência, nem todas as pessoas podem ouvir, ver ou falar. O SOSistem™ transmite cada alerta por quatro vias complementares para que o alerta e a ajuda cheguem a todos.",
  "acc_br_t": "Braille: como pedir ajuda sem ver a tela (proposta)",
  "acc_br": [
   "<b>Placa em braille</b> junto a cada terminal e nas cabines, com a palavra “SOS” e a indicação do botão de ajuda.",
@@ -596,5 +593,23 @@
  "refs_n": "Formato APA, 7ª edição, em ordem alfabética. Os números sem fonte explícita são cálculos próprios a partir das fontes citadas.",
  "recuperado": "Recuperado em",
  "de_url": "de",
- "refs_t": "Referências"
+ "refs_t": "Referências",
+ "acc_ref": [
+  [
+   "22 idiomas",
+   "Alertas e telas no idioma de cada pessoa: idiomas oficiais da ONU, europeus, asiáticos e regionais."
+  ],
+  [
+   "Braille",
+   "Sinalização tátil e forma de pedir ajuda sem ver a tela."
+  ],
+  [
+   "Morse",
+   "Sinal universal de socorro (SOS) em luz e som, conforme a UIT."
+  ],
+  [
+   "Língua de sinais",
+   "Alertas para pessoas surdas: Língua de Sinais Mexicana (LSM); língua de sinais americana (ASL) em desenvolvimento."
+  ]
+ ]
 }
