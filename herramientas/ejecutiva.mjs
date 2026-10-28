@@ -4,7 +4,7 @@
 // Uso: node herramientas/ejecutiva.mjs  →  assets/presentacion-ejecutiva-sosistem.pdf
 import { createRequire } from "module";
 import fs from "fs";
-import { emblema, emblemaCss, banderas, marcas } from "./marca.mjs";
+import { emblema, emblemaCss, banderas, marcas, idiomasFila, idiomasCss } from "./marca.mjs";
 const { chromium } = createRequire(import.meta.url)("playwright");
 
 const V = JSON.parse(fs.readFileSync("datos/version.json", "utf8"));
@@ -42,6 +42,7 @@ const SERV = ["Inventario de personas", "Distribución y permanencia", "Persona 
 
 const hoja1 = `<section class="h">
   ${emblema({ titulo: "Resumen ejecutivo del proyecto · SOSistem™", sub: `Sistema S.O.S.© · Alerta temprana para salvar vidas en recintos confinados · versión ${esc(ver)} · ${hoy}`, flags })}
+  ${idiomasFila()}
   <table class="ficha"><tbody>
     <tr><th>Sector</th><td>Seguridad humana, gestión del riesgo de desastres, salud y seguridad en el trabajo</td><th>Etapa</th><td>Prototipo funcional y piloto</td></tr>
     <tr><th>Ubicación</th><td>Ensenada, Baja California, México; replicable en América Latina y el Caribe</td><th>Ejecutor</th><td>Víctor Hugo Ramírez Salgado (persona física con actividad empresarial)</td></tr>
@@ -151,14 +152,14 @@ footer.f{margin-top:auto;border-top:1px solid #0f1b2d;padding-top:3px;font-size:
 .ficha{margin:7px 0 2px;font-size:8pt}.ficha th{background:#0f2a4a;color:#fff;width:5.8em;white-space:nowrap}
 figure{margin:0;border:1px solid #c9ced6;border-radius:6px;overflow:hidden;background:#0b1018}figure img{display:block;width:100%;object-fit:cover}
 figcaption{background:#fff;color:#334155;font-size:7.2pt;padding:2px 5px;line-height:1.25}
-.fotos3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:5px}.fotos3 img{height:1.45in}
+.fotos3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:5px}.fotos3 img{height:1.3in}
 .fotos4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.fotos4 img{height:1.15in;object-fit:contain}
 .chips{margin:3px 0 2px;font-size:8.2pt;line-height:1.9}.chips span{display:inline-block;border:1px solid #f0c8ae;background:#fff7f1;border-radius:10px;padding:0 6px;margin:0 3px 0 0}
 .dos2 table td,.dos2 table th{padding:2px 5px;font-size:7.9pt}.dos2 h2{margin-top:7px}.dos2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.foda td{font-size:7.8pt;width:50%}.ruta{margin:2px 0;padding-left:16px;font-size:8.2pt}
 .firma{display:grid;grid-template-columns:1fr 1.25fr;gap:14px;margin-top:5px;padding:6px 10px;border:1px solid #c9ced6;border-left:5px solid #DB641C;border-radius:6px}
 .firma span{display:block}.fi-l .linea{border-bottom:1px solid #0f1b2d;height:22px;margin-bottom:3px;width:85%}.fi-l b{font-size:10.5pt}
 .leyenda{font-size:7.8pt;color:#8a4a20;margin-top:3px;font-style:italic}.fi-r{font-size:8pt;line-height:1.5}.fi-r .pi{font-size:7pt;color:#4a5568;margin-top:2px}
-${emblemaCss}</style></head><body>${hoja1}${hoja2}</body></html>`;
+${emblemaCss}${idiomasCss}</style></head><body>${hoja1}${hoja2}</body></html>`;
 
 const p = await b.newPage();
 await p.setContent(marcas(html), { waitUntil: "load" });

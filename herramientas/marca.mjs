@@ -65,3 +65,16 @@ export function marcas(html) {
   const fix = (t) => MARCAS.reduce((s, [r, v]) => s.replace(r, v), t);
   return html.replace(/(<style[\s\S]*?<\/style>)|(<script[\s\S]*?<\/script>)|(<[^>]+>)|([^<]+)/g, (m, st, sc, tag, txt) => (txt ? fix(txt) : m));
 }
+
+// Idiomas vigentes del sistema (datos/idiomas.json) y lengua de señas, para la parte principal de cada documento
+export function idiomasFila() {
+  const I = JSON.parse(fs.readFileSync("datos/idiomas.json", "utf8")).idiomas;
+  const nombres = Object.entries(I).map(([c, v]) => `<span dir="${v.dir || "ltr"}" lang="${c}">${String(v.nombre).replace(/\s*\(.*\)\s*/, "").replace(/\s*\/.*$/, "")}</span>`);
+  return `<div class="idi"><div class="idi-t"><b>${nombres.length} idiomas</b></div><div class="idi-l">${nombres.join("")}</div>
+    <div class="idi-s"><b>Lengua de señas</b><span>LSM (México) y ASL · en desarrollo</span></div></div>`;
+}
+export const idiomasCss = `
+.idi{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;margin-top:6px;padding:4px 8px;border:1px solid #c9d6e6;background:#f3f7fc;border-radius:6px}
+.idi-t b{font:800 8.4pt Inter,Arial,sans-serif;color:#005387;white-space:nowrap}
+.idi-l{display:flex;flex-wrap:wrap;gap:2px 4px;font-size:7.2pt;line-height:1.35}.idi-l span{padding:0 4px;border-radius:4px;background:#fff;border:1px solid #dbe3ee}
+.idi-s{display:flex;flex-direction:column;align-items:flex-start;border-left:3px solid ${NAR};padding-left:7px}.idi-s b{font:800 8pt Inter,Arial,sans-serif;color:${NAR};white-space:nowrap}.idi-s span{font-size:7pt;color:#4a5568;white-space:nowrap}`;
