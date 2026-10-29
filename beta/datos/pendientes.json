@@ -2,7 +2,7 @@
  {
   "id": 136,
   "titulo": "Control y conteo real de la Terminal",
-  "que": "Cada evento de la Terminal lleva un folio consecutivo (los 52 actuales se numeran por fecha). La Terminal muestra «Control de envíos»: generados, enviados, pendientes y lo que ya está en GitHub («Verificar con GitHub»). En el repositorio privado, cada envío recalcula el control (reportes/control/): todos los envíos sin límite, folios faltantes (eventos que no llegaron), reenvíos y conteos por tipo, día, real/prueba y calificación. El panel del administrador muestra ese control en «Pruebas de la terminal».",
+  "que": "Cada evento de la Terminal lleva un folio consecutivo (los 52 actuales se numeran por fecha). La Terminal muestra «Control de envíos»: generados, enviados, pendientes y lo que ya está en GitHub («Verificar con GitHub»). En el repositorio privado, cada envío recalcula el control (reportes/control/): todos los envíos sin límite, folios faltantes (eventos que no llegaron), reenvíos y conteos por tipo, día, real/prueba y calificación. El panel del administrador muestra ese control en «Pruebas de la terminal». Historial revisado (29-oct-2026): T-H2HO con 52 eventos en captura del 28-oct 03:34 (46 válidos, 0 falsas, 6 sin calificar, respuesta media 59.1 s, confirmación 2.5 s), 0 en GitHub, 52 por recuperar; 1 sismo real declarado sin evidencia; laboratorio de la Caja negra (10 casos) aparte; datos demo del panel excluidos.",
   "espacio": "Terminal › Eventos › Control de envíos; administrador › Pruebas de la terminal; repositorio privado reportes/control/.",
   "modificacion": "Tu indicación (29-oct-2026): control y conteo real de la información que sale de la Terminal en todas las pruebas.",
   "estado": "Por autorizar"
