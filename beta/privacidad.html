@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script src="assets/beta-puerta.js?v=3"></script>
+<script src="assets/cubo-rt.js?v=bm1"></script>
+<script src="assets/beta-marca.js?v=1" defer></script>
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-title" content="SOS Beta">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detector de privacidad · SOSistem™</title>
+<meta name="description" content="Módulo de Privacidad de SOSistem™ (Beta): revisión de grabadoras y cámaras ocultas con los sensores del celular o la computadora, sin enviar datos.">
+<meta name="theme-color" content="#005387">
+<link rel="icon" href="assets/icono-beta.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/estilo.css">
+<style>
+  .pv { padding: 28px 0 64px; }
+  .pv .card { margin-bottom: 16px; }
+  .pv h2 { font-size: 1.15rem; margin-top: 4px; }
+  .pv canvas.graf { width: 100%; height: 150px; display: block; background: var(--surface-2); border-radius: 10px; }
+  .pv .fila { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .pv .btn { border-width: 2px; }
+  .pv [data-tipo="ok"] { color: var(--ok); }
+  .pv [data-tipo="aviso"] { color: var(--warn-ink); font-weight: 600; }
+  .pv [data-tipo="mal"] { color: var(--bad); font-weight: 600; }
+  .pv tr[data-tipo="aviso"] td { background: rgba(249,169,0,.12); }
+  .pv tr[data-tipo="mal"] td { background: rgba(155,36,35,.12); }
+  .pv .lectura { font: 700 1.6rem/1.2 var(--font); }
+  .pv .video-box { position: relative; max-width: 480px; }
+  .pv #pv-len-video { display: none; }
+  .pv #pv-len-canvas { width: 100%; border-radius: 10px; background: #000; min-height: 120px; }
+  .pv .tabla-scroll { overflow-x: auto; }
+  .pv table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .pv th, .pv td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .pv #pv-bitacora { font-size: .9rem; color: var(--ink-2); padding-left: 1.1em; max-height: 220px; overflow: auto; }
+  .pv .btn.on { background: var(--warn); color: #000; }
+  .pv .morse-t { cursor: pointer; border-bottom: 2px dotted var(--ink-3); }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./"><img class="logo-cubo" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text">SOSistem™</span></a>
+    <nav><a class="btn primary" href="terminal.html">Abrir la terminal</a></nav>
+  </div>
+</header>
+
+<main class="wrap pv">
+  <span class="tag warn">Módulo de Privacidad · Beta en revisión</span>
+  <h1 style="margin-top:12px"><span class="morse-t" id="pv-titulo-morse" title="Toque para escuchar en Morse">Detector de privacidad</span></h1>
+  <p class="lead">SOSistem™ no usa cámaras en sanitarios ni cabinas. Este módulo ayuda a comprobar que <b>nadie más</b> esté grabando: revisa un espacio con los sensores del celular o la computadora. Todo se procesa en el equipo y no se envía nada.</p>
+  <p class="note">Es una ayuda de revisión, no un equipo profesional de contravigilancia: un resultado limpio no garantiza que no haya un dispositivo. Para confirmar, use una cámara de inspección (endoscopio). Si encuentra un dispositivo, no lo manipule: fotografíelo en su lugar y repórtelo a la Fiscalía.</p>
+
+  <section class="card">
+    <h2>Este equipo puede usar</h2>
+    <ul id="pv-diag"></ul>
+  </section>
+
+  <section class="card">
+    <h2>1. Sonar acústico · ida y vuelta</h2>
+    <p>La bocina emite un chirrido ultrasónico corto (17–20 kHz) y el micrófono escucha el eco; la distancia sale del tiempo de regreso (sonido a 343 m/s). Primero guarde una <b>referencia</b> en una zona igual pero vacía; después apunte al hueco y mida: un eco nuevo indica un objeto sólido.</p>
+    <div class="fila"><button class="btn" id="pv-son-ref">1 · Guardar referencia</button><button class="btn primary" id="pv-son-med">2 · Medir</button></div>
+    <canvas class="graf" id="pv-son-graf" aria-label="Perfil de eco por distancia"></canvas>
+    <p class="note">Gris: referencia · naranja: medición actual. Volumen al máximo y sin audífonos. Alcance útil ≈ 5 cm a 1.5 m; precisión de varios centímetros.</p>
+    <p id="pv-son-msg" aria-live="polite"></p>
+  </section>
+
+  <section class="card">
+    <h2>2. Anomalía magnética</h2>
+    <p>Bocinas, micrófonos e imanes de grabadoras y cámaras alteran el campo magnético a pocos centímetros. En iPhone se compara la brújula con el giroscopio: si la brújula se mueve sin que el equipo gire, hay metal o un imán cerca. En Chrome Android con el magnetómetro activo se mide en µT.</p>
+    <div class="fila"><button class="btn primary" id="pv-mag-btn">Iniciar</button><span class="lectura" id="pv-mag-val">—</span></div>
+    <canvas class="graf" id="pv-mag-graf" aria-label="Anomalía magnética en el tiempo"></canvas>
+    <p class="note">Deslice el celular despacio, plano y sin girarlo, a 1–3 cm de la superficie. Los perfiles metálicos de la estructura también marcan: lo sospechoso es un pico en un punto que no corresponde a un perfil o un tornillo.</p>
+    <p id="pv-mag-msg" aria-live="polite"></p>
+  </section>
+
+  <section class="card">
+    <h2>3. Buscador de lentes</h2>
+    <p>El lente de una cámara devuelve la luz hacia la fuente y se ve como un punto pequeño, muy brillante y fijo. El modo rojo aumenta el contraste; el modo infrarrojo usa la cámara frontal para ver LED de visión nocturna.</p>
+    <div class="fila">
+      <button class="btn primary" id="pv-len-tras">Cámara · modo rojo</button>
+      <button class="btn" id="pv-len-normal">Cámara · normal</button>
+      <button class="btn" id="pv-len-ir">Frontal · infrarrojo</button>
+      <button class="btn" id="pv-len-luz" disabled>Linterna</button>
+      <button class="btn" id="pv-len-stop">Detener</button>
+    </div>
+    <div class="video-box"><video id="pv-len-video" playsinline muted></video><canvas id="pv-len-canvas"></canvas></div>
+    <p id="pv-len-n" aria-live="polite"></p>
+    <p id="pv-len-msg" class="note" aria-live="polite"></p>
+  </section>
+
+  <section class="card">
+    <h2>4. Bluetooth y 5. Escáner ESP32 (Chrome)</h2>
+    <p><b>Bluetooth:</b> en Chrome de Mac, PC o Android lista los equipos cercanos. En iPhone no existe Bluetooth web; use la app gratuita <b>nRF Connect</b>.</p>
+    <p><b>ESP32 por USB:</b> en Chrome o Edge de Mac/PC conecte un ESP32 con el firmware <span class="mono">escaner-privacidad</span>: barre redes Wi-Fi, <b>equipos conectados</b> a ellas (donde suelen estar las cámaras), Bluetooth y, si tiene sensor, temperatura. Solo lee encabezados, nunca contenido; úselo solo en su propio lugar.</p>
+    <div class="fila">
+      <button class="btn primary" id="pv-bt">Buscar Bluetooth</button>
+      <button class="btn primary" id="pv-ser">Conectar ESP32</button>
+      <button class="btn" id="pv-base">Marcar los actuales como conocidos</button>
+      <button class="btn" id="pv-base-borrar">Olvidar conocidos</button>
+    </div>
+    <p id="pv-bt-msg" aria-live="polite"></p><p id="pv-ser-msg" aria-live="polite"></p>
+    <p><b>Temperatura del sensor ESP32:</b> <span id="pv-temp">— (sin sensor conectado)</span></p>
+    <p class="note" id="pv-cuenta"></p>
+    <div class="tabla-scroll"><table id="pv-tabla"><thead><tr><th>Tipo</th><th>Nombre</th><th>Dirección</th><th>Señal</th><th>Canal</th><th>Estado</th></tr></thead><tbody></tbody></table></div>
+    <p class="note">Haga primero un barrido con todo lo suyo encendido y márquelo como conocido; en los siguientes barridos lo nuevo sale en amarillo y los nombres típicos de cámaras en rojo. Dirección «aleatoria» = suele ser un teléfono, no un equipo fijo.</p>
+  </section>
+
+  <section class="card">
+    <h2>6. LiDAR · fase 2 (app nativa)</h2>
+    <p>El iPhone Pro tiene LiDAR (láser infrarrojo de ida y vuelta). Safari y Chrome no lo exponen a las páginas, por eso irá en la app nativa SOSistem™: mapa 3D del hueco o la cabina y marca de reflejos anómalos tipo lente. Pendiente en la lista de la Beta.</p>
+  </section>
+
+  <section class="card">
+    <h2>Bitácora y reporte</h2>
+    <ul id="pv-bitacora"></ul>
+    <div class="fila"><button class="btn primary" id="pv-desc">Descargar reporte (JSON)</button></div>
+    <p class="note">El reporte se queda en su equipo; puede subirlo a los reportes de la Beta para su análisis.</p>
+  </section>
+
+  <p class="note">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578; plataforma 2610257442171) · Módulo de Privacidad Beta · © Víctor Hugo Ramírez Salgado · <a href="terminos-pruebas.html">Términos de la versión de prueba</a></p>
+</main>
+<script src="assets/cubo-rt.js?v=5.7b12"></script>
+<script src="assets/morse.js?v=5.7b14"></script>
+<script src="assets/privacidad.js?v=1"></script>
+</body>
+</html>

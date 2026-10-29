@@ -1,5 +1,29 @@
 [
  {
+  "id": 141,
+  "titulo": "Sensor de calor y frío",
+  "que": "El iPhone no tiene termómetro del ambiente al que puedan llegar las páginas ni las apps (solo informa si el propio teléfono se calienta). Propuesta: sensor externo barato enlazado al sistema: SHT31 o BME280 en el ESP32 (ya lo lee el escáner de privacidad y lo muestra en °C y % de humedad), termómetro Bluetooth para la app nativa, o cámara térmica de celular (también revela aparatos tibios detrás de la tablaroca).",
+  "espacio": "Detector de privacidad › 4 y 5 (temperatura del ESP32); después Terminal › sensores.",
+  "modificacion": "Pregunta del autor (29-oct-2026): ¿se puede instalar el sensor de calor o frío con los sensores del iPhone?",
+  "estado": "En Beta · por autorizar"
+ },
+ {
+  "id": 140,
+  "titulo": "App nativa SOSistem™ con LiDAR (fase 2)",
+  "que": "Safari y Chrome no dan acceso al LiDAR, al magnetómetro en µT ni al Bluetooth en iPhone. App nativa para iPhone Pro: mapa 3D del hueco o la cabina con LiDAR y reflejos anómalos tipo lente, magnetómetro calibrado en µT, escaneo Bluetooth y sonar; mismos reportes que la Beta.",
+  "espacio": "App nativa (fuera del sitio); enlace desde Detector de privacidad › 6.",
+  "modificacion": "Indicación del autor (29-oct-2026): su iPhone tiene LiDAR; instalar en GitHub para pruebas en Beta.",
+  "estado": "Pendiente"
+ },
+ {
+  "id": 139,
+  "titulo": "Módulo de Privacidad · detector de grabadoras y cámaras ocultas",
+  "que": "Página nueva beta/privacidad.html: (1) sonar acústico de ida y vuelta (chirrido 17–20 kHz, eco por filtro adaptado, referencia vs. medición, distancia del eco); (2) anomalía magnética (brújula contra giroscopio en iPhone; µT en Chrome Android); (3) buscador de lentes con cámara, linterna, modo rojo y modo infrarrojo con la cámara frontal; (4) Bluetooth en Chrome (Mac, PC, Android); (5) escáner ESP32 por USB en Chrome/Edge (redes Wi-Fi, equipos conectados, BLE y temperatura) con lista de conocidos y alerta de nombres tipo cámara; bitácora y reporte JSON. Todo se procesa en el equipo. Firmware en el repositorio privado: firmware/escaner-privacidad.",
+  "espacio": "Página Detector de privacidad (enlace en la sección de la Terminal).",
+  "modificacion": "Indicación del autor (29-oct-2026): detector de ondas de ida y vuelta para SOSistem, también en Google Chrome.",
+  "estado": "En Beta · por autorizar"
+ },
+ {
   "id": 138,
   "titulo": "Respaldo automático y respaldo de energía (iMac sin batería)",
   "que": "Opción 3: si el sensor (la iMac, que no tiene batería) pierde el latido 15 s, el iPhone que hace de pantalla empieza a medir solo con sus propios sensores (movimiento, micrófono y voz), muestra «● RESPALDO · ESTE EQUIPO» en naranja, guarda los eventos en el celular (se suben a GitHub cuando vuelve internet) y se detiene solo al volver el sensor, anotando cuántos segundos duró la caída. Los permisos se arman al tocar «Conectar» o «Conectar ahora» en el iPhone (iOS exige un toque). Opción 1: tarjeta «Respaldo de energía» en ¿Qué hace este equipo?: corriente del sensor, iMac en no-break y módem en no-break (casillas que marcas tú), estado del respaldo automático e internet de la pantalla, con semáforo. Terminal 4.5. Límite: sin luz y sin módem no hay enlace entre equipos; el iPhone sigue midiendo y guardando con su batería.",
