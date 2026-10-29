@@ -1,11 +1,23 @@
 {
-  "enviado": "2026-10-28T10:26:19.328Z",
-  "decisiones": [
-    {
-      "id": 128,
-      "titulo": "Terminal: token con Google Authenticator",
-      "decision": "si",
-      "comentario": ""
-    }
-  ]
+ "enviado": "2026-10-29T01:20:52.000Z",
+ "decisiones": [
+  {
+   "id": 128,
+   "titulo": "Terminal: token con Google Authenticator",
+   "decision": "si",
+   "comentario": "Si ahora con autentificador podría abrir github con autentificador"
+  },
+  {
+   "id": 130,
+   "titulo": "Cinta del recinto en las pantallas del monitor",
+   "decision": "si",
+   "comentario": ""
+  },
+  {
+   "id": 131,
+   "titulo": "Configurador de terminal",
+   "decision": "si",
+   "comentario": ""
+  }
+ ]
 }

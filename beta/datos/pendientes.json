@@ -5,7 +5,8 @@
   "que": "En la Terminal de pruebas (celulares) el token de GitHub ya no se escribe a la vista: «Guardar token con Google Authenticator» lo guarda cifrado en el celular y se abre con el código de 6 números. Queda abierto la jornada (8 h) solo en memoria; si está cerrado, los envíos automáticos esperan y los eventos se guardan en el celular.",
   "espacio": "Terminal › Ajustes › Envío a GitHub (privado).",
   "modificacion": "Tu indicación (28-oct-2026) para el piloto con celulares.",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en 6.1.0. Nota del autor: abrir GitHub con el autenticador."
  },
  {
   "id": 127,
@@ -436,7 +437,8 @@
   "que": "Franja horizontal abajo (o esquina, a elegir) que alterna cada 2.5 s el tipo de recinto en el idioma elegido, Morse, braille, Lengua de Señas Mexicana (LSM), banderas del Código Internacional de Señales y los otros 21 idiomas; pictogramas del lugar con aforo y lugares para silla de ruedas.",
   "espacio": "Terminal: pantalla principal y las 6 pantallas del sistema.",
   "modificacion": "Solicitud del autor (28-oct-2026).",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en 6.1.0."
  },
  {
   "id": 131,
@@ -444,6 +446,7 @@
   "que": "Pestaña nueva para armar la terminal de cada lugar: 28 tipos de lugar en 22 idiomas, nombre, medidas (m², m³, m² por persona), aforo máximo, lugares para silla de ruedas, 18 pictogramas con su norma (ISO 7010, ISO 7001), posición de la cinta, vista previa, aplicar a la terminal y enlace para otro equipo.",
   "espacio": "Pestaña «Configurador» (grupo Clientes, piloto y terminal).",
   "modificacion": "Solicitud del autor (28-oct-2026).",
-  "estado": "Por autorizar"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 28-oct-2026 y publicado en 6.1.0."
  }
 ]

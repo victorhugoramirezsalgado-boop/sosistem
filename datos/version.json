@@ -1,8 +1,13 @@
 {
-  "version": "6.0.3",
-  "fecha": "2026-10-27",
+  "version": "6.1.0",
+  "fecha": "2026-10-28",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.1.0",
+      "fecha": "2026-10-28",
+      "resumen": "Autorizado en Beta por el autor (28-oct-2026): pestaña «Configurador de terminal» (28 tipos de lugar en 22 idiomas, medidas, aforo, lugares para silla de ruedas, 18 pictogramas ISO 7010/ISO 7001, vista previa y enlace para otro equipo); cinta del recinto en la Terminal y en las 6 pantallas (idioma, Morse, braille, LSM, banderas y los otros 21 idiomas) con pictogramas del lugar; token de GitHub de la Terminal guardado cifrado y abierto con Google Authenticator."
+    },
     {
       "v": "6.0.3",
       "fecha": "2026-10-28",

@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="SOSistem™">
 <meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=6.1">
+<link rel="stylesheet" href="assets/estilo.css?v=6.1.0">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -872,6 +872,63 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="configurador">
+  <div class="wrap">
+    <span class="eyebrow">Configurador de terminal</span>
+    <h2>Arme la terminal de su lugar.</h2>
+    <p class="lead fo-lead">Elija el tipo de lugar, sus medidas, el aforo y los pictogramas que necesita. La pantalla muestra el nombre del recinto en su idioma, en Morse, en braille, en Lengua de Señas Mexicana (LSM) y con las banderas del Código Internacional de Señales, y lo alterna con los 22 idiomas del sistema.</p>
+    <div class="grid g2 cfg-grid">
+      <form class="card cfg-form" id="cfg-form" autocomplete="off" onsubmit="return false">
+        <h3>1. El lugar</h3>
+        <label class="sn-campo"><b>Tipo de lugar</b><select id="cfg-tipo" class="no-traducir"></select></label>
+        <label class="sn-campo"><b>Nombre del recinto</b><input id="cfg-nombre" maxlength="48" placeholder="Bodega 3 · El Sauzal"></label>
+        <h3>2. Medidas</h3>
+        <div class="cfg-tres">
+          <label class="sn-campo"><b>Largo (m)</b><input id="cfg-largo" type="number" min="0" step="0.01" inputmode="decimal"></label>
+          <label class="sn-campo"><b>Ancho (m)</b><input id="cfg-ancho" type="number" min="0" step="0.01" inputmode="decimal"></label>
+          <label class="sn-campo"><b>Alto (m)</b><input id="cfg-alto" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        </div>
+        <p class="note" id="cfg-medidas">Área y volumen: escriba las medidas.</p>
+        <h3>3. Personas</h3>
+        <div class="cfg-tres">
+          <label class="sn-campo"><b>Aforo máximo (personas)</b><input id="cfg-aforo" type="number" min="0" step="1" inputmode="numeric"></label>
+          <label class="sn-campo"><b>Lugares para silla de ruedas</b><input id="cfg-silla" type="number" min="0" step="1" inputmode="numeric"></label>
+        </div>
+        <p class="note">El aforo lo fija el dictamen de Protección Civil o el reglamento de construcción de cada lugar; no existe un pictograma ISO de aforo, por eso se muestra la cifra junto a figuras de personas.</p>
+        <h3>4. Pictogramas</h3>
+        <div class="cfg-pictos" id="cfg-pictos"></div>
+        <h3>5. Cinta del recinto</h3>
+        <div class="cfg-radio">
+          <label><input type="radio" name="cfg-cinta" value="franja" checked> Franja horizontal abajo</label>
+          <label><input type="radio" name="cfg-cinta" value="esquina"> Esquina de la pantalla</label>
+        </div>
+        <p class="cfg-bot">
+          <button class="btn primary" type="button" id="cfg-aplicar">Aplicar a la terminal de este equipo</button>
+          <a class="btn" href="terminal.html">Abrir la terminal</a>
+          <button class="btn" type="button" id="cfg-enlace">Copiar enlace para otro equipo</button>
+          <button class="btn" type="button" id="cfg-borrar">Restablecer</button>
+        </p>
+        <p class="note" id="cfg-msg" aria-live="polite"></p>
+      </form>
+      <div class="cfg-prev-wrap">
+        <h3>Vista previa de la pantalla</h3>
+        <div class="eq-bisel cfg-prev"><div class="eq-pant lg-con" id="cfg-pant"></div><div class="eq-pie"><span>PNL-A01 · Recinto</span><span class="eq-leds"><i class="r"></i><i class="y"></i><i class="g on"></i><i class="w"></i></span><span>S.O.S.©</span></div></div>
+        <p class="note">La cinta cambia cada 2.5 segundos: idioma elegido, Morse, braille, señas (LSM), banderas y los otros 21 idiomas.</p>
+        <div class="card cfg-normas">
+          <h3>Normas de los pictogramas</h3>
+          <ul>
+            <li><b>ISO 7010:2019</b> · señales de seguridad registradas: prohibición (P, círculo rojo), emergencia (E, verde), incendio (F, rojo) y advertencia (W, triángulo amarillo).</li>
+            <li><b>ISO 7001:2023</b> · símbolos de información al público: sanitarios, elevador, escaleras, información y accesibilidad.</li>
+            <li><b>ISO 3864-1:2011</b> · colores y formas de seguridad.</li>
+            <li><b>NOM-003-SSPC-2011</b> (antes NOM-003-SEGOB-2011) · señales y avisos para protección civil en México.</li>
+          </ul>
+          <p class="note">Los pictogramas de la pantalla son de referencia y los dibuja el sistema. La señalización física del inmueble debe usar señales certificadas conforme a estas normas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide blk" id="fondo">
   <div class="wrap">
     <span class="eyebrow">Fondo SOS · Conectividad humanitaria</span>
@@ -1019,9 +1076,11 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/cubo-morse.js?v=6.1"></script>
 <script src="assets/idiomas.js?v=6.1"></script>
 <script src="assets/banderas.js?v=6.1"></script>
+<script src="assets/lugar.js?v=6.1.0"></script>
+<script src="assets/configurador.js?v=6.1.0"></script>
 <script src="assets/servicios12.js?v=6.1"></script>
 <script src="assets/cabecera.js?v=6.1"></script>
-<script src="assets/pestanas.js?v=6.1"></script>
+<script src="assets/pestanas.js?v=6.1.0"></script>
 <script src="assets/rastreo.js?v=6.1"></script>
 <script src="assets/morse-motor.js?v=6.1"></script>
 <script src="assets/receptor.js?v=6.1"></script>
