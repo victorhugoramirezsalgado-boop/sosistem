@@ -1,5 +1,13 @@
 [
  {
+  "id": 137,
+  "titulo": "Modo sensor Mac y alerta por pérdida de señal",
+  "que": "La Mac puede ser el sensor y el iPhone la terminal (o al revés): botones «Sensores · iPhone o Mac» y «Pantalla · ver terminal». En la Mac el sensor usa micrófono (voz «S.O.S.», «auxilio», «está temblando» y ruido), red y corriente; la caída y el sismo los sigue midiendo el iPhone, y ya no aparece el aviso de permiso de movimiento en la Mac. Latido: si la pantalla deja de recibir datos del sensor 15 s, registra el evento «Sensor sin señal · posible apagón» con la hora del último dato, la causa probable (apagón o corte de internet si estaba en corriente, batería agotada si estaba con batería, falla de internet de la propia pantalla o cierre normal de la terminal) y, al volver, cuántos segundos duró. En MacBook o Android con Chrome, desconectar el cargador registra «Sensor sin corriente (usa batería)». Sin Morse ni sirena (regla de sonido): aviso visual y vibración. Terminal 4.4.",
+  "espacio": "Terminal › Pruebas › ¿Qué hace este equipo?; Terminal › Eventos (nuevos tipos en el filtro); consola de la Terminal de información.",
+  "modificacion": "Tu indicación (29-oct-2026): la Mac enciende sus sensores y el iPhone es la terminal; generarlo directo en la Beta para pruebas.",
+  "estado": "En Beta · por autorizar"
+ },
+ {
   "id": 136,
   "titulo": "Control y conteo real de la Terminal",
   "que": "Cada evento de la Terminal lleva un folio consecutivo (los 52 actuales se numeran por fecha). La Terminal muestra «Control de envíos»: generados, enviados, pendientes y lo que ya está en GitHub («Verificar con GitHub»). En el repositorio privado, cada envío recalcula el control (reportes/control/): todos los envíos sin límite, folios faltantes (eventos que no llegaron), reenvíos y conteos por tipo, día, real/prueba y calificación. El panel del administrador muestra ese control en «Pruebas de la terminal». Historial revisado (29-oct-2026): T-H2HO con 52 eventos en captura del 28-oct 03:34 (46 válidos, 0 falsas, 6 sin calificar, respuesta media 59.1 s, confirmación 2.5 s), 0 en GitHub, 52 por recuperar; 1 sismo real declarado sin evidencia; laboratorio de la Caja negra (10 casos) aparte; datos demo del panel excluidos.",

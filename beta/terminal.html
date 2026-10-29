@@ -73,20 +73,20 @@
           <h2>¿Qué hace este equipo?</h2>
           <div class="t-esc-sel" role="group" aria-label="Función de este equipo">
             <button type="button" class="t-mini" data-rol="solo" aria-pressed="true">Solo este equipo</button>
-            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱 Celular · sensores</button>
-            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥 Pantalla · ver terminal</button>
+            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱💻 Sensores · iPhone o Mac</button>
+            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥📱 Pantalla · ver terminal</button>
           </div>
-          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.</p>
+          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Sensores» en un equipo (iPhone o Mac) y «Pantalla · ver terminal» en el otro para verla en otra pantalla.</p>
           <div id="enl-sensor" hidden>
-            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la Mac o mándale el enlace.</p>
+            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la otra pantalla o mándale el enlace.</p>
             <div class="t-cubo6" id="enl-cubo" aria-label="Código de enlace"></div>
             <div class="t-grid2" style="margin:8px 0 0">
-              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la Mac</button>
+              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la pantalla</button>
               <button class="t-btn" type="button" id="enl-nuevo">Código nuevo</button>
             </div>
           </div>
           <form id="enl-pantalla" class="t-enl-form" hidden autocomplete="off">
-            <label>Código del celular<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
+            <label>Código del sensor<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
             <button class="t-btn pri" type="submit">Conectar</button>
             <label class="t-mini-chk"><input type="checkbox" id="enl-sonar" checked> Sonar la alarma también en esta pantalla</label>
           </form>
@@ -371,7 +371,7 @@
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
-<script src="assets/terminal.js?v=5.7b23"></script>
+<script src="assets/terminal.js?v=5.7b24"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */
