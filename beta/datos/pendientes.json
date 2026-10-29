@@ -1,5 +1,13 @@
 [
  {
+  "id": 138,
+  "titulo": "Respaldo automático y respaldo de energía (iMac sin batería)",
+  "que": "Opción 3: si el sensor (la iMac, que no tiene batería) pierde el latido 15 s, el iPhone que hace de pantalla empieza a medir solo con sus propios sensores (movimiento, micrófono y voz), muestra «● RESPALDO · ESTE EQUIPO» en naranja, guarda los eventos en el celular (se suben a GitHub cuando vuelve internet) y se detiene solo al volver el sensor, anotando cuántos segundos duró la caída. Los permisos se arman al tocar «Conectar» o «Conectar ahora» en el iPhone (iOS exige un toque). Opción 1: tarjeta «Respaldo de energía» en ¿Qué hace este equipo?: corriente del sensor, iMac en no-break y módem en no-break (casillas que marcas tú), estado del respaldo automático e internet de la pantalla, con semáforo. Terminal 4.5. Límite: sin luz y sin módem no hay enlace entre equipos; el iPhone sigue midiendo y guardando con su batería.",
+  "espacio": "Terminal › Pruebas › ¿Qué hace este equipo? (tarjeta Respaldo de energía); Terminal de información (consola y estado en vivo); Terminal › Eventos.",
+  "modificacion": "Tu indicación (29-oct-2026): la iMac no tiene batería; aplicar las opciones 1 (no-break) y 3 (respaldo automático del iPhone) y ejecutarlas en la Beta para visualizarlas.",
+  "estado": "En Beta · por autorizar"
+ },
+ {
   "id": 137,
   "titulo": "Modo sensor Mac y alerta por pérdida de señal",
   "que": "La Mac puede ser el sensor y el iPhone la terminal (o al revés): botones «Sensores · iPhone o Mac» y «Pantalla · ver terminal». En la Mac el sensor usa micrófono (voz «S.O.S.», «auxilio», «está temblando» y ruido), red y corriente; la caída y el sismo los sigue midiendo el iPhone, y ya no aparece el aviso de permiso de movimiento en la Mac. Latido: si la pantalla deja de recibir datos del sensor 15 s, registra el evento «Sensor sin señal · posible apagón» con la hora del último dato, la causa probable (apagón o corte de internet si estaba en corriente, batería agotada si estaba con batería, falla de internet de la propia pantalla o cierre normal de la terminal) y, al volver, cuántos segundos duró. En MacBook o Android con Chrome, desconectar el cargador registra «Sensor sin corriente (usa batería)». Sin Morse ni sirena (regla de sonido): aviso visual y vibración. Terminal 4.4.",

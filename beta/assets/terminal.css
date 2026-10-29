@@ -370,3 +370,15 @@ body.dividida #v-monitor > .sos-cab{margin:10px 12px 0}
 .lg-cinta[data-pos="esquina"] .lg-otros { flex-wrap: wrap; justify-content: flex-end; white-space: normal; gap: 2px 8px; }
 :root[data-ptema="dia"] .lg-cinta { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.14); }
 :root[data-ptema="dia"] .lg-cinta[data-pos="esquina"] { background: rgba(255,255,255,.92); }
+
+/* Respaldo de energía y respaldo automático (Terminal 4.5) */
+.t-energia-caja{margin-top:12px;border-top:1px solid var(--borde,#ddd);padding-top:10px}
+.t-energia-caja h3{margin:0 0 6px;font-size:.85rem;letter-spacing:.02em}
+.t-energia{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.t-energia li{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;line-height:1.3}
+.t-energia li i{font-style:normal;width:1em;flex:none;color:#8a8a8a}
+.t-energia li[data-ok="true"] i{color:#0b8a43}
+.t-energia li[data-ok="false"] i{color:#c8102e}
+.t-energia li small{display:block;opacity:.75;font-size:.72rem}
+body.respaldo-local #vivo{background:#DB641C;color:#fff;border-color:#DB641C}
+body.respaldo-local .pane-b .pane-tit b::after{content:" · respaldo en este equipo";color:#DB641C}
