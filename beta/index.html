@@ -22,7 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b22">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b23">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -743,11 +743,17 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
         <p class="note">Abecedario: Secretaría de Educación Pública y Aprende.mx. Módulo de lengua de señas en las pantallas: en desarrollo (LSM y ASL).</p></div>
       <div class="card"><h3>Braille</h3><p class="note">Braille en español (Comisión Braille Española): seis puntos por celda; los números llevan antes el signo de número ⠼.</p><p class="note">Morse internacional (UIT-R M.1677-1): el punto es corto y la raya dura tres puntos.</p><p class="note">Alfabeto fonético internacional (OACI/OTAN), el que usan radio marítima y aeronáutica para deletrear sin errores.</p></div>
     </div>
-    <h3 style="margin-top:22px">El alfabeto en cinco sistemas</h3>
+    <h3 style="margin-top:22px">Cara del Cubo · el alfabeto de un vistazo</h3>
+    <p class="note">Toque una letra para oírla en Morse. Cada casilla muestra la letra, su Morse, su braille, su bandera y su seña.</p>
+    <div class="ap-cara-mod" role="group"><button class="btn" type="button" data-cara="letras" aria-pressed="true">Letras A–Z</button><button class="btn" type="button" data-cara="numeros" aria-pressed="false">Números 0–9</button></div>
+    <div class="ap-cara no-traducir" id="ap-cara"></div>
+    <details class="ap-det"><summary>Ver la tabla detallada (con alfabeto fonético)</summary>
+    <h3 style="margin-top:14px">El alfabeto en cinco sistemas</h3>
     <div class="tbl-wrap"><table class="ap-tabla">
       <thead><tr><th>Letra</th><th>Morse</th><th>Braille</th><th>Bandera</th><th>Fonético</th><th>LSM</th></tr></thead>
       <tbody id="ap-tbody"></tbody>
     </table></div>
+    </details>
   </div>
 </section>
 
@@ -1142,7 +1148,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/morse.js?v=5.7b14"></script>
 <script src="assets/pantalla.js?v=5.7b19"></script>
 <script src="assets/pantalla-tema.js?v=5.7b12"></script>
-<script src="assets/aprende.js?v=5.7b18"></script>
+<script src="assets/aprende.js?v=5.7b23"></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
 <script src="assets/pendientes-beta.js?v=5.7b17"></script>

@@ -1,5 +1,13 @@
 [
  {
+  "id": 142,
+  "titulo": "Cara del Cubo en Aprendizaje",
+  "que": "El abecedario completo cabe en un campo blanco sin bajar hasta la Z: casillas como una cara del Cubo (4 columnas en celular: A B C D / E F G H …; 7 en tableta; 9 en computadora, 3 × 9 = 27). Cada casilla: la letra arriba, el Morse en una línea horizontal y, abajo, braille, bandera y seña LSM en otra línea horizontal; al tocarla suena su Morse. Botón para ver Números 0–9. La tabla larga queda plegada en «Ver la tabla detallada».",
+  "espacio": "Aprendizaje › Cara del Cubo (antes de la tabla «El alfabeto en cinco sistemas»).",
+  "modificacion": "Solicitud del autor (29-oct-2026).",
+  "estado": "En Beta · por autorizar"
+ },
+ {
   "id": 141,
   "titulo": "Sensor de calor y frío",
   "que": "El iPhone no tiene termómetro del ambiente al que puedan llegar las páginas ni las apps (solo informa si el propio teléfono se calienta). Propuesta: sensor externo barato enlazado al sistema: SHT31 o BME280 en el ESP32 (ya lo lee el escáner de privacidad y lo muestra en °C y % de humedad), termómetro Bluetooth para la app nativa, o cámara térmica de celular (también revela aparatos tibios detrás de la tablaroca).",
