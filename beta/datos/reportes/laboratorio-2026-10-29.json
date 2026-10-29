@@ -1,0 +1,475 @@
+{
+ "reporte": "laboratorio",
+ "version": 1,
+ "generado": "2026-10-29T02:56:11.487Z",
+ "terminal": "Laboratorio (Chromium, sin datos personales)",
+ "navegador": "Chromium (Playwright), política de audio: exige toque",
+ "casos": [
+  {
+   "caso": "E1",
+   "descripcion": "Con toque previo: prueba del administrador, Morse «SOS»",
+   "resultados": [
+    "sonido: sonó"
+   ]
+  },
+  {
+   "caso": "E2",
+   "descripcion": "Sin ningún toque desde que abrió la página: emergencia automática (como una detección real)",
+   "resultados": [
+    "sonido: sonó"
+   ]
+  },
+  {
+   "caso": "E3",
+   "descripcion": "Misma página de E2: la persona toca la pantalla por primera vez y se repite la emergencia",
+   "resultados": [
+    "sonido: sonó"
+   ]
+  },
+  {
+   "caso": "E4",
+   "descripcion": "Motivo sin permiso de sonido (regla de sonido)",
+   "resultados": [
+    "sonido: solo luz (Regla de sonido: el motivo «decorativo» no lleva sonido (solo destella))"
+   ]
+  },
+  {
+   "caso": "E5",
+   "descripcion": "Se atiende o silencia a los 30 ms, antes de que salga audio (sirena de 3 s)",
+   "resultados": [
+    "sonido: no sonó (Se detuvo a los 37 ms (atender / silenciar) antes de que saliera audio)"
+   ]
+  },
+  {
+   "caso": "E6",
+   "descripcion": "Botón S.O.S. de la Terminal (mantener 2 s) con toque previo: alerta → orden → audio",
+   "resultados": [
+    "alerta: ordenó sonido",
+    "sonido: sonó"
+   ]
+  },
+  {
+   "caso": "E7",
+   "descripcion": "Botón S.O.S. sin ningún toque previo (orden por evento no confiable / detección automática)",
+   "resultados": [
+    "alerta: ordenó sonido",
+    "sonido: sonó"
+   ]
+  },
+  {
+   "caso": "E8",
+   "descripcion": "Sonido apagado en Ajustes + botón S.O.S.",
+   "resultados": [
+    "alerta: SOS no ordenado (El sonido está apagado en Ajustes de la Terminal)"
+   ]
+  },
+  {
+   "caso": "E9",
+   "descripcion": "Simulación iPhone: audio bloqueado sin toque y emergencia automática (nunca se reanuda)",
+   "resultados": [
+    "sonido: no sonó (Audio bloqueado: el navegador exige un toque en la pantalla antes de poder sonar)"
+   ]
+  },
+  {
+   "caso": "E10",
+   "descripcion": "Simulación: el audio se reanuda 2.5 s después de la orden (sonido tardío)",
+   "resultados": [
+    "sonido: no sonó (El audio estaba «suspended» al ordenar y se reanudó a los 2511 ms; para entonces el temporizador del Morse (2.24 s) ya había cerrado el mensaje y no se oyó nada)"
+   ]
+  }
+ ],
+ "hallazgos": [
+  {
+   "titulo": "Si el audio arranca tarde, el mensaje se pierde completo",
+   "prioridad": "Alta",
+   "detalle": "El fin del Morse se programa con un temporizador del reloj normal, pero el sonido corre en el reloj de audio. Si el audio estaba suspendido al dar la orden (iPhone sin toque, llamada, pantalla bloqueada) y se reanuda después de la duración del mensaje, el temporizador ya lo cerró y no suena nada, sin aviso (caso E10: reanudó a los 2.5 s, mensaje de 2.24 s, silencio total).",
+   "propuesta": "Esperar a que el audio esté en marcha antes de programar el Morse, medir el fin con el reloj de audio y reintentar la orden si no hubo señal en 1 s."
+  },
+  {
+   "titulo": "Con el sonido apagado en Ajustes, una alerta real no suena y no queda registrado",
+   "prioridad": "Alta",
+   "detalle": "La Terminal alertó (botón S.O.S.) y no ordenó sonido; solo cambia un letrero en pantalla. La Caja negra lo registra como «SOS no ordenado» (caso E8).",
+   "propuesta": "En modo real, ignorar «sonido apagado» para alertas de emergencia y sismo, o mostrar una advertencia permanente y registrarlo como falla."
+  },
+  {
+   "titulo": "Disparos ignorados sin registro",
+   "prioridad": "Media",
+   "detalle": "Por lectura del código de la Terminal: una segunda detección dentro de 3 s, o mientras hay otra alerta activa, se descarta sin dejar rastro. En pruebas reales parece que «se le indicó y no lo hizo».",
+   "propuesta": "Registrar cada disparo descartado con su motivo (alerta activa / menos de 3 s) para que llegue al reporte."
+  },
+  {
+   "titulo": "iPhone y Safari: audio bloqueado sin toque y suspendido en segundo plano",
+   "prioridad": "Alta",
+   "detalle": "Simulado en laboratorio (caso E9): sin un toque previo el audio queda suspendido y la emergencia no suena. Chromium de laboratorio no aplica esa política; hay que confirmarlo en campo con «Prueba en segundo plano (10 s)» de la Caja negra.",
+   "propuesta": "Pedir un toque al iniciar el monitoreo (ya existe el pulso de desbloqueo) y volver a desbloquear al regresar de segundo plano; la Caja negra medirá si basta."
+  },
+  {
+   "titulo": "Tiempos medidos en laboratorio",
+   "prioridad": "Referencia",
+   "detalle": "Alerta → orden de sonido: 5–7 ms. Orden → audio real: 82–131 ms. Silenciar antes de 80 ms impide que salga audio (caso E5, correcto)."
+  }
+ ],
+ "registros": [
+  {
+   "id": "son-mvsyafrt-4ehr",
+   "tipo": "sonido",
+   "t": 1793242509401,
+   "tp": 1246.9000000000233,
+   "motivo": "prueba-admin",
+   "texto": "SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 0.5,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "sonó",
+   "causa": "",
+   "t_audio_ms": 131,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 2.24,
+   "estado_audio_tras_orden": "running",
+   "estado_audio_final": "running",
+   "caso": "E1",
+   "texto_caso": "Con toque previo: prueba del administrador, Morse «SOS»"
+  },
+  {
+   "id": "son-mvsyak5b-rbf2",
+   "tipo": "sonido",
+   "t": 1793242515071,
+   "tp": 1514.7999999999302,
+   "motivo": "emergencia",
+   "texto": "SOS SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": false,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "sonó",
+   "causa": "",
+   "t_audio_ms": 82,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 4.94,
+   "estado_audio_tras_orden": "running",
+   "estado_audio_final": "running",
+   "caso": "E2",
+   "texto_caso": "Sin ningún toque desde que abrió la página: emergencia automática (como una detección real)"
+  },
+  {
+   "id": "son-mvsyap5n-72r5",
+   "tipo": "sonido",
+   "t": 1793242521563,
+   "tp": 8007.29999999993,
+   "motivo": "emergencia",
+   "texto": "SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "running",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "sonó",
+   "causa": "",
+   "t_audio_ms": 93,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 2.24,
+   "estado_audio_tras_orden": "running",
+   "estado_audio_final": "running",
+   "caso": "E3",
+   "texto_caso": "Misma página de E2: la persona toca la pantalla por primera vez y se repite la emergencia"
+  },
+  {
+   "id": "son-mvsyat88-y7vr",
+   "tipo": "sonido",
+   "t": 1793242526840,
+   "tp": 1203.2999999999302,
+   "motivo": "decorativo",
+   "texto": "SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 1,
+   "con_sonido": false,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "solo luz",
+   "causa": "Regla de sonido: el motivo «decorativo» no lleva sonido (solo destella)",
+   "t_audio_ms": null,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 2.16,
+   "estado_audio_tras_orden": "sin crear",
+   "caso": "E4",
+   "texto_caso": "Motivo sin permiso de sonido (regla de sonido)"
+  },
+  {
+   "id": "son-mvsyauuv-myat",
+   "tipo": "sonido",
+   "t": 1793242528951,
+   "tp": 1221.0999999999767,
+   "motivo": "emergencia",
+   "texto": "SOS",
+   "sirena_s": 3,
+   "patron": "t3",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "no sonó",
+   "causa": "Se detuvo a los 37 ms (atender / silenciar) antes de que saliera audio",
+   "t_audio_ms": null,
+   "detenido_ms": 37,
+   "enviado": false,
+   "duracion_prevista_s": 6.64,
+   "estado_audio_tras_orden": "running",
+   "estado_audio_final": "running",
+   "caso": "E5",
+   "texto_caso": "Se atiende o silencia a los 30 ms, antes de que salga audio (sirena de 3 s)"
+  },
+  {
+   "id": "ale-mvsyayls-1gr2",
+   "tipo": "alerta",
+   "t": 1793242533808,
+   "texto": "PRUEBA · Alerta manual S.O.S. · Oficinas ContenedorEns · prueba · PRUEBA",
+   "prueba": true,
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "sonido_ajustes": true,
+   "t_orden_ms": 7,
+   "resultado": "ordenó sonido",
+   "causa": "",
+   "enviado": false,
+   "niveles": {
+    "N0": 2,
+    "N1": 4
+   },
+   "caso": "E6",
+   "texto_caso": "Botón S.O.S. de la Terminal (mantener 2 s) con toque previo: alerta → orden → audio"
+  },
+  {
+   "id": "son-mvsyaylz-4hrb",
+   "tipo": "sonido",
+   "t": 1793242533815,
+   "tp": 3249.600000000093,
+   "motivo": "prueba-admin",
+   "texto": "SOS SOS",
+   "sirena_s": 6,
+   "patron": "fsk",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "sonó",
+   "causa": "",
+   "t_audio_ms": 86,
+   "detenido_ms": null,
+   "enviado": false,
+   "alerta_id": "ale-mvsyayls-1gr2",
+   "alerta_t": 1793242533808,
+   "duracion_prevista_s": 11.36,
+   "estado_audio_tras_orden": "running",
+   "alerta_a_audio_ms": 93,
+   "estado_audio_final": "running",
+   "caso": "E6",
+   "texto_caso": "Botón S.O.S. de la Terminal (mantener 2 s) con toque previo: alerta → orden → audio"
+  },
+  {
+   "id": "ale-mvsyb5rl-3zop",
+   "tipo": "alerta",
+   "t": 1793242543089,
+   "texto": "PRUEBA · Alerta manual S.O.S. · Oficinas ContenedorEns · prueba · PRUEBA",
+   "prueba": true,
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": false,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "sonido_ajustes": true,
+   "t_orden_ms": 5,
+   "resultado": "ordenó sonido",
+   "causa": "",
+   "enviado": false,
+   "niveles": {
+    "N0": 2,
+    "N1": 4
+   },
+   "caso": "E7",
+   "texto_caso": "Botón S.O.S. sin ningún toque previo (orden por evento no confiable / detección automática)"
+  },
+  {
+   "id": "son-mvsyb5rq-dtvd",
+   "tipo": "sonido",
+   "t": 1793242543094,
+   "tp": 3233.5999999999767,
+   "motivo": "prueba-admin",
+   "texto": "SOS SOS",
+   "sirena_s": 6,
+   "patron": "fsk",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": false,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "sonó",
+   "causa": "",
+   "t_audio_ms": 85,
+   "detenido_ms": null,
+   "enviado": false,
+   "alerta_id": "ale-mvsyb5rl-3zop",
+   "alerta_t": 1793242543089,
+   "duracion_prevista_s": 11.36,
+   "estado_audio_tras_orden": "running",
+   "alerta_a_audio_ms": 90,
+   "estado_audio_final": "running",
+   "caso": "E7",
+   "texto_caso": "Botón S.O.S. sin ningún toque previo (orden por evento no confiable / detección automática)"
+  },
+  {
+   "id": "ale-mvsybcyi-9psu",
+   "tipo": "alerta",
+   "t": 1793242552410,
+   "texto": "PRUEBA · Alerta manual S.O.S. · Oficinas ContenedorEns · prueba · PRUEBA",
+   "prueba": true,
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": true,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "sonido_ajustes": false,
+   "t_orden_ms": null,
+   "resultado": "SOS no ordenado",
+   "causa": "El sonido está apagado en Ajustes de la Terminal",
+   "enviado": false,
+   "niveles": {
+    "N0": 2
+   },
+   "caso": "E8",
+   "texto_caso": "Sonido apagado en Ajustes + botón S.O.S."
+  },
+  {
+   "id": "son-mvsybgun-amf2",
+   "tipo": "sonido",
+   "t": 1793242557455,
+   "tp": 1520.8000000000466,
+   "motivo": "emergencia",
+   "texto": "SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": false,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "no sonó",
+   "causa": "Audio bloqueado: el navegador exige un toque en la pantalla antes de poder sonar",
+   "t_audio_ms": null,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 2.24,
+   "estado_audio_tras_orden": "suspended",
+   "estado_audio_final": "suspended",
+   "caso": "E9",
+   "texto_caso": "Simulación iPhone: audio bloqueado sin toque y emergencia automática (nunca se reanuda)"
+  },
+  {
+   "id": "son-mvsybmhi-dnw7",
+   "tipo": "sonido",
+   "t": 1793242564758,
+   "tp": 1519.6000000000931,
+   "motivo": "emergencia",
+   "texto": "SOS",
+   "sirena_s": 0,
+   "patron": "",
+   "volumen": 1,
+   "con_sonido": true,
+   "estado_audio_antes": "sin crear",
+   "contexto": {
+    "visible": "visible",
+    "foco": true,
+    "toque_previo": false,
+    "sesion_audio": "n/d",
+    "en_linea": true,
+    "rol": "terminal"
+   },
+   "resultado": "no sonó",
+   "causa": "El audio estaba «suspended» al ordenar y se reanudó a los 2511 ms; para entonces el temporizador del Morse (2.24 s) ya había cerrado el mensaje y no se oyó nada",
+   "t_audio_ms": null,
+   "detenido_ms": null,
+   "enviado": false,
+   "duracion_prevista_s": 2.24,
+   "estado_audio_tras_orden": "suspended",
+   "estado_audio_final": "running",
+   "caso": "E10",
+   "texto_caso": "Simulación: el audio se reanuda 2.5 s después de la orden (sonido tardío)"
+  }
+ ]
+}

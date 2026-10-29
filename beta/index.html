@@ -1005,6 +1005,35 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk no-traducir" id="reportes-pruebas">
+  <div class="wrap" id="rp-beta">
+    <span class="eyebrow">Solo Beta · administrador</span>
+    <h2>Reportes de pruebas reales · Caja negra</h2>
+    <p class="note">Cada Terminal de la Beta documenta sola sus pruebas reales: si sonó el Morse, la sirena o el S.O.S., en cuántos milisegundos desde que se le indicó, y la causa cuando no sonó. Solo documenta; no cambia el funcionamiento. Desde la Terminal: botón «● Caja negra» › «Enviar reporte a Beta».</p>
+    <div class="rp-kpi"></div>
+    <p><label class="rp-repo">Repositorio privado de pruebas <input id="rp-repo" placeholder="usuario/repositorio" autocomplete="off"></label>
+      <button class="btn primary" type="button" id="rp-cargar">Cargar reportes de campo</button>
+      <label class="btn">Abrir archivo .json<input type="file" id="rp-archivo" accept=".json,application/json" multiple hidden></label></p>
+    <p class="note rp-msg" role="status"></p>
+    <h3>Hallazgos para análisis</h3>
+    <ol class="rp-hall"></ol>
+    <h3>Causas de que no sonara (o sonara tarde)</h3>
+    <div class="tbl-wrap"><table class="pb-tabla"><thead><tr><th>Causa</th><th>Veces</th></tr></thead><tbody class="rp-causas"></tbody></table></div>
+    <h3>Registros (fallas primero)</h3>
+    <div class="tbl-wrap"><table class="pb-tabla"><thead><tr><th>Fecha y hora</th><th>Qué se indicó</th><th>Resultado y causa</th><th>Tiempos</th><th>Contexto</th></tr></thead><tbody class="rp-lista"></tbody></table></div>
+  </div>
+  <style>
+    #rp-beta .rp-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+    #rp-beta .rp-kpi div{border:2px solid rgba(127,127,127,.35);border-radius:12px;padding:10px 12px}
+    #rp-beta .rp-kpi small,#rp-beta td small,#rp-beta .rp-hall small{display:block;opacity:.75;font-size:.8em}
+    #rp-beta .rp-kpi b{font-size:1.25rem}
+    #rp-beta .rp-repo input{font:inherit;padding:8px 10px;border-radius:8px;border:2px solid rgba(127,127,127,.45);min-width:min(260px,100%)}
+    #rp-beta .rp-hall{display:grid;gap:8px;padding-left:20px}
+    #rp-beta .rp-sev{font-size:.75em;padding:1px 8px;border-radius:999px;border:1px solid currentColor;opacity:.8}
+    #rp-beta tr.rp-falla td:nth-child(3) b{color:#C62828}#rp-beta tr.rp-tarde td:nth-child(3) b{color:#B26A00}#rp-beta tr.rp-ok td:nth-child(3) b{color:#2E7D32}
+  </style>
+</section>
+
 <section class="slide blk no-traducir" id="constancia">
   <div class="wrap">
     <span class="eyebrow">Fondo y apoyo · administrador</span>
@@ -1117,6 +1146,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
 <script src="assets/pendientes-beta.js?v=5.7b17"></script>
+<script src="assets/reportes-beta.js?v=1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <script src="assets/codigo-cubico.js?v=5.7b12"></script>
 <script src="assets/constancia.js?v=5.7b12" defer></script>
@@ -1128,7 +1158,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/configurador.js?v=5.7b22"></script>
 <script src="assets/servicios12.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
-<script src="assets/pestanas.js?v=5.7b22"></script>
+<script src="assets/pestanas.js?v=6.1.1b"></script>
 <script src="assets/rastreo.js?v=5.7b12"></script>
 <script src="assets/morse-motor.js?v=5.7b12"></script>
 <script src="assets/receptor.js?v=5.7b12"></script>

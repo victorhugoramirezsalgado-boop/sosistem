@@ -1,5 +1,37 @@
 [
  {
+  "id": 132,
+  "titulo": "Caja negra de pruebas reales",
+  "que": "Cada Terminal de la Beta documenta sola sus pruebas reales, sin cambiar cómo funciona: cada orden de sonido (Morse, sirena, S.O.S.) y cada alerta, si el audio salió de verdad (se mide la señal), en cuántos milisegundos desde que se le indicó, y la causa cuando no sonó (audio bloqueado sin toque, suspendido o interrumpido, segundo plano, sonido apagado en Ajustes, silenciado antes de sonar, regla de sonido). Tiene 3 pruebas guiadas (Morse, sirena + SOS y prueba en segundo plano a 10 s) y envía el reporte al repositorio privado de pruebas. No graba audio, voz, video ni ubicación.",
+  "espacio": "Terminal Beta (botón «● Caja negra», abajo a la izquierda) y Página Beta › Pendientes › «Reportes de pruebas reales».",
+  "modificacion": "Tu indicación (28-oct-2026): pruebas reales que solo se documenten y se reporten a Beta para su análisis.",
+  "estado": "En Beta · por autorizar"
+ },
+ {
+  "id": 133,
+  "titulo": "Hallazgo: con audio tardío el mensaje se pierde completo",
+  "que": "Si el audio estaba suspendido al dar la orden y se reanuda después de lo que dura el mensaje, el Morse ya se dio por terminado y no suena nada (prueba de laboratorio E10). Propuesta: esperar a que el audio esté en marcha, medir el fin con el reloj de audio y reintentar si no hubo señal en 1 s.",
+  "espacio": "Motor de sonido (morse.js) de Terminal, pantallas y administrador.",
+  "modificacion": "Corrección propuesta a partir del reporte de laboratorio del 29-oct-2026.",
+  "estado": "Por autorizar"
+ },
+ {
+  "id": 134,
+  "titulo": "Hallazgo: alerta sin sonido cuando el sonido está apagado en Ajustes",
+  "que": "La Terminal alerta pero no ordena sonido y no lo registra (prueba E8). Propuesta: en modo real, las alertas de emergencia y sismo suenan aunque el sonido esté apagado, o se muestra una advertencia fija y se registra como falla.",
+  "espacio": "Terminal › Ajustes › Sonido y ciclo de alarma.",
+  "modificacion": "Corrección propuesta a partir del reporte de laboratorio del 29-oct-2026.",
+  "estado": "Por autorizar"
+ },
+ {
+  "id": 135,
+  "titulo": "Hallazgo: disparos ignorados sin registro",
+  "que": "Una segunda detección dentro de 3 s, o mientras hay otra alerta activa, se descarta sin dejar rastro (lectura del código). Propuesta: registrar cada disparo descartado con su motivo para que aparezca en la Caja negra.",
+  "espacio": "Terminal: detección y disparo de alertas.",
+  "modificacion": "Corrección propuesta a partir de la revisión del 29-oct-2026.",
+  "estado": "Por autorizar"
+ },
+ {
   "id": 128,
   "titulo": "Terminal: token con Google Authenticator",
   "que": "En la Terminal de pruebas (celulares) el token de GitHub ya no se escribe a la vista: «Guardar token con Google Authenticator» lo guarda cifrado en el celular y se abre con el código de 6 números. Queda abierto la jornada (8 h) solo en memoria; si está cerrado, los envíos automáticos esperan y los eventos se guardan en el celular.",
