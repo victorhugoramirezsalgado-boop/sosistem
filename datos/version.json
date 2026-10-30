@@ -1,8 +1,13 @@
 {
-  "version": "6.2.0",
+  "version": "6.2.1",
   "fecha": "2026-10-29",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.2.1",
+      "fecha": "2026-10-29",
+      "resumen": "Aprendizaje: Cubo de Aprendizaje para imprimir y armar en carta, oficio (legal), doble carta, A4 y cubo gigante de 6 hojas (19 cm por cara); más grande, mejor calidad y ajustable a cualquier hoja desde la impresora. Autorizado con cambios en Pendientes Beta #143 (29-oct-2026)."
+    },
     {
       "v": "6.2.0",
       "fecha": "2026-10-29",

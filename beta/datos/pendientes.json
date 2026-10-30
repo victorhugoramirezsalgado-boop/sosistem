@@ -23,8 +23,9 @@
   "que": "PDF para recortar y armar (carta y doble carta): 1 Banderas del Código Internacional de Señales (A–Z y gallardetes 0–9); 2 Morse con alfabeto fonético OACI/OTAN (sugerencia: van juntos porque ambos son de radio); 3 Braille en español con signo de número; 4 LSM con letras de movimiento; 5 Código Cúbico© A–Z con sus números (A = 1 … Z = 26) y el número en barras de 5 bits entre la firma 3 · 3; 6 SOSistem™ con logo naranja y QR al sitio, al Mensajero del Cubo y a Aprendizaje. Portada con vista 3D, descripción de los seis lenguajes, instrucciones y fuentes APA 7.",
   "espacio": "Aprendizaje › Cubo de Aprendizaje para imprimir y armar.",
   "modificacion": "Solicitud del autor (29-oct-2026). Cara del Código Cúbico© cambiada a A–Z con sus números por indicación del autor (29-oct-2026). Cambios del autor (29-oct-2026): mejor calidad, cubo más grande en carta, oficio (legal), doble carta y A4, cubo gigante de 6 hojas (19 cm por cara) y ajustable a cualquier hoja desde la impresora.",
-  "estado": "En Beta · cambios aplicados, por autorizar",
-  "ver": "assets/cubo-aprendizaje-carta.pdf"
+  "estado": "Publicado",
+  "ver": "assets/cubo-aprendizaje-carta.pdf",
+  "resolucion": "Autorizado con cambios el 29-oct-2026; cambios aplicados (carta, oficio, doble carta, A4 y gigante; más grande y ajustable a cualquier hoja) y publicado en 6.2.1. En el sitio oficial van la portada y la hoja para armar; las hojas de 22 idiomas esperan el #144."
  },
  {
   "id": 142,

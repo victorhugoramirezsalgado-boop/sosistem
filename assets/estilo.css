@@ -1330,3 +1330,7 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 
 /* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
 body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }
+
+/* #143 · Cubo de Aprendizaje para imprimir (6.2.1) */
+.ap-imp { margin-top: 14px; border-left: 4px solid var(--brand); }
+.ap-imp-b { display: flex; flex-wrap: wrap; gap: 8px; }
