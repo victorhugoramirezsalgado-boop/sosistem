@@ -40,11 +40,11 @@
   "id": 141,
   "titulo": "Sensor de calor y frío",
   "que": "El iPhone no tiene termómetro del ambiente al que puedan llegar las páginas ni las apps (solo informa si el propio teléfono se calienta). Propuesta: sensor externo barato enlazado al sistema: SHT31 o BME280 en el ESP32 (ya lo lee el escáner de privacidad y lo muestra en °C y % de humedad), termómetro Bluetooth para la app nativa, o cámara térmica de celular (también revela aparatos tibios detrás de la tablaroca).",
-  "espacio": "Detector de privacidad › 4 y 5 (temperatura del ESP32); después Terminal › sensores.",
+  "espacio": "Terminal › Sensores › «Calor y frío» y pantalla de la Terminal; también en el Detector de privacidad (Beta).",
   "modificacion": "Pregunta del autor (29-oct-2026): ¿se puede instalar el sensor de calor o frío con los sensores del iPhone?",
-  "estado": "Aplicado",
-  "ver": "privacidad.html",
-  "resolucion": "Autorizado el 29-oct-2026: el sensor externo (SHT31 o BME280 en el ESP32) ya se lee en el Detector de privacidad, que se queda en la Beta (#139). Siguiente paso: llevar la temperatura a Terminal › sensores."
+  "estado": "Publicado",
+  "ver": "terminal.html",
+  "resolucion": "Autorizado el 29-oct-2026 y publicado en 6.2.2: ESP32 por USB, termómetro Bluetooth o temperatura exterior (Open-Meteo, también en iPhone); sensación térmica NWS; alertas de calor y frío ajustables; dato real en la pantalla de la Terminal y en la vinculada."
  },
  {
   "id": 140,

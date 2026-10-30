@@ -17,7 +17,7 @@
 <link rel="manifest" href="manifest-terminal.webmanifest">
 <link rel="icon" href="assets/icono-beta.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icono-beta-180.png">
-<link rel="stylesheet" href="assets/terminal.css?v=5.7b22e">
+<link rel="stylesheet" href="assets/terminal.css?v=5.7b29">
 </head>
 <body>
 <header class="t-top">
@@ -43,7 +43,7 @@
             <div class="pt-voz" id="pt-voz" hidden>Diga «todo bien» para detener la alarma</div>
           </div>
           <div class="pt-lugar lg-con" id="pt-lugar"></div>
-          <div class="pt-pie"><span id="pt-modo">MODO PRUEBA</span><span id="pt-id">T-0000</span></div>
+          <div class="pt-pie"><span id="pt-modo">MODO PRUEBA</span><span id="pt-temp" class="pt-temp" hidden></span><span id="pt-id">T-0000</span></div>
         </div>
 
         <div class="t-card t-compacta">
@@ -171,6 +171,24 @@
   <section class="t-vista" id="v-sensores">
     <div class="t-card"><h2>Sensores de este celular</h2><p class="t-nota">Las lecturas se procesan aquí mismo. No se graba audio ni video; del micrófono solo se calcula el nivel de sonido.</p></div>
     <div class="t-sens" id="sensores"></div>
+    <div class="t-card" id="t-temp">
+      <h2>Calor y frío</h2>
+      <p class="t-nota">El iPhone no tiene un termómetro del ambiente que la página pueda leer. Conecte un sensor: ESP32 con SHT31 o BME280 por USB (Chrome o Edge en Mac o PC) o un termómetro Bluetooth estándar (Chrome en Mac, PC o Android). En cualquier equipo, también en el iPhone, puede ver la temperatura exterior del lugar.</p>
+      <div class="t-mono" id="temp-lect">Sin lectura.</div>
+      <div class="t-grid2">
+        <button class="t-btn" type="button" id="temp-usb">Sensor ESP32 por USB</button>
+        <button class="t-btn" type="button" id="temp-bt">Termómetro Bluetooth</button>
+      </div>
+      <button class="t-btn" type="button" id="temp-ext" style="margin-top:8px">Temperatura exterior del lugar</button>
+      <div class="t-grid2" style="margin-top:8px">
+        <label class="t-campo">Alerta de calor desde (°C, sensación térmica)<input id="temp-calor" type="number" inputmode="decimal" step="0.5" min="20" max="60"></label>
+        <label class="t-campo">Alerta de frío desde (°C o menos)<input id="temp-frio" type="number" inputmode="decimal" step="0.5" min="-30" max="25"></label>
+      </div>
+      <label class="t-campo" style="display:flex;gap:8px;align-items:center;margin-top:8px"><input id="temp-ext-alerta" type="checkbox" style="width:22px;min-height:22px;height:22px;flex:none"> Alertar también con la temperatura exterior</label>
+      <button class="t-btn" type="button" id="temp-prueba" style="margin-top:8px">Probar alerta de calor</button>
+      <p class="t-nota" id="temp-msg" role="status" style="margin:6px 0 0"></p>
+      <p class="t-nota" style="margin:6px 0 0">Sensación térmica con el índice de calor del Servicio Meteorológico Nacional de EE. UU. (NWS). La OMS recomienda al menos 18 °C en interiores; por debajo de 10 °C aumenta el riesgo de hipotermia en personas mayores. Una alerta cada 30 min por tipo.</p>
+    </div>
     <div class="t-card">
       <h2>Ubicación del recinto</h2>
       <p class="t-nota">Opcional. Se usa para incluir el punto exacto en el aviso al administrador.</p>
@@ -372,7 +390,7 @@
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
-<script src="assets/terminal.js?v=5.7b26"></script>
+<script src="assets/terminal.js?v=5.7b29"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */

@@ -1,8 +1,13 @@
 {
-  "version": "6.2.1",
+  "version": "6.2.2",
   "fecha": "2026-10-29",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.2.2",
+      "fecha": "2026-10-29",
+      "resumen": "Terminal · Calor y frío (#141): temperatura y humedad reales desde un ESP32 con SHT31/BME280 por USB (Chrome o Edge en Mac/PC), un termómetro Bluetooth estándar (Chrome) o la temperatura exterior del lugar (Open-Meteo, también en iPhone). Sensación térmica con el índice de calor del NWS; alertas de calor y frío con umbrales ajustables (35 °C y 10 °C por omisión), una cada 30 min. El dato real se ve en la pantalla de la Terminal, en la pantalla vinculada y en Sensores."
+    },
     {
       "v": "6.2.1",
       "fecha": "2026-10-29",

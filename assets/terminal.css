@@ -385,3 +385,11 @@ body.respaldo-local .pane-b .pane-tit b::after{content:" · respaldo en este equ
 
 /* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
 body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }
+
+/* Calor y frío (#141) */
+#temp-lect{white-space:pre-line}
+#temp-lect[data-nivel="calor"]{border-left:4px solid #9B2423}
+#temp-lect[data-nivel="frio"]{border-left:4px solid #005387}
+.pt-temp{font-variant-numeric:tabular-nums;font-weight:700}
+.pt-temp[data-nivel="calor"]{color:#ff6b5e}
+.pt-temp[data-nivel="frio"]{color:#7cc4ff}
