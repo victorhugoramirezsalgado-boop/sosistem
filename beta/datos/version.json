@@ -1,8 +1,13 @@
 {
   "version": "5.7 beta",
-  "fecha": "2026-10-27",
+  "fecha": "2026-10-30",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "5.7b29",
+      "fecha": "2026-10-30",
+      "resumen": "Decisiones del 30-oct-2026 (#139–#145): Cara del Cubo (#142) y cara de los 22 idiomas en el cubo para armar (#144) pasan al sitio oficial 6.4.0; Mundo en vivo (#145) con los 26 datos; Detector de privacidad (#139) se queda en la Beta; app nativa con LiDAR (#140) autorizada para fase 2."
+    },
     {
       "v": "5.7b28",
       "fecha": "2026-10-29",

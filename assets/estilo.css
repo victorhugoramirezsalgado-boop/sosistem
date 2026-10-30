@@ -1383,3 +1383,26 @@ a.btn.pb-ver { display: inline-block; text-decoration: none; }
 
 /* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
 body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }
+
+/* #142 · Aprendizaje · Cara del Cubo: alfabeto completo en un campo blanco (4 columnas en celular, 7 en tableta, 9 en computadora) */
+.ap-cara-mod { display: flex; gap: 6px; margin: 6px 0 8px; }
+.ap-cara-mod .btn[aria-pressed="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+.ap-cara { background: #fff; color: #111; border: 2px solid #c9ced4; border-radius: 14px; padding: 8px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.ap-ct { display: grid; grid-template-rows: auto auto auto; justify-items: center; align-content: start; gap: 2px; min-width: 0; padding: 4px 2px 5px; background: #fff; color: #111; border: 2px solid #6b7280; border-radius: 10px; cursor: pointer; font: inherit; }
+.ap-ct:hover, .ap-ct:focus-visible { border-color: var(--brand); outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 35%, transparent); }
+.ap-ct.activa, .ap-ct.morse-luz { background: #fff4e5; border-color: var(--brand); }
+.ap-ct-l { font: 900 1rem/1 var(--font); align-self: start; }
+.ap-ct-m { font-size: .82rem; font-weight: 800; letter-spacing: .06em; line-height: 1.1; white-space: nowrap; color: #111; }
+.ap-ct-s { display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 3px; max-width: 100%; }
+.ap-ct-br { display: inline-flex; gap: 1px; }
+.ap-cara .br-c .on { fill: #111; } .ap-cara .br-c .off { fill: #cfd4da; }
+.ap-ct-fl svg { display: block; height: 20px; width: auto; }
+.ap-ct .lsm-l { width: 30px; height: 30px; border-radius: 5px; }
+.ap-ct .lsm-mov { display: inline-flex; align-items: center; }
+.ap-ct .lsm-mov b { font-size: .8rem; }
+.ap-det { margin-top: 14px; }
+.ap-det summary { cursor: pointer; font-weight: 700; padding: 8px 0; }
+@media (max-width: 380px) { .ap-cara { gap: 4px; padding: 6px; } .ap-ct .lsm-l { width: 24px; height: 24px; } .ap-ct-fl svg { height: 16px; } .ap-ct-m { font-size: .74rem; } }
+@media (min-width: 600px) { .ap-cara { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .ap-cara { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px; padding: 10px; } .ap-ct .lsm-l { width: 38px; height: 38px; } .ap-ct-fl svg { height: 24px; } .ap-ct-l { font-size: 1.15rem; } .ap-ct-m { font-size: .95rem; } }
+.ap-cara.nums { grid-template-columns: repeat(5, minmax(0, 1fr)); }

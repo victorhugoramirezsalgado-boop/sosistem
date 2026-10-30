@@ -5,8 +5,9 @@
   "que": "Pestaña nueva «Mundo en vivo» con 26 contadores en 8 categorías (Población, Gobierno y economía, Sociedad y medios, Medio ambiente, Alimentación, Agua, Energía y Salud), calculados cada segundo con las cifras anuales oficiales más recientes (ONU WPP 2024, FMI abr-2026, OICA, IDC, UIT, FAO, Global Carbon Project, Energy Institute 2026, OMS, UNICEF, ONUSIDA), cada uno con su fuente. Se inspira en Worldometers pero no copia su contenido (no tiene API pública). En «Elegir datos» cada dato o categoría se muestra u oculta con un toque; ocultar no borra: el dato queda atenuado para volver a mostrarlo. «Ver cómo quedaría» enseña la vista del visitante. La selección viaja con las decisiones al copiar o enviar.",
   "espacio": "Pestaña «Mundo en vivo» (después de FODA). En el sitio oficial, solo los datos que queden visibles.",
   "modificacion": "Solicitud del autor (29-oct-2026). Por decidir: qué datos se publican en el sitio oficial; traducción a los 22 idiomas.",
-  "estado": "Autorizado · en sitio oficial 6.3.0",
-  "ver": "mundo"
+  "estado": "Publicado",
+  "ver": "mundo",
+  "resolucion": "Autorizado (30-oct-2026): se muestran los 26 datos seleccionados; sitio oficial 6.3.0, confirmado en 6.4.0."
  },
  {
   "id": 144,
@@ -14,8 +15,9 @@
   "que": "Hoja 3 del Cubo de Aprendizaje: lámina grande y cara para pegar. Arriba A–Z y a la izquierda la «A» de cada alfabeto con los idiomas que lo usan (latino: es, en, fr y 11 más; la lista completa va arriba). Cada alfabeto empieza 2 columnas más a la derecha (diagonal de arriba a la izquierda hacia abajo a la derecha); lo que no cabe y los signos propios (Ñ, Ç, ß, Ґ, letras finales del hebreo…) bajan debajo de su diagonal. Ocho escrituras: latina, griega, cirílica, árabe, hebrea, devanagari, kana y zhuyin. En la parte blanca, los números del 0 al 9 en cada escritura: arábigos (es, el, ru…), árabe, devanagari, chino/japonés, y hebreo y griego tradicionales con letras. Pronunciación aproximada en español debajo de cada letra no latina (y de Ñ, Ç, ß, Æ, Ø, Å, Œ…) y de cada número; la parte blanca se rellena con guías de lectura (dirección, letras finales, vocales, tonos). La lámina de estudio va más alta en la hoja 3 y la cara para pegar (dos copias) en la hoja 4.",
   "espacio": "Aprendizaje › Cubo de Aprendizaje para imprimir (hoja 3).",
   "modificacion": "Solicitud del autor (29-oct-2026). Por decidir: qué cara del cubo reemplaza o si va en un segundo cubo.",
-  "estado": "En Beta · por autorizar",
-  "ver": "assets/cubo-aprendizaje-carta.pdf#page=3"
+  "estado": "Publicado",
+  "ver": "assets/cubo-aprendizaje-carta.pdf#page=3",
+  "resolucion": "Autorizado (30-oct-2026): la cara de los 22 idiomas sustituye a la cara del Código Cúbico© (barras) en el cubo para armar y en el cubo gigante; sitio oficial 6.4.0."
  },
  {
   "id": 143,
@@ -33,8 +35,9 @@
   "que": "El abecedario completo cabe en un campo blanco sin bajar hasta la Z: casillas como una cara del Cubo (4 columnas en celular: A B C D / E F G H …; 7 en tableta; 9 en computadora, 3 × 9 = 27). Cada casilla: la letra arriba, el Morse en una línea horizontal y, abajo, braille, bandera y seña LSM en otra línea horizontal; al tocarla suena su Morse. Botón para ver Números 0–9. La tabla larga queda plegada en «Ver la tabla detallada».",
   "espacio": "Aprendizaje › Cara del Cubo (antes de la tabla «El alfabeto en cinco sistemas»).",
   "modificacion": "Solicitud del autor (29-oct-2026).",
-  "estado": "En Beta · por autorizar",
-  "ver": "aprende>ap-cara"
+  "estado": "Publicado",
+  "ver": "aprende>ap-cara",
+  "resolucion": "Autorizado (30-oct-2026): pasa a Aprendizaje del sitio oficial 6.4.0 e integrada al Cubo de Aprendizaje para imprimir como hoja para pegar."
  },
  {
   "id": 141,
@@ -54,7 +57,7 @@
   "modificacion": "Indicación del autor (29-oct-2026): su iPhone tiene LiDAR; instalar en GitHub para pruebas en Beta.",
   "estado": "Autorizado · en desarrollo",
   "ver": "privacidad.html",
-  "resolucion": "Autorizado el 29-oct-2026. Fase 2: requiere Xcode y cuenta de desarrollador de Apple para instalarla en el iPhone; incluye vibración háptica (respaldo del #133)."
+  "resolucion": "Autorizado (30-oct-2026): fase 2, app nativa para iPhone Pro fuera del sitio; se desarrolla aparte (requiere Mac con Xcode y cuenta Apple Developer)."
  },
  {
   "id": 139,
@@ -63,7 +66,8 @@
   "espacio": "Página Detector de privacidad (enlace en la sección de la Terminal).",
   "modificacion": "Indicación del autor (29-oct-2026): detector de ondas de ida y vuelta para SOSistem, también en Google Chrome. Decisión del autor (29-oct-2026): se queda en la Beta para uso de VHRS.",
   "estado": "En Beta · se queda en Beta",
-  "ver": "privacidad.html"
+  "ver": "privacidad.html",
+  "resolucion": "Autorizado (30-oct-2026): se queda solo en la Beta para uso del autor."
  },
  {
   "id": 138,

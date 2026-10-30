@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="SOSistem™">
 <meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=6.2.1">
+<link rel="stylesheet" href="assets/estilo.css?v=6.4.0">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -740,14 +740,20 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
         <p class="note">Abecedario: Secretaría de Educación Pública y Aprende.mx. Módulo de lengua de señas en las pantallas: en desarrollo (LSM y ASL).</p></div>
       <div class="card"><h3>Braille</h3><p class="note">Braille en español (Comisión Braille Española): seis puntos por celda; los números llevan antes el signo de número ⠼.</p><p class="note">Morse internacional (UIT-R M.1677-1): el punto es corto y la raya dura tres puntos.</p><p class="note">Alfabeto fonético internacional (OACI/OTAN), el que usan radio marítima y aeronáutica para deletrear sin errores.</p></div>
     </div>
-    <div class="card ap-imp"><h3>Cubo de Aprendizaje para imprimir y armar</h3><p>Seis caras: banderas, Morse y alfabeto fonético, braille, Lengua de Señas Mexicana, Código Cúbico© y SOSistem™ con sus códigos QR. Incluye portada con vista 3D, la descripción de cada lenguaje e instrucciones.</p>
+    <h3 style="margin-top:22px">Cara del Cubo · el alfabeto de un vistazo</h3>
+    <p class="note">Toque una letra para oírla en Morse. Cada casilla muestra la letra, su Morse, su braille, su bandera y su seña.</p>
+    <div class="ap-cara-mod" role="group"><button class="btn" type="button" data-cara="letras" aria-pressed="true">Letras A–Z</button><button class="btn" type="button" data-cara="numeros" aria-pressed="false">Números 0–9</button></div>
+    <div class="ap-cara no-traducir" id="ap-cara"></div>
+    <div class="card ap-imp"><h3>Cubo de Aprendizaje para imprimir y armar</h3><p>Seis caras: banderas, Morse y alfabeto fonético, braille, Lengua de Señas Mexicana, 22 idiomas (alfabetos) y SOSistem™ con sus códigos QR. Incluye portada con vista 3D, la descripción de cada lenguaje e instrucciones.</p>
       <p class="ap-imp-b"><a class="btn primary" href="assets/cubo-aprendizaje-carta.pdf" download>Descargar · carta</a> <a class="btn" href="assets/cubo-aprendizaje-oficio.pdf" download>Descargar · oficio (legal)</a> <a class="btn" href="assets/cubo-aprendizaje-doble-carta.pdf" download>Descargar · doble carta (cubo grande)</a> <a class="btn" href="assets/cubo-aprendizaje-a4.pdf" download>Descargar · A4</a> <a class="btn" href="assets/cubo-aprendizaje-gigante-carta.pdf" download>Descargar · cubo gigante (6 hojas carta, 19 cm por cara)</a></p>
       <p class="note">Todo es vectorial: con otra hoja elija «Ajustar a la página» en su impresora y el cubo conserva su forma.</p></div>
-    <h3 style="margin-top:22px">El alfabeto en cinco sistemas</h3>
+    <details class="ap-det"><summary>Ver la tabla detallada (con alfabeto fonético)</summary>
+    <h3 style="margin-top:14px">El alfabeto en cinco sistemas</h3>
     <div class="tbl-wrap"><table class="ap-tabla">
       <thead><tr><th>Letra</th><th>Morse</th><th>Braille</th><th>Bandera</th><th>Fonético</th><th>LSM</th></tr></thead>
       <tbody id="ap-tbody"></tbody>
     </table></div>
+    </details>
   </div>
 </section>
 
@@ -1082,7 +1088,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/morse.js?v=6.2.0"></script>
 <script src="assets/pantalla.js?v=6.1"></script>
 <script src="assets/pantalla-tema.js?v=6.1"></script>
-<script src="assets/aprende.js?v=6.1"></script>
+<script src="assets/aprende.js?v=6.4.0"></script>
 <script src="assets/tablas.js?v=6.1"></script>
 <script src="assets/codigo-cubico.js?v=6.1"></script>
 <script src="assets/mensajero.js?v=6.1" defer></script>
