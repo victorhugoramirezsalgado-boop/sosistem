@@ -4,6 +4,11 @@
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
     {
+      "v": "5.7b25",
+      "fecha": "2026-10-29",
+      "resumen": "Página Beta: nueva pestaña «Mundo en vivo» con 26 contadores oficiales en 8 categorías y fuente en cada dato; selección de datos visibles u ocultos sin borrar y botón «Ver cómo quedaría». Pendientes Beta: botón «Ver cómo quedaría» en los renglones que lo tienen y la selección viaja con las decisiones (#145)."
+    },
+    {
       "v": "5.7 beta",
       "fecha": "2026-10-27",
       "resumen": "Página Beta (sosistem.com/beta/). Nueva pestaña «FODA» con el objetivo de salvar vidas: fortalezas reales del sistema, oportunidades, debilidades, amenazas y estrategias; Problema, Datos y Ventajas pasan a esta pestaña. Nueva pestaña «Aprendizaje»: Morse, braille en español, banderas del Código Internacional de Señales, alfabeto fonético OACI/OTAN y Lengua de Señas Mexicana; el Receptor Morse pasa a esta pestaña. Cubo SOSistem™ a los lados de cada terminal NODO S.O.S.© que cambia de color: verde normal, ámbar advertencia, rojo auxilio urgente y blanco con vibración en sismo. Simulador: «Tipo de área» con 59 áreas en 10 grupos y sus conceptos de segregación. En los 22 idiomas."

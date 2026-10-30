@@ -22,7 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b24">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b25">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -993,6 +993,22 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk" id="mundo">
+  <div class="wrap">
+    <span class="eyebrow">Mundo en vivo · cifras oficiales</span>
+    <h2>Datos del mundo en vivo</h2>
+    <p class="lead">Contadores que avanzan cada segundo con las cifras anuales más recientes de la ONU, la OMS, la FAO, el FMI y la UIT. Cada dato lleva su fuente.</p>
+    <div class="mu-barra">
+      <button class="btn primary" type="button" id="mu-ver" aria-pressed="false">👁 Ver cómo quedaría</button>
+      <span id="mu-herr"><button class="btn" type="button" id="mu-todos">Mostrar todos</button> <button class="btn" type="button" id="mu-ninguno">Ocultar todos</button></span>
+    </div>
+    <p class="note" id="mu-res" role="status"></p>
+    <p class="note mu-aviso" id="mu-aviso" hidden>Así lo verá el visitante: solo los datos marcados como visibles. Los ocultos siguen guardados.</p>
+    <div class="mu-grid" id="mu-grid"></div>
+    <p class="note">Cifras calculadas en este equipo a partir de datos anuales publicados; son estimaciones en tiempo real, no conteos exactos. Datos revisados el <span id="mu-act"></span>.</p>
+  </div>
+</section>
+
 <section class="slide blk no-traducir" id="pendientes-beta">
   <div class="wrap">
     <span class="eyebrow">Solo Beta · administrador</span>
@@ -1153,7 +1169,8 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/aprende.js?v=5.7b23"></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
-<script src="assets/pendientes-beta.js?v=5.7b17"></script>
+<script src="assets/mundo.js?v=5.7b25"></script>
+<script src="assets/pendientes-beta.js?v=5.7b25"></script>
 <script src="assets/reportes-beta.js?v=1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <script src="assets/codigo-cubico.js?v=5.7b12"></script>
@@ -1166,7 +1183,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/configurador.js?v=5.7b22"></script>
 <script src="assets/servicios12.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
-<script src="assets/pestanas.js?v=6.1.1b"></script>
+<script src="assets/pestanas.js?v=5.7b25"></script>
 <script src="assets/rastreo.js?v=5.7b12"></script>
 <script src="assets/morse-motor.js?v=5.7b12"></script>
 <script src="assets/receptor.js?v=5.7b12"></script>

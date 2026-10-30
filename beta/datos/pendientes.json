@@ -1,5 +1,14 @@
 [
  {
+  "id": 145,
+  "titulo": "Datos del mundo en vivo",
+  "que": "Pestaña nueva «Mundo en vivo» con 26 contadores en 8 categorías (Población, Gobierno y economía, Sociedad y medios, Medio ambiente, Alimentación, Agua, Energía y Salud), calculados cada segundo con las cifras anuales oficiales más recientes (ONU WPP 2024, FMI abr-2026, OICA, IDC, UIT, FAO, Global Carbon Project, Energy Institute 2026, OMS, UNICEF, ONUSIDA), cada uno con su fuente. Se inspira en Worldometers pero no copia su contenido (no tiene API pública). En «Elegir datos» cada dato o categoría se muestra u oculta con un toque; ocultar no borra: el dato queda atenuado para volver a mostrarlo. «Ver cómo quedaría» enseña la vista del visitante. La selección viaja con las decisiones al copiar o enviar.",
+  "espacio": "Pestaña «Mundo en vivo» (después de FODA). En el sitio oficial, solo los datos que queden visibles.",
+  "modificacion": "Solicitud del autor (29-oct-2026). Por decidir: qué datos se publican en el sitio oficial; traducción a los 22 idiomas.",
+  "estado": "En Beta · por autorizar",
+  "ver": "mundo"
+ },
+ {
   "id": 144,
   "titulo": "Cara de los 22 idiomas (alfabetos)",
   "que": "Hoja 3 del Cubo de Aprendizaje: lámina grande y cara para pegar. Arriba A–Z y a la izquierda la «A» de cada alfabeto con los idiomas que lo usan (latino: es, en, fr y 11 más; la lista completa va arriba). Cada alfabeto empieza 2 columnas más a la derecha (diagonal de arriba a la izquierda hacia abajo a la derecha); lo que no cabe y los signos propios (Ñ, Ç, ß, Ґ, letras finales del hebreo…) bajan debajo de su diagonal. Ocho escrituras: latina, griega, cirílica, árabe, hebrea, devanagari, kana y zhuyin. En la parte blanca, los números del 0 al 9 en cada escritura: arábigos (es, el, ru…), árabe, devanagari, chino/japonés, y hebreo y griego tradicionales con letras. Pronunciación aproximada en español debajo de cada letra no latina (y de Ñ, Ç, ß, Æ, Ø, Å, Œ…) y de cada número; la parte blanca se rellena con guías de lectura (dirección, letras finales, vocales, tonos). La lámina de estudio va más alta en la hoja 3 y la cara para pegar (dos copias) en la hoja 4.",
