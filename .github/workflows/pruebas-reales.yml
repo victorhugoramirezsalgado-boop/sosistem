@@ -1,0 +1,48 @@
+# Pruebas reales de SOSistem™ contra el sitio publicado (sosistem.com) · © Víctor Hugo Ramírez Salgado
+# En cada publicación espera a que GitHub Pages sirva la nueva versión y prueba el sitio real con un navegador real:
+# páginas como iPhone y computadora, PDF, temperatura exterior real, motor de sonido y Caja negra de la Terminal.
+# También corre dos veces al día. El resultado queda en pruebas-reales/ y en la Página Beta (Pendientes).
+name: Pruebas reales
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['pruebas-reales/**', 'beta/datos/pruebas-reales.json', 'sellos/**']
+  schedule:
+    - cron: '41 14 * * *'
+    - cron: '41 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pruebas-reales
+  cancel-in-progress: true
+jobs:
+  probar:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Navegador
+        run: |
+          npm i --no-save playwright@1.47.2
+          npx playwright install --with-deps chromium
+      - name: Probar el sitio publicado
+        id: probar
+        continue-on-error: true
+        run: SITIO=https://sosistem.com node herramientas/pruebas-reales.mjs
+      - name: Guardar el reporte
+        run: |
+          git config user.name "SOSistem pruebas reales"
+          git config user.email "actions@users.noreply.github.com"
+          git add pruebas-reales beta/datos/pruebas-reales.json
+          git commit -m "Pruebas reales del sitio publicado [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
+      - name: Resultado
+        if: steps.probar.outcome == 'failure'
+        run: |
+          echo "Hay pruebas reales con falla. Vea pruebas-reales/ultimo.json o Pendientes Beta."
+          exit 1
