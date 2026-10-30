@@ -4,6 +4,11 @@
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
     {
+      "v": "5.7b27",
+      "fecha": "2026-10-29",
+      "resumen": "Pendientes Beta: al revisar un cambio con «Ver cómo quedaría» aparece un panel flotante (minimizable) para Autorizar, Con cambios o No, comentar, «Copiar decisiones para Claude» o «Enviar con Google Authenticator» sin regresar a la tabla."
+    },
+    {
       "v": "5.7b26",
       "fecha": "2026-10-29",
       "resumen": "Pendientes Beta: botón «👁 Ver cómo quedaría» en TODOS los renglones (pendientes e historial). Lleva a la sección, página o PDF donde va el cambio, resalta el elemento y deja un botón «← Volver a Pendientes»."

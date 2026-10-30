@@ -1388,3 +1388,18 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 #pb-volver { position: fixed; z-index: 60; left: max(14px, env(safe-area-inset-left, 0px)); bottom: calc(56px + env(safe-area-inset-bottom, 0px)); box-shadow: var(--shadow); }
 .pb-resalta { outline: 3px solid var(--iso-amarillo); outline-offset: 4px; border-radius: 8px; transition: outline-color .3s; }
 a.btn.pb-ver { display: inline-block; text-decoration: none; }
+/* Panel flotante de decisión al revisar un cambio (Beta 5.7b27) */
+#pb-flota { position: fixed; z-index: 60; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); bottom: calc(50px + env(safe-area-inset-bottom, 0px));
+  max-width: 560px; margin: 0 auto; background: var(--surface); color: var(--ink); border: 2px solid var(--iso-amarillo); border-radius: 14px; box-shadow: var(--shadow); padding: 10px 12px; display: grid; gap: 8px; font-size: .85rem; }
+#pb-flota .pf-cab { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+#pb-flota .pf-min { border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); border-radius: 8px; padding: 2px 10px; cursor: pointer; }
+#pb-flota.min > :not(.pf-cab) { display: none; }
+#pb-flota.min .pf-min { transform: rotate(180deg); }
+#pb-flota .pf-acc { display: flex; flex-wrap: wrap; gap: 6px; }
+#pb-flota .pf-acc .btn { font-size: .8rem; padding: 6px 10px; }
+#pb-flota .pb-com { width: 100%; }
+#pb-flota .pf-msg, #pb-flota .pf-nota { margin: 0; color: var(--ink-2); font-size: .8rem; overflow-wrap: anywhere; max-height: 30vh; overflow: auto; }
+#pb-flota .pf-msg:empty { display: none; }
+#pb-flota .pf-dec button[aria-pressed="true"][data-fv="si"] { background: var(--iso-verde); color: #fff; border-color: var(--iso-verde); }
+#pb-flota .pf-dec button[aria-pressed="true"][data-fv="cambios"] { background: var(--iso-amarillo); color: #000; border-color: var(--iso-amarillo); }
+#pb-flota .pf-dec button[aria-pressed="true"][data-fv="no"] { background: var(--iso-rojo); color: #fff; border-color: var(--iso-rojo); }
