@@ -1,23 +1,83 @@
 {
- "enviado": "2026-10-29T01:20:52.000Z",
- "decisiones": [
-  {
-   "id": 128,
-   "titulo": "Terminal: token con Google Authenticator",
-   "decision": "si",
-   "comentario": "Si ahora con autentificador podría abrir github con autentificador"
-  },
-  {
-   "id": 130,
-   "titulo": "Cinta del recinto en las pantallas del monitor",
-   "decision": "si",
-   "comentario": ""
-  },
-  {
-   "id": 131,
-   "titulo": "Configurador de terminal",
-   "decision": "si",
-   "comentario": ""
-  }
- ]
+  "enviado": "2026-10-30T01:25:05.870Z",
+  "decisiones": [
+    {
+      "id": 144,
+      "titulo": "Cara de los 22 idiomas (alfabetos)",
+      "decision": "",
+      "comentario": ""
+    },
+    {
+      "id": 143,
+      "titulo": "Cubo de Aprendizaje para imprimir",
+      "decision": "cambios",
+      "comentario": "Genéralo en la mejor calidad y en toda la hoja al menos letter , o en su caso legal, y más grande. Que tengan opción desde su impresora pero se ajuste a cualquier tamaño y hoja."
+    },
+    {
+      "id": 142,
+      "titulo": "Cara del Cubo en Aprendizaje",
+      "decision": "",
+      "comentario": ""
+    },
+    {
+      "id": 141,
+      "titulo": "Sensor de calor y frío",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 140,
+      "titulo": "App nativa SOSistem™ con LiDAR (fase 2)",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 139,
+      "titulo": "Módulo de Privacidad · detector de grabadoras y cámaras ocultas",
+      "decision": "",
+      "comentario": "Este se queda en el beta para Vhrs "
+    },
+    {
+      "id": 138,
+      "titulo": "Respaldo automático y respaldo de energía (iMac sin batería)",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 137,
+      "titulo": "Modo sensor Mac y alerta por pérdida de señal",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 136,
+      "titulo": "Control y conteo real de la Terminal",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 132,
+      "titulo": "Caja negra de pruebas reales",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 133,
+      "titulo": "Hallazgo: con audio tardío el mensaje se pierde completo",
+      "decision": "si",
+      "comentario": "Debemos ajustar que de algún modo aunque el audio esté apagado pueda sentir las ondas de SOS o auxilio, y que a la primera suena o mande señales."
+    },
+    {
+      "id": 134,
+      "titulo": "Hallazgo: alerta sin sonido cuando el sonido está apagado en Ajustes",
+      "decision": "si",
+      "comentario": ""
+    },
+    {
+      "id": 135,
+      "titulo": "Hallazgo: disparos ignorados sin registro",
+      "decision": "si",
+      "comentario": ""
+    }
+  ]
 }
