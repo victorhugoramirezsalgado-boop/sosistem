@@ -1385,3 +1385,6 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 .mu-cat.mu-off > ul { opacity: .5; }
 #mundo[data-vista="visitante"] .mu-off { display: none; }
 .pb-ver { margin-top: 6px; font-size: .78rem; }
+#pb-volver { position: fixed; z-index: 60; left: max(14px, env(safe-area-inset-left, 0px)); bottom: calc(56px + env(safe-area-inset-bottom, 0px)); box-shadow: var(--shadow); }
+.pb-resalta { outline: 3px solid var(--iso-amarillo); outline-offset: 4px; border-radius: 8px; transition: outline-color .3s; }
+a.btn.pb-ver { display: inline-block; text-decoration: none; }
