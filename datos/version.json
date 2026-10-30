@@ -1,8 +1,13 @@
 {
-  "version": "6.2.2",
-  "fecha": "2026-10-29",
+  "version": "6.3.0",
+  "fecha": "2026-10-30",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.3.0",
+      "fecha": "2026-10-30",
+      "resumen": "Nueva pestaña «Mundo en vivo» (#145, autorizada): 26 contadores en tiempo real en 8 categorías (población, economía, sociedad, medio ambiente, alimentación, agua, energía y salud) con cifras anuales oficiales de la ONU, la OMS, la FAO, el FMI y la UIT, y la fuente en cada dato."
+    },
     {
       "v": "6.2.2",
       "fecha": "2026-10-29",
