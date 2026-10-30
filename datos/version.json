@@ -1,8 +1,13 @@
 {
-  "version": "6.1.0",
-  "fecha": "2026-10-28",
+  "version": "6.2.0",
+  "fecha": "2026-10-29",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.2.0",
+      "fecha": "2026-10-29",
+      "resumen": "Terminal: Caja negra de pruebas reales; Control de envíos con folio consecutivo y verificación con GitHub (también en el panel del administrador); modo sensor Mac con alerta por pérdida de señal; respaldo automático del iPhone y tarjeta de respaldo de energía. Correcciones: el Morse ya no se pierde si el audio arranca tarde (espera y suena completo; mientras tanto la pantalla destella el SOS); en modo real las alertas de emergencia y sismo suenan aunque el sonido esté apagado; los disparos descartados quedan registrados con su motivo. Autorizado en Pendientes Beta #132–#138 (29-oct-2026)."
+    },
     {
       "v": "6.1.0",
       "fecha": "2026-10-28",

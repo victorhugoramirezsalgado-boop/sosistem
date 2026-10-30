@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest-terminal.webmanifest">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icono-180.png">
-<link rel="stylesheet" href="assets/terminal.css?v=6.1.0">
+<link rel="stylesheet" href="assets/terminal.css?v=6.2.0">
 </head>
 <body>
 <header class="t-top">
@@ -70,20 +70,20 @@
           <h2>¿Qué hace este equipo?</h2>
           <div class="t-esc-sel" role="group" aria-label="Función de este equipo">
             <button type="button" class="t-mini" data-rol="solo" aria-pressed="true">Solo este equipo</button>
-            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱 Celular · sensores</button>
-            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥 Pantalla · ver terminal</button>
+            <button type="button" class="t-mini" data-rol="sensor" aria-pressed="false">📱💻 Sensores · iPhone o Mac</button>
+            <button type="button" class="t-mini" data-rol="pantalla" aria-pressed="false">🖥📱 Pantalla · ver terminal</button>
           </div>
-          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Celular · sensores» en el iPhone y «Pantalla · ver terminal» en la Mac para verla en otra pantalla.</p>
+          <p class="t-nota" id="enl-nota" style="margin:6px 0 0">Todo ocurre en este equipo. Elige «Sensores» en un equipo (iPhone o Mac) y «Pantalla · ver terminal» en el otro para verla en otra pantalla.</p>
           <div id="enl-sensor" hidden>
-            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la Mac o mándale el enlace.</p>
+            <p class="t-nota" style="margin:8px 0 6px">Código de enlace · 6 lados del cubo. Escríbelo en la otra pantalla o mándale el enlace.</p>
             <div class="t-cubo6" id="enl-cubo" aria-label="Código de enlace"></div>
             <div class="t-grid2" style="margin:8px 0 0">
-              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la Mac</button>
+              <button class="t-btn" type="button" id="enl-compartir">Enviar enlace a la pantalla</button>
               <button class="t-btn" type="button" id="enl-nuevo">Código nuevo</button>
             </div>
           </div>
           <form id="enl-pantalla" class="t-enl-form" hidden autocomplete="off">
-            <label>Código del celular<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
+            <label>Código del sensor<input id="enl-codigo" maxlength="7" autocapitalize="characters" spellcheck="false" placeholder="ABCDEF"></label>
             <button class="t-btn pri" type="submit">Conectar</button>
             <label class="t-mini-chk"><input type="checkbox" id="enl-sonar" checked> Sonar la alarma también en esta pantalla</label>
           </form>
@@ -103,6 +103,7 @@
             <div class="t-mono" id="enl-verif-est" style="margin-top:6px">Sensores de la pantalla apagados.</div>
             <ol class="t-ev" id="enl-verif-lista"></ol>
           </div>
+          <div class="t-energia-caja" id="enl-energia"></div>
         </div>
 
         <div class="t-card">
@@ -198,6 +199,11 @@
   <!-- ============ EVENTOS ============ -->
   <section class="t-vista" id="v-eventos">
     <div class="t-kpis" id="kpis"></div>
+    <div class="t-card">
+      <div class="t-fila"><h2>Control de envíos</h2><button type="button" class="t-mini" id="btn-verif-ctrl">Verificar con GitHub</button></div>
+      <div id="control"></div>
+      <p class="t-nota">Cada evento lleva un folio consecutivo que no se repite. «En GitHub» compara con el control del repositorio privado: si falta un folio, ese evento no llegó.</p>
+    </div>
     <div class="t-card">
       <h2>Eventos por hora (últimas 24 h)</h2>
       <canvas id="g-horas" height="110"></canvas>
@@ -352,17 +358,18 @@
   </div>
 </div>
 
-<script src="assets/cubo-rt.js?v=6.1"></script>
-<script src="assets/morse.js?v=6.1"></script>
-<script src="assets/banderas.js?v=6.1"></script>
-<script src="assets/lugar.js?v=6.1.0"></script>
-<script src="assets/pantallas6.js?v=6.1.0"></script>
-<script src="assets/mapeo.js?v=6.1"></script>
-<script src="assets/boveda.js?v=6.1"></script>
-<script src="assets/cabecera.js?v=6.1"></script>
-<script src="assets/estadisticas.js?v=6.1"></script>
-<script src="assets/llavero.js?v=6.1.0"></script>
-<script src="assets/terminal.js?v=6.1.0"></script>
+<script src="assets/cubo-rt.js?v=6.2.0"></script>
+<script src="assets/caja-negra.js?v=6.2.0"></script>
+<script src="assets/morse.js?v=6.2.0"></script>
+<script src="assets/banderas.js?v=6.2.0"></script>
+<script src="assets/lugar.js?v=6.2.0"></script>
+<script src="assets/pantallas6.js?v=6.2.0"></script>
+<script src="assets/mapeo.js?v=6.2.0"></script>
+<script src="assets/boveda.js?v=6.2.0"></script>
+<script src="assets/cabecera.js?v=6.2.0"></script>
+<script src="assets/estadisticas.js?v=6.2.0"></script>
+<script src="assets/llavero.js?v=6.2.0"></script>
+<script src="assets/terminal.js?v=6.2.0"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */

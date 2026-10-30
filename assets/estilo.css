@@ -1327,3 +1327,6 @@ button.tab { border-width: 0 0 2px; box-shadow: none; }
 .cfg-prev .lg-picto { width: 42px; height: 42px; }
 .cfg-normas { margin-top: 14px; } .cfg-normas ul { margin: 6px 0; padding-left: 18px; } .cfg-normas li { margin: 4px 0; font-size: 13px; }
 @media (max-width: 860px) { .cfg-prev-wrap { position: static; } }
+
+/* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
+body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }

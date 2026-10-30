@@ -1403,3 +1403,6 @@ a.btn.pb-ver { display: inline-block; text-decoration: none; }
 #pb-flota .pf-dec button[aria-pressed="true"][data-fv="si"] { background: var(--iso-verde); color: #fff; border-color: var(--iso-verde); }
 #pb-flota .pf-dec button[aria-pressed="true"][data-fv="cambios"] { background: var(--iso-amarillo); color: #000; border-color: var(--iso-amarillo); }
 #pb-flota .pf-dec button[aria-pressed="true"][data-fv="no"] { background: var(--iso-rojo); color: #fff; border-color: var(--iso-rojo); }
+
+/* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
+body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }

@@ -382,3 +382,6 @@ body.dividida #v-monitor > .sos-cab{margin:10px 12px 0}
 .t-energia li small{display:block;opacity:.75;font-size:.72rem}
 body.respaldo-local #vivo{background:#DB641C;color:#fff;border-color:#DB641C}
 body.respaldo-local .pane-b .pane-tit b::after{content:" · respaldo en este equipo";color:#DB641C}
+
+/* #133 · respaldo visual: la pantalla destella el SOS mientras el audio arranca o si no puede sonar */
+body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #fff; opacity: .9; z-index: 2147483000; pointer-events: none; }

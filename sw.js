@@ -1,7 +1,7 @@
 /* SOSistem™ · sitio sin internet · © Víctor Hugo Ramírez Salgado
    Guarda el sitio en el teléfono la primera vez que se abre con conexión. Con internet siempre intenta
    la versión más reciente; sin internet muestra la última guardada. El panel de administrador no se guarda. */
-const CACHE = "sosistem-sitio-6.1.0";
+const CACHE = "sosistem-sitio-6.2.0";
 const BASE = ["./", "index.html", "assets/estilo.css", "assets/cubo-rt.js", "assets/logo-giro.js", "assets/app.js", "assets/cubo.js", "assets/morse.js",
   "assets/pantalla.js", "assets/cubo-morse.js", "assets/idiomas.js", "assets/banderas.js", "assets/servicios12.js", "assets/pestanas.js",
   "assets/rastreo.js", "assets/morse-motor.js", "assets/morse-toma.js", "assets/receptor.js", "assets/aprende.js", "assets/tablas.js", "assets/pantalla-tema.js", "assets/logo.svg", "assets/icono.svg", "assets/icono-180.png", "assets/icono-192.png",
