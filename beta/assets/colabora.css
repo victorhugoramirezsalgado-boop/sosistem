@@ -1,0 +1,102 @@
+/* SOSistem™ · Módulo de Colaboración · © Víctor Hugo Ramírez Salgado */
+.cb-main { padding: 28px 0 64px; }
+.cb-cab h1 { margin: 10px 0 6px; }
+.cb-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 14px 0 12px; margin-bottom: 8px; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.cb-tabs button { flex: none; font: 600 .92rem var(--font); padding: 9px 14px; border-radius: 10px; border: 2px solid color-mix(in srgb, var(--ink) 35%, var(--line)); background: var(--surface); color: var(--ink); cursor: pointer; }
+.cb-tabs button[aria-selected="true"] { background: #DB641C; border-color: #DB641C; color: #fff; }
+body:not(.cb-dentro) .cb-solo-dentro, body.cb-dentro .cb-solo-fuera, body.cb-dentro .cb-fuera { display: none; }
+.cb-panel .card { margin-top: 14px; }
+.cb-panel .grid > .card { margin-top: 0; }
+.cb-panel .grid { margin-top: 14px; }
+.cb-panel h2 { font-size: 1.2rem; margin: 0 0 8px; }
+.cb-lista { padding-left: 1.2em; margin: 6px 0; } .cb-lista li { margin: 0 0 .5em; }
+.cb-aviso { border-left: 4px solid var(--iso-amarillo, #F9A900); }
+.cb-aviso-rojo { border-left-color: var(--iso-rojo, #9B2423); }
+.cb-aviso p { margin: 8px 0 0; }
+.cb-fuera { margin-top: 18px; }
+
+.cb-form { display: grid; gap: 10px; align-content: start; }
+.cb-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 12px; display: grid; gap: 10px; margin: 0; }
+.cb-form legend { font-weight: 800; padding: 0 6px; }
+.cb-form label { display: grid; gap: 4px; font-weight: 600; font-size: .9rem; }
+.cb-form label small { font-weight: 500; color: var(--ink-2); }
+.cb-form input:not([type="checkbox"]), .cb-form select, .cb-form textarea { font: 500 1rem var(--font); padding: 10px 11px; border-radius: 10px; border: 1.5px solid color-mix(in srgb, var(--ink) 30%, var(--line)); background: var(--surface); color: var(--ink); width: 100%; box-sizing: border-box; }
+.cb-form .cb-chk { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; }
+.cb-chk input { width: 20px; height: 20px; flex: none; margin-top: 2px; accent-color: #DB641C; }
+.cb-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cb-linea { grid-template-columns: 2fr 1.4fr auto auto; align-items: center; }
+@media (max-width: 720px) { .cb-linea { grid-template-columns: 1fr; } }
+.cb-cod { display: grid; gap: 2px; padding: 8px 10px; border-radius: 10px; background: color-mix(in srgb, #DB641C 9%, var(--surface)); }
+.cb-cod b { font-size: 1rem; letter-spacing: .02em; word-break: break-word; }
+.cb-msg { min-height: 1.2em; color: var(--bad); font-size: .92rem; margin: 4px 0 0; }
+.cb-det { margin-top: 10px; } .cb-det summary { cursor: pointer; font-weight: 600; }
+
+.cb-pf { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.cb-pf div { display: grid; gap: 2px; } .cb-pf small { color: var(--ink-2); } .cb-pf b { word-break: break-word; }
+.cb-dias { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; margin: 10px 0; }
+.cb-dia { border: 1.5px solid var(--line); border-radius: 10px; padding: 6px; text-align: center; display: grid; }
+.cb-dia small { color: var(--ink-2); font-size: .78rem; }
+.cb-dia.parcial { border-color: var(--iso-amarillo, #F9A900); }
+.cb-dia.ok { border-color: var(--iso-verde, #237F52); background: color-mix(in srgb, #237F52 12%, var(--surface)); }
+.cb-sens { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 4px; font-size: .92rem; }
+.cb-sens li.ok span { color: var(--iso-verde, #237F52); } .cb-sens li.no { opacity: .65; } .cb-sens small { color: var(--ink-2); }
+.cb-mini { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+.cb-mini li { border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.cb-x { border: 1px solid var(--line); background: none; border-radius: 6px; cursor: pointer; color: var(--ink); margin-left: 6px; }
+
+.cb-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.cb-kpis .card { margin-top: 0; }
+.cb-kpi small { display: block; color: var(--ink-2); } .cb-kpi b { font-size: 1.5rem; }
+.cb-tabla { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.cb-tabla th, .cb-tabla td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+.cb-graf { overflow-x: auto; }
+.cb-svg { width: 100%; min-width: 320px; height: auto; display: block; }
+.cb-g-eje { stroke: var(--line); stroke-width: 1.5; }
+.cb-g-v { font: 700 11px var(--font); fill: var(--ink); } .cb-g-n { font: 500 10px var(--font); fill: var(--ink-2); }
+
+/* Constancia de agradecimiento */
+.cb-ct { background: #fff; color: #0f1b2d; border: 1px solid #c9ced6; border-radius: 6px; padding: 26px 28px; max-width: 760px; margin: 12px auto; font-family: var(--font); display: grid; gap: 8px; text-align: center; }
+.cb-ct-cab { display: flex; align-items: center; gap: 12px; text-align: left; border-bottom: 3px solid #DB641C; padding-bottom: 10px; }
+.cb-ct-cab div { display: grid; flex: 1; } .cb-ct-cab b { font-size: 1.4rem; } .cb-ct-cab span { font-size: .85rem; color: #4a5568; }
+.cb-ct-folio { font-size: .8rem; text-align: right; color: #4a5568; }
+.cb-ct h2 { font-size: 1.7rem; color: #0f2a4a; margin: 12px 0 0; }
+.cb-ct-t { margin: 0; color: #2d3748; } .cb-ct-nom { font-size: 1.8rem; font-weight: 800; margin: 2px 0 0; color: #0f1b2d; }
+.cb-ct-cod { margin: 0; color: #DB641C; font-size: .95rem; }
+.cb-ct-pie { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-top: 22px; text-align: left; }
+.cb-ct-firma { display: grid; gap: 2px; max-width: 70%; } .cb-ct-linea { display: block; width: 260px; border-top: 1.5px solid #0f1b2d; margin-bottom: 4px; }
+.cb-ct-firma small, .cb-ct-qr small { font-size: .72rem; color: #4a5568; }
+.cb-ct-qr { display: grid; justify-items: center; gap: 4px; }
+.cb-ct-cubo { display: grid; gap: 2px; } .cb-ct-cubo svg { width: 100%; height: 30px; } .cb-ct-cubo small { font-size: .62rem; color: #4a5568; word-break: break-all; }
+.cb-ct-legal { font-size: .72rem; color: #4a5568; margin: 6px 0 0; }
+
+/* Reserva: marca de agua, velo y sin impresión */
+body.cb-dentro .cb-privado { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; position: relative; }
+body.cb-dentro::before { content: attr(data-marca) "   " attr(data-marca) "   " attr(data-marca); position: fixed; inset: -50%; z-index: 50; pointer-events: none;
+  font: 700 22px/90px var(--font); color: color-mix(in srgb, var(--ink) 7%, transparent); transform: rotate(-24deg); white-space: pre-wrap; word-spacing: 60px; overflow: hidden;
+  background: repeating-linear-gradient(transparent 0 0); }
+.cb-velo { position: fixed; inset: 0; z-index: 200; background: #0f1b2d; color: #fff; display: grid; place-content: center; text-align: center; gap: 8px; padding: 24px; }
+.cb-velo[hidden] { display: none; }
+.cb-toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: #0f1b2d; color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 300; max-width: 90vw; box-shadow: 0 6px 20px #0005; }
+@media print {
+  html:not(.cb-imprime-ct) body > * { display: none !important; }
+  html:not(.cb-imprime-ct) body::after { content: "SOSistem™ · Información reservada: este módulo no se imprime."; display: block; font: 700 18px sans-serif; padding: 40px; }
+  html.cb-imprime-ct body > *:not(main), html.cb-imprime-ct main > *:not(#t-reconocimiento), html.cb-imprime-ct #t-reconocimiento > *:not(#c-doc), html.cb-imprime-ct body::before { display: none !important; }
+  html.cb-imprime-ct #t-reconocimiento { display: block !important; }
+  html.cb-imprime-ct .cb-ct { border: none; margin: 0; max-width: none; }
+  @page { margin: 12mm; }
+}
+/* Encabezado en celular: sin desbordar la pantalla */
+.cb-pag .top nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; align-items: center; }
+@media (max-width: 720px) {
+  .cb-pag #cb-nav-term, .cb-pag .logo-text small { display: none; }
+  .cb-pag .top .wrap { gap: 8px; }
+  .cb-pag #cb-salir { padding: 7px 10px; font-size: .85rem; }
+}
+html, body.cb-pag { overflow-x: hidden; }
+.cb-ct { overflow: hidden; } .cb-ct-cod, .cb-ct-nom { word-break: break-word; }
+@media (max-width: 600px) {
+  .cb-ct { padding: 16px 14px; } .cb-ct-cab { flex-wrap: wrap; } .cb-ct-folio { width: 100%; text-align: left; }
+  .cb-ct h2 { font-size: 1.35rem; } .cb-ct-nom { font-size: 1.4rem; } .cb-ct-cod { font-size: .82rem; }
+  .cb-ct-pie { flex-direction: column; align-items: flex-start; } .cb-ct-firma { max-width: 100%; } .cb-ct-linea { width: 200px; }
+}
+#cb-salir[hidden], .cb-pag [hidden] { display: none !important; }

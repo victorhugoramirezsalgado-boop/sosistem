@@ -1,5 +1,15 @@
 [
  {
+  "id": 147,
+  "titulo": "Programa de pruebas colaborativas y Módulo de Colaboración",
+  "que": "Programa de pruebas colaborativas (meta 1,000 pruebas reales): sección pública «Colabore en las pruebas» con avance hacia la meta; Módulo de Colaboración (colabora.html) con registro de usuario y contraseña, nombre en Código de comunicación del Cubo (33)© en números, plan mínimo de 7 días × 2 horas, terminal y sensores, fenómenos naturales, personas documentadas, estadísticas, gráficas, reportes cifrados, constancia de agradecimiento, solicitud de información general y cuenta; pestaña «Colaboración» en el administrador (Beta). La Terminal marca cada prueba con el código del colaborador. Datos de colaboradores cifrados (ECDH P-256 + AES-256-GCM); solo el administrador los lee con la llave guardada en su bóveda. Información reservada: sin impresión (salvo la constancia), con marca de agua, velo al cambiar de app y sin copia.",
+  "espacio": "Pestaña «Colabore en las pruebas» (después de Inicio), página colabora.html y Administrador (Beta) › Colaboración.",
+  "modificacion": "Indicación del autor (30-oct-2026): directo al sitio oficial (modo no Beta).",
+  "estado": "Publicado",
+  "ver": "colabora",
+  "resolucion": "Publicado directo en el sitio oficial 6.5.0 por indicación del autor (30-oct-2026). Pendiente: crear la llave del programa en Administrador (Beta) › Colaboración."
+ },
+ {
   "id": 146,
   "titulo": "Firma «Hecho por VH», ligas bajo los QR y registros © en el Cubo de Aprendizaje",
   "que": "Cara de presentación (cara 1, SOSistem™): firma del autor «Hecho por VH» junto al logo, con trazo de pluma y subrayado naranja. Debajo de cada código QR, su liga escrita: Sitio · sosistem.com; Mensajero del Cubo · sosistem.com/#mensajero; Aprendizaje · sosistem.com/#aprende. Portada: nueva sección «Obras registradas en SOSistem™ · Safe Creative» con las 12 obras y su número: Sistema S.O.S.© 2609046908578, SOSistem™ 2610257442171, Cubo Morse© 2610257441754, Código Cúbico© / Código de comunicación del Cubo (33)© 2610097276721, Cubo Interior© 2610097277049, Código Omnigráfico© (prueba) 2610257441013, CuboPY© 2610097275281, Econotopía© 2610077261709, Intertopía© 2602144563892, 1ntertopía© 2606096034080, ContenedorEns© 2609046908752 y Arsa Bodegas© 2609046908806. Vista 3D de la portada un poco más chica para que todo quepa. En los cinco formatos (carta, oficio, doble carta, A4 y gigante).",

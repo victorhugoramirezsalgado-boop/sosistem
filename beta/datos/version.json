@@ -4,6 +4,11 @@
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
     {
+      "v": "5.7b31",
+      "fecha": "2026-10-30",
+      "resumen": "Programa de pruebas colaborativas (meta 1,000 pruebas reales): sección pública «Colabore en las pruebas» con avance hacia la meta; Módulo de Colaboración (colabora.html) con registro de usuario y contraseña, nombre en Código de comunicación del Cubo (33)© en números, plan mínimo de 7 días × 2 horas, terminal y sensores, fenómenos naturales, personas documentadas, estadísticas, gráficas, reportes cifrados, constancia de agradecimiento, solicitud de información general y cuenta; pestaña «Colaboración» en el administrador (Beta). La Terminal marca cada prueba con el código del colaborador."
+    },
+    {
       "v": "5.7b30",
       "fecha": "2026-10-30",
       "resumen": "Cubo de Aprendizaje para imprimir (#146, por autorizar): firma «Hecho por VH» en la cara de presentación, ligas escritas bajo cada QR y referencia de las 12 obras registradas © en la portada."

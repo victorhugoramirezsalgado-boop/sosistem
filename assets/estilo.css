@@ -1406,3 +1406,13 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 @media (min-width: 600px) { .ap-cara { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 @media (min-width: 1000px) { .ap-cara { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px; padding: 10px; } .ap-ct .lsm-l { width: 38px; height: 38px; } .ap-ct-fl svg { height: 24px; } .ap-ct-l { font-size: 1.15rem; } .ap-ct-m { font-size: .95rem; } }
 .ap-cara.nums { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* Programa de pruebas colaborativas (6.5.0) */
+.cb-meta { margin-top: 18px; }
+.cb-meta-cab { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.cb-meta-cab b { font-size: 1.1rem; } .cb-meta-cab span b { color: var(--iso-naranja, #DB641C); font-size: 1.5rem; }
+.cb-barra { height: 14px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 10%, transparent); overflow: hidden; margin: 10px 0; }
+.cb-barra i { display: block; height: 100%; background: linear-gradient(90deg, #DB641C, #F9A900); border-radius: 8px; transition: width .6s; }
+.cb-cifras { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .95rem; } .cb-cifras b { font-size: 1.15rem; }
+.cb-lista { padding-left: 1.2em; margin: 6px 0; } .cb-lista li { margin: 0 0 .45em; }
+.cb-aviso { margin-top: 16px; border-left: 4px solid var(--iso-amarillo, #F9A900); } .cb-aviso p { margin: 8px 0 0; }

@@ -33,7 +33,11 @@
   .aviso-legal { margin-top: 14px; padding: 12px 14px; border: 1px solid color-mix(in srgb, var(--bad) 45%, var(--line)); border-left: 4px solid var(--bad); border-radius: 10px; background: color-mix(in srgb, var(--bad) 6%, var(--surface)); font-size: .82rem; line-height: 1.45; text-align: left; hyphens: auto; }
   .aviso-legal b { display: block; margin-bottom: 4px; color: var(--bad); }
   .aviso-legal p { margin: 6px 0 0; }
-  @media print { .barra-app, #acceso { display: none !important; } }
+  @media print { .barra-app, #acceso { display: none !important; } #p-colabora { display: none !important; } }
+  .cb-adm-meta { font-size: 1.05rem; } .cb-adm-meta b { font-size: 1.6rem; color: #DB641C; }
+  .cb-adm-barra { height: 12px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 10%, transparent); overflow: hidden; margin: 8px 0; } .cb-adm-barra i { display: block; height: 100%; background: linear-gradient(90deg, #DB641C, #F9A900); }
+  .cb-adm-t { width: 100%; border-collapse: collapse; font-size: .85rem; } .cb-adm-t th, .cb-adm-t td { border-bottom: 1px solid var(--line); padding: 6px; text-align: left; vertical-align: top; }
+  .cb-adm-l { padding-left: 1.1em; } .cb-adm-l li { margin-bottom: 6px; } .cb-adm-msg { min-height: 1.2em; font-size: .9rem; } #p-colabora { -webkit-user-select: none; user-select: none; }
 </style>
 </head>
 <body>
@@ -118,6 +122,7 @@
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
-<script src="assets/admin.js?v=5.7b25"></script>
+<script src="assets/colabora-admin.js?v=5.7b31"></script>
+<script src="assets/admin.js?v=5.7b31"></script>
 </body>
 </html>

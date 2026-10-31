@@ -22,7 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b27">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b31">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -155,6 +155,51 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       </ol>
       <figcaption>Sin cámaras ni micrófonos que graben: radar mmWave, solo estados y medidas.</figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="slide blk" id="colabora">
+  <div class="wrap">
+    <span class="eyebrow">Programa de pruebas colaborativas · temporada de pruebas</span>
+    <h2>Buscamos empresas, instituciones y familias para alcanzar 1,000 pruebas reales.</h2>
+    <p class="lead">SOSistem™ está en temporada de pruebas. Invitamos a empresas, instituciones públicas y privadas, centros educativos, organizaciones civiles y familias a colaborar, sin costo alguno, con pruebas reales del sistema en sus instalaciones.</p>
+    <div class="cb-meta card" aria-live="polite">
+      <div class="cb-meta-cab"><b>Meta: 1,000 pruebas reales</b><span><b id="cb-n">0</b> registradas</span></div>
+      <div class="cb-barra" role="progressbar" aria-label="Avance hacia 1,000 pruebas reales" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0"><i id="cb-barra" style="width:0%"></i></div>
+      <div class="cb-cifras"><span><b id="cb-col">0</b> colaboradores</span><span><b id="cb-h">0</b> horas de monitoreo</span><span><b id="cb-dias">0</b> días de prueba</span></div>
+      <p class="note" id="cb-act">Cifras validadas por el administrador; no incluyen datos personales.</p>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Qué se prueba</h3>
+        <p>Cualquier servicio del sistema: persona en el suelo, palabra de auxilio («S.O.S.», «auxilio»), alerta manual, ruido fuerte o riña, inmovilidad prolongada, aforo e inventario de personas, calor y frío, y pérdida de señal o de energía.</p>
+        <p class="note"><b>Excepto fenómenos naturales:</b> no se simulan sismos, inundaciones ni otros desastres. Si ocurre uno durante su participación, puede informarlo en el momento desde el módulo y queda documentado por separado.</p></div>
+      <div class="card"><h3>Cómo se participa</h3>
+        <ul class="cb-lista">
+          <li>Mínimo <b>7 días</b>, con al menos <b>2 horas diarias</b> en los momentos que su personal considere aptos (puede monitorear hasta 24 horas).</li>
+          <li>Con celular, tableta, computadora o cualquier equipo funcional con sensores; también puede compartir las pruebas con sus familiares.</li>
+          <li>La Terminal de SOSistem™ registra cada prueba con su hora, su tipo y su tiempo de respuesta, y usted la califica como válida o falsa alarma.</li>
+        </ul></div>
+      <div class="card"><h3>Qué recibe</h3>
+        <ul class="cb-lista">
+          <li>Constancia de agradecimiento desde el inicio de su participación.</li>
+          <li>Estadísticas, gráficas y reportes de sus propias pruebas.</li>
+          <li>Acceso al informe general de pruebas cuando el administrador lo libere para los colaboradores.</li>
+          <li>Invitación, si le interesa, al Comité de Pruebas y, más adelante, a la representación del sistema.</li>
+        </ul>
+        <p class="note">Su aportación se reconoce como ayuda humanitaria para mejorar la prevención, la atención y la identificación de emergencias en hogares, lugares públicos, ciudades y países.</p></div>
+      <div class="card"><h3>Privacidad</h3>
+        <ul class="cb-lista">
+          <li>Durante la temporada de pruebas su nombre aparece en el Código de comunicación del Cubo (33)©, en números (A = 1 … Z = 26).</li>
+          <li>Sus datos viajan cifrados y solo el administrador puede leerlos. No se publican, no se imprimen y no se fotografían.</li>
+          <li>Usted decide si al final se le reconoce con su nombre; el reconocimiento no es público.</li>
+        </ul>
+        <p class="note">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (DOF 20-mar-2025). Puede retirarse en cualquier momento.</p></div>
+    </div>
+    <div class="card cb-aviso" role="note">
+      <span class="tag warn">Temporada de pruebas</span>
+      <p><b>No existe garantía de detección, aviso, atención ni salvamento de personas durante las pruebas.</b> SOSistem™ en prueba no sustituye al 911, a Protección Civil ni a sus protocolos de seguridad. En una emergencia real llame al 911.</p>
+    </div>
+    <p style="margin-top:16px"><a class="btn primary" href="colabora.html">Entrar al Módulo de Colaboración</a> <a class="btn" href="https://wa.me/526462270490?text=Me%20interesa%20colaborar%20en%20las%20pruebas%20de%20SOSistem" target="_blank" rel="noopener">Pedir información por WhatsApp</a></p>
   </div>
 </section>
 
@@ -1170,6 +1215,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/morse.js?v=5.7b14"></script>
 <script src="assets/pantalla.js?v=5.7b19"></script>
 <script src="assets/pantalla-tema.js?v=5.7b12"></script>
+<script src="assets/colabora-avance.js?v=5.7b31" defer></script>
 <script src="assets/aprende.js?v=5.7b23"></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
@@ -1187,7 +1233,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/configurador.js?v=5.7b22"></script>
 <script src="assets/servicios12.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
-<script src="assets/pestanas.js?v=5.7b25"></script>
+<script src="assets/pestanas.js?v=5.7b31"></script>
 <script src="assets/rastreo.js?v=5.7b12"></script>
 <script src="assets/morse-motor.js?v=5.7b12"></script>
 <script src="assets/receptor.js?v=5.7b12"></script>
