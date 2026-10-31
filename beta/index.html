@@ -32,7 +32,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 </script>
 </head>
 <body>
-<div class="beta-aviso no-traducir" role="note"><style>.pestanas-abiertas .beta-aviso{display:none!important}</style><b>Página Beta</b> · cambios en revisión; no es la versión publicada. <a href="../">Ir al sitio oficial</a> · <a class="beta-claude" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Hablar con Claude</a></div>
+<div class="beta-aviso no-traducir" role="note" id="beta-aviso"><style>.pestanas-abiertas .beta-aviso{display:none!important}body{padding-bottom:42px}.beta-aviso{max-height:44px;overflow:hidden;line-height:1.3}.beta-aviso button{margin-left:8px;border:1px solid #000;background:#fff8;border-radius:6px;font:700 .8rem var(--font);cursor:pointer;padding:0 6px}@media (orientation:landscape) and (max-height:600px){.beta-aviso{font-size:.68rem!important;padding:2px 8px!important}}</style><b>Página Beta</b> · cambios en revisión; no es la versión publicada. <a href="../">Ir al sitio oficial</a> · <a class="beta-claude" href="https://claude.ai/code/session_01FL8YKvpfuC4s9XRsfjGXi3" target="_blank" rel="noopener">✦ Hablar con Claude</a><button type="button" aria-label="Ocultar aviso" onclick="this.parentNode.hidden=true;try{sessionStorage.setItem('sos_beta_aviso','0')}catch(e){}">✕</button><script>try{if(sessionStorage.getItem("sos_beta_aviso")==="0")document.getElementById("beta-aviso").hidden=true}catch(e){}</script></div>
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text">SOSistem™</span></a>

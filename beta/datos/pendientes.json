@@ -1,5 +1,15 @@
 [
  {
+  "id": 148,
+  "titulo": "Cubo de Aprendizaje: autor en Código (33)©, cubo más grande, 7 pestañas y reverso interior",
+  "que": "Cubo de Aprendizaje para imprimir: el autor aparece en Código de comunicación del Cubo (33)© (CUBO·33 ◇ KKG … ◂ L56) en lugar del nombre; firma «Hecho por VH» y ligas escritas bajo cada QR (#146); cubo más grande en la hoja (cara de 2.42 in en carta), información de la hoja acomodada en los espacios en blanco; 7 pestañas para pegar (se agrega la que faltaba bajo la cara 5) más anchas y con los 12 proyectos del sistema; nueva hoja de reverso opcional (interior del cubo en espejo: proyectos, cifras, emergencia y meta de 1,000 pruebas) con preferencia de impresión a dos caras.",
+  "espacio": "Aprendizaje › Cubo de Aprendizaje para imprimir (hojas 2 y 3).",
+  "modificacion": "Indicación del autor (30-oct-2026), en modo no Beta.",
+  "estado": "Publicado",
+  "ver": "assets/cubo-aprendizaje-carta.pdf#page=2",
+  "resolucion": "Publicado en el sitio oficial 6.6.0."
+ },
+ {
   "id": 147,
   "titulo": "Programa de pruebas colaborativas y Módulo de Colaboración",
   "que": "Programa de pruebas colaborativas (meta 1,000 pruebas reales): sección pública «Colabore en las pruebas» con avance hacia la meta; Módulo de Colaboración (colabora.html) con registro de usuario y contraseña, nombre en Código de comunicación del Cubo (33)© en números, plan mínimo de 7 días × 2 horas, terminal y sensores, fenómenos naturales, personas documentadas, estadísticas, gráficas, reportes cifrados, constancia de agradecimiento, solicitud de información general y cuenta; pestaña «Colaboración» en el administrador (Beta). La Terminal marca cada prueba con el código del colaborador. Datos de colaboradores cifrados (ECDH P-256 + AES-256-GCM); solo el administrador los lee con la llave guardada en su bóveda. Información reservada: sin impresión (salvo la constancia), con marca de agua, velo al cambiar de app y sin copia.",
@@ -15,8 +25,9 @@
   "que": "Cara de presentación (cara 1, SOSistem™): firma del autor «Hecho por VH» junto al logo, con trazo de pluma y subrayado naranja. Debajo de cada código QR, su liga escrita: Sitio · sosistem.com; Mensajero del Cubo · sosistem.com/#mensajero; Aprendizaje · sosistem.com/#aprende. Portada: nueva sección «Obras registradas en SOSistem™ · Safe Creative» con las 12 obras y su número: Sistema S.O.S.© 2609046908578, SOSistem™ 2610257442171, Cubo Morse© 2610257441754, Código Cúbico© / Código de comunicación del Cubo (33)© 2610097276721, Cubo Interior© 2610097277049, Código Omnigráfico© (prueba) 2610257441013, CuboPY© 2610097275281, Econotopía© 2610077261709, Intertopía© 2602144563892, 1ntertopía© 2606096034080, ContenedorEns© 2609046908752 y Arsa Bodegas© 2609046908806. Vista 3D de la portada un poco más chica para que todo quepa. En los cinco formatos (carta, oficio, doble carta, A4 y gigante).",
   "espacio": "Aprendizaje › Cubo de Aprendizaje para imprimir (cara 1 y portada).",
   "modificacion": "Indicación del autor (30-oct-2026).",
-  "estado": "En Beta · por autorizar",
-  "ver": "assets/cubo-aprendizaje-carta.pdf#page=1"
+  "estado": "Publicado",
+  "ver": "assets/cubo-aprendizaje-carta.pdf#page=1",
+  "resolucion": "Aplicado y publicado en el sitio oficial 6.6.0 (30-oct-2026), con los cambios del autor: nombre sustituido por su Código de comunicación del Cubo (33)©."
  },
  {
   "id": 145,

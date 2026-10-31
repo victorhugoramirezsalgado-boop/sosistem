@@ -1,8 +1,13 @@
 {
-  "version": "6.5.0",
+  "version": "6.6.0",
   "fecha": "2026-10-30",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.6.0",
+      "fecha": "2026-10-30",
+      "resumen": "Cubo de Aprendizaje para imprimir: el autor aparece en Código de comunicación del Cubo (33)© (CUBO·33 ◇ KKG … ◂ L56) en lugar del nombre; firma «Hecho por VH» y ligas escritas bajo cada QR (#146); cubo más grande en la hoja (cara de 2.42 in en carta), información de la hoja acomodada en los espacios en blanco; 7 pestañas para pegar (se agrega la que faltaba bajo la cara 5) más anchas y con los 12 proyectos del sistema; nueva hoja de reverso opcional (interior del cubo en espejo: proyectos, cifras, emergencia y meta de 1,000 pruebas) con preferencia de impresión a dos caras."
+    },
     {
       "v": "6.5.0",
       "fecha": "2026-10-30",
