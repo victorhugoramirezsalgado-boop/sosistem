@@ -87,7 +87,7 @@
   "modificacion": "Indicación del autor (29-oct-2026): su iPhone tiene LiDAR; instalar en GitHub para pruebas en Beta.",
   "estado": "Autorizado · en desarrollo",
   "ver": "privacidad.html",
-  "resolucion": "Autorizado (30-oct-2026): fase 2, app nativa para iPhone Pro fuera del sitio; se desarrolla aparte (requiere Mac con Xcode y cuenta Apple Developer)."
+  "resolucion": "Autorizado (30-oct-2026) como fase 2: app nativa para iPhone Pro fuera del sitio (requiere Mac con Xcode y cuenta Apple Developer). Pasa al historial hasta que inicie su desarrollo (31-oct-2026)."
  },
  {
   "id": 139,
@@ -95,9 +95,9 @@
   "que": "Página nueva beta/privacidad.html: (1) sonar acústico de ida y vuelta (chirrido 17–20 kHz, eco por filtro adaptado, referencia vs. medición, distancia del eco); (2) anomalía magnética (brújula contra giroscopio en iPhone; µT en Chrome Android); (3) buscador de lentes con cámara, linterna, modo rojo y modo infrarrojo con la cámara frontal; (4) Bluetooth en Chrome (Mac, PC, Android); (5) escáner ESP32 por USB en Chrome/Edge (redes Wi-Fi, equipos conectados, BLE y temperatura) con lista de conocidos y alerta de nombres tipo cámara; bitácora y reporte JSON. Todo se procesa en el equipo. Firmware en el repositorio privado: firmware/escaner-privacidad.",
   "espacio": "Página Detector de privacidad (enlace en la sección de la Terminal).",
   "modificacion": "Indicación del autor (29-oct-2026): detector de ondas de ida y vuelta para SOSistem, también en Google Chrome. Decisión del autor (29-oct-2026): se queda en la Beta para uso de VHRS.",
-  "estado": "En Beta · se queda en Beta",
+  "estado": "Aplicado · solo Beta",
   "ver": "privacidad.html",
-  "resolucion": "Autorizado (30-oct-2026): se queda solo en la Beta para uso del autor."
+  "resolucion": "Autorizado (30-oct-2026): se queda solo en la Beta para uso del autor. Sello de tiempo en Safe Creative (31-oct-2026). Pasa al historial (31-oct-2026)."
  },
  {
   "id": 138,
