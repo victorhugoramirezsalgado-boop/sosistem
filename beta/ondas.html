@@ -121,5 +121,6 @@
 <script src="assets/cubo-rt.js?v=5.7b12"></script>
 <script src="assets/morse.js?v=5.7b14"></script>
 <script src="assets/ondas.js?v=6"></script>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./ondas" }).catch(() => {});</script>
 </body>
 </html>

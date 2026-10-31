@@ -662,5 +662,13 @@
   "espacio": "beta/ondas.html (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026): identificar el tipo de ruido en las gráficas.",
   "estado": "Pendiente"
+ },
+ {
+  "id": "154",
+  "titulo": "Modo sin internet: Terminal y Analizador guardados en el celular; SOS por SMS desde N1 sin red",
+  "que": "El Analizador de ondas se guarda en el celular junto con la Terminal (basta abrirlos una vez con internet) y abren sin conexión. Los eventos siguen guardándose en el celular y se suben solos al volver la red (ya existía). Novedad: si la Terminal está en modo real, tiene contactos SMS y no hay internet, el mensaje SOS por SMS se abre desde N1 (con internet sigue en N2), con la nota «Sin internet en el recinto». El SMS sale por señal celular; el iPhone muestra el mensaje listo y el usuario toca Enviar.",
+  "espacio": "beta/terminal.html, beta/ondas.html, beta/sw-terminal.js (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026): lluvia, 3 días sin internet.",
+  "estado": "Pendiente"
  }
 ]
