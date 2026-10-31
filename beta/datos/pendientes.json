@@ -670,5 +670,13 @@
   "espacio": "beta/terminal.html, beta/ondas.html, beta/sw-terminal.js (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026): lluvia, 3 días sin internet.",
   "estado": "Pendiente"
+ },
+ {
+  "id": "155",
+  "titulo": "Modo bolsillo con menos batería y control desde Atajos",
+  "que": "En modo bolsillo/ahorro: el reconocimiento de voz (lo que más batería gasta) ya no escucha todo el tiempo; se enciende solo cuando el micrófono oye algo fuerte (≥62 dB) y se apaga a los 20 s de silencio (en alerta siempre escucha «todo bien»); el envío al relevo pasa de cada 1 s a cada 5 s y el directo de 1 s a 2 s (en alerta vuelven al ritmo rápido). Control por dirección: terminal.html#bolsillo entra en modo bolsillo y terminal.html#normal lo quita, sin recargar si la Terminal ya está abierta, para usarlo desde Atajos de iOS. El ahorro automático al 20 % de batería ya existía.",
+  "espacio": "beta/terminal.html (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026).",
+  "estado": "Pendiente"
  }
 ]
