@@ -34,6 +34,10 @@
   .sec{width:100%;min-height:56px;font:700 18px system-ui;border-radius:14px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;margin-top:8px}
   .sec:disabled{opacity:.45}
   #gg-val{font:700 18px system-ui;margin-top:8px}
+  .tb{width:100%;border-collapse:collapse;font-size:15px} .tb td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
+  .tb td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink2);width:1%} .tb small{color:var(--ink2)}
+  .tb tr.on-hit td{background:rgba(232,114,12,.22)} .tb tr.on-hit td:first-child{color:#fff;font-weight:700}
+  details summary{cursor:pointer;font:700 18px system-ui;min-height:44px;display:flex;align-items:center}
 </style>
 </head>
 <body>
@@ -66,6 +70,35 @@
   </section>
 
   <section class="card">
+    <h2>Tabla de referencia de ondas</h2>
+    <p class="note" style="margin-top:0">El renglón se ilumina en naranja cuando el análisis detecta un pico en esa frecuencia.</p>
+    <table class="tb"><tbody id="on-tabla"></tbody></table>
+    <details style="margin-top:10px"><summary>Fuera del alcance del micrófono</summary>
+      <table class="tb"><tbody>
+        <tr><td>25–65 kHz</td><td><b>Ultrasonido</b><br><small>Ahuyentadores de plagas, sensores de estacionamiento (40 kHz)</small></td></tr>
+        <tr><td>125 kHz</td><td><b>RFID</b><br><small>Tarjetas de acceso, llaves de puerta</small></td></tr>
+        <tr><td>530–1,700 kHz</td><td><b>Radio AM</b></td></tr>
+        <tr><td>13.56 MHz</td><td><b>NFC</b><br><small>Pagos sin contacto, credenciales</small></td></tr>
+        <tr><td>88–108 MHz</td><td><b>Radio FM</b></td></tr>
+        <tr><td>433 MHz</td><td><b>Controles y sensores</b><br><small>Portones, alarmas inalámbricas</small></td></tr>
+        <tr><td>600 MHz–3.7 GHz</td><td><b>Celular 4G LTE y 5G</b></td></tr>
+        <tr><td>1.575 GHz</td><td><b>GPS</b><br><small>Rastreadores</small></td></tr>
+        <tr><td>2.4 GHz</td><td><b>Wi-Fi, Bluetooth</b><br><small>Cámaras inalámbricas, horno de microondas</small></td></tr>
+        <tr><td>5–6 GHz</td><td><b>Wi-Fi 5, 6 y 6E</b><br><small>Cámaras inalámbricas</small></td></tr>
+      </tbody></table>
+      <p class="note">Ondas de radio: escáner ESP32 o receptor SDR. Radiación ionizante: contador Geiger (sección siguiente).</p>
+    </details>
+    <details><summary>Nivel de sonido (referencia)</summary>
+      <table class="tb"><tbody>
+        <tr><td>30 dB</td><td>Susurro</td></tr><tr><td>60 dB</td><td>Conversación normal</td></tr>
+        <tr><td>85 dB</td><td>Riesgo para el oído si dura 8 horas</td></tr><tr><td>100 dB</td><td>Motocicleta, maquinaria</td></tr>
+        <tr><td>120 dB</td><td>Umbral de dolor</td></tr>
+      </tbody></table>
+      <p class="note">El micrófono del celular no está calibrado: los dB sirven para comparar, no como medición oficial.</p>
+    </details>
+  </section>
+
+  <section class="card">
     <h2>Radiación</h2>
     <p class="note" style="margin-top:0">La radiación ionizante (rayos gamma, X, beta) no la capta ningún celular ni navegador: se mide con un <b>contador Geiger</b>. Conecte uno por USB a la Mac o PC y use Chrome.</p>
     <button type="button" class="sec" id="gg-btn">Conectar contador Geiger (USB)</button>
@@ -83,6 +116,6 @@
 </main>
 <script src="assets/cubo-rt.js?v=5.7b12"></script>
 <script src="assets/morse.js?v=5.7b14"></script>
-<script src="assets/ondas.js?v=3"></script>
+<script src="assets/ondas.js?v=5"></script>
 </body>
 </html>
