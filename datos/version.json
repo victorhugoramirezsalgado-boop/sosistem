@@ -1,8 +1,13 @@
 {
-  "version": "6.6.0",
-  "fecha": "2026-10-30",
+  "version": "6.6.1",
+  "fecha": "2026-10-31",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.6.1",
+      "fecha": "2026-10-31",
+      "resumen": "Registro en Safe Creative de SOSistem™ versiones 3.9 a 6.6 (2610317507284): se agrega en el pie del sitio, términos de uso, Terminal, Módulo de Colaboración, Detector de privacidad y Cubo de Aprendizaje para imprimir."
+    },
     {
       "v": "6.6.0",
       "fecha": "2026-10-30",
