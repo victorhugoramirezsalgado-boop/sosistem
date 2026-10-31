@@ -652,6 +652,7 @@
   "que": "Sección nueva en el Analizador de ondas: 28 renglones ordenados por frecuencia (red eléctrica 50/60/120 Hz y armónicos, voz, aspas, mosquito, sirena, alarmas, detector de humo, pitidos, siseo, 15.7 kHz, chillido electrónico, ultrasonido de balizas y sensores), con tono fijo o ancho. El renglón se ilumina en naranja cuando se detecta un pico en esa frecuencia, y la deducción de cada pico sale de esta tabla. Además, tablas desplegables de ondas fuera del alcance del micrófono (RFID, AM, NFC, FM, 433 MHz, celular, GPS, Wi-Fi/Bluetooth) y nivel de sonido en dB.",
   "espacio": "beta/ondas.html, después de «Energía por bandas».",
   "modificacion": "Solicitud del autor (31-oct-2026).",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.7.1."
  }
 ]
