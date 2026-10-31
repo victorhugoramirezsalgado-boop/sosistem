@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script src="assets/beta-puerta.js?v=3"></script>
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-title" content="SOS Beta">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analizador de ondas · SOSistem™</title>
+<meta name="description" content="Analizador de ondas de SOSistem™ (Beta): ondas bajas y altas por bandas, espectro, cascada y deducción del origen probable, sin grabar ni enviar datos.">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="assets/icono-beta.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#0b0f14;--s1:#151b23;--line:#30363d;--ink:#e6edf3;--ink2:#9da7b3;--nar:#e8720c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .on{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 28px)}
+  .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .cab a{color:var(--ink2);font-size:16px;text-decoration:none;border:2px solid var(--line);border-radius:14px;padding:8px 12px}
+  h1{font-size:26px;margin:4px 0;cursor:pointer}
+  .card{background:var(--s1);border:2px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
+  h2{font-size:19px;margin:0 0 8px}
+  .big{width:100%;min-height:72px;font:800 22px system-ui;border-radius:18px;border:3px solid #ffb27a;background:var(--nar);color:#fff;cursor:pointer}
+  .big[data-on="1"]{background:transparent;color:var(--nar)}
+  .note{color:var(--ink2);font-size:15px;margin:8px 0 0}
+  canvas{width:100%;display:block;border-radius:12px;background:#05080c}
+  #on-esp{height:170px} #on-cas{height:150px}
+  .on-b{display:grid;grid-template-columns:12px 1fr auto;grid-template-areas:"c n v" "c d v" "i i i";gap:2px 8px;align-items:center;margin:8px 0}
+  .on-b span{grid-area:c;width:12px;height:12px;border-radius:50%} .on-b b{grid-area:n;font-size:17px} .on-b small{grid-area:d;color:var(--ink2);font-size:14px}
+  .on-b output{grid-area:v;font:700 17px system-ui;font-variant-numeric:tabular-nums}
+  .on-b i{grid-area:i;height:12px;background:#05080c;border-radius:6px;overflow:hidden} .on-b em{display:block;height:100%;width:0}
+  #on-picos{list-style:none;margin:0;padding:0} #on-picos li{border-top:1px solid var(--line);padding:10px 0;font-size:17px}
+  #on-picos li:first-child{border-top:0} #on-picos small{color:var(--ink2);font-size:15px}
+  .sec{width:100%;min-height:56px;font:700 18px system-ui;border-radius:14px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;margin-top:8px}
+  .sec:disabled{opacity:.45}
+  #gg-val{font:700 18px system-ui;margin-top:8px}
+</style>
+</head>
+<body>
+<main class="on">
+  <div class="cab"><b>SOSistem™ · Beta</b><a href="terminal.html">← Terminal</a></div>
+  <h1 id="on-tit" title="Toque para escuchar en Morse">Analizador de ondas</h1>
+  <p class="note" style="margin-top:0">Ondas bajas y altas con gráfica, y qué podrían ser. No graba audio ni envía datos.</p>
+
+  <section class="card">
+    <button type="button" class="big" id="on-btn" data-on="0">▶ Iniciar análisis de ondas</button>
+    <p class="note" id="on-estado">Toque el botón y permita el micrófono.</p>
+  </section>
+
+  <section class="card">
+    <h2>¿Qué se detecta? <small style="color:var(--ink2);font-weight:400">(picos más fuertes)</small></h2>
+    <ul id="on-picos"><li>Inicie el análisis.</li></ul>
+  </section>
+
+  <section class="card">
+    <h2>Espectro · de ondas bajas (izquierda) a altas (derecha)</h2>
+    <canvas id="on-esp"></canvas>
+    <h2 style="margin-top:12px">Cascada · historial de los últimos segundos</h2>
+    <canvas id="on-cas"></canvas>
+    <p class="note">Brillante = más energía en esa frecuencia. Una línea vertical fija es un tono constante (aparato encendido).</p>
+  </section>
+
+  <section class="card">
+    <h2>Energía por bandas</h2>
+    <div id="on-bandas"><p class="note">Inicie el análisis.</p></div>
+  </section>
+
+  <section class="card">
+    <h2>Radiación</h2>
+    <p class="note" style="margin-top:0">La radiación ionizante (rayos gamma, X, beta) no la capta ningún celular ni navegador: se mide con un <b>contador Geiger</b>. Conecte uno por USB a la Mac o PC y use Chrome.</p>
+    <button type="button" class="sec" id="gg-btn">Conectar contador Geiger (USB)</button>
+    <div id="gg-val">—</div>
+    <p class="note">Ondas de radio (Wi-Fi, Bluetooth, celular): use el <a href="privacidad.html" style="color:var(--nar)">Detector de privacidad</a> con el escáner ESP32.</p>
+  </section>
+
+  <section class="card">
+    <h2>Registro</h2>
+    <p class="note" style="margin-top:0">Hallazgos guardados: <b id="on-n">0</b> (frecuencia, nivel, deducción y hora).</p>
+    <button type="button" class="sec" id="on-desc">Descargar reporte (JSON)</button>
+  </section>
+
+  <p class="note">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Analizador de ondas Beta · © Víctor Hugo Ramírez Salgado · <a href="terminos-pruebas.html" style="color:var(--ink2)">Términos de la versión de prueba</a></p>
+</main>
+<script src="assets/cubo-rt.js?v=5.7b12"></script>
+<script src="assets/morse.js?v=5.7b14"></script>
+<script src="assets/ondas.js?v=3"></script>
+</body>
+</html>

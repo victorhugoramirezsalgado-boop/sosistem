@@ -634,5 +634,13 @@
   "espacio": "Terminal de la Beta, modo completo.",
   "modificacion": "Solicitud del autor (31-oct-2026).",
   "estado": "Pendiente"
+ },
+ {
+  "id": 151,
+  "titulo": "Analizador de ondas (bajas y altas) y radiación",
+  "que": "Página nueva con el micrófono: espectro de 20 Hz al límite del equipo (≈22 kHz), cascada (espectrograma), energía por 5 bandas (graves, medios, agudos, muy agudos, ultrasonido cercano), picos más fuertes con deducción del origen probable (red eléctrica 60 Hz, pitidos, fuentes conmutadas 15.7 kHz, ultrasonido de sensores o balizas) y reporte JSON. Radiación ionizante con contador Geiger USB (Chrome en Mac/PC). Botón «Ondas» en el Modo fácil y en la barra Detectar.",
+  "espacio": "beta/ondas.html (solo Beta, para pruebas).",
+  "modificacion": "Solicitud del autor (31-oct-2026): dejarlo en Beta para probarlo.",
+  "estado": "Pendiente"
  }
 ]
