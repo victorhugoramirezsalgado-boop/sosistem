@@ -25,6 +25,10 @@
   .note{color:var(--ink2);font-size:15px;margin:8px 0 0}
   canvas{width:100%;display:block;border-radius:12px;background:#05080c}
   #on-esp{height:170px} #on-cas{height:150px}
+  .on-wrap{position:relative} #on-cas-etq{position:absolute;inset:0;pointer-events:none}
+  #on-cas-etq span{position:absolute;top:6px;transform:translateX(-50%);max-width:28%;background:#ff8a3dee;color:#06090d;font:600 12px/1.15 system-ui;padding:3px 6px;border-radius:6px;text-align:center}
+  #on-cas-etq i{position:absolute;top:0;bottom:0;width:2px;background:#ff8a3d99;transform:translateX(-50%)}
+  #on-cas-etq small{font-weight:400;font-size:11px}
   .on-b{display:grid;grid-template-columns:12px 1fr auto;grid-template-areas:"c n v" "c d v" "i i i";gap:2px 8px;align-items:center;margin:8px 0}
   .on-b span{grid-area:c;width:12px;height:12px;border-radius:50%} .on-b b{grid-area:n;font-size:17px} .on-b small{grid-area:d;color:var(--ink2);font-size:14px}
   .on-b output{grid-area:v;font:700 17px system-ui;font-variant-numeric:tabular-nums}
@@ -60,8 +64,8 @@
     <h2>Espectro · de ondas bajas (izquierda) a altas (derecha)</h2>
     <canvas id="on-esp"></canvas>
     <h2 style="margin-top:12px">Cascada · historial de los últimos segundos</h2>
-    <canvas id="on-cas"></canvas>
-    <p class="note">Brillante = más energía en esa frecuencia. Una línea vertical fija es un tono constante (aparato encendido).</p>
+    <div class="on-wrap"><canvas id="on-cas"></canvas><div id="on-cas-etq" aria-live="polite"></div></div>
+    <p class="note">Brillante = más energía en esa frecuencia. Una línea vertical fija es un tono constante (aparato encendido); el analizador la etiqueta con el tipo de ruido probable.</p>
   </section>
 
   <section class="card">
@@ -116,6 +120,6 @@
 </main>
 <script src="assets/cubo-rt.js?v=5.7b12"></script>
 <script src="assets/morse.js?v=5.7b14"></script>
-<script src="assets/ondas.js?v=5"></script>
+<script src="assets/ondas.js?v=6"></script>
 </body>
 </html>

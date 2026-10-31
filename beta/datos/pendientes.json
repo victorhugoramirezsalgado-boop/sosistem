@@ -654,5 +654,13 @@
   "modificacion": "Solicitud del autor (31-oct-2026).",
   "estado": "Publicado",
   "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.7.1."
+ },
+ {
+  "id": "153",
+  "titulo": "Etiquetas de tipo de ruido sobre las gráficas del Analizador",
+  "que": "En el espectro, cada pico detectado lleva una etiqueta con su frecuencia y el tipo de ruido probable (de la tabla de referencia), con una guía hasta el pico; el más fuerte va en naranja. En la cascada, los tonos que se mantienen 3 segundos o más se marcan con una línea y la etiqueta «tono constante». Se corrigió el encimado de las marcas 5 kHz / 15 kHz en pantallas angostas.",
+  "espacio": "beta/ondas.html (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026): identificar el tipo de ruido en las gráficas.",
+  "estado": "Pendiente"
  }
 ]
