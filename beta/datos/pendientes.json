@@ -618,5 +618,21 @@
   "modificacion": "Solicitud del autor (28-oct-2026).",
   "estado": "Publicado",
   "resolucion": "Autorizado el 28-oct-2026 y publicado en 6.1.0."
+ },
+ {
+  "id": 149,
+  "titulo": "Terminal «Modo fácil» (adultos mayores)",
+  "que": "Pantalla única sin bajar, letras grandes y tres acciones: botón verde Encender/Apagar protección, botón rojo S.O.S. (mantener 2 s para evitar toques accidentales) y «Estoy bien · detener alarma» cuando hay alerta; estado en grande, llamar al 911 con confirmación y «Modo completo» para volver a la Terminal actual. Usa los mismos sensores, alertas y Morse de la Terminal.",
+  "espacio": "Terminal de la Beta (terminal.html): se abre en Modo fácil; botón naranja «Modo fácil» para regresar desde el modo completo.",
+  "modificacion": "Solicitud del autor (31-oct-2026): la Terminal es complicada en el celular; pensarla fácil para personas de la tercera edad.",
+  "estado": "Pendiente"
+ },
+ {
+  "id": 150,
+  "titulo": "Barra «Detectar» en la Terminal",
+  "que": "Barra delgada de una línea bajo el logo: ▶ Detectar (enciende todos los sensores), indicadores Mic/Mov/Voz/Cám con punto verde, «Lente» (cámara trasera para revisar lentes, sin grabar) e «Incidente» (hora, lecturas y nota, descargable). Se quitó el sello BETA flotante solo en la Terminal.",
+  "espacio": "Terminal de la Beta, modo completo.",
+  "modificacion": "Solicitud del autor (31-oct-2026).",
+  "estado": "Pendiente"
  }
 ]
