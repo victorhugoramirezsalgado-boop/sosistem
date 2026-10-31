@@ -1,8 +1,13 @@
 {
-  "version": "6.6.2",
+  "version": "6.6.3",
   "fecha": "2026-10-31",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "6.6.3",
+      "fecha": "2026-10-31",
+      "resumen": "Código Omnigráfico© con su registro definitivo en Safe Creative (2610317507444) en el Cubo Morse©, el Cubo de Aprendizaje para imprimir y el catálogo de proyectos."
+    },
     {
       "v": "6.6.2",
       "fecha": "2026-10-31",
