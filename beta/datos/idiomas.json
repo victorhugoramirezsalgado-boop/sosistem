@@ -132,7 +132,8 @@
   "tab_mensajero",
   "tab_constancia",
   "grp_resumen",
-  "tab_configurador"
+  "tab_configurador",
+  "tab_colabora"
  ],
  "idiomas": {
   "es": {
@@ -271,7 +272,8 @@
     "Mensajero del Cubo",
     "Constancia",
     "Resumen ejecutivo",
-    "Configurador"
+    "Configurador",
+    "Colabore en las pruebas"
    ]
   },
   "en": {
@@ -410,7 +412,8 @@
     "Cube Messenger",
     "Constancia",
     "Executive summary",
-    "Configurator"
+    "Configurator",
+    "Take part in the tests"
    ]
   },
   "pt": {
@@ -549,7 +552,8 @@
     "Mensageiro do Cubo",
     "Constancia",
     "Resumo executivo",
-    "Configurador"
+    "Configurador",
+    "Colabore com os testes"
    ]
   },
   "fr": {
@@ -688,7 +692,8 @@
     "Messager du Cube",
     "Constancia",
     "Résumé exécutif",
-    "Configurateur"
+    "Configurateur",
+    "Participez aux essais"
    ]
   },
   "it": {
@@ -827,7 +832,8 @@
     "Messaggero del Cubo",
     "Constancia",
     "Sintesi esecutiva",
-    "Configuratore"
+    "Configuratore",
+    "Collabori alle prove"
    ]
   },
   "de": {
@@ -966,7 +972,8 @@
     "Würfel-Messenger",
     "Constancia",
     "Zusammenfassung",
-    "Konfigurator"
+    "Konfigurator",
+    "Wirken Sie bei den Tests mit"
    ]
   },
   "nl": {
@@ -1105,7 +1112,8 @@
     "Kubus-berichtendienst",
     "Constancia",
     "Managementsamenvatting",
-    "Configurator"
+    "Configurator",
+    "Werk mee aan de tests"
    ]
   },
   "ca": {
@@ -1244,7 +1252,8 @@
     "Missatger del Cub",
     "Constancia",
     "Resum executiu",
-    "Configurador"
+    "Configurador",
+    "Col·laboreu en les proves"
    ]
   },
   "gl": {
@@ -1383,7 +1392,8 @@
     "Mensaxeiro do Cubo",
     "Constancia",
     "Resumo executivo",
-    "Configurador"
+    "Configurador",
+    "Colabore nas probas"
    ]
   },
   "eu": {
@@ -1522,7 +1532,8 @@
     "Kuboaren mezularia",
     "Constancia",
     "Laburpen exekutiboa",
-    "Konfiguratzailea"
+    "Konfiguratzailea",
+    "Lagundu probetan"
    ]
   },
   "da": {
@@ -1661,7 +1672,8 @@
     "Kube-messenger",
     "Constancia",
     "Resumé",
-    "Konfigurator"
+    "Konfigurator",
+    "Deltag i testene"
    ]
   },
   "sv": {
@@ -1800,7 +1812,8 @@
     "Kub-meddelanden",
     "Constancia",
     "Sammanfattning",
-    "Konfigurator"
+    "Konfigurator",
+    "Delta i testerna"
    ]
   },
   "nb": {
@@ -1939,7 +1952,8 @@
     "Kube-messenger",
     "Constancia",
     "Sammendrag",
-    "Konfigurator"
+    "Konfigurator",
+    "Delta i testene"
    ]
   },
   "ga": {
@@ -2078,7 +2092,8 @@
     "Teachtaire an Chiúb",
     "Constancia",
     "Achoimre feidhmiúcháin",
-    "Cumraitheoir"
+    "Cumraitheoir",
+    "Glac páirt sna tástálacha"
    ]
   },
   "el": {
@@ -2217,7 +2232,8 @@
     "Αγγελιοφόρος του Κύβου",
     "Constancia",
     "Συνοπτική παρουσίαση",
-    "Διαμορφωτής"
+    "Διαμορφωτής",
+    "Συμμετέχετε στις δοκιμές"
    ]
   },
   "ru": {
@@ -2356,7 +2372,8 @@
     "Мессенджер Куба",
     "Constancia",
     "Краткое резюме",
-    "Конфигуратор"
+    "Конфигуратор",
+    "Примите участие в испытаниях"
    ]
   },
   "uk": {
@@ -2495,7 +2512,8 @@
     "Месенджер Куба",
     "Constancia",
     "Короткий огляд",
-    "Конфігуратор"
+    "Конфігуратор",
+    "Долучайтеся до випробувань"
    ]
   },
   "ar": {
@@ -2634,7 +2652,8 @@
     "مراسل المكعب",
     "Constancia",
     "الملخص التنفيذي",
-    "أداة التهيئة"
+    "أداة التهيئة",
+    "شاركوا في الاختبارات"
    ]
   },
   "he": {
@@ -2773,7 +2792,8 @@
     "שליח הקובייה",
     "Constancia",
     "תקציר מנהלים",
-    "מגדיר"
+    "מגדיר",
+    "השתתפו בבדיקות"
    ]
   },
   "hi": {
@@ -2912,7 +2932,8 @@
     "घन संदेशवाहक",
     "Constancia",
     "कार्यकारी सारांश",
-    "विन्यासक"
+    "विन्यासक",
+    "परीक्षणों में सहयोग करें"
    ]
   },
   "zh": {
@@ -3051,7 +3072,8 @@
     "立方体信使",
     "Constancia",
     "执行摘要",
-    "配置器"
+    "配置器",
+    "参与测试合作"
    ]
   },
   "ja": {
@@ -3190,7 +3212,8 @@
     "キューブ・メッセンジャー",
     "Constancia",
     "エグゼクティブサマリー",
-    "設定ツール"
+    "設定ツール",
+    "試験にご協力ください"
    ]
   }
  },
