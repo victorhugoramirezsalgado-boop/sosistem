@@ -787,5 +787,15 @@
   "estado": "Autorizado",
   "ver": "ondas.html#abecedario",
   "resolucion": "Autorizado por el autor (31-oct-2026, 22:31) y publicado en el sitio oficial 7.0.0 (ondas.html)."
+ },
+ {
+  "id": "167",
+  "titulo": "Letras por frecuencia en el Analizador de ondas (vocales, palabras de auxilio y Morse por sonido, hasta ~7 m)",
+  "que": "Nueva tarjeta en el Analizador de ondas, junto al Abecedario por tono (#166), con alcance 1, 3 o 7 m: (1) vocales a, e, i, o, u por sus dos formantes (F1 y F2, LPC) y tono de voz (85–400 Hz), marcadas sobre el espectro con líneas F1/F2/voz y en un triángulo de vocales; (2) palabras de auxilio (ayuda, auxilio, socorro, SOS, fuego, sismo, 911, help…) con el reconocimiento de voz del equipo, que solo conserva esas palabras y descarta lo demás al momento; (3) Morse por sonido (silbido, pitido o tono de 600 Hz a 3 kHz, para no cruzarse con el Abecedario por tono de 200–590 Hz) con analizador rápido de 21 ms y velocidad automática. Las letras se borran 3 s después; todo va al reporte JSON con hora. Probado con audio sintético: vocales A E I O U y «SOS» en Morse leídos correctamente.",
+  "espacio": "beta/ondas.html › Letras por frecuencia (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "ondas.html",
+  "resolucion": ""
  }
 ]
