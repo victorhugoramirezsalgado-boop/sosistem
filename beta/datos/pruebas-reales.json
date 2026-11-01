@@ -1,11 +1,11 @@
 {
  "reporte": "pruebas-reales",
  "sitio": "https://sosistem.com",
- "fecha": "2026-11-01T04:34:29.777Z",
+ "fecha": "2026-11-01T05:31:48.457Z",
  "version_repositorio": "6.6.3",
  "version_publicada": "6.6.3",
  "propagacion_s": 0,
- "duracion_s": 38,
+ "duracion_s": 40,
  "total": 23,
  "correctas": 23,
  "fallas": 0,
@@ -21,103 +21,103 @@
    "prueba": "Abre / · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3348
+   "ms": 3450
   },
   {
    "prueba": "Abre /terminal.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2884
+   "ms": 3078
   },
   {
    "prueba": "Abre /admin.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2127
+   "ms": 2161
   },
   {
    "prueba": "Abre /verificar.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2091
+   "ms": 2160
   },
   {
    "prueba": "Abre /beta/ · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3341
+   "ms": 3374
   },
   {
    "prueba": "Abre / · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3063
+   "ms": 3465
   },
   {
    "prueba": "Abre /terminal.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2652
+   "ms": 2672
   },
   {
    "prueba": "Abre /admin.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2115
+   "ms": 2197
   },
   {
    "prueba": "Abre /verificar.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2078
+   "ms": 2094
   },
   {
    "prueba": "Abre /beta/ · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3058
+   "ms": 3332
   },
   {
    "prueba": "PDF carta",
    "ok": true,
    "detalle": "3.5 MB",
-   "ms": 191
+   "ms": 134
   },
   {
    "prueba": "PDF oficio",
    "ok": true,
    "detalle": "3.5 MB",
-   "ms": 179
+   "ms": 177
   },
   {
    "prueba": "PDF doble-carta",
    "ok": true,
    "detalle": "3.6 MB",
-   "ms": 60
+   "ms": 80
   },
   {
    "prueba": "PDF a4",
    "ok": true,
    "detalle": "3.5 MB",
-   "ms": 68
+   "ms": 91
   },
   {
    "prueba": "PDF gigante-carta",
    "ok": true,
    "detalle": "1.1 MB",
-   "ms": 433
+   "ms": 44
   },
   {
    "prueba": "Terminal · temperatura exterior real (Open-Meteo, Ensenada)",
    "ok": true,
-   "detalle": "Exterior · 17.8 °C · 85 % HR · sensación 18.8 °C · pantalla «🌡 Ext 17.8 °C»",
-   "ms": 88
+   "detalle": "Exterior · 17.9 °C · 80 % HR · sensación 18.8 °C · pantalla «🌡 Ext 17.9 °C»",
+   "ms": 345
   },
   {
    "prueba": "Terminal · Morse con audio bloqueado no se pierde (#133)",
    "ok": true,
-   "detalle": "pendiente al inicio: false · sonó a los 103 ms",
-   "ms": 6239
+   "detalle": "pendiente al inicio: false · sonó a los 110 ms",
+   "ms": 6247
   },
   {
    "prueba": "Terminal · disparo descartado queda registrado (#135)",
@@ -135,13 +135,13 @@
    "prueba": "Beta · datos/pendientes.json",
    "ok": true,
    "detalle": "válido",
-   "ms": 27
+   "ms": 79
   },
   {
    "prueba": "Beta · datos/mundo.json",
    "ok": true,
    "detalle": "válido",
-   "ms": 8
+   "ms": 6
   },
   {
    "prueba": "Beta · datos/version.json",
