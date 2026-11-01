@@ -797,5 +797,15 @@
   "estado": "Por autorizar",
   "ver": "ondas.html",
   "resolucion": ""
+ },
+ {
+  "id": "168",
+  "titulo": "Auditoría de privacidad exhaustiva (micrófono, cámara, voz, bocina, imágenes y envíos)",
+  "que": "Nueva página auditoria.html (botón «Privacidad» en la barra Detectar de la Terminal). Un registro que se carga primero en todas las páginas Beta anota en el equipo: encendido y duración de micrófono y cámara; cada minuto con micrófono (dB promedio y máximo, segundos con posible voz, luz en lux si el equipo la da, movimiento); reconocimiento de voz (por servidor o en el equipo, frases reconocidas sin guardar el texto); cada sonido por bocina (tonos, voz sintética, audio, vibración); cualquier lectura de cuadros de cámara o imagen creada; y cada envío fuera del sitio (destino, tamaño, HTTPS y cifrado). Resumen, gráfica, tabla de destinos, bitácora con filtros, cadena SHA-256 verificable, exportación JSON o .cubo.txt cifrado, borrado con doble confirmación. Interruptor «Voz solo en el equipo» que bloquea el reconocimiento por servidor (Google/Apple). No graba audio ni imagen.",
+  "espacio": "auditoria.html y barra Detectar de la Terminal (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "auditoria.html",
+  "resolucion": ""
  }
 ]
