@@ -777,5 +777,15 @@
   "estado": "Por autorizar",
   "ver": "terminal.html",
   "resolucion": ""
+ },
+ {
+  "id": "166",
+  "titulo": "Abecedario por tono en ondas bajas y lectura de vibración",
+  "que": "Analizador de ondas (Beta): cada letra A–Z y el espacio es un tono grave fijo (escala grave 200–590 Hz con la bocina del celular, o muy grave 100–490 Hz con bocina externa; paso 15 Hz). Un equipo emite el mensaje y otro, con el análisis iniciado, escribe las letras que oye (sin internet). Velocidad normal 2.4 letras/s o lenta 1.4 letras/s para lugares con ruido. Los picos que coinciden con una letra se marcan en «¿Qué se detecta?». Nueva tarjeta de vibración con el acelerómetro de 0.5 a 30 Hz: gráfica, frecuencia dominante, amplitud en m/s², origen probable (oleaje, sismo, pasos, maquinaria) y letra (A = 1 Hz … Z = 26 Hz); emisión por vibración solo en Android. Todo queda en el reporte JSON. Probado con tonos de prueba: «SOS BODEGA TRES» se leyó completo.",
+  "espacio": "ondas.html › Abecedario por tono y Vibración de baja frecuencia (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "ondas.html#abecedario",
+  "resolucion": ""
  }
 ]
