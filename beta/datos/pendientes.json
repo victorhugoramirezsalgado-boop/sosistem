@@ -661,7 +661,8 @@
   "que": "En el espectro, cada pico detectado lleva una etiqueta con su frecuencia y el tipo de ruido probable (de la tabla de referencia), con una guía hasta el pico; el más fuerte va en naranja. En la cascada, los tonos que se mantienen 3 segundos o más se marcan con una línea y la etiqueta «tono constante». Se corrigió el encimado de las marcas 5 kHz / 15 kHz en pantallas angostas.",
   "espacio": "beta/ondas.html (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026): identificar el tipo de ruido en las gráficas.",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.8.0."
  },
  {
   "id": "154",
@@ -669,7 +670,8 @@
   "que": "El Analizador de ondas se guarda en el celular junto con la Terminal (basta abrirlos una vez con internet) y abren sin conexión. Los eventos siguen guardándose en el celular y se suben solos al volver la red (ya existía). Novedad: si la Terminal está en modo real, tiene contactos SMS y no hay internet, el mensaje SOS por SMS se abre desde N1 (con internet sigue en N2), con la nota «Sin internet en el recinto». El SMS sale por señal celular; el iPhone muestra el mensaje listo y el usuario toca Enviar.",
   "espacio": "beta/terminal.html, beta/ondas.html, beta/sw-terminal.js (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026): lluvia, 3 días sin internet.",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.8.0."
  },
  {
   "id": "155",
@@ -677,7 +679,8 @@
   "que": "En modo bolsillo/ahorro: el reconocimiento de voz (lo que más batería gasta) ya no escucha todo el tiempo; se enciende solo cuando el micrófono oye algo fuerte (≥62 dB) y se apaga a los 20 s de silencio (en alerta siempre escucha «todo bien»); el envío al relevo pasa de cada 1 s a cada 5 s y el directo de 1 s a 2 s (en alerta vuelven al ritmo rápido). Control por dirección: terminal.html#bolsillo entra en modo bolsillo y terminal.html#normal lo quita, sin recargar si la Terminal ya está abierta, para usarlo desde Atajos de iOS. El ahorro automático al 20 % de batería ya existía.",
   "espacio": "beta/terminal.html (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026).",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.8.0."
  },
  {
   "id": "156",
@@ -685,7 +688,8 @@
   "que": "Firmware nuevo en el repo privado (firmware/nodo-sms): el ESP32 crea su propia red Wi-Fi sin internet, sirve la Terminal Beta desde su memoria en http://192.168.4.1/terminal.html y, al llegar una alerta real a N1, manda el SMS solo a los contactos de su config.h por el módem celular, con cola y reintentos. En la Terminal: ajuste «Clave del nodo SMS», envío automático al nodo en N1 (modo real) y renglón de estado del nodo (red, operador, señal, SMS del día). Sin el nodo, nada cambia.",
   "espacio": "beta/terminal.html (Ajustes) · sistema-sos/firmware/nodo-sms.",
   "modificacion": "Solicitud del autor (31-oct-2026): SMS automático sin internet durante la lluvia.",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.8.0."
  },
  {
   "id": "157",
@@ -693,6 +697,7 @@
   "que": "Nueva tarjeta en Sensores (Beta) con datos de Open-Meteo (gratuito, sin clave) para la ubicación del recinto: clima actual y sensación térmica; lluvia ahora, próximas 6 h y del día; viento y rachas; índice UV actual y máximo del día; calidad del aire (AQI europeo, PM2.5, PM10); oleaje y mar de fondo; nivel del mar y próximas pleamar/bajamar (aproximación del modelo). Botón «Leer entorno ahora» y opción de actualizar cada 30 min (cada hora en ahorro). Avisos en consola al superar umbrales (lluvia ≥7.6 mm/h o ≥25 mm en 6 h, rachas ≥60 km/h, UV ≥8, AQI >60, olas ≥2.5 m, tormenta eléctrica); no disparan la alarma. Necesita internet.",
   "espacio": "beta/terminal.html → Sensores (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026).",
-  "estado": "Pendiente"
+  "estado": "Publicado",
+  "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.8.0."
  }
 ]

@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest-terminal.webmanifest">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icono-180.png">
-<link rel="stylesheet" href="assets/terminal.css?v=6.2.2">
+<link rel="stylesheet" href="assets/terminal.css?v=6.8.0">
 </head>
 <body>
 <header class="t-top">
@@ -186,6 +186,15 @@
       <p class="t-nota" id="temp-msg" role="status" style="margin:6px 0 0"></p>
       <p class="t-nota" style="margin:6px 0 0">Sensación térmica con el índice de calor del Servicio Meteorológico Nacional de EE. UU. (NWS). La OMS recomienda al menos 18 °C en interiores; por debajo de 10 °C aumenta el riesgo de hipotermia en personas mayores. Una alerta cada 30 min por tipo.</p>
     </div>
+    <div class="t-card" id="t-entorno">
+      <h2>Entorno del recinto</h2>
+      <p class="t-nota">Clima, lluvia, viento, rayos UV, calidad del aire, oleaje y marea del lugar (Open-Meteo, gratuito). Avisos en la consola cuando algo se pone peligroso; no disparan la alarma. Necesita internet.</p>
+      <div class="t-mono" id="ent-lect">Sin lectura.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
+        <button class="t-btn" type="button" id="ent-leer">Leer entorno ahora</button>
+        <label class="t-campo" style="display:flex;gap:8px;align-items:center;margin:0"><input id="ent-auto" type="checkbox" style="width:22px;min-height:22px;height:22px;flex:none"> Actualizar solo cada 30 min</label>
+      </div>
+    </div>
     <div class="t-card">
       <h2>Ubicación del recinto</h2>
       <p class="t-nota">Opcional. Se usa para incluir el punto exacto en el aviso al administrador.</p>
@@ -307,6 +316,8 @@
       <p class="t-nota">Sin internet, la terminal sigue detectando y lee tu ubicación con el GPS del teléfono. Para avisar fuera del recinto usa estas tres vías, de la más segura a la más limitada.</p>
       <label>Contactos de emergencia para el SMS (con lada, separados por coma)<input name="sms" inputmode="tel" maxlength="120" placeholder="6460000000, 6640000000"></label>
       <label class="t-chk"><input type="checkbox" name="sms_auto"> Abrir el mensaje SOS por SMS al llegar a N2 (modo real)</label>
+      <label>Clave del nodo SMS (ESP32 + SIM; solo si la Terminal se abre desde http://192.168.4.1)<input name="nodo_clave" type="password" maxlength="60" autocomplete="off"></label>
+      <p class="t-nota" id="nodo-sms-estado" hidden></p>
       <p class="t-nota">El SMS necesita señal celular y saldo o plan; no necesita datos ni wifi. El navegador abre el mensaje ya escrito, con tus coordenadas en texto, y tú o quien te ayude solo toca «Enviar»: ninguna página puede enviar un SMS sola.</p>
       <div class="t-card" style="margin:8px 0">
         <h2 style="margin-top:0">Botón físico de emergencia del teléfono</h2>
@@ -376,20 +387,20 @@
   </div>
 </div>
 
-<script src="assets/cubo-rt.js?v=6.2.2"></script>
-<script src="assets/caja-negra.js?v=6.2.2"></script>
-<script src="assets/morse.js?v=6.2.2"></script>
-<script src="assets/banderas.js?v=6.2.2"></script>
-<script src="assets/lugar.js?v=6.2.2"></script>
-<script src="assets/pantallas6.js?v=6.2.2"></script>
-<script src="assets/mapeo.js?v=6.2.2"></script>
-<script src="assets/boveda.js?v=6.2.2"></script>
-<script src="assets/cabecera.js?v=6.2.2"></script>
-<script src="assets/estadisticas.js?v=6.2.2"></script>
-<script src="assets/llavero.js?v=6.2.2"></script>
-<script src="assets/terminal.js?v=6.5.0"></script>
-<script src="assets/detectar-ya.js?v=6.7.0"></script>
-<script src="assets/modo-facil.js?v=6.7.0"></script>
+<script src="assets/cubo-rt.js?v=6.8.0"></script>
+<script src="assets/caja-negra.js?v=6.8.0"></script>
+<script src="assets/morse.js?v=6.8.0"></script>
+<script src="assets/banderas.js?v=6.8.0"></script>
+<script src="assets/lugar.js?v=6.8.0"></script>
+<script src="assets/pantallas6.js?v=6.8.0"></script>
+<script src="assets/mapeo.js?v=6.8.0"></script>
+<script src="assets/boveda.js?v=6.8.0"></script>
+<script src="assets/cabecera.js?v=6.8.0"></script>
+<script src="assets/estadisticas.js?v=6.8.0"></script>
+<script src="assets/llavero.js?v=6.8.0"></script>
+<script src="assets/terminal.js?v=6.8.0"></script>
+<script src="assets/detectar-ya.js?v=6.8.0"></script>
+<script src="assets/modo-facil.js?v=6.8.0"></script>
 <script>
 /* Aceptación de términos y conteo anónimo de uso de la versión de prueba (GoatCounter: sin cookies, sin IP, sin datos personales).
    Cada evento se cuenta una sola vez por equipo para aproximar el número de personas. © Víctor Hugo Ramírez Salgado */
