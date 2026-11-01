@@ -767,5 +767,15 @@
   "estado": "Por autorizar",
   "ver": "#aprende",
   "resolucion": ""
+ },
+ {
+  "id": "165",
+  "titulo": "Calor de personas y energía, 10 m a la redonda, con dos gráficas",
+  "que": "Nueva tarjeta en Terminal › Sensores (Beta): ESP32 por USB (Chrome/Edge) con matriz térmica MLX90640 (768 temperaturas, sin imagen que identifique), radar HLK-LD2450 (hasta 3 personas, ~8 m, ±60°) y conteo de equipos Bluetooth cercanos («energía»). Gráfica 1: plano de 10 m con anillos cada 2 m, personas por calor (temperatura y distancia estimada) y por radar (distancia y si se mueve), conos de alcance y orientación ajustable. Gráfica 2: últimos 10 minutos (personas por calor, por radar, equipos cerca y calor corporal máximo). Mapa de calor 32×24 opcional, apagado por defecto. Modo de demostración marcado como simulado. Firmware nuevo: firmware/sensor-calor. Sin el equipo no hay lecturas reales: el celular no tiene sensor de calor.",
+  "espacio": "terminal.html › Sensores › Calor de personas y energía (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "terminal.html",
+  "resolucion": ""
  }
 ]

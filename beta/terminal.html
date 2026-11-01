@@ -188,6 +188,23 @@
       <p class="t-nota" id="temp-msg" role="status" style="margin:6px 0 0"></p>
       <p class="t-nota" style="margin:6px 0 0">Sensación térmica con el índice de calor del Servicio Meteorológico Nacional de EE. UU. (NWS). La OMS recomienda al menos 18 °C en interiores; por debajo de 10 °C aumenta el riesgo de hipotermia en personas mayores. Una alerta cada 30 min por tipo.</p>
     </div>
+    <div class="t-card" id="cal">
+      <h2>Calor de personas y energía · 10 m a la redonda <small style="color:var(--ink2)">(Beta)</small></h2>
+      <p class="t-nota">El celular no tiene sensor de calor corporal. Se conecta un ESP32 con matriz térmica MLX90640 (768 temperaturas, no forma una imagen que reconozca a nadie), radar HLK-LD2450 (posición de hasta 3 personas, ~8 m) y conteo de equipos Bluetooth cercanos. Por USB en Chrome o Edge (Mac o PC). Firmware: firmware/sensor-calor.</p>
+      <div class="t-grid2"><button class="t-btn pri" type="button" id="cal-usb">Conectar sensor de calor por USB</button><button class="t-btn" type="button" id="cal-demo" aria-pressed="false">Ver demostración (simulada)</button></div>
+      <p class="t-nota" id="cal-est" role="status" style="margin:6px 0 0">Sin sensor conectado.</p>
+      <div class="t-mono" id="cal-lect">—</div>
+      <h3 class="cal-h">Plano · 10 m a la redonda</h3>
+      <canvas id="cal-plano" class="cal-c" aria-label="Plano de 10 metros con las personas detectadas"></canvas>
+      <p class="cal-ley"><span style="background:#ff8a3d"></span>Calor (MLX90640) <span style="background:#4b9bff"></span>Radar (LD2450) · conos: lo que alcanza cada sensor al frente</p>
+      <label class="t-campo">Orientación de los sensores (hacia dónde miran) <b id="cal-giro-v">0°</b><input id="cal-giro" type="range" min="0" max="359" value="0"></label>
+      <h3 class="cal-h">En el tiempo · últimos 10 minutos</h3>
+      <canvas id="cal-graf" class="cal-c cal-g" aria-label="Gráfica de personas, calor y energía en el tiempo"></canvas>
+      <p class="cal-ley"><span style="background:#ff8a3d"></span>Personas por calor <span style="background:#4b9bff"></span>Personas por radar <span style="background:#b18cff"></span>Equipos con señal cerca <span style="background:#ffd166"></span>Calor corporal máx. (eje derecho, 25–40 °C)</p>
+      <label class="t-campo" style="display:flex;gap:8px;align-items:center;margin-top:8px"><input id="cal-ver-mapa" type="checkbox" style="width:22px;min-height:22px;height:22px;flex:none"> Mostrar mapa de calor (32 × 24 puntos)</label>
+      <canvas id="cal-mapa" width="32" height="24" class="cal-mapa" hidden></canvas>
+      <p class="t-nota" style="margin:6px 0 0">Alcance real: un MLX90640 de 55° distingue a una persona hasta unos 7–10 m (a 10 m, cada punto mide ~33 cm) y el LD2450 llega a ~8 m con ±60°. Un solo equipo cubre un cono al frente; para los 360° completos se necesitan 3 radares y 4 matrices de 110°. Más allá de lo que alcanzan los sensores no se inventan lecturas.</p>
+    </div>
     <div class="t-card" id="t-entorno">
       <h2>Entorno del recinto</h2>
       <p class="t-nota">Clima, lluvia, viento, rayos UV, calidad del aire, oleaje y marea del lugar (Open-Meteo, gratuito). Avisos en la consola cuando algo se pone peligroso; no disparan la alarma. Necesita internet.</p>
@@ -401,6 +418,7 @@
 <script src="assets/estadisticas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
 <script src="assets/terminal.js?v=5.7b39"></script>
+<script src="assets/calor.js?v=1"></script>
 <script src="assets/detectar-ya.js?v=3"></script>
 <script src="assets/modo-facil.js?v=2"></script>
 <script>
