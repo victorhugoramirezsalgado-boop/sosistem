@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
+<script src="assets/cubo-rt.js?v=bm1"></script>
+<script src="assets/auditoria.js?v=7.1.0"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SOSistem™ · Sistema S.O.S.© · Alerta temprana para la seguridad humana</title>
@@ -764,7 +766,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <section class="slide blk" id="aprende">
   <div class="wrap">
     <span class="eyebrow">Aprendizaje · Comunicación para todos</span>
-    <h2>Aprenda a pedir ayuda de cinco maneras.</h2>
+    <h2>Aprenda a pedir ayuda de cinco maneras, y en 22 idiomas.</h2>
     <p class="lead fo-lead">En una emergencia, no todas las personas pueden oír, ver o hablar. Aquí puede aprender y practicar el código Morse, el braille, las banderas del Código Internacional de Señales y la lengua de señas.</p>
     <div class="card ap-conv">
       <label class="sn-campo"><b>Escriba un mensaje</b><input id="ap-txt" value="SOS" maxlength="30" autocomplete="off" placeholder="SOS"></label>
@@ -799,6 +801,34 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <tbody id="ap-tbody"></tbody>
     </table></div>
     </details>
+
+    <div class="card pa" id="pa">
+      <h3>Idiomas · 159 palabras y frases para aprender</h3>
+      <p class="note">Elija el idioma que quiere aprender y el idioma desde el que lo lee. Toque una frase: suena con la voz de ese idioma y abajo aparece, el tiempo necesario para leerlo, cómo se escribe, cómo se lee y cómo se pronuncia.</p>
+      <p class="note">La frase «¡Llame al 911!» se deja con el 911 en todos los idiomas; en Europa y gran parte del mundo el número único de emergencias es el 112.</p>
+      <div class="ab-ctl">
+        <label class="sn-campo"><b>Aprender</b><select id="pa-dest" aria-label="Idioma que quiere aprender"></select></label>
+        <label class="sn-campo"><b>Desde</b><select id="pa-base" aria-label="Idioma desde el que lee"></select></label>
+        <label class="sn-campo"><b>Buscar</b><input id="pa-q" type="search" placeholder="agua, hola, 911…" autocomplete="off"></label>
+      </div>
+      <div class="pa-cats" id="pa-cats" role="group" aria-label="Categorías"></div>
+      <p class="note" id="pa-cuenta" role="status"></p>
+      <div class="pa-lista no-traducir" id="pa-lista"></div>
+      <p><a class="btn primary" id="pa-pdf" href="assets/idiomas/idioma-en-carta.pdf" download>Imprimir bases y 159 palabras (PDF carta)</a> <a class="btn" href="assets/idiomas/idiomas-22-bases-carta.pdf" download>Imprimir los 22 idiomas (PDF carta)</a></p>
+      <details class="ap-det" open><summary>Bases del idioma: sonidos, verbos y ruta de básico a intermedio</summary><div class="ba no-traducir" id="ba"></div></details>
+    </div>
+
+    <div class="card tr" id="tr">
+      <h3>Traductor de referencia · sin oficialización</h3>
+      <p class="note">Traduce palabra por palabra con el diccionario de las 159 entradas en los 22 idiomas. Sirve para apoyarse a formar frases; no sustituye a un traductor certificado. Con el micrófono, lo que diga aparece escrito, con su lectura y su pronunciación.</p>
+      <div class="ab-ctl"><label class="sn-campo"><b>De</b><select id="tr-de" aria-label="Traducir de"></select></label><button class="btn" type="button" id="tr-swap" aria-label="Intercambiar idiomas">⇄</button><label class="sn-campo"><b>A</b><select id="tr-a" aria-label="Traducir a"></select></label></div>
+      <textarea id="tr-in" rows="3" maxlength="600" placeholder="Ejemplo: hola, necesito ayuda por favor" class="tr-in"></textarea>
+      <p class="tr-bot"><button class="btn primary" type="button" id="tr-btn">Traducir</button> <button class="btn" type="button" id="tr-oir">🔊 Escuchar</button> <button class="btn" type="button" id="tr-mic" aria-pressed="false">🎤 Dictar</button> <button class="btn" type="button" id="tr-imp">Imprimir</button></p>
+      <div class="tr-out no-traducir" id="tr-out" aria-live="polite"></div>
+      <details class="ap-det"><summary>Idiomas incluidos (código y nombre completo)</summary>
+        <div class="tbl-wrap"><table class="ap-tabla"><thead><tr><th>Código</th><th>Idioma</th><th>Nombre propio</th><th>Variante</th><th>Escritura</th><th>Norma de referencia</th><th>Voz en este equipo</th></tr></thead><tbody id="id-cat"></tbody></table></div>
+        <p class="note">Las voces son las del propio equipo (iPhone, Mac, Android o Windows): no se descarga ni se envía audio. Si un idioma dice «Descargar», en iPhone vaya a Ajustes › Accesibilidad › Contenido leído › Voces y elija una voz «mejorada».</p></details>
+    </div>
 
     <div class="card" id="pr">
       <h3>Pronunciación en 22 idiomas</h3>
@@ -1173,8 +1203,9 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/pantalla.js?v=6.1"></script>
 <script src="assets/pantalla-tema.js?v=6.1"></script>
 <script src="assets/colabora-avance.js?v=6.5.0" defer></script>
-<script src="assets/aprende.js?v=6.9.0"></script>
-<script src="assets/pronuncia.js?v=6.9.0" defer></script>
+<script src="assets/aprende.js?v=7.1.0"></script>
+<script src="assets/pronuncia.js?v=7.1.0" defer></script>
+<script src="assets/idiomas-aprende.js?v=7.1.0" defer></script>
 <script src="assets/cubo-juego.js?v=6.9.0" defer></script>
 <script src="assets/tablas.js?v=6.1"></script>
 <script src="assets/codigo-cubico.js?v=6.1"></script>

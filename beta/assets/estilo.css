@@ -1484,7 +1484,7 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .tr-bot { display: flex; flex-wrap: wrap; gap: 6px; } #tr-mic.grabando { background: #c62828; color: #fff; border-color: #c62828; }
 .tr-out { border: 1px solid var(--line); border-radius: 10px; padding: 10px; background: var(--surface-2); min-height: 40px; }
 .tr-out:empty { display: none; } .tr-t { font-size: 1.2rem; font-weight: 700; margin: 0 0 6px; } .tr-out small { font-weight: 700; color: var(--ink-3); text-transform: uppercase; font-size: .7rem; letter-spacing: .08em; margin-right: 4px; }
-/* Subtítulos de voz: discretos, abajo, sin recibir toques; se quedan 3 s al terminar */
+/* Subtítulos de voz: discretos, abajo, sin recibir toques; se quedan el tiempo de lectura al terminar */
 .voz-sub { position: fixed; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); transform: translate(-50%, 12px); width: min(560px, calc(100% - 24px)); z-index: 60;
   background: rgba(15, 23, 42, .78); color: #fff; border-radius: 12px; padding: 8px 12px; font-size: .85rem; line-height: 1.35; pointer-events: none; opacity: 0; transition: opacity .3s, transform .3s; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .voz-sub.ver { opacity: 1; transform: translate(-50%, 0); }

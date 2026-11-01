@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script src="assets/cubo-rt.js?v=bm1"></script>
+<script src="assets/auditoria.js?v=7.1.0"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoría de privacidad · SOSistem™</title>
+<meta name="description" content="Auditoría de privacidad de SOSistem™: micrófono, cámara, voz, bocina, imágenes y envíos registrados en el equipo, con cadena verificable.">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#0b0f14;--s1:#151b23;--line:#30363d;--ink:#e6edf3;--ink2:#9da7b3;--nar:#e8720c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .on{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 28px)}
+  .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .cab a{color:var(--ink2);font-size:16px;text-decoration:none;border:2px solid var(--line);border-radius:14px;padding:8px 12px}
+  h1{font-size:26px;margin:4px 0;cursor:pointer}
+  .card{background:var(--s1);border:2px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
+  h2{font-size:19px;margin:0 0 8px}
+  .big{width:100%;min-height:72px;font:800 22px system-ui;border-radius:18px;border:3px solid #ffb27a;background:var(--nar);color:#fff;cursor:pointer}
+  .big[data-on="1"]{background:transparent;color:var(--nar)}
+  .note{color:var(--ink2);font-size:15px;margin:8px 0 0}
+  canvas{width:100%;display:block;border-radius:12px;background:#05080c}
+  .au-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+  .au-t{border:2px solid var(--line);border-left:6px solid #5b8def;border-radius:14px;padding:10px;background:#0f141b}
+  .au-t small{display:block;color:var(--ink2);font-size:14px} .au-t b{display:block;font-size:24px;margin:2px 0} .au-t span{font-size:14px;color:var(--ink2)}
+  .au-t[data-tipo="ok"]{border-left-color:#2ea043} .au-t[data-tipo="aviso"]{border-left-color:#e3b341} .au-t[data-tipo="mal"]{border-left-color:#d1242f}
+  .sec{min-height:52px;font:700 17px system-ui;border-radius:14px;border:2px solid #6e7681;background:transparent;color:var(--ink);cursor:pointer;padding:0 14px}
+  .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+  select,input[type=password]{font:17px system-ui;background:#05080c;color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px}
+  #au-filtros button{min-height:44px;font:600 15px system-ui;border-radius:12px;border:2px solid #6e7681;background:transparent;color:var(--ink);padding:0 10px;cursor:pointer}
+  #au-filtros button[aria-pressed="true"]{background:var(--nar);border-color:#ffb27a;color:#fff}
+  .tb{width:100%;border-collapse:collapse;font-size:15px} .tb td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top} .tb small{color:var(--ink2)}
+  .tb td:first-child{white-space:nowrap;color:var(--ink2);width:1%}
+  .scroll{max-height:520px;overflow:auto}
+  #au-graf{height:150px}
+  [data-tipo="ok"]#au-cadena{color:#3fb950} [data-tipo="aviso"]#au-cadena{color:#e3b341}
+  .chk{display:flex;gap:10px;align-items:flex-start;font-size:17px} .chk input{width:26px;height:26px;margin-top:2px}
+  code{background:#05080c;border:1px solid var(--line);border-radius:6px;padding:2px 5px;font-size:13px;word-break:break-all}
+</style>
+</head>
+<body>
+<main class="on">
+  <div class="cab"><b>SOSistem™</b><a href="terminal.html">← Terminal</a></div>
+  <h1 id="au-tit" title="Toque para escuchar en Morse">Auditoría de privacidad</h1>
+  <p class="note" style="margin-top:0">Todo lo que las páginas de SOSistem™ hacen con micrófono, cámara, voz, bocina, imágenes e internet, registrado en este equipo. No se graba audio ni imagen: solo horas, números y destinos.</p>
+
+  <section class="card">
+    <div class="fila"><select id="au-rango" aria-label="Periodo"><option value="hoy">Hoy</option><option value="d7" selected>Últimos 7 días</option><option value="d30">Últimos 30 días</option><option value="todo">Todo</option></select>
+      <button type="button" class="sec" id="au-act">Actualizar</button></div>
+    <p class="note" id="au-estado">Cargando…</p>
+  </section>
+
+  <section class="card"><h2>Resumen</h2><div class="au-res" id="au-resumen"></div></section>
+
+  <section class="card"><h2>Sonido real por minuto con micrófono</h2>
+    <canvas id="au-graf"></canvas>
+    <p class="note">Azul: dB promedio · blanco: dB máximo · naranja: minutos con posible voz. Micrófono sin calibrar: sirve para comparar.</p></section>
+
+  <section class="card"><h2>¿A dónde salieron datos?</h2>
+    <div class="scroll"><table class="tb"><tbody><tr><td><b>Destino</b></td><td><b>Envíos</b></td><td><b>Datos</b></td><td><b>Cifrado</b></td><td><b>Qué es</b></td></tr></tbody><tbody id="au-destinos"></tbody></table></div></section>
+
+  <section class="card"><h2>Bitácora</h2>
+    <div class="fila" id="au-filtros">
+      <button type="button" data-f="todas" aria-pressed="true">Todo</button><button type="button" data-f="mic">Micrófono</button><button type="button" data-f="contexto">Contexto</button><button type="button" data-f="voz">Voz</button><button type="button" data-f="cam">Cámara</button><button type="button" data-f="bocina">Bocina</button><button type="button" data-f="imagen">Imagen</button><button type="button" data-f="envio">Envíos</button><button type="button" data-f="permiso">Permisos</button><button type="button" data-f="sesion">Sesión</button></div>
+    <div class="scroll"><table class="tb"><tbody id="au-tabla"></tbody></table></div>
+    <p class="note">Contexto de cada renglón: dB, luz (lux) y movimiento (m/s²) en ese momento. La luz solo aparece en equipos que la dan (Chrome en Android con el sensor activado); iPhone y Mac no la entregan a la web.</p></section>
+
+  <section class="card"><h2>Voz solo en el equipo</h2>
+    <label class="chk"><input type="checkbox" id="au-vozlocal"><span>No mandar audio a servidores de reconocimiento (Google o Apple)</span></label>
+    <p class="note" id="au-vozlocal-n"></p></section>
+
+  <section class="card"><h2>Integridad y respaldo</h2>
+    <p class="note" style="margin-top:0">Cada renglón lleva la huella SHA-256 del anterior: si alguien borra o cambia uno, la verificación lo marca.</p>
+    <div class="fila"><button type="button" class="sec" id="au-ver">Verificar cadena</button></div>
+    <p class="note" id="au-cadena"></p>
+    <div class="fila"><input type="password" id="au-frase" placeholder="Frase para cifrar (opcional)" autocomplete="new-password" aria-label="Frase para cifrar">
+      <button type="button" class="sec" id="au-exp">Exportar (JSON o .cubo.txt cifrado)</button>
+      <button type="button" class="sec" id="au-bor">Borrar bitácora</button></div></section>
+
+  <section class="card"><h2>Lo que la auditoría del código confirmó</h2>
+    <ul class="note" style="font-size:16px;padding-left:20px;color:var(--ink)">
+      <li>SOSistem no graba audio ni video: no existe ninguna función de grabación en el código.</li>
+      <li>Tu voz no puede salir por la bocina: no hay grabación que reproducir. La bocina solo emite tonos generados, Morse y la voz sintética de Aprendizaje.</li>
+      <li>No se crean imágenes de la cámara; el «Lente» solo muestra en vivo. Cualquier imagen creada aparecería arriba en «Imágenes creadas».</li>
+      <li>Con luz, dB y movimiento no se puede reconstruir una imagen de una persona: son números sueltos sin forma ni rostro.</li>
+      <li>Punto sensible: el reconocimiento de voz del navegador puede enviar el audio a Google (Chrome) o Apple (Safari). Use «Voz solo en el equipo» para impedirlo.</li></ul></section>
+
+  <section class="card"><h2>Revisar todo el equipo (fuera de SOSistem)</h2>
+    <ol class="note" style="font-size:16px;padding-left:20px;color:var(--ink)">
+      <li><b>iPhone:</b> Ajustes › Privacidad y seguridad › Reporte de privacidad de apps › Activar. Muestra qué app usó micrófono, cámara o ubicación y a qué dominios se conectó (últimos 7 días, desde que se activa).</li>
+      <li><b>Mac:</b> el punto naranja o verde junto al reloj indica micrófono o cámara en uso. Historial de permisos de la última semana en Terminal:<br><code>log show --last 7d --predicate 'subsystem == "com.apple.TCC"' | grep -i -E "microphone|camera"</code></li>
+      <li><b>Chrome:</b> <code>chrome://settings/content/microphone</code> y <code>chrome://settings/content/camera</code> para ver y quitar sitios con permiso.</li></ol></section>
+
+  <p class="note">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Auditoría de privacidad · © Víctor Hugo Ramírez Salgado · <a href="terminos-pruebas.html" style="color:var(--ink2)">Términos de la versión de prueba</a></p>
+</main>
+<script src="assets/cubo-rt.js?v=7.1.0"></script>
+<script src="assets/morse.js?v=7.1.0"></script>
+<script src="assets/boveda.js?v=7.1.0"></script>
+<script src="assets/auditoria-panel.js?v=7.1.0"></script>
+</body>
+</html>

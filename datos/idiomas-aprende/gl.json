@@ -1,0 +1,1442 @@
+{
+  "codigo": "gl",
+  "bcp47": "gl-ES",
+  "nombre": "Gallego",
+  "nombre_nativo": "Galego",
+  "escritura": "Latino",
+  "norma": "Ortografía: Real Academia Galega (Normas ortográficas e morfolóxicas do idioma galego, 2003). Lectura: ortografía estándar (ya es alfabeto latino). Pronunciación con letras del español: x = 'sh', z/ce/ci = 'z' española (zeta peninsular; en América se lee como 's').",
+  "palabras": [
+    {
+      "n": 1,
+      "t": "axuda",
+      "r": "axuda",
+      "p": "a-SHU-da"
+    },
+    {
+      "n": 2,
+      "t": "Socorro!",
+      "r": "Socorro!",
+      "p": "so-KO-rro"
+    },
+    {
+      "n": 3,
+      "t": "perigo",
+      "r": "perigo",
+      "p": "pe-RI-go"
+    },
+    {
+      "n": 4,
+      "t": "emerxencia",
+      "r": "emerxencia",
+      "p": "e-mer-SHEN-zia"
+    },
+    {
+      "n": 5,
+      "t": "lume",
+      "r": "lume",
+      "p": "LU-me"
+    },
+    {
+      "n": 6,
+      "t": "sismo",
+      "r": "sismo",
+      "p": "SIS-mo"
+    },
+    {
+      "n": 7,
+      "t": "inundación",
+      "r": "inundación",
+      "p": "i-nun-da-ZION"
+    },
+    {
+      "n": 8,
+      "t": "médico",
+      "r": "médico",
+      "p": "ME-di-ko"
+    },
+    {
+      "n": 9,
+      "t": "hospital",
+      "r": "hospital",
+      "p": "os-pi-TAL"
+    },
+    {
+      "n": 10,
+      "t": "policía",
+      "r": "policía",
+      "p": "po-li-ZI-a"
+    },
+    {
+      "n": 11,
+      "t": "bombeiros",
+      "r": "bombeiros",
+      "p": "bom-BEI-ros"
+    },
+    {
+      "n": 12,
+      "t": "ambulancia",
+      "r": "ambulancia",
+      "p": "am-bu-LAN-zia"
+    },
+    {
+      "n": 13,
+      "t": "ferido",
+      "r": "ferido",
+      "p": "fe-RI-do"
+    },
+    {
+      "n": 14,
+      "t": "dor",
+      "r": "dor",
+      "p": "DOR"
+    },
+    {
+      "n": 15,
+      "t": "Chame ao 911!",
+      "r": "Chame ao 911!",
+      "p": "CHA-me ao NO-ve un un"
+    },
+    {
+      "n": 16,
+      "t": "estou ben",
+      "r": "estou ben",
+      "p": "es-TOU ben"
+    },
+    {
+      "n": 17,
+      "t": "non podo respirar",
+      "r": "non podo respirar",
+      "p": "non PO-do res-pi-RAR"
+    },
+    {
+      "n": 18,
+      "t": "saída de emerxencia",
+      "r": "saída de emerxencia",
+      "p": "sa-I-da de e-mer-SHEN-zia"
+    },
+    {
+      "n": 19,
+      "t": "evacuar",
+      "r": "evacuar",
+      "p": "e-va-KUAR"
+    },
+    {
+      "n": 20,
+      "t": "seguro",
+      "r": "seguro",
+      "p": "se-GU-ro"
+    },
+    {
+      "n": 21,
+      "t": "ola",
+      "r": "ola",
+      "p": "O-la"
+    },
+    {
+      "n": 22,
+      "t": "adeus",
+      "r": "adeus",
+      "p": "a-DEUS"
+    },
+    {
+      "n": 23,
+      "t": "bos días",
+      "r": "bos días",
+      "p": "bos DI-as"
+    },
+    {
+      "n": 24,
+      "t": "boas tardes",
+      "r": "boas tardes",
+      "p": "BO-as TAR-des"
+    },
+    {
+      "n": 25,
+      "t": "boas noites",
+      "r": "boas noites",
+      "p": "BO-as NOI-tes"
+    },
+    {
+      "n": 26,
+      "t": "por favor",
+      "r": "por favor",
+      "p": "por fa-VOR"
+    },
+    {
+      "n": 27,
+      "t": "grazas",
+      "r": "grazas",
+      "p": "GRA-zas"
+    },
+    {
+      "n": 28,
+      "t": "de nada",
+      "r": "de nada",
+      "p": "de NA-da"
+    },
+    {
+      "n": 29,
+      "t": "perdón",
+      "r": "perdón",
+      "p": "per-DON"
+    },
+    {
+      "n": 30,
+      "t": "si",
+      "r": "si",
+      "p": "SI"
+    },
+    {
+      "n": 31,
+      "t": "non",
+      "r": "non",
+      "p": "NON"
+    },
+    {
+      "n": 32,
+      "t": "Como estás?",
+      "r": "Como estás?",
+      "p": "KO-mo es-TAS"
+    },
+    {
+      "n": 33,
+      "t": "ben",
+      "r": "ben",
+      "p": "BEN"
+    },
+    {
+      "n": 34,
+      "t": "mal",
+      "r": "mal",
+      "p": "MAL"
+    },
+    {
+      "n": 35,
+      "t": "chámome…",
+      "r": "chámome…",
+      "p": "CHA-mo-me…"
+    },
+    {
+      "n": 36,
+      "t": "encantado",
+      "r": "encantado",
+      "p": "en-kan-TA-do"
+    },
+    {
+      "n": 37,
+      "t": "benvido",
+      "r": "benvido",
+      "p": "ben-BI-do"
+    },
+    {
+      "n": 38,
+      "t": "ata mañá",
+      "r": "ata mañá",
+      "p": "A-ta ma-NYA"
+    },
+    {
+      "n": 39,
+      "t": "desculpe",
+      "r": "desculpe",
+      "p": "des-KUL-pe"
+    },
+    {
+      "n": 40,
+      "t": "síntoo",
+      "r": "síntoo",
+      "p": "SIN-to-o"
+    },
+    {
+      "n": 41,
+      "t": "Onde?",
+      "r": "Onde?",
+      "p": "ON-de"
+    },
+    {
+      "n": 42,
+      "t": "Que?",
+      "r": "Que?",
+      "p": "KE"
+    },
+    {
+      "n": 43,
+      "t": "Quen?",
+      "r": "Quen?",
+      "p": "KEN"
+    },
+    {
+      "n": 44,
+      "t": "Cando?",
+      "r": "Cando?",
+      "p": "KAN-do"
+    },
+    {
+      "n": 45,
+      "t": "Como?",
+      "r": "Como?",
+      "p": "KO-mo"
+    },
+    {
+      "n": 46,
+      "t": "Por que?",
+      "r": "Por que?",
+      "p": "por KE"
+    },
+    {
+      "n": 47,
+      "t": "Canto custa?",
+      "r": "Canto custa?",
+      "p": "KAN-to KUS-ta"
+    },
+    {
+      "n": 48,
+      "t": "Onde está o baño?",
+      "r": "Onde está o baño?",
+      "p": "ON-de es-TA o BA-nyo"
+    },
+    {
+      "n": 49,
+      "t": "Fala español?",
+      "r": "Fala español?",
+      "p": "FA-la es-pa-NYOL"
+    },
+    {
+      "n": 50,
+      "t": "Non entendo",
+      "r": "Non entendo",
+      "p": "non en-TEN-do"
+    },
+    {
+      "n": 51,
+      "t": "cero",
+      "r": "cero",
+      "p": "ZE-ro"
+    },
+    {
+      "n": 52,
+      "t": "un",
+      "r": "un",
+      "p": "UN"
+    },
+    {
+      "n": 53,
+      "t": "dous",
+      "r": "dous",
+      "p": "DOUS"
+    },
+    {
+      "n": 54,
+      "t": "tres",
+      "r": "tres",
+      "p": "TRES"
+    },
+    {
+      "n": 55,
+      "t": "catro",
+      "r": "catro",
+      "p": "KA-tro"
+    },
+    {
+      "n": 56,
+      "t": "cinco",
+      "r": "cinco",
+      "p": "ZIN-ko"
+    },
+    {
+      "n": 57,
+      "t": "seis",
+      "r": "seis",
+      "p": "SEIS"
+    },
+    {
+      "n": 58,
+      "t": "sete",
+      "r": "sete",
+      "p": "SE-te"
+    },
+    {
+      "n": 59,
+      "t": "oito",
+      "r": "oito",
+      "p": "OI-to"
+    },
+    {
+      "n": 60,
+      "t": "nove",
+      "r": "nove",
+      "p": "NO-be"
+    },
+    {
+      "n": 61,
+      "t": "dez",
+      "r": "dez",
+      "p": "DEZ"
+    },
+    {
+      "n": 62,
+      "t": "cen",
+      "r": "cen",
+      "p": "ZEN"
+    },
+    {
+      "n": 63,
+      "t": "mil",
+      "r": "mil",
+      "p": "MIL"
+    },
+    {
+      "n": 64,
+      "t": "eu",
+      "r": "eu",
+      "p": "EU"
+    },
+    {
+      "n": 65,
+      "t": "ti",
+      "r": "ti",
+      "p": "TI"
+    },
+    {
+      "n": 66,
+      "t": "el",
+      "r": "el",
+      "p": "EL"
+    },
+    {
+      "n": 67,
+      "t": "ela",
+      "r": "ela",
+      "p": "E-la"
+    },
+    {
+      "n": 68,
+      "t": "nós",
+      "r": "nós",
+      "p": "NOS"
+    },
+    {
+      "n": 69,
+      "t": "eles",
+      "r": "eles",
+      "p": "E-les"
+    },
+    {
+      "n": 70,
+      "t": "persoa",
+      "r": "persoa",
+      "p": "per-SO-a"
+    },
+    {
+      "n": 71,
+      "t": "home",
+      "r": "home",
+      "p": "O-me"
+    },
+    {
+      "n": 72,
+      "t": "muller",
+      "r": "muller",
+      "p": "mu-LLER"
+    },
+    {
+      "n": 73,
+      "t": "neno",
+      "r": "neno",
+      "p": "NE-no"
+    },
+    {
+      "n": 74,
+      "t": "nena",
+      "r": "nena",
+      "p": "NE-na"
+    },
+    {
+      "n": 75,
+      "t": "nai",
+      "r": "nai",
+      "p": "NAI"
+    },
+    {
+      "n": 76,
+      "t": "pai",
+      "r": "pai",
+      "p": "PAI"
+    },
+    {
+      "n": 77,
+      "t": "fillo",
+      "r": "fillo",
+      "p": "FI-llo"
+    },
+    {
+      "n": 78,
+      "t": "irmán",
+      "r": "irmán",
+      "p": "ir-MAN"
+    },
+    {
+      "n": 79,
+      "t": "amigo",
+      "r": "amigo",
+      "p": "a-MI-go"
+    },
+    {
+      "n": 80,
+      "t": "familia",
+      "r": "familia",
+      "p": "fa-MI-lia"
+    },
+    {
+      "n": 81,
+      "t": "ser",
+      "r": "ser",
+      "p": "SER"
+    },
+    {
+      "n": 82,
+      "t": "estar",
+      "r": "estar",
+      "p": "es-TAR"
+    },
+    {
+      "n": 83,
+      "t": "ter",
+      "r": "ter",
+      "p": "TER"
+    },
+    {
+      "n": 84,
+      "t": "ir",
+      "r": "ir",
+      "p": "IR"
+    },
+    {
+      "n": 85,
+      "t": "vir",
+      "r": "vir",
+      "p": "BIR"
+    },
+    {
+      "n": 86,
+      "t": "facer",
+      "r": "facer",
+      "p": "fa-ZER"
+    },
+    {
+      "n": 87,
+      "t": "querer",
+      "r": "querer",
+      "p": "ke-RER"
+    },
+    {
+      "n": 88,
+      "t": "poder",
+      "r": "poder",
+      "p": "po-DER"
+    },
+    {
+      "n": 89,
+      "t": "comer",
+      "r": "comer",
+      "p": "ko-MER"
+    },
+    {
+      "n": 90,
+      "t": "beber",
+      "r": "beber",
+      "p": "be-BER"
+    },
+    {
+      "n": 91,
+      "t": "durmir",
+      "r": "durmir",
+      "p": "dur-MIR"
+    },
+    {
+      "n": 92,
+      "t": "falar",
+      "r": "falar",
+      "p": "fa-LAR"
+    },
+    {
+      "n": 93,
+      "t": "escoitar",
+      "r": "escoitar",
+      "p": "es-koi-TAR"
+    },
+    {
+      "n": 94,
+      "t": "ver",
+      "r": "ver",
+      "p": "BER"
+    },
+    {
+      "n": 95,
+      "t": "ler",
+      "r": "ler",
+      "p": "LER"
+    },
+    {
+      "n": 96,
+      "t": "escribir",
+      "r": "escribir",
+      "p": "es-kri-BIR"
+    },
+    {
+      "n": 97,
+      "t": "aprender",
+      "r": "aprender",
+      "p": "a-pren-DER"
+    },
+    {
+      "n": 98,
+      "t": "traballar",
+      "r": "traballar",
+      "p": "tra-ba-LLAR"
+    },
+    {
+      "n": 99,
+      "t": "axudar",
+      "r": "axudar",
+      "p": "a-shu-DAR"
+    },
+    {
+      "n": 100,
+      "t": "saber",
+      "r": "saber",
+      "p": "sa-BER"
+    },
+    {
+      "n": 101,
+      "t": "casa",
+      "r": "casa",
+      "p": "KA-sa"
+    },
+    {
+      "n": 102,
+      "t": "escola",
+      "r": "escola",
+      "p": "es-KO-la"
+    },
+    {
+      "n": 103,
+      "t": "rúa",
+      "r": "rúa",
+      "p": "RU-a"
+    },
+    {
+      "n": 104,
+      "t": "cidade",
+      "r": "cidade",
+      "p": "zi-DA-de"
+    },
+    {
+      "n": 105,
+      "t": "país",
+      "r": "país",
+      "p": "pa-IS"
+    },
+    {
+      "n": 106,
+      "t": "mar",
+      "r": "mar",
+      "p": "MAR"
+    },
+    {
+      "n": 107,
+      "t": "porto",
+      "r": "porto",
+      "p": "POR-to"
+    },
+    {
+      "n": 108,
+      "t": "tenda",
+      "r": "tenda",
+      "p": "TEN-da"
+    },
+    {
+      "n": 109,
+      "t": "farmacia",
+      "r": "farmacia",
+      "p": "far-MA-zia"
+    },
+    {
+      "n": 110,
+      "t": "baño",
+      "r": "baño",
+      "p": "BA-nyo"
+    },
+    {
+      "n": 111,
+      "t": "hoxe",
+      "r": "hoxe",
+      "p": "O-she"
+    },
+    {
+      "n": 112,
+      "t": "mañá",
+      "r": "mañá",
+      "p": "ma-NYA"
+    },
+    {
+      "n": 113,
+      "t": "onte",
+      "r": "onte",
+      "p": "ON-te"
+    },
+    {
+      "n": 114,
+      "t": "agora",
+      "r": "agora",
+      "p": "a-GO-ra"
+    },
+    {
+      "n": 115,
+      "t": "día",
+      "r": "día",
+      "p": "DI-a"
+    },
+    {
+      "n": 116,
+      "t": "noite",
+      "r": "noite",
+      "p": "NOI-te"
+    },
+    {
+      "n": 117,
+      "t": "semana",
+      "r": "semana",
+      "p": "se-MA-na"
+    },
+    {
+      "n": 118,
+      "t": "mes",
+      "r": "mes",
+      "p": "MES"
+    },
+    {
+      "n": 119,
+      "t": "ano",
+      "r": "ano",
+      "p": "A-no"
+    },
+    {
+      "n": 120,
+      "t": "hora",
+      "r": "hora",
+      "p": "O-ra"
+    },
+    {
+      "n": 121,
+      "t": "auga",
+      "r": "auga",
+      "p": "AU-ga"
+    },
+    {
+      "n": 122,
+      "t": "comida",
+      "r": "comida",
+      "p": "ko-MI-da"
+    },
+    {
+      "n": 123,
+      "t": "pan",
+      "r": "pan",
+      "p": "PAN"
+    },
+    {
+      "n": 124,
+      "t": "leite",
+      "r": "leite",
+      "p": "LEI-te"
+    },
+    {
+      "n": 125,
+      "t": "froita",
+      "r": "froita",
+      "p": "FROI-ta"
+    },
+    {
+      "n": 126,
+      "t": "café",
+      "r": "café",
+      "p": "ka-FE"
+    },
+    {
+      "n": 127,
+      "t": "té",
+      "r": "té",
+      "p": "TE"
+    },
+    {
+      "n": 128,
+      "t": "sal",
+      "r": "sal",
+      "p": "SAL"
+    },
+    {
+      "n": 129,
+      "t": "cabeza",
+      "r": "cabeza",
+      "p": "ka-BE-za"
+    },
+    {
+      "n": 130,
+      "t": "man",
+      "r": "man",
+      "p": "MAN"
+    },
+    {
+      "n": 131,
+      "t": "pé",
+      "r": "pé",
+      "p": "PE"
+    },
+    {
+      "n": 132,
+      "t": "ollo",
+      "r": "ollo",
+      "p": "O-llo"
+    },
+    {
+      "n": 133,
+      "t": "boca",
+      "r": "boca",
+      "p": "BO-ka"
+    },
+    {
+      "n": 134,
+      "t": "corazón",
+      "r": "corazón",
+      "p": "ko-ra-ZON"
+    },
+    {
+      "n": 135,
+      "t": "medicina",
+      "r": "medicina",
+      "p": "me-di-ZI-na"
+    },
+    {
+      "n": 136,
+      "t": "enfermo",
+      "r": "enfermo",
+      "p": "en-FER-mo"
+    },
+    {
+      "n": 137,
+      "t": "vermello",
+      "r": "vermello",
+      "p": "ber-ME-llo"
+    },
+    {
+      "n": 138,
+      "t": "azul",
+      "r": "azul",
+      "p": "a-ZUL"
+    },
+    {
+      "n": 139,
+      "t": "verde",
+      "r": "verde",
+      "p": "BER-de"
+    },
+    {
+      "n": 140,
+      "t": "amarelo",
+      "r": "amarelo",
+      "p": "a-ma-RE-lo"
+    },
+    {
+      "n": 141,
+      "t": "negro",
+      "r": "negro",
+      "p": "NE-gro"
+    },
+    {
+      "n": 142,
+      "t": "branco",
+      "r": "branco",
+      "p": "BRAN-ko"
+    },
+    {
+      "n": 143,
+      "t": "grande",
+      "r": "grande",
+      "p": "GRAN-de"
+    },
+    {
+      "n": 144,
+      "t": "pequeno",
+      "r": "pequeno",
+      "p": "pe-KE-no"
+    },
+    {
+      "n": 145,
+      "t": "bo",
+      "r": "bo",
+      "p": "BO"
+    },
+    {
+      "n": 146,
+      "t": "malo",
+      "r": "malo",
+      "p": "MA-lo"
+    },
+    {
+      "n": 147,
+      "t": "novo",
+      "r": "novo",
+      "p": "NO-bo"
+    },
+    {
+      "n": 148,
+      "t": "quente",
+      "r": "quente",
+      "p": "KEN-te"
+    },
+    {
+      "n": 149,
+      "t": "frío",
+      "r": "frío",
+      "p": "FRI-o"
+    },
+    {
+      "n": 150,
+      "t": "aberto",
+      "r": "aberto",
+      "p": "a-BER-to"
+    },
+    {
+      "n": 151,
+      "t": "pechado",
+      "r": "pechado",
+      "p": "pe-CHA-do"
+    },
+    {
+      "n": 152,
+      "t": "aquí",
+      "r": "aquí",
+      "p": "a-KI"
+    },
+    {
+      "n": 153,
+      "t": "alá",
+      "r": "alá",
+      "p": "a-LA"
+    },
+    {
+      "n": 154,
+      "t": "moito",
+      "r": "moito",
+      "p": "MOI-to"
+    },
+    {
+      "n": 155,
+      "t": "pouco",
+      "r": "pouco",
+      "p": "POU-ko"
+    },
+    {
+      "n": 156,
+      "t": "todo",
+      "r": "todo",
+      "p": "TO-do"
+    },
+    {
+      "n": 157,
+      "t": "nada",
+      "r": "nada",
+      "p": "NA-da"
+    },
+    {
+      "n": 158,
+      "t": "esquerda",
+      "r": "esquerda",
+      "p": "es-KER-da"
+    },
+    {
+      "n": 159,
+      "t": "dereita",
+      "r": "dereita",
+      "p": "de-REI-ta"
+    }
+  ],
+  "bases": {
+    "alfabeto": [
+      "X suena como 'sh' en inglés (o la 'x' de 'Xola' en náhuatl): axuda = a-SHU-da, hoxe = O-she. Nunca suena como 'j' española.",
+      "No existe el sonido de la 'j' española: donde el español tiene 'j', el gallego suele tener 'x' (ojo → ollo, hijo → fillo, mujer → muller). La 'll' se pronuncia como 'll' palatal tradicional, no como 'y'.",
+      "Hay dos 'e' y dos 'o': abiertas y cerradas (pé con 'e' abierta, como en 'perro'; pecho con 'e' cerrada). La ortografía no las marca; se aprenden de oído.",
+      "La 'n' final (un, non, ben, irmán) es nasal velar, como la 'n' de 'tengo': se pronuncia con la parte de atrás de la lengua. 'nh' (unha, ningunha) también suena así entre vocales.",
+      "La H no suena (home = O-me). La 'v' y la 'b' suenan igual, como en español.",
+      "Las preguntas y exclamaciones normalmente llevan solo el signo final (Onde está?); el signo de apertura (¿ ¡) es opcional según la RAG."
+    ],
+    "verbos": [
+      {
+        "inf": "ser",
+        "r": "ser",
+        "es": "ser",
+        "formas": [
+          [
+            "yo",
+            "eu son",
+            "eu SON"
+          ],
+          [
+            "tú",
+            "ti es",
+            "ti ES"
+          ],
+          [
+            "él/ella",
+            "el/ela é",
+            "el/E-la E"
+          ],
+          [
+            "nosotros",
+            "nós somos",
+            "nos SO-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós sodes",
+            "bos SO-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas son",
+            "E-les/E-las SON"
+          ]
+        ]
+      },
+      {
+        "inf": "estar",
+        "r": "estar",
+        "es": "estar",
+        "formas": [
+          [
+            "yo",
+            "eu estou",
+            "eu es-TOU"
+          ],
+          [
+            "tú",
+            "ti estás",
+            "ti es-TAS"
+          ],
+          [
+            "él/ella",
+            "el/ela está",
+            "el/E-la es-TA"
+          ],
+          [
+            "nosotros",
+            "nós estamos",
+            "nos es-TA-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós estades",
+            "bos es-TA-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas están",
+            "E-les/E-las es-TAN"
+          ]
+        ]
+      },
+      {
+        "inf": "ter",
+        "r": "ter",
+        "es": "tener",
+        "formas": [
+          [
+            "yo",
+            "eu teño",
+            "eu TE-nyo"
+          ],
+          [
+            "tú",
+            "ti tes",
+            "ti TES"
+          ],
+          [
+            "él/ella",
+            "el/ela ten",
+            "el/E-la TEN"
+          ],
+          [
+            "nosotros",
+            "nós temos",
+            "nos TE-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós tedes",
+            "bos TE-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas teñen",
+            "E-les/E-las TE-nyen"
+          ]
+        ]
+      },
+      {
+        "inf": "ir",
+        "r": "ir",
+        "es": "ir",
+        "formas": [
+          [
+            "yo",
+            "eu vou",
+            "eu BOU"
+          ],
+          [
+            "tú",
+            "ti vas",
+            "ti BAS"
+          ],
+          [
+            "él/ella",
+            "el/ela vai",
+            "el/E-la BAI"
+          ],
+          [
+            "nosotros",
+            "nós imos",
+            "nos I-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós ides",
+            "bos I-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas van",
+            "E-les/E-las BAN"
+          ]
+        ]
+      },
+      {
+        "inf": "facer",
+        "r": "facer",
+        "es": "hacer",
+        "formas": [
+          [
+            "yo",
+            "eu fago",
+            "eu FA-go"
+          ],
+          [
+            "tú",
+            "ti fas",
+            "ti FAS"
+          ],
+          [
+            "él/ella",
+            "el/ela fai",
+            "el/E-la FAI"
+          ],
+          [
+            "nosotros",
+            "nós facemos",
+            "nos fa-ZE-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós facedes",
+            "bos fa-ZE-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas fan",
+            "E-les/E-las FAN"
+          ]
+        ]
+      },
+      {
+        "inf": "querer",
+        "r": "querer",
+        "es": "querer",
+        "formas": [
+          [
+            "yo",
+            "eu quero",
+            "eu KE-ro"
+          ],
+          [
+            "tú",
+            "ti queres",
+            "ti KE-res"
+          ],
+          [
+            "él/ella",
+            "el/ela quere",
+            "el/E-la KE-re"
+          ],
+          [
+            "nosotros",
+            "nós queremos",
+            "nos ke-RE-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós queredes",
+            "bos ke-RE-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas queren",
+            "E-les/E-las KE-ren"
+          ]
+        ]
+      },
+      {
+        "inf": "poder",
+        "r": "poder",
+        "es": "poder",
+        "formas": [
+          [
+            "yo",
+            "eu podo",
+            "eu PO-do"
+          ],
+          [
+            "tú",
+            "ti podes",
+            "ti PO-des"
+          ],
+          [
+            "él/ella",
+            "el/ela pode",
+            "el/E-la PO-de"
+          ],
+          [
+            "nosotros",
+            "nós podemos",
+            "nos po-DE-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós podedes",
+            "bos po-DE-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas poden",
+            "E-les/E-las PO-den"
+          ]
+        ]
+      },
+      {
+        "inf": "saber",
+        "r": "saber",
+        "es": "saber",
+        "formas": [
+          [
+            "yo",
+            "eu sei",
+            "eu SEI"
+          ],
+          [
+            "tú",
+            "ti sabes",
+            "ti SA-bes"
+          ],
+          [
+            "él/ella",
+            "el/ela sabe",
+            "el/E-la SA-be"
+          ],
+          [
+            "nosotros",
+            "nós sabemos",
+            "nos sa-BE-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós sabedes",
+            "bos sa-BE-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas saben",
+            "E-les/E-las SA-ben"
+          ]
+        ]
+      },
+      {
+        "inf": "falar",
+        "r": "falar",
+        "es": "hablar",
+        "formas": [
+          [
+            "yo",
+            "eu falo",
+            "eu FA-lo"
+          ],
+          [
+            "tú",
+            "ti falas",
+            "ti FA-las"
+          ],
+          [
+            "él/ella",
+            "el/ela fala",
+            "el/E-la FA-la"
+          ],
+          [
+            "nosotros",
+            "nós falamos",
+            "nos fa-LA-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós falades",
+            "bos fa-LA-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas falan",
+            "E-les/E-las FA-lan"
+          ]
+        ]
+      },
+      {
+        "inf": "comer",
+        "r": "comer",
+        "es": "comer",
+        "formas": [
+          [
+            "yo",
+            "eu como",
+            "eu KO-mo"
+          ],
+          [
+            "tú",
+            "ti comes",
+            "ti KO-mes"
+          ],
+          [
+            "él/ella",
+            "el/ela come",
+            "el/E-la KO-me"
+          ],
+          [
+            "nosotros",
+            "nós comemos",
+            "nos ko-ME-mos"
+          ],
+          [
+            "ustedes/vosotros",
+            "vós comedes",
+            "bos ko-ME-des"
+          ],
+          [
+            "ellos/ellas",
+            "eles/elas comen",
+            "E-les/E-las KO-men"
+          ]
+        ]
+      }
+    ],
+    "ruta": [
+      {
+        "nivel": "A1",
+        "titulo": "Primeros pasos: artículos, pronombres y frases simples",
+        "puntos": [
+          "Los artículos son o, a, os, as (el, la, los, las) y un, unha (un, una). Se contraen con preposiciones: do (de + o), no (en + o), ao (a + o), coa (con + a).",
+          "El plural se forma con -s (casa → casas); las palabras en -n añaden -s (can → cans) y muchas en -l cambian a -is (animal → animais).",
+          "La negación es 'non' delante del verbo: Non falo galego (No hablo gallego).",
+          "Los pronombres átonos van normalmente DESPUÉS del verbo en frases afirmativas: chámome, axúdame; pero antes con 'non' o en preguntas: non me chamo, como te chamas?",
+          "Las preguntas se hacen con entonación y solo el signo final: Onde está o porto?"
+        ],
+        "ejemplos": [
+          [
+            "Ola, chámome Ana.",
+            "Ola, chámome Ana.",
+            "O-la, CHA-mo-me A-na",
+            "Hola, me llamo Ana."
+          ],
+          [
+            "Non falo galego.",
+            "Non falo galego.",
+            "non FA-lo ga-LE-go",
+            "No hablo gallego."
+          ],
+          [
+            "Onde está o porto?",
+            "Onde está o porto?",
+            "ON-de es-TA o POR-to",
+            "¿Dónde está el puerto?"
+          ]
+        ]
+      },
+      {
+        "nivel": "A2",
+        "titulo": "Pasado, futuro y posesivos",
+        "puntos": [
+          "El gallego no tiene tiempos compuestos con 'haber': 'he comido' y 'comí' se dicen igual, con el pretérito simple: comín, falei, fun.",
+          "Pretérito: -ar → -ei, -aches, -ou (falei, falaches, falou); -er → -ín, -iches, -eu (comín, comiches, comeu).",
+          "Los posesivos llevan artículo: o meu irmán (mi hermano), a túa casa (tu casa).",
+          "Futuro: simple (falarei, comerás) o perifrástico con ir + infinitivo (vou falar).",
+          "Pronombre de interés 'che' (a ti) frente a 'te' (directo): Dígoche a verdade (Te digo la verdad)."
+        ],
+        "ejemplos": [
+          [
+            "Onte comín pan.",
+            "Onte comín pan.",
+            "ON-te ko-MIN PAN",
+            "Ayer comí pan."
+          ],
+          [
+            "O meu irmán traballa no porto.",
+            "O meu irmán traballa no porto.",
+            "o MEU ir-MAN tra-BA-lla no POR-to",
+            "Mi hermano trabaja en el puerto."
+          ],
+          [
+            "Mañá vou ir a Vigo.",
+            "Mañá vou ir a Vigo.",
+            "ma-NYA BOU IR a BI-go",
+            "Mañana voy a ir a Vigo."
+          ]
+        ]
+      },
+      {
+        "nivel": "B1",
+        "titulo": "Matices propios del gallego",
+        "puntos": [
+          "Infinitivo conxugado: el infinitivo lleva persona (falar, falares, falar, falarmos, falardes, falaren): É mellor falarmos agora.",
+          "Pluscuamperfecto simple en -ra con valor de 'había + participio': cando cheguei, xa comeran (ya habían comido).",
+          "Condicional (falaría) y subjuntivo imperfecto en -se (falase) para hipótesis: se tivese tempo, aprendería máis.",
+          "Futuro de subjuntivo en registro formal y en refranes: se quixer, se puider.",
+          "Uso del artículo con nombres de persona en el habla (o Xan, a María) y el 'dativo de solidariedade' (che), que involucra al oyente: Non che sei (Pues no sé).",
+          "Léxico propio: diferencias con el español como 'cadeira' (silla), 'xanela' (ventana), 'cedo' (temprano)."
+        ],
+        "ejemplos": [
+          [
+            "Se tivese tempo, aprendería máis.",
+            "Se tivese tempo, aprendería máis.",
+            "se ti-BE-se TEM-po, a-pren-de-RI-a MAIS",
+            "Si tuviera tiempo, aprendería más."
+          ],
+          [
+            "Cando cheguei, xa comeran.",
+            "Cando cheguei, xa comeran.",
+            "KAN-do che-GEI, sha ko-ME-ran",
+            "Cuando llegué, ya habían comido."
+          ],
+          [
+            "É mellor falarmos agora.",
+            "É mellor falarmos agora.",
+            "E me-LLOR fa-LAR-mos a-GO-ra",
+            "Es mejor que hablemos ahora."
+          ]
+        ]
+      }
+    ]
+  }
+}
