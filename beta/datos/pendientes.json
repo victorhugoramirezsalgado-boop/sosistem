@@ -707,5 +707,13 @@
   "espacio": "beta/index.html → Aprendizaje, después de la tabla (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026); reglas corregidas por el autor el mismo día (juego 360, cara por jugador, 3 puntos si nadie sabe).",
   "estado": "Pendiente"
+ },
+ {
+  "id": "159",
+  "titulo": "Pronunciación en 22 idiomas (voz del equipo) y Juego del Cubo avanzado",
+  "que": "Nueva tarjeta en Aprendizaje: se elige uno de los 22 idiomas del sitio, se toca cualquier letra de su alfabeto (latino, griego, cirílico, árabe, hebreo, devanagari, kana o zhuyin) o se escribe una palabra, y el equipo la pronuncia con su propia voz (síntesis de voz del iPhone, Mac o Android; no descarga nada ni envía audio). Bajo cada letra no latina va cómo suena para quien habla español. Si el equipo no tiene la voz de un idioma, avisa dónde descargarla. En el Juego del Cubo, casilla «Juego avanzado · 22 idiomas»: a un jugador le toca la cara de idiomas, cada tirada le asigna un idioma distinto, pregunta cómo se pronuncia la letra y «Escuchar la pronunciación» la dice con la voz del celular para comprobar.",
+  "espacio": "beta/index.html → Aprendizaje (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026).",
+  "estado": "Pendiente"
  }
 ]

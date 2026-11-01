@@ -1436,3 +1436,10 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .btn.cj-no { border-color: #e24b4a; color: #e24b4a; }
 .cj-acciones[hidden] { display: none; }
 .cj-fallo { opacity: .45; text-decoration: line-through; }
+/* #159 Pronunciación en 22 idiomas */
+.pr-fila { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; } .pr-fila select, .pr-fila input { flex: 1 1 140px; }
+.pr-alfa { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.pr-l { min-width: 44px; min-height: 44px; padding: 4px 6px; border: 1px solid var(--line, #30363d); border-radius: 10px; background: transparent; color: inherit; font-size: 1.2rem; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+.pr-l small { font-size: .7rem; opacity: .75; } .pr-rtl { direction: rtl; }
+.cj-chk { display: flex; gap: 8px; align-items: flex-start; margin: 8px 0; font-size: .95rem; } .cj-chk input { width: 22px; height: 22px; flex: none; margin-top: 2px; }
+.cj-idi { font-size: 2rem; }
