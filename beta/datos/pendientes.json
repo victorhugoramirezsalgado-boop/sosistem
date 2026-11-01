@@ -717,5 +717,55 @@
   "modificacion": "Solicitud del autor (31-oct-2026).",
   "estado": "Publicado",
   "resolucion": "Autorizado el 31-oct-2026 y publicado en 6.9.0."
+ },
+ {
+  "id": "160",
+  "titulo": "Abecedario único con selector de sistema e idioma (incluye LSM y banderas con su nombre)",
+  "que": "Un solo abecedario en Aprendizaje que cambia de sistema: Cara del Cubo (todo junto), Morse, braille, banderas del Código Internacional de Señales con su nombre del alfabeto fonético (Alfa, Bravo, Charlie…) y cómo se pronuncia, alfabeto fonético, Lengua de Señas Mexicana o el alfabeto de cualquiera de los 22 idiomas. Vista en cuadrícula o tabla detallada (Morse, braille, bandera, nombre OACI, pronunciación y LSM). Sustituye la Cara del Cubo, la tabla detallada y la tarjeta de pronunciación separadas.",
+  "espacio": "Aprendizaje › Abecedario.",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "#aprende",
+  "resolucion": ""
+ },
+ {
+  "id": "161",
+  "titulo": "159 palabras y frases en los 22 idiomas",
+  "que": "Lista de 159 palabras y frases por categoría (emergencia, saludos, preguntas, números, familia, verbos, lugares, tiempo, comida, cuerpo, colores, útiles) en los 22 idiomas: texto con su escritura propia, lectura en alfabeto latino (romanización oficial de cada país) y pronunciación para hispanohablantes con la sílaba fuerte en mayúsculas. Se elige el idioma a aprender y el idioma desde el que se lee; buscador. Referencia didáctica sin oficialización.",
+  "espacio": "Aprendizaje › Idiomas · 159 palabras y frases.",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "#aprende",
+  "resolucion": ""
+ },
+ {
+  "id": "162",
+  "titulo": "Voces nativas más amigables y subtítulos de 3 segundos",
+  "que": "Cada idioma suena con la mejor voz del propio equipo para ese idioma (prefiere voces mejoradas o naturales); ya no lee otros idiomas con la voz en español: si falta la voz, lo avisa y muestra la pronunciación. Voz un poco más lenta y cálida. Al hablar aparece abajo, sin tapar botones, cómo se escribe, cómo se lee, cómo se pronuncia y qué significa, con la palabra que suena iluminada; se queda 3 s al terminar.",
+  "espacio": "Aprendizaje (todas las tarjetas con voz) y Juego del Cubo.",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "#aprende",
+  "resolucion": ""
+ },
+ {
+  "id": "163",
+  "titulo": "Traductor de referencia y dictado por voz",
+  "que": "Traductor palabra por palabra entre los 22 idiomas con el diccionario de las 159 entradas (sin oficialización); escuchar, intercambiar idiomas e imprimir. Dictado por micrófono: lo dicho aparece escrito, con su lectura en alfabeto latino y su pronunciación. Tabla de idiomas con código y nombre completo (es = Español, etc.), variante, escritura y norma.",
+  "espacio": "Aprendizaje › Traductor de referencia.",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "#aprende",
+  "resolucion": ""
+ },
+ {
+  "id": "164",
+  "titulo": "Bases de idiomas para imprimir (PDF carta)",
+  "que": "Por idioma: sonidos y letras, 10 verbos esenciales en presente, ruta de aprendizaje A1 → A2 → B1 (MCER) con ejemplos y las 159 palabras; también en pantalla con audio. Un PDF carta por idioma y uno con los 22 idiomas, con fuentes APA 7.",
+  "espacio": "Aprendizaje › Idiomas › Bases del idioma y botones de impresión.",
+  "modificacion": "Solicitud del autor (31-oct-2026), Página Beta.",
+  "estado": "Por autorizar",
+  "ver": "#aprende",
+  "resolucion": ""
  }
 ]

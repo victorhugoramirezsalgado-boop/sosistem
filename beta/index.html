@@ -767,7 +767,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <section class="slide blk" id="aprende">
   <div class="wrap">
     <span class="eyebrow">Aprendizaje · Comunicación para todos</span>
-    <h2>Aprenda a pedir ayuda de cinco maneras.</h2>
+    <h2>Aprenda a pedir ayuda de cinco maneras, y en 22 idiomas.</h2>
     <p class="lead fo-lead">En una emergencia, no todas las personas pueden oír, ver o hablar. Aquí puede aprender y practicar el código Morse, el braille, las banderas del Código Internacional de Señales y la lengua de señas.</p>
     <div class="card ap-conv">
       <label class="sn-campo"><b>Escriba un mensaje</b><input id="ap-txt" value="SOS" maxlength="30" autocomplete="off" placeholder="SOS"></label>
@@ -788,27 +788,49 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
         <p class="note">Abecedario: Secretaría de Educación Pública y Aprende.mx. Módulo de lengua de señas en las pantallas: en desarrollo (LSM y ASL).</p></div>
       <div class="card"><h3>Braille</h3><p class="note">Braille en español (Comisión Braille Española): seis puntos por celda; los números llevan antes el signo de número ⠼.</p><p class="note">Morse internacional (UIT-R M.1677-1): el punto es corto y la raya dura tres puntos.</p><p class="note">Alfabeto fonético internacional (OACI/OTAN), el que usan radio marítima y aeronáutica para deletrear sin errores.</p></div>
     </div>
-    <h3 style="margin-top:22px">Cara del Cubo · el alfabeto de un vistazo</h3>
-    <p class="note">Toque una letra para oírla en Morse. Cada casilla muestra la letra, su Morse, su braille, su bandera y su seña.</p>
-    <div class="ap-cara-mod" role="group"><button class="btn" type="button" data-cara="letras" aria-pressed="true">Letras A–Z</button><button class="btn" type="button" data-cara="numeros" aria-pressed="false">Números 0–9</button></div>
-    <div class="ap-cara no-traducir" id="ap-cara"></div>
+    <div class="card ab" id="ab">
+      <h3>Abecedario · un solo alfabeto, el sistema que elija</h3>
+      <p class="note">Elija cómo quiere ver el abecedario: todo junto en la Cara del Cubo, en Morse, braille, banderas con su nombre (Alfa, Bravo, Charlie…), alfabeto fonético, Lengua de Señas Mexicana o el alfabeto de cualquiera de los 22 idiomas.</p>
+      <div class="ab-ctl">
+        <label class="sn-campo"><b>Sistema</b><select id="ab-sis" aria-label="Sistema de escritura"></select></label>
+        <label class="sn-campo" id="ab-idi-w" hidden><b>Idioma</b><select id="ab-idi" aria-label="Idioma"></select></label>
+      </div>
+      <div class="ab-ctl">
+        <div class="ap-cara-mod" role="group" id="ab-nums" aria-label="Letras o números"><button class="btn" type="button" data-n="0" aria-pressed="true">Letras A–Z</button><button class="btn" type="button" data-n="1" aria-pressed="false">Números 0–9</button></div>
+        <div class="ap-cara-mod" role="group" id="ab-vista" aria-label="Vista"><button class="btn" type="button" data-v="rejilla" aria-pressed="true">Cuadrícula</button><button class="btn" type="button" data-v="tabla" aria-pressed="false">Tabla detallada (con alfabeto fonético)</button></div>
+      </div>
+      <p class="note" id="ab-nota" role="status"></p>
+      <div class="ab-rej no-traducir" id="ab-rej"></div>
+      <div class="ab-tab no-traducir" id="ab-tab" hidden></div>
+    </div>
     <div class="card ap-imp"><h3>Cubo de Aprendizaje para imprimir y armar</h3><p>Seis caras: banderas, Morse y alfabeto fonético, braille, Lengua de Señas Mexicana, 22 idiomas (alfabetos) y SOSistem™ con sus códigos QR. Incluye portada con vista 3D, la descripción de cada lenguaje e instrucciones.</p>
       <p class="ap-imp-b"><a class="btn primary" href="assets/cubo-aprendizaje-carta.pdf" download>Descargar · carta</a> <a class="btn" href="assets/cubo-aprendizaje-oficio.pdf" download>Descargar · oficio (legal)</a> <a class="btn" href="assets/cubo-aprendizaje-doble-carta.pdf" download>Descargar · doble carta (cubo grande)</a> <a class="btn" href="assets/cubo-aprendizaje-a4.pdf" download>Descargar · A4</a> <a class="btn" href="assets/cubo-aprendizaje-gigante-carta.pdf" download>Descargar · cubo gigante (6 hojas carta, 19 cm por cara)</a></p>
       <p class="note">Todo es vectorial: con otra hoja elija «Ajustar a la página» en su impresora y el cubo conserva su forma.</p></div>
-    <details class="ap-det"><summary>Ver la tabla detallada (con alfabeto fonético)</summary>
-    <h3 style="margin-top:14px">El alfabeto en cinco sistemas</h3>
-    <div class="tbl-wrap"><table class="ap-tabla">
-      <thead><tr><th>Letra</th><th>Morse</th><th>Braille</th><th>Bandera</th><th>Fonético</th><th>LSM</th></tr></thead>
-      <tbody id="ap-tbody"></tbody>
-    </table></div>
-    </details>
+    <div class="card pa" id="pa">
+      <h3>Idiomas · 159 palabras y frases para aprender</h3>
+      <p class="note">Elija el idioma que quiere aprender y el idioma desde el que lo lee. Toque una frase: suena con la voz de ese idioma y abajo aparece, unos segundos, cómo se escribe, cómo se lee y cómo se pronuncia.</p>
+      <div class="ab-ctl">
+        <label class="sn-campo"><b>Aprender</b><select id="pa-dest" aria-label="Idioma que quiere aprender"></select></label>
+        <label class="sn-campo"><b>Desde</b><select id="pa-base" aria-label="Idioma desde el que lee"></select></label>
+        <label class="sn-campo"><b>Buscar</b><input id="pa-q" type="search" placeholder="agua, hola, 911…" autocomplete="off"></label>
+      </div>
+      <div class="pa-cats" id="pa-cats" role="group" aria-label="Categorías"></div>
+      <p class="note" id="pa-cuenta" role="status"></p>
+      <div class="pa-lista no-traducir" id="pa-lista"></div>
+      <p><a class="btn primary" id="pa-pdf" href="assets/idiomas/idioma-en-carta.pdf" download>Imprimir bases y 159 palabras (PDF carta)</a> <a class="btn" href="assets/idiomas/idiomas-22-bases-carta.pdf" download>Imprimir los 22 idiomas (PDF carta)</a></p>
+      <details class="ap-det" open><summary>Bases del idioma: sonidos, verbos y ruta de básico a intermedio</summary><div class="ba no-traducir" id="ba"></div></details>
+    </div>
 
-    <div class="card" id="pr">
-      <h3>Pronunciación en 22 idiomas</h3>
-      <p class="note">Toque una letra para oírla con la voz del equipo, o escriba una palabra. Debajo de cada letra no latina va cómo suena para quien habla español.</p>
-      <div class="pr-fila"><select id="pr-idioma" aria-label="Idioma"></select><input id="pr-txt" maxlength="40" placeholder="Palabra o frase" autocomplete="off"><button class="btn" type="button" id="pr-oir">Escuchar</button></div>
-      <div class="pr-alfa no-traducir" id="pr-alfa"></div>
-      <p class="note" id="pr-msg" role="status"></p>
+    <div class="card tr" id="tr">
+      <h3>Traductor de referencia · sin oficialización</h3>
+      <p class="note">Traduce palabra por palabra con el diccionario de las 159 entradas en los 22 idiomas. Sirve para apoyarse a formar frases; no sustituye a un traductor certificado. Con el micrófono, lo que diga aparece escrito, con su lectura y su pronunciación.</p>
+      <div class="ab-ctl"><label class="sn-campo"><b>De</b><select id="tr-de" aria-label="Traducir de"></select></label><button class="btn" type="button" id="tr-swap" aria-label="Intercambiar idiomas">⇄</button><label class="sn-campo"><b>A</b><select id="tr-a" aria-label="Traducir a"></select></label></div>
+      <textarea id="tr-in" rows="3" maxlength="600" placeholder="Ejemplo: hola, necesito ayuda por favor" class="tr-in"></textarea>
+      <p class="tr-bot"><button class="btn primary" type="button" id="tr-btn">Traducir</button> <button class="btn" type="button" id="tr-oir">🔊 Escuchar</button> <button class="btn" type="button" id="tr-mic" aria-pressed="false">🎤 Dictar</button> <button class="btn" type="button" id="tr-imp">Imprimir</button></p>
+      <div class="tr-out no-traducir" id="tr-out" aria-live="polite"></div>
+      <details class="ap-det"><summary>Idiomas incluidos (código y nombre completo)</summary>
+        <div class="tbl-wrap"><table class="ap-tabla"><thead><tr><th>Código</th><th>Idioma</th><th>Nombre propio</th><th>Variante</th><th>Escritura</th><th>Norma de referencia</th><th>Voz en este equipo</th></tr></thead><tbody id="id-cat"></tbody></table></div>
+        <p class="note">Las voces son las del propio equipo (iPhone, Mac, Android o Windows): no se descarga ni se envía audio. Si un idioma dice «Descargar», en iPhone vaya a Ajustes › Accesibilidad › Contenido leído › Voces y elija una voz «mejorada».</p></details>
     </div>
     <div class="card cj" id="cj">
       <h3>Juego del Cubo · de 2 a 4 personas</h3>
@@ -1256,7 +1278,8 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/pantalla-tema.js?v=5.7b12"></script>
 <script src="assets/colabora-avance.js?v=5.7b31" defer></script>
 <script src="assets/aprende.js?v=5.7b40"></script>
-<script src="assets/pronuncia.js?v=5.7b42" defer></script>
+<script src="assets/pronuncia.js?v=5.7b43" defer></script>
+<script src="assets/idiomas-aprende.js?v=5.7b43" defer></script>
 <script src="assets/cubo-juego.js?v=5.7b42" defer></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
