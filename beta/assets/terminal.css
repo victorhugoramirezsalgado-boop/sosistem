@@ -393,3 +393,6 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .pt-temp{font-variant-numeric:tabular-nums;font-weight:700}
 .pt-temp[data-nivel="calor"]{color:#ff6b5e}
 .pt-temp[data-nivel="frio"]{color:#7cc4ff}
+
+/* #157 Entorno del recinto */
+.ent-f{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-top:1px solid var(--line)} .ent-f:first-child{border-top:0} .ent-f span{flex:none;color:var(--ink2)} .ent-f b{text-align:right;font-weight:600} .ent-mal b{color:#ff8a3d} #ent-lect small{display:block;margin-top:6px;color:var(--ink2)}

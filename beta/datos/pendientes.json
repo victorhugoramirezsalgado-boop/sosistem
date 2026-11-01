@@ -686,5 +686,13 @@
   "espacio": "beta/terminal.html (Ajustes) · sistema-sos/firmware/nodo-sms.",
   "modificacion": "Solicitud del autor (31-oct-2026): SMS automático sin internet durante la lluvia.",
   "estado": "Pendiente"
+ },
+ {
+  "id": "157",
+  "titulo": "Tarjeta «Entorno del recinto»: clima, lluvia, viento, UV, aire, oleaje y marea",
+  "que": "Nueva tarjeta en Sensores (Beta) con datos de Open-Meteo (gratuito, sin clave) para la ubicación del recinto: clima actual y sensación térmica; lluvia ahora, próximas 6 h y del día; viento y rachas; índice UV actual y máximo del día; calidad del aire (AQI europeo, PM2.5, PM10); oleaje y mar de fondo; nivel del mar y próximas pleamar/bajamar (aproximación del modelo). Botón «Leer entorno ahora» y opción de actualizar cada 30 min (cada hora en ahorro). Avisos en consola al superar umbrales (lluvia ≥7.6 mm/h o ≥25 mm en 6 h, rachas ≥60 km/h, UV ≥8, AQI >60, olas ≥2.5 m, tormenta eléctrica); no disparan la alarma. Necesita internet.",
+  "espacio": "beta/terminal.html → Sensores (solo Beta).",
+  "modificacion": "Solicitud del autor (31-oct-2026).",
+  "estado": "Pendiente"
  }
 ]

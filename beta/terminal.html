@@ -16,7 +16,7 @@
 <link rel="manifest" href="manifest-terminal.webmanifest">
 <link rel="icon" href="assets/icono-beta.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icono-beta-180.png">
-<link rel="stylesheet" href="assets/terminal.css?v=5.7b29">
+<link rel="stylesheet" href="assets/terminal.css?v=5.7b39">
 </head>
 <body>
 <header class="t-top">
@@ -187,6 +187,15 @@
       <button class="t-btn" type="button" id="temp-prueba" style="margin-top:8px">Probar alerta de calor</button>
       <p class="t-nota" id="temp-msg" role="status" style="margin:6px 0 0"></p>
       <p class="t-nota" style="margin:6px 0 0">Sensación térmica con el índice de calor del Servicio Meteorológico Nacional de EE. UU. (NWS). La OMS recomienda al menos 18 °C en interiores; por debajo de 10 °C aumenta el riesgo de hipotermia en personas mayores. Una alerta cada 30 min por tipo.</p>
+    </div>
+    <div class="t-card" id="t-entorno">
+      <h2>Entorno del recinto</h2>
+      <p class="t-nota">Clima, lluvia, viento, rayos UV, calidad del aire, oleaje y marea del lugar (Open-Meteo, gratuito). Avisos en la consola cuando algo se pone peligroso; no disparan la alarma. Necesita internet.</p>
+      <div class="t-mono" id="ent-lect">Sin lectura.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
+        <button class="t-btn" type="button" id="ent-leer">Leer entorno ahora</button>
+        <label class="t-campo" style="display:flex;gap:8px;align-items:center;margin:0"><input id="ent-auto" type="checkbox" style="width:22px;min-height:22px;height:22px;flex:none"> Actualizar solo cada 30 min</label>
+      </div>
     </div>
     <div class="t-card">
       <h2>Ubicación del recinto</h2>
@@ -391,7 +400,7 @@
 <script src="assets/cabecera.js?v=5.7b12"></script>
 <script src="assets/estadisticas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
-<script src="assets/terminal.js?v=5.7b38"></script>
+<script src="assets/terminal.js?v=5.7b39"></script>
 <script src="assets/detectar-ya.js?v=3"></script>
 <script src="assets/modo-facil.js?v=2"></script>
 <script>
