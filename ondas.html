@@ -38,6 +38,12 @@
   .tb{width:100%;border-collapse:collapse;font-size:15px} .tb td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
   .tb td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink2);width:1%} .tb small{color:var(--ink2)}
   .tb tr.on-hit td{background:rgba(232,114,12,.22)} .tb tr.on-hit td:first-child{color:#fff;font-weight:700}
+  #ab-escala{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px} #ab-escala span{border:1px solid var(--line);border-radius:8px;padding:3px 6px;font-size:12px;color:var(--ink2);text-align:center;min-width:44px}
+  #ab-escala span b{display:block;font-size:16px;color:var(--ink)} #ab-escala span.ab-on{background:var(--nar);border-color:#ffb27a} #ab-escala span.ab-on b,#ab-escala span.ab-on{color:#fff}
+  .ab-rx{font:800 28px/1.2 ui-monospace,Menlo,monospace;letter-spacing:.08em;background:#05080c;border:2px solid var(--line);border-radius:12px;padding:10px;min-height:54px;word-break:break-all}
+  .ab-fila{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0} .ab-fila label{flex:1;min-width:140px;font-size:15px;color:var(--ink2)}
+  .ab-fila select,#ab-tx{width:100%;font:17px system-ui;background:#05080c;color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px;margin-top:4px}
+  #vb-esp{height:120px} #vb-val{font:600 17px system-ui;margin-top:8px} #vb-val small{color:var(--ink2);font-weight:400}
   details summary{cursor:pointer;font:700 18px system-ui;min-height:44px;display:flex;align-items:center}
 </style>
 </head>
@@ -99,6 +105,32 @@
     </details>
   </section>
 
+  <section class="card" id="abecedario">
+    <h2>Abecedario por tono · ondas bajas</h2>
+    <p class="note" style="margin-top:0">Cada letra es un tono grave fijo. Un celular emite y otro (con el análisis iniciado) escribe las letras que oye. Funciona sin internet y sin red.</p>
+    <div class="ab-fila">
+      <label>Escala<select id="ab-esc"><option value="grave">Grave · 200–590 Hz (bocina del celular)</option><option value="muygrave">Muy grave · 100–490 Hz (bocina externa)</option></select></label>
+      <label>Velocidad<select id="ab-vel"><option value="normal">Normal · 2.4 letras/s</option><option value="lenta">Lenta · 1.4 letras/s (lugares con ruido)</option></select></label>
+    </div>
+    <div id="ab-escala"></div>
+    <h2 style="margin-top:14px">Recibir</h2>
+    <div class="ab-rx" id="ab-rx" aria-live="polite">—</div>
+    <p class="note" id="ab-ahora">Inicie el análisis de ondas para escuchar letras.</p>
+    <h2 style="margin-top:14px">Emitir</h2>
+    <input id="ab-tx" maxlength="200" autocomplete="off" placeholder="Ej.: SOS BODEGA TRES" aria-label="Mensaje a emitir">
+    <div class="ab-fila"><button type="button" class="sec" id="ab-btx">▶ Emitir en tonos</button><button type="button" class="sec" id="vb-vib">Emitir por vibración (Android)</button><button type="button" class="sec" id="ab-bor">Borrar recibido</button></div>
+    <p class="note" id="ab-txe">Prueba en un solo equipo: inicie el análisis y emita; el mismo celular se lee. Las mayúsculas, acentos y la Ñ se ajustan solos (Ñ → N).</p>
+  </section>
+
+  <section class="card" id="vibracion">
+    <h2>Vibración de baja frecuencia · acelerómetro</h2>
+    <p class="note" style="margin-top:0">De 0.5 a 30 Hz (por debajo de lo que capta el micrófono): sismo, pasos, maquinaria, oleaje. Cada frecuencia tiene letra: A = 1 Hz … Z = 26 Hz.</p>
+    <button type="button" class="sec" id="vb-btn">Encender lectura de vibración</button>
+    <canvas id="vb-esp" style="margin-top:10px"></canvas>
+    <div id="vb-val">—</div>
+    <p class="note">Letras por vibración (cada letra sostenida 1.2 s): <b id="vb-rx">—</b></p>
+  </section>
+
   <section class="card">
     <h2>Radiación</h2>
     <p class="note" style="margin-top:0">La radiación ionizante (rayos gamma, X, beta) no la capta ningún celular ni navegador: se mide con un <b>contador Geiger</b>. Conecte uno por USB a la Mac o PC y use Chrome.</p>
@@ -117,7 +149,7 @@
 </main>
 <script src="assets/cubo-rt.js?v=6.8.0"></script>
 <script src="assets/morse.js?v=6.8.0"></script>
-<script src="assets/ondas.js?v=6.8.0"></script>
+<script src="assets/ondas.js?v=7.0.0"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./ondas" }).catch(() => {});</script>
 </body>
 </html>
