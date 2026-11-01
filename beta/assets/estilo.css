@@ -1416,3 +1416,22 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .cb-cifras { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .95rem; } .cb-cifras b { font-size: 1.15rem; }
 .cb-lista { padding-left: 1.2em; margin: 6px 0; } .cb-lista li { margin: 0 0 .45em; }
 .cb-aviso { margin-top: 16px; border-left: 4px solid var(--iso-amarillo, #F9A900); } .cb-aviso p { margin: 8px 0 0; }
+
+/* #158 Juego del Cubo */
+.cj-nombres { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+.cj-nombres input { width: 100%; }
+.cj-cara { display: flex; align-items: center; gap: 14px; margin: 10px 0; }
+.cj-cara i { font-style: normal; font-size: 2.4rem; width: 64px; height: 64px; display: grid; place-items: center; border: 2px solid var(--nar, #ff8a3d); border-radius: 14px; }
+.cj-cara b { font-size: 1.3rem; display: block; } .cj-cara small { display: block; opacity: .75; }
+.cj-gira { animation: cj-gira .8s ease-out; } @keyframes cj-gira { from { transform: rotate(0) scale(.6); } 60% { transform: rotate(380deg) scale(1.15); } to { transform: rotate(360deg) scale(1); } }
+.cj-marcador { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin: 10px 0; }
+.cj-j { border: 1px solid var(--line, #30363d); border-radius: 12px; padding: 8px; text-align: center; }
+.cj-j b { display: block; } .cj-j span { font-size: 1.8rem; font-weight: 800; display: block; } .cj-j small { opacity: .7; font-size: .8rem; }
+.cj-resp { border-color: var(--nar, #ff8a3d); background: color-mix(in srgb, var(--nar, #ff8a3d) 12%, transparent); }
+.cj-preg { border-style: dashed; }
+.cj-turno { font-size: 1.15rem; margin: 10px 0; } .cj-letra { display: inline-block; font-size: 2.2rem; font-weight: 800; margin-left: 10px; vertical-align: middle; }
+#cj-resp { border: 1px dashed var(--line, #30363d); border-radius: 12px; padding: 10px; margin: 8px 0; } #cj-resp .cj-r { font-size: 1.3rem; margin-top: 4px; }
+.cj-acciones { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.cj-hist { font-size: .9rem; opacity: .8; padding-left: 20px; }
+.btn.cj-no { border-color: #e24b4a; color: #e24b4a; }
+.cj-acciones[hidden] { display: none; }

@@ -22,7 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=5.7b31">
+<link rel="stylesheet" href="assets/estilo.css?v=5.7b40">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -802,6 +802,35 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <tbody id="ap-tbody"></tbody>
     </table></div>
     </details>
+
+    <div class="card cj" id="cj">
+      <h3>Juego del Cubo · de 2 a 4 personas</h3>
+      <p class="note">Se tira el cubo como dado: la cara dice el sistema (señas, braille, Morse, banderas o fonético). Quien pregunta muestra la letra al de enfrente, de la A a la Z. Si responde bien, gana 1 punto y pregunta la siguiente letra; si falla, pierde 1 punto, que se lo lleva quien preguntó, y siguen los de al lado. No se vuelve a tirar hasta que todos hayan acertado con esa cara. Gana quien llegue a la meta.</p>
+      <form id="cj-form" class="cj-form">
+        <div class="cj-nombres">
+          <input id="cj-n1" maxlength="14" placeholder="Jugador 1" autocomplete="off"><input id="cj-n2" maxlength="14" placeholder="Jugador 2" autocomplete="off">
+          <input id="cj-n3" maxlength="14" placeholder="Jugador 3 (opcional)" autocomplete="off"><input id="cj-n4" maxlength="14" placeholder="Jugador 4 (opcional)" autocomplete="off">
+        </div>
+        <label class="sn-campo"><b>Meta de puntos</b><input id="cj-meta" type="number" inputmode="numeric" min="5" max="99" value="20"></label>
+        <p class="note" id="cj-msg" role="status"></p>
+        <button class="btn primary" type="submit">Tirar el cubo y empezar</button>
+      </form>
+      <div id="cj-juego" hidden>
+        <div class="cj-cara" id="cj-cara"></div>
+        <div class="cj-marcador" id="cj-marcador"></div>
+        <p class="cj-turno" id="cj-turno"></p>
+        <div class="cj-resp" id="cj-resp" hidden></div>
+        <div class="cj-acciones" id="cj-acciones">
+          <button class="btn" type="button" id="cj-ver">Ver respuesta</button>
+          <button class="btn" type="button" id="cj-oir" hidden>Escuchar en Morse</button>
+          <button class="btn primary" type="button" id="cj-ok">✓ Correcto (+1)</button>
+          <button class="btn cj-no" type="button" id="cj-no">✗ Falló (−1)</button>
+        </div>
+        <div id="cj-fin" hidden><button class="btn primary" type="button" id="cj-otra">Otra partida</button></div>
+        <ol class="cj-hist" id="cj-hist"></ol>
+        <p><button class="btn" type="button" id="cj-nuevo">Nueva partida</button></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1217,7 +1246,8 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/pantalla.js?v=5.7b19"></script>
 <script src="assets/pantalla-tema.js?v=5.7b12"></script>
 <script src="assets/colabora-avance.js?v=5.7b31" defer></script>
-<script src="assets/aprende.js?v=5.7b23"></script>
+<script src="assets/aprende.js?v=5.7b40"></script>
+<script src="assets/cubo-juego.js?v=5.7b40" defer></script>
 <script src="assets/tablas.js?v=5.7b12"></script>
 <script src="assets/llavero-beta.js?v=3"></script>
 <script src="assets/mundo.js?v=5.7b25"></script>
