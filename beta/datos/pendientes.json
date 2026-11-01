@@ -703,9 +703,9 @@
  {
   "id": "158",
   "titulo": "Juego del Cubo (2 a 4 jugadores) en Aprendizaje",
-  "que": "Juego en un mismo celular: se tira el Cubo de Aprendizaje como dado (señas LSM, braille, Morse, banderas, fonético o libre). Quien pregunta muestra la letra al de enfrente, de la A a la Z; «Ver respuesta» enseña la seña, los puntos braille, el Morse (con sonido), la bandera o la palabra fonética solo para que quien pregunta juzgue. Correcto: +1 al que responde y pregunta la siguiente letra. Falla: −1 al que responde, +1 al que preguntó, y siguen los de al lado. No se vuelve a tirar hasta que todos hayan acertado con esa cara. Gana quien llegue a la meta (20 por defecto, ajustable 5–99). Marcador, historial y partida guardada en el celular.",
+  "que": "Juego 360 en un mismo celular, de 2 a 4 jugadores: se tira el Cubo de Aprendizaje al centro y cada jugador queda con la cara que le cae enfrente (su alfabeto: Morse, braille, señas LSM, banderas o fonético). Inicia quien recibió Morse y pregunta la letra en turno (de la A a la Z) en su alfabeto a quien elija: izquierda, enfrente o derecha. «Ver respuesta» enseña la seña, los puntos braille, el Morse (con sonido), la bandera o la palabra fonética solo para quien pregunta. Si el elegido sabe: +1 y toma el turno. Si no, se pregunta a otro; si nadie supo, quien preguntó se lleva un punto por rival (3 con 4 jugadores) y el turno pasa al de al lado. Al terminar la Z se vuelve a tirar (también hay botón para tirar antes). Gana quien llega a la meta (20 por defecto). Marcador, historial y partida guardada en el celular.",
   "espacio": "beta/index.html → Aprendizaje, después de la tabla (solo Beta).",
-  "modificacion": "Solicitud del autor (31-oct-2026).",
+  "modificacion": "Solicitud del autor (31-oct-2026); reglas corregidas por el autor el mismo día (juego 360, cara por jugador, 3 puntos si nadie sabe).",
   "estado": "Pendiente"
  }
 ]
