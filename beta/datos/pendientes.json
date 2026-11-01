@@ -678,5 +678,13 @@
   "espacio": "beta/terminal.html (solo Beta).",
   "modificacion": "Solicitud del autor (31-oct-2026).",
   "estado": "Pendiente"
+ },
+ {
+  "id": "156",
+  "titulo": "Nodo SMS sin internet (ESP32 + SIM800L/SIM7000) y enlace desde la Terminal",
+  "que": "Firmware nuevo en el repo privado (firmware/nodo-sms): el ESP32 crea su propia red Wi-Fi sin internet, sirve la Terminal Beta desde su memoria en http://192.168.4.1/terminal.html y, al llegar una alerta real a N1, manda el SMS solo a los contactos de su config.h por el módem celular, con cola y reintentos. En la Terminal: ajuste «Clave del nodo SMS», envío automático al nodo en N1 (modo real) y renglón de estado del nodo (red, operador, señal, SMS del día). Sin el nodo, nada cambia.",
+  "espacio": "beta/terminal.html (Ajustes) · sistema-sos/firmware/nodo-sms.",
+  "modificacion": "Solicitud del autor (31-oct-2026): SMS automático sin internet durante la lluvia.",
+  "estado": "Pendiente"
  }
 ]
