@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="SOSistem™">
 <meta property="og:image:alt" content="SOSistem™: Cubo Morse© naranja y terminal NODO S.O.S.© con alerta de persona en el suelo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/estilo.css?v=6.5.0">
+<link rel="stylesheet" href="assets/estilo.css?v=6.9.0">
 <script>
 /* Apariencia elegida en el panel (fondo y logo): se aplica antes de pintar para evitar parpadeo */
 try { var ap = JSON.parse(localStorage.getItem("sos_apariencia") || "null"); if (ap && ap.fondo) document.documentElement.dataset.fondo = ap.fondo; } catch (e) {}
@@ -799,6 +799,44 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
       <tbody id="ap-tbody"></tbody>
     </table></div>
     </details>
+
+    <div class="card" id="pr">
+      <h3>Pronunciación en 22 idiomas</h3>
+      <p class="note">Toque una letra para oírla con la voz del equipo, o escriba una palabra. Debajo de cada letra no latina va cómo suena para quien habla español.</p>
+      <div class="pr-fila"><select id="pr-idioma" aria-label="Idioma"></select><input id="pr-txt" maxlength="40" placeholder="Palabra o frase" autocomplete="off"><button class="btn" type="button" id="pr-oir">Escuchar</button></div>
+      <div class="pr-alfa no-traducir" id="pr-alfa"></div>
+      <p class="note" id="pr-msg" role="status"></p>
+    </div>
+    <div class="card cj" id="cj">
+      <h3>Juego del Cubo · de 2 a 4 personas</h3>
+      <p class="note">Juego 360: se tira el cubo al centro y cada jugador se queda con la cara que le cae enfrente; ese es su alfabeto (Morse, braille, señas, banderas o fonético). Inicia quien recibió Morse: pregunta la letra en turno, de la A a la Z, en su alfabeto a quien elija (izquierda, enfrente o derecha). Quien sabe gana 1 punto y toma el turno. Si nadie supo, quien preguntó se lleva 3 puntos (uno por rival) y el turno pasa al de al lado. Al llegar a la Z se vuelve a tirar. Gana quien llegue a la meta.</p>
+      <form id="cj-form" class="cj-form">
+        <div class="cj-nombres">
+          <input id="cj-n1" maxlength="14" placeholder="Jugador 1" autocomplete="off"><input id="cj-n2" maxlength="14" placeholder="Jugador 2" autocomplete="off">
+          <input id="cj-n3" maxlength="14" placeholder="Jugador 3 (opcional)" autocomplete="off"><input id="cj-n4" maxlength="14" placeholder="Jugador 4 (opcional)" autocomplete="off">
+        </div>
+        <label class="sn-campo"><b>Meta de puntos</b><input id="cj-meta" type="number" inputmode="numeric" min="5" max="99" value="20"></label>
+        <label class="cj-chk"><input id="cj-avanzado" type="checkbox"> <b>Juego avanzado · 22 idiomas</b>: a un jugador le toca la cara de idiomas; cada tirada le asigna un idioma distinto y pregunta cómo se pronuncia la letra, con la voz del celular para comprobar.</label>
+        <p class="note" id="cj-msg" role="status"></p>
+        <button class="btn primary" type="submit">Tirar el cubo y empezar</button>
+      </form>
+      <div id="cj-juego" hidden>
+        <div class="cj-cara" id="cj-cara"></div>
+        <div class="cj-marcador" id="cj-marcador"></div>
+        <p class="cj-turno" id="cj-turno"></p>
+        <div class="cj-acciones" id="cj-elegir" hidden></div>
+        <div class="cj-resp" id="cj-resp" hidden></div>
+        <div class="cj-acciones" id="cj-acciones">
+          <button class="btn" type="button" id="cj-ver">Ver respuesta</button>
+          <button class="btn" type="button" id="cj-oir" hidden>Escuchar en Morse</button>
+          <button class="btn primary" type="button" id="cj-ok">✓ Correcto (+1)</button>
+          <button class="btn cj-no" type="button" id="cj-no">✗ Falló (−1)</button>
+        </div>
+        <div id="cj-fin" hidden><button class="btn primary" type="button" id="cj-otra">Otra partida</button></div>
+        <ol class="cj-hist" id="cj-hist"></ol>
+        <p><button class="btn" type="button" id="cj-tirar">Volver a tirar el cubo</button> <button class="btn" type="button" id="cj-nuevo">Nueva partida</button></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1135,7 +1173,9 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/pantalla.js?v=6.1"></script>
 <script src="assets/pantalla-tema.js?v=6.1"></script>
 <script src="assets/colabora-avance.js?v=6.5.0" defer></script>
-<script src="assets/aprende.js?v=6.4.0"></script>
+<script src="assets/aprende.js?v=6.9.0"></script>
+<script src="assets/pronuncia.js?v=6.9.0" defer></script>
+<script src="assets/cubo-juego.js?v=6.9.0" defer></script>
 <script src="assets/tablas.js?v=6.1"></script>
 <script src="assets/codigo-cubico.js?v=6.1"></script>
 <script src="assets/mensajero.js?v=6.1" defer></script>
