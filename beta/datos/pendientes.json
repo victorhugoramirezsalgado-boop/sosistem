@@ -814,9 +814,9 @@
   "que": "En la cara de presentación del Cubo de Aprendizaje (antes sin número) se quitó el logo grande del centro y se puso en la cabecera, junto al número 6/6, igual que en las demás caras. La cara queda libre para el lema, los cinco sistemas y los tres QR más grandes. En las pestañas, el Lector Cúbico© (2610097277568) y el Teclado Cubo© (2610097277155) ya llevan su número de registro en lugar de «en registro».",
   "espacio": "Aprendizaje › Cubo para armar (PDF carta, oficio, doble carta, A4 y gigante).",
   "modificacion": "Solicitud del autor (1-nov-2026), Página Beta.",
-  "estado": "Sin decidir",
+  "estado": "Publicado · 7.3.0",
   "ver": "assets/cubo-aprendizaje-carta.pdf",
-  "resolucion": ""
+  "resolucion": "Autorizado por el autor el 2-nov-2026 (02:32)."
  },
  {
   "id": "170",
@@ -824,9 +824,9 @@
   "que": "PDF de 7 hojas carta: portada con el desarrollo en cruz y las etapas, y una hoja por cara. Cada cara tiene el abecedario A–Z en sus cuatro lados en sentido horario (A arriba de izquierda a derecha, B a la derecha de arriba abajo, C abajo de derecha a izquierda, D a la izquierda de abajo hacia arriba) y 676 casillas con números seguidos del 1 al 4056 (cara 1: 1–676 … cara 6: 3381–4056), más el par de letras fila·columna. Logos en la cabecera con el número de cara.",
   "espacio": "Aprendizaje › Juego del Cubo (PDF para imprimir).",
   "modificacion": "Solicitud del autor (1-nov-2026), Página Beta.",
-  "estado": "Sin decidir",
+  "estado": "Publicado · 7.3.0",
   "ver": "assets/cubo33-nivel1-prototipo-carta.pdf",
-  "resolucion": ""
+  "resolucion": "Autorizado por el autor el 2-nov-2026 (02:32)."
  },
  {
   "id": "171",
@@ -834,9 +834,9 @@
   "que": "Nivel 2: la cara 6 con el idioma que el jugador elija. Nivel 3, tablas de aprendizaje: Primaria con los seis sistemas del Cubo de Aprendizaje; Secundaria con al menos tres idiomas. Quien domine un idioma recibe su Cubo del Idioma: cara 1 abecedario y descripción del idioma; caras 2 a 4 las 159 palabras repartidas por categorías; cara 5 libre para las palabras y frases de práctica del usuario; cara 6 Cubo 33 con la tabla de números del idioma, Morse, braille y banderas. Pendiente que el autor confirme este reparto de caras antes de construirlo.",
   "espacio": "Aprendizaje › Juego del Cubo.",
   "modificacion": "Solicitud del autor (1-nov-2026), Página Beta.",
-  "estado": "Sin decidir",
+  "estado": "Autorizado · en desarrollo",
   "ver": "#aprende",
-  "resolucion": ""
+  "resolucion": "Autorizado el 2-nov-2026 (02:32): etapas publicadas en Aprendizaje (7.3.0); el Cubo del Idioma queda por construir con el reparto de caras confirmado."
  },
  {
   "id": "172",
@@ -844,8 +844,8 @@
   "que": "En los cinco formatos del Cubo de Aprendizaje (carta, oficio, doble carta, A4 y gigante), cada cara lleva bajo el título el nombre correcto del sistema, su año de origen y su creador con cita APA: Banderas (Código Internacional de Señales, 1857, Board of Trade; OMI 1965), Morse (S. Morse y A. Vail, 1837–1844; internacional 1865) y fonético (J.-P. Vinay, OACI 1956), Braille (Louis Braille, 1824; publicado 1829), LSM (Escuela Nacional de Sordomudos, 1867; lengua nacional 2011, LGIPD art. 14), 22 idiomas, Cara del Cubo y SOSistem™ (V. H. Ramírez Salgado, 2026). En la cara de banderas se ven completos los nombres fonéticos de A a Z y los gallardetes del 0 al 9 con su nombre (Zero … Niner). En el sitio, los gallardetes 0–9 aparecen en todos los lugares con banderas: tabla de Aprendizaje, Cara del Cubo en números, Abecedario único y Juego del Cubo (banderas.js).",
   "espacio": "Cubo de Aprendizaje para imprimir (assets/cubo-aprendizaje-*.pdf) y banderas.js",
   "modificacion": "Solicitud del autor (2-nov-2026, 02:04).",
-  "estado": "Sin decidir",
+  "estado": "Publicado · 7.3.0",
   "ver": "assets/cubo-aprendizaje-carta.pdf",
-  "resolucion": ""
+  "resolucion": "Autorizado por el autor el 2-nov-2026 (02:32)."
  }
 ]

@@ -1,8 +1,43 @@
 {
-  "version": "6.6.3",
-  "fecha": "2026-10-31",
+  "version": "7.3.0",
+  "fecha": "2026-11-02",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.3.0",
+      "fecha": "2026-11-02",
+      "resumen": "Cubo de Aprendizaje para imprimir: logos en la cabecera junto al número de cara (#169); nombre del sistema, año de origen y creador con cita APA en la cabecera de cada cara, y banderas A–Z con nombre fonético y gallardetes 0–9 (#172); gallardetes 0–9 en todos los lugares con banderas del sitio; prototipo del Nivel 1 del Juego del Cubo (#170) y etapas del juego (#171) en Aprendizaje."
+    },
+    {
+      "v": "7.2.0",
+      "fecha": "2026-11-01",
+      "resumen": "Aprendizaje: Abecedario único con selector de sistema e idioma (#160)."
+    },
+    {
+      "v": "7.1.0",
+      "fecha": "2026-10-31",
+      "resumen": "159 palabras y frases en 22 idiomas con voces y subtítulos (#161–#164); calor de personas y energía a 10 m (#165); letras por frecuencia (#167); auditoría de privacidad (#168)."
+    },
+    {
+      "v": "7.0.0",
+      "fecha": "2026-10-31",
+      "resumen": "Analizador de ondas: abecedario por tono y lectura de vibración con el acelerómetro (#166)."
+    },
+    {
+      "v": "6.9.0",
+      "fecha": "2026-10-31",
+      "resumen": "Juego del Cubo de 2 a 4 jugadores y pronunciación en 22 idiomas (#158, #159)."
+    },
+    {
+      "v": "6.8.0",
+      "fecha": "2026-10-31",
+      "resumen": "Ondas etiquetadas, modo sin internet con SOS por SMS, modo bolsillo, nodo SMS y entorno del recinto (#153–#157)."
+    },
+    {
+      "v": "6.7.0",
+      "fecha": "2026-10-31",
+      "resumen": "Terminal «Modo fácil» para adultos mayores, barra «Detectar» y Analizador de ondas (#149–#152)."
+    },
     {
       "v": "6.6.3",
       "fecha": "2026-10-31",
