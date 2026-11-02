@@ -1,153 +1,153 @@
 {
  "reporte": "pruebas-reales",
  "sitio": "https://sosistem.com",
- "fecha": "2026-11-02T10:43:35.701Z",
+ "fecha": "2026-11-02T22:53:53.056Z",
  "version_repositorio": "7.3.0",
  "version_publicada": "7.3.0",
- "propagacion_s": 382,
- "duracion_s": 421,
+ "propagacion_s": 0,
+ "duracion_s": 43,
  "total": 23,
- "correctas": 22,
- "fallas": 1,
- "origen": "push",
+ "correctas": 23,
+ "fallas": 0,
+ "origen": "schedule",
  "resultados": [
   {
    "prueba": "Versión publicada = versión del repositorio",
    "ok": true,
-   "detalle": "repositorio 7.3.0 · publicada 7.3.0 · 382 s",
+   "detalle": "repositorio 7.3.0 · publicada 7.3.0 · 0 s",
    "ms": 0
   },
   {
    "prueba": "Abre / · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3872
+   "ms": 3538
   },
   {
    "prueba": "Abre /terminal.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2725
+   "ms": 3032
   },
   {
    "prueba": "Abre /admin.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2220
+   "ms": 2305
   },
   {
    "prueba": "Abre /verificar.html · iPhone",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2128
+   "ms": 2361
   },
   {
    "prueba": "Abre /beta/ · iPhone",
-   "ok": false,
-   "detalle": "503 /beta/assets/codigo-cubico.js?v=5.7b12",
-   "ms": 3392
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 3639
   },
   {
    "prueba": "Abre / · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3404
+   "ms": 3598
   },
   {
    "prueba": "Abre /terminal.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2733
+   "ms": 2774
   },
   {
    "prueba": "Abre /admin.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2129
+   "ms": 2387
   },
   {
    "prueba": "Abre /verificar.html · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 2071
+   "ms": 2091
   },
   {
    "prueba": "Abre /beta/ · computadora",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 3229
+   "ms": 3320
   },
   {
    "prueba": "PDF carta",
    "ok": true,
    "detalle": "3.6 MB",
-   "ms": 206
+   "ms": 324
   },
   {
    "prueba": "PDF oficio",
    "ok": true,
    "detalle": "3.6 MB",
-   "ms": 314
+   "ms": 395
   },
   {
    "prueba": "PDF doble-carta",
    "ok": true,
    "detalle": "3.7 MB",
-   "ms": 223
+   "ms": 228
   },
   {
    "prueba": "PDF a4",
    "ok": true,
    "detalle": "3.6 MB",
-   "ms": 86
+   "ms": 293
   },
   {
    "prueba": "PDF gigante-carta",
    "ok": true,
    "detalle": "1.1 MB",
-   "ms": 64
+   "ms": 113
   },
   {
    "prueba": "Terminal · temperatura exterior real (Open-Meteo, Ensenada)",
    "ok": true,
-   "detalle": "Exterior · 14.0 °C · 80 % HR · sensación 13.1 °C · pantalla «🌡 Ext 14.0 °C»",
-   "ms": 118
+   "detalle": "Exterior · 19.8 °C · 60 % HR · sensación 19.4 °C · pantalla «🌡 Ext 19.8 °C»",
+   "ms": 411
   },
   {
    "prueba": "Terminal · Morse con audio bloqueado no se pierde (#133)",
    "ok": true,
-   "detalle": "pendiente al inicio: false · sonó a los 109 ms",
-   "ms": 6246
+   "detalle": "pendiente al inicio: false · sonó a los 102 ms",
+   "ms": 6239
   },
   {
    "prueba": "Terminal · disparo descartado queda registrado (#135)",
    "ok": true,
    "detalle": "1 descarte(s) en la Caja negra",
-   "ms": 1513
+   "ms": 1512
   },
   {
    "prueba": "Terminal · sin errores de JavaScript",
    "ok": true,
    "detalle": "sin errores",
-   "ms": 0
+   "ms": 1
   },
   {
    "prueba": "Beta · datos/pendientes.json",
    "ok": true,
    "detalle": "válido",
-   "ms": 62
+   "ms": 234
   },
   {
    "prueba": "Beta · datos/mundo.json",
    "ok": true,
    "detalle": "válido",
-   "ms": 3
+   "ms": 126
   },
   {
    "prueba": "Beta · datos/version.json",
    "ok": true,
    "detalle": "válido",
-   "ms": 4
+   "ms": 133
   }
  ]
 }
