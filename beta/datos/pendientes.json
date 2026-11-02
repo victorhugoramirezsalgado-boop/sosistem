@@ -837,5 +837,15 @@
   "estado": "Sin decidir",
   "ver": "#aprende",
   "resolucion": ""
+ },
+ {
+  "id": "172",
+  "titulo": "Cubo armable: nombre, año de origen y creador (APA) en la cabecera de cada cara · banderas con nombre fonético A–Z y gallardetes 0–9",
+  "que": "En los cinco formatos del Cubo de Aprendizaje (carta, oficio, doble carta, A4 y gigante), cada cara lleva bajo el título el nombre correcto del sistema, su año de origen y su creador con cita APA: Banderas (Código Internacional de Señales, 1857, Board of Trade; OMI 1965), Morse (S. Morse y A. Vail, 1837–1844; internacional 1865) y fonético (J.-P. Vinay, OACI 1956), Braille (Louis Braille, 1824; publicado 1829), LSM (Escuela Nacional de Sordomudos, 1867; lengua nacional 2011, LGIPD art. 14), 22 idiomas, Cara del Cubo y SOSistem™ (V. H. Ramírez Salgado, 2026). En la cara de banderas se ven completos los nombres fonéticos de A a Z y los gallardetes del 0 al 9 con su nombre (Zero … Niner). En el sitio, los gallardetes 0–9 aparecen en todos los lugares con banderas: tabla de Aprendizaje, Cara del Cubo en números, Abecedario único y Juego del Cubo (banderas.js).",
+  "espacio": "Cubo de Aprendizaje para imprimir (assets/cubo-aprendizaje-*.pdf) y banderas.js",
+  "modificacion": "Solicitud del autor (2-nov-2026, 02:04).",
+  "estado": "Sin decidir",
+  "ver": "assets/cubo-aprendizaje-carta.pdf",
+  "resolucion": ""
  }
 ]
