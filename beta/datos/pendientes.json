@@ -857,5 +857,14 @@
   "estado": "Publicado · 7.4.0",
   "ver": "#indice",
   "resolucion": "Autorizado por el autor el 2-nov-2026 (18:31)."
+ },
+ {
+  "id": "174",
+  "titulo": "Código Cúbico© CC-1, Teclado Cúbico© y lector por cámara (estándar abierto tipo QR)",
+  "que": "Nueva página cubico.html. Código Cúbico CC-1: símbolo 2D con la forma del desarrollo en cruz del Cubo (L1–L6), caras de 13 a 33 módulos, 3 patrones de localización y 1 de alineación, formato BCH(15,5) con firma 0x3333, corrección Reed–Solomon GF(256) en 4 niveles (≈7–30 %), aleatorización de datos, 8 máscaras, contenido UTF-8 (todos los idiomas), capa de idioma BCP 47 y modo Econotopía Segura (AES-256-GCM con frase). Teclado Cúbico de 6 caras que gira como el cubo (Letras, Números, Acentos, Alfabetos del mundo, Símbolos, Frases de auxilio en 7 idiomas). Generador con vista 3D, un color o un tono por cara, impresión con tamaño de módulo en mm, PNG/SVG, compartir y código corto en texto. QR puente opcional que abre el lector desde la cámara nativa del teléfono. Lector por cámara o imagen: cualquier ángulo, espejo, perspectiva y daño parcial; 100 % de lectura con 5 px por módulo en 60 pruebas con ruido, reflejos y desenfoque. Pestaña «Estándar» con la ruta a AIM e ISO/IEC 15424:2025. No guarda ni envía nada.",
+  "espacio": "cubico.html (solo Beta). Al autorizar: sosistem.com/cubico.html (dirección del QR puente) y liga desde el Mensajero del Cubo.",
+  "modificacion": "Solicitud del autor (2-nov-2026, 20:07): construir el teclado cúbico, el lector y el código cúbico como el QR, para que en su momento se lea mundialmente.",
+  "estado": "Por autorizar",
+  "ver": "cubico.html"
  }
 ]
