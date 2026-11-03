@@ -1,8 +1,13 @@
 {
-  "version": "7.3.0",
+  "version": "7.4.0",
   "fecha": "2026-11-02",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.4.0",
+      "fecha": "2026-11-02",
+      "resumen": "Pestaña «Índice» (APA 7.ª ed.), segunda después de Inicio: todas las pestañas, módulos, páginas independientes y PDF del sistema con liga directa, más los 16 registros de Safe Creative citados y sus referencias (#173)."
+    },
     {
       "v": "7.3.0",
       "fecha": "2026-11-02",
