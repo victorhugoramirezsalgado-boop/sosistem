@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Víctor Hugo Ramírez Salgado">
+<script src="assets/beta-puerta.js?v=3"></script>
+<title>SOSistem™ · Beta 2 · Nuevo diseño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Estilo único claro (no cambia con modo oscuro). Corporativo industrial: encabezado blanco, héroe carbón con consola, acento naranja de marca; rojo solo para emergencia (ISO 3864) */
+:root{
+  --bg:#FFFFFF; --bg-alt:#F4F4F2; --surface:#FFFFFF; --ink:#18191B; --muted:#55585E; --line:#E1E1DD;
+  --brand:#C0541A; --brand-ink:#FFFFFF; --brand-soft:#FBEFE6; --brand-text:#9C4314;
+  --hero:#121418; --hero-2:#1C2430; --hero-ink:#FFFFFF; --hero-muted:#C2C8D0; --hero-line:#2C3644;
+  --console:#0B0E13; --tile:#151B24; --ok:#2FBF71; --ok-text:#8FE3B0; --danger:#C8202F; --danger-bg:#3A1014; --danger-text:#FFC9CD;
+  --foot:#1E1F21; --foot-ink:#BEBEBE;
+  --f-display:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --wrap:1320px;
+}
+:root{color-scheme:light}
+*{box-sizing:border-box}
+html{font-size:16px}
+@media (min-width:1800px){html{font-size:19px}}
+@media (min-width:2400px){html{font-size:23px}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Logotipo */
+.logo{display:inline-flex;flex-direction:column;gap:4px;text-decoration:none;line-height:1}
+.logo .word{font-family:var(--f-display);font-weight:900;font-size:1.75rem;letter-spacing:-0.04em;color:var(--ink)}
+.logo .word b{color:var(--brand);font-weight:900}
+.logo .word sup{font-size:.32em;font-weight:600;letter-spacing:0;vertical-align:1.5em}
+.logo svg{display:block;width:100%;max-width:7.6rem;height:5px}
+.logo.on-dark .word{color:var(--hero-ink)} .logo.on-dark .word b{color:#F28A3C}
+
+/* Barra superior */
+.util{background:var(--bg-alt);border-bottom:1px solid var(--line);font-size:.8125rem;color:var(--muted)}
+.util .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;justify-content:flex-end;align-items:center;padding-block:.35rem}
+.util a{text-decoration:none}
+.util select{font:inherit;border:0;background:transparent;color:var(--muted);max-width:11rem}
+
+/* Encabezado */
+.site-head{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--surface)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.nav{display:flex;gap:1.6rem;font-size:.95rem;font-weight:500}
+.nav a{text-decoration:none;padding-block:.4rem}
+.nav a:hover{color:var(--brand-text)}
+.head-actions{display:flex;gap:.6rem;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;padding:0 1.3rem;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:var(--f-body)}
+.btn-brand{background:var(--brand);color:var(--brand-ink)}
+.btn-brand:hover{filter:brightness(.92)}
+.btn-ghost-dark{border-color:#FFFFFF;color:#FFFFFF;background:transparent}
+.btn-square{border-radius:4px}
+.icon-btn{width:44px;height:44px;border:0;background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:6px}
+.menu-btn{display:none}
+@media (max-width:980px){
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--surface);border-bottom:1px solid var(--line);padding:.5rem max(16px, env(safe-area-inset-right, 0px)) 1rem max(16px, env(safe-area-inset-left, 0px))}
+  .nav.open{display:flex}
+  .nav a{padding:.8rem 0;border-bottom:1px solid var(--line)}
+  .menu-btn{display:inline-flex}
+}
+@media (max-width:600px){
+  .site-head .wrap{gap:.5rem}
+  .head-actions{gap:.25rem}
+  .head-actions .icon-btn:not(.menu-btn){display:none}
+  .head-actions .btn{padding:0 .9rem;font-size:.85rem}
+  .logo .word{font-size:1.5rem}
+}
+@media (max-width:300px){
+  .head-actions .btn{display:none}
+}
+
+/* Héroe */
+.hero{background:linear-gradient(100deg,var(--hero) 0%,#161B23 45%,var(--hero-2) 100%);color:var(--hero-ink)}
+.hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(1.8rem,4vw,4rem);align-items:center;padding-block:clamp(2.2rem,6vw,5.5rem)}
+@media (max-width:900px){.hero-main{grid-template-columns:minmax(0,1fr)}}
+.hero-copy{display:flex;flex-direction:column;gap:1.2rem;min-width:0}
+.hero-brand{border-left:3px solid #F28A3C;padding-left:1rem}
+.hero-brand .logo .word{font-size:clamp(1.6rem,3vw,2.6rem)}
+.hero-brand p{margin:.4rem 0 0;font-size:.85rem;color:var(--hero-muted)}
+.hero h1{font-size:clamp(1.9rem,4.4vw,4rem);line-height:1.04;letter-spacing:-0.03em;font-weight:800}
+.hero .lead{margin:0;font-size:clamp(1rem,1.3vw,1.2rem);color:var(--hero-muted);max-width:34rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* Consola */
+.console{background:var(--console);border:1px solid var(--hero-line);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden;min-width:0;color:#FFFFFF}
+.console-top{display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid #222A35;font-size:.8rem}
+.console-top strong{font-family:var(--f-display);font-size:.95rem}
+.console-top strong b{color:#F28A3C}
+.live{display:inline-flex;gap:.45rem;align-items:center;color:var(--ok-text)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+.console-body{display:grid;grid-template-columns:7.5rem minmax(0,1fr)}
+@media (max-width:560px){.console-body{grid-template-columns:minmax(0,1fr)}.side{display:none}}
+.side{border-right:1px solid #222A35;padding:.8rem .6rem;display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:#A9B2BF}
+.side span{padding:.45rem .6rem;border-radius:4px}
+.side .on{background:#2A3240;color:#FFFFFF;border-left:3px solid #F28A3C}
+.panel{padding:.9rem;display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.kpi{background:var(--tile);border:1px solid var(--hero-line);border-radius:6px;padding:.6rem .75rem}
+.kpi small{display:block;font-size:.7rem;color:#A9B2BF}
+.kpi b{font-family:var(--f-display);font-size:1.35rem}
+.kpi .ok{color:var(--ok-text)}
+.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:.6rem}
+@media (max-width:420px){.split{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.plan{width:100%;height:auto;background:var(--tile);border:1px solid var(--hero-line);border-radius:6px;display:block}
+.alert{background:var(--danger-bg);border:1px solid var(--danger);border-radius:6px;padding:.6rem .75rem;font-size:.78rem}
+.alert strong{display:block;color:var(--danger-text);font-size:.82rem}
+.alert .more{color:var(--danger-text);font-weight:700;margin-top:.3rem;display:block}
+.checks{background:var(--tile);border:1px solid var(--hero-line);border-radius:6px;padding:.6rem .75rem;display:flex;flex-direction:column;gap:.3rem;font-size:.78rem}
+.checks span{display:flex;gap:.5rem;align-items:center}
+.side-stack{display:flex;flex-direction:column;gap:.6rem}
+.note-dark{font-size:.7rem;color:#8994A3}
+@media (max-width:560px){.console .side{display:none}}
+
+/* Franja de beneficios */
+.benefits{border-top:1px solid var(--hero-line);background:#0E1015}
+.benefits .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;padding-block:1rem;font-size:.88rem;color:#E3E7ED}
+@media (max-width:980px){.benefits .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.benefits .wrap{grid-template-columns:minmax(0,1fr)}}
+.benefit{display:flex;gap:.75rem;align-items:center}
+.benefit svg{flex:none}
+
+/* Secciones */
+.section{padding-block:clamp(2.6rem,5vw,5rem)}
+.alt{background:var(--bg-alt)}
+.eyebrow{display:flex;gap:.6rem;align-items:center;font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.eyebrow::before{content:"";width:1.8rem;height:2px;background:var(--brand)}
+.h2{font-size:clamp(1.6rem,2.6vw,2.6rem);letter-spacing:-0.02em;line-height:1.12;font-weight:800}
+.sub{margin:.5rem 0 0;color:var(--muted);font-size:clamp(.95rem,1.1vw,1.1rem);max-width:40rem}
+
+/* Servicios */
+.services{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:2rem;align-items:stretch}
+@media (max-width:1100px){.services{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}.services .ports{grid-column:1 / -1;min-height:200px}}
+@media (max-width:720px){.services{grid-template-columns:minmax(0,1fr)}}
+.svc-intro{display:flex;flex-direction:column;gap:.9rem;justify-content:center}
+.svc-intro p{margin:0;color:var(--muted)}
+.grid12{display:grid;grid-template-columns:repeat(auto-fill,minmax(7rem,1fr));gap:.6rem}
+.svc{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;border:1px solid var(--line);border-radius:6px;padding:.9rem .4rem;text-decoration:none;font-size:.78rem;font-weight:600;line-height:1.3;background:var(--surface);transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--brand);transform:translateY(-2px)}
+.svc i{font-style:normal;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--brand-soft);color:var(--brand-text);display:inline-flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:.75rem;font-variant-numeric:tabular-nums}
+.ports{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;min-height:15rem;padding:1.4rem;border-radius:6px;overflow:hidden;text-decoration:none;color:#FFFFFF;background:linear-gradient(180deg,#5B83B0 0%,#2B4C73 55%,#141A24 100%)}
+.ports svg{position:absolute;top:1rem;right:0;width:100%;max-width:300px;height:auto;opacity:.6}
+.ports strong,.ports span{position:relative}
+.ports strong{font-family:var(--f-display);font-size:1.35rem;line-height:1.2}
+.ports .pill{align-self:flex-start;border:1px solid #FFFFFF;border-radius:999px;padding:.45rem 1rem;font-size:.8rem;font-weight:600;margin-top:.3rem}
+
+/* Industrias */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1.8rem}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.cards{grid-template-columns:minmax(0,1fr)}}
+.card{display:flex;flex-direction:column;background:var(--surface);text-decoration:none;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.ph{aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#2B3442 0%,#4B5A6E 100%);display:flex;align-items:flex-end;padding:.8rem;color:#D3D8E0;font-size:.75rem}
+.card-body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.45rem}
+.card-body strong{font-family:var(--f-display);font-size:1.15rem}
+.card-body span{color:var(--muted);font-size:.95rem}
+.card-body em{font-style:normal;font-weight:600;color:var(--brand-text);font-size:.9rem}
+
+/* Cifras */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);margin-top:1.6rem}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:380px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{padding:1.4rem 1.2rem 0 0}
+.stat b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(2.4rem,4vw,4rem);letter-spacing:-0.03em;color:var(--brand-text);font-variant-numeric:tabular-nums;line-height:1}
+.stat p{margin:.5rem 0 0;color:var(--muted);font-size:.95rem}
+.fine{margin:1.2rem 0 0;font-size:.8rem;color:var(--muted)}
+
+/* Pestañas */
+.tabs{display:flex;flex-wrap:wrap;gap:.2rem;border-bottom:1px solid var(--line);margin-top:1.4rem}
+.tab{font:inherit;font-size:.95rem;font-weight:500;min-height:44px;padding:.7rem .9rem;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{font-weight:700;color:var(--ink);border-bottom-color:var(--brand)}
+.tab-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:.8rem;margin-top:1.3rem}
+.tab-items a{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1rem 1.2rem;text-decoration:none;font-weight:600}
+.tab-items a span{color:var(--brand-text)}
+
+/* Normas */
+.norms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:2rem}
+@media (max-width:900px){.norms{grid-template-columns:minmax(0,1fr)}}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;align-content:flex-start}
+.chip{border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;font-size:.82rem;font-weight:500}
+
+/* Cierre */
+.closing{background:var(--brand);color:var(--brand-ink)}
+.closing .wrap{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between;padding-block:clamp(2.2rem,4vw,4rem)}
+.closing h2{font-size:clamp(1.5rem,2.4vw,2.4rem);letter-spacing:-0.02em}
+.closing p{margin:.4rem 0 0}
+.btn-white{background:#FFFFFF;color:#18191B}
+
+/* Pie */
+.foot{background:var(--foot);color:var(--foot-ink);font-size:.875rem}
+.foot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem;padding-block:3rem 1.6rem;line-height:1.9}
+@media (max-width:800px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+.foot strong{color:#FFFFFF}
+.foot a{text-decoration:none}
+.foot a:hover{color:#FFFFFF}
+.foot .legal{border-top:1px solid #333;padding-block:1rem 1.8rem;font-size:.75rem;line-height:1.7;color:#9E9E9E}
+.morse-btn{margin-top:.6rem;font:inherit;font-size:.8rem;min-height:40px;padding:0 .9rem;border:1.5px solid #F28A3C;border-radius:999px;background:transparent;color:#F28A3C;cursor:pointer}
+.morse-code{letter-spacing:.2em;color:#F28A3C;font-family:ui-monospace,Menlo,monospace}
+
+/* Reloj y pantallas muy pequeñas */
+@media (max-width:260px){
+  html{font-size:13px}
+  .util,.nav,.benefits,.ports,.cards,.norms,.foot-grid,.side,.split svg,.hero .lead{display:none}
+  .head-actions .icon-btn:not(.menu-btn){display:none}
+  .kpis{grid-template-columns:minmax(0,1fr)}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .grid12{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="util">
+  <div class="wrap">
+    <a href="index.html" style="margin-right:auto;font-weight:700;color:var(--brand-text)">← Volver a la Página Beta</a>
+    <span style="font-weight:700;letter-spacing:.08em;border:1.5px solid var(--brand);color:var(--brand-text);border-radius:999px;padding:.1rem .6rem">BETA 2</span>
+    <a href="terminal.html">Terminal de pruebas</a>
+    <a href="#explorar">Pestañas del sistema</a>
+    <label for="lang" style="display:flex;gap:.35rem;align-items:center">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+      <span class="sr">Idioma</span>
+      <select id="lang">
+        <option>México | Español</option><option>Global | English</option><option>Français</option><option>Русский</option><option>中文</option><option>العربية</option><option>Português</option><option>Deutsch</option><option>Italiano</option><option>日本語</option><option>한국어</option><option>हिन्दी</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="SOSistem, inicio">
+      <span class="word"><b>SOS</b>istem<sup>™</sup></span>
+      <svg viewBox="0 0 120 5" preserveAspectRatio="none" aria-hidden="true"><g fill="#C0541A"><circle cx="2.5" cy="2.5" r="2.5"/><circle cx="10" cy="2.5" r="2.5"/><circle cx="17.5" cy="2.5" r="2.5"/><rect x="25" width="16" height="5" rx="2.5"/><rect x="45" width="16" height="5" rx="2.5"/><rect x="65" width="16" height="5" rx="2.5"/><circle cx="88" cy="2.5" r="2.5"/><circle cx="95.5" cy="2.5" r="2.5"/><circle cx="103" cy="2.5" r="2.5"/></g></svg>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicios">Soluciones</a>
+      <a href="#industrias">Industrias</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#innovacion">Innovación</a>
+      <a href="#explorar">Recursos</a>
+      <a href="#normas">Acerca de SOSistem</a>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn" type="button" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="btn btn-brand btn-square" href="#contacto">Contáctenos</a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-main">
+      <div class="hero-copy">
+        <div class="hero-brand">
+          <span class="logo on-dark"><span class="word"><b>SOS</b>istem<sup>™</sup></span></span>
+          <p>Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</p>
+        </div>
+        <h1>Alerta temprana para proteger la vida</h1>
+        <p class="lead">Una plataforma inteligente de seguridad humana para recintos confinados: sensores, análisis de eventos y respuesta coordinada, sin cámaras.</p>
+        <div class="cta-row">
+          <a class="btn btn-brand" href="#servicios">Conocer la solución →</a>
+          <a class="btn btn-ghost-dark" href="#terminal"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg>Ver demostración</a>
+        </div>
+      </div>
+
+      <div class="console" role="img" aria-label="Vista de ejemplo de la consola de supervisión de SOSistem con una alerta de emergencia en el sanitario 2">
+        <div class="console-top">
+          <strong><b>SOS</b>istem™ · Consola</strong>
+          <span class="live"><span class="dot"></span>Sistema operativo</span>
+        </div>
+        <div class="console-body">
+          <div class="side"><span class="on">Inicio</span><span>Monitoreo</span><span>Alertas</span><span>Reportes</span><span>Configuración</span></div>
+          <div class="panel">
+            <div class="kpis">
+              <div class="kpi"><small>Ocupación</small><b>[__] %</b></div>
+              <div class="kpi"><small>Estado</small><b class="ok">Activo</b></div>
+              <div class="kpi"><small>Alertas</small><b>1</b></div>
+            </div>
+            <div class="split">
+              <svg class="plan" viewBox="0 0 250 150" aria-hidden="true">
+                <g fill="none" stroke="#4A5A70" stroke-width="1.5"><rect x="10" y="10" width="230" height="130"/><path d="M90 10v130M170 10v70M90 80h150M10 70h80M130 80v60"/></g>
+                <rect x="172" y="12" width="66" height="66" fill="#C8202F" opacity=".35"/>
+                <circle cx="205" cy="45" r="12" fill="#C8202F"/><path d="M205 37v10M205 51v1" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                <g fill="#7FB2FF"><circle cx="45" cy="40" r="3"/><circle cx="60" cy="110" r="3"/><circle cx="120" cy="40" r="3"/><circle cx="110" cy="110" r="3"/><circle cx="200" cy="115" r="3"/></g>
+              </svg>
+              <div class="side-stack">
+                <div class="alert"><strong>Alerta N1 · Emergencia</strong>Caída sin respuesta · Sanitario 2<span class="more">Ver detalles →</span></div>
+                <div class="checks"><span><span class="dot"></span>Sensores</span><span><span class="dot"></span>Comunicaciones</span><span><span class="dot"></span>Enlace 911</span></div>
+              </div>
+            </div>
+            <p class="note-dark" style="margin:0">Vista de ejemplo con datos ilustrativos. El rojo se reserva para emergencias (ISO 3864).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="benefits">
+      <div class="wrap">
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Detección sin cámaras, privacidad desde el diseño</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg><span>Análisis de eventos y respuesta coordinada</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Escalable a cualquier instalación y entorno</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16M6 20V10M10 20V6M14 20V12M18 20V8"/></svg><span>Respaldo de 21 años en la industria marítimo-portuaria</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="wrap services">
+      <div class="svc-intro">
+        <span class="eyebrow">12 servicios, una solución integral</span>
+        <h2 class="h2">Seguridad inteligente para un mundo más seguro</h2>
+        <p>Una plataforma modular y escalable que reúne detección, comunicación y respuesta en un solo sistema.</p>
+        <a class="btn btn-brand" href="#explorar" style="align-self:flex-start">Explorar módulos →</a>
+      </div>
+      <div class="grid12" id="grid12"></div>
+      <a class="ports" href="#industrias">
+        <svg viewBox="0 0 300 140" aria-hidden="true"><g fill="none" stroke="#141A24" stroke-width="3"><path d="M40 130V30h50M40 30l-20 25M60 30v40"/><path d="M150 130V20h60M150 20l-25 30M180 20v50"/><path d="M240 130V40h45M240 40l-15 20"/></g><rect y="118" width="300" height="22" fill="#141A24"/><g fill="#E07A2E"><rect x="90" y="104" width="22" height="14"/><rect x="114" y="104" width="22" height="14"/><rect x="200" y="104" width="22" height="14"/></g><rect x="200" y="90" width="22" height="14" fill="#F2E6D3"/></svg>
+        <strong>Aplicaciones en múltiples industrias</strong>
+        <span>Puertos, industria, edificios, transporte y más.</span>
+        <span class="pill">Descubrir casos de uso →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section alt" id="industrias">
+    <div class="wrap">
+      <h2 class="h2">Industrias que protegemos</h2>
+      <p class="sub">Donde una cámara no puede o no debe estar.</p>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="section" id="innovacion">
+    <div class="wrap">
+      <h2 class="h2">Innovación que ya funciona</h2>
+      <div class="stats">
+        <div class="stat"><b>52</b><p>pruebas reales en 2 meses con un iPhone como sensor</p></div>
+        <div class="stat"><b>1</b><p>sismo real detectado, con señal enviada</p></div>
+        <div class="stat"><b>7.2</b><p>versión pública con Terminal de pruebas abierta</p></div>
+        <div class="stat"><b>22</b><p>idiomas, más braille, Morse, banderas y señas</p></div>
+      </div>
+      <p class="fine">Pruebas internas del autor; pendientes de evaluación independiente.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="explorar">
+    <div class="wrap">
+      <h2 class="h2">Explore SOSistem</h2>
+      <div class="tabs" role="tablist" aria-label="Pestañas del sistema" id="tabs"></div>
+      <div class="tab-items" id="tabItems" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="section" id="normas">
+    <div class="wrap norms">
+      <div>
+        <h2 class="h2">Diseñado sobre normas internacionales</h2>
+        <p class="sub">Señales, colores, alarmas y comunicación alineados con la normativa mexicana, ISO, OMI y UIT.</p>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </section>
+
+  <section class="closing" id="terminal">
+    <div class="wrap" id="contacto">
+      <div style="min-width:0;max-width:44rem">
+        <h2>¿Listo para proteger su recinto?</h2>
+        <p>Pruebe la Terminal hoy, sin registro, o hable con nuestro equipo. WhatsApp 646 227 0490 · sos@sosistem.com</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-white" href="terminal.html">Abrir la Terminal</a>
+        <a class="btn btn-ghost-dark" href="https://wa.me/526462270490" target="_blank" rel="noopener">Contáctenos</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <span class="logo on-dark"><span class="word" style="font-size:1.6rem"><b>SOS</b>istem<sup>™</sup></span></span>
+      <div style="margin-top:.6rem">S.O.S. VHRS · Ensenada, B.C., México</div>
+      <div class="morse-code" id="morseCode">··· −−− ···</div>
+      <button class="morse-btn" id="morseBtn" type="button">Escuchar S.O.S. en Morse</button>
+    </div>
+    <div><strong>Soluciones</strong><br><a href="#servicios">12 servicios</a><br><a href="#industrias">Industrias</a><br><a href="#explorar">S.S.O.S.©</a></div>
+    <div><strong>Recursos</strong><br><a href="#terminal">Terminal de pruebas</a><br><a href="#explorar">Manual y presentación</a><br><a href="#normas">Marco normativo</a></div>
+    <div><strong>Acerca de</strong><br><a href="#normas">Autor y registros</a><br><a href="#explorar">Apoya el proyecto</a><br><a href="#contacto">Contáctenos</a></div>
+  </div>
+  <div class="wrap legal">© 2026 Víctor Hugo Ramírez Salgado. Todos los derechos reservados. SOSistem™ · Cubo Morse© · 16 obras registradas en Safe Creative. Sistema en etapa piloto: no reemplaza al 911 ni a los servicios oficiales de emergencia. Aviso de privacidad conforme a la LFPDPPP · Términos de la versión de prueba · Acceso de administrador.</div>
+</footer>
+
+<script>
+(function(){
+  var svc=['Inventario de personas','Segregación y clasificación','Persona en el suelo','Aforo excedido','Zonas en m² y m³','Pantallas ejecutivas','Sismo, explosión y auxilio','Gases y oxígeno','Llamada al 911 y nube','Estadística ejecutiva','Auxilio por desastre','Luz, Morse y bocina'];
+  var g=document.getElementById('grid12');
+  svc.forEach(function(n,i){var a=document.createElement('a');a.className='svc';a.href='#explorar';var b=document.createElement('i');b.textContent=String(i+1).padStart(2,'0');a.appendChild(b);a.appendChild(document.createTextNode(n));g.appendChild(a);});
+
+  var ind=[['Sanitarios y cabinas','Persona en el piso o inmóvil, sin imagen ni grabación.','sanitario público'],['Espacios confinados','Oxígeno, gases, presencia y tiempo de permanencia.','tanque o cisterna industrial'],['Puertos e industria IMMEX','Aforo, zonas de riesgo, sismo y coordinación.','terminal portuaria'],['Restaurantes y turismo médico','Señalética de ocupación y salvaguarda S.S.O.S.©','cocina de restaurante'],['Hogares y adultos mayores','Aviso a un familiar ante caída o la palabra «auxilio».','hogar'],['Edificios públicos','Evacuación y enlace con seguridad, Cruz Roja o bomberos.','edificio de gobierno']];
+  var c=document.getElementById('cards');
+  ind.forEach(function(x){var a=document.createElement('a');a.className='card';a.href='#contacto';a.innerHTML='<div class="ph"></div><div class="card-body"><strong></strong><span></span><em>Conocer más →</em></div>';a.querySelector('.ph').textContent='[Foto: '+x[2]+']';a.querySelector('strong').textContent=x[0];a.querySelector('span').textContent=x[1];c.appendChild(a);});
+
+  var G=[['Inicio',['Temporada de pruebas colaborativas','Colabore en las pruebas','Resumen ejecutivo']],['El sistema',['Funciones del Sistema S.O.S.©','Cubo de servicios','Cómo funciona','Arquitectura del sistema']],['Análisis',['FODA','El problema','Datos reales','Por qué S.O.S.©','Mundo en vivo']],['S.S.O.S.© y pantallas',['Módulo S.S.O.S.©','Pantalla S.S.O.S.© · simulador','Galería']],['Señales y aprendizaje',['Identidad · Cubo Morse©','Señales · normas ISO y OMI','Comunicación para todos','Mensajero del Cubo','Receptor Morse']],['Clientes y terminal',['Para quién','Piloto 2026–2027','Terminal de pruebas','Configurador de terminal']],['Normativa',['Marco normativo vigente','Fuentes']],['Apoyo y contacto',['Fondo SOS','Apoya el proyecto','Contacto']]];
+  var MAP={'Temporada de pruebas colaborativas':'inicio','Colabore en las pruebas':'colabora','Resumen ejecutivo':'resumen-ejecutivo','Funciones del Sistema S.O.S.©':'funciones','Cubo de servicios':'servicios','Cómo funciona':'funciona','Arquitectura del sistema':'modalidades','FODA':'foda','El problema':'problema','Datos reales':'datos','Por qué S.O.S.©':'ventajas','Mundo en vivo':'mundo','Módulo S.S.O.S.©':'ssos','Pantalla S.S.O.S.© · simulador':'pantalla-demo','Galería':'galeria','Identidad · Cubo Morse©':'cubo-morse','Señales · normas ISO y OMI':'senales','Comunicación para todos':'aprende','Mensajero del Cubo':'mensajero','Receptor Morse':'receptor','Para quién':'clientes','Piloto 2026–2027':'piloto','Terminal de pruebas':'terminal','Configurador de terminal':'configurador','Marco normativo vigente':'normativa','Fuentes':'fuentes','Fondo SOS':'fondo','Apoya el proyecto':'apoyo','Contacto':'contacto'};
+  var tabs=document.getElementById('tabs'),items=document.getElementById('tabItems');
+  function show(k){
+    Array.prototype.forEach.call(tabs.children,function(t,i){t.setAttribute('aria-selected',i===k?'true':'false');t.tabIndex=i===k?0:-1;});
+    items.innerHTML='';
+    G[k][1].forEach(function(n){var a=document.createElement('a');a.href='index.html#'+(MAP[n]||'indice');a.textContent=n;var s=document.createElement('span');s.textContent='→';a.appendChild(s);items.appendChild(a);});
+    try{localStorage.setItem('sos_b2_tab',String(k));}catch(e){}
+  }
+  G.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.className='tab';b.setAttribute('role','tab');b.textContent=x[0];b.addEventListener('click',function(){show(i);});b.addEventListener('keydown',function(e){var n=e.key==='ArrowRight'?(i+1)%G.length:e.key==='ArrowLeft'?(i-1+G.length)%G.length:-1;if(n>=0){show(n);tabs.children[n].focus();}});tabs.appendChild(b);});
+  var start=0;try{start=parseInt(localStorage.getItem('sos_b2_tab')||'0',10)||0;}catch(e){}
+  show(Math.min(start,G.length-1));
+
+  var norms=['NOM-026-STPS-2008','NOM-002-STPS-2010','NOM-033-STPS-2015','Ley Federal del Trabajo','LFPDPPP 2025','ISO 7010:2019','ISO 3864-1:2011','ISO 3864-3:2024','ISO 7731:2003','ISO 8201:2017','ISO 11429:1996','SOLAS III/34','Código IDS 7.2.1','OMI A.1021(26)','OMI A.80(IV)','ITU-R M.1677-1','CAP v1.2','SIP RFC 3261','CDPD ONU'];
+  var ch=document.getElementById('chips');
+  norms.forEach(function(n){var s=document.createElement('span');s.className='chip';s.textContent=n;ch.appendChild(s);});
+
+  var mb=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false');});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');}});
+
+  /* Botón para oír cómo suena S.O.S. (permitido en Aprendizaje; no suena solo) */
+  var ctx=null,playing=false,code='...---...';
+  document.getElementById('morseBtn').addEventListener('click',function(){
+    if(playing)return;
+    try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();}catch(e){return;}
+    playing=true;var u=.08,t=ctx.currentTime+.05,o=ctx.createOscillator(),gn=ctx.createGain();
+    o.frequency.value=700;gn.gain.setValueAtTime(0,t);o.connect(gn);gn.connect(ctx.destination);
+    code.split('').forEach(function(s,i){var d=s==='.'?u:u*3;gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(.3,t+.005);gn.gain.setValueAtTime(.3,t+d-.005);gn.gain.linearRampToValueAtTime(0,t+d);t+=d+u;if(i===2||i===5)t+=u*2;});
+    o.start();o.stop(t+.05);setTimeout(function(){playing=false;},(t-ctx.currentTime)*1000+150);
+  });
+})();
+</script>
+</body>
+</html>

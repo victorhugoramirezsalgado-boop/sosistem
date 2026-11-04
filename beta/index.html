@@ -269,6 +269,9 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
         <li><span class="indice-n">10.3</span> <a href="../assets/cubo-aprendizaje-carta.pdf" target="_blank" rel="noopener">Cubo de Aprendizaje armable (carta)</a></li>
         <li><span class="indice-n">10.4</span> <a href="../assets/cubo33-nivel1-prototipo-carta.pdf" target="_blank" rel="noopener">Juego del Cubo · Nivel 1, prototipo del Cubo 33</a></li>
       </ol></div>
+      <div class="card" style="border:2px solid #E07A2E"><h3>Beta 2 · Nuevo diseño</h3><ol class="indice-lista">
+        <li><span class="indice-n">B2</span> <a href="#beta-2">Beta 2 · propuesta de nuevo sitio (estilo corporativo industrial)</a></li>
+      </ol></div>
     </div>
     <div class="card"><h3>11. Registros de propiedad intelectual citados en el sistema</h3><ol class="indice-lista">
         <li><span class="indice-n">11.1</span> Sistema S.O.S.© · <a href="https://www.safecreative.org/work/2609046908578" target="_blank" rel="noopener">Safe Creative 2609046908578</a></li>
@@ -1233,6 +1236,45 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
   </div>
 </section>
 
+<section class="slide blk no-traducir" id="beta-2">
+  <div class="wrap">
+    <span class="eyebrow">Solo Beta · Beta 2</span>
+    <h2>Beta 2 · Propuesta de nuevo sitio</h2>
+    <p class="lead">Diseño en estilo corporativo industrial, con naranja de marca y rojo reservado para emergencias (ISO 3864). Elija un equipo para ver cómo se adapta.</p>
+    <div class="b2-equipos" role="group" aria-label="Vista por equipo">
+      <button type="button" data-w="1440" data-h="900" aria-pressed="true">Computadora</button>
+      <button type="button" data-w="1920" data-h="1080" aria-pressed="false">Proyector</button>
+      <button type="button" data-w="834" data-h="1112" aria-pressed="false">iPad</button>
+      <button type="button" data-w="390" data-h="844" aria-pressed="false">iPhone</button>
+      <button type="button" data-w="412" data-h="915" aria-pressed="false">Android</button>
+      <button type="button" data-w="198" data-h="242" aria-pressed="false">Reloj</button>
+    </div>
+    <p class="note" id="b2-medida">Computadora · 1440 × 900 px</p>
+    <div class="b2-marco" id="b2-marco"><iframe id="b2-vista" title="Beta 2 · vista previa del nuevo sitio" src="beta2.html" loading="lazy"></iframe></div>
+    <p><a class="b2-abrir" href="beta2.html">Abrir Beta 2 a pantalla completa →</a></p>
+    <p class="note">Pendiente: fotos reales de las 6 industrias y el dato real de ocupación. Al autorizar, pasa al sitio oficial.</p>
+    <style>
+      .b2-equipos{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+      .b2-equipos button{font:inherit;font-weight:600;min-height:44px;padding:0 16px;border-radius:10px;border:2px solid #5B6170;background:transparent;color:inherit;cursor:pointer}
+      .b2-equipos button[aria-pressed="true"]{border-color:#DB641C;background:#DB641C;color:#fff}
+      .b2-marco{position:relative;width:100%;overflow:hidden;border:2px solid #DB641C;border-radius:12px;background:#fff;margin:8px 0 14px}
+      .b2-marco iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;background:#fff}
+      .b2-abrir{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:2px solid #DB641C;border-radius:10px;font-weight:700;text-decoration:none}
+    </style>
+    <script>
+    (function(){
+      var marco=document.getElementById('b2-marco'),vista=document.getElementById('b2-vista'),med=document.getElementById('b2-medida');
+      var btns=[].slice.call(document.querySelectorAll('.b2-equipos button')),w=1440,h=900,nom='Computadora';
+      function ajustar(){var cw=marco.clientWidth||w,k=Math.min(1,cw/w);vista.style.width=w+'px';vista.style.height=h+'px';vista.style.transform='scale('+k+')';marco.style.height=Math.round(h*k)+'px';if(w<cw){vista.style.left=Math.round((cw-w)/2)+'px';}else{vista.style.left='0px';}}
+      btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});w=+b.dataset.w;h=+b.dataset.h;nom=b.textContent;med.textContent=nom+' · '+w+' × '+h+' px';ajustar();});});
+      window.addEventListener('resize',ajustar);
+      new MutationObserver(ajustar).observe(document.getElementById('beta-2'),{attributes:true,attributeFilter:['hidden']});
+      ajustar();
+    })();
+    </script>
+  </div>
+</section>
+
 <section class="slide blk no-traducir" id="reportes-pruebas">
   <div class="wrap" id="rp-beta">
     <span class="eyebrow">Solo Beta · administrador</span>
@@ -1392,7 +1434,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/configurador.js?v=5.7b22"></script>
 <script src="assets/servicios12.js?v=5.7b12"></script>
 <script src="assets/cabecera.js?v=5.7b12"></script>
-<script src="assets/pestanas.js?v=7.3b1"></script>
+<script src="assets/pestanas.js?v=7.3b2"></script>
 <script src="assets/rastreo.js?v=5.7b12"></script>
 <script src="assets/morse-motor.js?v=5.7b12"></script>
 <script src="assets/receptor.js?v=5.7b12"></script>
