@@ -219,6 +219,37 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .split{grid-template-columns:minmax(0,1fr)}
   .grid12{grid-template-columns:minmax(0,1fr)}
 }
+
+/* Aprendizaje */
+.learn{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start;margin-top:1.6rem}
+@media (max-width:900px){.learn{grid-template-columns:minmax(0,1fr)}}
+.learn-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(1rem,2vw,1.6rem);display:flex;flex-direction:column;gap:1rem;min-width:0}
+.learn-box label{font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+.learn-box input{font:inherit;font-size:1.25rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+.learn-row{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.8rem;align-items:center;padding-block:.7rem;border-top:1px solid var(--line)}
+@media (max-width:420px){.learn-row{grid-template-columns:minmax(0,1fr)}}
+.learn-row dt{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.learn-row dd{margin:0;min-width:0;overflow-x:auto}
+.l-morse{font-family:ui-monospace,Menlo,monospace;font-size:1.15rem;letter-spacing:.18em;color:var(--brand-text);white-space:nowrap}
+.l-braille{font-size:1.9rem;letter-spacing:.12em;line-height:1.1;color:var(--ink)}
+.l-flags{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.l-flags svg{height:30px;width:auto;border:1px solid var(--line);border-radius:2px}
+.l-flags .ics-pal{display:inline-flex;gap:4px;margin-right:10px}
+.langs{display:flex;flex-wrap:wrap;gap:.45rem}
+.lang{border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem;font-size:.85rem;background:var(--surface)}
+.lang b{font-weight:600;color:var(--muted);font-size:.72rem;margin-right:.35rem;letter-spacing:.04em}
+.learn-links{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+/* Normas completas */
+.norm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:1.6rem}
+@media (max-width:1100px){.norm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.norm-grid{grid-template-columns:minmax(0,1fr)}}
+.norm-col{border-top:3px solid var(--brand);padding-top:.9rem;min-width:0}
+.norm-col h3{font-size:1rem;letter-spacing:-0.01em;margin-bottom:.5rem}
+.norm-col ul{list-style:none;margin:0;padding:0}
+.norm-col li{padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.45}
+.norm-col li b{display:block;font-weight:700;font-variant-numeric:tabular-nums}
+.norm-col li span{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -250,6 +281,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <a href="#industrias">Industrias</a>
       <a href="#servicios">Servicios</a>
       <a href="#innovacion">Innovación</a>
+      <a href="#aprendizaje">Aprendizaje</a>
       <a href="#explorar">Recursos</a>
       <a href="#normas">Acerca de SOSistem</a>
     </nav>
@@ -356,7 +388,41 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
   </section>
 
-  <section class="section alt" id="explorar">
+  <section class="section alt" id="aprendizaje">
+    <div class="wrap">
+      <span class="eyebrow">Comunicación para todos · Aprendizaje</span>
+      <h2 class="h2" style="margin-top:.6rem">Una alerta que todos entienden</h2>
+      <p class="sub">SOSistem™ comunica en 22 idiomas, código Morse internacional, braille y banderas del Código Internacional de Señales. Escriba una palabra y véala en cada sistema.</p>
+      <div class="learn">
+        <div class="learn-box">
+          <label for="l-in">Palabra</label>
+          <input id="l-in" type="text" value="SOS" maxlength="16" autocomplete="off" spellcheck="false">
+          <dl style="margin:0">
+            <div class="learn-row"><dt>Morse</dt><dd class="l-morse" id="l-morse"></dd></div>
+            <div class="learn-row"><dt>Braille</dt><dd class="l-braille" id="l-braille" aria-label="Braille"></dd></div>
+            <div class="learn-row"><dt>Banderas</dt><dd class="l-flags" id="l-flags"></dd></div>
+          </dl>
+          <button class="btn btn-brand" id="l-play" type="button" style="align-self:flex-start">Escuchar en Morse</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.2rem;min-width:0">
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.7rem">«Auxilio» en varios idiomas</h3>
+            <div class="langs">
+              <span class="lang"><b>ES</b>Auxilio</span><span class="lang"><b>EN</b>Help</span><span class="lang"><b>FR</b>Au secours</span><span class="lang"><b>PT</b>Socorro</span><span class="lang"><b>IT</b>Aiuto</span><span class="lang"><b>DE</b>Hilfe</span><span class="lang"><b>RU</b>Помогите</span><span class="lang"><b>ZH</b>救命</span><span class="lang"><b>JA</b>助けて</span><span class="lang"><b>KO</b>도와주세요</span><span class="lang"><b>AR</b>النجدة</span><span class="lang"><b>HI</b>बचाओ</span>
+            </div>
+          </div>
+          <p style="margin:0;color:var(--muted)">Incluye lengua de señas (LSM y ASL en desarrollo), modo fácil para adultos mayores y colores de seguridad ISO 3864.</p>
+          <div class="learn-links">
+            <a class="btn btn-line" href="index.html#aprende">Aprendizaje completo</a>
+            <a class="btn btn-line" href="index.html#receptor">Receptor Morse</a>
+            <a class="btn btn-line" href="index.html#mensajero">Mensajero del Cubo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="explorar">
     <div class="wrap">
       <h2 class="h2">Explore SOSistem</h2>
       <div class="tabs" role="tablist" aria-label="Pestañas del sistema" id="tabs"></div>
@@ -364,13 +430,45 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
   </section>
 
-  <section class="section" id="normas">
-    <div class="wrap norms">
-      <div>
-        <h2 class="h2">Diseñado sobre normas internacionales</h2>
-        <p class="sub">Señales, colores, alarmas y comunicación alineados con la normativa mexicana, ISO, OMI y UIT.</p>
+  <section class="section alt" id="normas">
+    <div class="wrap">
+      <span class="eyebrow">Marco normativo vigente · Normativa y fuentes</span>
+      <h2 class="h2" style="margin-top:.6rem">Diseñado sobre normas nacionales e internacionales</h2>
+      <p class="sub">Señales, colores, alarmas, comunicación y privacidad alineados con la normativa mexicana, ISO, OMI, UIT y ONU.</p>
+      <div class="norm-grid">
+        <div class="norm-col"><h3>México</h3><ul>
+          <li><b>NOM-026-STPS-2008</b><span>Colores y señales de seguridad e higiene</span></li>
+          <li><b>NOM-002-STPS-2010</b><span>Prevención y protección contra incendios</span></li>
+          <li><b>NOM-033-STPS-2015</b><span>Trabajos en espacios confinados</span></li>
+          <li><b>Ley Federal del Trabajo</b><span>Arts. 132, 504 y 994</span></li>
+          <li><b>LFPDPPP 2025</b><span>Protección de datos personales en posesión de los particulares</span></li>
+          <li><b>Ley en Materia de Telecomunicaciones y Radiodifusión</b><span>Enlace y avisos de emergencia</span></li>
+        </ul></div>
+        <div class="norm-col"><h3>ISO · señales y alarmas</h3><ul>
+          <li><b>ISO 7010:2019</b><span>Señales de seguridad registradas (Amd. 1–11, Amd. 11:2026)</span></li>
+          <li><b>ISO 3864-1:2011</b><span>Colores y señales de seguridad: diseño</span></li>
+          <li><b>ISO 3864-3:2024</b><span>Símbolos gráficos para señales de seguridad</span></li>
+          <li><b>ISO 3864-4</b><span>Colorimetría de referencia (RAL 3001, 1003, 6032, 5005)</span></li>
+          <li><b>ISO 7731:2003</b><span>Señales acústicas de peligro</span></li>
+          <li><b>ISO 8201:2017</b><span>Señal acústica de evacuación de emergencia</span></li>
+          <li><b>ISO 11429:1996</b><span>Sistema de señales visuales y auditivas de peligro</span></li>
+        </ul></div>
+        <div class="norm-col"><h3>OMI y UIT · mar y señales</h3><ul>
+          <li><b>SOLAS, cap. III, regla 34</b><span>Dispositivos y medios de salvamento</span></li>
+          <li><b>Código IDS (LSA) 7.2.1</b><span>Alarma general de emergencia</span></li>
+          <li><b>Código de Alertas e Indicadores, 2009</b><span>OMI, res. A.1021(26)</span></li>
+          <li><b>Código Internacional de Señales</b><span>OMI, res. A.80(IV): banderas y significados</span></li>
+          <li><b>ITU-R M.1677-1 (2009)</b><span>Código Morse internacional</span></li>
+        </ul></div>
+        <div class="norm-col"><h3>Interoperabilidad y derechos</h3><ul>
+          <li><b>CAP v1.2 (OASIS)</b><span>Protocolo común de alertas</span></li>
+          <li><b>SIP (RFC 3261)</b><span>Enlace de voz con centros de emergencia</span></li>
+          <li><b>ISO/IEC 646:1991</b><span>Juego de caracteres para mensajes</span></li>
+          <li><b>ISO 639-3</b><span>Códigos de idiomas</span></li>
+          <li><b>Convención ONU sobre los Derechos de las Personas con Discapacidad</b><span>Arts. 2, 9, 21 y 24: accesibilidad y comunicación</span></li>
+        </ul></div>
       </div>
-      <div class="chips" id="chips"></div>
+      <p class="fine">Detalle y fuentes en APA 7.ª ed.: <a href="index.html#normativa">Marco normativo vigente</a> · <a href="index.html#senales">Señales · normas ISO y OMI</a> · <a href="index.html#fuentes">Fuentes</a>.</p>
     </div>
   </section>
 
@@ -426,9 +524,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   var start=0;try{start=parseInt(localStorage.getItem('sos_b2_tab')||'0',10)||0;}catch(e){}
   show(Math.min(start,G.length-1));
 
-  var norms=['NOM-026-STPS-2008','NOM-002-STPS-2010','NOM-033-STPS-2015','Ley Federal del Trabajo','LFPDPPP 2025','ISO 7010:2019','ISO 3864-1:2011','ISO 3864-3:2024','ISO 7731:2003','ISO 8201:2017','ISO 11429:1996','SOLAS III/34','Código IDS 7.2.1','OMI A.1021(26)','OMI A.80(IV)','ITU-R M.1677-1','CAP v1.2','SIP RFC 3261','CDPD ONU'];
-  var ch=document.getElementById('chips');
-  norms.forEach(function(n){var s=document.createElement('span');s.className='chip';s.textContent=n;ch.appendChild(s);});
 
   var mb=document.getElementById('menuBtn'),nav=document.getElementById('nav');
   mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false');});
@@ -444,6 +539,33 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     code.split('').forEach(function(s,i){var d=s==='.'?u:u*3;gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(.3,t+.005);gn.gain.setValueAtTime(.3,t+d-.005);gn.gain.linearRampToValueAtTime(0,t+d);t+=d+u;if(i===2||i===5)t+=u*2;});
     o.start();o.stop(t+.05);setTimeout(function(){playing=false;},(t-ctx.currentTime)*1000+150);
   });
+})();
+</script>
+<script src="assets/cubo-rt.js?v=5.7b12"></script>
+<script src="assets/banderas.js?v=7.3b1"></script>
+<script>
+(function(){
+  var M={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.'};
+  var BR={A:'⠁',B:'⠃',C:'⠉',D:'⠙',E:'⠑',F:'⠋',G:'⠛',H:'⠓',I:'⠊',J:'⠚',K:'⠅',L:'⠇',M:'⠍',N:'⠝',O:'⠕',P:'⠏',Q:'⠟',R:'⠗',S:'⠎',T:'⠞',U:'⠥',V:'⠧',W:'⠺',X:'⠭',Y:'⠽',Z:'⠵',' ':'⠀'};
+  var inp=document.getElementById('l-in'),mo=document.getElementById('l-morse'),br=document.getElementById('l-braille'),fl=document.getElementById('l-flags');
+  function limpio(t){return (t||'SOS').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z0-9 ]/g,'');}
+  function pintar(){
+    var t=limpio(inp.value)||'SOS';
+    mo.textContent=t.split('').map(function(c){return c===' '?'/':(M[c]||'');}).join(' ').replace(/\./g,'·').replace(/-/g,'−');
+    br.textContent=t.split('').map(function(c){return BR[c]||'';}).join('');
+    if(window.SOSBanderas&&SOSBanderas.mensaje){fl.innerHTML=SOSBanderas.mensaje(t,30);}else{fl.textContent='Banderas disponibles en la Página Beta.';}
+  }
+  inp.addEventListener('input',pintar);
+  var ctx=null,sonando=false;
+  document.getElementById('l-play').addEventListener('click',function(){
+    if(sonando)return;var t=limpio(inp.value)||'SOS';
+    try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();}catch(e){return;}
+    sonando=true;var u=.08,tt=ctx.currentTime+.05,o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=700;g.gain.setValueAtTime(0,tt);o.connect(g);g.connect(ctx.destination);
+    t.split('').forEach(function(c){if(c===' '){tt+=u*4;return;}(M[c]||'').split('').forEach(function(s){var d=s==='.'?u:u*3;g.gain.setValueAtTime(0,tt);g.gain.linearRampToValueAtTime(.3,tt+.005);g.gain.setValueAtTime(.3,tt+d-.005);g.gain.linearRampToValueAtTime(0,tt+d);tt+=d+u;});tt+=u*2;});
+    o.start();o.stop(tt+.05);setTimeout(function(){sonando=false;},(tt-ctx.currentTime)*1000+150);
+  });
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',pintar);}else{pintar();}
+  window.addEventListener('load',pintar);
 })();
 </script>
 </body>
