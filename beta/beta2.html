@@ -15,9 +15,9 @@
 :root{
   --bg:#FFFFFF; --bg-alt:#F4F4F2; --surface:#FFFFFF; --ink:#18191B; --muted:#55585E; --line:#E1E1DD;
   --brand:#C0541A; --brand-ink:#FFFFFF; --brand-soft:#FBEFE6; --brand-text:#9C4314;
-  --hero:#121418; --hero-2:#1C2430; --hero-ink:#FFFFFF; --hero-muted:#C2C8D0; --hero-line:#2C3644;
-  --console:#0B0E13; --tile:#151B24; --ok:#2FBF71; --ok-text:#8FE3B0; --danger:#C8202F; --danger-bg:#3A1014; --danger-text:#FFC9CD;
-  --foot:#1E1F21; --foot-ink:#BEBEBE;
+  --hero:#F7F2E9; --hero-2:#EEE4D3; --hero-ink:#18191B; --hero-muted:#55585E; --hero-line:#E3D8C5;
+  --console:#FFFFFF; --tile:#FAF7F2; --ok:#237F52; --ok-text:#1E6E46; --danger:#C8202F; --danger-bg:#FDECEE; --danger-text:#A3121F;
+  --foot:#EFE7DA; --foot-ink:#4A4A4A;
   --f-display:"Inter", "Helvetica Neue", Arial, sans-serif;
   --f-body:"Inter", "Helvetica Neue", Arial, sans-serif;
   --wrap:1320px;
@@ -40,7 +40,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 .logo .word b{color:var(--brand);font-weight:900}
 .logo .word sup{font-size:.32em;font-weight:600;letter-spacing:0;vertical-align:1.5em}
 .logo svg{display:block;width:100%;max-width:7.6rem;height:5px}
-.logo.on-dark .word{color:var(--hero-ink)} .logo.on-dark .word b{color:#F28A3C}
+.logo.on-dark .word{color:var(--hero-ink)} .logo.on-dark .word b{color:var(--brand)}
 
 /* Barra superior */
 .util{background:var(--bg-alt);border-bottom:1px solid var(--line);font-size:.8125rem;color:var(--muted)}
@@ -81,11 +81,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 }
 
 /* Héroe */
-.hero{background:linear-gradient(100deg,var(--hero) 0%,#161B23 45%,var(--hero-2) 100%);color:var(--hero-ink)}
+.hero{background:linear-gradient(100deg,var(--hero) 0%,#F3ECDF 50%,var(--hero-2) 100%);color:var(--hero-ink)}
+.hero .btn-ghost-dark{border-color:var(--ink);color:var(--ink)}
 .hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(1.8rem,4vw,4rem);align-items:center;padding-block:clamp(2.2rem,6vw,5.5rem)}
 @media (max-width:900px){.hero-main{grid-template-columns:minmax(0,1fr)}}
 .hero-copy{display:flex;flex-direction:column;gap:1.2rem;min-width:0}
-.hero-brand{border-left:3px solid #F28A3C;padding-left:1rem}
+.hero-brand{border-left:3px solid var(--brand);padding-left:1rem}
 .hero-brand .logo .word{font-size:clamp(1.6rem,3vw,2.6rem)}
 .hero-brand p{margin:.4rem 0 0;font-size:.85rem;color:var(--hero-muted)}
 .hero h1{font-size:clamp(1.9rem,4.4vw,4rem);line-height:1.04;letter-spacing:-0.03em;font-weight:800}
@@ -93,21 +94,21 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cta-row{display:flex;flex-wrap:wrap;gap:.75rem}
 
 /* Consola */
-.console{background:var(--console);border:1px solid var(--hero-line);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden;min-width:0;color:#FFFFFF}
-.console-top{display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid #222A35;font-size:.8rem}
+.console{background:var(--console);border:1px solid var(--hero-line);border-radius:12px;box-shadow:0 24px 60px rgba(60,45,20,.16);overflow:hidden;min-width:0;color:var(--ink)}
+.console-top{display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--hero-line);font-size:.8rem}
 .console-top strong{font-family:var(--f-display);font-size:.95rem}
-.console-top strong b{color:#F28A3C}
+.console-top strong b{color:var(--brand)}
 .live{display:inline-flex;gap:.45rem;align-items:center;color:var(--ok-text)}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
 .console-body{display:grid;grid-template-columns:7.5rem minmax(0,1fr)}
 @media (max-width:560px){.console-body{grid-template-columns:minmax(0,1fr)}.side{display:none}}
-.side{border-right:1px solid #222A35;padding:.8rem .6rem;display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:#A9B2BF}
+.side{border-right:1px solid var(--hero-line);padding:.8rem .6rem;display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:var(--muted)}
 .side span{padding:.45rem .6rem;border-radius:4px}
-.side .on{background:#2A3240;color:#FFFFFF;border-left:3px solid #F28A3C}
+.side .on{background:var(--brand-soft);color:var(--ink);border-left:3px solid var(--brand)}
 .panel{padding:.9rem;display:flex;flex-direction:column;gap:.75rem;min-width:0}
 .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
 .kpi{background:var(--tile);border:1px solid var(--hero-line);border-radius:6px;padding:.6rem .75rem}
-.kpi small{display:block;font-size:.7rem;color:#A9B2BF}
+.kpi small{display:block;font-size:.7rem;color:var(--muted)}
 .kpi b{font-family:var(--f-display);font-size:1.35rem}
 .kpi .ok{color:var(--ok-text)}
 .split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:.6rem}
@@ -119,12 +120,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .checks{background:var(--tile);border:1px solid var(--hero-line);border-radius:6px;padding:.6rem .75rem;display:flex;flex-direction:column;gap:.3rem;font-size:.78rem}
 .checks span{display:flex;gap:.5rem;align-items:center}
 .side-stack{display:flex;flex-direction:column;gap:.6rem}
-.note-dark{font-size:.7rem;color:#8994A3}
+.note-dark{font-size:.7rem;color:var(--muted)}
 @media (max-width:560px){.console .side{display:none}}
 
 /* Franja de beneficios */
-.benefits{border-top:1px solid var(--hero-line);background:#0E1015}
-.benefits .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;padding-block:1rem;font-size:.88rem;color:#E3E7ED}
+.benefits{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#FFFFFF}
+.benefits .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;padding-block:1rem;font-size:.88rem;color:var(--ink)}
 @media (max-width:980px){.benefits .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.benefits .wrap{grid-template-columns:minmax(0,1fr)}}
 .benefit{display:flex;gap:.75rem;align-items:center}
@@ -159,7 +160,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.cards{grid-template-columns:minmax(0,1fr)}}
 .card{display:flex;flex-direction:column;background:var(--surface);text-decoration:none;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
-.ph{aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#2B3442 0%,#4B5A6E 100%);display:flex;align-items:flex-end;padding:.8rem;color:#D3D8E0;font-size:.75rem}
+.ph{aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#EFE6D6 0%,#E2D5BF 100%);display:flex;align-items:flex-end;padding:.8rem;color:#6B5E4A;font-size:.75rem}
 .card-body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.45rem}
 .card-body strong{font-family:var(--f-display);font-size:1.15rem}
 .card-body span{color:var(--muted);font-size:.95rem}
@@ -200,12 +201,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .foot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem;padding-block:3rem 1.6rem;line-height:1.9}
 @media (max-width:800px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
-.foot strong{color:#FFFFFF}
+.foot strong{color:var(--ink)}
 .foot a{text-decoration:none}
-.foot a:hover{color:#FFFFFF}
-.foot .legal{border-top:1px solid #333;padding-block:1rem 1.8rem;font-size:.75rem;line-height:1.7;color:#9E9E9E}
-.morse-btn{margin-top:.6rem;font:inherit;font-size:.8rem;min-height:40px;padding:0 .9rem;border:1.5px solid #F28A3C;border-radius:999px;background:transparent;color:#F28A3C;cursor:pointer}
-.morse-code{letter-spacing:.2em;color:#F28A3C;font-family:ui-monospace,Menlo,monospace}
+.foot a:hover{color:var(--brand-text)}
+.foot .legal{border-top:1px solid #DCCFB9;padding-block:1rem 1.8rem;font-size:.75rem;line-height:1.7;color:#5E5E5E}
+.morse-btn{margin-top:.6rem;font:inherit;font-size:.8rem;min-height:40px;padding:0 .9rem;border:1.5px solid var(--brand);border-radius:999px;background:transparent;color:var(--brand-text);cursor:pointer}
+.morse-code{letter-spacing:.2em;color:var(--brand-text);font-family:ui-monospace,Menlo,monospace}
 
 /* Reloj y pantallas muy pequeñas */
 @media (max-width:260px){
@@ -289,10 +290,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
             </div>
             <div class="split">
               <svg class="plan" viewBox="0 0 250 150" aria-hidden="true">
-                <g fill="none" stroke="#4A5A70" stroke-width="1.5"><rect x="10" y="10" width="230" height="130"/><path d="M90 10v130M170 10v70M90 80h150M10 70h80M130 80v60"/></g>
+                <g fill="none" stroke="#B9AC96" stroke-width="1.5"><rect x="10" y="10" width="230" height="130"/><path d="M90 10v130M170 10v70M90 80h150M10 70h80M130 80v60"/></g>
                 <rect x="172" y="12" width="66" height="66" fill="#C8202F" opacity=".35"/>
                 <circle cx="205" cy="45" r="12" fill="#C8202F"/><path d="M205 37v10M205 51v1" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-                <g fill="#7FB2FF"><circle cx="45" cy="40" r="3"/><circle cx="60" cy="110" r="3"/><circle cx="120" cy="40" r="3"/><circle cx="110" cy="110" r="3"/><circle cx="200" cy="115" r="3"/></g>
+                <g fill="#1F5FA8"><circle cx="45" cy="40" r="3"/><circle cx="60" cy="110" r="3"/><circle cx="120" cy="40" r="3"/><circle cx="110" cy="110" r="3"/><circle cx="200" cy="115" r="3"/></g>
               </svg>
               <div class="side-stack">
                 <div class="alert"><strong>Alerta N1 · Emergencia</strong>Caída sin respuesta · Sanitario 2<span class="more">Ver detalles →</span></div>
@@ -306,10 +307,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
     <div class="benefits">
       <div class="wrap">
-        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Detección sin cámaras, privacidad desde el diseño</span></div>
-        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg><span>Análisis de eventos y respuesta coordinada</span></div>
-        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Escalable a cualquier instalación y entorno</span></div>
-        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F28A3C" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16M6 20V10M10 20V6M14 20V12M18 20V8"/></svg><span>Respaldo de 21 años en la industria marítimo-portuaria</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C0541A" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Detección sin cámaras, privacidad desde el diseño</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C0541A" stroke-width="1.5" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg><span>Análisis de eventos y respuesta coordinada</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C0541A" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>Escalable a cualquier instalación y entorno</span></div>
+        <div class="benefit"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C0541A" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16M6 20V10M10 20V6M14 20V12M18 20V8"/></svg><span>Respaldo de 21 años en la industria marítimo-portuaria</span></div>
       </div>
     </div>
   </section>
