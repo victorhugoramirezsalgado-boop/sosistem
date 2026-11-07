@@ -58,21 +58,33 @@
 }
 :root[data-tono="discreto"] body{opacity:.96}
 
-/* Selector de tono — barra flotante fija abajo, siempre visible */
-.tono-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);
-  z-index:900;display:inline-flex;gap:3px;align-items:center;background:var(--s1);
-  border:1px solid var(--line2);border-radius:14px;padding:4px;box-shadow:var(--shadow)}
-.tono-bar button{min-height:38px;min-width:46px;font:500 14px var(--font,system-ui);border:0;border-radius:10px;
-  background:transparent;color:var(--ink2);cursor:pointer;padding:0 12px}
-.tono-bar button[aria-pressed="true"]{background:var(--brand);color:#fff}
-.tono-bar .tono-ocultar{color:var(--nar);font-weight:600}
+/* Nombre de la página como marca de agua: siempre más tenue que la información.
+   Nadie que mire de reojo debe reconocer en qué página está. */
+.cab b{opacity:.32;font-weight:500;letter-spacing:.02em}
+:root[data-tono="noche"] .cab b{opacity:.30}
+:root[data-tono="discreto"] .cab b{opacity:.14}
+/* En Oculto se esconden nombre y título por completo */
+:root[data-oculto="1"] .cab b,
+:root[data-oculto="1"] h1{opacity:0 !important;visibility:hidden}
 
-/* Pantalla neutra de «Ocultar»: tapa todo al instante */
-.tono-cortina{position:fixed;inset:0;z-index:9999;background:#0b0f14;display:none;
-  align-items:center;justify-content:center;color:#2a3340;font:500 15px var(--font,system-ui);cursor:pointer;
-  -webkit-tap-highlight-color:transparent}
-:root[data-oculto="1"] .tono-cortina{display:flex}
-:root[data-oculto="1"] body>:not(.tono-cortina){filter:blur(18px)}
+/* Botón único de ciclo — flotante fijo abajo, siempre visible.
+   Cada toque sube: Oculto → Discreto → Noche → Día → Oculto… */
+.tono-ciclo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);
+  z-index:900;min-height:40px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--s1);border:1px solid var(--line2);border-radius:14px;padding:0 16px;
+  font:500 14px var(--font,system-ui);color:var(--ink2);cursor:pointer;box-shadow:var(--shadow)}
+.tono-ciclo .punto{width:9px;height:9px;border-radius:50%;background:var(--gris)}
+.tono-ciclo[data-nivel="dia"] .punto{background:var(--nar)}
+.tono-ciclo[data-nivel="noche"] .punto{background:var(--brand)}
+.tono-ciclo[data-nivel="discreto"] .punto{background:var(--gris)}
+.tono-ciclo[data-nivel="oculto"] .punto{background:var(--ink2);opacity:.4}
+
+/* Modo «Oculto»: baja al mínimo el contraste de toda la página para que de lejos
+   no se distinga nada ni el nombre; el botón de ciclo sigue visible para volver. */
+:root[data-oculto="1"] body{opacity:.9}
+:root[data-oculto="1"] .card,
+:root[data-oculto="1"] .note,
+:root[data-oculto="1"] h2{opacity:.25}
 
 @media (prefers-reduced-motion: no-preference){
   .tono-bar button{transition:background .15s ease,color .15s ease}

@@ -1,77 +1,73 @@
 /* ============================================================
-   Tono © · Selector de ambiente para SOSistem™ (Sistema S.O.S.©)
+   Tono © · Botón de ciclo de visibilidad para SOSistem™ (Sistema S.O.S.©)
    Obra de Víctor Hugo Ramírez Salgado · Safe Creative 2609046908578
-   Inserta una barra Día/Noche/Discreto + botón Ocultar, recuerda la
-   elección en el equipo (localStorage) y no envía nada a ningún lado.
-   Uso: <div id="tono"></div> + <script src="assets/tono.js" defer></script>
+   Un solo botón flotante. Cada toque SUBE la visibilidad:
+     Oculto → Discreto → Noche → Día → (otra vez) Oculto
+   En «Oculto» se esconden el nombre y el título de la página.
+   El nombre va siempre como marca de agua (lo controla tono.css).
+   Recuerda la elección en el equipo (localStorage). No envía nada.
    ============================================================ */
 (function(){
   "use strict";
   var LS="sost_tono", root=document.documentElement;
+
+  /* Orden del ciclo (de menos a más visible) y etiqueta de cada nivel */
+  var CICLO=["oculto","discreto","noche","dia"];
+  var ETIQUETA={oculto:"Oculto", discreto:"Discreto", noche:"Noche", dia:"Día"};
+
   var guardado=null; try{ guardado=localStorage.getItem(LS); }catch(e){}
-  if(guardado==="dia"||guardado==="noche"||guardado==="discreto") root.setAttribute("data-tono",guardado);
+  if(CICLO.indexOf(guardado)<0) guardado="dia";           // por defecto, Día
+  aplicar(guardado, false);
 
-  function fijar(t){
-    root.setAttribute("data-tono",t);
-    try{ localStorage.setItem(LS,t); }catch(e){}
-    pintar();
-    if(root.getAttribute("theme-color-sync")!=="0"){
-      var m=document.querySelector('meta[name="theme-color"]');
-      if(m){ var bg=getComputedStyle(root).getPropertyValue("--bg").trim(); if(bg) m.setAttribute("content",bg); }
+  function aplicar(nivel, recordar){
+    if(nivel==="oculto"){
+      root.setAttribute("data-oculto","1");
+      // deja el tono visual previo debajo de la cortina; usa discreto como lienzo oscuro
+      root.setAttribute("data-tono","discreto");
+    }else{
+      root.setAttribute("data-oculto","0");
+      root.setAttribute("data-tono",nivel);
     }
-  }
-  function tonoActual(){
-    var t=root.getAttribute("data-tono");
-    if(t) return t;
-    return (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "noche" : "dia";
-  }
-  function ocultar(on){
-    root.setAttribute("data-oculto", on?"1":"0");
-  }
-  var botones=[];
-  function pintar(){
-    var act=tonoActual();
-    botones.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.tono===act ? "true":"false"); });
+    root.setAttribute("data-nivel",nivel);
+    if(recordar){ try{ localStorage.setItem(LS,nivel); }catch(e){} }
+    sincronizarThemeColor();
+    pintar(nivel);
   }
 
-  function montar(host){
-    var bar=document.createElement("div");
-    bar.className="tono-bar";
-    bar.setAttribute("role","group");
-    bar.setAttribute("aria-label","Tono de pantalla");
-    var defs=[["dia","Día"],["noche","Noche"],["discreto","Discreto"]];
-    defs.forEach(function(d){
-      var b=document.createElement("button");
-      b.type="button"; b.dataset.tono=d[0]; b.textContent=d[1];
-      b.setAttribute("aria-pressed","false");
-      b.addEventListener("click",function(){ fijar(d[0]); });
-      bar.appendChild(b); botones.push(b);
-    });
-    var oc=document.createElement("button");
-    oc.type="button"; oc.className="tono-ocultar"; oc.textContent="Ocultar";
-    oc.setAttribute("aria-label","Ocultar la pantalla al instante");
-    oc.addEventListener("click",function(){ ocultar(true); });
-    bar.appendChild(oc);
-    host.appendChild(bar);
-
-    // Cortina de «Ocultar»: tocar para volver
-    var cor=document.createElement("div");
-    cor.className="tono-cortina";
-    cor.textContent="Toque para volver";
-    cor.addEventListener("click",function(){ ocultar(false); });
-    document.body.appendChild(cor);
-
-    pintar();
+  function nivelActual(){
+    var n=root.getAttribute("data-nivel");
+    return CICLO.indexOf(n)>=0 ? n : "dia";
+  }
+  function siguiente(){
+    var i=CICLO.indexOf(nivelActual());
+    var n=CICLO[(i+1)%CICLO.length];
+    aplicar(n, true);
+  }
+  function sincronizarThemeColor(){
+    var m=document.querySelector('meta[name="theme-color"]');
+    if(m){ var bg=getComputedStyle(root).getPropertyValue("--bg").trim(); if(bg) m.setAttribute("content",bg); }
   }
 
-  function init(){
-    // La barra es flotante y fija: si existe #tono la usa, si no, se monta en el body (infalible)
-    var host=document.getElementById("tono") || document.body;
-    montar(host);
-    if(window.matchMedia){
-      try{ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",pintar); }catch(e){}
-    }
+  var btn, etq;
+  function pintar(nivel){
+    if(!btn) return;
+    btn.setAttribute("data-nivel",nivel);
+    if(etq) etq.textContent=ETIQUETA[nivel];
+    btn.setAttribute("aria-label","Tono: "+ETIQUETA[nivel]+". Tocar para cambiar.");
   }
+
+  function montar(){
+    btn=document.createElement("button");
+    btn.type="button"; btn.className="tono-ciclo";
+    var p=document.createElement("span"); p.className="punto"; p.setAttribute("aria-hidden","true");
+    etq=document.createElement("span");
+    btn.appendChild(p); btn.appendChild(etq);
+    btn.addEventListener("click",siguiente);
+    document.body.appendChild(btn);
+    pintar(nivelActual());
+  }
+
+  function init(){ montar(); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
   else init();
 })();
