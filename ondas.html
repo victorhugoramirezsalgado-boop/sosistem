@@ -58,6 +58,15 @@
   .cu-celda.vertical .cu-hueco{height:auto;flex:1}
   /* Sensores que requieren el equipo ESP32 externo (aún sin conectar) */
   .cu-espera{font:500 11px system-ui;color:var(--ink2);padding-left:4px}
+  /* Resumen amplio: un rectángulo por sensor, todo el ancho */
+  .cu-ancho{display:flex;flex-direction:column;gap:6px}
+  .cu-rect{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:10px;
+    background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:10px 12px;min-height:52px}
+  .cu-rect.alerta{border-left-color:var(--nar);box-shadow:0 0 0 2px rgba(232,114,12,.3)}
+  .cu-rect .r-n{font:600 14px system-ui}
+  .cu-rect .r-v{font:500 14px system-ui;color:var(--ink2)}
+  .cu-rect .r-st{font:600 12px system-ui;color:var(--ok)}
+  .cu-rect .r-st.espera{color:var(--ink2)}
   .cu-celda:active{transform:scale(.97)}
   .cu-et{font:600 11px system-ui;margin-bottom:3px}
   .cu-hueco{flex:1;min-height:0;display:flex}
@@ -135,13 +144,17 @@
     <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
     <p class="note" id="cu-alerta" style="margin-top:0;min-height:1.2em;color:var(--nar);font-weight:600"></p>
     <div class="cu-rej" id="cu-tablero">
-      <div class="cu-celda" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">Micrófono<br>espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
+      <div class="cu-celda" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">Micrófono<br>espectro · dB</span><div class="cu-hueco" data-graf="on-esp"></div></div>
       <div class="cu-celda" data-graf="on-cas"><span class="cu-et" style="color:#e3b341">Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
-      <div class="cu-celda" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
-      <div class="cu-celda" data-graf="ol-tri"><span class="cu-et" style="color:#d1242f">Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
-      <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
-      <div class="cu-celda" data-graf="cal-plano"><span class="cu-et" style="color:#ff8a3d">Plano 10 m<br>personas</span><div class="cu-hueco" data-graf="cal-plano"></div></div>
-      <div class="cu-celda" data-graf="cal-graf"><span class="cu-et" style="color:#4b9bff">Calor/radar<br>en el tiempo</span><div class="cu-hueco" data-graf="cal-graf"></div></div>
+      <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas<br>de sonido</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">Vibración<br>sismo</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
+      <div class="cu-celda" data-sensor="orientacion"><span class="cu-et" style="color:#9b8cff">Inclinación<br>brújula</span><div class="cu-hueco" data-sensor="orientacion"></div></div>
+      <div class="cu-celda" data-sensor="luz"><span class="cu-et" style="color:#ffd166">Luz<br>lux</span><div class="cu-hueco" data-sensor="luz"></div></div>
+      <div class="cu-celda" data-graf="cal-plano"><span class="cu-et" style="color:#ff8a3d">Calor 10 m<br>personas</span><div class="cu-hueco" data-graf="cal-plano"></div></div>
+      <div class="cu-celda" data-graf="cal-graf"><span class="cu-et" style="color:#4b9bff">Radar/calor<br>en el tiempo</span><div class="cu-hueco" data-graf="cal-graf"></div></div>
+      <div class="cu-celda" data-sensor="gas"><span class="cu-et" style="color:#2ea043">Gas · humo<br>oxígeno</span><div class="cu-hueco" data-sensor="gas"></div></div>
+      <div class="cu-celda" data-sensor="temp"><span class="cu-et" style="color:#ff6b6b">Calor · frío<br>temperatura</span><div class="cu-hueco" data-sensor="temp"></div></div>
+      <div class="cu-celda" data-graf="ol-tri"><span class="cu-et" style="color:#d1242f">Vocales<br>(voz)</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
     </div>
     <p class="note" style="font-size:12px">Franjas del iPhone: micrófono, cascada, vibración, vocales, bandas. Las dos últimas (calor a 10 m y personas por radar/inventario) necesitan el sensor ESP32 por USB en Mac o PC con Chrome; mientras no esté conectado, se muestran en espera.</p>
     <p class="note">Las seis gráficas reales, vivas al mismo tiempo, sin bajar la pantalla. Toca una para ampliarla. «Iniciar todo» enciende micrófono y vibración (en iPhone pedirá los dos permisos).</p>
@@ -150,6 +163,12 @@
       <button type="button" class="sec" id="cu-imp">Imprimir cubo</button>
       <button type="button" class="sec" id="cu-hist">Imprimir histórico</button>
     </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen amplio · un rectángulo por sensor</h2>
+    <div id="cu-ancho" class="cu-ancho"></div>
+    <p class="note">La misma información, en rectángulos a todo el ancho para verla más clara. Se llena al iniciar.</p>
     <details class="cu-info">
       <summary>¿Qué significa cada gráfica?</summary>
       <div class="cu-info-l"><b style="color:#5b8def">1 · Espectro</b> — de ondas bajas (izquierda) a altas (derecha). Brillante = más energía en esa frecuencia.</div>
@@ -289,15 +308,26 @@
   // para verlas todas a la vez sin bajar la pantalla. El análisis las sigue dibujando por su id.
   document.querySelectorAll(".cu-hueco[data-graf]").forEach(function(hueco){
     var el=document.getElementById(hueco.dataset.graf);
-    if(!el){
-      // Sensor del ESP32 externo aún no presente: mostrar en espera
-      hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>';
-      return;
-    }
-    // la gráfica puede estar envuelta (.on-wrap para la cascada); mover el envoltorio si existe
+    if(!el){ hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>'; return; }
     var mover = el.id==="on-cas" && el.closest(".on-wrap") ? el.closest(".on-wrap") : el;
     hueco.appendChild(mover);
   });
+  // Sensores leídos por valor (no gráfica): orientación (iPhone sí), luz/gas/temp (ESP32 o no disponibles)
+  var lecturas={};
+  document.querySelectorAll(".cu-hueco[data-sensor]").forEach(function(hueco){
+    var s=hueco.dataset.sensor;
+    if(s==="orientacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ori">toca «Iniciar todo»</span>'; }
+    else if(s==="luz"){ hueco.innerHTML='<span class="cu-espera">no disponible en iPhone (iOS)</span>'; }
+    else { hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>'; }
+  });
+  // Lectura de orientación/inclinación del iPhone
+  function alOrientar(e){
+    var el=document.getElementById("s-ori"); if(!el) return;
+    var inc = e.beta!=null ? Math.round(e.beta) : "—", br = e.alpha!=null ? Math.round(e.alpha) : "—";
+    el.textContent = "inclinación "+inc+"° · brújula "+br+"°";
+  }
+  // Se activa cuando el usuario toca "Iniciar todo" (el permiso de movimiento ya se pide ahí)
+  window.addEventListener("deviceorientation", alOrientar);
 
   function abrir(id, nombre){
     var el=document.getElementById(id); if(!el) return;
@@ -396,6 +426,34 @@
     var celda=document.querySelector('.cu-celda[data-graf="'+graf+'"]'); if(!celda) return;
     celda.classList.toggle("alerta", !!on); if(on && texto) lista.push(texto);
   }
+
+  // Resumen amplio: un rectángulo por sensor, con su estado en vivo
+  var ANCHO=[
+    ["Micrófono","#5b8def","iphone"], ["Cascada","#e3b341","iphone"], ["Bandas de sonido","#2ea043","iphone"],
+    ["Vibración · sismo","#e8720c","iphone"], ["Inclinación · brújula","#9b8cff","iphone"],
+    ["Luz · lux","#ffd166","no-ios"], ["Calor 10 m · personas","#ff8a3d","esp32"],
+    ["Radar · calor","#4b9bff","esp32"], ["Gas · humo · oxígeno","#2ea043","esp32"],
+    ["Calor · frío · temperatura","#ff6b6b","esp32"], ["Vocales (voz)","#d1242f","iphone"]
+  ];
+  var cajaAncho=document.getElementById("cu-ancho");
+  if(cajaAncho){
+    cajaAncho.innerHTML=ANCHO.map(function(s){
+      var est = s[2]==="iphone" ? '<span class="r-st espera">en espera</span>'
+              : s[2]==="no-ios" ? '<span class="r-st espera">no en iPhone</span>'
+              : '<span class="r-st espera">ESP32 (USB)</span>';
+      return '<div class="cu-rect" style="border-left-color:'+s[1]+'"><span class="r-n">'+s[0]+'</span><span class="r-v" data-rv="'+s[0]+'">—</span>'+est+'</div>';
+    }).join("");
+  }
+  // Actualiza los rectángulos del iPhone en vivo
+  setInterval(function(){
+    var R=(window.SOSOndas&&window.SOSOndas.R)||null; if(!R||!cajaAncho) return;
+    function pon(nombre, valor){ var e=cajaAncho.querySelector('[data-rv="'+nombre+'"]'); if(e) e.textContent=valor;
+      var rect=e&&e.closest(".cu-rect"); var st=rect&&rect.querySelector(".r-st"); if(st && valor!=="—"){ st.textContent="activo"; st.classList.remove("espera"); } }
+    var h=R.hallazgos&&R.hallazgos[R.hallazgos.length-1];
+    if(h) pon("Micrófono", h.frecuencia_hz+" Hz · "+h.nivel_db+" dB");
+    var v=R.vibracion&&R.vibracion[R.vibracion.length-1];
+    if(v) pon("Vibración · sismo", v.frecuencia_hz+" Hz · "+v.amplitud_ms2+" m/s²");
+  }, 700);
 })();
 </script>
 </body>
