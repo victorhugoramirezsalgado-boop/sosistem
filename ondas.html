@@ -308,7 +308,7 @@
   // para verlas todas a la vez sin bajar la pantalla. El análisis las sigue dibujando por su id.
   document.querySelectorAll(".cu-hueco[data-graf]").forEach(function(hueco){
     var el=document.getElementById(hueco.dataset.graf);
-    if(!el){ hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>'; return; }
+    if(!el){ hueco.innerHTML='<span class="cu-espera">Próximamente · requiere sensor del proyecto (ESP32 por USB en Mac)</span>'; return; }
     var mover = el.id==="on-cas" && el.closest(".on-wrap") ? el.closest(".on-wrap") : el;
     hueco.appendChild(mover);
   });
@@ -318,7 +318,7 @@
     var s=hueco.dataset.sensor;
     if(s==="orientacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ori">toca «Iniciar todo»</span>'; }
     else if(s==="luz"){ hueco.innerHTML='<span class="cu-espera">no disponible en iPhone (iOS)</span>'; }
-    else { hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>'; }
+    else { hueco.innerHTML='<span class="cu-espera">Próximamente · requiere sensor del proyecto (ESP32 por USB en Mac)</span>'; }
   });
   // Lectura de orientación/inclinación del iPhone
   function alOrientar(e){
