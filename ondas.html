@@ -48,6 +48,21 @@
   .cu-et{font:600 10px system-ui;margin-bottom:2px}
   .cu-centro{align-items:center;justify-content:center;background:var(--beige)}
   .cu-centro b{font:800 20px ui-monospace,monospace;letter-spacing:.1em;color:var(--brand)}
+  .cu-cara{cursor:pointer;position:relative;transition:transform .12s}
+  .cu-cara:active{transform:scale(.96)}
+  /* Ampliar una gráfica a pantalla completa, girada para verla lo más ancha posible */
+  .amp-btn{position:absolute;top:8px;right:8px;z-index:3;min-height:34px;border:1px solid var(--line2);background:var(--s1);
+    color:var(--brand);border-radius:9px;font:600 13px system-ui;padding:0 10px;cursor:pointer}
+  .card{position:relative}
+  body.amp-abierto{overflow:hidden}
+  #amp-capa{position:fixed;inset:0;z-index:9000;background:#05070b;display:none;flex-direction:column;padding:10px}
+  #amp-capa.on{display:flex}
+  #amp-capa .amp-top{display:flex;justify-content:space-between;align-items:center;color:#cfe0f0;font:600 15px system-ui;padding:4px 6px}
+  #amp-capa .amp-x{min-height:40px;border:1px solid #2d3b57;background:#0c1017;color:#cfe0f0;border-radius:10px;font:600 15px system-ui;padding:0 16px;cursor:pointer}
+  #amp-lienzo{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  #amp-lienzo canvas,#amp-lienzo svg,#amp-lienzo >*{max-width:100%;max-height:100%}
+  /* En teléfono vertical, girar 90° para aprovechar el largo de la pantalla */
+  @media (max-aspect-ratio:1/1){#amp-lienzo.girar{transform:rotate(90deg);width:100vh;height:100vw}}
   #on-resumen{margin:10px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--s1)}
   #on-resumen:empty{display:none}
   .on-sr{display:flex;gap:10px;align-items:baseline;padding:9px 12px;border-top:1px solid var(--line);font-size:15px}
@@ -213,11 +228,55 @@
   </section>
 
   <p class="note">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Analizador de ondas · © Víctor Hugo Ramírez Salgado · <a href="terminos-pruebas.html" style="color:var(--ink2)">Términos de la versión de prueba</a></p>
+  <div id="amp-capa" role="dialog" aria-label="Gráfica ampliada">
+    <div class="amp-top"><span id="amp-tit">Gráfica</span><button type="button" class="amp-x" id="amp-cerrar">✕ Cerrar</button></div>
+    <div id="amp-lienzo" class="girar"></div>
+  </div>
 </main>
 <script src="assets/cubo-rt.js?v=7.1.0"></script>
 <script src="assets/morse.js?v=7.1.0"></script>
 <script src="assets/ondas-letras.js?v=7.1.0"></script>
 <script src="assets/ondas.js?v=7.1.0"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./ondas" }).catch(() => {});</script>
+<script>
+/* Ampliar gráficas a pantalla completa (interfaz; no toca el análisis). © Víctor Hugo Ramírez Salgado */
+(function(){
+  "use strict";
+  var capa=document.getElementById("amp-capa"), zona=document.getElementById("amp-lienzo"),
+      tit=document.getElementById("amp-tit"), origen=null, marca=null;
+  // Cada gráfica ampliable: id del elemento y su nombre
+  var GRAF={ "on-esp":"Espectro", "on-cas":"Cascada", "vb-esp":"Vibración", "ol-tri":"Vocales", "on-bandas":"Energía por bandas" };
+  // Caras del cubo que llevan a una gráfica al tocarlas
+  var CARA={ "cu-mic":"on-esp", "cu-vib":"vb-esp", "cu-let":"ol-tri" };
+
+  function abrir(id, nombre){
+    var el=document.getElementById(id); if(!el) return;
+    origen=el; marca=document.createComment("amp"); el.parentNode.insertBefore(marca, el);
+    zona.appendChild(el); tit.textContent=nombre||"Gráfica";
+    capa.classList.add("on"); document.body.classList.add("amp-abierto");
+  }
+  function cerrar(){
+    if(origen && marca){ marca.parentNode.insertBefore(origen, marca); marca.remove(); marca=null; origen=null; }
+    capa.classList.remove("on"); document.body.classList.remove("amp-abierto");
+  }
+  document.getElementById("amp-cerrar").addEventListener("click", cerrar);
+  capa.addEventListener("click", function(e){ if(e.target===capa) cerrar(); });
+
+  // Botón "⤢ Ampliar" en cada gráfica
+  Object.keys(GRAF).forEach(function(id){
+    var el=document.getElementById(id); if(!el) return;
+    var card=el.closest(".card"); if(!card || card.querySelector(".amp-btn")) return;
+    var b=document.createElement("button"); b.type="button"; b.className="amp-btn"; b.textContent="⤢ Ampliar";
+    b.setAttribute("aria-label","Ampliar "+GRAF[id]+" a pantalla completa");
+    b.addEventListener("click", function(ev){ ev.stopPropagation(); abrir(id, GRAF[id]); });
+    card.appendChild(b);
+  });
+  // Tocar una cara del cubo abre su gráfica en grande
+  Object.keys(CARA).forEach(function(caraId){
+    var c=document.getElementById(caraId); var cara=c&&c.closest(".cu-cara"); if(!cara) return;
+    cara.addEventListener("click", function(){ var g=CARA[caraId]; abrir(g, GRAF[g]); });
+  });
+})();
+</script>
 </body>
 </html>
