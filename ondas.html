@@ -41,15 +41,15 @@
   .on-b span{grid-area:c;width:12px;height:12px;border-radius:50%} .on-b b{grid-area:n;font-size:17px;font-weight:600} .on-b small{grid-area:d;color:var(--ink2);font-size:14px}
   .on-b output{grid-area:v;font:600 17px var(--font);font-variant-numeric:tabular-nums}
   .on-b i{grid-area:i;height:12px;background:var(--beige);border-radius:6px;overflow:hidden} .on-b em{display:block;height:100%;width:0}
-  .cu-cruz{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,72px);gap:6px;
-    grid-template-areas:". arr ." "izq cen der" ". aba .";max-width:360px;margin:0 auto}
-  .cu-cara{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden}
-  .cu-cara canvas{width:100%;flex:1;display:block}
-  .cu-et{font:600 10px system-ui;margin-bottom:2px}
+  /* Tablero del cubo: 2 columnas × 3 filas, cada celda una gráfica real en vivo */
+  .cu-rej{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .cu-celda{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden;min-height:96px;cursor:pointer;position:relative;transition:transform .12s}
+  .cu-celda:active{transform:scale(.97)}
+  .cu-et{font:600 11px system-ui;margin-bottom:3px}
+  .cu-hueco{flex:1;min-height:0;display:flex}
+  .cu-hueco canvas,.cu-hueco >*{width:100%!important;height:100%!important;display:block}
   .cu-centro{align-items:center;justify-content:center;background:var(--beige)}
-  .cu-centro b{font:800 20px ui-monospace,monospace;letter-spacing:.1em;color:var(--brand)}
-  .cu-cara{cursor:pointer;position:relative;transition:transform .12s}
-  .cu-cara:active{transform:scale(.96)}
+  .cu-centro b{font:800 22px ui-monospace,monospace;letter-spacing:.12em;color:var(--brand)}
   /* Ampliar una gráfica a pantalla completa, girada para verla lo más ancha posible */
   .amp-btn{position:absolute;top:8px;right:8px;z-index:3;min-height:34px;border:1px solid var(--line2);background:var(--s1);
     color:var(--brand);border-radius:9px;font:600 13px system-ui;padding:0 10px;cursor:pointer}
@@ -106,16 +106,17 @@
   </section>
 
   <section class="card">
-    <h2>Cubo de lecturas <small style="color:var(--ink2);font-weight:400">· todos los sensores en una cruz</small></h2>
+    <h2>Cubo de lecturas <small style="color:var(--ink2);font-weight:400">· todas las gráficas en un tablero</small></h2>
     <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
-    <div class="cu-cruz">
-      <div class="cu-cara" style="grid-area:arr"><span class="cu-et" style="color:#5b8def">Micrófono</span><canvas id="cu-mic"></canvas></div>
-      <div class="cu-cara" style="grid-area:izq"><span class="cu-et" style="color:#e8720c">Vibración</span><canvas id="cu-vib"></canvas></div>
-      <div class="cu-cara cu-centro" style="grid-area:cen"><span class="cu-et">Cubo (33)©</span><b>SOS</b></div>
-      <div class="cu-cara" style="grid-area:der"><span class="cu-et" style="color:#2ea043">Letras/tono</span><canvas id="cu-let"></canvas></div>
-      <div class="cu-cara" style="grid-area:aba"><span class="cu-et" style="color:#8b949e">Luz</span><small style="color:var(--ink2)">no disponible en iPhone</small></div>
+    <div class="cu-rej">
+      <div class="cu-celda"><span class="cu-et" style="color:#5b8def">1 · Espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
+      <div class="cu-celda"><span class="cu-et" style="color:#e3b341">2 · Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
+      <div class="cu-celda"><span class="cu-et" style="color:#e8720c">3 · Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
+      <div class="cu-celda"><span class="cu-et" style="color:#d1242f">4 · Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
+      <div class="cu-celda"><span class="cu-et" style="color:#2ea043">5 · Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda cu-centro"><span class="cu-et">6 · Cubo (33)©</span><b>SOS</b></div>
     </div>
-    <p class="note">Cada cara, un sensor en vivo. Al tocar «Iniciar todo» se encienden juntos; en iPhone pedirá dos permisos (micrófono y movimiento).</p>
+    <p class="note">Las seis gráficas reales, vivas al mismo tiempo, sin bajar la pantalla. Toca una para ampliarla. «Iniciar todo» enciende micrófono y vibración (en iPhone pedirá los dos permisos).</p>
   </section>
 
   <section class="card">
@@ -246,8 +247,16 @@
       tit=document.getElementById("amp-tit"), origen=null, marca=null;
   // Cada gráfica ampliable: id del elemento y su nombre
   var GRAF={ "on-esp":"Espectro", "on-cas":"Cascada", "vb-esp":"Vibración", "ol-tri":"Vocales", "on-bandas":"Energía por bandas" };
-  // Caras del cubo que llevan a una gráfica al tocarlas
-  var CARA={ "cu-mic":"on-esp", "cu-vib":"vb-esp", "cu-let":"ol-tri" };
+  // Reubicar las gráficas reales dentro de los huecos del tablero del cubo,
+  // para verlas todas a la vez sin bajar la pantalla. El análisis las sigue dibujando por su id.
+  document.querySelectorAll(".cu-hueco[data-graf]").forEach(function(hueco){
+    var el=document.getElementById(hueco.dataset.graf); if(!el) return;
+    // la gráfica puede estar envuelta (.on-wrap para la cascada); mover el envoltorio si existe
+    var mover = el.id==="on-cas" && el.closest(".on-wrap") ? el.closest(".on-wrap") : el;
+    hueco.appendChild(mover);
+    // Marcar como vacío el <h2> huérfano de la sección de abajo (su gráfica subió al tablero)
+    var h = mover.previousElementSibling;
+  });
 
   function abrir(id, nombre){
     var el=document.getElementById(id); if(!el) return;
@@ -271,10 +280,10 @@
     b.addEventListener("click", function(ev){ ev.stopPropagation(); abrir(id, GRAF[id]); });
     card.appendChild(b);
   });
-  // Tocar una cara del cubo abre su gráfica en grande
-  Object.keys(CARA).forEach(function(caraId){
-    var c=document.getElementById(caraId); var cara=c&&c.closest(".cu-cara"); if(!cara) return;
-    cara.addEventListener("click", function(){ var g=CARA[caraId]; abrir(g, GRAF[g]); });
+  // Tocar una celda del tablero amplía su gráfica a pantalla completa
+  document.querySelectorAll(".cu-hueco[data-graf]").forEach(function(hueco){
+    var celda=hueco.closest(".cu-celda"); if(!celda) return;
+    celda.addEventListener("click", function(e){ if(e.target.closest(".amp-btn")) return; var g=hueco.dataset.graf; abrir(g, GRAF[g]); });
   });
 })();
 </script>
