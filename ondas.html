@@ -62,6 +62,10 @@
   .cu-celda.vertical .cu-hueco{height:auto;flex:1}
   /* Sensores que requieren el equipo ESP32 externo (aún sin conectar) */
   .cu-espera{font:500 11px system-ui;color:var(--ink2);padding-left:4px}
+  .iv-lista{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+  .iv-p{background:var(--s1);border:1px solid var(--line);border-left:4px solid var(--gris);border-radius:8px;padding:8px 12px;font-size:14px}
+  .iv-p.iv-act{border-left-color:var(--ok)} .iv-p.iv-act b{color:var(--ok)}
+  .iv-p b{font-weight:600}
   /* Resumen amplio: un rectángulo por sensor, todo el ancho */
   .cu-ancho{display:flex;flex-direction:column;gap:6px}
   .cu-rect{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:10px;
@@ -171,6 +175,13 @@
       <button type="button" class="sec" id="cu-imp">Imprimir cubo</button>
       <button type="button" class="sec" id="cu-hist">Imprimir histórico</button>
     </div>
+  </section>
+
+  <section class="card">
+    <h2>Personas por voz <small style="color:var(--ink2);font-weight:400">· registro que recuerda y numera</small></h2>
+    <div id="iv-lista" class="iv-lista"><div class="iv-p">Inicie el análisis para registrar voces.</div></div>
+    <div class="fila"><button type="button" class="sec" id="iv-borrar">Borrar registro de voces</button></div>
+    <p class="note">Cada voz distinta recibe un número (Persona 1, 2, 3…) y se recuerda cuándo se oyó. Aprende el rango de tono de cada quien con el tiempo. Es aproximado y no identifica a nadie por nombre; se guarda solo en este equipo.</p>
   </section>
 
   <section class="card">
@@ -376,6 +387,10 @@
   }
   document.getElementById("amp-cerrar").addEventListener("click", cerrar);
   capa.addEventListener("click", function(e){ if(e.target===capa) cerrar(); });
+
+  // Borrar el registro de personas por voz
+  var bVoz=document.getElementById("iv-borrar");
+  if(bVoz) bVoz.addEventListener("click", function(){ if(window.SOSOndas&&window.SOSOndas.olvidarVoces) window.SOSOndas.olvidarVoces(); });
 
   // Imprimir el cubo tal como está ahora (su registro del momento)
   var bImp=document.getElementById("cu-imp");
