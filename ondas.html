@@ -53,6 +53,10 @@
   /* Importante: se resalta en naranja cuando el sensor detecta algo relevante */
   .cu-celda.alerta{border-color:var(--nar);box-shadow:0 0 0 2px rgba(232,114,12,.35)}
   .cu-celda.alerta .cu-et{color:var(--nar)}
+  /* Sismo destacado: más alto y con borde naranja grueso, por ser lo más crítico */
+  .cu-celda.cu-destaca{min-height:72px;border:2px solid var(--nar);grid-template-columns:96px 1fr}
+  .cu-celda.cu-destaca .cu-et{font-size:11px;font-weight:700}
+  .cu-celda.cu-destaca .cu-hueco{height:64px}
   /* Doble toque: voltear a vista vertical ampliada */
   .cu-celda.vertical{grid-template-columns:1fr;min-height:55vh}
   .cu-celda.vertical .cu-hueco{height:auto;flex:1}
@@ -144,10 +148,10 @@
     <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
     <p class="note" id="cu-alerta" style="margin-top:0;min-height:1.2em;color:var(--nar);font-weight:600"></p>
     <div class="cu-rej" id="cu-tablero">
+      <div class="cu-celda cu-destaca" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">⚠ SISMO · VIBRACIÓN<br>lo más crítico</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
       <div class="cu-celda" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">Micrófono<br>espectro · dB</span><div class="cu-hueco" data-graf="on-esp"></div></div>
       <div class="cu-celda" data-graf="on-cas"><span class="cu-et" style="color:#e3b341">Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
       <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas<br>de sonido</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
-      <div class="cu-celda" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">Vibración<br>sismo</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
       <div class="cu-celda" data-sensor="orientacion"><span class="cu-et" style="color:#9b8cff">Inclinación<br>brújula</span><div class="cu-hueco" data-sensor="orientacion"></div></div>
       <div class="cu-celda" data-sensor="rotacion"><span class="cu-et" style="color:#c792ea">Rotación<br>giro · caída</span><div class="cu-hueco" data-sensor="rotacion"></div></div>
       <div class="cu-celda" data-sensor="ubicacion"><span class="cu-et" style="color:#64d2ff">Ubicación<br>GPS</span><div class="cu-hueco" data-sensor="ubicacion"></div></div>
