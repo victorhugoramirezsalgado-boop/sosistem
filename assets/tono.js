@@ -65,8 +65,9 @@
   }
 
   function init(){
-    var host=document.getElementById("tono");
-    if(host) montar(host);
+    // La barra es flotante y fija: si existe #tono la usa, si no, se monta en el body (infalible)
+    var host=document.getElementById("tono") || document.body;
+    montar(host);
     if(window.matchMedia){
       try{ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",pintar); }catch(e){}
     }

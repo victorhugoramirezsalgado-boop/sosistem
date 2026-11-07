@@ -58,13 +58,14 @@
 }
 :root[data-tono="discreto"] body{opacity:.96}
 
-/* Selector de tono (barra pequeña) */
-.tono-bar{display:inline-flex;gap:4px;align-items:center;background:var(--s1);border:1px solid var(--line2);
-  border-radius:12px;padding:4px}
-.tono-bar button{min-height:36px;min-width:40px;font:500 14px var(--font,system-ui);border:0;border-radius:9px;
-  background:transparent;color:var(--ink2);cursor:pointer;padding:0 10px}
+/* Selector de tono — barra flotante fija abajo, siempre visible */
+.tono-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);
+  z-index:900;display:inline-flex;gap:3px;align-items:center;background:var(--s1);
+  border:1px solid var(--line2);border-radius:14px;padding:4px;box-shadow:var(--shadow)}
+.tono-bar button{min-height:38px;min-width:46px;font:500 14px var(--font,system-ui);border:0;border-radius:10px;
+  background:transparent;color:var(--ink2);cursor:pointer;padding:0 12px}
 .tono-bar button[aria-pressed="true"]{background:var(--brand);color:#fff}
-.tono-bar .tono-ocultar{color:var(--nar)}
+.tono-bar .tono-ocultar{color:var(--nar);font-weight:600}
 
 /* Pantalla neutra de «Ocultar»: tapa todo al instante */
 .tono-cortina{position:fixed;inset:0;z-index:9999;background:#0b0f14;display:none;
