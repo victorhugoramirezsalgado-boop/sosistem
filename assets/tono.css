@@ -16,13 +16,13 @@
   --radius:14px;
 }
 
-/* DÍA — valores base (coinciden con auditoria/ondas) */
+/* DÍA — sin blancos brillantes: fondos grises/beige apagados que reflejan poca luz. */
 :root{
-  --bg:#f4f5f7; --s1:#ffffff; --line:#e6e8ec; --line2:#d4d7dd;
-  --ink:#0f1b2d; --ink2:#5b6675; --gris:#8a909b;
-  --brand:#005387; --nar:#e8720c; --beige:#ede6d6; --panel:#0f1b2d;
-  --ok:#237f52; --aviso:#b9881a; --mal:#9b2423;
-  --shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06);
+  --bg:#e9e7e1; --s1:#f0eee8; --line:#d8d5cc; --line2:#c9c5ba;
+  --ink:#1b2430; --ink2:#5b6675; --gris:#8a909b;
+  --brand:#005387; --nar:#d9690b; --beige:#ddd6c4; --panel:#1b2430;
+  --ok:#237f52; --aviso:#9c7318; --mal:#9b2423;
+  --shadow:0 1px 2px rgba(27,36,48,.06),0 6px 18px rgba(27,36,48,.07);
   color-scheme:light;
 }
 
