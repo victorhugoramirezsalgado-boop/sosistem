@@ -37,9 +37,12 @@
 
 /* Nombre de la página como marca de agua: siempre más tenue que la información.
    Nadie que mire de reojo debe reconocer en qué página está. */
-.cab b{opacity:.32;font-weight:500;letter-spacing:.02em}
-:root[data-tono="noche"] .cab b{opacity:.30}
-:root[data-tono="discreto"] .cab b{opacity:.14}
+.cab b{opacity:.30;font-weight:500;letter-spacing:.02em}
+
+/* Título grande (h1): también atenuado, nunca blanco brillante.
+   Sigue el brillo del deslizador (--ilum) y se queda por debajo del texto. */
+h1{color:var(--ink);opacity:calc(0.30 + var(--ilum,1) * 0.35);font-weight:600}
+
 /* En Oculto se esconden nombre y título por completo */
 :root[data-oculto="1"] .cab b,
 :root[data-oculto="1"] h1{opacity:0 !important;visibility:hidden}
