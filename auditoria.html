@@ -7,38 +7,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Auditoría de privacidad · SOSistem™</title>
 <meta name="description" content="Auditoría de privacidad de SOSistem™: micrófono, cámara, voz, bocina, imágenes y envíos registrados en el equipo, con cadena verificable.">
-<meta name="theme-color" content="#0b0f14">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <style>
-  :root{--bg:#0b0f14;--s1:#151b23;--line:#30363d;--ink:#e6edf3;--ink2:#9da7b3;--nar:#e8720c}
+  /* Sistema visual unificado SOSistem™ — claro, fino (Siemens/Honeywell/Dyson):
+     marino #0f1b2d · azul ISO #005387 · naranja acento #E8720C · beige #ede6d6 · blanco · negro */
+  :root{--bg:#f6f4ef;--s1:#ffffff;--line:#e4e0d6;--line2:#d7d2c4;--ink:#0f1b2d;--ink2:#5b6675;--gris:#8a909b;--brand:#005387;--nar:#e8720c;--beige:#ede6d6;
+    --ok:#237f52;--aviso:#b9881a;--mal:#9b2423;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--radius:14px;--shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06)}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 var(--font);-webkit-font-smoothing:antialiased}
   .on{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 28px)}
   .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-  .cab a{color:var(--ink2);font-size:16px;text-decoration:none;border:2px solid var(--line);border-radius:14px;padding:8px 12px}
-  h1{font-size:26px;margin:4px 0;cursor:pointer}
-  .card{background:var(--s1);border:2px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
-  h2{font-size:19px;margin:0 0 8px}
-  .big{width:100%;min-height:72px;font:800 22px system-ui;border-radius:18px;border:3px solid #ffb27a;background:var(--nar);color:#fff;cursor:pointer}
+  .cab b{font-weight:600;letter-spacing:-.01em}
+  .cab a{color:var(--brand);font-size:16px;font-weight:500;text-decoration:none;border:1.5px solid var(--line2);border-radius:12px;padding:8px 14px}
+  h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:4px 0;cursor:pointer}
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+  h2{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px}
+  .big{width:100%;min-height:72px;font:600 22px var(--font);border-radius:var(--radius);border:2px solid var(--nar);background:var(--nar);color:#fff;cursor:pointer}
   .big[data-on="1"]{background:transparent;color:var(--nar)}
   .note{color:var(--ink2);font-size:15px;margin:8px 0 0}
-  canvas{width:100%;display:block;border-radius:12px;background:#05080c}
+  canvas{width:100%;display:block;border-radius:12px;background:#fbfaf7;border:1px solid var(--line)}
   .au-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-  .au-t{border:2px solid var(--line);border-left:6px solid #5b8def;border-radius:14px;padding:10px;background:#0f141b}
-  .au-t small{display:block;color:var(--ink2);font-size:14px} .au-t b{display:block;font-size:24px;margin:2px 0} .au-t span{font-size:14px;color:var(--ink2)}
-  .au-t[data-tipo="ok"]{border-left-color:#2ea043} .au-t[data-tipo="aviso"]{border-left-color:#e3b341} .au-t[data-tipo="mal"]{border-left-color:#d1242f}
-  .sec{min-height:52px;font:700 17px system-ui;border-radius:14px;border:2px solid #6e7681;background:transparent;color:var(--ink);cursor:pointer;padding:0 14px}
+  .au-t{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:12px;background:var(--beige)}
+  .au-t small{display:block;color:var(--ink2);font-size:14px} .au-t b{display:block;font-size:24px;font-weight:600;margin:2px 0} .au-t span{font-size:14px;color:var(--ink2)}
+  .au-t[data-tipo="ok"]{border-left-color:var(--ok)} .au-t[data-tipo="aviso"]{border-left-color:var(--aviso)} .au-t[data-tipo="mal"]{border-left-color:var(--mal)}
+  .sec{min-height:52px;font:500 17px var(--font);border-radius:12px;border:1.5px solid var(--line2);background:#fff;color:var(--ink);cursor:pointer;padding:0 16px}
   .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
-  select,input[type=password]{font:17px system-ui;background:#05080c;color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px}
-  #au-filtros button{min-height:44px;font:600 15px system-ui;border-radius:12px;border:2px solid #6e7681;background:transparent;color:var(--ink);padding:0 10px;cursor:pointer}
-  #au-filtros button[aria-pressed="true"]{background:var(--nar);border-color:#ffb27a;color:#fff}
+  select,input[type=password]{font:500 17px var(--font);background:#fff;color:var(--ink);border:1.5px solid var(--line2);border-radius:12px;padding:10px}
+  #au-filtros button{min-height:44px;font:500 15px var(--font);border-radius:10px;border:1.5px solid var(--line2);background:#fff;color:var(--ink);padding:0 12px;cursor:pointer}
+  #au-filtros button[aria-pressed="true"]{background:var(--nar);border-color:var(--nar);color:#fff}
   .tb{width:100%;border-collapse:collapse;font-size:15px} .tb td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top} .tb small{color:var(--ink2)}
   .tb td:first-child{white-space:nowrap;color:var(--ink2);width:1%}
   .scroll{max-height:520px;overflow:auto}
   #au-graf{height:150px}
-  [data-tipo="ok"]#au-cadena{color:#3fb950} [data-tipo="aviso"]#au-cadena{color:#e3b341}
+  [data-tipo="ok"]#au-cadena{color:var(--ok)} [data-tipo="aviso"]#au-cadena{color:var(--aviso)}
   .chk{display:flex;gap:10px;align-items:flex-start;font-size:17px} .chk input{width:26px;height:26px;margin-top:2px}
-  code{background:#05080c;border:1px solid var(--line);border-radius:6px;padding:2px 5px;font-size:13px;word-break:break-all}
+  code{background:var(--beige);border:1px solid var(--line2);border-radius:6px;padding:2px 5px;font-size:13px;word-break:break-all}
 </style>
 </head>
 <body>
