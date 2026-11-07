@@ -152,6 +152,7 @@
       <div class="cu-celda" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">Micrófono<br>espectro · dB</span><div class="cu-hueco" data-graf="on-esp"></div></div>
       <div class="cu-celda" data-graf="on-cas"><span class="cu-et" style="color:#e3b341">Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
       <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas<br>de sonido</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda" data-sensor="voces"><span class="cu-et" style="color:#5b8def">Personas<br>por voz</span><div class="cu-hueco" data-sensor="voces"></div></div>
       <div class="cu-celda" data-sensor="orientacion"><span class="cu-et" style="color:#9b8cff">Inclinación<br>brújula</span><div class="cu-hueco" data-sensor="orientacion"></div></div>
       <div class="cu-celda" data-sensor="rotacion"><span class="cu-et" style="color:#c792ea">Rotación<br>giro · caída</span><div class="cu-hueco" data-sensor="rotacion"></div></div>
       <div class="cu-celda" data-sensor="ubicacion"><span class="cu-et" style="color:#64d2ff">Ubicación<br>GPS</span><div class="cu-hueco" data-sensor="ubicacion"></div></div>
@@ -323,7 +324,8 @@
   // Sin soporte en iPhone: luz. Del ESP32 externo: gas, temp.
   document.querySelectorAll(".cu-hueco[data-sensor]").forEach(function(hueco){
     var s=hueco.dataset.sensor;
-    if(s==="orientacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ori">toca «Iniciar todo»</span>'; }
+    if(s==="voces"){ hueco.innerHTML='<span class="cu-espera" id="iv-voces">toca «Iniciar análisis»</span>'; }
+    else if(s==="orientacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ori">toca «Iniciar todo»</span>'; }
     else if(s==="rotacion"){ hueco.innerHTML='<span class="cu-espera" id="s-rot">toca «Iniciar todo»</span>'; }
     else if(s==="ubicacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ubi">toca para permitir GPS</span>'; }
     else if(s==="bateria"){ hueco.innerHTML='<span class="cu-espera" id="s-bat">—</span>'; }
@@ -463,6 +465,7 @@
   // Resumen amplio: un rectángulo por sensor, con su estado en vivo
   var ANCHO=[
     ["Micrófono","#5b8def","iphone"], ["Cascada","#e3b341","iphone"], ["Bandas de sonido","#2ea043","iphone"],
+    ["Personas por voz","#5b8def","iphone"],
     ["Vibración · sismo","#e8720c","iphone"], ["Inclinación · brújula","#9b8cff","iphone"],
     ["Rotación · giro · caída","#c792ea","iphone"], ["Ubicación · GPS","#64d2ff","iphone"], ["Batería","#30d158","iphone"],
     ["Luz · lux","#ffd166","no-ios"], ["Calor 10 m · personas","#ff8a3d","esp32"],
