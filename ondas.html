@@ -42,21 +42,22 @@
   .on-b output{grid-area:v;font:600 17px var(--font);font-variant-numeric:tabular-nums}
   .on-b i{grid-area:i;height:12px;background:var(--beige);border-radius:6px;overflow:hidden} .on-b em{display:block;height:100%;width:0}
   /* Tablero del cubo: 2 columnas × 3 filas, cada celda una gráfica real en vivo */
-  /* Franjas horizontales apiladas: cada gráfica una banda ancha; todo en una pantalla con scroll corto */
-  .cu-rej{display:flex;flex-direction:column;gap:6px}
-  .cu-celda{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden;min-height:84px;cursor:pointer;position:relative;transition:transform .12s}
+  /* Franjas muy delgadas: todos los sensores en una sola pantalla, sin bajar.
+     Etiqueta a la izquierda, gráfica a la derecha; cada franja es baja. */
+  .cu-rej{display:flex;flex-direction:column;gap:4px}
+  .cu-celda{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:4px 6px;display:grid;
+    grid-template-columns:78px 1fr;align-items:center;gap:6px;overflow:hidden;min-height:44px;cursor:pointer;position:relative;transition:transform .12s}
   .cu-celda:active{transform:scale(.99)}
-  .cu-celda.g-esp{min-height:110px} .cu-celda.g-cas{min-height:92px}
+  .cu-et{font:600 10px system-ui;margin:0;line-height:1.1}
+  .cu-hueco{height:40px;min-height:0;display:flex}
   /* Importante: se resalta en naranja cuando el sensor detecta algo relevante */
   .cu-celda.alerta{border-color:var(--nar);box-shadow:0 0 0 2px rgba(232,114,12,.35)}
   .cu-celda.alerta .cu-et{color:var(--nar)}
-  /* Vista vertical ampliada por doble clic */
-  .cu-celda.vertical{min-height:60vh}
-  /* Cubo 33 como barra fija arriba del tablero, siempre visible */
-  .cu-fijo{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;
-    background:var(--beige);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;margin-bottom:6px}
-  .cu-fijo b{font:800 18px ui-monospace,monospace;letter-spacing:.12em;color:var(--brand)}
-  .cu-fijo .cu-al{font:600 12px system-ui;color:var(--nar)}
+  /* Doble toque: voltear a vista vertical ampliada */
+  .cu-celda.vertical{grid-template-columns:1fr;min-height:55vh}
+  .cu-celda.vertical .cu-hueco{height:auto;flex:1}
+  /* Sensores que requieren el equipo ESP32 externo (aún sin conectar) */
+  .cu-espera{font:500 11px system-ui;color:var(--ink2);padding-left:4px}
   .cu-celda:active{transform:scale(.97)}
   .cu-et{font:600 11px system-ui;margin-bottom:3px}
   .cu-hueco{flex:1;min-height:0;display:flex}
@@ -132,14 +133,17 @@
   <section class="card">
     <h2>Cubo de lecturas <small style="color:var(--ink2);font-weight:400">· todas las gráficas en un tablero</small></h2>
     <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
-    <div class="cu-fijo"><b>Cubo (33)© · SOS</b><span class="cu-al" id="cu-alerta"></span></div>
+    <p class="note" id="cu-alerta" style="margin-top:0;min-height:1.2em;color:var(--nar);font-weight:600"></p>
     <div class="cu-rej" id="cu-tablero">
-      <div class="cu-celda g-esp" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">1 · Espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
-      <div class="cu-celda g-cas" data-graf="on-cas"><span class="cu-et" style="color:#e3b341">2 · Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
-      <div class="cu-celda g-vib" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">3 · Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
-      <div class="cu-celda g-voc" data-graf="ol-tri"><span class="cu-et" style="color:#d1242f">4 · Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
-      <div class="cu-celda g-ban" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">5 · Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda" data-graf="on-esp"><span class="cu-et" style="color:#5b8def">Micrófono<br>espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
+      <div class="cu-celda" data-graf="on-cas"><span class="cu-et" style="color:#e3b341">Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
+      <div class="cu-celda" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
+      <div class="cu-celda" data-graf="ol-tri"><span class="cu-et" style="color:#d1242f">Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
+      <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda" data-graf="cal-plano"><span class="cu-et" style="color:#ff8a3d">Plano 10 m<br>personas</span><div class="cu-hueco" data-graf="cal-plano"></div></div>
+      <div class="cu-celda" data-graf="cal-graf"><span class="cu-et" style="color:#4b9bff">Calor/radar<br>en el tiempo</span><div class="cu-hueco" data-graf="cal-graf"></div></div>
     </div>
+    <p class="note" style="font-size:12px">Franjas del iPhone: micrófono, cascada, vibración, vocales, bandas. Las dos últimas (calor a 10 m y personas por radar/inventario) necesitan el sensor ESP32 por USB en Mac o PC con Chrome; mientras no esté conectado, se muestran en espera.</p>
     <p class="note">Las seis gráficas reales, vivas al mismo tiempo, sin bajar la pantalla. Toca una para ampliarla. «Iniciar todo» enciende micrófono y vibración (en iPhone pedirá los dos permisos).</p>
     <div id="on-resumen" aria-live="polite"></div>
     <div class="fila" style="margin-top:10px">
@@ -284,12 +288,15 @@
   // Reubicar las gráficas reales dentro de los huecos del tablero del cubo,
   // para verlas todas a la vez sin bajar la pantalla. El análisis las sigue dibujando por su id.
   document.querySelectorAll(".cu-hueco[data-graf]").forEach(function(hueco){
-    var el=document.getElementById(hueco.dataset.graf); if(!el) return;
+    var el=document.getElementById(hueco.dataset.graf);
+    if(!el){
+      // Sensor del ESP32 externo aún no presente: mostrar en espera
+      hueco.innerHTML='<span class="cu-espera">Esperando sensor ESP32 (USB)</span>';
+      return;
+    }
     // la gráfica puede estar envuelta (.on-wrap para la cascada); mover el envoltorio si existe
     var mover = el.id==="on-cas" && el.closest(".on-wrap") ? el.closest(".on-wrap") : el;
     hueco.appendChild(mover);
-    // Marcar como vacío el <h2> huérfano de la sección de abajo (su gráfica subió al tablero)
-    var h = mover.previousElementSibling;
   });
 
   function abrir(id, nombre){
