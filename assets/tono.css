@@ -23,16 +23,16 @@
    El deslizador solo sube/baja el brillo de las LETRAS (--ilum 0.12…1);
    el fondo permanece negro. Las tarjetas son negro apenas levantado. */
 :root{
-  --bg:#05070b; --s1:#0c1017; --line:#161c26; --line2:#1e2430;
+  --bg:#000000; --s1:#0c1017; --line:#161c26; --line2:#1e2430;
   --tx:calc(60% + (var(--ilum,1) * 32%));
   --ink:hsl(212 18% var(--tx)); --ink2:hsl(212 14% calc(var(--tx) - 22%)); --gris:#5a6472;
-  --brand:#3f8fd0; --nar:#e8720c; --beige:#12161e; --panel:#05070b;
+  --brand:#3f8fd0; --nar:#e8720c; --beige:#12161e; --panel:#000000;
   --ok:#3fae7a; --aviso:#d8a53a; --mal:#e0524f;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
   color-scheme:dark;
 }
 :root[data-tono="dia"],:root[data-tono="noche"],:root[data-tono="discreto"]{
-  --bg:#05070b; --s1:#0c1017; --panel:#05070b; color-scheme:dark;
+  --bg:#000000; --s1:#0c1017; --panel:#000000; color-scheme:dark;
 }
 
 /* Nombre de la página como marca de agua: siempre más tenue que la información.
