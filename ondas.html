@@ -149,6 +149,9 @@
       <div class="cu-celda" data-graf="on-bandas"><span class="cu-et" style="color:#2ea043">Bandas<br>de sonido</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
       <div class="cu-celda" data-graf="vb-esp"><span class="cu-et" style="color:#e8720c">Vibración<br>sismo</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
       <div class="cu-celda" data-sensor="orientacion"><span class="cu-et" style="color:#9b8cff">Inclinación<br>brújula</span><div class="cu-hueco" data-sensor="orientacion"></div></div>
+      <div class="cu-celda" data-sensor="rotacion"><span class="cu-et" style="color:#c792ea">Rotación<br>giro · caída</span><div class="cu-hueco" data-sensor="rotacion"></div></div>
+      <div class="cu-celda" data-sensor="ubicacion"><span class="cu-et" style="color:#64d2ff">Ubicación<br>GPS</span><div class="cu-hueco" data-sensor="ubicacion"></div></div>
+      <div class="cu-celda" data-sensor="bateria"><span class="cu-et" style="color:#30d158">Batería<br>nivel</span><div class="cu-hueco" data-sensor="bateria"></div></div>
       <div class="cu-celda" data-sensor="luz"><span class="cu-et" style="color:#ffd166">Luz<br>lux</span><div class="cu-hueco" data-sensor="luz"></div></div>
       <div class="cu-celda" data-graf="cal-plano"><span class="cu-et" style="color:#ff8a3d">Calor 10 m<br>personas</span><div class="cu-hueco" data-graf="cal-plano"></div></div>
       <div class="cu-celda" data-graf="cal-graf"><span class="cu-et" style="color:#4b9bff">Radar/calor<br>en el tiempo</span><div class="cu-hueco" data-graf="cal-graf"></div></div>
@@ -312,22 +315,48 @@
     var mover = el.id==="on-cas" && el.closest(".on-wrap") ? el.closest(".on-wrap") : el;
     hueco.appendChild(mover);
   });
-  // Sensores leídos por valor (no gráfica): orientación (iPhone sí), luz/gas/temp (ESP32 o no disponibles)
-  var lecturas={};
+  // Sensores leídos por valor. Del iPhone en vivo: orientación, rotación, ubicación, batería.
+  // Sin soporte en iPhone: luz. Del ESP32 externo: gas, temp.
   document.querySelectorAll(".cu-hueco[data-sensor]").forEach(function(hueco){
     var s=hueco.dataset.sensor;
     if(s==="orientacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ori">toca «Iniciar todo»</span>'; }
+    else if(s==="rotacion"){ hueco.innerHTML='<span class="cu-espera" id="s-rot">toca «Iniciar todo»</span>'; }
+    else if(s==="ubicacion"){ hueco.innerHTML='<span class="cu-espera" id="s-ubi">toca para permitir GPS</span>'; }
+    else if(s==="bateria"){ hueco.innerHTML='<span class="cu-espera" id="s-bat">—</span>'; }
     else if(s==="luz"){ hueco.innerHTML='<span class="cu-espera">no disponible en iPhone (iOS)</span>'; }
     else { hueco.innerHTML='<span class="cu-espera">Próximamente · requiere sensor del proyecto (ESP32 por USB en Mac)</span>'; }
   });
-  // Lectura de orientación/inclinación del iPhone
-  function alOrientar(e){
+  // Orientación / inclinación / brújula
+  window.addEventListener("deviceorientation", function(e){
     var el=document.getElementById("s-ori"); if(!el) return;
     var inc = e.beta!=null ? Math.round(e.beta) : "—", br = e.alpha!=null ? Math.round(e.alpha) : "—";
     el.textContent = "inclinación "+inc+"° · brújula "+br+"°";
-  }
-  // Se activa cuando el usuario toca "Iniciar todo" (el permiso de movimiento ya se pide ahí)
-  window.addEventListener("deviceorientation", alOrientar);
+  });
+  // Rotación / giro rápido / caída (del acelerómetro)
+  window.addEventListener("devicemotion", function(e){
+    var el=document.getElementById("s-rot"); if(!el) return;
+    var r=e.rotationRate||{}, g=Math.round(Math.max(Math.abs(r.alpha||0),Math.abs(r.beta||0),Math.abs(r.gamma||0)));
+    var a=e.acceleration||{}, mov=Math.hypot(a.x||0,a.y||0,a.z||0);
+    el.textContent = "giro "+g+"°/s"+(mov>12?" · ¡golpe/caída!":"");
+    var elb=document.getElementById("s-bat"); // por si batería no cargó
+  });
+  // Ubicación GPS (pide permiso al iniciar)
+  var ubiPedida=false;
+  window.pedirUbicacion=function(){
+    if(ubiPedida || !navigator.geolocation) return; ubiPedida=true;
+    navigator.geolocation.watchPosition(function(p){
+      var el=document.getElementById("s-ubi"); if(!el) return;
+      el.textContent = p.coords.latitude.toFixed(4)+", "+p.coords.longitude.toFixed(4)+" · ±"+Math.round(p.coords.accuracy)+" m";
+    }, function(){ var el=document.getElementById("s-ubi"); if(el) el.textContent="sin permiso de ubicación"; }, {enableHighAccuracy:true});
+  };
+  // Batería
+  if(navigator.getBattery){ navigator.getBattery().then(function(b){
+    function pintaBat(){ var el=document.getElementById("s-bat"); if(el) el.textContent=Math.round(b.level*100)+"%"+(b.charging?" · cargando":""); }
+    pintaBat(); b.addEventListener("levelchange",pintaBat); b.addEventListener("chargingchange",pintaBat);
+  }); } else { var eb=document.getElementById("s-bat"); if(eb) eb.textContent="no disponible en iPhone"; }
+  // Al tocar "Iniciar todo", también pedir ubicación GPS
+  var bTodo=document.getElementById("cu-todo");
+  if(bTodo) bTodo.addEventListener("click", function(){ if(window.pedirUbicacion) window.pedirUbicacion(); });
 
   function abrir(id, nombre){
     var el=document.getElementById(id); if(!el) return;
@@ -431,6 +460,7 @@
   var ANCHO=[
     ["Micrófono","#5b8def","iphone"], ["Cascada","#e3b341","iphone"], ["Bandas de sonido","#2ea043","iphone"],
     ["Vibración · sismo","#e8720c","iphone"], ["Inclinación · brújula","#9b8cff","iphone"],
+    ["Rotación · giro · caída","#c792ea","iphone"], ["Ubicación · GPS","#64d2ff","iphone"], ["Batería","#30d158","iphone"],
     ["Luz · lux","#ffd166","no-ios"], ["Calor 10 m · personas","#ff8a3d","esp32"],
     ["Radar · calor","#4b9bff","esp32"], ["Gas · humo · oxígeno","#2ea043","esp32"],
     ["Calor · frío · temperatura","#ff6b6b","esp32"], ["Vocales (voz)","#d1242f","iphone"]
