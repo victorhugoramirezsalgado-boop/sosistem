@@ -41,6 +41,13 @@
   .on-b span{grid-area:c;width:12px;height:12px;border-radius:50%} .on-b b{grid-area:n;font-size:17px;font-weight:600} .on-b small{grid-area:d;color:var(--ink2);font-size:14px}
   .on-b output{grid-area:v;font:600 17px var(--font);font-variant-numeric:tabular-nums}
   .on-b i{grid-area:i;height:12px;background:var(--beige);border-radius:6px;overflow:hidden} .on-b em{display:block;height:100%;width:0}
+  .cu-cruz{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,72px);gap:6px;
+    grid-template-areas:". arr ." "izq cen der" ". aba .";max-width:360px;margin:0 auto}
+  .cu-cara{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden}
+  .cu-cara canvas{width:100%;flex:1;display:block}
+  .cu-et{font:600 10px system-ui;margin-bottom:2px}
+  .cu-centro{align-items:center;justify-content:center;background:var(--beige)}
+  .cu-centro b{font:800 20px ui-monospace,monospace;letter-spacing:.1em;color:var(--brand)}
   #on-resumen{margin:10px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--s1)}
   #on-resumen:empty{display:none}
   .on-sr{display:flex;gap:10px;align-items:baseline;padding:9px 12px;border-top:1px solid var(--line);font-size:15px}
@@ -81,6 +88,19 @@
   <section class="card">
     <button type="button" class="big" id="on-btn" data-on="0">▶ Iniciar análisis de ondas</button>
     <p class="note" id="on-estado">Toque el botón y permita el micrófono.</p>
+  </section>
+
+  <section class="card">
+    <h2>Cubo de lecturas <small style="color:var(--ink2);font-weight:400">· todos los sensores en una cruz</small></h2>
+    <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
+    <div class="cu-cruz">
+      <div class="cu-cara" style="grid-area:arr"><span class="cu-et" style="color:#5b8def">Micrófono</span><canvas id="cu-mic"></canvas></div>
+      <div class="cu-cara" style="grid-area:izq"><span class="cu-et" style="color:#e8720c">Vibración</span><canvas id="cu-vib"></canvas></div>
+      <div class="cu-cara cu-centro" style="grid-area:cen"><span class="cu-et">Cubo (33)©</span><b>SOS</b></div>
+      <div class="cu-cara" style="grid-area:der"><span class="cu-et" style="color:#2ea043">Letras/tono</span><canvas id="cu-let"></canvas></div>
+      <div class="cu-cara" style="grid-area:aba"><span class="cu-et" style="color:#8b949e">Luz</span><small style="color:var(--ink2)">no disponible en iPhone</small></div>
+    </div>
+    <p class="note">Cada cara, un sensor en vivo. Al tocar «Iniciar todo» se encienden juntos; en iPhone pedirá dos permisos (micrófono y movimiento).</p>
   </section>
 
   <section class="card">
