@@ -1,70 +1,55 @@
 /* ============================================================
-   Tono © · Botón de ciclo de visibilidad para SOSistem™ (Sistema S.O.S.©)
+   Tono © · Deslizador de luminancia para SOSistem™ (Sistema S.O.S.©)
    Obra de Víctor Hugo Ramírez Salgado · Safe Creative 2609046908578
-   Un solo botón flotante. Cada toque SUBE la visibilidad:
-     Oculto → Discreto → Noche → Día → (otra vez) Oculto
-   En «Oculto» se esconden el nombre y el título de la página.
-   El nombre va siempre como marca de agua (lo controla tono.css).
+   Un solo deslizador continuo (0–100) gradúa la luminancia de toda la
+   página: de la marca de agua casi invisible (0) al día claro (100),
+   pasando por discreto y noche. Abre en la misma posición en que se dejó.
    Recuerda la elección en el equipo (localStorage). No envía nada.
    ============================================================ */
 (function(){
   "use strict";
-  var LS="sost_tono", root=document.documentElement;
+  var LS="sost_lum", root=document.documentElement;
 
-  /* Orden del ciclo (de menos a más visible) y etiqueta de cada nivel */
-  var CICLO=["oculto","discreto","noche","dia"];
-  var ETIQUETA={oculto:"Oculto", discreto:"Discreto", noche:"Noche", dia:"Día"};
+  var val=50; try{ var g=localStorage.getItem(LS); if(g!=null) val=Math.max(0,Math.min(100,parseInt(g,10)||0)); }catch(e){}
+  aplicar(val, false);
 
-  var guardado=null; try{ guardado=localStorage.getItem(LS); }catch(e){}
-  if(CICLO.indexOf(guardado)<0) guardado="dia";           // por defecto, Día
-  aplicar(guardado, false);
-
-  function aplicar(nivel, recordar){
-    if(nivel==="oculto"){
-      root.setAttribute("data-oculto","1");
-      // deja el tono visual previo debajo de la cortina; usa discreto como lienzo oscuro
-      root.setAttribute("data-tono","discreto");
-    }else{
-      root.setAttribute("data-oculto","0");
-      root.setAttribute("data-tono",nivel);
-    }
-    root.setAttribute("data-nivel",nivel);
-    if(recordar){ try{ localStorage.setItem(LS,nivel); }catch(e){} }
+  /* Traduce 0–100 a un tono (para las variables de color) y a un nivel de brillo */
+  function aplicar(v, recordar){
+    v=Math.max(0,Math.min(100,v));
+    // Franjas de color: 0–20 oculto · 20–45 discreto · 45–70 noche · 70–100 día
+    var tono = v<20 ? "discreto" : v<45 ? "discreto" : v<70 ? "noche" : "dia";
+    root.setAttribute("data-tono", tono);
+    root.setAttribute("data-oculto", v<12 ? "1" : "0");
+    // Brillo fino continuo: la página entera se atenúa con --lum (0.45 … 1)
+    var lum = (0.45 + (v/100)*0.55).toFixed(3);
+    root.style.setProperty("--lum", lum);
+    if(recordar){ try{ localStorage.setItem(LS, String(v)); }catch(e){} }
     sincronizarThemeColor();
-    pintar(nivel);
-  }
-
-  function nivelActual(){
-    var n=root.getAttribute("data-nivel");
-    return CICLO.indexOf(n)>=0 ? n : "dia";
-  }
-  function siguiente(){
-    var i=CICLO.indexOf(nivelActual());
-    var n=CICLO[(i+1)%CICLO.length];
-    aplicar(n, true);
   }
   function sincronizarThemeColor(){
     var m=document.querySelector('meta[name="theme-color"]');
     if(m){ var bg=getComputedStyle(root).getPropertyValue("--bg").trim(); if(bg) m.setAttribute("content",bg); }
   }
 
-  var btn, etq;
-  function pintar(nivel){
-    if(!btn) return;
-    btn.setAttribute("data-nivel",nivel);
-    if(etq) etq.textContent=ETIQUETA[nivel];
-    btn.setAttribute("aria-label","Tono: "+ETIQUETA[nivel]+". Tocar para cambiar.");
-  }
-
   function montar(){
-    btn=document.createElement("button");
-    btn.type="button"; btn.className="tono-ciclo";
-    var p=document.createElement("span"); p.className="punto"; p.setAttribute("aria-hidden","true");
-    etq=document.createElement("span");
-    btn.appendChild(p); btn.appendChild(etq);
-    btn.addEventListener("click",siguiente);
-    document.body.appendChild(btn);
-    pintar(nivelActual());
+    var caja=document.createElement("div");
+    caja.className="tono-lum";
+    caja.setAttribute("role","group");
+    caja.setAttribute("aria-label","Luminancia de la pantalla");
+
+    var sol=document.createElement("span"); sol.className="tono-ico"; sol.textContent="◐"; sol.setAttribute("aria-hidden","true");
+
+    var r=document.createElement("input");
+    r.type="range"; r.min="0"; r.max="100"; r.step="1"; r.value=String(val);
+    r.className="tono-range";
+    r.setAttribute("aria-label","Luminancia: 0 oculto, 100 día claro");
+    r.addEventListener("input",function(){ val=parseInt(r.value,10)||0; aplicar(val,true); });
+
+    caja.appendChild(sol);
+    caja.appendChild(r);
+    // Se monta en <html>, FUERA del filtro de brillo del body, para que el
+    // control nunca se atenúe y siempre se pueda volver a subir la luz.
+    root.appendChild(caja);
   }
 
   function init(){ montar(); }
