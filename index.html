@@ -1313,6 +1313,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
 (function(){var el=document.getElementById("qr-terminal");if(!el)return;var s=document.createElement("script");
+s.integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==";s.crossOrigin="anonymous";
 s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";s.onload=function(){try{new QRCode(el,{text:"https://sosistem.com/terminal.html",width:150,height:150,colorDark:"#0f1b2d",colorLight:"#ffffff"});}catch(e){}};
 s.onerror=function(){el.innerHTML='<a href="terminal.html">sosistem.com/terminal.html</a>';};document.body.appendChild(s);})();
 </script>
