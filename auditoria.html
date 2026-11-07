@@ -82,13 +82,13 @@
 
   <section class="card"><h2>Lo que la auditoría del código confirmó</h2>
     <ul class="note" style="font-size:16px;padding-left:20px;color:var(--ink)">
-      <li>SOSistem no graba audio ni video: no existe ninguna función de grabación en el código.</li>
+      <li>SOSistem™ no graba audio ni video: no existe ninguna función de grabación en el código.</li>
       <li>Tu voz no puede salir por la bocina: no hay grabación que reproducir. La bocina solo emite tonos generados, Morse y la voz sintética de Aprendizaje.</li>
       <li>No se crean imágenes de la cámara; el «Lente» solo muestra en vivo. Cualquier imagen creada aparecería arriba en «Imágenes creadas».</li>
       <li>Con luz, dB y movimiento no se puede reconstruir una imagen de una persona: son números sueltos sin forma ni rostro.</li>
       <li>Punto sensible: el reconocimiento de voz del navegador puede enviar el audio a Google (Chrome) o Apple (Safari). Use «Voz solo en el equipo» para impedirlo.</li></ul></section>
 
-  <section class="card"><h2>Revisar todo el equipo (fuera de SOSistem)</h2>
+  <section class="card"><h2>Revisar todo el equipo (fuera de SOSistem™)</h2>
     <ol class="note" style="font-size:16px;padding-left:20px;color:var(--ink)">
       <li><b>iPhone:</b> Ajustes › Privacidad y seguridad › Reporte de privacidad de apps › Activar. Muestra qué app usó micrófono, cámara o ubicación y a qué dominios se conectó (últimos 7 días, desde que se activa).</li>
       <li><b>Mac:</b> el punto naranja o verde junto al reloj indica micrófono o cámara en uso. Historial de permisos de la última semana en Terminal:<br><code>log show --last 7d --predicate 'subsystem == "com.apple.TCC"' | grep -i -E "microphone|camera"</code></li>

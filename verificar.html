@@ -33,7 +33,7 @@ form{display:grid;gap:8px}input{font:inherit;padding:10px;border:1px solid var(-
   async function ver(folio, h) {
     let lista = []; try { lista = await (await fetch("datos/constancias.json?t=" + Date.now(), { cache: "no-store" })).json(); } catch (e) {}
     const c = lista.find((x) => x.folio === folio.trim() && x.huella === h.trim().toUpperCase());
-    R.innerHTML = c ? `<div class="est ok">✓ Constancia válida</div><dl><dt>Folio</dt><dd>${esc(c.folio)}</dd><dt>Fecha</dt><dd>${esc(c.fecha)}</dd><dt>Apoyo</dt><dd>${esc(c.tipo)}</dd><dt>Otorgada a</dt><dd>${esc(c.iniciales)}</dd></dl>${window.CodigoCubico ? `<div class="cc">${CodigoCubico.barras(c.huella)}<small>${esc(CodigoCubico.texto(c.huella))}</small><small>${esc(CodigoCubico.ref)}</small><small>Compare este Código Cúbico con el impreso en la constancia.</small></div>` : ""}`
+    R.innerHTML = c ? `<div class="est ok">✓ Constancia válida</div><dl><dt>Folio</dt><dd>${esc(c.folio)}</dd><dt>Fecha</dt><dd>${esc(c.fecha)}</dd><dt>Apoyo</dt><dd>${esc(c.tipo)}</dd><dt>Otorgada a</dt><dd>${esc(c.iniciales)}</dd></dl>${window.CodigoCubico ? `<div class="cc">${CodigoCubico.barras(c.huella)}<small>${esc(CodigoCubico.texto(c.huella))}</small><small>${esc(CodigoCubico.ref)}</small><small>Compare este Código Cúbico© con el impreso en la constancia.</small></div>` : ""}`
       : `<div class="est bad">✗ No se encontró una constancia con ese folio y esa huella.</div>`;
   }
   if (q.get("f") && q.get("h")) { F.f.value = q.get("f"); F.h.value = q.get("h"); ver(q.get("f"), q.get("h")); }
