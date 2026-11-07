@@ -50,6 +50,10 @@
   .cu-hueco canvas,.cu-hueco >*{width:100%!important;height:100%!important;display:block}
   .cu-centro{align-items:center;justify-content:center;background:var(--beige)}
   .cu-centro b{font:800 22px ui-monospace,monospace;letter-spacing:.12em;color:var(--brand)}
+  .cu-info{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+  .cu-info summary{cursor:pointer;font:600 15px system-ui;color:var(--ink);min-height:40px;display:flex;align-items:center}
+  .cu-info-l{font-size:14px;color:var(--ink2);padding:6px 0;border-top:1px solid var(--line)}
+  .cu-info-l:first-of-type{border-top:0}
   /* Ampliar una gráfica a pantalla completa, girada para verla lo más ancha posible */
   .amp-btn{position:absolute;top:8px;right:8px;z-index:3;min-height:34px;border:1px solid var(--line2);background:var(--s1);
     color:var(--brand);border-radius:9px;font:600 13px system-ui;padding:0 10px;cursor:pointer}
@@ -117,6 +121,16 @@
       <div class="cu-celda cu-centro"><span class="cu-et">6 · Cubo (33)©</span><b>SOS</b></div>
     </div>
     <p class="note">Las seis gráficas reales, vivas al mismo tiempo, sin bajar la pantalla. Toca una para ampliarla. «Iniciar todo» enciende micrófono y vibración (en iPhone pedirá los dos permisos).</p>
+    <div id="on-resumen" aria-live="polite"></div>
+    <details class="cu-info">
+      <summary>¿Qué significa cada gráfica?</summary>
+      <div class="cu-info-l"><b style="color:#5b8def">1 · Espectro</b> — de ondas bajas (izquierda) a altas (derecha). Brillante = más energía en esa frecuencia.</div>
+      <div class="cu-info-l"><b style="color:#e3b341">2 · Cascada</b> — historial de los últimos segundos. Una línea vertical fija es un tono constante (aparato encendido).</div>
+      <div class="cu-info-l"><b style="color:#e8720c">3 · Vibración</b> — acelerómetro de 0.5 a 30 Hz: sismo, pasos, maquinaria, oleaje. Cada frecuencia tiene letra (A = 1 Hz … Z = 26 Hz).</div>
+      <div class="cu-info-l"><b style="color:#d1242f">4 · Vocales</b> — por formantes (F1 y F2). Los graves dicen si hay voz; las vocales se leen por sus dos resonancias.</div>
+      <div class="cu-info-l"><b style="color:#2ea043">5 · Bandas</b> — energía por banda (graves, medios, agudos…). Muestra cuál domina.</div>
+      <div class="cu-info-l"><b>6 · Cubo (33)©</b> — identidad del sistema. El micrófono del celular no está calibrado: los dB sirven para comparar, no como medición oficial.</div>
+    </details>
   </section>
 
   <section class="card">
@@ -124,13 +138,9 @@
     <ul id="on-picos"><li>Inicie el análisis.</li></ul>
   </section>
 
-  <section class="card">
-    <h2>Espectro · de ondas bajas (izquierda) a altas (derecha)</h2>
+  <section class="card" hidden>
     <canvas id="on-esp"></canvas>
-    <div id="on-resumen" aria-live="polite"></div>
-    <h2 style="margin-top:12px">Cascada · historial de los últimos segundos</h2>
     <div class="on-wrap"><canvas id="on-cas"></canvas><div id="on-cas-etq" aria-live="polite"></div></div>
-    <p class="note">Brillante = más energía en esa frecuencia. Una línea vertical fija es un tono constante (aparato encendido); el analizador la etiqueta con el tipo de ruido probable.</p>
   </section>
 
   <section class="card" id="ol">
