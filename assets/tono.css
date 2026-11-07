@@ -16,47 +16,24 @@
   --radius:14px;
 }
 
-/* DÍA — sin blancos brillantes: fondos grises/beige apagados que reflejan poca luz. */
+/* ============================================================
+   BASE OSCURA SIEMPRE — nunca fondo blanco.
+   El blanco es luz: gasta batería (OLED), se ve a distancia y delata la
+   pantalla. En un sistema S.O.S. el fondo nunca debe emitir luz blanca.
+   El deslizador solo sube/baja el brillo de las LETRAS (--ilum 0.12…1);
+   el fondo permanece negro. Las tarjetas son negro apenas levantado. */
 :root{
-  --bg:#e9e7e1; --s1:#f0eee8; --line:#d8d5cc; --line2:#c9c5ba;
-  --ink:#1b2430; --ink2:#5b6675; --gris:#8a909b;
-  --brand:#005387; --nar:#d9690b; --beige:#ddd6c4; --panel:#1b2430;
-  --ok:#237f52; --aviso:#9c7318; --mal:#9b2423;
-  --shadow:0 1px 2px rgba(27,36,48,.06),0 6px 18px rgba(27,36,48,.07);
-  color-scheme:light;
-}
-
-/* NOCHE — explícito, o automático si el sistema está en oscuro y el usuario no eligió día */
-:root[data-tono="noche"]{
-  --bg:#0b1220; --s1:#121b2c; --line:#24314a; --line2:#2d3b57;
-  --ink:#e8edf5; --ink2:#aab4c5; --gris:#7c879b;
-  --brand:#3f8fd0; --nar:#ff9a4d; --beige:#1b2436; --panel:#060b16;
-  --ok:#3fae7a; --aviso:#e0b53a; --mal:#e0524f;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  --bg:#05070b; --s1:#0c1017; --line:#161c26; --line2:#1e2430;
+  --tx:calc(60% + (var(--ilum,1) * 32%));
+  --ink:hsl(212 18% var(--tx)); --ink2:hsl(212 14% calc(var(--tx) - 22%)); --gris:#5a6472;
+  --brand:#3f8fd0; --nar:#e8720c; --beige:#12161e; --panel:#05070b;
+  --ok:#3fae7a; --aviso:#d8a53a; --mal:#e0524f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
   color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-tono="dia"]):not([data-tono="discreto"]){
-    --bg:#0b1220; --s1:#121b2c; --line:#24314a; --line2:#2d3b57;
-    --ink:#e8edf5; --ink2:#aab4c5; --gris:#7c879b;
-    --brand:#3f8fd0; --nar:#ff9a4d; --beige:#1b2436; --panel:#060b16;
-    --ok:#3fae7a; --aviso:#e0b53a; --mal:#e0524f;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
-    color-scheme:dark;
-  }
+:root[data-tono="dia"],:root[data-tono="noche"],:root[data-tono="discreto"]{
+  --bg:#05070b; --s1:#0c1017; --panel:#05070b; color-scheme:dark;
 }
-
-/* DISCRETO — fondo y texto casi del mismo tono: legible solo de frente y de cerca.
-   AVISO: esto disimula a distancia; NO impide ángulos, reflejos ni lentes (eso es físico, una mica de privacidad). */
-:root[data-tono="discreto"]{
-  --bg:#1a1d22; --s1:#1e2227; --line:#262a30; --line2:#2b3037;
-  --ink:#4a515c; --ink2:#3b414b; --gris:#3b414b;
-  --brand:#44525f; --nar:#6b5436; --beige:#20242a; --panel:#141619;
-  --ok:#3c4a42; --aviso:#4a4634; --mal:#4a3836;
-  --shadow:none;
-  color-scheme:dark;
-}
-:root[data-tono="discreto"] body{opacity:.96}
 
 /* Nombre de la página como marca de agua: siempre más tenue que la información.
    Nadie que mire de reojo debe reconocer en qué página está. */
@@ -67,9 +44,10 @@
 :root[data-oculto="1"] .cab b,
 :root[data-oculto="1"] h1{opacity:0 !important;visibility:hidden}
 
-/* Brillo fino continuo: el deslizador fija --lum (0.45 … 1) y atenúa toda la página.
-   Así un solo control gradúa la luminancia de marca de agua a día claro. */
-body{filter:brightness(var(--lum,1))}
+/* El fondo es siempre negro; solo el contenido sube o baja de brillo con --ilum.
+   Nunca hay luz blanca que delate la pantalla. */
+body{background:var(--bg)}
+.card,.au-t{opacity:calc(0.35 + var(--ilum,1) * 0.65)}
 
 /* Deslizador de luminancia — flotante fijo abajo, siempre visible */
 .tono-lum{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);

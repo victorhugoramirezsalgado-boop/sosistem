@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Auditoría de privacidad · SOSistem™</title>
 <meta name="description" content="Auditoría de privacidad de SOSistem™: micrófono, cámara, voz, bocina, imágenes y envíos registrados en el equipo, con cadena verificable.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#05070b">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/tono.css?v=1">
 <style>
@@ -25,15 +25,15 @@
   .big{width:100%;min-height:72px;font:600 22px var(--font);border-radius:var(--radius);border:2px solid var(--nar);background:var(--nar);color:#fff;cursor:pointer}
   .big[data-on="1"]{background:transparent;color:var(--nar)}
   .note{color:var(--ink2);font-size:15px;margin:8px 0 0}
-  canvas{width:100%;display:block;border-radius:12px;background:#e4e1d9;border:1px solid var(--line)}
+  canvas{width:100%;display:block;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
   .au-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
   .au-t{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:12px;background:var(--beige)}
   .au-t small{display:block;color:var(--ink2);font-size:14px} .au-t b{display:block;font-size:24px;font-weight:600;margin:2px 0} .au-t span{font-size:14px;color:var(--ink2)}
   .au-t[data-tipo="ok"]{border-left-color:var(--ok)} .au-t[data-tipo="aviso"]{border-left-color:var(--aviso)} .au-t[data-tipo="mal"]{border-left-color:var(--mal)}
-  .sec{min-height:52px;font:500 17px var(--font);border-radius:12px;border:1.5px solid var(--line2);background:#fff;color:var(--ink);cursor:pointer;padding:0 16px}
+  .sec{min-height:52px;font:500 17px var(--font);border-radius:12px;border:1.5px solid var(--line2);background:var(--s1);color:var(--ink);cursor:pointer;padding:0 16px}
   .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
-  select,input[type=password]{font:500 17px var(--font);background:#fff;color:var(--ink);border:1.5px solid var(--line2);border-radius:12px;padding:10px}
-  #au-filtros button{min-height:44px;font:500 15px var(--font);border-radius:10px;border:1.5px solid var(--line2);background:#fff;color:var(--ink);padding:0 12px;cursor:pointer}
+  select,input[type=password]{font:500 17px var(--font);background:var(--s1);color:var(--ink);border:1.5px solid var(--line2);border-radius:12px;padding:10px}
+  #au-filtros button{min-height:44px;font:500 15px var(--font);border-radius:10px;border:1.5px solid var(--line2);background:var(--s1);color:var(--ink);padding:0 12px;cursor:pointer}
   #au-filtros button[aria-pressed="true"]{background:var(--nar);border-color:var(--nar);color:#fff}
   .tb{width:100%;border-collapse:collapse;font-size:15px} .tb td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top} .tb small{color:var(--ink2)}
   .tb td:first-child{white-space:nowrap;color:var(--ink2);width:1%}

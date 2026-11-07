@@ -13,16 +13,13 @@
   var val=50; try{ var g=localStorage.getItem(LS); if(g!=null) val=Math.max(0,Math.min(100,parseInt(g,10)||0)); }catch(e){}
   aplicar(val, false);
 
-  /* Traduce 0–100 a un tono (para las variables de color) y a un nivel de brillo */
+  /* 0–100 controla el brillo de las LETRAS sobre fondo negro (el fondo nunca cambia).
+     0 = letras casi invisibles · 100 = bien legibles. */
   function aplicar(v, recordar){
     v=Math.max(0,Math.min(100,v));
-    // Franjas de color: 0–20 oculto · 20–45 discreto · 45–70 noche · 70–100 día
-    var tono = v<20 ? "discreto" : v<45 ? "discreto" : v<70 ? "noche" : "dia";
-    root.setAttribute("data-tono", tono);
-    root.setAttribute("data-oculto", v<12 ? "1" : "0");
-    // Brillo fino continuo: la página entera se atenúa con --lum (0.45 … 1)
-    var lum = (0.45 + (v/100)*0.55).toFixed(3);
-    root.style.setProperty("--lum", lum);
+    var ilum=(0.12 + (v/100)*0.88).toFixed(3);
+    root.style.setProperty("--ilum", ilum);
+    root.setAttribute("data-oculto", v<10 ? "1" : "0");
     if(recordar){ try{ localStorage.setItem(LS, String(v)); }catch(e){} }
     sincronizarThemeColor();
   }
