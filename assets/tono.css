@@ -1,0 +1,78 @@
+/* ============================================================
+   Tono © · Selector de ambiente para las páginas internas de SOSistem™
+   (Sistema S.O.S.© — obra de Víctor Hugo Ramírez Salgado, Safe Creative 2609046908578)
+   Tres ambientes sobre las mismas variables del sistema:
+     día      — fondo gris claro, letras marino (uso normal, presentación)
+     noche    — fondo oscuro, letras claras, acentos calmados (poca luz)
+     discreto — bajo contraste, legible solo de cerca (NO bloquea ángulos)
+   Más un botón «Ocultar» que vuelve la pantalla neutra al instante.
+   El tono se fija con el atributo data-tono en <html>; tono.js lo recuerda.
+   ============================================================ */
+
+/* Tipografía y radios — comunes a todos los tonos */
+:root{
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:14px;
+}
+
+/* DÍA — valores base (coinciden con auditoria/ondas) */
+:root{
+  --bg:#f4f5f7; --s1:#ffffff; --line:#e6e8ec; --line2:#d4d7dd;
+  --ink:#0f1b2d; --ink2:#5b6675; --gris:#8a909b;
+  --brand:#005387; --nar:#e8720c; --beige:#ede6d6; --panel:#0f1b2d;
+  --ok:#237f52; --aviso:#b9881a; --mal:#9b2423;
+  --shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06);
+  color-scheme:light;
+}
+
+/* NOCHE — explícito, o automático si el sistema está en oscuro y el usuario no eligió día */
+:root[data-tono="noche"]{
+  --bg:#0b1220; --s1:#121b2c; --line:#24314a; --line2:#2d3b57;
+  --ink:#e8edf5; --ink2:#aab4c5; --gris:#7c879b;
+  --brand:#3f8fd0; --nar:#ff9a4d; --beige:#1b2436; --panel:#060b16;
+  --ok:#3fae7a; --aviso:#e0b53a; --mal:#e0524f;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-tono="dia"]):not([data-tono="discreto"]){
+    --bg:#0b1220; --s1:#121b2c; --line:#24314a; --line2:#2d3b57;
+    --ink:#e8edf5; --ink2:#aab4c5; --gris:#7c879b;
+    --brand:#3f8fd0; --nar:#ff9a4d; --beige:#1b2436; --panel:#060b16;
+    --ok:#3fae7a; --aviso:#e0b53a; --mal:#e0524f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    color-scheme:dark;
+  }
+}
+
+/* DISCRETO — fondo y texto casi del mismo tono: legible solo de frente y de cerca.
+   AVISO: esto disimula a distancia; NO impide ángulos, reflejos ni lentes (eso es físico, una mica de privacidad). */
+:root[data-tono="discreto"]{
+  --bg:#1a1d22; --s1:#1e2227; --line:#262a30; --line2:#2b3037;
+  --ink:#4a515c; --ink2:#3b414b; --gris:#3b414b;
+  --brand:#44525f; --nar:#6b5436; --beige:#20242a; --panel:#141619;
+  --ok:#3c4a42; --aviso:#4a4634; --mal:#4a3836;
+  --shadow:none;
+  color-scheme:dark;
+}
+:root[data-tono="discreto"] body{opacity:.96}
+
+/* Selector de tono (barra pequeña) */
+.tono-bar{display:inline-flex;gap:4px;align-items:center;background:var(--s1);border:1px solid var(--line2);
+  border-radius:12px;padding:4px}
+.tono-bar button{min-height:36px;min-width:40px;font:500 14px var(--font,system-ui);border:0;border-radius:9px;
+  background:transparent;color:var(--ink2);cursor:pointer;padding:0 10px}
+.tono-bar button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.tono-bar .tono-ocultar{color:var(--nar)}
+
+/* Pantalla neutra de «Ocultar»: tapa todo al instante */
+.tono-cortina{position:fixed;inset:0;z-index:9999;background:#0b0f14;display:none;
+  align-items:center;justify-content:center;color:#2a3340;font:500 15px var(--font,system-ui);cursor:pointer;
+  -webkit-tap-highlight-color:transparent}
+:root[data-oculto="1"] .tono-cortina{display:flex}
+:root[data-oculto="1"] body>:not(.tono-cortina){filter:blur(18px)}
+
+@media (prefers-reduced-motion: no-preference){
+  .tono-bar button{transition:background .15s ease,color .15s ease}
+}

@@ -9,13 +9,11 @@
 <meta name="description" content="Auditoría de privacidad de SOSistem™: micrófono, cámara, voz, bocina, imágenes y envíos registrados en el equipo, con cadena verificable.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/tono.css?v=1">
 <style>
   /* Sistema visual unificado SOSistem™ — claro, fino (Siemens/Honeywell/Dyson):
      marino #0f1b2d · azul ISO #005387 · naranja acento #E8720C · beige #ede6d6 · blanco · negro */
-  :root{--bg:#f4f5f7;--s1:#ffffff;--line:#e6e8ec;--line2:#d4d7dd;--ink:#0f1b2d;--ink2:#5b6675;--gris:#8a909b;--brand:#005387;--nar:#e8720c;--beige:#ede6d6;
-    --ok:#237f52;--aviso:#b9881a;--mal:#9b2423;
-    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--radius:14px;--shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06)}
-  *{box-sizing:border-box}
+    *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 var(--font);-webkit-font-smoothing:antialiased}
   .on{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 28px)}
   .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
@@ -48,7 +46,7 @@
 </head>
 <body>
 <main class="on">
-  <div class="cab"><b>SOSistem™</b><a href="terminal.html">← Terminal</a></div>
+  <div class="cab"><b>SOSistem™</b><a href="terminal.html">← Terminal</a><div id="tono" style="margin-left:auto"></div></div>
   <h1 id="au-tit" title="Toque para escuchar en Morse">Auditoría de privacidad</h1>
   <p class="note" style="margin-top:0">Todo lo que las páginas de SOSistem™ hacen con micrófono, cámara, voz, bocina, imágenes e internet, registrado en este equipo. No se graba audio ni imagen: solo horas, números y destinos.</p>
 
@@ -105,5 +103,6 @@
 <script src="assets/morse.js?v=7.1.0"></script>
 <script src="assets/boveda.js?v=7.1.0"></script>
 <script src="assets/auditoria-panel.js?v=7.1.0"></script>
+<script src="assets/tono.js?v=1" defer></script>
 </body>
 </html>
