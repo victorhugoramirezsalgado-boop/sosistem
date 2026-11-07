@@ -10,7 +10,12 @@
   "use strict";
   var LS="sost_lum", root=document.documentElement;
 
-  var val=50; try{ var g=localStorage.getItem(LS); if(g!=null) val=Math.max(0,Math.min(100,parseInt(g,10)||0)); }catch(e){}
+  /* Primera visita (emergencia, de noche): abre en el nivel más bajo seguro (~22),
+     muy tenue, legible solo de frente y de cerca, sin destello de luz.
+     Si de día no se ve, el usuario sube el deslizador. Si ya visitó, respeta lo suyo. */
+  var INICIO_SEGURO=22;
+  var val=INICIO_SEGURO, tenia=false;
+  try{ var g=localStorage.getItem(LS); if(g!=null){ val=Math.max(0,Math.min(100,parseInt(g,10)||0)); tenia=true; } }catch(e){}
   aplicar(val, false);
 
   /* 0–100 controla el brillo de las LETRAS sobre fondo negro (el fondo nunca cambia).
