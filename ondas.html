@@ -42,8 +42,13 @@
   .on-b output{grid-area:v;font:600 17px var(--font);font-variant-numeric:tabular-nums}
   .on-b i{grid-area:i;height:12px;background:var(--beige);border-radius:6px;overflow:hidden} .on-b em{display:block;height:100%;width:0}
   /* Tablero del cubo: 2 columnas × 3 filas, cada celda una gráfica real en vivo */
-  .cu-rej{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-  .cu-celda{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden;min-height:96px;cursor:pointer;position:relative;transition:transform .12s}
+  /* Acomodo Tetris: piezas de distinto tamaño que encajan; todas visibles en una pantalla */
+  .cu-rej{display:grid;grid-template-columns:1fr 1fr;gap:6px;
+    grid-template-areas:"esp esp" "cas cas" "vib voc" "ban cen"}
+  .cu-celda{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;overflow:hidden;min-height:92px;cursor:pointer;position:relative;transition:transform .12s}
+  .cu-celda.g-esp{grid-area:esp;min-height:120px} .cu-celda.g-cas{grid-area:cas;min-height:96px}
+  .cu-celda.g-vib{grid-area:vib} .cu-celda.g-voc{grid-area:voc}
+  .cu-celda.g-ban{grid-area:ban} .cu-celda.g-cen{grid-area:cen}
   .cu-celda:active{transform:scale(.97)}
   .cu-et{font:600 11px system-ui;margin-bottom:3px}
   .cu-hueco{flex:1;min-height:0;display:flex}
@@ -54,6 +59,13 @@
   .cu-info summary{cursor:pointer;font:600 15px system-ui;color:var(--ink);min-height:40px;display:flex;align-items:center}
   .cu-info-l{font-size:14px;color:var(--ink2);padding:6px 0;border-top:1px solid var(--line)}
   .cu-info-l:first-of-type{border-top:0}
+  @media print{
+    body *{visibility:hidden}
+    #cu-tablero, #cu-tablero *{visibility:visible}
+    #cu-tablero{position:absolute;left:0;top:0;width:100%}
+    .cu-celda{background:#fff;border:1px solid #333;break-inside:avoid}
+    .cu-et{color:#333!important} .amp-btn,.fila{display:none!important}
+  }
   /* Ampliar una gráfica a pantalla completa, girada para verla lo más ancha posible */
   .amp-btn{position:absolute;top:8px;right:8px;z-index:3;min-height:34px;border:1px solid var(--line2);background:var(--s1);
     color:var(--brand);border-radius:9px;font:600 13px system-ui;padding:0 10px;cursor:pointer}
@@ -112,16 +124,20 @@
   <section class="card">
     <h2>Cubo de lecturas <small style="color:var(--ink2);font-weight:400">· todas las gráficas en un tablero</small></h2>
     <button type="button" class="big" id="cu-todo" data-on="0" style="margin-bottom:12px">▶ Iniciar todo</button>
-    <div class="cu-rej">
-      <div class="cu-celda"><span class="cu-et" style="color:#5b8def">1 · Espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
-      <div class="cu-celda"><span class="cu-et" style="color:#e3b341">2 · Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
-      <div class="cu-celda"><span class="cu-et" style="color:#e8720c">3 · Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
-      <div class="cu-celda"><span class="cu-et" style="color:#d1242f">4 · Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
-      <div class="cu-celda"><span class="cu-et" style="color:#2ea043">5 · Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
-      <div class="cu-celda cu-centro"><span class="cu-et">6 · Cubo (33)©</span><b>SOS</b></div>
+    <div class="cu-rej" id="cu-tablero">
+      <div class="cu-celda g-esp"><span class="cu-et" style="color:#5b8def">1 · Espectro</span><div class="cu-hueco" data-graf="on-esp"></div></div>
+      <div class="cu-celda g-cas"><span class="cu-et" style="color:#e3b341">2 · Cascada</span><div class="cu-hueco" data-graf="on-cas"></div></div>
+      <div class="cu-celda g-vib"><span class="cu-et" style="color:#e8720c">3 · Vibración</span><div class="cu-hueco" data-graf="vb-esp"></div></div>
+      <div class="cu-celda g-voc"><span class="cu-et" style="color:#d1242f">4 · Vocales</span><div class="cu-hueco" data-graf="ol-tri"></div></div>
+      <div class="cu-celda g-ban"><span class="cu-et" style="color:#2ea043">5 · Bandas</span><div class="cu-hueco" data-graf="on-bandas"></div></div>
+      <div class="cu-celda cu-centro g-cen"><span class="cu-et">6 · Cubo (33)©</span><b>SOS</b></div>
     </div>
     <p class="note">Las seis gráficas reales, vivas al mismo tiempo, sin bajar la pantalla. Toca una para ampliarla. «Iniciar todo» enciende micrófono y vibración (en iPhone pedirá los dos permisos).</p>
     <div id="on-resumen" aria-live="polite"></div>
+    <div class="fila" style="margin-top:10px">
+      <button type="button" class="sec" id="cu-imp">Imprimir cubo</button>
+      <button type="button" class="sec" id="cu-hist">Imprimir histórico</button>
+    </div>
     <details class="cu-info">
       <summary>¿Qué significa cada gráfica?</summary>
       <div class="cu-info-l"><b style="color:#5b8def">1 · Espectro</b> — de ondas bajas (izquierda) a altas (derecha). Brillante = más energía en esa frecuencia.</div>
@@ -280,6 +296,39 @@
   }
   document.getElementById("amp-cerrar").addEventListener("click", cerrar);
   capa.addEventListener("click", function(e){ if(e.target===capa) cerrar(); });
+
+  // Imprimir el cubo tal como está ahora (su registro del momento)
+  var bImp=document.getElementById("cu-imp");
+  if(bImp) bImp.addEventListener("click", function(){ window.print(); });
+
+  // Imprimir histórico: una hoja por gráfica con todo lo registrado (de la variable R del análisis)
+  var bHist=document.getElementById("cu-hist");
+  if(bHist) bHist.addEventListener("click", function(){
+    var R = (window.SOSOndas && window.SOSOndas.R) || null;
+    if(!R){ alert("Primero inicie el análisis para generar registro."); return; }
+    var w = window.open("", "_blank");
+    if(!w){ alert("Permita las ventanas emergentes para imprimir el histórico."); return; }
+    function tabla(titulo, filas, cols){
+      if(!filas || !filas.length) return "<h2>"+titulo+"</h2><p>Sin registros.</p>";
+      var th = cols.map(function(c){return "<th>"+c[0]+"</th>";}).join("");
+      var tr = filas.map(function(f){ return "<tr>"+cols.map(function(c){return "<td>"+(f[c[1]]!=null?f[c[1]]:"")+"</td>";}).join("")+"</tr>"; }).join("");
+      return "<h2>"+titulo+"</h2><table><thead><tr>"+th+"</tr></thead><tbody>"+tr+"</tbody></table>";
+    }
+    var ini = R.inicio || "", fin = new Date().toISOString();
+    var html = "<!doctype html><html lang=es><head><meta charset=utf-8><title>Histórico · Analizador de ondas SOSistem</title>"
+      + "<style>body{font:13px system-ui;margin:24px;color:#111}h1{font-size:20px}h2{font-size:16px;margin-top:22px;page-break-before:always}h2:first-of-type{page-break-before:avoid}"
+      + "table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #999;padding:4px 6px;text-align:left}th{background:#eee}"
+      + ".cab{color:#555;margin-bottom:16px}</style></head><body>"
+      + "<h1>Histórico del Analizador de ondas · SOSistem™</h1>"
+      + "<p class=cab>Registro del "+ini+" al "+fin+" · © Víctor Hugo Ramírez Salgado · Sistema S.O.S.© (Safe Creative 2609046908578)</p>"
+      + tabla("Picos de sonido (micrófono)", R.hallazgos, [["Hora","hora"],["Frecuencia (Hz)","frecuencia_hz"],["Nivel (dB)","nivel_db"],["Deducción","deduccion"]])
+      + tabla("Vibración (acelerómetro)", R.vibracion, [["Hora","hora"],["Frecuencia (Hz)","frecuencia_hz"],["Amplitud (m/s²)","amplitud_ms2"],["Letra","letra"],["Deducción","deduccion"]])
+      + tabla("Letras por tono", R.letras, [["Hora","hora"],["Letra","letra"],["Frecuencia (Hz)","frecuencia_hz"],["Sobre fondo (dB)","sobre_fondo_db"]])
+      + tabla("Radiación (Geiger)", R.geiger, [["Hora","hora"],["CPM","cpm"],["µSv/h","usv_h"]])
+      + "</body></html>";
+    w.document.write(html); w.document.close();
+    setTimeout(function(){ w.print(); }, 400);
+  });
 
   // Botón "⤢ Ampliar" en cada gráfica
   Object.keys(GRAF).forEach(function(id){
