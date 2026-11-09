@@ -28,6 +28,11 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 /* Fondo de las pantallas NODO S.O.S.© (automático por hora hasta que cargue el script) */
 try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); var hh = new Date().getHours(); document.documentElement.dataset.ptema = pt && pt !== "auto" ? pt : (hh >= 20 || hh < 7 ? "noche" : "interior"); } catch (e) {}
 </script>
+<script>
+/* Modo «solo»: el diseño nuevo abre aquí una sola sección dentro de su lector */
+(function(){var m=location.search.match(/[?&]solo=([\w-]+)/);if(!m)return;var id=m[1];document.documentElement.classList.add('modo-solo');
+var st=document.createElement('style');st.textContent='html.modo-solo header.top,html.modo-solo footer,html.modo-solo .sel-diseno,html.modo-solo main>*:not(#'+id+'){display:none!important}html.modo-solo main>#'+id+'{display:block!important;margin-top:0!important}';document.head.appendChild(st);})();
+</script>
 <style id="sel-diseno-css">
 .sel-diseno{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9000;display:flex;gap:4px;align-items:center;background:#15191B;color:#fff;border-radius:999px;padding:4px;box-shadow:0 6px 20px rgba(0,0,0,.25);font:600 13px/1 Inter,system-ui,sans-serif}
 .sel-diseno span{padding:0 8px 0 10px;opacity:.75}
@@ -40,7 +45,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text">SOSistem™</span></a>
+    <a class="logo" href="#inicio"><img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text"><span class="mk"><b>SOS</b>istem<sup>™</sup></span></span></a>
     <nav>
       <button class="btn hide-xs" id="btn-presentar" type="button" title="Modo presentación (flechas para avanzar)">Presentar</button>
       <a class="btn primary" href="#terminal"><span class="hide-xs">Terminal de pruebas</span><span class="show-xs">Terminal</span></a>
@@ -1299,6 +1304,7 @@ try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); 
 <script src="assets/rastreo.js?v=6.1" defer></script>
 <script src="assets/morse-motor.js?v=6.1" defer></script>
 <script src="assets/receptor.js?v=6.1" defer></script>
+<script src="assets/marca.js?v=7.9.0" defer></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */

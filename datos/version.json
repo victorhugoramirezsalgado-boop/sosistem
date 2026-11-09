@@ -1,8 +1,13 @@
 {
-  "version": "7.8.0",
+  "version": "7.9.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.9.0",
+      "fecha": "2026-11-08",
+      "resumen": "Marca unificada: en todas las páginas cada «SOSistem» se muestra con «SOS» en naranja e «istem» en negro, con su ™ (o ©), y sobre fondo oscuro en placa blanca; se conserva al cambiar de idioma. Índice: las ligas a secciones del diseño anterior se abren en un lector dentro del diseño nuevo, sin salir de él. Nueva sección 14 «Dossier del autor · VHRS» (CBTIS No. 41, Universidad Xochicalco, CETYS, Universidad de Cantabria–UIMP, Fundación ValenciaPort, Northwestern Polytechnical University, CEDEMAR, FIDENA, CANACINTRA, OEA–CIP, docencia, trayectoria y certificaciones); esas instituciones salen de Nomenclaturas (143 siglas)."
+    },
     {
       "v": "7.8.0",
       "fecha": "2026-11-08",
