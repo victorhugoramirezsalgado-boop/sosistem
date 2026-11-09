@@ -29,9 +29,17 @@ if (!document.documentElement.dataset.fondo) document.documentElement.dataset.fo
 try { var pt = JSON.parse(localStorage.getItem("sos_pantalla_tema") || "null"); var hh = new Date().getHours(); document.documentElement.dataset.ptema = pt && pt !== "auto" ? pt : (hh >= 20 || hh < 7 ? "noche" : "interior"); } catch (e) {}
 </script>
 <script>
-/* Modo «solo»: el diseño nuevo abre aquí una sola sección dentro de su lector */
-(function(){var m=location.search.match(/[?&]solo=([\w-]+)/);if(!m)return;var id=m[1];document.documentElement.classList.add('modo-solo');
-var st=document.createElement('style');st.textContent='html.modo-solo header.top,html.modo-solo footer,html.modo-solo .sel-diseno,html.modo-solo main>*:not(#'+id+'){display:none!important}html.modo-solo main>#'+id+'{display:block!important;margin-top:0!important}';document.head.appendChild(st);})();
+/* Modo «solo»: la versión B abre aquí una sola sección dentro de su lector, con la apariencia de la versión B */
+(function(){var m=location.search.match(/[?&]solo=([\w-]+)/);if(!m)return;var id=m[1],r=document.documentElement;r.classList.add('modo-solo');r.setAttribute('data-theme','light');r.dataset.fondo='blanco';
+var st=document.createElement('style');st.textContent=
+'html.modo-solo header.top,html.modo-solo footer,html.modo-solo .sel-diseno,html.modo-solo #ver-pestanas,html.modo-solo #pestanas,html.modo-solo #pest-cinta,html.modo-solo .sep-sec,html.modo-solo main>*:not(#'+id+'){display:none!important}'+
+'html.modo-solo main>#'+id+'{display:block!important;margin:0!important;padding-top:1.4rem!important;background:transparent!important}'+
+'html.modo-solo{--bg:#fff;--surface:#fff;--surface-2:#F4F4F2;--ink:#18191B;--ink-2:#55585E;--ink-3:#7A7D83;--line:#E1E1DD;--brand:#C0541A;--navy:#18191B;--s1:#18191B;--s2:#C0541A;--s3:#E5A27A;--radius:16px;--shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06);--font:"Inter",system-ui,sans-serif}'+
+'html.modo-solo body{background:#fff!important;padding:0!important}html.modo-solo .eyebrow{color:#9C4314!important}'+
+'html.modo-solo h2,html.modo-solo h3{color:#18191B;letter-spacing:-.02em}';
+document.head.appendChild(st);
+document.addEventListener('click',function(ev){var x=ev.target.closest&&ev.target.closest('a[href^="#"]');if(!x)return;var d=x.getAttribute('href').slice(1);if(!d||!document.getElementById(d)||!/^[\w-]+$/.test(d))return;var s=document.getElementById(d).closest('main>section');if(!s||s.id===id)return;ev.preventDefault();location.search='?solo='+s.id;},true);
+try{parent.postMessage({sosSolo:id},'*');}catch(e){}})();
 </script>
 <style id="sel-diseno-css">
 .sel-diseno{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9000;display:flex;gap:4px;align-items:center;background:#15191B;color:#fff;border-radius:999px;padding:4px;box-shadow:0 6px 20px rgba(0,0,0,.25);font:600 13px/1 Inter,system-ui,sans-serif}
@@ -1305,6 +1313,11 @@ var st=document.createElement('style');st.textContent='html.modo-solo header.top
 <script src="assets/morse-motor.js?v=6.1" defer></script>
 <script src="assets/receptor.js?v=6.1" defer></script>
 <script src="assets/marca.js?v=7.9.0" defer></script>
+<script>
+/* Versión B: número de versión en el selector */
+fetch('datos/version.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(v){document.querySelectorAll('.sel-b').forEach(function(a){a.textContent='B.'+v.version;});}).catch(function(){});
+</script>
+
 <script>document.addEventListener("DOMContentLoaded",()=>{try{VHRSReceptor.pagina(document.getElementById("rx-host"));}catch(e){}});</script>
 <script>
 /* Código QR de la terminal (se genera en el navegador) */
@@ -1323,6 +1336,6 @@ Promise.all(pend.map(function(el){return fetch("https://"+code+".goatcounter.com
 var n=j?(num(j.count_unique)!=null?num(j.count_unique):num(j.count)):null;el.textContent=n==null?"0":n.toLocaleString("es-MX");if(j)ok++;}).catch(function(){el.textContent="0";});})).then(function(){
 if(!ok){var nt=document.getElementById("cnt-nota");if(nt)nt.textContent="Conteo anónimo por equipo: no identifica a nadie ni usa cookies. Las cifras se muestran en cuanto se registra el primer uso.";}});});})();
 </script>
-<nav class="sel-diseno" aria-label="Diseño del sitio"><span>Diseño</span><a href="./">Nuevo</a><a href="anterior.html" aria-current="page">Anterior</a></nav>
+<nav class="sel-diseno" aria-label="Versión del sitio"><span>Versión</span><a href="./" class="sel-b">B</a><a href="anterior.html" aria-current="page">A</a></nav>
 </body>
 </html>

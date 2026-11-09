@@ -1,8 +1,13 @@
 {
-  "version": "8.1.0",
+  "version": "8.2.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.2.0",
+      "fecha": "2026-11-08",
+      "resumen": "Versión B: todo el contenido se consulta dentro de la versión actual. Las secciones que venían del diseño anterior (FODA, Aprendizaje, Mensajero, Fuentes y demás) se abren en el lector con la apariencia de la versión B, sin menús ni encabezados del diseño anterior, con un selector para pasar de una sección a otra; se quitó la liga a la página completa. El selector inferior muestra la versión B con su número (B.8.2.0) y la A como la anterior."
+    },
     {
       "v": "8.1.0",
       "fecha": "2026-11-08",
@@ -438,5 +443,10 @@
       "fecha": "2026-10",
       "resumen": "Sitio inicial con diseño adaptable para celular, tableta y escritorio."
     }
-  ]
+  ],
+  "serie": "B",
+  "series": {
+    "A": "Diseño anterior (hasta 7.4.0 como portada)",
+    "B": "Diseño actual, desde 7.5.0"
+  }
 }

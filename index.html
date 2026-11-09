@@ -168,7 +168,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lector::backdrop{background:rgba(14,16,18,.72)}
 .lector[open]{display:flex;flex-direction:column}
 .lector-bar{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;border-bottom:1px solid var(--line);background:#fff}
-.lector-bar b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lector-sel{flex:1;min-width:0;font:700 1rem/1.2 var(--f-body);color:var(--ink);background:#F4F4F2;border:1.5px solid var(--line);border-radius:12px;padding:.55rem .7rem;text-overflow:ellipsis}
 .lector-bar .btn{min-height:40px;margin-bottom:4px;padding:0 1rem;font-size:.9rem}
 .lector-full{font-size:.85rem;color:var(--brand-text);white-space:nowrap}
 .lector iframe{flex:1;width:100%;border:0;background:#fff}
@@ -894,33 +894,40 @@ L3 G
   function mover(e){var w=300,h=v.offsetHeight||230,x=e.clientX+18,y=e.clientY+18;if(x+w>innerWidth)x=e.clientX-w-12;if(y+h>innerHeight)y=e.clientY-h-12;v.style.left=Math.max(8,x)+'px';v.style.top=Math.max(8,y)+'px';}
 })();
 </script>
-<nav class="sel-diseno" aria-label="Diseño del sitio"><span>Diseño</span><a href="./" aria-current="page">Nuevo</a><a href="anterior.html">Anterior</a></nav>
+<nav class="sel-diseno" aria-label="Versión del sitio"><span>Versión</span><a href="./" aria-current="page" class="sel-b">B</a><a href="anterior.html">A</a></nav>
 
 <dialog id="lector" class="lector" aria-labelledby="lector-tit">
   <div class="lector-bar">
     <button type="button" class="btn btn-brand" data-cerrar>← Volver</button>
-    <b id="lector-tit"></b>
-    <a id="lector-full" class="lector-full" href="#">Página completa</a>
+    <select id="lector-sel" class="lector-sel" aria-label="Sección"></select>
+    <a id="lector-full" class="lector-full" href="#" hidden></a>
   </div>
   <iframe id="lector-if" title="Sección del sistema"></iframe>
 </dialog>
 <script>
 /* Lector: las ligas a secciones del diseño anterior se abren aquí mismo, sin salir del diseño nuevo */
 (function(){
-  var d=document.getElementById('lector'),f=document.getElementById('lector-if'),ti=document.getElementById('lector-tit'),full=document.getElementById('lector-full');
+  var d=document.getElementById('lector'),f=document.getElementById('lector-if'),sel=document.getElementById('lector-sel'),full=document.getElementById('lector-full');
+  var vistos={};document.querySelectorAll('#indice a[href^="anterior.html#"]').forEach(function(a){var i=a.getAttribute('href').split('#')[1];if(i&&!vistos[i]){vistos[i]=1;var o=document.createElement('option');o.value=i;o.textContent=a.textContent.trim();sel.appendChild(o);}});
+  function ir(id){full.href='anterior.html#'+id;f.src='anterior.html?solo='+encodeURIComponent(id)+'#'+id;if(!sel.querySelector('option[value="'+id+'"]')){var o=document.createElement('option');o.value=id;o.textContent=id;sel.appendChild(o);}sel.value=id;}
+  sel.addEventListener('change',function(){ir(sel.value);});
+  window.addEventListener('message',function(e){if(e.data&&e.data.sosSolo&&sel.value!==e.data.sosSolo){var o=sel.querySelector('option[value="'+e.data.sosSolo+'"]');if(o)sel.value=e.data.sosSolo;full.href='anterior.html#'+e.data.sosSolo;}});
   if(!d||!d.showModal)return;
   document.addEventListener('click',function(ev){
     var a=ev.target.closest&&ev.target.closest('a[href^="anterior.html#"]');
     if(!a||ev.metaKey||ev.ctrlKey||ev.shiftKey)return;
     var id=a.getAttribute('href').split('#')[1];if(!id)return;
     ev.preventDefault();
-    ti.textContent=a.textContent.trim();full.href='anterior.html#'+id;
-    f.src='anterior.html?solo='+encodeURIComponent(id)+'#'+id;
+    ir(id);
     d.showModal();
   });
   d.addEventListener('click',function(ev){if(ev.target.closest('[data-cerrar]')||ev.target===d)d.close();});
   d.addEventListener('close',function(){f.src='about:blank';});
 })();
+</script>
+<script>
+/* Versión B: número de versión en el selector */
+fetch('datos/version.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(v){document.querySelectorAll('.sel-b').forEach(function(a){a.textContent='B.'+v.version;});}).catch(function(){});
 </script>
 <script src="assets/marca.js?v=7.9.0" defer></script>
 </body>
