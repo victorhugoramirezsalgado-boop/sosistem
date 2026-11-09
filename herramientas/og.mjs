@@ -11,7 +11,7 @@ const ver = JSON.parse(fs.readFileSync("datos/version.json", "utf8")).version;
 const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 await p.addInitScript(() => { localStorage.setItem("sos_idioma", "es"); localStorage.setItem("sos_pantalla_tema", '"interior"'); });
-await p.goto(SITIO + "index.html", { waitUntil: "networkidle" });
+await p.goto(SITIO + "anterior.html", { waitUntil: "networkidle" }); // la terminal NODO S.O.S.© vive en la página de consulta
 await p.addStyleTag({ content: ".top,.pestanas,#ver-pestanas{display:none!important} .eq-cubo{transition:none!important} .eq-alerta,.eq-leds i{animation:none!important}" });
 await p.waitForTimeout(1200);
 // Hora y tiempos fijos para que la imagen solo cambie cuando cambia el diseño
