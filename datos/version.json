@@ -1,8 +1,14 @@
 {
-  "version": "8.3.9",
+  "version": "8.3.10",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.10",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: «CEDIS No. 74» corregido a CETis No. 74 (Centro de Estudios Tecnológicos industrial y de servicios No. 74)."
+    },
     {
       "v": "8.3.9",
       "fecha": "2026-11-09",
