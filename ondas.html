@@ -134,6 +134,16 @@
   .ol-aux b{background:var(--mal);color:#fff;border-radius:8px;padding:2px 8px;margin-right:4px;letter-spacing:.04em}.ol-aux small{font-size:.7rem;color:var(--ink2);margin-right:10px;display:inline}
   .ol-tri{display:block;width:100%;max-width:360px;height:170px;margin:4px auto 0;background:var(--panel);border-radius:12px}
   #ol.ol-alerta{border-color:var(--mal);box-shadow:0 0 0 3px rgba(155,36,35,.4)}
+  /* Tarjeta «Todos los sensores»: un renglón por sensor, legible en el iPhone sin deslizar a los lados */
+  .st-tb thead{display:none}
+  .st-tb tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;border-top:1px solid var(--line);padding:9px 2px}
+  .st-tb tr:first-child{border-top:0}
+  .st-tb td{border:0;padding:0;font-size:15px}
+  .st-tb td:first-child{white-space:normal;width:auto;color:var(--ink)}
+  .st-tb td.st-e{white-space:nowrap;text-align:right;font-size:14px}
+  .st-tb td.st-v{grid-column:1/-1;color:var(--ink2);font-variant-numeric:tabular-nums}
+  .st-tb td.st-h{grid-column:1/-1;font-size:12px;color:var(--ink2)}
+  .st-tb td.st-h:empty,.st-tb td.st-h:only-child{display:none}
 </style>
 </head>
 <body>
@@ -147,6 +157,16 @@
     <p class="note" id="on-estado">Toque el botón y permita el micrófono.</p>
     <button type="button" class="sec" id="on-vib" style="width:100%;margin-top:8px">▶ Solo sismo y vibración · sin micrófono</button>
     <p class="note">En iPhone, al usar el micrófono el sistema pausa la música de otras apps (regla de iOS para páginas web). «Solo sismo y vibración» usa el acelerómetro y deja sonar la música.</p>
+  </section>
+
+  <section class="card" id="st">
+    <h2>Todos los sensores del celular <small style="color:var(--ink2);font-weight:400">· prueba</small></h2>
+    <button type="button" class="big" id="st-btn">▶ Encender todos los sensores · sin micrófono</button>
+    <p class="note" id="st-est">Enciende todo lo que el navegador deja leer, sin micrófono ni sonido: la música sigue. Muestra cuáles prenden, cuáles no y por qué.</p>
+    <p class="note" id="st-cuenta" style="font-weight:600;color:var(--ink)"></p>
+    <div><table class="tb st-tb"><thead><tr><th>Sensor</th><th>Estado</th><th>Lectura</th><th>Lect./s</th></tr></thead><tbody id="st-tabla"></tbody></table></div>
+    <div class="ab-fila"><button type="button" class="sec" id="st-json" style="flex:1">Descargar datos (JSON)</button><button type="button" class="sec" id="st-csv" style="flex:1">Descargar tabla (CSV)</button></div>
+    <p class="note">Una página web solo funciona con la página abierta y al frente: si entra una llamada o cambia de app, iOS la pausa y aquí queda registrada la pausa. Para seguir midiendo durante una llamada hace falta la app instalada.</p>
   </section>
 
   <section class="card">
@@ -316,6 +336,7 @@
 <script src="assets/morse.js?v=7.1.0"></script>
 <script src="assets/ondas-letras.js?v=7.1.0"></script>
 <script src="assets/ondas.js?v=7.6.3"></script>
+<script src="assets/sensores-todos.js?v=7.6.4"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./ondas" }).catch(() => {});</script>
 <script>
 /* Ampliar gráficas a pantalla completa (interfaz; no toca el análisis). © Víctor Hugo Ramírez Salgado */
