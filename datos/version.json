@@ -1,8 +1,13 @@
 {
-  "version": "7.9.0",
+  "version": "8.0.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.0.0",
+      "fecha": "2026-11-08",
+      "resumen": "Portada: nueva sección «Un mismo mensaje · seis lenguajes» que muestra «SOS» en el lenguaje propio del Cubo de la Comunicación (33)© (destacado), banderas del Código Internacional de Señales, Morse, Lengua de Señas Mexicana, braille, alfabeto fonético y voz en 22 idiomas, traducida a los 22 idiomas. El prototipo de sensores se presenta como fase 1 de muestra. Índice: dossier del autor reescrito con perfil profesional, formación académica (prospecto al Doctorado en Negocios de CETYS Universidad e inicio de trámites en la Université Le Havre Normandie), formación internacional y diplomados (UIMP, ValenciaPort, NWPU, OEA–CIP, OMI), formación técnica (rayos X, ISO 9001, ISO 14001, OHSAS 18001), propuesta a la Real Academia Española, trayectoria y certificaciones."
+    },
     {
       "v": "7.9.0",
       "fecha": "2026-11-08",
