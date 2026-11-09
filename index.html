@@ -194,6 +194,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lg-fon{font-size:1.05rem;letter-spacing:.04em}
 .lg-ics{display:flex;gap:.45rem}.lg-ics svg{width:30%;max-width:72px;height:auto;border-radius:4px}
 .lg-lsm{display:flex;gap:.45rem}.lg-lsm img{width:30%;max-width:72px;height:auto;background:#fff;border-radius:12px;padding:4px}
+/* Sello de lenguajes: SOS en banderas, Morse, braille y señas */
+.sx{display:flex;align-items:center;justify-content:space-between;gap:5px;height:13px;width:100%}
+.sx-f{display:inline-flex;gap:2px;height:100%}.sx-f svg{height:100%;width:auto;display:block;border-radius:1.5px}
+.sx-m{color:var(--brand);display:inline-flex;align-items:center;height:100%}.sx-m svg{height:42%;width:auto;display:block}
+.sx-b{font-size:13px;line-height:1;color:#18191B;letter-spacing:1px}
+.sx-h{display:inline-flex;gap:1px;height:100%}.sx-h img{height:100%;width:auto;display:block}
+.sx-d{width:1px;height:70%;background:var(--line);flex:none}
+.sx-hx{height:26px;width:auto;justify-content:flex-start;gap:12px;margin-top:-.2rem;opacity:.95}
+.sx-hx .sx-m{color:#FF9A4D}.sx-hx .sx-b{font-size:24px;color:#fff}.sx-hx .sx-d{background:rgba(255,255,255,.22)}
+.site-head .head-actions .btn{min-height:38px;padding:0 1rem;font-size:.84rem;margin-bottom:4px;border-radius:11px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 0 color-mix(in srgb,var(--brand) 62%,#000)}
+.logo .word{font-size:1.95rem}
+@media (max-width:600px){.site-head .head-actions .btn{min-height:32px;padding:0 .6rem;font-size:.74rem}.site-head .wrap{gap:.35rem}.logo{gap:.4rem}.logo .word{font-size:1.42rem}.sx{height:9px;gap:2px}.sx-d{display:none}.sx-b{font-size:9px}.sx-b{font-size:11px}.sx-hx{height:20px;gap:8px}.sx-hx .sx-b{font-size:18px}}
 /* Consola */
 .console{background:var(--console);border:1px solid var(--hero-line);border-radius:12px;box-shadow:0 24px 60px rgba(60,45,20,.16);overflow:hidden;min-width:0;color:var(--ink)}
 .console-top{display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--hero-line);font-size:.8rem}
@@ -453,7 +465,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <a class="logo" href="#inicio" aria-label="SOSistem, inicio">
       <img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="48" height="48" alt="">
       <span class="logo-txt"><span class="word"><b>SOS</b>istem<sup>™</sup></span>
-      <svg viewBox="0 0 120 5" preserveAspectRatio="none" aria-hidden="true"><g fill="#C0541A"><circle cx="2.5" cy="2.5" r="2.5"/><circle cx="10" cy="2.5" r="2.5"/><circle cx="17.5" cy="2.5" r="2.5"/><rect x="25" width="16" height="5" rx="2.5"/><rect x="45" width="16" height="5" rx="2.5"/><rect x="65" width="16" height="5" rx="2.5"/><circle cx="88" cy="2.5" r="2.5"/><circle cx="95.5" cy="2.5" r="2.5"/><circle cx="103" cy="2.5" r="2.5"/></g></svg></span>
+      <span class="sx no-traducir" role="img" aria-label="SOS en banderas, Morse, braille y Lengua de Señas Mexicana"><span class="sx-f"><svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#9aa3b2" stroke-width="2"/></svg><svg viewBox="0 0 60 40"><polygon points="0,0 0,40 60,40" fill="#FFD100"/><polygon points="0,0 60,0 60,40" fill="#D21034"/></svg><svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#9aa3b2" stroke-width="2"/></svg></span><span class="sx-d"></span><span class="sx-m"><svg viewBox="0 0 107 6" aria-hidden="true"><g fill="currentColor"><circle cx="3" cy="3" r="3"/><circle cx="11" cy="3" r="3"/><circle cx="19" cy="3" r="3"/><rect x="27" width="15" height="6" rx="3"/><rect x="45" width="15" height="6" rx="3"/><rect x="63" width="15" height="6" rx="3"/><circle cx="85" cy="3" r="3"/><circle cx="93" cy="3" r="3"/><circle cx="101" cy="3" r="3"/></g></svg></span><span class="sx-d"></span><span class="sx-b">⠎⠕⠎</span><span class="sx-d"></span><span class="sx-h"><img src="assets/img/lsm-mano/s.webp" alt="" width="10" height="20"><img src="assets/img/lsm-mano/o.webp" alt="" width="10" height="20"><img src="assets/img/lsm-mano/s.webp" alt="" width="10" height="20"></span></span></span>
     </a>
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="#servicios">Soluciones</a>
@@ -483,6 +495,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
         </div>
         <span class="hx-kick"><i></i>Alerta temprana · sin cámaras</span>
         <h1>Cada segundo cuenta.<span class="hx-l2"><span class="hx-marca no-traducir"><b>SOS</b>istem<sup>™</sup></span> <span class="hx-grad">lo detecta primero.</span></span></h1>
+        <span class="sx sx-hx no-traducir" role="img" aria-label="SOS en banderas, Morse, braille y Lengua de Señas Mexicana"><span class="sx-f"><svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#9aa3b2" stroke-width="2"/></svg><svg viewBox="0 0 60 40"><polygon points="0,0 0,40 60,40" fill="#FFD100"/><polygon points="0,0 60,0 60,40" fill="#D21034"/></svg><svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#9aa3b2" stroke-width="2"/></svg></span><span class="sx-d"></span><span class="sx-m"><svg viewBox="0 0 107 6" aria-hidden="true"><g fill="currentColor"><circle cx="3" cy="3" r="3"/><circle cx="11" cy="3" r="3"/><circle cx="19" cy="3" r="3"/><rect x="27" width="15" height="6" rx="3"/><rect x="45" width="15" height="6" rx="3"/><rect x="63" width="15" height="6" rx="3"/><circle cx="85" cy="3" r="3"/><circle cx="93" cy="3" r="3"/><circle cx="101" cy="3" r="3"/></g></svg></span><span class="sx-d"></span><span class="sx-b">⠎⠕⠎</span><span class="sx-d"></span><span class="sx-h"><img src="assets/img/lsm-mano/s.webp" alt="" width="10" height="20"><img src="assets/img/lsm-mano/o.webp" alt="" width="10" height="20"><img src="assets/img/lsm-mano/s.webp" alt="" width="10" height="20"></span></span>
         <p class="lead">Caídas, sismos, gases y voces de auxilio en recintos cerrados: se detectan al instante y se avisa al responsable y al 911, sin cámaras ni grabaciones.</p>
         <div class="cta-row">
           <a class="btn btn-brand" href="#servicios">Conocer la solución →</a>
@@ -522,32 +535,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </section>
 
 
-  <section class="section lenguas" id="lenguajes">
-    <div class="wrap">
-      <span class="eyebrow">Un mismo mensaje · seis lenguajes</span>
-      <h2 class="h2">Así dice «SOS» el sistema</h2>
-      <p class="sub">Cada alerta se comunica a la vez para quien ve, oye, lee con los dedos, usa señas o navega, y se protege con el lenguaje propio del Cubo de la Comunicación (33)©.</p>
-      <div class="lg-grid">
-        <article class="lg-c lg-33">
-          <small>Lenguaje propio · Cubo de la Comunicación (33)©</small>
-          <pre class="lg-cod no-traducir">CUBO·33 ◇ RQY ▸
-L1 KN
-L2 HV
-L3 G
-◂ BAD</pre>
-          <p>«SOS» escrito con el Cubo 33: seis caras de 26 × 26, letras A–Z en sus cuatro bordes y 4,056 posiciones. Solo lo lee quien conoce el cubo; con él se cifran también los programas del sistema.</p>
-          <a class="btn btn-brand" href="anterior.html#mensajero">Escribir con el Cubo 33 →</a>
-        </article>
-        <article class="lg-c"><small>Banderas · Código Internacional de Señales</small><div class="lg-ics no-traducir" role="img" aria-label="Banderas S, O, S"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg><svg viewBox="0 0 60 40" aria-hidden="true"><polygon points="0,0 0,40 60,40" fill="#FFD100"/><polygon points="0,0 60,0 60,40" fill="#D21034"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg></div><p>Sierra · Oscar · Sierra</p></article>
-        <article class="lg-c"><small>Código Morse · UIT-R M.1677-1</small><div class="lg-big no-traducir">··· ––– ···</div><p>Tres cortos, tres largos, tres cortos.</p></article>
-        <article class="lg-c"><small>Señas · Lengua de Señas Mexicana</small><div class="lg-lsm" role="img" aria-label="Letras S, O, S en Lengua de Señas Mexicana"><img src="assets/img/lsm/s.webp" alt="" width="64" height="64" loading="lazy"><img src="assets/img/lsm/o.webp" alt="" width="64" height="64" loading="lazy"><img src="assets/img/lsm/s.webp" alt="" width="64" height="64" loading="lazy"></div><p>S · O · S</p></article>
-        <article class="lg-c"><small>Braille</small><div class="lg-big lg-br no-traducir" aria-label="SOS en braille">⠎⠕⠎</div><p>Puntos en relieve para leer con los dedos.</p></article>
-        <article class="lg-c"><small>Alfabeto fonético · OACI/OTAN</small><div class="lg-big lg-fon no-traducir">SIERRA · OSCAR · SIERRA</div><p>Para deletrear por radio sin errores.</p></article>
-        <article class="lg-c"><small>Voz · 22 idiomas</small><div class="lg-big lg-fon no-traducir">¡Auxilio! · Help! · Au secours! · 救命！</div><p>Se anuncia en el idioma de cada persona.</p></article>
-      </div>
-      <p class="fine">Aprenda los seis sistemas en 22 idiomas en <a href="anterior.html#aprende">Aprendizaje</a> o juegue con el <a href="assets/cubo33-nivel1-prototipo-carta.pdf" target="_blank" rel="noopener">Juego del Cubo · Nivel 1</a>.</p>
-    </div>
-  </section>
   <section class="section" id="sensores">
     <div class="wrap proto">
       <div>
@@ -631,6 +618,32 @@ L3 G
           </div>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="section lenguas" id="lenguajes">
+    <div class="wrap">
+      <span class="eyebrow">Un mismo mensaje · seis lenguajes</span>
+      <h2 class="h2">Así dice «SOS» el sistema</h2>
+      <p class="sub">Cada alerta se comunica a la vez para quien ve, oye, lee con los dedos, usa señas o navega, y se protege con el lenguaje propio del Cubo de la Comunicación (33)©.</p>
+      <div class="lg-grid">
+        <article class="lg-c lg-33">
+          <small>Lenguaje propio · Cubo de la Comunicación (33)©</small>
+          <pre class="lg-cod no-traducir">CUBO·33 ◇ RQY ▸
+L1 KN
+L2 HV
+L3 G
+◂ BAD</pre>
+          <p>«SOS» escrito con el Cubo 33: seis caras de 26 × 26, letras A–Z en sus cuatro bordes y 4,056 posiciones. Solo lo lee quien conoce el cubo; con él se cifran también los programas del sistema.</p>
+          <a class="btn btn-brand" href="anterior.html#mensajero">Escribir con el Cubo 33 →</a>
+        </article>
+        <article class="lg-c"><small>Banderas · Código Internacional de Señales</small><div class="lg-ics no-traducir" role="img" aria-label="Banderas S, O, S"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg><svg viewBox="0 0 60 40" aria-hidden="true"><polygon points="0,0 0,40 60,40" fill="#FFD100"/><polygon points="0,0 60,0 60,40" fill="#D21034"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/><rect x="20" y="13.33" width="20" height="13.34" fill="#00247D"/><rect width="60" height="40" fill="none" stroke="#8a94a6"/></svg></div><p>Sierra · Oscar · Sierra</p></article>
+        <article class="lg-c"><small>Código Morse · UIT-R M.1677-1</small><div class="lg-big no-traducir">··· ––– ···</div><p>Tres cortos, tres largos, tres cortos.</p></article>
+        <article class="lg-c"><small>Señas · Lengua de Señas Mexicana</small><div class="lg-lsm" role="img" aria-label="Letras S, O, S en Lengua de Señas Mexicana"><img src="assets/img/lsm/s.webp" alt="" width="64" height="64" loading="lazy"><img src="assets/img/lsm/o.webp" alt="" width="64" height="64" loading="lazy"><img src="assets/img/lsm/s.webp" alt="" width="64" height="64" loading="lazy"></div><p>S · O · S</p></article>
+        <article class="lg-c"><small>Braille</small><div class="lg-big lg-br no-traducir" aria-label="SOS en braille">⠎⠕⠎</div><p>Puntos en relieve para leer con los dedos.</p></article>
+        <article class="lg-c"><small>Alfabeto fonético · OACI/OTAN</small><div class="lg-big lg-fon no-traducir">SIERRA · OSCAR · SIERRA</div><p>Para deletrear por radio sin errores.</p></article>
+        <article class="lg-c"><small>Voz · 22 idiomas</small><div class="lg-big lg-fon no-traducir">¡Auxilio! · Help! · Au secours! · 救命！</div><p>Se anuncia en el idioma de cada persona.</p></article>
+      </div>
+      <p class="fine">Aprenda los seis sistemas en 22 idiomas en <a href="anterior.html#aprende">Aprendizaje</a> o juegue con el <a href="assets/cubo33-nivel1-prototipo-carta.pdf" target="_blank" rel="noopener">Juego del Cubo · Nivel 1</a>.</p>
     </div>
   </section>
 
@@ -777,7 +790,7 @@ L3 G
   var g=document.getElementById('grid12');
   svc.forEach(function(n,i){var a=document.createElement('a');a.className='svc';a.href='#explorar';var b=document.createElement('i');b.textContent=String(i+1).padStart(2,'0');a.appendChild(b);a.appendChild(document.createTextNode(n));g.appendChild(a);});
 
-  var ind=[['Sanitarios y cabinas','Persona en el piso o inmóvil, sin imagen ni grabación.','Lavabos de un sanitario público',''],['Espacios confinados','Oxígeno, gases, presencia y tiempo de permanencia.','Planta industrial con tuberías',''],['Puertos e industria IMMEX','Aforo, zonas de riesgo, sismo y coordinación.','Vista aérea de una terminal de contenedores con un buque atracado','assets/img/fotos/puerto-vhrs.jpg','Foto: © Víctor Hugo Ramírez Salgado'],['Restaurantes y turismo médico','Señalética de ocupación y salvaguarda S.S.O.S.©','Cocina de restaurante en operación',''],['Hogares y adultos mayores','Aviso a un familiar ante caída o la palabra «auxilio».','Adulta mayor en la sala de su casa',''],['Edificios públicos','Evacuación y enlace con seguridad, Cruz Roja o bomberos.','Vestíbulo amplio de un edificio','']];
+  var ind=[['Sanitarios y cabinas','Persona en el piso o inmóvil, sin imagen ni grabación.','Pantalla SOSistem en un sanitario público','assets/img/fotos/sanitarios.jpg','Ilustración de concepto SOSistem™'],['Espacios confinados','Oxígeno, gases, presencia y tiempo de permanencia.','Equipo SOSistem de monitoreo para espacios confinados','assets/img/fotos/confinados.jpg','Ilustración de concepto SOSistem™'],['Puertos e industria IMMEX','Aforo, zonas de riesgo, sismo y coordinación.','Vista aérea de una terminal de contenedores con un buque atracado','assets/img/fotos/puerto-vhrs.jpg','Foto: © Víctor Hugo Ramírez Salgado'],['Restaurantes y turismo médico','Señalética de ocupación y salvaguarda S.S.O.S.©','Restaurante en operación','assets/img/fotos/restaurante.jpg','Ilustración de concepto SOSistem™'],['Hogares y adultos mayores','Aviso a un familiar ante caída o la palabra «auxilio».','Pantalla SOSistem con aviso de gas en una cocina','assets/img/fotos/hogar.jpg','Ilustración de concepto SOSistem™'],['Edificios públicos','Evacuación y enlace con seguridad, Cruz Roja o bomberos.','Pantalla SOSistem en el pasillo de un edificio','assets/img/fotos/edificio.jpg','Ilustración de concepto SOSistem™']];
   var c=document.getElementById('cards');
   ind.forEach(function(x){var a=document.createElement('a');a.className='card';a.href='#contacto';a.innerHTML='<div class="ph"></div><div class="card-body"><strong></strong><span></span><em>Conocer más →</em></div>';var ph=a.querySelector('.ph');if(x[3]){ph.style.backgroundImage='url("'+x[3]+'")';ph.style.backgroundSize='cover';ph.style.backgroundRepeat='no-repeat';ph.style.backgroundPosition='center';ph.setAttribute('role','img');ph.setAttribute('aria-label',x[2]);if(x[4]){var cr=document.createElement('span');cr.className='credito';cr.textContent=x[4];ph.appendChild(cr);}}else{ph.setAttribute('aria-hidden','true');}a.querySelector('strong').textContent=x[0];a.querySelector('.card-body span').textContent=x[1];c.appendChild(a);});
 

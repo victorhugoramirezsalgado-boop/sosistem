@@ -1,8 +1,13 @@
 {
-  "version": "8.0.0",
+  "version": "8.1.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.1.0",
+      "fecha": "2026-11-08",
+      "resumen": "Sello de lenguajes junto a la marca: «SOS» en banderas del Código Internacional de Señales, Morse, braille y Lengua de Señas Mexicana (solo la mano, sin fondo) en el encabezado y bajo el titular de la portada. Botón «Contáctenos» más chico y logo más amplio. La sección de los seis lenguajes y el Cubo 33 pasa a Aprendizaje. Fotografía del autor mejorada (2,400 px, niveles, contraste y color) y tarjetas de industrias con ilustraciones de concepto propias en el mismo grado de color."
+    },
     {
       "v": "8.0.0",
       "fecha": "2026-11-08",
