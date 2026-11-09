@@ -1,8 +1,14 @@
 {
-  "version": "8.3.3",
+  "version": "8.3.4",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.4",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: nuevas secciones 14.6 Congresos y ponencias (incluye expositor en el 1.er Congreso Internacional de Administración y Logística en Tijuana) y 14.7 Participación institucional."
+    },
     {
       "v": "8.3.3",
       "fecha": "2026-11-09",
