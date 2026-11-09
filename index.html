@@ -97,6 +97,24 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:300px){
   .head-actions .btn{display:none}
 }
+/* Botón SOS directo (9-nov-2026): abre la Terminal lista para encender con un toque */
+.sos-ya{display:inline-flex;align-items:center;gap:.35rem;min-height:40px;padding:0 .85rem;border-radius:999px;background:#c62828;color:#fff;font-weight:800;font-size:.95rem;letter-spacing:.05em;text-decoration:none;border:2px solid #fff;box-shadow:0 0 0 2px #c62828;white-space:nowrap;flex-shrink:0}
+.sos-ya:hover{filter:brightness(1.08)}
+.sos-ya i{width:8px;height:8px;border-radius:50%;background:#fff;animation:sosLat 1.2s ease-in-out infinite}
+@keyframes sosLat{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.sos-ya i{animation:none}}
+/* Menú (rayitas) siempre visible en iPhone: no se sale de la pantalla y queda un poco hacia dentro */
+.site-head .logo{min-width:0}
+.head-actions{flex-shrink:0}
+.menu-btn{flex-shrink:0;border:1.5px solid var(--line);margin-right:max(4px, env(safe-area-inset-right, 0px))}
+@media (max-width:600px){
+  .head-actions .btn-brand{display:none}   /* «Contáctenos» pasa al menú en el celular */
+}
+@media (max-width:400px){
+  .site-head .logo .sx{display:none}
+  .site-head .logo .word{font-size:1.3rem}
+  .site-head .logo-cubo{width:40px;height:40px}
+}
 
 /* Héroe */
 .hero{position:relative;color:var(--hero-ink);background:linear-gradient(90deg,rgba(247,242,233,.97) 0%,rgba(247,242,233,.93) 38%,rgba(247,242,233,.55) 62%,rgba(247,242,233,.15) 100%),var(--hero)}
@@ -477,9 +495,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <a href="#explorar">Recursos</a>
       <a href="#indice">Índice</a>
       <a href="#normas">Acerca de SOSistem</a>
+      <a href="#contacto">Contacto</a>
     </nav>
     <div class="head-actions">
       <button class="icon-btn" type="button" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="sos-ya no-traducir" href="terminal.html#sos" aria-label="SOS: encender la alerta de emergencia"><i aria-hidden="true"></i>SOS</a>
       <a class="btn btn-brand btn-square" href="#contacto">Contáctenos</a>
       <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>

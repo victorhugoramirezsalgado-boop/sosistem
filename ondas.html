@@ -145,6 +145,8 @@
   <section class="card">
     <button type="button" class="big" id="on-btn" data-on="0">▶ Iniciar análisis de ondas</button>
     <p class="note" id="on-estado">Toque el botón y permita el micrófono.</p>
+    <button type="button" class="sec" id="on-vib" style="width:100%;margin-top:8px">▶ Solo sismo y vibración · sin micrófono</button>
+    <p class="note">En iPhone, al usar el micrófono el sistema pausa la música de otras apps (regla de iOS para páginas web). «Solo sismo y vibración» usa el acelerómetro y deja sonar la música.</p>
   </section>
 
   <section class="card">
@@ -313,14 +315,14 @@
 <script src="assets/cubo-rt.js?v=7.1.0"></script>
 <script src="assets/morse.js?v=7.1.0"></script>
 <script src="assets/ondas-letras.js?v=7.1.0"></script>
-<script src="assets/ondas.js?v=7.1.0"></script>
+<script src="assets/ondas.js?v=7.6.3"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw-terminal.js", { scope: "./ondas" }).catch(() => {});</script>
 <script>
 /* Ampliar gráficas a pantalla completa (interfaz; no toca el análisis). © Víctor Hugo Ramírez Salgado */
 (function(){
   "use strict";
   var capa=document.getElementById("amp-capa"), zona=document.getElementById("amp-lienzo"),
-      tit=document.getElementById("amp-tit"), origen=null, marca=null;
+      tit=document.getElementById("amp-tit"), origen=null, marcaAmp=null;
   // Cada gráfica ampliable: id del elemento y su nombre
   var GRAF={ "on-esp":"Espectro", "on-cas":"Cascada", "vb-esp":"Vibración", "ol-tri":"Vocales", "on-bandas":"Energía por bandas" };
   // Reubicar las gráficas reales dentro de los huecos del tablero del cubo,
@@ -377,12 +379,12 @@
 
   function abrir(id, nombre){
     var el=document.getElementById(id); if(!el) return;
-    origen=el; marca=document.createComment("amp"); el.parentNode.insertBefore(marca, el);
+    origen=el; marcaAmp=document.createComment("amp"); el.parentNode.insertBefore(marcaAmp, el);
     zona.appendChild(el); tit.textContent=nombre||"Gráfica";
     capa.classList.add("on"); document.body.classList.add("amp-abierto");
   }
   function cerrar(){
-    if(origen && marca){ marca.parentNode.insertBefore(origen, marca); marca.remove(); marca=null; origen=null; }
+    if(origen && marcaAmp){ marcaAmp.parentNode.insertBefore(origen, marcaAmp); marcaAmp.remove(); marcaAmp=null; origen=null; }
     capa.classList.remove("on"); document.body.classList.remove("amp-abierto");
   }
   document.getElementById("amp-cerrar").addEventListener("click", cerrar);
