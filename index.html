@@ -346,9 +346,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <label for="lang" style="display:flex;gap:.35rem;align-items:center">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
       <span class="sr">Idioma</span>
-      <select id="lang">
-        <option>México | Español</option><option>Global | English</option><option>Français</option><option>Русский</option><option>中文</option><option>العربية</option><option>Português</option><option>Deutsch</option><option>Italiano</option><option>日本語</option><option>한국어</option><option>हिन्दी</option>
-      </select>
+      <select id="lang" class="no-traducir"><option value="es">México | Español</option><option value="en">Global | English</option><option value="pt">Português</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="nl">Nederlands</option><option value="ca">Català</option><option value="gl">Galego</option><option value="eu">Euskara</option><option value="da">Dansk</option><option value="sv">Svenska</option><option value="nb">Norsk</option><option value="ga">Gaeilge</option><option value="el">Ελληνικά</option><option value="ru">Русский</option><option value="uk">Українська</option><option value="ar">العربية</option><option value="he">עברית</option><option value="hi">हिन्दी</option><option value="zh">简体中文</option><option value="ja">日本語</option></select>
     </label>
   </div>
 </div>
@@ -680,6 +678,32 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   });
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',pintar);}else{pintar();}
   window.addEventListener('load',pintar);
+})();
+</script>
+<script>
+/* Idioma del diseño nuevo: mismos 22 idiomas y misma preferencia (sos_idioma) que el resto del sitio */
+(function(){
+  var sel=document.getElementById('lang');if(!sel)return;
+  var ES=null,CACHE={},MAPA=null,ORIG=new WeakMap(),cambiando=false;
+  var EXCL='script,style,noscript,.no-traducir,.mono,code,.morse-code,.logo-giro,.vista';
+  function limpio(t){return t.replace(/\s+/g,' ').trim();}
+  function leer(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+  function guardar(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  function cargar(l){if(l==='es')return Promise.resolve(null);
+    var a=ES?Promise.resolve(ES):fetch('datos/textos/es.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(j){ES=j;return j;});
+    return a.then(function(){if(CACHE[l])return CACHE[l];return fetch('datos/textos/'+l+'.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(tr){var m=new Map();ES.forEach(function(t,i){if(tr[i])m.set(t,tr[i]);});CACHE[l]=m;return m;});}).catch(function(){return null;});}
+  function nodo(n){var e=n.parentElement;if(!e||e.closest(EXCL))return;var cur=n.nodeValue,o=ORIG.get(n);
+    if(!o||(cur!==o.tr&&cur!==o.es))o={es:cur};var k=limpio(o.es),t=MAPA&&k&&MAPA.get(k);
+    var nuevo=t?(o.es.match(/^\s*/)[0]+t+o.es.match(/\s*$/)[0]):o.es;o.tr=nuevo;ORIG.set(n,o);
+    if(cur!==nuevo){cambiando=true;n.nodeValue=nuevo;cambiando=false;}}
+  function recorrer(r){var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),n;while((n=w.nextNode()))if(/\p{L}/u.test(n.nodeValue))nodo(n);}
+  new MutationObserver(function(ms){if(cambiando)return;ms.forEach(function(m){m.addedNodes.forEach(function(x){if(x.nodeType===3){if(/\p{L}/u.test(x.nodeValue))nodo(x);}else if(x.nodeType===1)recorrer(x);});if(m.type==='characterData'&&m.target.nodeType===3)nodo(m.target);});}).observe(document.body,{childList:true,subtree:true,characterData:true});
+  function poner(l){cargar(l).then(function(m){MAPA=m;document.documentElement.lang=l;document.documentElement.dir=(l==='ar'||l==='he')?'rtl':'ltr';recorrer(document.body);sel.value=l;});}
+  sel.addEventListener('change',function(){guardar('sos_idioma',sel.value);poner(sel.value);});
+  var ok=[].map.call(sel.options,function(o){return o.value;});
+  var pref=leer('sos_idioma')||(navigator.language||'es').slice(0,2).toLowerCase();
+  if(ok.indexOf(pref)<0)pref='es';
+  if(pref!=='es')poner(pref);else sel.value='es';
 })();
 </script>
 <div class="vista" id="vista" aria-hidden="true"><img alt=""><b></b></div>

@@ -1,8 +1,13 @@
 {
-  "version": "7.6.1",
+  "version": "7.6.2",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.6.2",
+      "fecha": "2026-11-08",
+      "resumen": "Idiomas en el diseño nuevo: el selector ofrece los 22 idiomas del sitio (árabe y hebreo de derecha a izquierda) y traduce toda la portada y la página de sensores; 462 textos nuevos agregados a cada idioma. La elección se recuerda y se comparte con el diseño anterior."
+    },
     {
       "v": "7.6.1",
       "fecha": "2026-11-08",
