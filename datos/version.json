@@ -1,8 +1,14 @@
 {
-  "version": "8.2.6",
+  "version": "8.3.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.0",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Código del sitio en Código de comunicación del Cubo (33)©: la marca SOSistem (marca.js) y el lector de secciones con el número de versión B (lector.js, antes en línea) se publican compilados al Cubo 33; los originales legibles quedan fuera del repositorio público."
+    },
     {
       "v": "8.2.6",
       "fecha": "2026-11-09",

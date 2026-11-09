@@ -1,76 +1,11 @@
-/* SOSistem™ · marca en todo el sitio · © Víctor Hugo Ramírez Salgado
-   Muestra cada «SOSistem» del texto con «SOS» en naranja e «istem» en negro, con su ™ (o © si el texto ya lo trae).
-   Sobre fondos oscuros la marca va en una placa blanca para que el negro se lea.
-   Conserva el texto original en español (data-es) y lo vuelve a traducir cuando cambia el idioma. */
-(function () {
-  "use strict";
-  var RX = /SOSistem(™|©)?(?!\.com)/g;
-  var SALTAR = "script,style,noscript,textarea,input,select,option,svg,title,code,pre,.mk,.mk-t,.logo,.hx-marca,.no-marca,.logo-giro,[contenteditable]";
-
-  var css = document.createElement("style");
-  css.textContent =
-    ".mk{white-space:nowrap;color:#18191B;-webkit-text-fill-color:#18191B;font-weight:inherit}" +
-    ".mk b{color:#C0541A;-webkit-text-fill-color:#C0541A;font-weight:inherit}" +
-    ".mk sup{font-size:.55em;line-height:0;vertical-align:super}" +
-    ".mk-osc .mk{background:#fff;border-radius:.22em;padding:0 .2em .02em;box-shadow:0 .08em 0 rgba(0,0,0,.35)}";
-  document.head.appendChild(css);
-
-  function esc(s) { return s.replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
-  function pintar(txt) {
-    return esc(txt).replace(RX, function (_, s) { return '<span class="mk"><b>SOS</b>istem<sup>' + (s || "™") + "</sup></span>"; });
-  }
-  function limpio(t) { return t.replace(/\s+/g, " ").trim(); }
-  function luz(c) { var m = (c || "").match(/[\d.]+/g); if (!m) return null; if (m.length > 3 && +m[3] < 0.2) return null; return 0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]; }
-  function fondoOscuro(el) {
-    var l = luz(getComputedStyle(el).color);
-    return l !== null && l > 165; /* letra clara = fondo oscuro */
-  }
-  function envolver(n) {
-    var p = n.parentNode; if (!p) return;
-    var sp = document.createElement("span");
-    sp.className = "mk-t";
-    sp.setAttribute("data-es", n.nodeValue);
-    sp.innerHTML = pintar(n.nodeValue);
-    p.replaceChild(sp, n);
-    if (fondoOscuro(p)) sp.classList.add("mk-osc");
-  }
-  function recorrer(raiz) {
-    if (!raiz || (raiz.nodeType === 1 && raiz.closest(SALTAR))) return;
-    var w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT), n, lista = [];
-    while ((n = w.nextNode())) {
-      if (n.nodeValue.indexOf("SOSistem") < 0) continue;
-      RX.lastIndex = 0; if (!RX.test(n.nodeValue)) continue;
-      var e = n.parentElement; if (!e || e.closest(SALTAR)) continue;
-      lista.push(n);
-    }
-    lista.forEach(envolver);
-  }
-  function traducir() {
-    var T = window.SOSIdioma && window.SOSIdioma.t;
-    document.querySelectorAll(".mk-t").forEach(function (sp) {
-      var es = sp.getAttribute("data-es"), k = limpio(es), tr = T ? T(k) || k : k;
-      var nuevo = es.match(/^\s*/)[0] + tr + es.match(/\s*$/)[0];
-      if (sp.getAttribute("data-tr") !== nuevo) { sp.setAttribute("data-tr", nuevo); sp.innerHTML = pintar(nuevo); }
-    });
-  }
-  var pend = null, nuevos = [];
-  function programar() { if (pend) return; pend = setTimeout(function () { pend = null; var l = nuevos; nuevos = []; l.forEach(recorrer); traducir(); }, 120); }
-  function iniciar() {
-    document.querySelectorAll(".logo-text .mk").forEach(function (m) { if (fondoOscuro(m.parentNode)) m.parentNode.classList.add("mk-osc"); });
-    recorrer(document.body);
-    new MutationObserver(function (ms) {
-      ms.forEach(function (m) {
-        if (m.type === "attributes") { programar(); return; }
-        m.addedNodes.forEach(function (x) {
-          if (x.nodeType === 1 && !x.classList.contains("mk-t") && !x.classList.contains("mk")) nuevos.push(x);
-          else if (x.nodeType === 3 && x.parentNode) nuevos.push(x.parentNode);
-        });
-        if (m.type === "characterData" && m.target.parentNode) nuevos.push(m.target.parentNode);
-      });
-      if (nuevos.length) programar();
-    }).observe(document.body, { childList: true, subtree: true, characterData: true });
-    new MutationObserver(programar).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-    setTimeout(traducir, 600);
-  }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar); else iniciar();
-})();
+/* © Código de comunicación del Cubo (33)© · SOSistem™ · Víctor Hugo Ramírez Salgado · original legible en el repositorio privado */
+CUBO33.run(`
+CUBO·33 ◇ 36C ▸
+L1 F4 VC AU 2P KN UX G5 DF NX RI JI RA YK 3S A3 LB OJ RW CI DF NY QH I3 3E N4 QG K3 BA ON UX I2 LP ED BL OI GC VE QF NQ 5N MN 2G 64 RA JB 2W O3 ZA KJ QW 3Q 5N OJ SX UI CT MF WG OY LE N4 FC AI BA JV 2W K4 3U OJ QS AY 3B MR QS BQ VL KN HV G2 LT OR SW 3Q V3 EB SG K3 BA OR SX Q5 DP EB RW 63 RA YK VV GT 2T YK 5S AZ LO EB XG C4 TB NZ VG CI DF ED BK W2 LT OR SW 3Q V3 EB SW 4I DO MV TX E3 ZM EB RW 63 RA ON 2S BY UE UI QC Q3 ZA YK US A4 3J EB SW YI DU MV 4H I3 ZA PF QS A3 DP EB 2H EY LF FE XA UI BA EB JW 6Y TS MU QG M3 3O MR XX GI DP ON RX K4 TP OM QG YY JA NV QX EY 3B EB 3G CI DF NY QH K3 TB EB YG YY LD ME QG E3 DB NZ RW CI DQ MF ZG CI DR OV SS AZ LM EB XG KZ 3S N4 QH GZ JA NR SW CL QK EA QC AQ 3P NZ ZW K4 TW ME QG K3 BA OR SX Q5 DP EB XX E2 LH NF XG C3 BA MV XC AZ LT OB Q4 HM LP NQ QC QZ DB OR QS 2Z LT FE QH SI DM N4 QH M5 LF NR 3G KI DB EB 2H EY LE OV RW S4 RA MN 2W C3 TE N4 QG GY LN MJ UW CI DF NQ QG SZ DJ N5 WW CL RA FI XQ UK DG OV XG G5 DJ N5 XC AK BJ EB 5Q UI BA EJ 2X GZ JA ON 2H E2 LD OQ RD WC RA EB 3G C4 RA KJ MC AP JA F5 JU 6U 3J ON 2G K3 JI 4K CK E7 GC VE UT 6K B7 EF OC 4Y 3P NU US 6Z Z3 BI QC A5 TB OI QF GQ KM KR AV EI B5 EA RH GY 3S NF YH IL DT OR 4W YZ JM NZ XX GY 3S NF YH IL DU MV 4H IY LS MV QS Y2 LO OB 2X IL DT MV WG KY 3U FR XX A5 DJ N5 XC Y4 3W M4 WH I2 LU NR SS YY 3P MR SS Y4 DS MU WC 43 LL FQ XG 22 ZN OQ WC 43 DP M5 XS YL TI PA WW 2Y LS MN QS YL TO N4 WW 2Y LS MN QS YL TM N5 TW 6L LH NF ZG 6L C3 MN XW 45 DF NZ 2G KZ DJ OR QW E3 DF LU RD WC QK EA QH MY LS EB RX G4 ZA HU QG I3 3D OV WW K3 TU FZ RX EZ LB OR SU K3 DF NV SW 45 BI EJ ZX I6 LM MU RC SO YK EA QG G4 3T FZ 2G K6 DU IN XW 45 DF NZ 2C AP IK EA QC AI BC FZ WW W6 3X NB UX IZ JN ON YG CY 3F HJ XG
+L2 65 3S MF YD WY 3P NR XX EO RD GE 4D CO JR II 5S 25 3F MJ VW S5 BN OR SX Q5 BN MZ UW Y3 BN MN XW Y3 3S HI RT CO BR HE YU EO 3G N5 XH IL LX MV UW O2 DU HJ UW 42 DF OJ UX I7 JC EA VQ UI BA EA QC EL TN NM QG E6 3D N5 WG 64 R2 EN BT AN JU GF AT WL LX MV RG W2 LU FV 2G K6 DU FV TG S3 DM FV RW 63 DP OI 5C GQ ZQ GU 2D CQ J3 MZ XW 45 BN O5 SW SZ 3I OQ 5G S3 TI MV ZG S5 D5 EI QC WC RA EA QC AI RO NV VS A4 3V OB 5W M3 3O OQ WX G2 L2 MU 5C 4N JV MV WT W3 DJ NZ SS 22 DF NF TW Q5 B2 GA 5X MZ LS OR UW GY LM FV QW Y2 LH NY 5H G5 LQ MV ZH 2I RA FM FC AI BA EA RC 43 LL FV XX GY ZA FZ WW W6 3C MF RW WZ 3S N5 2W 4Z B2 EN TG MZ R3 MJ XX EZ DF OI WX EY LE NF 2X GO RO GI ZG K3 J3 OB QW IZ DJ NZ TT UM BA FY ZG K3 JA FY YD EZ LN HN RG 66 BN ON UG CZ DP O4 5D AI BO GA 4G K3 JA GA QH EZ 3C ME UD AL BQ FQ YC YL RT GU UX 2I R3 BI QC AZ DP MN 2W 2Z LO OQ XG QZ LB MQ XG C4 DQ MV XG IQ 3I NF WG IK DD ON ZS SO YK BI QC AZ TV NZ RX I2 LP NY QG K4 3D FB ZS SI D3 EB ZG K5 DV OJ XC A4 ZO OJ SX A3 DB MN SS QL 23 EY 6D 4X JP M4 WC AZ TV NZ RX I2 LP NY QC QY ZJ EB 5S A4 TF OR 2X E3 RA PM QC EJ RC HI QC EJ TB NV YD WI RM EA RD YI R2 EA RC M3 DU HM RC YI BC HY RD UI BC EZ TX IO ZC EB 6V WY 25 HM QH 2K J3 EB 6Q UI BA MZ 2W 4Y 3U NF XW 4I DQ NF XH IY LS FB 2H Q5 BJ EB 5Q UI BA EA QH EZ LU OV ZG 4I DF ON RS Q5 DY OQ US 44 TF OB WG CY 3F FB JF QL BA MZ 2W 4Y 3U NF XW 4I BI L4 WC A4 ZJ EB 5S A4 TF OR 2X E3 RA E4 6H G4 DB NY QG G3 DB ON ZT 2I TN NM RD 4P DC HZ JU 6U Z4 F5 RD 42 LT OR SW 2P DT OV YD 4J ZA FM QC Q4 ZA PR 6C AI XC QS RC EK JA FM QC EP BP ON 2X AP R4 F5 ZX AY LO HY RD WI D5 FE 5Q UI BA PU FC AI DG OV XG G5 DJ N5 XC A3 DJ NV YG S3 ZI OQ US A6 ZA OJ SX I5 LS NY QH IL TS MV YG YY LD MU UC 6X DT
+L3 FM XW OL BA EI QC EK JO OR ZG S3 JI FE 5S A7 IK EA QG M5 LO MN 2G S3 3O EB WH K6 RI MM US A6 ZA OZ QX EI DN EA 6S AK DD EB 6H YI BC EI US 43 LB OR RW QK BP LN OG IL S5 FM XW OK J3 EB UW MI BI EF WS SI DS MV 2H K4 TO EB XH K3 DM HM QG SZ RA FB WS 43 DF NZ TX I2 BA HY QD GI BG EY QC W3 K3 GN OS AP BA GA XD EK JA OJ SX I5 LS NY QG 45 LM NQ 5S A4 TF OR 2X E3 RA GA XD EO JZ EA VC A3 K3 GB OS AK ZA GA XD KO BX EA VC A3 K3 GF OS AK ZA GA XD CM JU EA VC A3 K3 GJ OT WI D5 BI QC AZ TV NZ RX I2 LP NY QG M3 3O MR XU 64 3D OV ZG 6K DF NQ US A6 YK EA QC AI DW MF ZC A3 BA HU QG Y5 L2 FB TW K5 CD N5 WX A5 LU MV SF G5 DZ NR SS QZ LM FE XG G3 3M N5 ZC SO YK EA QC AI DS MV 2H K4 TO EB WC AI J5 HU QG 45 LM NQ QC MJ RA NQ QD 4I BR GY 2T WI BP FI QG YZ LU OJ QS AY 3M MF ZG CI B5 EB TG 63 TE N4 QG 64 3D OV ZG 6I BK F4 FC AI D5 BI QC AZ TV NZ RX I2 LP NY QG K3 TW N5 WH MZ LS FB XC SI D3 BI QC AI BA OZ QX EI DQ EA 6S A3 RO OB QX EZ LO OR HG 6Z DF HM QG SZ RA FA QX AK JA OJ SX I5 LS NY 5Q UI BA EA QH MY LS EB ZX AI B5 EB SG 6Y 3V NV SW 45 BO MN ZG KY LU MV CW YZ LN MV XH IK BC ON YG C3 RC FE 5Q UI BA EA QH G4 BO MN WG C4 3T JZ QW 2Z JA HU QC E3 LL FV 2C EO YK EA QC AI DT OA XH GZ LU IF 2H I4 TJ MJ 2X IZ JI EJ SG C5 DB FV SX GI RM EB XC 43 TP MR SV MY LM OV SS SO YK EA QC AI DT OA XG S3 TO MV ZE QV CN JQ QD 2I DQ NF XH IY LS FB XC 43 TP MR SV MY LM OV SS SO YK EA QC AI DQ FZ ZG K4 DM MF RW KQ 3I NF WG IK DT OA WC A3 RJ HM FC AI BA EB UW MI BI MZ XW 4Z DP J5 ZW G5 LS N4 UH AK JJ EB ZX AL TD NR QX G4 2M NF ZX IL TB MR SC QI TN NM WW 64 3D EI UT WC RA EB 6Q UI BA MZ 2W 4Y 3U NF XW 4I DS MV RW 64 TS MV ZC Q4 TB NF 5C SI D3 BI QC AI BA NF TC AK BB OJ QW S6 RA PR 6C AK DS MF UX UL TO N5 SG
+L4 KV DZ OB SS AP J5 HU QD CI BG EY QH EY LJ PI XG G3 DP ON SX G5 BI KN AU YV CB KI US SK JA OJ SX I5 LS NY 5Q UI BA EA QH MY LS EB 3S AP JA MR XW G5 LN MV XH IL TD OJ SW C5 DF KR ZG KZ KX MF WG WZ LS FB ZG C2 L2 FQ QE 43 3E MV DG S3 DU MV ZC 4U 2I J5 LV 6V CF LB KC SL BA NY WC A3 DJ ON 2G CI B5 EB NV 2O YK EA QC AI DX NB UW YZ JA FA UG 4I B5 EB 3S 43 TF PB 2E 43 3E MU UC SK JJ EB 5Q UI BA EA QC AI DJ MY QC Q3 RO NZ XW IZ KW MF WH KZ JO NF XG IZ LY J5 TC QI ST J5 JW S4 3U MV WS EK JA HQ QD AK JA MN XW 45 DJ NZ 2W KO YK EA QC AI BA EB JF QL TM MF ZX IS LO MR SX QI B5 EA YD WI DJ MY QC QI KS LA XH IZ LT OQ UG 4L TO N5 SG KV TB NR 2W KK JJ EB RW 63 TU NF XH KZ J3 BI QC AI BA EA QH MY LS EB SS AP JA NY XH AY LS MV XH IR LM MV WW K3 TU HM QG SZ RA FA QW KI D4 PQ QG KL TD NR XX GZ LT OQ UF GQ KM KR AV EK JJ EB RW 63 TU NF XH KZ J3 BI QC AI BA EA QG Y2 LT OR QS 44 DV ON UC Q3 RJ HM FC AI BA EB 6Q UI BA EA QG Y2 LT OR QS 4Z TP OJ CW CY 3I FB SW 45 TP NR 3G K4 RJ HM FC AI D5 BI QC AZ TV NZ RX I2 LP NY QH I4 TB MR 2W G2 LS FA US A6 YK EA QC AI DW MF ZC AV BA HU QH O2 LO MR XX OL ST J5 JU SZ DJ N5 WW CI BG EY QH O2 LO MR XX OL ST J5 JU SZ DJ N5 WW CL TU HM FC AI BA EB SG 6Y 3V NV SW 45 BO OF 2W K4 TZ KN SW YZ LD OR XX EQ LM NQ UC EL TN NM WX II RJ FZ TG 64 SF MF RW QK DG OV XG G5 DJ N5 XC AK DT OA US A6 YK EA QC AI BA EB 3G C4 RA MV ZS AP JA ON YC 4Z 3F OR AX I5 DS NF RH K5 DF FA RG IY LU ME WW K4 ZC FE WC A2 ZA HU QG Y2 LN OB UW 6K DF OM US YI DU OI QD 2I CU EA 7S AV BI NM US A7 D4 EB VS AO RA NM 5Q UI BA EA QC AI DW MF ZC A3 TV MV 3G 6I B5 EB SX GL TN MF 2G G2 BI F5 PF Y4 ZK F4 UV WM C5 EA VS A5 DS EA VS AZ LT FZ WW C5 DD NA UC 6X DT FI SC 6K K3 GB OT WC RA EA QC AI BA
+L5 NF TC AK DT OA XG OZ LU IF 2H I4 TJ MJ 2X IZ JI EJ SG C5 DB FV 2H EI RJ EA QT 2P JA NZ 2W K5 TP FE QH WI DT OA XH GZ LU IF 2H I4 TJ MJ 2X IZ JI EJ SG C5 DB FV 2H EI RM EB XH KZ LW N4 UT WI DT OA XG S3 TO MV ZE QV CN JQ QD 2I DQ NF XH IY LS FB XH KZ LW N4 UT WI D5 BI QC AI BA PU UT WC RA EB 6Q UI BA OZ QX EI DQ MV XG II B5 EB XH K3 DM FQ QG 45 LF OZ XX GI B5 EB NV 2O YK EA QG M5 LO MN 2G S3 3O EB YH E3 3H OJ QW 2Y LS FA US A6 ZA NF TC AK DQ MV XG IK JA OJ SX I5 LS NY 5S A4 DF NZ SC AP JA ON SX IV DJ NV SW 65 LU FB TH K3 TD OR UW 63 RA FA US A6 ZA OB SW 4Z BA HU QG 45 LM NQ 5S A5 TB OI QG YI B5 EB XH KZ LW N5 ZT WI DO OV SX M3 3T EA 6S AW 25 HM QG YL TG N5 ZE KY LD NA UH EZ LD N5 ZH EZ LS FE 5S A5 DS MF SH KY 3J OI UC SO ZA PU WC AM JS GA UT WI D5 BI QC AZ TV NZ RX I2 LP NY QG S3 TJ MN UW C4 RI FE QH WC RA EA QC AZ DP MN 2W 2Z LO OQ XH C5 LF OJ 4V GZ LM MV RX I3 3S IF WG YK BC FZ WG 6Z 3P FV 2G K6 DU EA XG 22 ZC FE XG M3 3S IV QW G2 BI MZ 2W 4Y 3U NF XW 4I BI NU US A6 ZA NF TC AK DG N5 XG I3 2P ON RX K4 TP FB WS 44 DB OJ SW 45 CO N5 SG KK JJ EB WS 44 DB OJ SW 45 CO N5 SG KL TD NR QX G4 2M NF ZX IL TB MR SC QI TN NM WW 64 3D EI UT WI D5 FE 5Q UI BA EA QH EZ LD N5 ZH EZ LS FB SG 6Y 3V NV SW 45 BO MJ XW I6 JJ HM FC AI BA EB XG K5 ZA JV 2X IY LU NF XW 4T 3C ON SX E5 TF OI UG M5 LO MN 2G S3 3O EA UG 24 ZJ EB 5Q UI BA EA QC AI DN OM XG M3 3S IV QW G2 BI MZ 2W 4Y 3U NF XW 4I BI NU US A6 YK EA QC AI BA EA QC A2 LG EA UG 2L TU PF YG KI B5 HU 6S AI TB OR 2H E2 LC OV 2G K4 ZC FE QH WI DQ OJ XW O4 TB NV QX EK BJ HM QH EZ LU OV ZG 4O ZA PU FC AI BA EA QC AI BA NU XG CZ DE MV SE 43 3E MV ZS 4Z TP OJ CW CY 3I FB TH K3 TD OR UW 63 RA FB 4C SI D3 BI QC AI BA EA QC AI BA EB UW
+L6 MI BI PA XG 43 3E MV KH S4 DF EA 6T 2P JA GE QC MJ RA EF 4C 4Y 3M MF ZX GT DJ ON 2C 4Y 3P NZ 2G C2 LO OM UC E3 LL FV 2C EK JA EY TC AI LY FZ RW YY LT ON GG S4 3U FZ RW 63 TU MF UW 44 ZI EJ WW WI RJ FE QG 45 LF OZ XX GL TQ OV ZW QK DY FE 5Q UI BA EA QC AI BA EA QC AZ LM ON SS A2 LG EA UH QL TO N5 SG KV DZ OB SS AP J5 HU QD GI BG EY QH QL TQ MF ZG K3 TU JZ XW IZ JJ EB XH KZ LW N5 ZS 44 DV ON UC Q6 BO OB QX EZ LO OR HG 6Z DF FE 5Q UI BA EA QC AI BA EB 6S SO YK EA QC AI BA EA QC A2 LG EA UG 2L TU PF YG KI B5 HU 6S AI TD NB QX EY LD OR SX ER DB OR QS EI BG EY QG 2L TU MF ZG OZ LU FZ YG C4 TF NZ 2E 43 3E MU US A3 TV MV 3G 64 ZO OB 2X G2 BI NU XH IY LS M5 SX IL TQ MF ZG K3 TU JZ XW IZ JJ HM FC AI BA EA QC A7 JJ HM FC AI BA EA QC A2 LG EA UG 45 LF OZ XX GL TM MV XG O5 DI FE QH A4 TP M5 ZG C3 LB OI UC SO YK EA QC AI D5 FE XG 6Y TT MV ZH MZ JI MR XW G5 LN MV XH IL TC N5 SH SL BA PM QG G2 DJ NR SE Y2 LT OQ 5C A5 DS OV SS YI DT OV RH I4 TF MU 5C A5 DS OV SS YI DD NB QX EY LD OR SX ER DB OR QT UI DU OJ 2W KI D5 FE 5Q UI BA EA QG 4Z LX EB GX K5 DB OR UW 63 SP MJ ZW K4 TW MV ZC Q4 DS N5 TX EY LN MF ZC SL TP MJ ZW K4 TW MU UG I3 3D OV WW K3 TU FZ SG 6Y 3V NV SW 45 CF NR SW 2Z LO OQ WC A6 ZA MF 2H I4 TJ MJ 2X IZ LT HI QH I4 TV MU WC AY LU OR ZG SY TV OR SU M2 LM OR SX EO RA LM RG YY LO M4 RF 2I D5 FE 5Q UI BA EA QH GZ LU KR UW 2Z LP OV 2C Q5 DS MF SH KY 3J OI WC AN RQ GA UT WC RA EB 6Q UI BA NF TC AK DE N5 RX K3 LF NZ 2C 44 TF MF SH SU 3U MF 2G KI B5 HU 6S AI TM N5 QW I2 LO M4 RC SI DE N5 RX K3 LF NZ 2C 4Y LE MR CX MZ LO OR GG S4 3U MV XG K4 RI EJ CE 6T KD N5 XH IZ LO OR GG 6Y LE MV SC EL BA NF XG SY 3J MF ZC SO ZA MV WH GZ JA NF XG SY 3J MF ZC QK J3 BJ 6S SK BJ HM FA
+◂ 72I · © Cubo (33)
+`, "assets/marca.js");
