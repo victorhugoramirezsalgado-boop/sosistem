@@ -1,8 +1,13 @@
 {
-  "version": "7.5.1",
+  "version": "7.5.2",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.5.2",
+      "fecha": "2026-11-08",
+      "resumen": "Portada: sin foto repetida del puerto (el recuadro «Aplicaciones en múltiples industrias» usa fondo de marca) y conteos unificados: 27 sensores en total (20 en los tres equipos y 7 del teléfono en la Terminal) que detectan 14 riesgos y alimentan los 12 servicios; misma explicación en Prototipo de sensores."
+    },
     {
       "v": "7.5.1",
       "fecha": "2026-11-08",
