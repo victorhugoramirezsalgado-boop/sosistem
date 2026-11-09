@@ -281,6 +281,61 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media print{.sel-diseno{display:none}}
 </style>
 <script>if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});</script>
+<style id="v76">
+/* Logo: cubo SOSistem™ que gira + nombre */
+.logo{flex-direction:row;align-items:center;gap:.6rem}
+.logo .logo-txt{display:inline-flex;flex-direction:column;gap:4px}
+.logo .logo-cubo{width:48px;height:48px;display:block}
+.logo .logo-cubo[hidden]{display:none}
+.logo-giro{--lg:24px;width:48px;height:48px;flex:none;display:block;perspective:300px}
+.lg-cubo{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;animation:lg-giro 18s cubic-bezier(.6,0,.3,1) infinite}
+.lg-cara{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.lg-cara svg{width:100%;height:100%;display:block}
+@keyframes lg-giro{0%,12%{transform:rotateX(-8deg) rotateY(0)}16.6%,29%{transform:rotateX(-8deg) rotateY(-90deg)}33.3%,45%{transform:rotateX(-8deg) rotateY(-180deg)}50%,62%{transform:rotateX(-8deg) rotateY(-270deg)}66.6%,79%{transform:rotateX(-90deg) rotateY(-360deg)}83.3%,95%{transform:rotateX(90deg) rotateY(-360deg)}100%{transform:rotateX(-8deg) rotateY(-360deg)}}
+.logo:hover .lg-cubo{animation-play-state:paused}
+@media (max-width:600px){.logo-giro,.logo .logo-cubo{--lg:20px;width:40px;height:40px}}
+/* Botones poligonales en relieve: se reconocen como botón */
+.btn,.morse-btn,.tab,.sel-diseno a,.ports .pill{clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%);border-radius:0!important;border:0!important}
+.btn{padding:0 1.9rem;min-height:46px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.28);transition:transform .15s,filter .15s}
+.btn:hover,.morse-btn:hover,.tab:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn:active{transform:translateY(1px);box-shadow:inset 0 3px 0 rgba(0,0,0,.25)}
+.btn:focus-visible,.tab:focus-visible,.morse-btn:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #F9A900}
+.btn-brand{background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.38) 50%,transparent 62%) var(--brand);background-size:260% 100%;animation:brillo 4.5s ease-in-out infinite}
+@keyframes brillo{0%{background-position:140% 0}55%,100%{background-position:-40% 0}}
+.btn-line,.hero .btn-ghost-dark{background:color-mix(in srgb,var(--brand) 12%,#fff);color:var(--ink);box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.14)}
+.btn-ghost-dark{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 2px #fff,inset 0 -4px 0 rgba(0,0,0,.25)}
+.btn-white{box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.18)}
+.morse-btn{padding:0 1.4rem;background:color-mix(in srgb,var(--brand) 18%,transparent);box-shadow:inset 0 0 0 2px var(--brand)}
+.tabs{gap:.35rem;border-bottom:0}
+.tab{padding:.6rem 1.5rem;margin:0;background:color-mix(in srgb,var(--brand) 10%,#fff);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 55%,#fff),inset 0 -3px 0 rgba(0,0,0,.12);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--brand);color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.28)}
+.tab-items a{clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);border:0;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 45%,#fff),inset 0 -4px 0 rgba(0,0,0,.08);transition:transform .15s}
+.tab-items a:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.12)}
+.sel-diseno a{padding:8px 16px}
+@media (prefers-reduced-motion:reduce){.btn-brand{animation:none}.lg-cubo{animation-duration:36s}}
+@media print{.lg-cubo,.btn-brand{animation:none}}
+/* Índice */
+.indice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem;margin-top:1.4rem}
+.ix{background:var(--surface,#fff);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.2rem}
+.ix h3{margin:0 0 .5rem;font-size:1rem}
+.ix ol{list-style:none;margin:0;padding:0}
+.ix li{padding:.4rem 0;border-bottom:1px solid var(--line);line-height:1.35;font-size:.92rem}
+.ix li:last-child{border-bottom:0}
+.ix .n{display:inline-block;min-width:2.7em;color:var(--muted);font-variant-numeric:tabular-nums}
+.ix a{color:var(--brand-text,#9A3E10);text-decoration:none;font-weight:600}
+.ix a:hover{text-decoration:underline}
+.reg{margin-top:1rem}
+.reg ol{columns:2 20rem;column-gap:2rem}
+.reg li{break-inside:avoid}
+.reg .nota{font-size:.82rem;color:var(--muted);margin:.8rem 0 0}
+/* Vista rápida al pasar el cursor */
+.vista{position:fixed;z-index:9500;width:290px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 36px rgba(0,0,0,.24);border-radius:10px;overflow:hidden;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s}
+.vista.on{opacity:1;transform:none}
+.vista img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:#EFE6D6}
+.vista b{display:block;font:600 .8rem/1.3 var(--f-body,system-ui);padding:.55rem .75rem;color:#18191B}
+.vista small{display:block;font-weight:500;color:#6B6F76;margin-top:2px}
+@media (hover:none){.vista{display:none}}
+</style>
 </head>
 <body>
 <div class="util">
@@ -300,17 +355,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <header class="site-head">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="SOSistem, inicio">
-      <span class="word"><b>SOS</b>istem<sup>™</sup></span>
-      <svg viewBox="0 0 120 5" preserveAspectRatio="none" aria-hidden="true"><g fill="#C0541A"><circle cx="2.5" cy="2.5" r="2.5"/><circle cx="10" cy="2.5" r="2.5"/><circle cx="17.5" cy="2.5" r="2.5"/><rect x="25" width="16" height="5" rx="2.5"/><rect x="45" width="16" height="5" rx="2.5"/><rect x="65" width="16" height="5" rx="2.5"/><circle cx="88" cy="2.5" r="2.5"/><circle cx="95.5" cy="2.5" r="2.5"/><circle cx="103" cy="2.5" r="2.5"/></g></svg>
+      <img class="logo-cubo" id="logo-img" src="assets/logo-sello.svg" width="48" height="48" alt="">
+      <span class="logo-txt"><span class="word"><b>SOS</b>istem<sup>™</sup></span>
+      <svg viewBox="0 0 120 5" preserveAspectRatio="none" aria-hidden="true"><g fill="#C0541A"><circle cx="2.5" cy="2.5" r="2.5"/><circle cx="10" cy="2.5" r="2.5"/><circle cx="17.5" cy="2.5" r="2.5"/><rect x="25" width="16" height="5" rx="2.5"/><rect x="45" width="16" height="5" rx="2.5"/><rect x="65" width="16" height="5" rx="2.5"/><circle cx="88" cy="2.5" r="2.5"/><circle cx="95.5" cy="2.5" r="2.5"/><circle cx="103" cy="2.5" r="2.5"/></g></svg></span>
     </a>
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="#servicios">Soluciones</a>
       <a href="#sensores">Sensores</a>
       <a href="#industrias">Industrias</a>
-      <a href="#servicios">Servicios</a>
       <a href="#innovacion">Innovación</a>
       <a href="#aprendizaje">Aprendizaje</a>
       <a href="#explorar">Recursos</a>
+      <a href="#indice">Índice</a>
       <a href="#normas">Acerca de SOSistem</a>
     </nav>
     <div class="head-actions">
@@ -471,6 +527,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
   </section>
 
+  <section class="section" id="indice">
+    <div class="wrap">
+      <span class="eyebrow">Índice · APA 7.ª ed.</span>
+      <h2 class="h2" style="margin-top:.6rem">Índice del sistema</h2>
+      <p class="sub">Todas las secciones, páginas y documentos de SOSistem™ en un solo lugar. Pase el cursor sobre una liga para ver una vista rápida.</p>
+      <div class="indice-grid"><div class="ix"><h3>1. Inicio y presentación</h3><ol><li><span class="n">1.1</span> <a href="#inicio">Inicio · diseño nuevo</a></li><li><span class="n">1.2</span> <a href="anterior.html#inicio">Temporada de pruebas colaborativas</a></li><li><span class="n">1.3</span> <a href="anterior.html#colabora">Colabore en las pruebas · meta de 1,000 pruebas reales</a></li><li><span class="n">1.4</span> <a href="anterior.html#resumen-ejecutivo">Resumen ejecutivo · presentación mundial</a></li></ol></div><div class="ix"><h3>2. El sistema</h3><ol><li><span class="n">2.1</span> <a href="#sensores">Prototipo de sensores · 27 sensores, 14 riesgos</a></li><li><span class="n">2.2</span> <a href="#servicios">12 servicios</a></li><li><span class="n">2.3</span> <a href="anterior.html#funciones">Funciones del Sistema S.O.S.©</a></li><li><span class="n">2.4</span> <a href="anterior.html#funciona">Cómo funciona · escalamiento en cuatro niveles</a></li><li><span class="n">2.5</span> <a href="anterior.html#modalidades">Arquitectura del sistema</a></li></ol></div><div class="ix"><h3>3. Análisis estratégico</h3><ol><li><span class="n">3.1</span> <a href="anterior.html#foda">FODA</a></li><li><span class="n">3.2</span> <a href="anterior.html#problema">El problema</a></li><li><span class="n">3.3</span> <a href="anterior.html#datos">Datos reales · cifras oficiales</a></li><li><span class="n">3.4</span> <a href="anterior.html#ventajas">Por qué S.O.S.©</a></li><li><span class="n">3.5</span> <a href="anterior.html#mundo">Mundo en vivo</a></li></ol></div><div class="ix"><h3>4. S.S.O.S.© y pantallas</h3><ol><li><span class="n">4.1</span> <a href="anterior.html#ssos">Módulo S.S.O.S.©</a></li><li><span class="n">4.2</span> <a href="anterior.html#pantalla-demo">Pantalla S.S.O.S.© · simulador</a></li><li><span class="n">4.3</span> <a href="anterior.html#galeria">Galería · pantallas del sistema</a></li></ol></div><div class="ix"><h3>5. Señales, Morse y aprendizaje</h3><ol><li><span class="n">5.1</span> <a href="anterior.html#cubo-morse">Identidad · Cubo Morse©</a></li><li><span class="n">5.2</span> <a href="anterior.html#senales">Señales · normas ISO y OMI</a></li><li><span class="n">5.3</span> <a href="anterior.html#aprende">Aprendizaje · 22 idiomas, braille, Morse, señas y banderas</a></li><li><span class="n">5.4</span> <a href="anterior.html#mensajero">Mensajero del Cubo</a></li><li><span class="n">5.5</span> <a href="anterior.html#receptor">Receptor Morse</a></li></ol></div><div class="ix"><h3>6. Clientes, piloto y terminal</h3><ol><li><span class="n">6.1</span> <a href="#industrias">Industrias</a></li><li><span class="n">6.2</span> <a href="anterior.html#piloto">Piloto 2026–2027 · ContenedorEns©</a></li><li><span class="n">6.3</span> <a href="#terminal">Terminal de pruebas</a></li><li><span class="n">6.4</span> <a href="anterior.html#configurador">Configurador de terminal</a></li></ol></div><div class="ix"><h3>7. Normativa y fuentes</h3><ol><li><span class="n">7.1</span> <a href="#normas">Marco normativo vigente</a></li><li><span class="n">7.2</span> <a href="anterior.html#fuentes">Fuentes · referencias APA 7.ª ed.</a></li></ol></div><div class="ix"><h3>8. Fondo, apoyo y contacto</h3><ol><li><span class="n">8.1</span> <a href="anterior.html#fondo">Fondo SOS · conectividad humanitaria</a></li><li><span class="n">8.2</span> <a href="anterior.html#apoyo">Apoya el proyecto</a></li><li><span class="n">8.3</span> <a href="#contacto">Contacto</a></li></ol></div><div class="ix"><h3>9. Páginas independientes</h3><ol><li><span class="n">9.1</span> <a href="terminal.html">Terminal de pruebas (aplicación completa)</a></li><li><span class="n">9.2</span> <a href="sensores.html">Prototipo de sensores</a></li><li><span class="n">9.3</span> <a href="ondas.html">Analizador de ondas</a></li><li><span class="n">9.4</span> <a href="auditoria.html">Auditoría de privacidad</a></li><li><span class="n">9.5</span> <a href="colabora.html">Módulo de Colaboración</a></li><li><span class="n">9.6</span> <a href="verificar.html">Verificar constancia</a></li><li><span class="n">9.7</span> <a href="terminos-pruebas.html">Términos de la versión de prueba</a></li><li><span class="n">9.8</span> <a href="anterior.html">Diseño anterior</a></li></ol></div><div class="ix"><h3>10. Documentos (PDF)</h3><ol><li><span class="n">10.1</span> <a href="assets/manual-configuracion-sosistem.pdf" target="_blank" rel="noopener">Manual de configuración</a></li><li><span class="n">10.2</span> <a href="assets/presentacion-ejecutiva-sosistem.pdf" target="_blank" rel="noopener">Presentación ejecutiva (3 hojas)</a></li><li><span class="n">10.3</span> <a href="assets/cubo-aprendizaje-carta.pdf" target="_blank" rel="noopener">Cubo de Aprendizaje armable (carta)</a></li><li><span class="n">10.4</span> <a href="assets/cubo33-nivel1-prototipo-carta.pdf" target="_blank" rel="noopener">Juego del Cubo · Nivel 1</a></li></ol></div></div>
+      <div class="ix reg" id="registros"><h3>11. Registros del autor: 24 en Safe Creative</h3>
+        <p style="margin:.2rem 0 .6rem">Víctor Hugo Ramírez Salgado cuenta con <b>24 registros</b> de obras <b>©</b> y de nombres y logotipos de sus marcas <b>™</b>. Se citan 23; uno es privado.</p>
+        <ol><li><span class="n">11.1</span> Intertopía© · <a href="https://www.safecreative.org/work/2602144563892" target="_blank" rel="noopener">Safe Creative 2602144563892</a></li><li><span class="n">11.2</span> 1ntertopía© · <a href="https://www.safecreative.org/work/2606096034080" target="_blank" rel="noopener">Safe Creative 2606096034080</a></li><li><span class="n">11.3</span> Sistema S.O.S.© · base de SOSistem™ · <a href="https://www.safecreative.org/work/2609046908578" target="_blank" rel="noopener">Safe Creative 2609046908578</a></li><li><span class="n">11.4</span> ContenedorEns© · nombre y logotipo · <a href="https://www.safecreative.org/work/2609046908752" target="_blank" rel="noopener">Safe Creative 2609046908752</a></li><li><span class="n">11.5</span> Arsa Bodegas© · nombre y logotipo · <a href="https://www.safecreative.org/work/2609046908806" target="_blank" rel="noopener">Safe Creative 2609046908806</a></li><li><span class="n">11.6</span> Econotopía© · <a href="https://www.safecreative.org/work/2610077261709" target="_blank" rel="noopener">Safe Creative 2610077261709</a></li><li><span class="n">11.7</span> CuboPY© · <a href="https://www.safecreative.org/work/2610097275281" target="_blank" rel="noopener">Safe Creative 2610097275281</a></li><li><span class="n">11.8</span> Código Cúbico© · Código de comunicación del Cubo (33)© · <a href="https://www.safecreative.org/work/2610097276721" target="_blank" rel="noopener">Safe Creative 2610097276721</a></li><li><span class="n">11.9</span> Cubo Interior© · <a href="https://www.safecreative.org/work/2610097277049" target="_blank" rel="noopener">Safe Creative 2610097277049</a></li><li><span class="n">11.10</span> Teclado Cubo© · <a href="https://www.safecreative.org/work/2610097277155" target="_blank" rel="noopener">Safe Creative 2610097277155</a></li><li><span class="n">11.11</span> Econotopía Segura© · El Cubo de la Comunicación · <a href="https://www.safecreative.org/work/2610097277377" target="_blank" rel="noopener">Safe Creative 2610097277377</a></li><li><span class="n">11.12</span> Lector Cúbico© · <a href="https://www.safecreative.org/work/2610097277568" target="_blank" rel="noopener">Safe Creative 2610097277568</a></li><li><span class="n">11.13</span> Código Omnigráfico© (versión de prueba) · <a href="https://www.safecreative.org/work/2610257441013" target="_blank" rel="noopener">Safe Creative 2610257441013</a></li><li><span class="n">11.14</span> Cubo Morse© · <a href="https://www.safecreative.org/work/2610257441754" target="_blank" rel="noopener">Safe Creative 2610257441754</a></li><li><span class="n">11.15</span> Plataforma SOSistem™ 1.0.0 a 3.8 · <a href="https://www.safecreative.org/work/2610257442171" target="_blank" rel="noopener">Safe Creative 2610257442171</a></li><li><span class="n">11.16</span> Plataforma SOSistem™ 3.9 a 6.6 · <a href="https://www.safecreative.org/work/2610317507284" target="_blank" rel="noopener">Safe Creative 2610317507284</a></li><li><span class="n">11.17</span> Econotopía© 2.0 · sistema de comunicación del Cubo · <a href="https://www.safecreative.org/work/2610317507307" target="_blank" rel="noopener">Safe Creative 2610317507307</a></li><li><span class="n">11.18</span> Estructura y Validación mediante Código Omnigráfico© · <a href="https://www.safecreative.org/work/2610317507444" target="_blank" rel="noopener">Safe Creative 2610317507444</a></li><li><span class="n">11.19</span> S.S.O.S.© · expediente técnico y modelo de negocio · <a href="https://www.safecreative.org/work/2610317507475" target="_blank" rel="noopener">Safe Creative 2610317507475</a></li><li><span class="n">11.20</span> Sensor híper inteligente SOSistem™ · <a href="https://www.safecreative.org/work/2610317507499" target="_blank" rel="noopener">Safe Creative 2610317507499</a></li><li><span class="n">11.21</span> Registro mundial de naufragios · propuesta CIP/OMI · <a href="https://www.safecreative.org/work/2610317507550" target="_blank" rel="noopener">Safe Creative 2610317507550</a></li><li><span class="n">11.22</span> Regulación de contenedores de segundo uso · trazabilidad nacional · <a href="https://www.safecreative.org/work/2610317507741" target="_blank" rel="noopener">Safe Creative 2610317507741</a></li><li><span class="n">11.23</span> Cartera de dominios y sitios web del autor · <a href="https://www.safecreative.org/work/2611017524083" target="_blank" rel="noopener">Safe Creative 2611017524083</a></li></ol>
+        <p class="nota">Las marcas ™ indican uso de marca; su registro ante el IMPI se tramita por separado. Referencia: Ramírez Salgado, V. H. (2026). <i>SOSistem™: Sistema S.O.S.©</i> [Sitio web]. https://sosistem.com · American Psychological Association. (2020). <i>Publication manual</i> (7.ª ed.).</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section alt" id="normas">
     <div class="wrap">
       <span class="eyebrow">Marco normativo vigente · Normativa y fuentes</span>
@@ -537,9 +607,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
     <div><strong>Soluciones</strong><br><a href="#servicios">12 servicios</a><br><a href="#industrias">Industrias</a><br><a href="#explorar">S.S.O.S.©</a></div>
     <div><strong>Recursos</strong><br><a href="#terminal">Terminal de pruebas</a><br><a href="#explorar">Manual y presentación</a><br><a href="#normas">Marco normativo</a></div>
-    <div><strong>Acerca de</strong><br><a href="#normas">Autor y registros</a><br><a href="#explorar">Apoya el proyecto</a><br><a href="#contacto">Contáctenos</a></div>
+    <div><strong>Acerca de</strong><br><a href="#registros">Autor y registros</a><br><a href="#explorar">Apoya el proyecto</a><br><a href="#contacto">Contáctenos</a></div>
   </div>
-  <div class="wrap legal">© 2026 Víctor Hugo Ramírez Salgado. Todos los derechos reservados. SOSistem™ · Cubo Morse© · 16 obras registradas en Safe Creative. Sistema en etapa piloto: no reemplaza al 911 ni a los servicios oficiales de emergencia. Aviso de privacidad conforme a la LFPDPPP · Términos de la versión de prueba · Acceso de administrador.</div>
+  <div class="wrap legal">© 2026 Víctor Hugo Ramírez Salgado. Todos los derechos reservados. SOSistem™ · Cubo Morse© · <a href="#registros">Registros del autor</a>. Sistema en etapa piloto: no reemplaza al 911 ni a los servicios oficiales de emergencia. Aviso de privacidad conforme a la LFPDPPP · Términos de la versión de prueba · Acceso de administrador.</div>
 </footer>
 
 <script>
@@ -583,6 +653,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 })();
 </script>
 <script src="assets/cubo-rt.js?v=6.1"></script>
+<script src="assets/logo-giro.js?v=6.1"></script>
+<script>addEventListener("load",function(){window.SOSLogoGiro&&SOSLogoGiro.poner();});</script>
 <script src="assets/banderas.js?v=7.5.0"></script>
 <script>
 (function(){
@@ -607,6 +679,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   });
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',pintar);}else{pintar();}
   window.addEventListener('load',pintar);
+})();
+</script>
+<div class="vista" id="vista" aria-hidden="true"><img alt=""><b></b></div>
+<script>
+(function(){
+  if(!matchMedia('(hover:hover)').matches)return;
+  var v=document.getElementById('vista'),im=v.querySelector('img'),t=v.querySelector('b'),act=null;
+  function clave(a){var h=a.getAttribute('href')||'';if(/^(#|https?:|mailto:|tel:)/.test(h)||/\.pdf$/.test(h))return null;h=h.replace(/^\.\//,'').replace(/^beta2\.html/,'anterior.html');if(h===''||h==='./')return null;return h.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+  document.addEventListener('mouseover',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a||a===act)return;var k=clave(a);if(!k){ocultar();return;}act=a;im.src='assets/img/vistas/'+k+'.jpg';t.innerHTML='';t.textContent=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,80);var sm=document.createElement('small');sm.textContent='Vista rápida · clic para abrir';t.appendChild(sm);v.classList.add('on');mover(e);});
+  document.addEventListener('mousemove',function(e){if(act)mover(e);});
+  document.addEventListener('mouseout',function(e){if(act&&!(e.relatedTarget&&act.contains(e.relatedTarget)))ocultar();});
+  im.addEventListener('error',ocultar);
+  function ocultar(){act=null;v.classList.remove('on');}
+  function mover(e){var w=300,h=v.offsetHeight||230,x=e.clientX+18,y=e.clientY+18;if(x+w>innerWidth)x=e.clientX-w-12;if(y+h>innerHeight)y=e.clientY-h-12;v.style.left=Math.max(8,x)+'px';v.style.top=Math.max(8,y)+'px';}
 })();
 </script>
 <nav class="sel-diseno" aria-label="Diseño del sitio"><span>Diseño</span><a href="./" aria-current="page">Nuevo</a><a href="anterior.html">Anterior</a></nav>

@@ -1,8 +1,13 @@
 {
-  "version": "7.5.3",
+  "version": "7.6.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.6.0",
+      "fecha": "2026-11-08",
+      "resumen": "Diseño nuevo: Índice del sistema (APA 7.ª ed.) integrado, con los 24 registros del autor en Safe Creative en un solo lugar (el pie y el diseño anterior solo ligan ahí); botones poligonales en relieve con brillo; vista rápida en miniatura al pasar el cursor sobre cada liga a otra página o pestaña; logo SOSistem™ con el cubo giratorio en Morse."
+    },
     {
       "v": "7.5.3",
       "fecha": "2026-11-08",
