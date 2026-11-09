@@ -1,8 +1,13 @@
 {
-  "version": "7.5.2",
+  "version": "7.5.3",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.5.3",
+      "fecha": "2026-11-08",
+      "resumen": "Sin fotografías de terceros: se quitaron las 7 fotos de Unsplash (portada e industrias) y sus créditos. Las tarjetas de industrias quedan con un fondo de marca, listas para las fotografías propias del autor."
+    },
     {
       "v": "7.5.2",
       "fecha": "2026-11-08",
