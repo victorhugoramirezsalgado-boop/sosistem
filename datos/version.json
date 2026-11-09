@@ -1,8 +1,14 @@
 {
-  "version": "8.2.3",
+  "version": "8.2.4",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.2.4",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Índice: se agrega el registro 26 en Safe Creative, Juego del Cubo© y Cubo de Aprendizaje©, núm. 2611097590138."
+    },
     {
       "v": "8.2.3",
       "fecha": "2026-11-09",
