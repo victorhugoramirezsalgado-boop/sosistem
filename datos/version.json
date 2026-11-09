@@ -1,8 +1,14 @@
 {
-  "version": "8.3.1",
+  "version": "8.3.2",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.2",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: se agrega la participación en el primer Puerto Verde de México (API Ensenada, 2015) y el Premio Marítimo de las Américas CIP-OEA (2016); los registros en Safe Creative se actualizan a 32."
+    },
     {
       "v": "8.3.1",
       "fecha": "2026-11-09",
