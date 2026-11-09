@@ -1,8 +1,13 @@
 {
-  "version": "7.6.0",
+  "version": "7.6.1",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.6.1",
+      "fecha": "2026-11-08",
+      "resumen": "Primera fotografía propia del autor en el sitio: vista aérea de una terminal de contenedores en la tarjeta «Puertos e industria IMMEX», con crédito «Foto: © Víctor Hugo Ramírez Salgado»."
+    },
     {
       "v": "7.6.0",
       "fecha": "2026-11-08",
