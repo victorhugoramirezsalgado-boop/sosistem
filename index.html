@@ -927,7 +927,7 @@ L3 G
 </script>
 <script>
 /* Versión B: número de versión en el selector */
-fetch('datos/version.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(v){document.querySelectorAll('.sel-b').forEach(function(a){a.textContent='B.'+v.version;});}).catch(function(){});
+fetch('datos/version.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(v){document.querySelectorAll('.sel-b').forEach(function(a){a.textContent='B.'+v.version;if(v.inicio_serie_B)a.title='Serie B desde la versión '+v.inicio_serie_B.v+' ('+v.inicio_serie_B.fecha+')';});}).catch(function(){});
 </script>
 <script src="assets/marca.js?v=7.9.0" defer></script>
 </body>
