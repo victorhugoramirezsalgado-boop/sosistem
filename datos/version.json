@@ -1,8 +1,14 @@
 {
-  "version": "8.3.0",
-  "fecha": "2026-11-08",
+  "version": "8.3.1",
+  "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.1",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Índice · Registros del autor actualizado a 32 registros en Safe Creative (31 obras y 1 página web): se agregan el Logotipo SOSistem™ y cubo giratorio, el Hipercubo 33© y el registro de la página web; se corrige el título del registro 2610257441013."
+    },
     {
       "v": "8.3.0",
       "fecha": "2026-11-09",
