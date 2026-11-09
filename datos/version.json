@@ -1,8 +1,14 @@
 {
-  "version": "8.3.10",
+  "version": "8.3.11",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.11",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: ponencias en CETYS, Xochicalco, CBTIS No. 41, CETis No. 74, ITE y CECATI No. 83; presidente del comité de enlace con la industria del CECATI No. 83."
+    },
     {
       "v": "8.3.10",
       "fecha": "2026-11-09",
