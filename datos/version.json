@@ -1,8 +1,13 @@
 {
-  "version": "7.7.0",
+  "version": "7.8.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.8.0",
+      "fecha": "2026-11-08",
+      "resumen": "Portada: el cubo gira por sus seis caras, incluida la de abajo, y suma el Cubo Morse© y las banderas S·O·S del Código Internacional de Señales; la marca se muestra siempre con «SOS» en naranja e «istem» en negro. Índice: nueva sección 12 «Nomenclaturas y abreviaturas» con 148 siglas, leyes, normas, organismos, claves del sistema y componentes, cada una con su significado y cómo se lee, y sección 13 «Cómo leer la Terminal y las pantallas»."
+    },
     {
       "v": "7.7.0",
       "fecha": "2026-11-08",
