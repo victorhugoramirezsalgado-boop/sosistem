@@ -1,8 +1,13 @@
 {
-  "version": "7.4.0",
-  "fecha": "2026-11-02",
+  "version": "7.5.0",
+  "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.5.0",
+      "fecha": "2026-11-08",
+      "resumen": "Diseño nuevo como portada de sosistem.com (autorizado 8-nov-2026, 16:39); el diseño actual pasa a anterior.html y un selector fijo abajo permite cambiar entre «Nuevo» y «Anterior» en cualquier momento. Página «Prototipo de sensores» (sensores.html) con los 14 módulos en recintos limitados y las pantallas interior y exterior (#175)."
+    },
     {
       "v": "7.4.0",
       "fecha": "2026-11-02",

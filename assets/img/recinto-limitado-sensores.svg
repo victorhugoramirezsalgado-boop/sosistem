@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 630" role="img" aria-labelledby="t d" font-family="Inter,Arial,sans-serif">
+<title id="t">Integración de sensores en recinto limitado · prueba ContenedorEns©</title>
+<desc id="d">Plano ilustrativo con los recintos R0 Entrada principal, R1 Sanitarios con cuatro cabinas, R2 Oficina, R3 Cocina y R4 Bodega y taller, con la posición propuesta de sensores de caídas, radar de aforo, gases, oxígeno, agua en el piso, micrófono de palabra S.O.S. sin grabación, pantallas interiores y la pantalla exterior.</desc>
+<rect width="960" height="630" fill="#ffffff"/>
+<text x="32" y="44" font-size="22" font-weight="800" fill="#18191B">Sensores por recinto · prueba <tspan fill="#C0541A">ContenedorEns©</tspan></text>
+<text x="32" y="68" font-size="13" fill="#55585E">Orden obligatorio: 1.º entrada principal, 2.º baños, 3.º lo que el cliente requiera. Plano ilustrativo, no a escala.</text>
+
+<g transform="translate(0 30)">
+<g fill="#FAF7F2" stroke="#8a8e95" stroke-width="2">
+  <rect x="32" y="96" width="230" height="200"/>
+  <rect x="262" y="96" width="330" height="200"/>
+  <rect x="592" y="96" width="200" height="200"/>
+  <rect x="32" y="296" width="330" height="190"/>
+  <rect x="362" y="296" width="430" height="190"/>
+</g>
+<g stroke="#b9bcc2" stroke-width="1.5"><path d="M344 96v120M426 96v120M508 96v120M262 216h330"/></g>
+<g font-size="13" font-weight="700" fill="#18191B">
+  <text x="44" y="118">R0 · Entrada principal</text><text x="274" y="236">R1 · Sanitarios (4 cabinas)</text>
+  <text x="604" y="118">R2 · Oficina</text><text x="44" y="318">R3 · Cocina</text><text x="374" y="318">R4 · Bodega y taller</text>
+</g>
+<!-- puerta y pantalla exterior -->
+<path d="M110 96h70" stroke="#ffffff" stroke-width="5"/><path d="M110 96h70" stroke="#C0541A" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="104" y="62" width="82" height="22" rx="4" fill="#18191B"/><text x="145" y="77" text-anchor="middle" font-size="11" font-weight="800" fill="#F9A900">EXT-01</text>
+
+<!-- simbolos -->
+<defs>
+  <g id="cai"><circle r="11" fill="#C8202F"/><path d="M-5 -1l5 5 5-5" stroke="#fff" stroke-width="2" fill="none"/></g>
+  <g id="rad"><path d="M-12 8 A14 14 0 0 1 12 8 Z" fill="#005387"/><circle r="3" cy="5" fill="#fff"/></g>
+  <g id="gas"><rect x="-10" y="-10" width="20" height="20" rx="4" fill="#F9A900"/><text y="4" text-anchor="middle" font-size="10" font-weight="800" fill="#18191B">G</text></g>
+  <g id="oxi"><circle r="10" fill="#237F52"/><text y="4" text-anchor="middle" font-size="9" font-weight="800" fill="#fff">O₂</text></g>
+  <g id="agu"><path d="M0 -11 C6 -3 8 1 8 4 A8 8 0 0 1 -8 4 C-8 1 -6 -3 0 -11Z" fill="#3a8fd8"/></g>
+  <g id="voz"><rect x="-5" y="-11" width="10" height="15" rx="5" fill="#5B6170"/><path d="M-8 1 a8 8 0 0 0 16 0 M0 9v4" stroke="#5B6170" stroke-width="2" fill="none"/></g>
+  <g id="pan"><rect x="-16" y="-10" width="32" height="20" rx="3" fill="#18191B"/><rect x="-12" y="-6" width="24" height="12" fill="#DB641C"/></g>
+  <g id="ter"><rect x="-10" y="-10" width="20" height="20" rx="10" fill="#9B2423"/><text y="4" text-anchor="middle" font-size="9" font-weight="800" fill="#fff">T°</text></g>
+</defs>
+<!-- R0 -->
+<use href="#rad" x="145" y="150"/><use href="#pan" x="220" y="140"/><use href="#cai" x="145" y="220"/><use href="#gas" x="60" y="270"/>
+<!-- R1 cabinas -->
+<use href="#cai" x="303" y="150"/><use href="#cai" x="385" y="150"/><use href="#cai" x="467" y="150"/><use href="#cai" x="549" y="150"/>
+<use href="#voz" x="303" y="190"/><use href="#voz" x="385" y="190"/><use href="#voz" x="467" y="190"/><use href="#voz" x="549" y="190"/>
+<use href="#agu" x="420" y="272"/><use href="#gas" x="500" y="270"/><use href="#pan" x="300" y="268"/>
+<!-- R2 -->
+<use href="#cai" x="692" y="190"/><use href="#rad" x="760" y="140"/><use href="#gas" x="620" y="270"/><use href="#pan" x="750" y="268"/>
+<!-- R3 -->
+<use href="#gas" x="60" y="465"/><use href="#gas" x="200" y="345"/><use href="#ter" x="197" y="400"/><use href="#cai" x="120" y="400"/><use href="#pan" x="320" y="465"/>
+<!-- R4 -->
+<use href="#cai" x="470" y="390"/><use href="#cai" x="680" y="390"/><use href="#rad" x="560" y="345"/><use href="#gas" x="400" y="465"/><use href="#gas" x="760" y="345"/><use href="#oxi" x="600" y="440"/><use href="#ter" x="740" y="440"/><use href="#pan" x="750" y="468"/>
+
+<!-- leyenda -->
+<g font-size="12" fill="#18191B">
+  <use href="#cai" x="824" y="112"/><text x="842" y="116">Caídas 60 GHz</text>
+  <use href="#rad" x="824" y="146"/><text x="842" y="150">Radar aforo 24 GHz</text>
+  <use href="#gas" x="824" y="180"/><text x="842" y="184">Gases (bajo/alto)</text>
+  <use href="#oxi" x="824" y="214"/><text x="842" y="218">Oxígeno</text>
+  <use href="#ter" x="824" y="248"/><text x="842" y="252">Térmica / calor</text>
+  <use href="#agu" x="824" y="282"/><text x="842" y="286">Agua en el piso</text>
+  <use href="#voz" x="824" y="316"/><text x="842" y="320">Palabra «S.O.S.»</text>
+  <text x="842" y="333" fill="#55585E" font-size="10.5">sin grabación</text>
+  <use href="#pan" x="828" y="360"/><text x="850" y="364">Pantalla interior</text>
+  <rect x="808" y="384" width="40" height="18" rx="3" fill="#18191B"/><text x="828" y="397" text-anchor="middle" font-size="9" font-weight="800" fill="#F9A900">EXT</text><text x="854" y="397">Pantalla exterior</text>
+</g>
+</g>
+<text x="32" y="550" font-size="12.5" fill="#18191B">Sismo: acelerómetro en cada nodo + receptor oficial SASMEX en R0 (fase 2). Falta de energía: monitor de red y batería LiFePO4 en cada nodo.</text>
+<text x="32" y="570" font-size="12.5" fill="#18191B">Vientos fuertes y tsunami: boletín oficial recibido por el servidor; no requieren sensor en el recinto.</text>
+<text x="32" y="610" font-size="11" fill="#7c8088">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · © Víctor Hugo Ramírez Salgado · Asistencia-IA</text>
+</svg>

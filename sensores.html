@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script src="assets/cubo-rt.js?v=6.1"></script>
+<script src="assets/auditoria.js?v=1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Víctor Hugo Ramírez Salgado">
+<title>Prototipo de sensores · SOSistem™</title>
+<meta name="description" content="Prototipo de sensores de SOSistem™: integración de los 14 módulos en recintos limitados y especificación de la pantalla interior y la pantalla exterior.">
+<meta name="theme-color" content="#005387">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/estilo.css">
+<style>
+  .ps { padding-top: 24px; padding-bottom: 64px; }
+  .ps section.slide { padding: 28px 0 8px; border-bottom: 1px solid var(--line); }
+  .ps h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 6px 0 10px; }
+  .ps h2 { font-size: 1.3rem; margin: 0 0 8px; }
+  .ps h3 { font-size: 1.05rem; margin: 18px 0 6px; }
+  .ps .lead { font-size: 1.05rem; color: var(--ink-2); max-width: 72ch; }
+  .ps figure { margin: 14px 0; }
+  .ps figure img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  .ps figcaption { font-size: .85rem; color: var(--ink-2); margin-top: 6px; }
+  .ps .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ps table { width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 640px; }
+  .ps th, .ps td { text-align: left; vertical-align: top; padding: 7px 9px; border-bottom: 1px solid var(--line); white-space: normal; min-width: 90px; }
+  .ps th { background: var(--surface-2); font-weight: 700; }
+  .ps .est { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+  .ps .est.p { background: #E3F2EA; color: #1E6E46; }
+  .ps .est.f { background: #FFF3D6; color: #7A5300; }
+  .ps .est.s { background: #E6EEF7; color: #0C447C; }
+  .ps .dos { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .ps .dos { grid-template-columns: 1fr 1fr; } }
+  .ps .card { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); }
+  .ps .card ul { margin: 6px 0 0; padding-left: 1.1em; }
+  .ps .nota { font-size: .85rem; color: var(--ink-2); }
+  .ps .docs a { display: block; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; text-decoration: none; font-weight: 600; }
+  .ps .docs a small { display: block; font-weight: 400; color: var(--ink-2); }
+  @media (max-width: 760px) { .top nav .btn:not(.primary) { display: none; } }
+  .ps .pie { font-size: .8rem; color: var(--ink-2); margin-top: 28px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./"><img class="logo-cubo" src="assets/logo-sello.svg" width="57" height="57" alt=""><span class="logo-text">SOSistem™</span></a>
+    <nav><a class="btn" href="./">Nuevo diseño</a> <a class="btn" href="anterior.html">Diseño anterior</a> <a class="btn primary" href="terminal.html">Abrir la terminal</a></nav>
+  </div>
+</header>
+
+<main class="wrap ps">
+
+<section class="slide" id="inicio-sensores">
+  <span class="eyebrow">Prototipo de sensores</span>
+  <h1>Prototipo de sensores para SOSistem™</h1>
+  <p class="lead">Así se integran todos los sensores que ofrece sosistem.com en el servicio para recintos limitados, con tres equipos: el chip SOS portátil, el nodo fijo de techo y el sensor híper inteligente de gases, más las pantallas interior y exterior.</p>
+  <figure>
+    <img src="assets/img/prototipo-sensores.svg" width="960" height="540" alt="Ilustración de los tres equipos prototipo de SOSistem: chip SOS portátil con teléfono, nodo fijo de techo y sensor de gases.">
+    <figcaption>Ilustración de concepto del prototipo; los equipos armados se verán como cajas de proyecto con tarjetas visibles.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" id="modulos-sensores">
+  <h2>Cómo se cubren los 14 módulos del sistema</h2>
+  <p class="lead">Cada módulo de sosistem.com tiene un sensor en el prototipo o una vía oficial. Los marcados «Fase 2» se sustituyen por un sensor certificado antes de la venta.</p>
+  <div class="tabla-scroll"><table>
+    <thead><tr><th>Módulo</th><th>Sensor en el prototipo</th><th>Equipo</th><th>Conexión al ESP32</th><th>Dónde se instala</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>Persona caída</td><td>Radar 60 GHz C1001; confirma con cámara térmica MLX90640</td><td>Nodo de techo</td><td>UART1 (GPIO 25/26) · I2C 0x33</td><td>Techo, 2.7 m; una por cabina en sanitarios</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Permanencia prolongada y aforo</td><td>Radar 24 GHz HLK-LD2450 (hasta 3 personas) + presencia del C1001</td><td>Nodo de techo</td><td>UART2 (GPIO 16/17)</td><td>Pared, 1.5 a 2 m, viendo el acceso</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Sismo</td><td>Acelerómetro MPU6050 en cada nodo; receptor oficial SASMEX en la entrada</td><td>Todos los nodos</td><td>I2C 0x68</td><td>Fijo a muro estructural</td><td><span class="est p">Prototipo</span> <span class="est f">SASMEX fase 2</span></td></tr>
+      <tr><td>Humo e incendio</td><td>MQ-2 (humo) + calor de la cámara térmica</td><td>Sensor de gases</td><td>ADS1115 0x48</td><td>Cerca del techo</td><td><span class="est p">Prototipo</span> <span class="est f">Fotoeléctrico fase 2</span></td></tr>
+      <tr><td>Inundación y agua en el piso</td><td>Sensor de agua de electrodos</td><td>Nodo (cable)</td><td>GPIO 35 (analógico)</td><td>Al ras del piso, en el punto más bajo</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Falta de energía eléctrica</td><td>Monitor de red (divisor de voltaje) + batería LiFePO4</td><td>Todos los nodos</td><td>GPIO 34 (analógico)</td><td>Dentro de cada nodo</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Fuga de gas LP o natural</td><td>MQ-5 y MQ-6 (LP, abajo) · MQ-4 (natural, arriba)</td><td>Sensor de gases</td><td>ADS1115 0x48 / 0x49</td><td>LP: 10–30 cm del piso · natural: cerca del techo</td><td><span class="est p">Prototipo</span> <span class="est f">Catalítico fase 2</span></td></tr>
+      <tr><td>Monóxido de carbono</td><td>MQ-7 y MQ-9</td><td>Sensor de gases</td><td>ADS1115 0x49</td><td>A la altura de la respiración, ~1.5 m</td><td><span class="est p">Prototipo</span> <span class="est f">Electroquímico fase 2</span></td></tr>
+      <tr><td>Falta de oxígeno</td><td>DFRobot Gravity SEN0465 (0–25 % vol.)</td><td>Sensor de gases</td><td>I2C</td><td>Altura de respiración; más abajo si el gas que desplaza el aire es pesado</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Amoniaco, H₂S o hidrógeno</td><td>MQ-135 (amoniaco) · MQ-8 (hidrógeno)</td><td>Sensor de gases</td><td>ADS1115 0x49 / 0x4A</td><td>Cerca del techo (gases ligeros)</td><td><span class="est p">Prototipo</span> <span class="est f">H₂S fase 2</span></td></tr>
+      <tr><td>Calor extremo</td><td>DHT22 · SCD40 · BME688</td><td>Nodo y sensor de gases</td><td>GPIO 4 · I2C 0x62 · 0x76</td><td>Lejos del radar (se calienta) y del sol directo</td><td><span class="est p">Prototipo</span></td></tr>
+      <tr><td>Vientos fuertes</td><td>Boletín oficial del SMN; anemómetro opcional en exterior</td><td>Servidor</td><td>Internet</td><td>No requiere sensor en el recinto</td><td><span class="est s">Servidor</span></td></tr>
+      <tr><td>Tsunami</td><td>Boletín oficial</td><td>Servidor</td><td>Internet</td><td>No requiere sensor en el recinto</td><td><span class="est s">Servidor</span></td></tr>
+      <tr><td>Palabra «S.O.S.» por voz</td><td>Micrófono digital I2S INMP441; reconoce la palabra en el equipo, sin grabar ni enviar audio</td><td>Nodo de techo</td><td>I2S (GPIO 12/13/14)</td><td>En cada cabina y recinto cerrado</td><td><span class="est p">Prototipo</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="nota">Los pines son la propuesta de diseño del prototipo; se confirman con el diagrama oficial de cada tarjeta antes de soldar. Fuentes de alcance y montaje al final de la página.</p>
+</section>
+
+<section class="slide" id="recintos-sensores">
+  <h2>Sensores por recinto en un lugar limitado</h2>
+  <p class="lead">Se instala en el orden obligatorio del sistema: primero la entrada principal, después los baños y al final los recintos que pida el cliente. Ejemplo con la prueba en ContenedorEns©.</p>
+  <figure>
+    <img src="assets/img/recinto-limitado-sensores.svg" width="960" height="630" alt="Plano ilustrativo de los recintos R0 a R4 con la posición de cada sensor y de las pantallas interior y exterior.">
+  </figure>
+  <div class="tabla-scroll"><table>
+    <thead><tr><th>Recinto</th><th>Sensores</th><th>Pantalla</th><th>Módulos activos</th></tr></thead>
+    <tbody>
+      <tr><td><b>R0 · Entrada principal</b> (obligatorio)</td><td>Radar de aforo en el acceso, caídas, acelerómetro, receptor SASMEX (fase 2), gases</td><td>Interior PNL-E01 y exterior EXT-01</td><td>Aforo, caída, sismo, eventos naturales</td></tr>
+      <tr><td><b>R1 · Sanitarios</b> (obligatorio)</td><td>Una caída 60 GHz y un micrófono «S.O.S.» por cabina, amoniaco, agua en el piso</td><td>Interior PNL-A04 en el acceso</td><td>Caída, permanencia, voz, inundación, amoniaco</td></tr>
+      <tr><td><b>R2 · Oficina</b></td><td>Caída, radar de aforo, CO₂</td><td>Interior PNL-A05</td><td>Caída, aforo, calidad de aire</td></tr>
+      <tr><td><b>R3 · Cocina</b></td><td>Gas LP abajo, CO y humo, cámara térmica, caída</td><td>Interior PNL-A06</td><td>Gas, CO, humo, calor, caída</td></tr>
+      <tr><td><b>R4 · Bodega y taller</b></td><td>Dos caídas, radar, gases abajo y arriba, oxígeno, cámara térmica</td><td>Interior PNL-B01</td><td>Caída, gases, oxígeno, calor, aforo</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="slide" id="arquitectura-sensores">
+  <h2>Cómo viaja una alerta</h2>
+  <figure>
+    <img src="assets/img/arquitectura-sensores.png" width="1344" height="578" alt="Diagrama: chip, nodo de techo y sensor de gases envían por Wi-Fi, LTE, LoRaWAN o SMS al servidor SOSistem, que avisa a pantallas, responsable, central y 911 en fase 2.">
+    <figcaption>El chip usa LTE o SMS directo; los nodos fijos usan Wi-Fi, LTE o LoRaWAN según el recinto.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" id="pantalla-interior">
+  <h2>Pantalla interior</h2>
+  <p class="lead">Va en el acceso de cada recinto y siempre está encendida: muestra el nombre del recinto, cuántas personas hay y, en una emergencia, qué hacer y por dónde salir.</p>
+  <div class="dos">
+    <div class="card">
+      <h3>Qué muestra</h3>
+      <ul>
+        <li>Normal: nombre del recinto rotando en su idioma, Morse, braille, señas y banderas; aforo «N de máximo»; pictogramas ISO 7010.</li>
+        <li>Persona caída: aviso N0 en la cabina y plano detallado de sanitarios para el auxilio.</li>
+        <li>Sismo o evento natural: pantalla dividida, salidas de emergencia a la izquierda y conteo de personas a la derecha; en celular se apilan.</li>
+        <li>Gas, oxígeno o humo: aviso con el color de seguridad, la acción a seguir y la ruta.</li>
+        <li>Luz y buzzer en Morse solo en emergencia o en prueba del administrador.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Prototipo propuesto</h3>
+      <ul>
+        <li>Pantalla táctil de 7 pulgadas, 800 × 480, con ESP32-S3 integrado; o tableta o iPad con la Terminal de sosistem.com.</li>
+        <li>Conexión: Wi-Fi al nodo del recinto y al servidor; Bluetooth para configurar.</li>
+        <li>Energía: 5 V y batería de respaldo LiFePO4 para seguir avisando en un corte de luz.</li>
+        <li>Montaje: en el acceso, a la altura de la vista, sin tapar señalización existente.</li>
+        <li>Costo aprox. del prototipo: $900 a $1,300 MXN con caja (estimado; verificar al comprar).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="pantalla-exterior">
+  <h2>Pantalla exterior EXT-01</h2>
+  <p class="lead">Va en el acceso principal, por fuera. Está apagada por defecto y se enciende sola con un sismo o un evento natural, o si el cliente la deja encendida.</p>
+  <div class="dos">
+    <div class="card">
+      <h3>Qué muestra</h3>
+      <ul>
+        <li>«Sismo en curso · no ingrese al recinto» o el aviso del evento natural.</li>
+        <li>Mensaje del cliente y, si lo autoriza, el número de personas dentro (solo conteo, sin identidad).</li>
+        <li>Punto de reunión y flecha hacia él.</li>
+        <li>Texto que se desplaza en el idioma del lugar y en inglés.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Prototipo propuesto</h3>
+      <ul>
+        <li>Dos paneles LED RGB para exterior P5 de 64 × 32 puntos (320 × 160 mm cada uno), controlados por un ESP32.</li>
+        <li>Lectura: con paso de 5 mm se lee bien a partir de unos 5 m (regla práctica de 1 m por cada mm de paso).</li>
+        <li>Gabinete para exterior IP65 con ventilación y visera contra el sol.</li>
+        <li>Energía: fuente de 5 V de al menos 4 A por panel; respaldo para el aviso de sismo.</li>
+        <li>Montaje: sobre el acceso principal, a unos 2.5 m.</li>
+        <li>Costo aprox. del prototipo: $1,500 a $2,500 MXN (estimado; verificar al comprar).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="piezas-integracion">
+  <h2>Piezas que se suman para integrar todo</h2>
+  <p class="lead">Además de la lista de compras del chip, el nodo y el sensor de gases, la integración completa en recintos limitados agrega estas piezas por recinto.</p>
+  <div class="tabla-scroll"><table>
+    <thead><tr><th>Pieza</th><th>Módulo que cubre</th><th>Cantidad</th><th>Costo aprox. (MXN)</th></tr></thead>
+    <tbody>
+      <tr><td>Acelerómetro MPU6050</td><td>Sismo</td><td>1 por nodo</td><td>$60 a $90</td></tr>
+      <tr><td>Sensor de agua de electrodos</td><td>Inundación</td><td>1 por baño, cocina o bodega</td><td>$30 a $60</td></tr>
+      <tr><td>Micrófono I2S INMP441</td><td>Palabra «S.O.S.»</td><td>1 por cabina o recinto cerrado</td><td>$80 a $120</td></tr>
+      <tr><td>Celda LiFePO4 + cargador y divisor de voltaje</td><td>Falta de energía</td><td>1 por nodo y pantalla</td><td>$250 a $400</td></tr>
+      <tr><td>Pantalla interior de 7 pulgadas con ESP32-S3</td><td>Pantalla interior</td><td>1 por recinto</td><td>$900 a $1,300</td></tr>
+      <tr><td>Paneles LED P5 para exterior + gabinete IP65</td><td>Pantalla exterior</td><td>1 juego por lugar</td><td>$1,500 a $2,500</td></tr>
+    </tbody>
+  </table></div>
+  <p class="nota">Precios estimados de Mercado Libre, UNIT Electronics y AliExpress; confirmar al comprar. El receptor SASMEX y los sensores certificados de fase 2 se cotizan aparte.</p>
+</section>
+
+<section class="slide" id="fuentes-sensores">
+  <h2>Fuentes</h2>
+  <ul class="nota">
+    <li>DFRobot. (s. f.). <i>C1001 60GHz mmWave indoor fall detection sensor (SEN0623)</i>. Core Electronics. https://core-electronics.com.au/c1001-60ghz-mmwave-fall-detection-sensor-arduino-esp32-microbit.html</li>
+    <li>Hi-Link. (s. f.). <i>HLK-LD2450 motion target detection and tracking module</i> [Manual]. https://manuals.plus/hi-link/hlk-ld2450-motion-target-detection-and-tracking-module-manual</li>
+    <li>CO2Meter. (s. f.). <i>Gas safety alarm mounting height chart</i>. https://www.co2meter.com/blogs/news/gas-safety-alarm-mounting-height-chart</li>
+    <li>Kele. (2009, 5 de agosto). <i>How many square feet does a gas sensor cover?</i> https://www.kele.com/content/blog/2009/08/05/how-many-square-feet-does-a-gas-sensor-cover</li>
+    <li>Semtech. (s. f.). <i>Characteristics of LoRaWAN</i>. https://learn.semtech.com/mod/page/view.php?id=137</li>
+  </ul>
+  <p class="pie">SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Sensor híper inteligente SOSistem™ (2610317507499) · © Víctor Hugo Ramírez Salgado, autor y titular · Asistencia-IA · Prototipo en revisión, no es la versión publicada.</p>
+</section>
+
+</main>
+<script src="assets/morse.js?v=7.5.0"></script>
+<script src="assets/idiomas.js?v=7.5.0"></script>
+</body>
+</html>

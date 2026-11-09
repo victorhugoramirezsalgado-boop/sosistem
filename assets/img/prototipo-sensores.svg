@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Prototipo de sensores SOSistem™</title>
+<desc id="d">Ilustración de los tres equipos prototipo de SOSistem: chip SOS portátil junto a un teléfono, nodo fijo de techo con radares y cámara térmica sin imagen, y sensor híper inteligente de gases con nueve sensores MQ, oxígeno y CO2. Prototipo de concepto, no es fotografía.</desc>
+<defs>
+  <linearGradient id="piso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1d21"/><stop offset="1" stop-color="#0c0d0f"/></linearGradient>
+  <linearGradient id="cuerpo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3d43"/><stop offset="1" stop-color="#202226"/></linearGradient>
+  <linearGradient id="blanco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9dbe0"/></linearGradient>
+  <radialGradient id="malla" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#b9bcc2"/><stop offset="1" stop-color="#6d7178"/></radialGradient>
+</defs>
+<rect width="960" height="540" fill="#0b0c0e"/>
+<rect y="380" width="960" height="160" fill="url(#piso)"/>
+<rect y="380" width="960" height="2" fill="#DB641C" opacity=".55"/>
+<text x="40" y="58" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="800">Prototipo de sensores <tspan fill="#DB641C">SOS</tspan>istem™</text>
+<text x="40" y="86" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="15">Tres equipos que se integran en un solo sistema · sin cámaras, sin grabar voz</text>
+
+<!-- 1. Chip SOS portátil + teléfono -->
+<g transform="translate(70 170)">
+  <rect x="0" y="40" width="92" height="210" rx="16" fill="#111214" stroke="#3b3e44" stroke-width="2"/>
+  <rect x="7" y="58" width="78" height="168" rx="6" fill="#050506"/>
+  <rect x="14" y="66" width="64" height="30" rx="4" fill="#DB641C" opacity=".95"/>
+  <text x="46" y="86" text-anchor="middle" fill="#0b0c0e" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800">ALERTA SOS</text>
+  <path d="M18 120 l14 18 l12 -10 l16 26 l10 -8" fill="none" stroke="#DB641C" stroke-width="2"/>
+  <circle cx="70" cy="146" r="5" fill="#DB641C"/>
+  <rect x="14" y="176" width="64" height="38" rx="4" fill="#16181b"/>
+  <text x="46" y="192" text-anchor="middle" fill="#cfd2d8" font-family="Inter,Arial,sans-serif" font-size="9">Lat 31.86</text>
+  <text x="46" y="205" text-anchor="middle" fill="#cfd2d8" font-family="Inter,Arial,sans-serif" font-size="9">Lon −116.62</text>
+  <g transform="translate(118 120)">
+    <rect x="0" y="0" width="120" height="78" rx="12" fill="url(#cuerpo)" stroke="#55585e" stroke-width="2"/>
+    <rect x="10" y="10" width="64" height="44" rx="4" fill="#1d6b3e"/>
+    <rect x="16" y="16" width="26" height="18" rx="2" fill="#2b2d31"/><rect x="46" y="16" width="22" height="12" rx="2" fill="#c9a227"/>
+    <circle cx="96" cy="26" r="10" fill="#DB641C"/><text x="96" y="30" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800">SOS</text>
+    <rect x="10" y="60" width="100" height="8" rx="3" fill="#4a4d53"/>
+    <text x="60" y="98" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700"><tspan fill="#DB641C">SOS</tspan>istem™</text>
+  </g>
+  <path d="M95 150 q12 -14 22 -4" fill="none" stroke="#5fa8ff" stroke-width="2" stroke-dasharray="4 4"/>
+</g>
+<text x="190" y="460" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700">1 · Chip SOS portátil</text>
+<text x="190" y="482" text-anchor="middle" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="13">4G + GPS + Bluetooth · botón y golpe</text>
+
+<!-- 2. Nodo fijo de techo -->
+<g transform="translate(360 150)">
+  <rect x="40" y="0" width="160" height="14" rx="4" fill="#d9dbe0"/>
+  <path d="M10 30 Q120 2 230 30 L216 110 Q120 136 24 110 Z" fill="url(#blanco)" stroke="#b9bcc2" stroke-width="2"/>
+  <g stroke="#9ea2a9" stroke-width="3"><path d="M40 54h160"/><path d="M36 66h168"/><path d="M34 78h172"/></g>
+  <path d="M28 108 Q120 132 212 108" fill="none" stroke="#DB641C" stroke-width="6"/>
+  <text x="120" y="48" text-anchor="middle" fill="#2b2d31" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800"><tspan fill="#C0541A">SOS</tspan>istem™</text>
+  <rect x="96" y="120" width="48" height="34" rx="8" fill="#16181b"/>
+  <circle cx="120" cy="137" r="10" fill="#DB641C" opacity=".85"/><circle cx="120" cy="137" r="4" fill="#ffb27a"/>
+  <path d="M40 170 L-10 240 M200 170 L250 240" stroke="#DB641C" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/>
+  <path d="M120 160 L120 240" stroke="#DB641C" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/>
+</g>
+<text x="480" y="460" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700">2 · Nodo fijo de techo</text>
+<text x="480" y="482" text-anchor="middle" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="13">Caídas 60 GHz · radar 24 GHz · térmica</text>
+
+<!-- 3. Sensor híper inteligente de gases -->
+<g transform="translate(660 170)">
+  <rect x="0" y="0" width="240" height="190" rx="14" fill="url(#cuerpo)" stroke="#55585e" stroke-width="2"/>
+  <rect x="14" y="14" width="212" height="22" rx="4" fill="#16181b"/>
+  <text x="120" y="30" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800"><tspan fill="#DB641C">SOS</tspan>istem™ · Gases</text>
+  <g fill="url(#malla)" stroke="#2b2d31" stroke-width="2">
+    <circle cx="36" cy="64" r="15"/><circle cx="78" cy="64" r="15"/><circle cx="120" cy="64" r="15"/><circle cx="162" cy="64" r="15"/><circle cx="204" cy="64" r="15"/>
+    <circle cx="57" cy="104" r="15"/><circle cx="99" cy="104" r="15"/><circle cx="141" cy="104" r="15"/><circle cx="183" cy="104" r="15"/>
+  </g>
+  <rect x="22" y="134" width="56" height="40" rx="6" fill="#1d6b3e"/><text x="50" y="158" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">O₂</text>
+  <rect x="90" y="134" width="56" height="40" rx="6" fill="#005387"/><text x="118" y="158" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">CO₂</text>
+  <circle cx="190" cy="154" r="22" fill="#16181b" stroke="#4a4d53" stroke-width="2"/>
+  <g stroke="#8a8e95" stroke-width="3"><path d="M190 136v36"/><path d="M172 154h36"/><path d="M177 141l26 26"/><path d="M203 141l-26 26"/></g>
+</g>
+<text x="780" y="460" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700">3 · Sensor híper inteligente</text>
+<text x="780" y="482" text-anchor="middle" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="13">9 gases MQ · oxígeno · CO₂ · olores</text>
+
+<text x="480" y="522" text-anchor="middle" fill="#7c8088" font-family="Inter,Arial,sans-serif" font-size="12">Ilustración de concepto del prototipo · SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · © Víctor Hugo Ramírez Salgado</text>
+</svg>
