@@ -1,8 +1,14 @@
 {
-  "version": "8.3.4",
+  "version": "8.3.5",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.5",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: formación internacional y diplomados completos (14.2), certificación CONOCER EC0217 (14.5) y congresos, seminarios y ponencias (14.6: Perú, Tijuana, IMT, Breakbulk Houston, Intermodal Europe, La Paz, CETYS y Xochicalco)."
+    },
     {
       "v": "8.3.4",
       "fecha": "2026-11-09",
