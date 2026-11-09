@@ -1,8 +1,13 @@
 {
-  "version": "8.2.0",
+  "version": "8.2.1",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.2.1",
+      "fecha": "2026-11-08",
+      "resumen": "Solo versión B: el selector inferior muestra únicamente la versión B con su número; se quitaron las ligas al diseño anterior del Índice y de la página de sensores."
+    },
     {
       "v": "8.2.0",
       "fecha": "2026-11-08",
@@ -444,9 +449,5 @@
       "resumen": "Sitio inicial con diseño adaptable para celular, tableta y escritorio."
     }
   ],
-  "serie": "B",
-  "series": {
-    "A": "Diseño anterior (hasta 7.4.0 como portada)",
-    "B": "Diseño actual, desde 7.5.0"
-  }
+  "serie": "B"
 }
