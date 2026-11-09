@@ -1,8 +1,13 @@
 {
-  "version": "7.6.2",
+  "version": "7.7.0",
   "fecha": "2026-11-08",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "7.7.0",
+      "fecha": "2026-11-08",
+      "resumen": "Portada de impacto: fondo carbón con el cubo SOSistem™ en 3D que gira y emite ondas, alerta de caída en vivo y el mensaje «Cada segundo cuenta. SOSistem™ lo detecta primero.», con cuatro cifras clave (27 sensores, 14 riesgos, 0 cámaras, enlace 911). La vista de la consola pasa a la sección Terminal. Los botones dejan los romboides y ahora son cubos sin esquinas (bordes redondeados con canto en relieve). Textos nuevos traducidos a los 22 idiomas."
+    },
     {
       "v": "7.6.2",
       "fecha": "2026-11-08",

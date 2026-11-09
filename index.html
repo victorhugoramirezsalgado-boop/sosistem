@@ -97,7 +97,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* Héroe */
 .hero{position:relative;color:var(--hero-ink);background:linear-gradient(90deg,rgba(247,242,233,.97) 0%,rgba(247,242,233,.93) 38%,rgba(247,242,233,.55) 62%,rgba(247,242,233,.15) 100%),var(--hero)}
 @media (max-width:900px){.hero{background:linear-gradient(180deg,rgba(247,242,233,.96) 0%,rgba(247,242,233,.9) 55%,rgba(247,242,233,.7) 100%),var(--hero)}}
-.hero .btn-ghost-dark{border-color:var(--ink);color:var(--ink)}
+.hero:not(.hx) .btn-ghost-dark{border-color:var(--ink);color:var(--ink)}
 .hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(1.8rem,4vw,4rem);align-items:center;padding-block:clamp(2.2rem,6vw,5.5rem)}
 @media (max-width:900px){.hero-main{grid-template-columns:minmax(0,1fr)}}
 .hero-copy{display:flex;flex-direction:column;gap:1.2rem;min-width:0}
@@ -107,6 +107,55 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero h1{font-size:clamp(1.9rem,4.4vw,4rem);line-height:1.04;letter-spacing:-0.03em;font-weight:800}
 .hero .lead{margin:0;font-size:clamp(1rem,1.3vw,1.2rem);color:var(--hero-muted);max-width:34rem}
 .cta-row{display:flex;flex-wrap:wrap;gap:.75rem}
+
+
+/* Héroe de impacto (5 segundos): fondo carbón, cubo SOSistem emitiendo ondas */
+.hero.hx{color:#fff;background:radial-gradient(60rem 40rem at 78% 45%,rgba(192,84,26,.42),transparent 62%),radial-gradient(40rem 30rem at 0% 100%,rgba(192,84,26,.16),transparent 70%),linear-gradient(180deg,#0E1012,#16191C);overflow:hidden;--hero-ink:#fff;--hero-muted:#C7CCD1}
+.hero.hx::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 70% 50%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 70% 50%,#000 20%,transparent 75%);pointer-events:none}
+.hx .hero-main{position:relative;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);padding-block:clamp(2.4rem,6vw,5.5rem) clamp(2.6rem,6vw,5.5rem)}
+@media (max-width:900px){.hx .hero-main{grid-template-columns:minmax(0,1fr);padding-block:1.6rem 2.4rem}.hx-visual{margin-inline:auto}}
+@media (max-width:600px){.hx .hero-brand{display:none}.hx .hero-copy{gap:.9rem}.hx .hero-main{gap:.4rem;padding-block:.6rem 2rem}.hx .hx-visual{order:-1;width:min(64vw,15rem)}.hx .hx-cubo{--z:calc(min(15rem,64vw) * .23)}.hx-chip{font-size:.66rem;padding:.4rem .55rem;max-width:10.5rem}.hx-chip b{font-size:.7rem}.hx .hx-chip.al{right:-22%;top:2%}.hx .hx-chip.ok{left:-22%;bottom:2%}.hx h1{font-size:2.15rem}.hx .lead{font-size:1rem}.hx-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}.hx-stats li{padding:.5rem .2rem}.hx-stats span{font-size:.62rem}.hx .cta-row .btn{flex:1 1 auto;padding:0 1rem;font-size:.9rem}}
+.hx .hero-brand{border-left-color:var(--brand)}
+.hx-kick{display:inline-flex;align-items:center;gap:.55rem;align-self:flex-start;padding:.38rem .85rem;border-radius:10px;background:rgba(200,32,47,.16);border:1px solid rgba(255,107,107,.45);color:#FFD9D9;font-size:.82rem;font-weight:700;letter-spacing:.02em}
+.hx-kick i{width:9px;height:9px;border-radius:50%;background:#FF4D5A;box-shadow:0 0 0 0 rgba(255,77,90,.7);animation:hx-pulso 1.4s infinite}
+@keyframes hx-pulso{70%{box-shadow:0 0 0 10px rgba(255,77,90,0)}100%{box-shadow:0 0 0 0 rgba(255,77,90,0)}}
+.hx h1{font-size:clamp(2.2rem,4.3vw,4.1rem);line-height:1;letter-spacing:-0.035em;font-weight:900;color:#fff}
+.hx h1 span{display:block;background:linear-gradient(90deg,#FF9A4D,#F26B1D 55%,#FFB37A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hx .lead{color:#D5D9DD;font-size:clamp(1.05rem,1.45vw,1.3rem);max-width:36rem}
+.hx-stats{list-style:none;margin:.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;max-width:36rem}
+.hx-stats li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.7rem .6rem;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.35)}
+.hx-stats b{display:block;font-size:clamp(1.4rem,2.6vw,2.1rem);font-weight:900;letter-spacing:-0.03em;color:#FF9A4D;line-height:1;font-variant-numeric:tabular-nums}
+.hx-stats span{display:block;font-size:.72rem;color:#C7CCD1;margin-top:.3rem;line-height:1.2}
+
+.hx-visual{position:relative;width:min(100%,28rem);aspect-ratio:1;display:grid;place-items:center;min-width:0}
+.hx-onda{position:absolute;inset:18%;border-radius:28%;border:2px solid rgba(242,107,29,.55);animation:hx-onda 3.6s cubic-bezier(.2,.6,.3,1) infinite;opacity:0}
+.hx-onda:nth-child(2){animation-delay:.9s}.hx-onda:nth-child(3){animation-delay:1.8s}.hx-onda:nth-child(4){animation-delay:2.7s}
+@keyframes hx-onda{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+.hx-escena{position:relative;width:46%;aspect-ratio:1;perspective:900px}
+.hx-cubo{position:absolute;inset:0;transform-style:preserve-3d;animation:hx-giro 16s cubic-bezier(.65,0,.35,1) infinite}
+.hx-nucleo{position:absolute;inset:0;background:#9A3F0F;border-radius:4%}
+.hx-cara{position:absolute;inset:0;border-radius:16%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-weight:900;color:#fff;background:linear-gradient(145deg,#E2702F,#B44A12 70%,#8E3A0E);box-shadow:inset 0 0 0 2px rgba(255,255,255,.22),inset 0 -10px 24px rgba(0,0,0,.25);backface-visibility:hidden;-webkit-backface-visibility:hidden;text-align:center;font-size:clamp(.9rem,2.2vw,1.35rem);letter-spacing:.02em}
+.hx-cara small{font-size:.55em;font-weight:700;opacity:.9;letter-spacing:.08em}
+.hx-cara .m{font-family:ui-monospace,Menlo,monospace;font-size:.8em;letter-spacing:.12em}
+.hx-cara svg{width:44%;height:auto}
+.hx-cubo{--z:calc(min(28rem,100vw) * .23)}
+.hx-c1{transform:translateZ(var(--z))}.hx-c2{transform:rotateY(90deg) translateZ(var(--z))}.hx-c3{transform:rotateY(180deg) translateZ(var(--z))}
+.hx-c4{transform:rotateY(-90deg) translateZ(var(--z))}.hx-c5{transform:rotateX(90deg) translateZ(var(--z))}.hx-c6{transform:rotateX(-90deg) translateZ(var(--z))}
+@keyframes hx-giro{0%,14%{transform:rotateX(-14deg) rotateY(-24deg)}20%,34%{transform:rotateX(-14deg) rotateY(-114deg)}40%,54%{transform:rotateX(-14deg) rotateY(-204deg)}60%,74%{transform:rotateX(-14deg) rotateY(-294deg)}80%,94%{transform:rotateX(-104deg) rotateY(-384deg)}100%{transform:rotateX(-14deg) rotateY(-384deg)}}
+.hx-chip{position:absolute;display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem;border-radius:14px;font-size:.78rem;font-weight:600;line-height:1.25;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:15rem}
+.hx-chip b{display:block;font-size:.84rem}
+.hx-chip.al{top:6%;right:0;background:rgba(200,32,47,.9);color:#fff;animation:hx-flota 4s ease-in-out infinite}
+.hx-chip.ok{bottom:7%;left:0;background:rgba(255,255,255,.92);color:#18191B;animation:hx-flota 4s ease-in-out 2s infinite}
+.hx-chip.ok i{width:9px;height:9px;border-radius:50%;background:#237F52;flex:none}
+@keyframes hx-flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (max-width:900px){.hx-visual{width:min(78vw,22rem)}.hx-cubo{--z:calc(min(22rem,78vw) * .23)}}
+@media (prefers-reduced-motion:reduce){.hx-cubo,.hx-onda,.hx-chip,.hx-kick i{animation:none}.hx-onda{opacity:.35}}
+.hx + .benefits,.hx .benefits{background:#fff}
+/* Consola de ejemplo dentro de la sección Terminal */
+.closing .wrap.cl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.4rem,4vw,3.5rem);align-items:center}
+@media (max-width:900px){.closing .wrap.cl-grid{grid-template-columns:minmax(0,1fr)}}
+.closing .console{box-shadow:0 24px 60px rgba(0,0,0,.28);border-color:rgba(255,255,255,.4)}
+.closing .cl-txt{display:flex;flex-direction:column;gap:1.2rem;min-width:0}
 
 /* Consola */
 .console{background:var(--console);border:1px solid var(--hero-line);border-radius:12px;box-shadow:0 24px 60px rgba(60,45,20,.16);overflow:hidden;min-width:0;color:var(--ink)}
@@ -294,23 +343,25 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @keyframes lg-giro{0%,12%{transform:rotateX(-8deg) rotateY(0)}16.6%,29%{transform:rotateX(-8deg) rotateY(-90deg)}33.3%,45%{transform:rotateX(-8deg) rotateY(-180deg)}50%,62%{transform:rotateX(-8deg) rotateY(-270deg)}66.6%,79%{transform:rotateX(-90deg) rotateY(-360deg)}83.3%,95%{transform:rotateX(90deg) rotateY(-360deg)}100%{transform:rotateX(-8deg) rotateY(-360deg)}}
 .logo:hover .lg-cubo{animation-play-state:paused}
 @media (max-width:600px){.logo-giro,.logo .logo-cubo{--lg:20px;width:40px;height:40px}}
-/* Botones poligonales en relieve: se reconocen como botón */
-.btn,.morse-btn,.tab,.sel-diseno a,.ports .pill{clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%);border-radius:0!important;border:0!important}
-.btn{padding:0 1.9rem;min-height:46px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(0,0,0,.28);transition:transform .15s,filter .15s}
-.btn:hover,.morse-btn:hover,.tab:hover{transform:translateY(-2px);filter:brightness(1.07)}
-.btn:active{transform:translateY(1px);box-shadow:inset 0 3px 0 rgba(0,0,0,.25)}
-.btn:focus-visible,.tab:focus-visible,.morse-btn:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #F9A900}
-.btn-brand{background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.38) 50%,transparent 62%) var(--brand);background-size:260% 100%;animation:brillo 4.5s ease-in-out infinite}
-@keyframes brillo{0%{background-position:140% 0}55%,100%{background-position:-40% 0}}
-.btn-line,.hero .btn-ghost-dark{background:color-mix(in srgb,var(--brand) 12%,#fff);color:var(--ink);box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.14)}
-.btn-ghost-dark{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 2px #fff,inset 0 -4px 0 rgba(0,0,0,.25)}
-.btn-white{box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.18)}
-.morse-btn{padding:0 1.4rem;background:color-mix(in srgb,var(--brand) 18%,transparent);box-shadow:inset 0 0 0 2px var(--brand)}
-.tabs{gap:.35rem;border-bottom:0}
-.tab{padding:.6rem 1.5rem;margin:0;background:color-mix(in srgb,var(--brand) 10%,#fff);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 55%,#fff),inset 0 -3px 0 rgba(0,0,0,.12);color:var(--ink)}
-.tab[aria-selected="true"]{background:var(--brand);color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.28)}
-.tab-items a{clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);border:0;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--brand) 45%,#fff),inset 0 -4px 0 rgba(0,0,0,.08);transition:transform .15s}
-.tab-items a:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--brand),inset 0 -4px 0 rgba(0,0,0,.12)}
+/* Botones como cubos sin esquinas: bordes redondeados con canto inferior en relieve (cara superior + cara frontal) */
+.btn,.morse-btn,.tab,.ports .pill{clip-path:none;border-radius:14px!important;border:0!important}
+.btn{padding:0 1.6rem;min-height:48px;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 5px 0 color-mix(in srgb,var(--brand) 62%,#000),0 9px 18px rgba(0,0,0,.18);transition:transform .14s,box-shadow .14s,filter .14s;margin-bottom:5px}
+.btn:hover,.morse-btn:hover,.tab:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn:active{transform:translateY(4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 0 color-mix(in srgb,var(--brand) 62%,#000),0 3px 8px rgba(0,0,0,.18)}
+.btn:focus-visible,.tab:focus-visible,.morse-btn:focus-visible{outline:3px solid #F9A900;outline-offset:3px}
+.btn-brand{background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.32) 50%,transparent 62%),linear-gradient(180deg,#D4652A,var(--brand));background-size:260% 100%,100% 100%;animation:brillo 4.5s ease-in-out infinite}
+@keyframes brillo{0%{background-position:140% 0,0 0}55%,100%{background-position:-40% 0,0 0}}
+.btn-line,.hero:not(.hx) .btn-ghost-dark{background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--brand) 10%,#fff));color:var(--ink);box-shadow:inset 0 0 0 2px var(--brand),0 5px 0 color-mix(in srgb,var(--brand) 55%,#fff),0 9px 18px rgba(0,0,0,.12)}
+.btn-ghost-dark{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),0 5px 0 rgba(0,0,0,.35),0 9px 18px rgba(0,0,0,.2)}
+.btn-white{background:linear-gradient(180deg,#fff,#F4EEE6);color:var(--brand-text);box-shadow:0 5px 0 #8A3A10,0 9px 18px rgba(0,0,0,.2)}
+.morse-btn{padding:0 1.4rem;background:color-mix(in srgb,var(--brand) 14%,#fff);box-shadow:inset 0 0 0 2px var(--brand),0 4px 0 color-mix(in srgb,var(--brand) 55%,#fff)}
+.tabs{gap:.45rem;border-bottom:0}
+.tab{padding:.6rem 1.4rem;margin:0 0 4px;background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--brand) 9%,#fff));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--brand) 50%,#fff),0 4px 0 color-mix(in srgb,var(--brand) 35%,#fff);color:var(--ink)}
+.tab[aria-selected="true"]{background:linear-gradient(180deg,#D4652A,var(--brand));color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--brand) 62%,#000)}
+.tab-items a{clip-path:none;border-radius:16px;border:0;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--brand) 40%,#fff),0 5px 0 color-mix(in srgb,var(--brand) 22%,#fff);transition:transform .15s,box-shadow .15s}
+.tab-items a:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--brand),0 7px 0 color-mix(in srgb,var(--brand) 35%,#fff)}
+.sel-diseno a{clip-path:none;border-radius:12px!important;border:0!important}
+.sel-diseno a[aria-current]{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 0 #7A320C}
 .sel-diseno a{padding:8px 16px}
 @media (prefers-reduced-motion:reduce){.btn-brand{animation:none}.lg-cubo{animation-duration:36s}}
 @media print{.lg-cubo,.btn-brand{animation:none}}
@@ -377,49 +428,41 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </header>
 
 <main>
-  <section class="hero" id="inicio">
+  <section class="hero hx" id="inicio">
     <div class="wrap hero-main">
       <div class="hero-copy">
         <div class="hero-brand">
           <span class="logo on-dark"><span class="word"><b>SOS</b>istem<sup>™</sup></span></span>
           <p>Sonidos Ondulatorios Sobre Desastres Naturales y Emergencias Personales</p>
         </div>
-        <h1>Alerta temprana para proteger la vida</h1>
-        <p class="lead">Una plataforma inteligente de seguridad humana para recintos confinados: sensores, análisis de eventos y respuesta coordinada, sin cámaras.</p>
+        <span class="hx-kick"><i></i>Alerta temprana · sin cámaras</span>
+        <h1>Cada segundo cuenta.<span>SOSistem™ lo detecta primero.</span></h1>
+        <p class="lead">Caídas, sismos, gases y voces de auxilio en recintos cerrados: se detectan al instante y se avisa al responsable y al 911, sin cámaras ni grabaciones.</p>
         <div class="cta-row">
           <a class="btn btn-brand" href="#servicios">Conocer la solución →</a>
-          <a class="btn btn-ghost-dark" href="#terminal"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg>Ver demostración</a>
+          <a class="btn btn-ghost-dark" href="#terminal"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg>Probar la Terminal</a>
         </div>
+        <ul class="hx-stats">
+          <li><b class="no-traducir">27</b><span>sensores</span></li>
+          <li><b class="no-traducir">14</b><span>riesgos detectados</span></li>
+          <li><b class="no-traducir">0</b><span>cámaras</span></li>
+          <li><b class="no-traducir">911</b><span>enlace directo</span></li>
+        </ul>
       </div>
 
-      <div class="console" role="img" aria-label="Vista de ejemplo de la consola de supervisión de SOSistem con una alerta de emergencia en el sanitario 2">
-        <div class="console-top">
-          <strong><b>SOS</b>istem™ · Consola</strong>
-          <span class="live"><span class="dot"></span>Sistema operativo</span>
-        </div>
-        <div class="console-body">
-          <div class="side"><span class="on">Inicio</span><span>Monitoreo</span><span>Alertas</span><span>Reportes</span><span>Configuración</span></div>
-          <div class="panel">
-            <div class="kpis">
-              <div class="kpi"><small>Ocupación</small><b>[__] %</b></div>
-              <div class="kpi"><small>Estado</small><b class="ok">Activo</b></div>
-              <div class="kpi"><small>Alertas</small><b>1</b></div>
-            </div>
-            <div class="split">
-              <svg class="plan" viewBox="0 0 250 150" aria-hidden="true">
-                <g fill="none" stroke="#B9AC96" stroke-width="1.5"><rect x="10" y="10" width="230" height="130"/><path d="M90 10v130M170 10v70M90 80h150M10 70h80M130 80v60"/></g>
-                <rect x="172" y="12" width="66" height="66" fill="#C8202F" opacity=".35"/>
-                <circle cx="205" cy="45" r="12" fill="#C8202F"/><path d="M205 37v10M205 51v1" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-                <g fill="#1F5FA8"><circle cx="45" cy="40" r="3"/><circle cx="60" cy="110" r="3"/><circle cx="120" cy="40" r="3"/><circle cx="110" cy="110" r="3"/><circle cx="200" cy="115" r="3"/></g>
-              </svg>
-              <div class="side-stack">
-                <div class="alert"><strong>Alerta N1 · Emergencia</strong>Caída sin respuesta · Sanitario 2<span class="more">Ver detalles →</span></div>
-                <div class="checks"><span><span class="dot"></span>Sensores</span><span><span class="dot"></span>Comunicaciones</span><span><span class="dot"></span>Enlace 911</span></div>
-              </div>
-            </div>
-            <p class="note-dark" style="margin:0">Vista de ejemplo con datos ilustrativos. El rojo se reserva para emergencias (ISO 3864).</p>
-          </div>
-        </div>
+      <div class="hx-visual" role="img" aria-label="Cubo SOSistem emitiendo ondas de alerta: caída detectada en el sanitario 2 y aviso enviado al 911">
+        <span class="hx-onda"></span><span class="hx-onda"></span><span class="hx-onda"></span><span class="hx-onda"></span>
+        <div class="hx-escena"><div class="hx-cubo">
+          <div class="hx-nucleo" style="transform:rotateY(0) translateZ(calc(var(--z) * .86))"></div><div class="hx-nucleo" style="transform:rotateY(90deg) translateZ(calc(var(--z) * .86))"></div><div class="hx-nucleo" style="transform:rotateY(180deg) translateZ(calc(var(--z) * .86))"></div><div class="hx-nucleo" style="transform:rotateY(-90deg) translateZ(calc(var(--z) * .86))"></div><div class="hx-nucleo" style="transform:rotateX(90deg) translateZ(calc(var(--z) * .86))"></div><div class="hx-nucleo" style="transform:rotateX(-90deg) translateZ(calc(var(--z) * .86))"></div>
+          <div class="hx-cara hx-c1"><span class="no-traducir">S.O.S.</span><span class="m no-traducir">··· ––– ···</span></div>
+          <div class="hx-cara hx-c2"><span class="no-traducir">911</span><small>Aviso al instante</small></div>
+          <div class="hx-cara hx-c3"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 21 12s-1 2-3 4M6.6 6.6C4 8.4 3 12 3 12s3 7 9 7c1.6 0 3-.4 4.3-1"/></svg><small>Sin cámaras</small></div>
+          <div class="hx-cara hx-c4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M2 12h3l2-5 3 10 3-14 3 12 2-3h4"/></svg><small>Sismo</small></div>
+          <div class="hx-cara hx-c5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><circle cx="17" cy="6" r="2"/><path d="M3 20h18M5 16l5-2 3 2 4-6"/></svg><small>Caída</small></div>
+          <div class="hx-cara hx-c6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg><small>Gases</small></div>
+        </div></div>
+        <div class="hx-chip al"><span><b>Caída sin respuesta</b>Sanitario 2 · aviso al 911</span></div>
+        <div class="hx-chip ok"><i></i><span><b>27 sensores activos</b>Sin imagen ni grabación</span></div>
       </div>
     </div>
     <div class="benefits">
@@ -583,14 +626,45 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </section>
 
   <section class="closing" id="terminal">
-    <div class="wrap" id="contacto">
-      <div style="min-width:0;max-width:44rem">
-        <h2>¿Listo para proteger su recinto?</h2>
-        <p>Pruebe la Terminal hoy, sin registro, o hable con nuestro equipo. WhatsApp 646 227 0490 · sos@sosistem.com</p>
+    <div class="wrap cl-grid" id="contacto">
+      <div class="cl-txt">
+        <div>
+          <h2>¿Listo para proteger su recinto?</h2>
+          <p>Pruebe la Terminal hoy, sin registro, o hable con nuestro equipo. WhatsApp 646 227 0490 · sos@sosistem.com</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-white" href="terminal.html">Abrir la Terminal</a>
+          <a class="btn btn-ghost-dark" href="https://wa.me/526462270490" target="_blank" rel="noopener">Contáctenos</a>
+        </div>
       </div>
-      <div class="cta-row">
-        <a class="btn btn-white" href="terminal.html">Abrir la Terminal</a>
-        <a class="btn btn-ghost-dark" href="https://wa.me/526462270490" target="_blank" rel="noopener">Contáctenos</a>
+      <div class="console" role="img" aria-label="Vista de ejemplo de la consola de supervisión de SOSistem con una alerta de emergencia en el sanitario 2">
+        <div class="console-top">
+          <strong><b>SOS</b>istem™ · Consola</strong>
+          <span class="live"><span class="dot"></span>Sistema operativo</span>
+        </div>
+        <div class="console-body">
+          <div class="side"><span class="on">Inicio</span><span>Monitoreo</span><span>Alertas</span><span>Reportes</span><span>Configuración</span></div>
+          <div class="panel">
+            <div class="kpis">
+              <div class="kpi"><small>Ocupación</small><b>[__] %</b></div>
+              <div class="kpi"><small>Estado</small><b class="ok">Activo</b></div>
+              <div class="kpi"><small>Alertas</small><b>1</b></div>
+            </div>
+            <div class="split">
+              <svg class="plan" viewBox="0 0 250 150" aria-hidden="true">
+                <g fill="none" stroke="#B9AC96" stroke-width="1.5"><rect x="10" y="10" width="230" height="130"/><path d="M90 10v130M170 10v70M90 80h150M10 70h80M130 80v60"/></g>
+                <rect x="172" y="12" width="66" height="66" fill="#C8202F" opacity=".35"/>
+                <circle cx="205" cy="45" r="12" fill="#C8202F"/><path d="M205 37v10M205 51v1" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                <g fill="#1F5FA8"><circle cx="45" cy="40" r="3"/><circle cx="60" cy="110" r="3"/><circle cx="120" cy="40" r="3"/><circle cx="110" cy="110" r="3"/><circle cx="200" cy="115" r="3"/></g>
+              </svg>
+              <div class="side-stack">
+                <div class="alert"><strong>Alerta N1 · Emergencia</strong>Caída sin respuesta · Sanitario 2<span class="more">Ver detalles →</span></div>
+                <div class="checks"><span><span class="dot"></span>Sensores</span><span><span class="dot"></span>Comunicaciones</span><span><span class="dot"></span>Enlace 911</span></div>
+              </div>
+            </div>
+            <p class="note-dark" style="margin:0">Vista de ejemplo con datos ilustrativos. El rojo se reserva para emergencias (ISO 3864).</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
