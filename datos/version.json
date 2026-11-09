@@ -1,8 +1,14 @@
 {
-  "version": "8.3.5",
+  "version": "8.3.6",
   "fecha": "2026-11-09",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.6",
+      "fecha": "2026-11-09",
+      "serie": "B",
+      "resumen": "Dossier del autor: más de 70 cursos, diplomados y seminarios; diplomado de la Universidad Iberoamericana del Noroeste (2009) y cédula de maestría identificada."
+    },
     {
       "v": "8.3.5",
       "fecha": "2026-11-09",
