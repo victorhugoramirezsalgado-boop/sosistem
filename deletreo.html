@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f5f7">
+<meta name="description" content="Deletreo y escucha por franjas de SOSistem™: cada frase oída se deletrea en letra, Morse, braille y banderas del Código Internacional de Señales, con registro de voces. No graba audio.">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<title>Deletreo y escucha · SOSistem™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Sistema visual unificado SOSistem™ — claro, fino: marino #0f1b2d · azul ISO #005387 · naranja acento #E8720C.
+   Deletreo y escucha por franjas: cada persona/teléfono es una franja que deletrea lo que se oye. */
+:root{color-scheme:light;--bg:#f4f5f7;--s1:#fff;--ink:#0f1b2d;--dim:#5b6675;--or:#e8720c;--line:#e6e8ec;--brand:#005387}
+*{box-sizing:border-box;min-width:0}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif;overflow-x:clip}
+.top{position:sticky;top:0;z-index:5;background:var(--s1);border-bottom:1px solid var(--line);padding:12px max(4vw,14px);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.brand{display:inline-flex;align-items:baseline;gap:0;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.01em}
+.brand b{color:var(--or)}.brand span{color:#000}
+.top h1{font-size:15px;font-weight:600;margin:0;color:var(--dim)}
+.sp{flex:1}
+label.sl{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--dim)}
+input[type=range]{accent-color:var(--or);width:110px}
+select,input[type=text]{font:16px Inter,sans-serif;background:var(--s1);color:var(--ink);border:1.5px solid #d4d7dd;border-radius:12px;padding:10px 12px;min-height:44px}
+button{font:600 15px Inter,sans-serif;background:var(--s1);color:var(--ink);border:2px solid #b9bfc9;border-radius:14px;padding:10px 16px;min-height:44px;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+button.pri{border-color:var(--or);color:var(--or)}
+button.on{background:var(--or);color:#fff}
+button:disabled{opacity:.4;cursor:default}
+.ctl{padding:14px max(4vw,14px);display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr) auto auto;gap:10px;border-bottom:1px solid var(--line)}
+.hint{grid-column:1/-1;font-size:13px;color:var(--dim);margin:0}
+.state{display:flex;gap:14px;flex-wrap:wrap;padding:10px max(4vw,14px);font-size:13px;color:var(--dim)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#b9bfc9;margin-right:6px;vertical-align:middle}
+.dot.ok{background:var(--or)}
+#bands{padding:6px max(4vw,14px) 30px;display:grid;gap:14px}
+.band{background:var(--s1);border:1px solid var(--line);border-left:6px solid #8a909b;border-radius:14px;padding:14px 16px;box-shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06)}
+.band.me{border-left-color:var(--brand)}
+.band.alert{border-color:var(--or);border-left-color:var(--or);animation:pulse 1.2s ease-in-out 3}
+@keyframes pulse{50%{box-shadow:0 0 0 4px rgba(255,122,0,.25)}}
+.bh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:6px}
+.who{font-weight:800;font-size:17px}
+.tag{font-size:12px;color:var(--dim)}
+.tag.sos{color:var(--or);font-weight:800}
+.phrase{font-size:clamp(22px,4.4vw,34px);font-weight:600;line-height:1.15;margin:2px 0 10px;word-break:break-word}
+.phrase .p{color:var(--dim)}
+.big{display:flex;align-items:center;gap:14px;min-height:60px;margin-bottom:10px}
+.big .L{font-size:52px;font-weight:800;line-height:1;width:56px;text-align:center}
+.big .m{font-size:26px;letter-spacing:4px;color:var(--or);white-space:nowrap}
+.big .br{font-size:34px}
+.tiles{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.t{flex:0 0 auto;width:78px;border:2px solid #d4d7dd;border-radius:14px;padding:6px 4px 8px;text-align:center;background:var(--s1);color:var(--ink)}
+.t.cur{border-color:var(--or)}
+.t.gap{width:22px;border:none}
+.t .c{font-size:24px;font-weight:800;line-height:1.1}
+.t .mo{font-size:13px;letter-spacing:2px;color:var(--or);white-space:nowrap;height:18px}
+.t .bz{font-size:22px;line-height:1.1;height:26px}
+.t svg{width:42px;height:28px;display:block;margin:2px auto;border:1px solid #c9ced6}
+.t .ph{font-size:11px;color:var(--dim);white-space:nowrap}
+.empty{color:var(--dim);font-size:14px}
+footer{padding:18px max(4vw,14px) 40px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);display:grid;gap:6px}
+.log{padding:6px max(4vw,14px) 24px}.log h2{font-size:18px;margin:6px 0 4px}.log .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}.log .n{font-size:13px;color:var(--dim)}
+.log table{width:100%;border-collapse:collapse;font-size:14px}.log td,.log th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}.log th{color:var(--dim);font-weight:600;font-size:12px}.log td.h{white-space:nowrap;font-variant-numeric:tabular-nums}.log tr.s td{color:var(--or);font-weight:600}
+@media(max-width:640px){.ctl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ctl #txt{grid-column:1/-1;order:-1}.top h1{width:100%;order:3}.big .L{font-size:40px}}
+@media(prefers-reduced-motion:reduce){.band.alert{animation:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html" aria-label="SOSistem, inicio"><b>SOS</b><span>istem</span></a>™
+  <h1 id="h1">Deletreo y escucha por franjas</h1>
+  <span class="sp"></span>
+  <select id="lang" aria-label="Idioma">
+    <option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="pt">Português</option>
+  </select>
+</header>
+
+<section class="ctl" aria-label="Controles">
+  <input id="alias" type="text" maxlength="24" aria-label="Nombre en la franja">
+  <input id="txt" type="text" maxlength="160" placeholder="Escribe o dicta una frase…" aria-label="Frase">
+  <button id="go" class="pri">Deletrear</button>
+  <button id="mic" disabled>🎙 Escuchar y deletrear</button>
+  <p class="hint" id="hint">Abre esta misma página en el 2.º, 3.º o más teléfonos: cada uno aparece como su propia franja.</p>
+</section>
+
+<div class="state">
+  <span><i class="dot" id="dRoom"></i><span id="sRoom">Conectando sala…</span></span>
+  <span><i class="dot" id="dMic"></i><span id="sMic">Dictado: verificando…</span></span>
+  <button id="sim" style="min-height:34px;padding:4px 12px;font-size:13px">Simular personas 2 y 3</button>
+</div>
+
+<main id="bands" aria-live="polite"></main>
+
+<section class="log" aria-label="Registro de voces">
+  <h2>Registro de voces</h2>
+  <div class="bar"><span class="n" id="logN">0 frases</span><span class="sp"></span><button id="logCp">Copiar registro</button><button id="logDl">Descargar .txt</button><button id="logClr">Borrar</button></div>
+  <p class="n" id="logNote">Se anota solo el texto deletreado (no se graba audio). Cada franja es un teléfono o persona; el reconocimiento no identifica a quién pertenece cada voz.</p>
+  <table class="stack"><thead><tr><th>Hora</th><th>Persona</th><th>Frase</th><th>Letras</th><th>Alerta</th></tr></thead><tbody id="logB"></tbody></table>
+</section>
+<footer>
+  <div><a href="ondas.html" style="color:var(--brand)">Analizador de ondas</a> · <a href="terminal.html" style="color:var(--brand)">Terminal</a> · <a href="index.html" style="color:var(--brand)">Inicio</a></div>
+  <div id="priv">Privacidad: la página no graba audio. Solo anota el texto deletreado en el Registro de voces, que se queda en este teléfono y se puede borrar. Toca una ficha para oír su Morse.</div>
+  <div>SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Banderas: Código Internacional de Señales · Versión de prueba en revisión · © Víctor Hugo Ramírez Salgado. Todos los derechos reservados.</div>
+</footer>
+
+<script src="assets/cubo-rt.js?v=dl1"></script>
+<script src="assets/deletreo.js?v=dl1"></script>
+</body>
