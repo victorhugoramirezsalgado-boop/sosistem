@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Beta · Receptor de radio · SOSistem™</title>
+<meta name="theme-color" content="#f4f5f7">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<script type="importmap">
+{ "imports": {
+  "@jtarrio/signals/": "./lib/signals/",
+  "@jtarrio/webrtlsdr/": "./lib/webrtlsdr/"
+} }
+</script>
+<style>
+  /* Sistema visual unificado SOSistem™ — claro, fino: marino #0f1b2d · azul ISO #005387 · naranja acento #E8720C */
+  :root{--bg:#f4f5f7;--s1:#fff;--line:#e6e8ec;--line2:#d4d7dd;--ink:#0f1b2d;--ink2:#5b6675;--brand:#005387;--nar:#e8720c;--ok:#237f52;--mal:#9b2423;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+  .on{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 28px)}
+  .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .cab b{font-weight:800;letter-spacing:-.01em}.cab b i{font-style:normal;color:var(--nar)}
+  .beta{font:700 12px var(--font);background:#8a909b;color:#fff;border-radius:8px;padding:3px 8px}
+  h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:4px 0}
+  .note{color:var(--ink2);font-size:15px;margin:6px 0 0}
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 1px 2px rgba(15,27,45,.05),0 8px 24px rgba(15,27,45,.06)}
+  h2{font-size:19px;font-weight:600;margin:0 0 8px}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  button{font:600 16px var(--font);min-height:48px;padding:0 16px;border-radius:14px;border:2px solid var(--line2);background:#fff;color:var(--ink);cursor:pointer}
+  button.pri{background:var(--nar);border-color:var(--nar);color:#fff}
+  button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  button:disabled{opacity:.45;cursor:default}
+  button:focus-visible{outline:2px solid var(--nar);outline-offset:2px}
+  .rd-estado{margin-top:10px;font-size:15px;color:var(--ok);font-weight:600}
+  .rd-estado.mal{color:var(--mal)}
+  .rd-c{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n b" "barra barra" "o o";gap:6px 10px;padding:12px 0;border-top:1px solid var(--line)}
+  .rd-c:first-child{border-top:0}
+  .rd-n{grid-area:n;display:flex;flex-direction:column}.rd-n b{font-size:16px}.rd-n span{font-size:13px;color:var(--ink2)}
+  .rd-c button{grid-area:b;min-height:42px;font-size:14px}
+  .rd-barra{grid-area:barra;height:12px;background:#ede6d6;border-radius:6px;overflow:hidden}
+  .rd-barra i{display:block;height:100%;width:0;background:var(--brand);transition:width .3s}
+  .rd-c.act .rd-barra i{background:var(--nar)}
+  .rd-c output{grid-area:o;font:600 14px var(--font);font-variant-numeric:tabular-nums;color:var(--ink2)}
+  .rd-c.act output{color:var(--nar)}
+  .rd-c.sos .rd-n b::after{content:" · emergencia";font-size:12px;color:var(--mal);font-weight:700}
+  #rd-log{margin:0;padding-left:18px;font-size:14px;max-height:220px;overflow:auto}
+  label{font-size:14px;color:var(--ink2);display:flex;align-items:center;gap:10px}
+  input[type=range]{accent-color:var(--nar);width:160px}
+  ul.req{margin:6px 0 0;padding-left:18px;font-size:15px}
+  footer{font-size:12px;color:var(--ink2);margin-top:16px;line-height:1.5}
+  @media(prefers-reduced-motion:reduce){.rd-barra i{transition:none}}
+</style>
+</head>
+<body>
+<div class="on">
+  <div class="cab"><b><i>SOS</i>istem™</b><span class="beta">BETA · PRUEBA</span></div>
+  <h1>Receptor de radio</h1>
+  <p class="note">VHF marino, AIS de barcos, banda aérea de emergencia y radiobalizas de 406 MHz. Solo recepción: no transmite, no graba audio y no envía datos.</p>
+
+  <section class="card">
+    <h2>1. Conectar</h2>
+    <div class="btns">
+      <button id="rd-conectar" class="pri">Conectar receptor</button>
+      <button id="rd-escanear" disabled>Escanear actividad</button>
+    </div>
+    <div id="rd-estado" class="rd-estado">Conecte el receptor USB RTL-SDR y toque «Conectar receptor».</div>
+    <ul class="req">
+      <li>Chrome en tableta Android (con adaptador USB-OTG) o en Mac. En iPhone no es posible.</li>
+      <li>Receptor RTL-SDR (chip RTL2832U con sintonizador R820T/R828D) y antena para VHF.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>2. Canales vigilados</h2>
+    <label>Volumen al escuchar <input id="rd-vol" type="range" min="0" max="100" value="80"></label>
+    <div id="rd-lista"></div>
+    <p class="note">«Actividad» = la señal supera en <span id="rd-umbral">10</span> dB el ruido del lugar. AIS y 406 MHz son señales de datos: aquí solo se detecta su presencia, no se decodifican. Las radiobalizas transmiten pulsos breves cada ~50 s, así que el escaneo puede no coincidir con ellos.</p>
+  </section>
+
+  <section class="card">
+    <h2>3. Registro de actividad</h2>
+    <ol id="rd-log"></ol>
+  </section>
+
+  <footer>Página de prueba (Beta), no enlazada desde el sitio oficial. Usa las bibliotecas libres Web RTL-SDR y Signals de Jacobo Tarrío (licencia Apache-2.0, ver lib/LICENSE).<br>SOSistem™ · Sistema S.O.S.© · © Víctor Hugo Ramírez Salgado. Todos los derechos reservados.</footer>
+</div>
+<script src="../assets/cubo-rt.js?v=rd1"></script>
+<script src="radio.js?v=rd1"></script>
+</body>
+</html>
