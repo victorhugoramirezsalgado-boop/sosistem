@@ -11,16 +11,16 @@ body{font-family:Inter,system-ui,sans-serif;background:#fff;padding:24px}
 .cab p{color:#B9C2D0;font-size:15px;margin-top:4px}
 .pill{border:2px solid var(--or);color:#fff;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;white-space:nowrap}
 .mos{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:12px}
-.nota{color:#9AA3B2;font-size:13px;margin-top:14px}
+.nota{color:#9AA3B2;font-size:13px;margin-top:16px;text-align:justify;line-height:1.5}
 .t{position:relative;border-radius:16px;overflow:hidden;background:#1A2740}
 .t.big{grid-row:span 2}
-.t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
-.t:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,45,.15) 20%,rgba(15,27,45,.95) 85%)}
+.t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;filter:saturate(.55)}
+.t:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,45,0) 45%,rgba(15,27,45,.9) 100%)}
 .t .tx{position:absolute;left:16px;right:16px;bottom:14px;z-index:2}
-.t b{display:block;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.t b{display:block;font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
 .t.big b{font-size:30px}
-.t .k{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.t .k span{font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(4px)}
+.t .k{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.t .k span{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(4px)}
 .t .k span.o{background:var(--or);color:var(--nv)}
 .t .num{position:absolute;top:12px;left:14px;z-index:2;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--or);background:rgba(15,27,45,.7);padding:4px 9px;border-radius:8px}
 .t .ph{position:absolute;inset:0;display:grid;place-items:center;color:#5A6B85;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:repeating-linear-gradient(45deg,#1A2740 0 14px,#1E2D4A 14px 28px)}
@@ -28,16 +28,16 @@ body{font-family:Inter,system-ui,sans-serif;background:#fff;padding:24px}
 @media(max-width:700px){.franja{padding:18px}.mos{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:190px}.t.big{grid-row:auto}.cab h2{font-size:24px}.t b{font-size:18px}.t.big b{font-size:24px}.t .k span{font-size:11px;padding:3px 8px}}
 </style></head><body>
 <section class="franja">
- <div class="cab"><div><small>Aplicaciones</small><h2>A quién protege SOSistem™</h2><p>Seis campos, una misma red para avisar a tiempo.</p></div><span class="pill">Descubrir casos de uso →</span></div>
+ <div class="cab"><div><small>Aplicaciones</small><h2>A quién protege SOSistem™</h2><p>Seis ámbitos de aplicación, una sola red de alerta oportuna.</p></div><span class="pill">Descubrir casos de uso →</span></div>
  <div class="mos">
-  <a class="t"><img src="../assets/img/v3-sim-sismo.webp"><span class="num">01 · DESASTRES</span><div class="tx"><b>Desastres naturales</b><div class="k"><span class="o">Ayuda</span><span>Apoyo</span><span>Comunicación</span><span>Información apegada a la realidad</span></div></div></a>
-  <a class="t"><div class="ph"><span>Foto: sabios, niños y público</span></div><span class="num">02 · PERSONAS</span><div class="tx"><b>Sabios y personas</b><div class="k"><span class="o">Sabios</span><span>Personas con discapacidad</span><span>Niños</span><span>Público en general</span></div></div></a>
-  <a class="t"><img src="../assets/img/fotos/restaurante.jpg"><span class="num">03 · AFOROS</span><div class="tx"><b>Aforos grandes</b><div class="k"><span class="o">Conciertos</span><span>Hoteles</span><span>Plazas comerciales</span></div></div></a>
-  <a class="t"><img src="../assets/img/fotos/puerto-vhrs.jpg"><span class="num">04 · INDUSTRIA</span><div class="tx"><b>Industria y bodegas</b><div class="k"><span class="o">Puertos</span><span>Maquiladoras</span><span>Bodegas industriales y comerciales</span><span>Tiendas de mayoreo</span></div></div></a>
-  <a class="t"><img src="../assets/img/fotos/edificio.jpg"><span class="num">05 · AUTORIDADES</span><div class="tx"><b>Autoridades</b><div class="k"><span class="o">Federales</span><span>Estatales</span><span>Municipales</span><span>Organismos internacionales</span></div></div></a>
-  <a class="t"><img src="../assets/img/fotos/confinados.jpg"><span class="num">06 · REGULACIÓN</span><div class="tx"><b>Regulación nacional e internacional</b><div class="k"><span class="o">Vida de los trabajadores</span><span>Calidad de vida de la comunidad</span></div></div></a>
+  <a class="t"><img src="../assets/img/v3-sim-sismo.webp" alt=""><span class="num">01 · DESASTRES</span><div class="tx"><b>Desastres naturales</b><div class="k"><span class=o>Alerta temprana</span><span>Ayuda y comunicación</span><span>Información confiable</span></div></div></a>
+  <a class="t"><div class="ph"><span>Fotografía en preparación</span></div><span class="num">02 · PERSONAS</span><div class="tx"><b>Cada persona cuenta</b><div class="k"><span class=o>Adultos mayores</span><span>Capacidades diferentes</span><span>Niñez y público en general</span></div></div></a>
+  <a class="t"><img src="../assets/img/fotos/restaurante.jpg" alt=""><span class="num">03 · AFOROS</span><div class="tx"><b>Aforos masivos</b><div class="k"><span class=o>Conciertos y eventos</span><span>Hoteles</span><span>Plazas comerciales</span></div></div></a>
+  <a class="t"><img src="../assets/img/fotos/puerto-vhrs.jpg" alt=""><span class="num">04 · INDUSTRIA</span><div class="tx"><b>Industria y logística</b><div class="k"><span class=o>Puertos y maquiladoras</span><span>Bodegas industriales</span><span>Tiendas de mayoreo</span></div></div></a>
+  <a class="t"><img src="../assets/img/fotos/edificio.jpg" alt=""><span class="num">05 · AUTORIDADES</span><div class="tx"><b>Autoridades y organismos internacionales</b><div class="k"><span class=o>Gobierno en todos sus niveles</span><span>Protección civil</span><span>Cooperación internacional</span></div></div></a>
+  <a class="t"><img src="../assets/img/fotos/confinados.jpg" alt=""><span class="num">06 · NORMATIVIDAD</span><div class="tx"><b>Cumplimiento normativo</b><div class="k"><span class=o>Normas nacionales e internacionales</span><span>Seguridad y salud en el trabajo</span><span>Bienestar de la comunidad</span></div></div></a>
  </div>
- <p class="nota">Todo sistema tiene un margen de error: SOSistem™ trabaja para que sea el mínimo y para entregar información lo más apegada a la realidad.</p>
+ <p class="nota">Todo sistema tiene un margen de error. SOSistem™ trabaja de forma permanente para reducirlo al mínimo y ofrecer información lo más apegada a la realidad, en beneficio de las personas, los centros de trabajo y la comunidad.</p>
 </section>
-<p style="max-width:1200px;margin:14px auto 0;font:13px Inter,sans-serif;color:#666">Propuesta Beta · fotos provisionales · © 2026 Víctor Hugo Ramírez Salgado. SOSistem™ · Sistema S.O.S.©</p>
+<p style="max-width:1200px;margin:14px auto 0;font:13px Inter,sans-serif;color:#666">Propuesta Beta · fotografías provisionales · © 2026 Víctor Hugo Ramírez Salgado. SOSistem™ · Sistema S.O.S.©</p>
 </body></html>
