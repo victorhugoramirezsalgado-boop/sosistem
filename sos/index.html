@@ -44,6 +44,16 @@ button{font:inherit;color:inherit;cursor:pointer}
 .chip{border:1.5px solid var(--line);border-radius:12px;padding:6px 10px;font-size:13px;color:var(--dim)}
 .chip.on{border-color:var(--or);color:var(--or)}
 .lang{display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:10px max(4vw,12px) 0}
+.lang .nav{margin-right:auto;color:var(--ink);text-decoration:none;border:2px solid var(--line);border-radius:12px;padding:6px 12px;font-weight:700;font-size:14px;min-height:40px;display:flex;align-items:center}
+.lang .nav::before{content:"← "}
+.movbtn{display:block;width:calc(100% - 2*max(4vw,12px));margin:14px auto 0;min-height:56px;border-radius:18px;border:2.5px solid #c9a100;background:#000;color:#ffd24d;font-weight:800;font-size:16px}
+.movbtn[hidden]{display:none}
+.pant{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 max(4vw,12px)}
+.tile{border:1.5px solid #4a2a00;border-radius:16px;padding:10px 12px;background:#0b0b0b;display:flex;flex-direction:column;gap:4px}
+.tile span{font-size:12px;color:var(--dim)}
+.tile b{font-size:17px;color:var(--or);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.vacio{grid-column:1/-1;color:var(--dim);font-size:14px;margin:0}
+@media(min-width:900px){.pant{max-width:980px;margin:0 auto;grid-template-columns:repeat(4,minmax(0,1fr))}}
 #atajo{background:#000;color:var(--or);border:2px solid var(--or);border-radius:12px;font-size:14px;font-weight:700;padding:6px 10px;min-height:40px}
 #atajo[hidden]{display:none}
 .tbody{display:flex;gap:14px;align-items:center;justify-content:center;width:100%}
@@ -91,7 +101,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
 </style>
 </head>
 <body>
-<div class="lang"><button id="atajo" hidden>Crear acceso</button><select id="idioma" aria-label="Idioma"></select></div>
+<div class="lang"><a id="sitio" href="../" class="nav" data-t="sitio">Sitio</a><button id="atajo" hidden>Crear acceso</button><select id="idioma" aria-label="Idioma"></select></div>
 
 <section class="top">
   <div class="logo" aria-label="SOSistem">
@@ -113,6 +123,9 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   </div>
 </section>
 
+<button id="pideMov" class="movbtn" hidden data-t="movBtn">Activar sismo, caída, giro y brújula</button>
+<h2 data-t="pantalla">Mi pantalla</h2>
+<div id="pantalla" class="pant"></div>
 <p id="aparato" class="ap"></p>
 <h2 data-t="basicos">10 básicos · automáticos</h2>
 <ul id="lista"></ul>
@@ -137,7 +150,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   <button id="todoBien" data-t="bien">Todo bien</button>
 </div>
 
-<script src="../assets/cubo-rt.js?v=sos4"></script>
-<script src="../assets/sos-inicio.js?v=sos4"></script>
+<script src="../assets/cubo-rt.js?v=sos5"></script>
+<script src="../assets/sos-inicio.js?v=sos5"></script>
 </body>
 </html>
