@@ -1,0 +1,135 @@
+{
+ "reporte": "pruebas-reales",
+ "sitio": "https://sosistem.com",
+ "fecha": "2026-11-16T23:31:16.774Z",
+ "version_repositorio": "8.3.11",
+ "version_publicada": "8.3.11",
+ "propagacion_s": 0,
+ "duracion_s": 64,
+ "total": 20,
+ "correctas": 19,
+ "fallas": 1,
+ "origen": "schedule",
+ "resultados": [
+  {
+   "prueba": "Versión publicada = versión del repositorio",
+   "ok": true,
+   "detalle": "repositorio 8.3.11 · publicada 8.3.11 · 0 s",
+   "ms": 0
+  },
+  {
+   "prueba": "Abre / · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2910
+  },
+  {
+   "prueba": "Abre /terminal.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 3060
+  },
+  {
+   "prueba": "Abre /admin.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2312
+  },
+  {
+   "prueba": "Abre /verificar.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2271
+  },
+  {
+   "prueba": "Abre / · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2669
+  },
+  {
+   "prueba": "Abre /terminal.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2940
+  },
+  {
+   "prueba": "Abre /admin.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2253
+  },
+  {
+   "prueba": "Abre /verificar.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2160
+  },
+  {
+   "prueba": "PDF carta",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 496
+  },
+  {
+   "prueba": "PDF oficio",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 298
+  },
+  {
+   "prueba": "PDF doble-carta",
+   "ok": true,
+   "detalle": "3.7 MB",
+   "ms": 166
+  },
+  {
+   "prueba": "PDF a4",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 538
+  },
+  {
+   "prueba": "PDF gigante-carta",
+   "ok": true,
+   "detalle": "1.1 MB",
+   "ms": 107
+  },
+  {
+   "prueba": "Terminal · temperatura exterior real (Open-Meteo, Ensenada)",
+   "ok": false,
+   "detalle": "page.waitForFunction: Timeout 30000ms exceeded.",
+   "ms": 30007
+  },
+  {
+   "prueba": "Terminal · Morse con audio bloqueado no se pierde (#133)",
+   "ok": true,
+   "detalle": "pendiente al inicio: false · sonó a los 109 ms",
+   "ms": 6247
+  },
+  {
+   "prueba": "Terminal · disparo descartado queda registrado (#135)",
+   "ok": true,
+   "detalle": "1 descarte(s) en la Caja negra",
+   "ms": 1516
+  },
+  {
+   "prueba": "Terminal · sin errores de JavaScript",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 0
+  },
+  {
+   "prueba": "Beta · datos/mundo.json",
+   "ok": true,
+   "detalle": "válido",
+   "ms": 271
+  },
+  {
+   "prueba": "Beta · datos/idiomas.json",
+   "ok": true,
+   "detalle": "válido",
+   "ms": 140
+  }
+ ]
+}
