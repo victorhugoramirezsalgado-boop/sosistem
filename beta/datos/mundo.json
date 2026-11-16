@@ -1,0 +1,74 @@
+{
+  "titulo": "Datos del mundo en vivo",
+  "actualizado": "2026-10-29",
+  "nota": "Contadores calculados en el navegador a partir de cifras anuales oficiales (no copian a Worldometers). 'poblacion' = base al 1-jul-2026 más el crecimiento anual; 'anio' = cifra anual repartida desde el 1 de enero (y desde las 0:00 para 'hoy'); 'fijo' = último dato publicado. © Víctor Hugo Ramírez Salgado · SOSistem™",
+  "ref": "2026-07-01T00:00:00Z",
+  "categorias": [
+    {
+      "id": "poblacion", "titulo": "Población", "color": "#005387",
+      "items": [
+        { "id": "pob", "texto": "Población mundial", "tipo": "poblacion", "base": 8300678395, "anual": 69065325, "unidad": "personas", "fuente": "ONU · World Population Prospects 2024 (1-jul-2026)", "url": "https://population.un.org/wpp/" },
+        { "id": "nac", "texto": "Nacimientos este año", "tipo": "anio", "anual": 132503469, "unidad": "personas", "fuente": "ONU · World Population Prospects 2024 (2026)", "url": "https://population.un.org/wpp/" },
+        { "id": "mue", "texto": "Defunciones este año", "tipo": "anio", "anual": 63637314, "unidad": "personas", "fuente": "ONU · World Population Prospects 2024 (2026)", "url": "https://population.un.org/wpp/" },
+        { "id": "cre", "texto": "Crecimiento de la población este año", "tipo": "anio", "anual": 69065325, "unidad": "personas", "fuente": "ONU · World Population Prospects 2024 (2026)", "url": "https://population.un.org/wpp/" }
+      ]
+    },
+    {
+      "id": "economia", "titulo": "Gobierno y economía", "color": "#0f2a4a",
+      "items": [
+        { "id": "pib", "texto": "Producto Interno Bruto mundial generado este año", "tipo": "anio", "anual": 126300000000000, "unidad": "USD", "fuente": "FMI · World Economic Outlook, abril de 2026 (PIB nominal 2026)", "url": "https://www.imf.org/en/Publications/WEO" },
+        { "id": "veh", "texto": "Vehículos producidos este año", "tipo": "anio", "anual": 96400000, "unidad": "unidades", "fuente": "OICA · producción mundial 2025", "url": "https://www.oica.net/production-statistics/" },
+        { "id": "cel", "texto": "Teléfonos inteligentes vendidos este año", "tipo": "anio", "anual": 1238800000, "unidad": "unidades", "fuente": "IDC · envíos mundiales 2024", "url": "https://www.idc.com/resource-center/press-releases/worldwide-smartphone-shipments-grew-6-4-in-2024-despite-macro-challenges-according-to-idc/" }
+      ]
+    },
+    {
+      "id": "sociedad", "titulo": "Sociedad y medios", "color": "#5b3a8c",
+      "items": [
+        { "id": "inet", "texto": "Personas que usan internet", "tipo": "fijo", "valor": 6000000000, "unidad": "personas", "fuente": "UIT · Hechos y cifras 2025", "url": "https://www.itu.int/es/mediacentre/Pages/PR-2025-11-17-Facts-and-Figures.aspx" },
+        { "id": "sinet", "texto": "Personas sin conexión a internet", "tipo": "fijo", "valor": 2200000000, "unidad": "personas", "fuente": "UIT · Hechos y cifras 2025", "url": "https://www.itu.int/es/mediacentre/Pages/PR-2025-11-17-Facts-and-Figures.aspx" }
+      ]
+    },
+    {
+      "id": "ambiente", "titulo": "Medio ambiente", "color": "#237F52",
+      "items": [
+        { "id": "defo", "texto": "Bosque deforestado este año", "tipo": "anio", "anual": 10900000, "unidad": "ha", "fuente": "FAO · Evaluación de los Recursos Forestales Mundiales 2025 (promedio 2015-2025)", "url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en" },
+        { "id": "bneta", "texto": "Pérdida neta de bosque este año", "tipo": "anio", "anual": 4120000, "unidad": "ha", "fuente": "FAO · Evaluación de los Recursos Forestales Mundiales 2025 (promedio 2015-2025)", "url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en" },
+        { "id": "co2", "texto": "CO₂ emitido por combustibles fósiles este año", "tipo": "anio", "anual": 42200000000, "unidad": "t", "fuente": "Global Carbon Project · Global Carbon Budget 2025", "url": "https://www.csiro.au/en/news/All/News/2025/November/Global-Carbon-Budget-2025" }
+      ]
+    },
+    {
+      "id": "alimentos", "titulo": "Alimentación", "color": "#DB641C",
+      "items": [
+        { "id": "hambre", "texto": "Personas subalimentadas", "tipo": "fijo", "valor": 673000000, "unidad": "personas", "fuente": "FAO y otros · SOFI 2025 (dato 2024)", "url": "https://sdg.iisd.org/news/sofi-2025-reveals-regional-disparities-in-fighting-hunger/" },
+        { "id": "inseg", "texto": "Personas con inseguridad alimentaria moderada o grave", "tipo": "fijo", "valor": 2300000000, "unidad": "personas", "fuente": "FAO y otros · SOFI 2025 (dato 2024)", "url": "https://sdg.iisd.org/news/sofi-2025-reveals-regional-disparities-in-fighting-hunger/" }
+      ]
+    },
+    {
+      "id": "agua", "titulo": "Agua", "color": "#2a7ab8",
+      "items": [
+        { "id": "sinagua", "texto": "Personas sin agua potable gestionada de forma segura", "tipo": "fijo", "valor": 2100000000, "unidad": "personas", "fuente": "OMS y UNICEF · JMP 2025 (dato 2024)", "url": "https://washdata.org/" },
+        { "id": "extr", "texto": "Agua dulce extraída este año", "tipo": "anio", "anual": 4000000000000000, "unidad": "L", "fuente": "FAO · AQUASTAT (≈ 4 000 km³ al año, aproximado)", "url": "https://www.fao.org/aquastat/" }
+      ]
+    },
+    {
+      "id": "energia", "titulo": "Energía", "color": "#F9A900",
+      "items": [
+        { "id": "ener", "texto": "Energía primaria consumida este año", "tipo": "anio", "anual": 166700000000, "unidad": "MWh", "fuente": "Energy Institute · Statistical Review of World Energy 2026 (más de 600 EJ en 2025)", "url": "https://dieselnet.com/news/2026/07energyreview.php" },
+        { "id": "petro", "texto": "Barriles de petróleo consumidos este año", "tipo": "anio", "anual": 37620000000, "unidad": "barriles", "fuente": "Energy Institute · Statistical Review of World Energy 2026 (≈ 103 millones de barriles diarios en 2025)", "url": "https://dieselnet.com/news/2026/07energyreview.php" }
+      ]
+    },
+    {
+      "id": "salud", "titulo": "Salud", "color": "#9B2423",
+      "items": [
+        { "id": "m5", "texto": "Muertes de menores de 5 años este año", "tipo": "anio", "anual": 4800000, "unidad": "personas", "fuente": "UN IGME · Levels and Trends in Child Mortality 2024 (dato 2023)", "url": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/" },
+        { "id": "mmat", "texto": "Muertes maternas este año", "tipo": "anio", "anual": 260000, "unidad": "personas", "fuente": "OMS, UNICEF, UNFPA · Tendencias de la mortalidad materna 2000-2023", "url": "https://www.unfpa.org/publications/trends-maternal-mortality-2000-2023" },
+        { "id": "mal", "texto": "Muertes por malaria este año", "tipo": "anio", "anual": 610000, "unidad": "personas", "fuente": "OMS · Informe Mundial sobre el Paludismo 2025 (dato 2024)", "url": "https://www.who.int/teams/global-malaria-programme/reports/world-malaria-report-2025" },
+        { "id": "malc", "texto": "Casos de malaria este año", "tipo": "anio", "anual": 282000000, "unidad": "personas", "fuente": "OMS · Informe Mundial sobre el Paludismo 2025 (dato 2024)", "url": "https://www.who.int/teams/global-malaria-programme/reports/world-malaria-report-2025" },
+        { "id": "tb", "texto": "Muertes por tuberculosis este año", "tipo": "anio", "anual": 1230000, "unidad": "personas", "fuente": "OMS · Informe Mundial sobre la Tuberculosis 2025 (dato 2024)", "url": "https://www.who.int/teams/global-programme-on-tuberculosis-and-lung-health/tb-reports/global-tuberculosis-report-2025/tb-disease-burden/1-2-tb-mortality" },
+        { "id": "sida", "texto": "Muertes relacionadas con el sida este año", "tipo": "anio", "anual": 570000, "unidad": "personas", "fuente": "ONUSIDA · Hoja informativa mundial 2026 (dato 2025)", "url": "https://www.unaids.org/sites/default/files/2026-07/2026_UNAIDS_Global_HIV_Factsheet_en.pdf" },
+        { "id": "vih", "texto": "Nuevas infecciones por VIH este año", "tipo": "anio", "anual": 1200000, "unidad": "personas", "fuente": "ONUSIDA · Hoja informativa mundial 2026 (dato 2025)", "url": "https://www.unaids.org/sites/default/files/2026-07/2026_UNAIDS_Global_HIV_Factsheet_en.pdf" },
+        { "id": "trans", "texto": "Muertes en accidentes de tránsito este año", "tipo": "anio", "anual": 1160000, "unidad": "personas", "fuente": "OMS · Informe sobre seguridad vial (dato 2025)", "url": "https://www.codot.gov/safety/shift-into-safe-news/2026/august/road-deaths-fall-by-21-globally-but-stronger-action-is-needed-to-save-lives-world-health-organization" }
+      ]
+    }
+  ]
+}

@@ -30,7 +30,7 @@ const PERFILES = { iPhone: devices["iPhone 13"], computadora: { viewport: { widt
 
 // 2) Cada página abre sin errores (como iPhone y como computadora)
 for (const [perfil, disp] of Object.entries(PERFILES)) {
-  for (const ruta of ["/", "/terminal.html", "/admin.html", "/verificar.html", "/beta/"]) {
+  for (const ruta of ["/", "/terminal.html", "/admin.html", "/verificar.html"]) {
     await caso(`Abre ${ruta} · ${perfil}`, async () => {
       const c = await b.newContext({ ...disp }), p = await c.newPage(), err = [];
       p.on("pageerror", (e) => err.push("JS: " + e.message));
@@ -88,8 +88,8 @@ await caso("Terminal · disparo descartado queda registrado (#135)", async () =>
 await caso("Terminal · sin errores de JavaScript", async () => { if (errT.length) throw new Error(errT.slice(0, 4).join(" | ")); return "sin errores"; });
 await ctx.close();
 
-// 5) Datos de la Beta legibles
-for (const f of ["pendientes.json", "mundo.json", "version.json"]) {
+// 5) Datos públicos de la Beta legibles (lo privado vive en el repositorio privado)
+for (const f of ["mundo.json", "idiomas.json"]) {
   await caso(`Beta · datos/${f}`, async () => { const r = await fetch(`${SITIO}/beta/datos/${f}?t=${Date.now()}`); JSON.parse(await r.text()); if (!r.ok) throw new Error("HTTP " + r.status); return "válido"; });
 }
 await b.close();
@@ -102,6 +102,7 @@ fs.mkdirSync("pruebas-reales", { recursive: true });
 const txt = JSON.stringify(rep, null, 1) + "\n";
 fs.writeFileSync("pruebas-reales/ultimo.json", txt);
 fs.writeFileSync(`pruebas-reales/${rep.fecha.slice(0, 19).replace(/[:T]/g, "-")}.json`, txt);
+fs.mkdirSync("beta/datos", { recursive: true });
 fs.writeFileSync("beta/datos/pruebas-reales.json", txt);
 console.log(`\n${rep.correctas}/${rep.total} correctas · ${rep.fallas} fallas`);
 process.exit(fallas.length ? 1 : 0);

@@ -1,0 +1,1444 @@
+{
+ "codigo": "el",
+ "bcp47": "el-GR",
+ "nombre": "Griego moderno",
+ "nombre_nativo": "Ελληνικά",
+ "escritura": "Griego",
+ "norma": "Ortografía: sistema monotónico oficial (Decreto Presidencial 297/1982), norma de la gramática escolar de Triantafyllidis. Lectura: romanización ELOT 743 / ISO 843 (transliteración, sin acentos): β=v, γ=g, η=i, θ=th, υ=y, χ=ch, ψ=ps, ω=o, ου=ou, αυ/ευ=av/ev ante sonora y af/ef ante sorda, μπ=b al inicio de palabra y mp en medio, ντ=d al inicio y nt en medio. El signo de interrogación griego es «;».",
+ "palabras": [
+  {
+   "n": 1,
+   "t": "βοήθεια",
+   "r": "voitheia",
+   "p": "vo-I-zi-a"
+  },
+  {
+   "n": 2,
+   "t": "Βοήθεια!",
+   "r": "Voitheia!",
+   "p": "vo-I-zi-a"
+  },
+  {
+   "n": 3,
+   "t": "κίνδυνος",
+   "r": "kindynos",
+   "p": "KIN-di-nos"
+  },
+  {
+   "n": 4,
+   "t": "έκτακτη ανάγκη",
+   "r": "ektakti anagki",
+   "p": "EK-tak-ti a-NAN-gui"
+  },
+  {
+   "n": 5,
+   "t": "φωτιά",
+   "r": "fotia",
+   "p": "fo-TIA"
+  },
+  {
+   "n": 6,
+   "t": "σεισμός",
+   "r": "seismos",
+   "p": "sis-MOS"
+  },
+  {
+   "n": 7,
+   "t": "πλημμύρα",
+   "r": "plimmyra",
+   "p": "pli-MI-ra"
+  },
+  {
+   "n": 8,
+   "t": "γιατρός",
+   "r": "giatros",
+   "p": "ya-TROS"
+  },
+  {
+   "n": 9,
+   "t": "νοσοκομείο",
+   "r": "nosokomeio",
+   "p": "no-so-ko-MI-o"
+  },
+  {
+   "n": 10,
+   "t": "αστυνομία",
+   "r": "astynomia",
+   "p": "as-ti-no-MI-a"
+  },
+  {
+   "n": 11,
+   "t": "πυροσβεστική",
+   "r": "pyrosvestiki",
+   "p": "pi-ros-ves-ti-KI"
+  },
+  {
+   "n": 12,
+   "t": "ασθενοφόρο",
+   "r": "asthenoforo",
+   "p": "as-ze-no-FO-ro"
+  },
+  {
+   "n": 13,
+   "t": "τραυματισμένος",
+   "r": "travmatismenos",
+   "p": "trav-ma-tis-ME-nos"
+  },
+  {
+   "n": 14,
+   "t": "πόνος",
+   "r": "ponos",
+   "p": "PO-nos"
+  },
+  {
+   "n": 15,
+   "t": "Καλέστε το 911!",
+   "r": "Kaléste to 911!",
+   "p": "ka-LES-te to e-NE-a E-na E-na"
+  },
+  {
+   "n": 16,
+   "t": "Είμαι καλά",
+   "r": "Eimai kala",
+   "p": "I-me ka-LA"
+  },
+  {
+   "n": 17,
+   "t": "Δεν μπορώ να αναπνεύσω",
+   "r": "Den boro na anapnefso",
+   "p": "den bo-RO na a-nap-NEF-so"
+  },
+  {
+   "n": 18,
+   "t": "έξοδος κινδύνου",
+   "r": "exodos kindynou",
+   "p": "E-kso-dos kin-DI-nu"
+  },
+  {
+   "n": 19,
+   "t": "εκκενώνω",
+   "r": "ekkenono",
+   "p": "e-ke-NO-no"
+  },
+  {
+   "n": 20,
+   "t": "ασφαλής",
+   "r": "asfalis",
+   "p": "as-fa-LIS"
+  },
+  {
+   "n": 21,
+   "t": "γεια σου",
+   "r": "geia sou",
+   "p": "YA su"
+  },
+  {
+   "n": 22,
+   "t": "αντίο",
+   "r": "antio",
+   "p": "an-DI-o"
+  },
+  {
+   "n": 23,
+   "t": "καλημέρα",
+   "r": "kalimera",
+   "p": "ka-li-ME-ra"
+  },
+  {
+   "n": 24,
+   "t": "καλησπέρα",
+   "r": "kalispera",
+   "p": "ka-lis-PE-ra"
+  },
+  {
+   "n": 25,
+   "t": "καληνύχτα",
+   "r": "kalinychta",
+   "p": "ka-li-NIJ-ta"
+  },
+  {
+   "n": 26,
+   "t": "παρακαλώ",
+   "r": "parakalo",
+   "p": "pa-ra-ka-LO"
+  },
+  {
+   "n": 27,
+   "t": "ευχαριστώ",
+   "r": "efcharisto",
+   "p": "ef-ja-ris-TO"
+  },
+  {
+   "n": 28,
+   "t": "παρακαλώ",
+   "r": "parakalo",
+   "p": "pa-ra-ka-LO"
+  },
+  {
+   "n": 29,
+   "t": "συγγνώμη",
+   "r": "syngnomi",
+   "p": "sig-NO-mi"
+  },
+  {
+   "n": 30,
+   "t": "ναι",
+   "r": "nai",
+   "p": "NE"
+  },
+  {
+   "n": 31,
+   "t": "όχι",
+   "r": "ochi",
+   "p": "O-ji"
+  },
+  {
+   "n": 32,
+   "t": "Τι κάνεις;",
+   "r": "Ti kaneis?",
+   "p": "ti KA-nis"
+  },
+  {
+   "n": 33,
+   "t": "καλά",
+   "r": "kala",
+   "p": "ka-LA"
+  },
+  {
+   "n": 34,
+   "t": "άσχημα",
+   "r": "aschima",
+   "p": "AS-ji-ma"
+  },
+  {
+   "n": 35,
+   "t": "Με λένε…",
+   "r": "Me lene…",
+   "p": "me LE-ne…"
+  },
+  {
+   "n": 36,
+   "t": "Χαίρω πολύ",
+   "r": "Chairo poly",
+   "p": "JE-ro po-LI"
+  },
+  {
+   "n": 37,
+   "t": "καλώς ήρθες",
+   "r": "kalos irthes",
+   "p": "ka-LOS IR-zes"
+  },
+  {
+   "n": 38,
+   "t": "τα λέμε αύριο",
+   "r": "ta leme avrio",
+   "p": "ta LE-me AV-ri-o"
+  },
+  {
+   "n": 39,
+   "t": "με συγχωρείτε",
+   "r": "me synchoreite",
+   "p": "me sin-jo-RI-te"
+  },
+  {
+   "n": 40,
+   "t": "λυπάμαι",
+   "r": "lypamai",
+   "p": "li-PA-me"
+  },
+  {
+   "n": 41,
+   "t": "Πού;",
+   "r": "Pou?",
+   "p": "PU"
+  },
+  {
+   "n": 42,
+   "t": "Τι;",
+   "r": "Ti?",
+   "p": "TI"
+  },
+  {
+   "n": 43,
+   "t": "Ποιος;",
+   "r": "Poios?",
+   "p": "PIOS"
+  },
+  {
+   "n": 44,
+   "t": "Πότε;",
+   "r": "Pote?",
+   "p": "PO-te"
+  },
+  {
+   "n": 45,
+   "t": "Πώς;",
+   "r": "Pos?",
+   "p": "POS"
+  },
+  {
+   "n": 46,
+   "t": "Γιατί;",
+   "r": "Giati?",
+   "p": "ya-TI"
+  },
+  {
+   "n": 47,
+   "t": "Πόσο κάνει;",
+   "r": "Poso kanei?",
+   "p": "PO-so KA-ni"
+  },
+  {
+   "n": 48,
+   "t": "Πού είναι η τουαλέτα;",
+   "r": "Pou einai i toualeta?",
+   "p": "pu I-ne i tu-a-LE-ta"
+  },
+  {
+   "n": 49,
+   "t": "Μιλάς ισπανικά;",
+   "r": "Milas ispanika?",
+   "p": "mi-LAS is-pa-ni-KA"
+  },
+  {
+   "n": 50,
+   "t": "Δεν καταλαβαίνω",
+   "r": "Den katalavaino",
+   "p": "den ka-ta-la-VE-no"
+  },
+  {
+   "n": 51,
+   "t": "μηδέν",
+   "r": "miden",
+   "p": "mi-DEN"
+  },
+  {
+   "n": 52,
+   "t": "ένα",
+   "r": "ena",
+   "p": "E-na"
+  },
+  {
+   "n": 53,
+   "t": "δύο",
+   "r": "dyo",
+   "p": "DI-o"
+  },
+  {
+   "n": 54,
+   "t": "τρία",
+   "r": "tria",
+   "p": "TRI-a"
+  },
+  {
+   "n": 55,
+   "t": "τέσσερα",
+   "r": "tessera",
+   "p": "TE-se-ra"
+  },
+  {
+   "n": 56,
+   "t": "πέντε",
+   "r": "pente",
+   "p": "PEN-de"
+  },
+  {
+   "n": 57,
+   "t": "έξι",
+   "r": "exi",
+   "p": "E-ksi"
+  },
+  {
+   "n": 58,
+   "t": "επτά",
+   "r": "epta",
+   "p": "ep-TA"
+  },
+  {
+   "n": 59,
+   "t": "οκτώ",
+   "r": "okto",
+   "p": "ok-TO"
+  },
+  {
+   "n": 60,
+   "t": "εννέα",
+   "r": "ennea",
+   "p": "e-NE-a"
+  },
+  {
+   "n": 61,
+   "t": "δέκα",
+   "r": "deka",
+   "p": "DE-ka"
+  },
+  {
+   "n": 62,
+   "t": "εκατό",
+   "r": "ekato",
+   "p": "e-ka-TO"
+  },
+  {
+   "n": 63,
+   "t": "χίλια",
+   "r": "chilia",
+   "p": "JI-lia"
+  },
+  {
+   "n": 64,
+   "t": "εγώ",
+   "r": "ego",
+   "p": "e-GO"
+  },
+  {
+   "n": 65,
+   "t": "εσύ",
+   "r": "esy",
+   "p": "e-SI"
+  },
+  {
+   "n": 66,
+   "t": "αυτός",
+   "r": "aftos",
+   "p": "af-TOS"
+  },
+  {
+   "n": 67,
+   "t": "αυτή",
+   "r": "afti",
+   "p": "af-TI"
+  },
+  {
+   "n": 68,
+   "t": "εμείς",
+   "r": "emeis",
+   "p": "e-MIS"
+  },
+  {
+   "n": 69,
+   "t": "αυτοί",
+   "r": "aftoi",
+   "p": "af-TI"
+  },
+  {
+   "n": 70,
+   "t": "άνθρωπος",
+   "r": "anthropos",
+   "p": "AN-zro-pos"
+  },
+  {
+   "n": 71,
+   "t": "άντρας",
+   "r": "antras",
+   "p": "AN-dras"
+  },
+  {
+   "n": 72,
+   "t": "γυναίκα",
+   "r": "gynaika",
+   "p": "yi-NE-ka"
+  },
+  {
+   "n": 73,
+   "t": "αγόρι",
+   "r": "agori",
+   "p": "a-GO-ri"
+  },
+  {
+   "n": 74,
+   "t": "κορίτσι",
+   "r": "koritsi",
+   "p": "ko-RI-tsi"
+  },
+  {
+   "n": 75,
+   "t": "μητέρα",
+   "r": "mitera",
+   "p": "mi-TE-ra"
+  },
+  {
+   "n": 76,
+   "t": "πατέρας",
+   "r": "pateras",
+   "p": "pa-TE-ras"
+  },
+  {
+   "n": 77,
+   "t": "γιος",
+   "r": "gios",
+   "p": "YOS"
+  },
+  {
+   "n": 78,
+   "t": "αδελφός",
+   "r": "adelfos",
+   "p": "a-del-FOS"
+  },
+  {
+   "n": 79,
+   "t": "φίλος",
+   "r": "filos",
+   "p": "FI-los"
+  },
+  {
+   "n": 80,
+   "t": "οικογένεια",
+   "r": "oikogeneia",
+   "p": "i-ko-YE-ni-a"
+  },
+  {
+   "n": 81,
+   "t": "είμαι",
+   "r": "eimai",
+   "p": "I-me"
+  },
+  {
+   "n": 82,
+   "t": "βρίσκομαι",
+   "r": "vriskomai",
+   "p": "VRIS-ko-me"
+  },
+  {
+   "n": 83,
+   "t": "έχω",
+   "r": "echo",
+   "p": "E-jo"
+  },
+  {
+   "n": 84,
+   "t": "πηγαίνω",
+   "r": "pigaino",
+   "p": "pi-YE-no"
+  },
+  {
+   "n": 85,
+   "t": "έρχομαι",
+   "r": "erchomai",
+   "p": "ER-jo-me"
+  },
+  {
+   "n": 86,
+   "t": "κάνω",
+   "r": "kano",
+   "p": "KA-no"
+  },
+  {
+   "n": 87,
+   "t": "θέλω",
+   "r": "thelo",
+   "p": "ZE-lo"
+  },
+  {
+   "n": 88,
+   "t": "μπορώ",
+   "r": "boro",
+   "p": "bo-RO"
+  },
+  {
+   "n": 89,
+   "t": "τρώω",
+   "r": "troo",
+   "p": "TRO-o"
+  },
+  {
+   "n": 90,
+   "t": "πίνω",
+   "r": "pino",
+   "p": "PI-no"
+  },
+  {
+   "n": 91,
+   "t": "κοιμάμαι",
+   "r": "koimamai",
+   "p": "ki-MA-me"
+  },
+  {
+   "n": 92,
+   "t": "μιλάω",
+   "r": "milao",
+   "p": "mi-LA-o"
+  },
+  {
+   "n": 93,
+   "t": "ακούω",
+   "r": "akouo",
+   "p": "a-KU-o"
+  },
+  {
+   "n": 94,
+   "t": "βλέπω",
+   "r": "vlepo",
+   "p": "VLE-po"
+  },
+  {
+   "n": 95,
+   "t": "διαβάζω",
+   "r": "diavazo",
+   "p": "dia-VA-zo"
+  },
+  {
+   "n": 96,
+   "t": "γράφω",
+   "r": "grafo",
+   "p": "GRA-fo"
+  },
+  {
+   "n": 97,
+   "t": "μαθαίνω",
+   "r": "mathaino",
+   "p": "ma-ZE-no"
+  },
+  {
+   "n": 98,
+   "t": "δουλεύω",
+   "r": "doulevo",
+   "p": "du-LE-vo"
+  },
+  {
+   "n": 99,
+   "t": "βοηθάω",
+   "r": "voithao",
+   "p": "vo-i-ZA-o"
+  },
+  {
+   "n": 100,
+   "t": "ξέρω",
+   "r": "xero",
+   "p": "KSE-ro"
+  },
+  {
+   "n": 101,
+   "t": "σπίτι",
+   "r": "spiti",
+   "p": "SPI-ti"
+  },
+  {
+   "n": 102,
+   "t": "σχολείο",
+   "r": "scholeio",
+   "p": "sjo-LI-o"
+  },
+  {
+   "n": 103,
+   "t": "δρόμος",
+   "r": "dromos",
+   "p": "DRO-mos"
+  },
+  {
+   "n": 104,
+   "t": "πόλη",
+   "r": "poli",
+   "p": "PO-li"
+  },
+  {
+   "n": 105,
+   "t": "χώρα",
+   "r": "chora",
+   "p": "JO-ra"
+  },
+  {
+   "n": 106,
+   "t": "θάλασσα",
+   "r": "thalassa",
+   "p": "ZA-la-sa"
+  },
+  {
+   "n": 107,
+   "t": "λιμάνι",
+   "r": "limani",
+   "p": "li-MA-ni"
+  },
+  {
+   "n": 108,
+   "t": "κατάστημα",
+   "r": "katastima",
+   "p": "ka-TAS-ti-ma"
+  },
+  {
+   "n": 109,
+   "t": "φαρμακείο",
+   "r": "farmakeio",
+   "p": "far-ma-KI-o"
+  },
+  {
+   "n": 110,
+   "t": "τουαλέτα",
+   "r": "toualeta",
+   "p": "tu-a-LE-ta"
+  },
+  {
+   "n": 111,
+   "t": "σήμερα",
+   "r": "simera",
+   "p": "SI-me-ra"
+  },
+  {
+   "n": 112,
+   "t": "αύριο",
+   "r": "avrio",
+   "p": "AV-ri-o"
+  },
+  {
+   "n": 113,
+   "t": "χθες",
+   "r": "chthes",
+   "p": "JZES"
+  },
+  {
+   "n": 114,
+   "t": "τώρα",
+   "r": "tora",
+   "p": "TO-ra"
+  },
+  {
+   "n": 115,
+   "t": "μέρα",
+   "r": "mera",
+   "p": "ME-ra"
+  },
+  {
+   "n": 116,
+   "t": "νύχτα",
+   "r": "nychta",
+   "p": "NIJ-ta"
+  },
+  {
+   "n": 117,
+   "t": "εβδομάδα",
+   "r": "evdomada",
+   "p": "ev-do-MA-da"
+  },
+  {
+   "n": 118,
+   "t": "μήνας",
+   "r": "minas",
+   "p": "MI-nas"
+  },
+  {
+   "n": 119,
+   "t": "χρόνος",
+   "r": "chronos",
+   "p": "JRO-nos"
+  },
+  {
+   "n": 120,
+   "t": "ώρα",
+   "r": "ora",
+   "p": "O-ra"
+  },
+  {
+   "n": 121,
+   "t": "νερό",
+   "r": "nero",
+   "p": "ne-RO"
+  },
+  {
+   "n": 122,
+   "t": "φαγητό",
+   "r": "fagito",
+   "p": "fa-yi-TO"
+  },
+  {
+   "n": 123,
+   "t": "ψωμί",
+   "r": "psomi",
+   "p": "pso-MI"
+  },
+  {
+   "n": 124,
+   "t": "γάλα",
+   "r": "gala",
+   "p": "GA-la"
+  },
+  {
+   "n": 125,
+   "t": "φρούτα",
+   "r": "frouta",
+   "p": "FRU-ta"
+  },
+  {
+   "n": 126,
+   "t": "καφές",
+   "r": "kafes",
+   "p": "ka-FES"
+  },
+  {
+   "n": 127,
+   "t": "τσάι",
+   "r": "tsai",
+   "p": "TSA-i"
+  },
+  {
+   "n": 128,
+   "t": "αλάτι",
+   "r": "alati",
+   "p": "a-LA-ti"
+  },
+  {
+   "n": 129,
+   "t": "κεφάλι",
+   "r": "kefali",
+   "p": "ke-FA-li"
+  },
+  {
+   "n": 130,
+   "t": "χέρι",
+   "r": "cheri",
+   "p": "JE-ri"
+  },
+  {
+   "n": 131,
+   "t": "πόδι",
+   "r": "podi",
+   "p": "PO-di"
+  },
+  {
+   "n": 132,
+   "t": "μάτι",
+   "r": "mati",
+   "p": "MA-ti"
+  },
+  {
+   "n": 133,
+   "t": "στόμα",
+   "r": "stoma",
+   "p": "STO-ma"
+  },
+  {
+   "n": 134,
+   "t": "καρδιά",
+   "r": "kardia",
+   "p": "kar-DIA"
+  },
+  {
+   "n": 135,
+   "t": "φάρμακο",
+   "r": "farmako",
+   "p": "FAR-ma-ko"
+  },
+  {
+   "n": 136,
+   "t": "άρρωστος",
+   "r": "arrostos",
+   "p": "A-ros-tos"
+  },
+  {
+   "n": 137,
+   "t": "κόκκινος",
+   "r": "kokkinos",
+   "p": "KO-ki-nos"
+  },
+  {
+   "n": 138,
+   "t": "μπλε",
+   "r": "ble",
+   "p": "BLE"
+  },
+  {
+   "n": 139,
+   "t": "πράσινος",
+   "r": "prasinos",
+   "p": "PRA-si-nos"
+  },
+  {
+   "n": 140,
+   "t": "κίτρινος",
+   "r": "kitrinos",
+   "p": "KI-tri-nos"
+  },
+  {
+   "n": 141,
+   "t": "μαύρος",
+   "r": "mavros",
+   "p": "MAV-ros"
+  },
+  {
+   "n": 142,
+   "t": "άσπρος",
+   "r": "aspros",
+   "p": "AS-pros"
+  },
+  {
+   "n": 143,
+   "t": "μεγάλος",
+   "r": "megalos",
+   "p": "me-GA-los"
+  },
+  {
+   "n": 144,
+   "t": "μικρός",
+   "r": "mikros",
+   "p": "mi-KROS"
+  },
+  {
+   "n": 145,
+   "t": "καλός",
+   "r": "kalos",
+   "p": "ka-LOS"
+  },
+  {
+   "n": 146,
+   "t": "κακός",
+   "r": "kakos",
+   "p": "ka-KOS"
+  },
+  {
+   "n": 147,
+   "t": "καινούργιος",
+   "r": "kainourgios",
+   "p": "ke-NUR-yos"
+  },
+  {
+   "n": 148,
+   "t": "ζεστός",
+   "r": "zestos",
+   "p": "zes-TOS"
+  },
+  {
+   "n": 149,
+   "t": "κρύος",
+   "r": "kryos",
+   "p": "KRI-os"
+  },
+  {
+   "n": 150,
+   "t": "ανοιχτός",
+   "r": "anoichtos",
+   "p": "a-nij-TOS"
+  },
+  {
+   "n": 151,
+   "t": "κλειστός",
+   "r": "kleistos",
+   "p": "klis-TOS"
+  },
+  {
+   "n": 152,
+   "t": "εδώ",
+   "r": "edo",
+   "p": "e-DO"
+  },
+  {
+   "n": 153,
+   "t": "εκεί",
+   "r": "ekei",
+   "p": "e-KI"
+  },
+  {
+   "n": 154,
+   "t": "πολύ",
+   "r": "poly",
+   "p": "po-LI"
+  },
+  {
+   "n": 155,
+   "t": "λίγο",
+   "r": "ligo",
+   "p": "LI-go"
+  },
+  {
+   "n": 156,
+   "t": "όλα",
+   "r": "ola",
+   "p": "O-la"
+  },
+  {
+   "n": 157,
+   "t": "τίποτα",
+   "r": "tipota",
+   "p": "TI-po-ta"
+  },
+  {
+   "n": 158,
+   "t": "αριστερά",
+   "r": "aristera",
+   "p": "a-ris-te-RA"
+  },
+  {
+   "n": 159,
+   "t": "δεξιά",
+   "r": "dexia",
+   "p": "dek-SIA"
+  }
+ ],
+ "bases": {
+  "alfabeto": [
+   "Son 24 letras; varias parecen latinas pero suenan distinto: η, ι, υ, ει, οι y υι se leen todas \"i\"; ο y ω se leen \"o\"; αι se lee \"e\"; ου se lee \"u\".",
+   "θ suena como la \"z\" de España (zapato) y δ como la \"d\" suave de \"nada\"; ζ es una \"s\" sonora, como zumbido de abeja.",
+   "χ suena como la \"j\" española (χέρι = JE-ri); γ ante e, i suena \"y\" (γιατρός = ya-TROS) y ante a, o, u es una \"g\" suave sin cerrar.",
+   "β se lee \"v\" con los dientes sobre el labio (no \"b\"); el sonido \"b\" se escribe μπ, el \"d\" fuerte ντ y el \"g\" fuerte γκ (μπλε = ble).",
+   "αυ y ευ se leen \"av, ev\" ante vocal o consonante sonora y \"af, ef\" ante sorda (αυτός = af-TOS, ευχαριστώ = ef-ja-ris-TO).",
+   "Toda palabra de dos o más sílabas lleva tilde (τόνος) en la sílaba tónica; la sigma final se escribe ς y el signo de pregunta es «;»."
+  ],
+  "verbos": [
+   {
+    "inf": "είμαι",
+    "r": "eimai",
+    "es": "ser / estar",
+    "formas": [
+     [
+      "yo",
+      "είμαι (eimai)",
+      "I-me"
+     ],
+     [
+      "tú",
+      "είσαι (eisai)",
+      "I-se"
+     ],
+     [
+      "él/ella",
+      "είναι (einai)",
+      "I-ne"
+     ],
+     [
+      "nosotros",
+      "είμαστε (eimaste)",
+      "I-mas-te"
+     ],
+     [
+      "ustedes/vosotros",
+      "είστε (eiste)",
+      "IS-te"
+     ],
+     [
+      "ellos/ellas",
+      "είναι (einai)",
+      "I-ne"
+     ]
+    ]
+   },
+   {
+    "inf": "βρίσκομαι",
+    "r": "vriskomai",
+    "es": "encontrarse / estar en un lugar",
+    "formas": [
+     [
+      "yo",
+      "βρίσκομαι (vriskomai)",
+      "VRIS-ko-me"
+     ],
+     [
+      "tú",
+      "βρίσκεσαι (vriskesai)",
+      "VRIS-ke-se"
+     ],
+     [
+      "él/ella",
+      "βρίσκεται (vrisketai)",
+      "VRIS-ke-te"
+     ],
+     [
+      "nosotros",
+      "βρισκόμαστε (vriskomaste)",
+      "vris-KO-mas-te"
+     ],
+     [
+      "ustedes/vosotros",
+      "βρίσκεστε (vriskeste)",
+      "VRIS-kes-te"
+     ],
+     [
+      "ellos/ellas",
+      "βρίσκονται (vriskontai)",
+      "VRIS-kon-de"
+     ]
+    ]
+   },
+   {
+    "inf": "έχω",
+    "r": "echo",
+    "es": "tener",
+    "formas": [
+     [
+      "yo",
+      "έχω (echo)",
+      "E-jo"
+     ],
+     [
+      "tú",
+      "έχεις (echeis)",
+      "E-jis"
+     ],
+     [
+      "él/ella",
+      "έχει (echei)",
+      "E-ji"
+     ],
+     [
+      "nosotros",
+      "έχουμε (echoume)",
+      "E-ju-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "έχετε (echete)",
+      "E-je-te"
+     ],
+     [
+      "ellos/ellas",
+      "έχουν (echoun)",
+      "E-jun"
+     ]
+    ]
+   },
+   {
+    "inf": "πηγαίνω",
+    "r": "pigaino",
+    "es": "ir",
+    "formas": [
+     [
+      "yo",
+      "πηγαίνω (pigaino)",
+      "pi-YE-no"
+     ],
+     [
+      "tú",
+      "πηγαίνεις (pigaineis)",
+      "pi-YE-nis"
+     ],
+     [
+      "él/ella",
+      "πηγαίνει (pigainei)",
+      "pi-YE-ni"
+     ],
+     [
+      "nosotros",
+      "πηγαίνουμε (pigainoume)",
+      "pi-YE-nu-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "πηγαίνετε (pigainete)",
+      "pi-YE-ne-te"
+     ],
+     [
+      "ellos/ellas",
+      "πηγαίνουν (pigainoun)",
+      "pi-YE-nun"
+     ]
+    ]
+   },
+   {
+    "inf": "κάνω",
+    "r": "kano",
+    "es": "hacer",
+    "formas": [
+     [
+      "yo",
+      "κάνω (kano)",
+      "KA-no"
+     ],
+     [
+      "tú",
+      "κάνεις (kaneis)",
+      "KA-nis"
+     ],
+     [
+      "él/ella",
+      "κάνει (kanei)",
+      "KA-ni"
+     ],
+     [
+      "nosotros",
+      "κάνουμε (kanoume)",
+      "KA-nu-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "κάνετε (kanete)",
+      "KA-ne-te"
+     ],
+     [
+      "ellos/ellas",
+      "κάνουν (kanoun)",
+      "KA-nun"
+     ]
+    ]
+   },
+   {
+    "inf": "θέλω",
+    "r": "thelo",
+    "es": "querer",
+    "formas": [
+     [
+      "yo",
+      "θέλω (thelo)",
+      "ZE-lo"
+     ],
+     [
+      "tú",
+      "θέλεις (theleis)",
+      "ZE-lis"
+     ],
+     [
+      "él/ella",
+      "θέλει (thelei)",
+      "ZE-li"
+     ],
+     [
+      "nosotros",
+      "θέλουμε (theloume)",
+      "ZE-lu-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "θέλετε (thelete)",
+      "ZE-le-te"
+     ],
+     [
+      "ellos/ellas",
+      "θέλουν (theloun)",
+      "ZE-lun"
+     ]
+    ]
+   },
+   {
+    "inf": "μπορώ",
+    "r": "boro",
+    "es": "poder",
+    "formas": [
+     [
+      "yo",
+      "μπορώ (boro)",
+      "bo-RO"
+     ],
+     [
+      "tú",
+      "μπορείς (boreis)",
+      "bo-RIS"
+     ],
+     [
+      "él/ella",
+      "μπορεί (borei)",
+      "bo-RI"
+     ],
+     [
+      "nosotros",
+      "μπορούμε (boroume)",
+      "bo-RU-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "μπορείτε (boreite)",
+      "bo-RI-te"
+     ],
+     [
+      "ellos/ellas",
+      "μπορούν (boroun)",
+      "bo-RUN"
+     ]
+    ]
+   },
+   {
+    "inf": "ξέρω",
+    "r": "xero",
+    "es": "saber",
+    "formas": [
+     [
+      "yo",
+      "ξέρω (xero)",
+      "KSE-ro"
+     ],
+     [
+      "tú",
+      "ξέρεις (xereis)",
+      "KSE-ris"
+     ],
+     [
+      "él/ella",
+      "ξέρει (xerei)",
+      "KSE-ri"
+     ],
+     [
+      "nosotros",
+      "ξέρουμε (xeroume)",
+      "KSE-ru-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "ξέρετε (xerete)",
+      "KSE-re-te"
+     ],
+     [
+      "ellos/ellas",
+      "ξέρουν (xeroun)",
+      "KSE-run"
+     ]
+    ]
+   },
+   {
+    "inf": "μιλάω",
+    "r": "milao",
+    "es": "hablar",
+    "formas": [
+     [
+      "yo",
+      "μιλάω (milao)",
+      "mi-LA-o"
+     ],
+     [
+      "tú",
+      "μιλάς (milas)",
+      "mi-LAS"
+     ],
+     [
+      "él/ella",
+      "μιλάει (milaei)",
+      "mi-LA-i"
+     ],
+     [
+      "nosotros",
+      "μιλάμε (milame)",
+      "mi-LA-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "μιλάτε (milate)",
+      "mi-LA-te"
+     ],
+     [
+      "ellos/ellas",
+      "μιλάνε (milane)",
+      "mi-LA-ne"
+     ]
+    ]
+   },
+   {
+    "inf": "τρώω",
+    "r": "troo",
+    "es": "comer",
+    "formas": [
+     [
+      "yo",
+      "τρώω (troo)",
+      "TRO-o"
+     ],
+     [
+      "tú",
+      "τρως (tros)",
+      "TROS"
+     ],
+     [
+      "él/ella",
+      "τρώει (troei)",
+      "TRO-i"
+     ],
+     [
+      "nosotros",
+      "τρώμε (trome)",
+      "TRO-me"
+     ],
+     [
+      "ustedes/vosotros",
+      "τρώτε (trote)",
+      "TRO-te"
+     ],
+     [
+      "ellos/ellas",
+      "τρώνε (trone)",
+      "TRO-ne"
+     ]
+    ]
+   }
+  ],
+  "ruta": [
+   {
+    "nivel": "A1",
+    "titulo": "Alfabeto, artículos y presente",
+    "puntos": [
+     "Aprende las 24 letras y los dígrafos (ου, αι, ει, μπ, ντ, γκ); con ellos el griego se lee casi siempre como se escribe.",
+     "Tres géneros con su artículo: ο (masculino), η (femenino), το (neutro): ο πατέρας, η μητέρα, το παιδί (el niño).",
+     "El pronombre sujeto se omite porque la terminación del verbo indica la persona: θέλω νερό = quiero agua.",
+     "El orden habitual es Sujeto + Verbo + Objeto, pero es flexible; la pregunta solo cambia la entonación y se cierra con «;».",
+     "La negación se hace con δεν antes del verbo: δεν καταλαβαίνω = no entiendo; para mandatos y deseos se usa μην.",
+     "Se usa εσύ (tú) con amigos y εσείς (ustedes) para tratar de usted con cortesía: Τι κάνετε; = ¿Cómo está usted?"
+    ],
+    "ejemplos": [
+     [
+      "Με λένε Μαρία. Είμαι από το Μεξικό.",
+      "Me lene Maria. Eimai apo to Mexiko.",
+      "me LE-ne ma-RI-a. I-me a-PO to MEK-si-ko",
+      "Me llamo María. Soy de México."
+     ],
+     [
+      "Θέλω ένα νερό, παρακαλώ.",
+      "Thelo ena nero, parakalo.",
+      "ZE-lo E-na ne-RO, pa-ra-ka-LO",
+      "Quiero un agua, por favor."
+     ],
+     [
+      "Δεν μιλάω ελληνικά.",
+      "Den milao ellinika.",
+      "den mi-LA-o e-li-ni-KA",
+      "No hablo griego."
+     ]
+    ]
+   },
+   {
+    "nivel": "A2",
+    "titulo": "Casos, plural y pasado",
+    "puntos": [
+     "Los sustantivos cambian según su función (caso): nominativo (sujeto), acusativo (objeto y tras preposiciones), genitivo (posesión): ο φίλος → τον φίλο → του φίλου.",
+     "Plurales frecuentes: -ος → -οι (φίλοι), -α/-η → -ες (μητέρες), -ο → -α (φάρμακα), -ι → -ια (παιδιά).",
+     "Los posesivos van después del sustantivo: το σπίτι μου (mi casa), η μητέρα σου (tu madre).",
+     "El aoristo (pasado simple) suele añadir -σ- y mover el acento hacia atrás: γράφω → έγραψα (escribí), δουλεύω → δούλεψα (trabajé).",
+     "Muchos verbos tienen dos raíces: imperfectiva (acción en curso) y perfectiva (acción completa); aprende ambas: τρώω / φάω, πηγαίνω / πάω.",
+     "Las preposiciones σε (en, a) se funden con el artículo: στο σπίτι (en la casa), στη θάλασσα (en el mar)."
+    ],
+    "ejemplos": [
+     [
+      "Χθες πήγα στο λιμάνι.",
+      "Chthes piga sto limani.",
+      "JZES PI-ga sto li-MA-ni",
+      "Ayer fui al puerto."
+     ],
+     [
+      "Αυτό είναι το σπίτι μου.",
+      "Afto einai to spiti mou.",
+      "af-TO I-ne to SPI-ti mu",
+      "Esta es mi casa."
+     ],
+     [
+      "Έφαγα ψωμί και τυρί.",
+      "Efaga psomi kai tyri.",
+      "E-fa-ga pso-MI ke ti-RI",
+      "Comí pan y queso."
+     ]
+    ]
+   },
+   {
+    "nivel": "B1",
+    "titulo": "Futuro, subjuntivo y voz pasiva",
+    "puntos": [
+     "El futuro se forma con θα + verbo: θα γράφω (estaré escribiendo / escribiré habitualmente) frente a θα γράψω (escribiré una vez).",
+     "No existe infinitivo: \"quiero comer\" se dice θέλω να φάω (quiero que coma); να + verbo sustituye al infinitivo español.",
+     "Voz media-pasiva con terminaciones -ομαι: γράφεται (se escribe), κοιμάμαι (duermo), έρχομαι (vengo).",
+     "Pronombres de objeto átonos antes del verbo: τον βλέπω (lo veo), μου αρέσει (me gusta), της το έδωσα (se lo di a ella).",
+     "Pretérito perfecto con έχω + forma invariable: έχω δουλέψει (he trabajado); condicional con θα + imperfecto: θα ήθελα (querría).",
+     "Conectores para frases largas: γιατί (porque), αλλά (pero), όταν (cuando), αν (si), ενώ (mientras)."
+    ],
+    "ejemplos": [
+     [
+      "Αύριο θα πάω στη θάλασσα.",
+      "Avrio tha pao sti thalassa.",
+      "AV-ri-o za PA-o sti ZA-la-sa",
+      "Mañana iré al mar."
+     ],
+     [
+      "Θέλω να μάθω ελληνικά.",
+      "Thelo na matho ellinika.",
+      "ZE-lo na MA-zo e-li-ni-KA",
+      "Quiero aprender griego."
+     ],
+     [
+      "Αν έχω χρόνο, θα σε βοηθήσω.",
+      "An echo chrono, tha se voithiso.",
+      "an E-jo JRO-no, za se vo-i-ZI-so",
+      "Si tengo tiempo, te ayudaré."
+     ]
+    ]
+   }
+  ]
+ }
+}

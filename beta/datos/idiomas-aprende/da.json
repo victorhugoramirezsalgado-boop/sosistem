@@ -1,0 +1,1442 @@
+{
+ "codigo": "da",
+ "bcp47": "da-DK",
+ "nombre": "Danés",
+ "nombre_nativo": "Dansk",
+ "escritura": "Latino",
+ "norma": "Ortografía: Dansk Sprognævn (Retskrivningsordbogen). Lectura: ortografía estándar (ya es alfabeto latino). Número de emergencia en Dinamarca: 112.",
+ "palabras": [
+  {
+   "n": 1,
+   "t": "hjælp",
+   "r": "hjælp",
+   "p": "YELP"
+  },
+  {
+   "n": 2,
+   "t": "Hjælp!",
+   "r": "Hjælp!",
+   "p": "¡YELP!"
+  },
+  {
+   "n": 3,
+   "t": "fare",
+   "r": "fare",
+   "p": "FA-a"
+  },
+  {
+   "n": 4,
+   "t": "nødsituation",
+   "r": "nødsituation",
+   "p": "NÖZ-si-tu-a-shon"
+  },
+  {
+   "n": 5,
+   "t": "brand",
+   "r": "brand",
+   "p": "BRAN"
+  },
+  {
+   "n": 6,
+   "t": "jordskælv",
+   "r": "jordskælv",
+   "p": "YOR-skel"
+  },
+  {
+   "n": 7,
+   "t": "oversvømmelse",
+   "r": "oversvømmelse",
+   "p": "OU-er-svöm-el-se"
+  },
+  {
+   "n": 8,
+   "t": "læge",
+   "r": "læge",
+   "p": "LE-e"
+  },
+  {
+   "n": 9,
+   "t": "hospital",
+   "r": "hospital",
+   "p": "hos-pi-TAL"
+  },
+  {
+   "n": 10,
+   "t": "politi",
+   "r": "politi",
+   "p": "po-li-TI"
+  },
+  {
+   "n": 11,
+   "t": "brandvæsen",
+   "r": "brandvæsen",
+   "p": "BRAN-ve-sen"
+  },
+  {
+   "n": 12,
+   "t": "ambulance",
+   "r": "ambulance",
+   "p": "am-bu-LANG-se"
+  },
+  {
+   "n": 13,
+   "t": "såret",
+   "r": "såret",
+   "p": "SO-ret"
+  },
+  {
+   "n": 14,
+   "t": "smerte",
+   "r": "smerte",
+   "p": "SMER-de"
+  },
+  {
+   "n": 15,
+   "t": "Ring 911!",
+   "r": "Ring 911!",
+   "p": "¡RING ni-en-EN!"
+  },
+  {
+   "n": 16,
+   "t": "jeg har det godt",
+   "r": "jeg har det godt",
+   "p": "yai ha de GOT"
+  },
+  {
+   "n": 17,
+   "t": "jeg kan ikke trække vejret",
+   "r": "jeg kan ikke trække vejret",
+   "p": "yai ka E-ke TRA-ke VAI-ret"
+  },
+  {
+   "n": 18,
+   "t": "nødudgang",
+   "r": "nødudgang",
+   "p": "NÖZ-uz-gang"
+  },
+  {
+   "n": 19,
+   "t": "evakuere",
+   "r": "evakuere",
+   "p": "e-va-ku-E-re"
+  },
+  {
+   "n": 20,
+   "t": "sikker",
+   "r": "sikker",
+   "p": "SI-ker"
+  },
+  {
+   "n": 21,
+   "t": "hej",
+   "r": "hej",
+   "p": "HAI"
+  },
+  {
+   "n": 22,
+   "t": "farvel",
+   "r": "farvel",
+   "p": "far-VEL"
+  },
+  {
+   "n": 23,
+   "t": "godmorgen",
+   "r": "godmorgen",
+   "p": "go-MOR-en"
+  },
+  {
+   "n": 24,
+   "t": "god eftermiddag",
+   "r": "god eftermiddag",
+   "p": "go EF-ter-mi-de"
+  },
+  {
+   "n": 25,
+   "t": "god aften",
+   "r": "god aften",
+   "p": "go AF-ten"
+  },
+  {
+   "n": 26,
+   "t": "vær så venlig",
+   "r": "vær så venlig",
+   "p": "ver so VEN-li"
+  },
+  {
+   "n": 27,
+   "t": "tak",
+   "r": "tak",
+   "p": "TAK"
+  },
+  {
+   "n": 28,
+   "t": "selv tak",
+   "r": "selv tak",
+   "p": "sel TAK"
+  },
+  {
+   "n": 29,
+   "t": "undskyld",
+   "r": "undskyld",
+   "p": "ON-skül"
+  },
+  {
+   "n": 30,
+   "t": "ja",
+   "r": "ja",
+   "p": "YA"
+  },
+  {
+   "n": 31,
+   "t": "nej",
+   "r": "nej",
+   "p": "NAI"
+  },
+  {
+   "n": 32,
+   "t": "Hvordan har du det?",
+   "r": "Hvordan har du det?",
+   "p": "¿vor-DAN ha du DE?"
+  },
+  {
+   "n": 33,
+   "t": "godt",
+   "r": "godt",
+   "p": "GOT"
+  },
+  {
+   "n": 34,
+   "t": "dårligt",
+   "r": "dårligt",
+   "p": "DOR-lit"
+  },
+  {
+   "n": 35,
+   "t": "jeg hedder…",
+   "r": "jeg hedder…",
+   "p": "yai HE-zer…"
+  },
+  {
+   "n": 36,
+   "t": "rart at møde dig",
+   "r": "rart at møde dig",
+   "p": "RART a MÖ-e dai"
+  },
+  {
+   "n": 37,
+   "t": "velkommen",
+   "r": "velkommen",
+   "p": "vel-KOM-en"
+  },
+  {
+   "n": 38,
+   "t": "vi ses i morgen",
+   "r": "vi ses i morgen",
+   "p": "vi SES i MOR-en"
+  },
+  {
+   "n": 39,
+   "t": "undskyld mig",
+   "r": "undskyld mig",
+   "p": "ON-skül mai"
+  },
+  {
+   "n": 40,
+   "t": "det er jeg ked af",
+   "r": "det er jeg ked af",
+   "p": "de er yai KEZ a"
+  },
+  {
+   "n": 41,
+   "t": "Hvor?",
+   "r": "Hvor?",
+   "p": "¿VOR?"
+  },
+  {
+   "n": 42,
+   "t": "Hvad?",
+   "r": "Hvad?",
+   "p": "¿VA?"
+  },
+  {
+   "n": 43,
+   "t": "Hvem?",
+   "r": "Hvem?",
+   "p": "¿VEM?"
+  },
+  {
+   "n": 44,
+   "t": "Hvornår?",
+   "r": "Hvornår?",
+   "p": "¿vor-NOR?"
+  },
+  {
+   "n": 45,
+   "t": "Hvordan?",
+   "r": "Hvordan?",
+   "p": "¿vor-DAN?"
+  },
+  {
+   "n": 46,
+   "t": "Hvorfor?",
+   "r": "Hvorfor?",
+   "p": "¿VOR-for?"
+  },
+  {
+   "n": 47,
+   "t": "Hvad koster det?",
+   "r": "Hvad koster det?",
+   "p": "¿va KOS-der de?"
+  },
+  {
+   "n": 48,
+   "t": "Hvor er toilettet?",
+   "r": "Hvor er toilettet?",
+   "p": "¿vor er to-a-LE-tet?"
+  },
+  {
+   "n": 49,
+   "t": "Taler du spansk?",
+   "r": "Taler du spansk?",
+   "p": "¿TE-ler du SPANSK?"
+  },
+  {
+   "n": 50,
+   "t": "Jeg forstår ikke",
+   "r": "Jeg forstår ikke",
+   "p": "yai for-STOR E-ke"
+  },
+  {
+   "n": 51,
+   "t": "nul",
+   "r": "nul",
+   "p": "NUL"
+  },
+  {
+   "n": 52,
+   "t": "en",
+   "r": "en",
+   "p": "EN"
+  },
+  {
+   "n": 53,
+   "t": "to",
+   "r": "to",
+   "p": "TO"
+  },
+  {
+   "n": 54,
+   "t": "tre",
+   "r": "tre",
+   "p": "TRE"
+  },
+  {
+   "n": 55,
+   "t": "fire",
+   "r": "fire",
+   "p": "FI-a"
+  },
+  {
+   "n": 56,
+   "t": "fem",
+   "r": "fem",
+   "p": "FEM"
+  },
+  {
+   "n": 57,
+   "t": "seks",
+   "r": "seks",
+   "p": "SEKS"
+  },
+  {
+   "n": 58,
+   "t": "syv",
+   "r": "syv",
+   "p": "SÜU"
+  },
+  {
+   "n": 59,
+   "t": "otte",
+   "r": "otte",
+   "p": "O-de"
+  },
+  {
+   "n": 60,
+   "t": "ni",
+   "r": "ni",
+   "p": "NI"
+  },
+  {
+   "n": 61,
+   "t": "ti",
+   "r": "ti",
+   "p": "TI"
+  },
+  {
+   "n": 62,
+   "t": "hundrede",
+   "r": "hundrede",
+   "p": "HUN-re-de"
+  },
+  {
+   "n": 63,
+   "t": "tusind",
+   "r": "tusind",
+   "p": "TU-sin"
+  },
+  {
+   "n": 64,
+   "t": "jeg",
+   "r": "jeg",
+   "p": "YAI"
+  },
+  {
+   "n": 65,
+   "t": "du",
+   "r": "du",
+   "p": "DU"
+  },
+  {
+   "n": 66,
+   "t": "han",
+   "r": "han",
+   "p": "HAN"
+  },
+  {
+   "n": 67,
+   "t": "hun",
+   "r": "hun",
+   "p": "HUN"
+  },
+  {
+   "n": 68,
+   "t": "vi",
+   "r": "vi",
+   "p": "VI"
+  },
+  {
+   "n": 69,
+   "t": "de",
+   "r": "de",
+   "p": "DI"
+  },
+  {
+   "n": 70,
+   "t": "person",
+   "r": "person",
+   "p": "per-SON"
+  },
+  {
+   "n": 71,
+   "t": "mand",
+   "r": "mand",
+   "p": "MAN"
+  },
+  {
+   "n": 72,
+   "t": "kvinde",
+   "r": "kvinde",
+   "p": "KVI-ne"
+  },
+  {
+   "n": 73,
+   "t": "dreng",
+   "r": "dreng",
+   "p": "DRENG"
+  },
+  {
+   "n": 74,
+   "t": "pige",
+   "r": "pige",
+   "p": "PI-e"
+  },
+  {
+   "n": 75,
+   "t": "mor",
+   "r": "mor",
+   "p": "MOR"
+  },
+  {
+   "n": 76,
+   "t": "far",
+   "r": "far",
+   "p": "FAR"
+  },
+  {
+   "n": 77,
+   "t": "søn",
+   "r": "søn",
+   "p": "SÖN"
+  },
+  {
+   "n": 78,
+   "t": "bror",
+   "r": "bror",
+   "p": "BROR"
+  },
+  {
+   "n": 79,
+   "t": "ven",
+   "r": "ven",
+   "p": "VEN"
+  },
+  {
+   "n": 80,
+   "t": "familie",
+   "r": "familie",
+   "p": "fa-MIL-ye"
+  },
+  {
+   "n": 81,
+   "t": "være",
+   "r": "være",
+   "p": "VE-re"
+  },
+  {
+   "n": 82,
+   "t": "være",
+   "r": "være",
+   "p": "VE-re"
+  },
+  {
+   "n": 83,
+   "t": "have",
+   "r": "have",
+   "p": "HA-ve"
+  },
+  {
+   "n": 84,
+   "t": "gå",
+   "r": "gå",
+   "p": "GO"
+  },
+  {
+   "n": 85,
+   "t": "komme",
+   "r": "komme",
+   "p": "KO-me"
+  },
+  {
+   "n": 86,
+   "t": "gøre",
+   "r": "gøre",
+   "p": "GÖ-re"
+  },
+  {
+   "n": 87,
+   "t": "ville",
+   "r": "ville",
+   "p": "VI-le"
+  },
+  {
+   "n": 88,
+   "t": "kunne",
+   "r": "kunne",
+   "p": "KU-ne"
+  },
+  {
+   "n": 89,
+   "t": "spise",
+   "r": "spise",
+   "p": "SPI-se"
+  },
+  {
+   "n": 90,
+   "t": "drikke",
+   "r": "drikke",
+   "p": "DRE-ke"
+  },
+  {
+   "n": 91,
+   "t": "sove",
+   "r": "sove",
+   "p": "SOU-e"
+  },
+  {
+   "n": 92,
+   "t": "tale",
+   "r": "tale",
+   "p": "TE-le"
+  },
+  {
+   "n": 93,
+   "t": "lytte",
+   "r": "lytte",
+   "p": "LÜ-de"
+  },
+  {
+   "n": 94,
+   "t": "se",
+   "r": "se",
+   "p": "SE"
+  },
+  {
+   "n": 95,
+   "t": "læse",
+   "r": "læse",
+   "p": "LE-se"
+  },
+  {
+   "n": 96,
+   "t": "skrive",
+   "r": "skrive",
+   "p": "SKRI-ve"
+  },
+  {
+   "n": 97,
+   "t": "lære",
+   "r": "lære",
+   "p": "LE-re"
+  },
+  {
+   "n": 98,
+   "t": "arbejde",
+   "r": "arbejde",
+   "p": "AR-bai-de"
+  },
+  {
+   "n": 99,
+   "t": "hjælpe",
+   "r": "hjælpe",
+   "p": "YEL-pe"
+  },
+  {
+   "n": 100,
+   "t": "vide",
+   "r": "vide",
+   "p": "VI-ze"
+  },
+  {
+   "n": 101,
+   "t": "hus",
+   "r": "hus",
+   "p": "HUS"
+  },
+  {
+   "n": 102,
+   "t": "skole",
+   "r": "skole",
+   "p": "SKO-le"
+  },
+  {
+   "n": 103,
+   "t": "gade",
+   "r": "gade",
+   "p": "GE-ze"
+  },
+  {
+   "n": 104,
+   "t": "by",
+   "r": "by",
+   "p": "BÜ"
+  },
+  {
+   "n": 105,
+   "t": "land",
+   "r": "land",
+   "p": "LAN"
+  },
+  {
+   "n": 106,
+   "t": "hav",
+   "r": "hav",
+   "p": "HAU"
+  },
+  {
+   "n": 107,
+   "t": "havn",
+   "r": "havn",
+   "p": "HAUN"
+  },
+  {
+   "n": 108,
+   "t": "butik",
+   "r": "butik",
+   "p": "bu-TIK"
+  },
+  {
+   "n": 109,
+   "t": "apotek",
+   "r": "apotek",
+   "p": "a-po-TEK"
+  },
+  {
+   "n": 110,
+   "t": "toilet",
+   "r": "toilet",
+   "p": "to-a-LET"
+  },
+  {
+   "n": 111,
+   "t": "i dag",
+   "r": "i dag",
+   "p": "i-DE"
+  },
+  {
+   "n": 112,
+   "t": "i morgen",
+   "r": "i morgen",
+   "p": "i-MOR-en"
+  },
+  {
+   "n": 113,
+   "t": "i går",
+   "r": "i går",
+   "p": "i-GOR"
+  },
+  {
+   "n": 114,
+   "t": "nu",
+   "r": "nu",
+   "p": "NU"
+  },
+  {
+   "n": 115,
+   "t": "dag",
+   "r": "dag",
+   "p": "DE"
+  },
+  {
+   "n": 116,
+   "t": "nat",
+   "r": "nat",
+   "p": "NAT"
+  },
+  {
+   "n": 117,
+   "t": "uge",
+   "r": "uge",
+   "p": "U-e"
+  },
+  {
+   "n": 118,
+   "t": "måned",
+   "r": "måned",
+   "p": "MO-ned"
+  },
+  {
+   "n": 119,
+   "t": "år",
+   "r": "år",
+   "p": "OR"
+  },
+  {
+   "n": 120,
+   "t": "time",
+   "r": "time",
+   "p": "TI-me"
+  },
+  {
+   "n": 121,
+   "t": "vand",
+   "r": "vand",
+   "p": "VAN"
+  },
+  {
+   "n": 122,
+   "t": "mad",
+   "r": "mad",
+   "p": "MAZ"
+  },
+  {
+   "n": 123,
+   "t": "brød",
+   "r": "brød",
+   "p": "BRÖZ"
+  },
+  {
+   "n": 124,
+   "t": "mælk",
+   "r": "mælk",
+   "p": "MELK"
+  },
+  {
+   "n": 125,
+   "t": "frugt",
+   "r": "frugt",
+   "p": "FROGT"
+  },
+  {
+   "n": 126,
+   "t": "kaffe",
+   "r": "kaffe",
+   "p": "KA-fe"
+  },
+  {
+   "n": 127,
+   "t": "te",
+   "r": "te",
+   "p": "TE"
+  },
+  {
+   "n": 128,
+   "t": "salt",
+   "r": "salt",
+   "p": "SALT"
+  },
+  {
+   "n": 129,
+   "t": "hoved",
+   "r": "hoved",
+   "p": "HO-ez"
+  },
+  {
+   "n": 130,
+   "t": "hånd",
+   "r": "hånd",
+   "p": "HON"
+  },
+  {
+   "n": 131,
+   "t": "fod",
+   "r": "fod",
+   "p": "FOZ"
+  },
+  {
+   "n": 132,
+   "t": "øje",
+   "r": "øje",
+   "p": "OI-e"
+  },
+  {
+   "n": 133,
+   "t": "mund",
+   "r": "mund",
+   "p": "MON"
+  },
+  {
+   "n": 134,
+   "t": "hjerte",
+   "r": "hjerte",
+   "p": "YER-de"
+  },
+  {
+   "n": 135,
+   "t": "medicin",
+   "r": "medicin",
+   "p": "me-di-SIN"
+  },
+  {
+   "n": 136,
+   "t": "syg",
+   "r": "syg",
+   "p": "SÜ"
+  },
+  {
+   "n": 137,
+   "t": "rød",
+   "r": "rød",
+   "p": "RÖZ"
+  },
+  {
+   "n": 138,
+   "t": "blå",
+   "r": "blå",
+   "p": "BLO"
+  },
+  {
+   "n": 139,
+   "t": "grøn",
+   "r": "grøn",
+   "p": "GRÖN"
+  },
+  {
+   "n": 140,
+   "t": "gul",
+   "r": "gul",
+   "p": "GUL"
+  },
+  {
+   "n": 141,
+   "t": "sort",
+   "r": "sort",
+   "p": "SORT"
+  },
+  {
+   "n": 142,
+   "t": "hvid",
+   "r": "hvid",
+   "p": "VIZ"
+  },
+  {
+   "n": 143,
+   "t": "stor",
+   "r": "stor",
+   "p": "STOR"
+  },
+  {
+   "n": 144,
+   "t": "lille",
+   "r": "lille",
+   "p": "LI-le"
+  },
+  {
+   "n": 145,
+   "t": "god",
+   "r": "god",
+   "p": "GOZ"
+  },
+  {
+   "n": 146,
+   "t": "dårlig",
+   "r": "dårlig",
+   "p": "DOR-li"
+  },
+  {
+   "n": 147,
+   "t": "ny",
+   "r": "ny",
+   "p": "NÜ"
+  },
+  {
+   "n": 148,
+   "t": "varm",
+   "r": "varm",
+   "p": "VARM"
+  },
+  {
+   "n": 149,
+   "t": "kold",
+   "r": "kold",
+   "p": "KOL"
+  },
+  {
+   "n": 150,
+   "t": "åben",
+   "r": "åben",
+   "p": "O-ben"
+  },
+  {
+   "n": 151,
+   "t": "lukket",
+   "r": "lukket",
+   "p": "LO-ket"
+  },
+  {
+   "n": 152,
+   "t": "her",
+   "r": "her",
+   "p": "HER"
+  },
+  {
+   "n": 153,
+   "t": "der",
+   "r": "der",
+   "p": "DER"
+  },
+  {
+   "n": 154,
+   "t": "meget",
+   "r": "meget",
+   "p": "MAI-et"
+  },
+  {
+   "n": 155,
+   "t": "lidt",
+   "r": "lidt",
+   "p": "LIT"
+  },
+  {
+   "n": 156,
+   "t": "alt",
+   "r": "alt",
+   "p": "ALT"
+  },
+  {
+   "n": 157,
+   "t": "ingenting",
+   "r": "ingenting",
+   "p": "IN-gen-ting"
+  },
+  {
+   "n": 158,
+   "t": "venstre",
+   "r": "venstre",
+   "p": "VENS-dre"
+  },
+  {
+   "n": 159,
+   "t": "højre",
+   "r": "højre",
+   "p": "HOI-re"
+  }
+ ],
+ "bases": {
+  "alfabeto": [
+   "El alfabeto tiene 29 letras: las 26 latinas más æ (como «e» abierta), ø (como «e» con labios redondeados, se escribe aquí «ö») y å (como «o»).",
+   "La «d» después de vocal suele ser suave, parecida a la «d» de «nada» o a la «z» española de España: mad «MAZ», brød «BRÖZ».",
+   "La «r» es gutural (al fondo de la garganta, como en francés) y al final de sílaba casi se vuelve vocal: fire «FI-a».",
+   "La «h» no suena antes de «j» y «v»: hjælp «YELP», hvad «VA», hvid «VIZ». La «j» suena como «y».",
+   "La «g» después de vocal suele desaparecer o volverse «i/u»: pige «PI-e», dag «DE», jeg «YAI».",
+   "Existe el «stød», un pequeño golpe de glotis en algunas sílabas que distingue palabras (hund «perro» vs. hun «ella»); se aprende escuchando."
+  ],
+  "verbos": [
+   {
+    "inf": "være",
+    "r": "være",
+    "es": "ser",
+    "formas": [
+     [
+      "yo",
+      "jeg er",
+      "yai ER"
+     ],
+     [
+      "tú",
+      "du er",
+      "du ER"
+     ],
+     [
+      "él/ella",
+      "han/hun er",
+      "han/hun ER"
+     ],
+     [
+      "nosotros",
+      "vi er",
+      "vi ER"
+     ],
+     [
+      "ustedes/vosotros",
+      "I er",
+      "i ER"
+     ],
+     [
+      "ellos/ellas",
+      "de er",
+      "di ER"
+     ]
+    ]
+   },
+   {
+    "inf": "befinde sig",
+    "r": "befinde sig",
+    "es": "estar (encontrarse en un lugar)",
+    "formas": [
+     [
+      "yo",
+      "jeg befinder mig",
+      "yai be-FIN-er mai"
+     ],
+     [
+      "tú",
+      "du befinder dig",
+      "du be-FIN-er dai"
+     ],
+     [
+      "él/ella",
+      "han/hun befinder sig",
+      "han/hun be-FIN-er sai"
+     ],
+     [
+      "nosotros",
+      "vi befinder os",
+      "vi be-FIN-er os"
+     ],
+     [
+      "ustedes/vosotros",
+      "I befinder jer",
+      "i be-FIN-er yer"
+     ],
+     [
+      "ellos/ellas",
+      "de befinder sig",
+      "di be-FIN-er sai"
+     ]
+    ]
+   },
+   {
+    "inf": "have",
+    "r": "have",
+    "es": "tener",
+    "formas": [
+     [
+      "yo",
+      "jeg har",
+      "yai HA"
+     ],
+     [
+      "tú",
+      "du har",
+      "du HA"
+     ],
+     [
+      "él/ella",
+      "han/hun har",
+      "han/hun HA"
+     ],
+     [
+      "nosotros",
+      "vi har",
+      "vi HA"
+     ],
+     [
+      "ustedes/vosotros",
+      "I har",
+      "i HA"
+     ],
+     [
+      "ellos/ellas",
+      "de har",
+      "di HA"
+     ]
+    ]
+   },
+   {
+    "inf": "gå",
+    "r": "gå",
+    "es": "ir (a pie)",
+    "formas": [
+     [
+      "yo",
+      "jeg går",
+      "yai GOR"
+     ],
+     [
+      "tú",
+      "du går",
+      "du GOR"
+     ],
+     [
+      "él/ella",
+      "han/hun går",
+      "han/hun GOR"
+     ],
+     [
+      "nosotros",
+      "vi går",
+      "vi GOR"
+     ],
+     [
+      "ustedes/vosotros",
+      "I går",
+      "i GOR"
+     ],
+     [
+      "ellos/ellas",
+      "de går",
+      "di GOR"
+     ]
+    ]
+   },
+   {
+    "inf": "gøre",
+    "r": "gøre",
+    "es": "hacer",
+    "formas": [
+     [
+      "yo",
+      "jeg gør",
+      "yai GÖR"
+     ],
+     [
+      "tú",
+      "du gør",
+      "du GÖR"
+     ],
+     [
+      "él/ella",
+      "han/hun gør",
+      "han/hun GÖR"
+     ],
+     [
+      "nosotros",
+      "vi gør",
+      "vi GÖR"
+     ],
+     [
+      "ustedes/vosotros",
+      "I gør",
+      "i GÖR"
+     ],
+     [
+      "ellos/ellas",
+      "de gør",
+      "di GÖR"
+     ]
+    ]
+   },
+   {
+    "inf": "ville",
+    "r": "ville",
+    "es": "querer",
+    "formas": [
+     [
+      "yo",
+      "jeg vil",
+      "yai VEL"
+     ],
+     [
+      "tú",
+      "du vil",
+      "du VEL"
+     ],
+     [
+      "él/ella",
+      "han/hun vil",
+      "han/hun VEL"
+     ],
+     [
+      "nosotros",
+      "vi vil",
+      "vi VEL"
+     ],
+     [
+      "ustedes/vosotros",
+      "I vil",
+      "i VEL"
+     ],
+     [
+      "ellos/ellas",
+      "de vil",
+      "di VEL"
+     ]
+    ]
+   },
+   {
+    "inf": "kunne",
+    "r": "kunne",
+    "es": "poder",
+    "formas": [
+     [
+      "yo",
+      "jeg kan",
+      "yai KAN"
+     ],
+     [
+      "tú",
+      "du kan",
+      "du KAN"
+     ],
+     [
+      "él/ella",
+      "han/hun kan",
+      "han/hun KAN"
+     ],
+     [
+      "nosotros",
+      "vi kan",
+      "vi KAN"
+     ],
+     [
+      "ustedes/vosotros",
+      "I kan",
+      "i KAN"
+     ],
+     [
+      "ellos/ellas",
+      "de kan",
+      "di KAN"
+     ]
+    ]
+   },
+   {
+    "inf": "vide",
+    "r": "vide",
+    "es": "saber",
+    "formas": [
+     [
+      "yo",
+      "jeg ved",
+      "yai VEZ"
+     ],
+     [
+      "tú",
+      "du ved",
+      "du VEZ"
+     ],
+     [
+      "él/ella",
+      "han/hun ved",
+      "han/hun VEZ"
+     ],
+     [
+      "nosotros",
+      "vi ved",
+      "vi VEZ"
+     ],
+     [
+      "ustedes/vosotros",
+      "I ved",
+      "i VEZ"
+     ],
+     [
+      "ellos/ellas",
+      "de ved",
+      "di VEZ"
+     ]
+    ]
+   },
+   {
+    "inf": "tale",
+    "r": "tale",
+    "es": "hablar",
+    "formas": [
+     [
+      "yo",
+      "jeg taler",
+      "yai TE-ler"
+     ],
+     [
+      "tú",
+      "du taler",
+      "du TE-ler"
+     ],
+     [
+      "él/ella",
+      "han/hun taler",
+      "han/hun TE-ler"
+     ],
+     [
+      "nosotros",
+      "vi taler",
+      "vi TE-ler"
+     ],
+     [
+      "ustedes/vosotros",
+      "I taler",
+      "i TE-ler"
+     ],
+     [
+      "ellos/ellas",
+      "de taler",
+      "di TE-ler"
+     ]
+    ]
+   },
+   {
+    "inf": "spise",
+    "r": "spise",
+    "es": "comer",
+    "formas": [
+     [
+      "yo",
+      "jeg spiser",
+      "yai SPI-ser"
+     ],
+     [
+      "tú",
+      "du spiser",
+      "du SPI-ser"
+     ],
+     [
+      "él/ella",
+      "han/hun spiser",
+      "han/hun SPI-ser"
+     ],
+     [
+      "nosotros",
+      "vi spiser",
+      "vi SPI-ser"
+     ],
+     [
+      "ustedes/vosotros",
+      "I spiser",
+      "i SPI-ser"
+     ],
+     [
+      "ellos/ellas",
+      "de spiser",
+      "di SPI-ser"
+     ]
+    ]
+   }
+  ],
+  "ruta": [
+   {
+    "nivel": "A1",
+    "titulo": "Primeros pasos: presentarse y pedir ayuda",
+    "puntos": [
+     "El verbo no cambia según la persona: jeg er, du er, vi er (solo cambia el pronombre).",
+     "Orden básico sujeto–verbo–objeto, como en español: Jeg spiser brød.",
+     "Dos géneros: común (en) y neutro (et): en mand, et hus. Hay que aprender el género con cada palabra.",
+     "El artículo definido va pegado al final: en mand → manden (el hombre), et hus → huset (la casa).",
+     "Negación con «ikke» después del verbo: Jeg forstår ikke.",
+     "Preguntas invirtiendo verbo y sujeto: Taler du spansk?"
+    ],
+    "ejemplos": [
+     [
+      "Jeg hedder Ana.",
+      "Jeg hedder Ana.",
+      "yai HE-zer A-na",
+      "Me llamo Ana."
+     ],
+     [
+      "Taler du spansk?",
+      "Taler du spansk?",
+      "¿TE-ler du SPANSK?",
+      "¿Hablas español?"
+     ],
+     [
+      "Jeg har brug for hjælp.",
+      "Jeg har brug for hjælp.",
+      "yai ha BRU for YELP",
+      "Necesito ayuda."
+     ]
+    ]
+   },
+   {
+    "nivel": "A2",
+    "titulo": "Vida diaria: pasado, plural y cortesía",
+    "puntos": [
+     "Plurales más comunes en -er, -e o sin cambio: en dag → dage, et hus → huse, et år → år.",
+     "Regla V2: el verbo siempre va en segunda posición; si la frase empieza con tiempo o lugar, el sujeto pasa detrás: I dag arbejder jeg.",
+     "Pasado simple con -ede o -te: arbejde → arbejdede, spise → spiste; los irregulares se memorizan (gå → gik, være → var).",
+     "Pasado compuesto con «har» o «er» + participio: Jeg har spist. Han er gået.",
+     "Cortesía: «De» formal casi no se usa; se tutea con «du». Se agradece mucho con «tak» (tak for mad: gracias por la comida)."
+    ],
+    "ejemplos": [
+     [
+      "I går var jeg på hospitalet.",
+      "I går var jeg på hospitalet.",
+      "i-GOR var yai po hos-pi-TA-let",
+      "Ayer estuve en el hospital."
+     ],
+     [
+      "Vi har spist morgenmad.",
+      "Vi har spist morgenmad.",
+      "vi ha SPIST MOR-en-maz",
+      "Hemos desayunado."
+     ],
+     [
+      "Hvor er apoteket?",
+      "Hvor er apoteket?",
+      "¿vor er a-po-TE-ket?",
+      "¿Dónde está la farmacia?"
+     ]
+    ]
+   },
+   {
+    "nivel": "B1",
+    "titulo": "Independencia: futuro, oraciones subordinadas y opiniones",
+    "puntos": [
+     "Futuro con «vil» o «skal» + infinitivo, o presente con expresión de tiempo: Jeg rejser i morgen.",
+     "En oraciones subordinadas (at, fordi, når, hvis) «ikke» va ANTES del verbo: …fordi jeg ikke har tid.",
+     "Adjetivos concuerdan: en stor by, et stort hus, store byer; tras artículo o posesivo van en -e: den store by.",
+     "Verbos con -s para voz pasiva o recíproca: Butikken lukkes kl. 18. Vi ses!",
+     "Opinar y argumentar: Jeg synes, at…; Jeg tror, at…; på den ene side… på den anden side…"
+    ],
+    "ejemplos": [
+     [
+      "Jeg synes, at dansk er svært, men spændende.",
+      "Jeg synes, at dansk er svært, men spændende.",
+      "yai SÜ-nes a DANSK er SVERT men SPEN-e-ne",
+      "Me parece que el danés es difícil, pero interesante."
+     ],
+     [
+      "Hvis det brænder, skal du ringe 112.",
+      "Hvis det brænder, skal du ringe 112.",
+      "ves de BRAN-er ska du RING-e en-en-TO",
+      "Si hay un incendio, debes llamar al 112."
+     ],
+     [
+      "Han kom ikke, fordi han ikke havde tid.",
+      "Han kom ikke, fordi han ikke havde tid.",
+      "han KOM E-ke for-DI han E-ke HA-de TIZ",
+      "No vino porque no tenía tiempo."
+     ]
+    ]
+   }
+  ]
+ }
+}
