@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="canonical" href="https://sosistem.com/sos/">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SOSistem">
+<title>SOSistem · Terminal</title>
+<!-- SOSistem™ · Pantalla de inicio (Terminal + 10 básicos)
+     © Víctor Hugo Ramírez Salgado (VHRS). Autor y titular 100 %. Asistencia-IA.
+     Fuente legible: va al repo privado sistema-sos (sitio/assets-fuente/) y se publica
+     compilada en Código de comunicación del Cubo (33) con herramientas/cubo-build.mjs. -->
+<style>
+/* VOICE: emergencia, sobria, inmediata — sin adornos
+   IDEA: tablero de un equipo de seguridad: un interruptor maestro y sus circuitos
+   PICTURE: el botón de encendido grande, dentro de la Terminal
+   COLOUR and TYPE: negro absoluto (no emite luz), naranja de seguridad ISO 7010, Inter
+   LAYOUT: logo | Terminal arriba; lista de 10 básicos abajo; barra fija 911 / familia / silencio */
+:root{--bg:#000;--ink:#d9d9d9;--dim:#7a7a7a;--line:#2a2a2a;--or:#ff7a00;--ok:#29c46a;--card:#0b0b0b}
+*{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#000}
+body{margin:0;color:var(--ink);font:16px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding-bottom:96px}
+button{font:inherit;color:inherit;cursor:pointer}
+.top{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:12px;padding:14px max(4vw,12px) 0}
+.logo{overflow:hidden;border:2px solid var(--line);border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:14px 8px;min-height:190px}
+.logo b{font-size:clamp(17px,5vw,40px);letter-spacing:0;line-height:1;white-space:nowrap}
+.logo b span{color:var(--or)}.logo b i{font-style:normal;color:#9a9a9a}
+.logo small{color:var(--dim);font-size:13px;margin-top:8px;text-align:center}
+.morse{color:var(--or);opacity:.7;font-size:15px;letter-spacing:3px;margin-top:6px}
+.term{border:2px solid var(--or);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.term h1{margin:0;font-size:18px;font-weight:700;align-self:flex-start;color:#bdbdbd}
+#power{width:min(46vw,170px);aspect-ratio:1;border-radius:34px;border:3px solid var(--or);background:#0a0a0a;display:grid;place-items:center;transition:background .25s}
+#power svg{width:52%;height:52%;stroke:var(--or);fill:none;stroke-width:2.4;stroke-linecap:round}
+#power.on{background:var(--or)}#power.on svg{stroke:#000}
+#estado{font-weight:700;font-size:17px;text-align:center}
+#estado.on{color:var(--or)}
+.auto{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.chip{border:1.5px solid var(--line);border-radius:12px;padding:6px 10px;font-size:13px;color:var(--dim)}
+.chip.on{border-color:var(--or);color:var(--or)}
+.lang{display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:10px max(4vw,12px) 0}
+#atajo{background:#000;color:var(--or);border:2px solid var(--or);border-radius:12px;font-size:14px;font-weight:700;padding:6px 10px;min-height:40px}
+#atajo[hidden]{display:none}
+.tbody{display:flex;gap:14px;align-items:center;justify-content:center;width:100%}
+.sens{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--dim);text-align:center;width:64px}
+.sens b{color:var(--or);font-size:13px}
+#sensDB{writing-mode:vertical-lr;direction:rtl;width:30px;height:120px;accent-color:var(--or);margin:0}
+#guia{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:8;display:none;align-items:center;justify-content:center;padding:20px}
+#guia.v{display:flex}
+#guia .c{max-width:420px;border:2px solid var(--or);border-radius:22px;padding:20px;background:#050505}
+#guia h3{margin:0 0 10px;color:var(--or);font-size:20px}
+#guia ol{margin:0 0 14px;padding-left:22px;line-height:1.6}
+#guia button{background:var(--or);color:#000;border:0;border-radius:14px;padding:12px 20px;font-weight:700;font-size:16px}
+#aviso{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#111;border:1.5px solid var(--or);color:var(--ink);border-radius:14px;padding:10px 16px;font-size:14px;display:none;z-index:7}
+select{background:#000;color:var(--dim);border:1.5px solid var(--line);border-radius:10px;font-size:16px;padding:6px 8px}
+h2{font-size:16px;color:#bdbdbd;margin:20px max(4vw,12px) 8px;font-weight:700}
+ul{list-style:none;margin:0;padding:0 max(4vw,12px);display:grid;gap:8px}
+li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:10px 12px}
+li .n{color:var(--dim);font-size:13px;text-align:center}
+li b{display:block;font-size:16px;font-weight:600}
+li small{color:var(--dim);font-size:13px}
+li .val{color:var(--ink);font-size:13px;font-variant-numeric:tabular-nums}
+.sw{width:56px;height:56px;border-radius:16px;border:2.5px solid #444;background:#000;display:grid;place-items:center}
+.sw svg{width:26px;height:26px;stroke:#666;fill:none;stroke-width:2.4;stroke-linecap:round}
+.sw.on{border-color:var(--or);background:var(--or)}.sw.on svg{stroke:#000}
+.sw.bloq{border-color:#8a6a00}.sw.bloq svg{stroke:#c9a100}
+li.on{border-color:#4a2a00}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#000;border-top:1.5px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px max(4vw,12px) calc(10px + env(safe-area-inset-bottom))}
+.bar a,.bar button{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:16px;border:2px solid var(--line);background:#000;color:var(--ink);text-decoration:none;font-weight:700;font-size:15px}
+.bar .e{border-color:#c62828;color:#ff5a5a}
+.bar .s.on{border-color:var(--or);color:var(--or)}
+#alerta{position:fixed;inset:0;background:var(--or);color:#000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:9;text-align:center;padding:24px}
+#alerta.v{display:flex}
+#alerta b{font-size:clamp(48px,16vw,110px);line-height:1}
+#alerta p{margin:0;font-size:20px;font-weight:700}
+#alerta button{background:#000;color:var(--or);border:0;border-radius:18px;padding:16px 28px;font-size:18px;font-weight:700}
+.ap{color:var(--dim);font-size:13px;margin:14px max(4vw,12px) 0}
+.info{margin:16px 0 0}.info summary{cursor:pointer;color:#bdbdbd;font-weight:700;margin:0 max(4vw,12px) 8px;min-height:44px;display:flex;align-items:center}
+li .tag{font-size:12px;border:1.5px solid #333;border-radius:10px;padding:4px 8px;color:var(--dim);white-space:nowrap}
+footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
+:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(min-width:900px){.top,ul,h2{max-width:980px;margin-left:auto;margin-right:auto}ul{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="lang"><button id="atajo" hidden>Crear acceso</button><select id="idioma" aria-label="Idioma"></select></div>
+
+<section class="top">
+  <div class="logo" aria-label="SOSistem">
+    <b><span>SOS</span><i>istem</i></b>
+    <div class="morse" aria-hidden="true">··· ––– ···</div>
+    <small>Cubo Morse©</small>
+  </div>
+  <div class="term">
+    <h1 data-t="terminal">Terminal</h1>
+    <div class="tbody">
+      <button id="power" aria-label="Encender"><svg viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></svg></button>
+      <label class="sens" for="sensDB"><span>Más sensible</span><input type="range" id="sensDB" min="0" max="40" step="1" value="10" aria-label="Sensibilidad de escucha"><span>Menos sensible</span><b id="sensVal">90 dB</b></label>
+    </div>
+    <div id="estado" data-t="off">Apagado · toca para encender</div>
+    <div class="auto">
+      <span class="chip" id="cVoz" data-t="vozAuto">Voz · automático</span>
+      <span class="chip" id="cSis" data-t="sisAuto">Sismo · automático</span>
+    </div>
+  </div>
+</section>
+
+<p id="aparato" class="ap"></p>
+<h2 data-t="basicos">10 básicos · automáticos</h2>
+<ul id="lista"></ul>
+<h2 data-t="mas">Más sensores · manual</h2>
+<ul id="lista2"></ul>
+<details class="info"><summary data-t="otros">Requieren app o Hipersensor</summary><ul id="lista3"></ul></details>
+
+<footer>SOSistem™ · Cubo Morse© · © Víctor Hugo Ramírez Salgado (VHRS) · Modelo de utilidad en trámite (IMPI)<br>No graba voz, video ni imágenes: solo detecta y avisa. Ningún sistema es 100 % preciso.<br><a href="../" style="color:#9a9a9a">sosistem.com</a> · <a href="../terminal.html" style="color:#9a9a9a">Terminal de pruebas</a></footer>
+
+<nav class="bar">
+  <a class="e" href="tel:911">911</a>
+  <a href="sms:?&body=S.O.S.%20Necesito%20ayuda" id="fam" data-t="familia">Familia</a>
+  <button class="s" id="silencio" data-t="silencio">Silencio</button>
+</nav>
+
+<div id="guia" role="dialog" aria-modal="true"><div class="c"><h3 id="gT">Crear acceso directo</h3><ol id="gL"></ol><button id="gOk">Entendido</button></div></div>
+<div id="aviso" role="status"></div>
+
+<div id="alerta" role="alertdialog" aria-live="assertive">
+  <b>S.O.S.</b>
+  <p id="motivo">Alerta</p>
+  <button id="todoBien" data-t="bien">Todo bien</button>
+</div>
+
+<script src="../assets/cubo-rt.js?v=sos1"></script>
+<script src="../assets/sos-inicio.js?v=sos1"></script>
+</body>
+</html>
