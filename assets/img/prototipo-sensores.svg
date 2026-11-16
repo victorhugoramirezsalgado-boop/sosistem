@@ -10,7 +10,7 @@
 <rect width="960" height="540" fill="#0b0c0e"/>
 <rect y="380" width="960" height="160" fill="url(#piso)"/>
 <rect y="380" width="960" height="2" fill="#DB641C" opacity=".55"/>
-<text x="40" y="34" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" letter-spacing="2">PROTOTIPO DE SENSORES · 2026</text><text x="40" y="70" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="800"><tspan fill="#DB641C">SOS</tspan>istem™</text>
+<text x="40" y="34" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" letter-spacing="2">PROTOTIPO DE SENSORES · 2026 · IMAGEN DE PROTOTIPO</text><text x="40" y="70" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="800"><tspan fill="#DB641C">SOS</tspan>istem™</text>
 <text x="40" y="94" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="15">Tres equipos que se integran en un solo sistema · sin cámaras, sin grabar voz</text>
 
 <!-- 1. Chip SOS portátil + teléfono -->
@@ -69,5 +69,5 @@
 <text x="780" y="460" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700">3 · Sensor híper inteligente</text>
 <text x="780" y="482" text-anchor="middle" fill="#a9adb5" font-family="Inter,Arial,sans-serif" font-size="13">9 gases MQ · oxígeno · CO₂ · olores</text>
 
-<text x="480" y="522" text-anchor="middle" fill="#7c8088" font-family="Inter,Arial,sans-serif" font-size="12">Ilustración de concepto del prototipo · SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · © Víctor Hugo Ramírez Salgado</text>
+<text x="480" y="512" text-anchor="middle" fill="#DB641C" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">Imagen ilustrativa de prototipo (no es el producto final) · Marca SOSistem™ en trámite ante el IMPI · expediente 3741790</text><text x="480" y="530" text-anchor="middle" fill="#7c8088" font-family="Inter,Arial,sans-serif" font-size="11">Sistema S.O.S.© (Safe Creative 2609046908578) · © 2026 Víctor Hugo Ramírez Salgado. Todos los derechos reservados.</text>
 </svg>
