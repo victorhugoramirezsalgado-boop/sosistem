@@ -60,12 +60,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 select{background:#000;color:var(--dim);border:1.5px solid var(--line);border-radius:10px;font-size:16px;padding:6px 8px}
 h2{font-size:16px;color:#bdbdbd;margin:20px max(4vw,12px) 8px;font-weight:700}
 ul{list-style:none;margin:0;padding:0 max(4vw,12px);display:grid;gap:8px}
-li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:10px 12px}
+li{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:10px 12px}
 li .n{color:var(--dim);font-size:13px;text-align:center}
 li b{display:block;font-size:16px;font-weight:600}
 li small{color:var(--dim);font-size:13px}
 li .val{color:var(--ink);font-size:13px;font-variant-numeric:tabular-nums}
-.sw{width:56px;height:56px;border-radius:16px;border:2.5px solid #444;background:#000;display:grid;place-items:center}
+.sw{min-width:76px;height:64px;border-radius:16px;border:2.5px solid #444;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:4px 6px}
+.sw .et{font-size:12px;font-weight:700;color:#8a8a8a;line-height:1}
+.sw.on .et{color:#000}.sw.bloq .et{color:#c9a100}
 .sw svg{width:26px;height:26px;stroke:#666;fill:none;stroke-width:2.4;stroke-linecap:round}
 .sw.on{border-color:var(--or);background:var(--or)}.sw.on svg{stroke:#000}
 .sw.bloq{border-color:#8a6a00}.sw.bloq svg{stroke:#c9a100}
@@ -135,7 +137,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   <button id="todoBien" data-t="bien">Todo bien</button>
 </div>
 
-<script src="../assets/cubo-rt.js?v=sos1"></script>
-<script src="../assets/sos-inicio.js?v=sos1"></script>
+<script src="../assets/cubo-rt.js?v=sos2"></script>
+<script src="../assets/sos-inicio.js?v=sos2"></script>
 </body>
 </html>
