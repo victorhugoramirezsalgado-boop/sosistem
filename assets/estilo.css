@@ -1504,3 +1504,15 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .voz-sub .voz-sub-ctl button[data-vs="parar"] { border-color: #ff9a3c; }
 .voz-sub.min { max-height: none; }
 .voz-sub.min > :not(.voz-sub-ctl):not(small) { display: none; }
+
+/* 8.3.15 · Pronunciación debajo de cada palabra (subtítulos) y práctica con calificación por colores al 50 % */
+.voz-sub .vp { display: inline-flex; flex-direction: column; align-items: center; vertical-align: top; margin: 0 2px 2px; border-radius: 4px; }
+.voz-sub .vp-p { display: block; font-size: .68rem; font-weight: 400; opacity: .78; line-height: 1.1; }
+.voz-sub b span.vp.on { background: rgba(37, 99, 235, .5); }
+.pv-txt { margin-top: 8px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 10px; text-align: left; line-height: 1.2; max-height: 50vh; overflow-y: auto; }
+.pv-w { display: inline-flex; flex-direction: column; align-items: center; vertical-align: top; margin: 2px 1px; padding: 3px 5px; border-radius: 7px; }
+.pv-w b { font-size: 1.05rem; } .pv-w small { font-size: .7rem; opacity: .78; } .pv-w i { font-size: .62rem; font-style: normal; font-weight: 700; }
+.pv-act { background: rgba(37, 99, 235, .5); }
+.pv-v { background: rgba(22, 163, 74, .5); } .pv-m { background: rgba(147, 51, 234, .5); } .pv-a { background: rgba(234, 179, 8, .5); } .pv-r { background: rgba(220, 38, 38, .5); }
+.pv-ley span { display: inline-block; padding: 2px 8px; border-radius: 6px; margin: 2px 2px 2px 0; font-size: .78rem; }
+.pv-nota { font-size: 1rem; margin: 8px 0 2px; }

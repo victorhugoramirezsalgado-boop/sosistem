@@ -1,8 +1,14 @@
 {
-  "version": "8.3.14",
+  "version": "8.3.15",
   "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.15",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Aprendizaje: pronunciación aproximada para hispanohablantes debajo de cada palabra en los subtítulos; nuevo módulo «Practica tu pronunciación» (frase de las 159 palabras, texto del traductor o propio, hasta 5,000 caracteres) que escucha la lectura y califica cada palabra: azul la que toca leer; verde 9–10, morado 7–8.9, amarillo 4–6.9 y rojo 0–3.9, al 50 %, con calificación general."
+    },
     {
       "v": "8.3.14",
       "fecha": "2026-11-17",
