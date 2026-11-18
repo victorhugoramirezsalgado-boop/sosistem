@@ -1,8 +1,14 @@
 {
-  "version": "8.3.17",
+  "version": "8.3.18",
   "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.18",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Traductor y práctica: botones «Pegar» y «Borrar»; al escribir o pegar su texto en la práctica ya no se reemplaza al cambiar de idioma. Traducción: copiar toda la traducción, copiar original y traducción, compartir/imprimir/guardar (menú del teléfono) y descargar en texto."
+    },
     {
       "v": "8.3.17",
       "fecha": "2026-11-17",

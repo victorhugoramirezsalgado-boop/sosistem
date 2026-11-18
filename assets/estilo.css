@@ -1532,3 +1532,5 @@ body.pv-bloqueo { overflow: hidden; }
 
 .pv-oye { min-height: 1.2em; margin: 6px 0 0; font-style: italic; }
 #pv-zona.pv-full .pv-oye { position: sticky; top: 52px; z-index: 2; background: inherit; }
+
+.pegar-bot { margin: 4px 0; } .pegar-bot .note { margin-left: 6px; }
