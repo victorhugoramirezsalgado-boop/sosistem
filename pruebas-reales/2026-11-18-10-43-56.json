@@ -1,0 +1,135 @@
+{
+ "reporte": "pruebas-reales",
+ "sitio": "https://sosistem.com",
+ "fecha": "2026-11-18T10:43:56.988Z",
+ "version_repositorio": "8.3.19",
+ "version_publicada": "8.3.19",
+ "propagacion_s": 0,
+ "duracion_s": 34,
+ "total": 20,
+ "correctas": 20,
+ "fallas": 0,
+ "origen": "schedule",
+ "resultados": [
+  {
+   "prueba": "Versión publicada = versión del repositorio",
+   "ok": true,
+   "detalle": "repositorio 8.3.19 · publicada 8.3.19 · 0 s",
+   "ms": 0
+  },
+  {
+   "prueba": "Abre / · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2999
+  },
+  {
+   "prueba": "Abre /terminal.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 3065
+  },
+  {
+   "prueba": "Abre /admin.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2331
+  },
+  {
+   "prueba": "Abre /verificar.html · iPhone",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2287
+  },
+  {
+   "prueba": "Abre / · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2561
+  },
+  {
+   "prueba": "Abre /terminal.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2874
+  },
+  {
+   "prueba": "Abre /admin.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2148
+  },
+  {
+   "prueba": "Abre /verificar.html · computadora",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 2091
+  },
+  {
+   "prueba": "PDF carta",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 456
+  },
+  {
+   "prueba": "PDF oficio",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 333
+  },
+  {
+   "prueba": "PDF doble-carta",
+   "ok": true,
+   "detalle": "3.7 MB",
+   "ms": 513
+  },
+  {
+   "prueba": "PDF a4",
+   "ok": true,
+   "detalle": "3.6 MB",
+   "ms": 248
+  },
+  {
+   "prueba": "PDF gigante-carta",
+   "ok": true,
+   "detalle": "1.1 MB",
+   "ms": 121
+  },
+  {
+   "prueba": "Terminal · temperatura exterior real (Open-Meteo, Ensenada)",
+   "ok": true,
+   "detalle": "Exterior · 11.3 °C · 75 % HR · sensación 8.6 °C · pantalla «🌡 Ext 11.3 °C»",
+   "ms": 88
+  },
+  {
+   "prueba": "Terminal · Morse con audio bloqueado no se pierde (#133)",
+   "ok": true,
+   "detalle": "pendiente al inicio: false · sonó a los 106 ms",
+   "ms": 6241
+  },
+  {
+   "prueba": "Terminal · disparo descartado queda registrado (#135)",
+   "ok": true,
+   "detalle": "1 descarte(s) en la Caja negra",
+   "ms": 1514
+  },
+  {
+   "prueba": "Terminal · sin errores de JavaScript",
+   "ok": true,
+   "detalle": "sin errores",
+   "ms": 0
+  },
+  {
+   "prueba": "Beta · datos/mundo.json",
+   "ok": true,
+   "detalle": "válido",
+   "ms": 331
+  },
+  {
+   "prueba": "Beta · datos/idiomas.json",
+   "ok": true,
+   "detalle": "válido",
+   "ms": 172
+  }
+ ]
+}
