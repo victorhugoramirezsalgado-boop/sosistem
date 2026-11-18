@@ -1529,3 +1529,6 @@ body.pv-bloqueo { overflow: hidden; }
 @media (prefers-color-scheme: dark) { #pv-zona.pv-full, #pv-zona.pv-full .pv-barra { background: #0f172a; } }
 
 .tr-vel { display: inline-flex; margin: 4px 0 8px; }
+
+.pv-oye { min-height: 1.2em; margin: 6px 0 0; font-style: italic; }
+#pv-zona.pv-full .pv-oye { position: sticky; top: 52px; z-index: 2; background: inherit; }

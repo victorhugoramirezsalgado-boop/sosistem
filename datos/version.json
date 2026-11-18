@@ -1,8 +1,14 @@
 {
-  "version": "8.3.16",
+  "version": "8.3.17",
   "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.17",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Traductor: botones «Copiar traducción» y «Practicar esta traducción»; si se agota el límite gratuito por equipo, reintenta con el correo del sitio (50,000 caracteres al día). Práctica: el origen «Texto del traductor» usa la traducción y su idioma; nivel de escucha básico, mediano o normal; se muestra en vivo lo que el sistema escucha en el idioma elegido."
+    },
     {
       "v": "8.3.16",
       "fecha": "2026-11-17",
