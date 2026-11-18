@@ -1,8 +1,14 @@
 {
-  "version": "8.3.18",
-  "fecha": "2026-11-17",
+  "version": "8.3.19",
+  "fecha": "2026-11-18",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.19",
+      "fecha": "2026-11-18",
+      "serie": "B",
+      "resumen": "Aprendizaje ligado a CUBO33 (cubo33.com): botones «Abrir CUBO33» que se abren en otra pestaña con botón para regresar a SOSistem™; nueva entrada 5.6 en el índice; botones en relieve (3D) en las páginas con el estilo general."
+    },
     {
       "v": "8.3.18",
       "fecha": "2026-11-17",
