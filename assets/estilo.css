@@ -1493,3 +1493,14 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .voz-sub span { display: block; } .voz-sub i { font-style: normal; opacity: .7; margin-right: 4px; font-size: .75rem; }
 .voz-sub-av { color: #ffd59e; font-size: .78rem; }
 @media print { .voz-sub { display: none !important; } }
+
+/* 8.3.14 · Subtítulos de voz: texto corrido y justificado en párrafo, panel compacto con desplazamiento, Detener y Ocultar; el resto de la página queda libre */
+.voz-sub { max-height: min(34vh, 260px); overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; pointer-events: auto; }
+.voz-sub:not(.ver) { pointer-events: none; }
+.voz-sub b.voz-sub-t { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; }
+.voz-sub b span { display: inline; }
+.voz-sub .voz-sub-ctl { display: flex; gap: 6px; justify-content: flex-end; position: sticky; top: -8px; margin: -2px 0 4px; padding-top: 2px; background: inherit; }
+.voz-sub .voz-sub-ctl button { font: inherit; font-size: .74rem; color: #fff; background: rgba(255, 255, 255, .14); border: 1.5px solid rgba(255, 255, 255, .55); border-radius: 8px; padding: 4px 9px; cursor: pointer; }
+.voz-sub .voz-sub-ctl button[data-vs="parar"] { border-color: #ff9a3c; }
+.voz-sub.min { max-height: none; }
+.voz-sub.min > :not(.voz-sub-ctl):not(small) { display: none; }

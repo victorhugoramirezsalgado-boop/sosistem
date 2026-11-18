@@ -1,8 +1,14 @@
 {
-  "version": "8.3.13",
+  "version": "8.3.14",
   "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.14",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Subtítulos de voz: el texto se ve corrido y justificado en párrafo (ya no una palabra por renglón), en un panel compacto con desplazamiento y botones «Detener» y «Ocultar texto»; mientras se escucha se puede usar y recorrer el resto del sitio."
+    },
     {
       "v": "8.3.13",
       "fecha": "2026-11-17",
