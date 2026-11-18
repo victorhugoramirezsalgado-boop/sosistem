@@ -1516,3 +1516,16 @@ body.sos-destello::after { content: ""; position: fixed; inset: 0; background: #
 .pv-v { background: rgba(22, 163, 74, .5); } .pv-m { background: rgba(147, 51, 234, .5); } .pv-a { background: rgba(234, 179, 8, .5); } .pv-r { background: rgba(220, 38, 38, .5); }
 .pv-ley span { display: inline-block; padding: 2px 8px; border-radius: 6px; margin: 2px 2px 2px 0; font-size: .78rem; }
 .pv-nota { font-size: 1rem; margin: 8px 0 2px; }
+
+/* 8.3.16 · Práctica: cuadro amplio, desplazamiento libre, ritmo elegible y pantalla completa */
+.pv-txt { max-height: none; min-height: 40vh; overflow: visible; font-size: 1.12rem; line-height: 1.35; }
+.pv-w b { font-size: 1.15rem; }
+.pv-opc { margin: 6px 0; font-size: .9rem; } .pv-opc label { margin-right: 10px; }
+.pv-barra { display: none; }
+#pv-zona.pv-full { position: fixed; inset: 0; z-index: 9999; background: #fff; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 10px 12px 90px; }
+#pv-zona.pv-full .pv-barra { display: flex; gap: 8px; position: sticky; top: 0; z-index: 2; background: #fff; padding: 6px 0; margin: 0; }
+#pv-zona.pv-full .pv-txt { border: 0; font-size: 1.3rem; } #pv-zona.pv-full .pv-w b { font-size: 1.35rem; }
+body.pv-bloqueo { overflow: hidden; }
+@media (prefers-color-scheme: dark) { #pv-zona.pv-full, #pv-zona.pv-full .pv-barra { background: #0f172a; } }
+
+.tr-vel { display: inline-flex; margin: 4px 0 8px; }

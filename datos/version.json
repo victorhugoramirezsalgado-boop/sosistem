@@ -1,8 +1,14 @@
 {
-  "version": "8.3.15",
+  "version": "8.3.16",
   "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.16",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Aprendizaje: «Practica tu pronunciación» con ritmo elegible (palabra por palabra, lento, mediano, rápido, frase por frase o párrafo completo), cuadro amplio con desplazamiento libre, pantalla completa y calificación más rápida; el traductor agrega selector de velocidad para escuchar."
+    },
     {
       "v": "8.3.15",
       "fecha": "2026-11-17",
