@@ -1,8 +1,14 @@
 {
-  "version": "8.3.11",
-  "fecha": "2026-11-09",
+  "version": "8.3.12",
+  "fecha": "2026-11-17",
   "esquema": "Versiones consecutivas 1.1 … 1.9, 2.0 … 2.9, 3.0; cada número agrupa un conjunto de cambios publicado; los ajustes menores sin cambio de contenido llevan un tercer número (3.8.1).",
   "historial": [
+    {
+      "v": "8.3.12",
+      "fecha": "2026-11-17",
+      "serie": "B",
+      "resumen": "Aprendizaje · Traductor: texto completo hasta 5,000 caracteres con contador; mismo idioma solo lee; escucha completa por partes con botón Detener; la voz se activa al tocar Escuchar en iPhone y Chrome de iOS."
+    },
     {
       "v": "8.3.11",
       "fecha": "2026-11-09",
