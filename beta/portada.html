@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#121315">
+<title>Beta · SOSistem · Terminal de mando (pantalla)</title>
+<!-- SOSistem™ Beta · © Víctor Hugo Ramírez Salgado (VHRS). Autor y titular 100 %. Asistencia-IA. -->
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#E8650F}a:hover{color:#F28A45}
+.hud{position:relative;background:linear-gradient(155deg,#2A2D31 0%,#1C1E21 55%,#16181A 100%);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));box-shadow:inset 0 1px 0 rgba(244,240,230,.08)}
+.hud::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(#E8650F,#E8650F) top left/34px 2px no-repeat,linear-gradient(#E8650F,#E8650F) top left/2px 34px no-repeat,linear-gradient(rgba(232,223,204,.5),rgba(232,223,204,.5)) bottom right/34px 2px no-repeat,linear-gradient(rgba(232,223,204,.5),rgba(232,223,204,.5)) bottom right/2px 34px no-repeat}
+.hud::after{content:'';position:absolute;top:0;right:0;width:31px;height:2px;background:#E8650F;transform-origin:right top;transform:translateY(0) rotate(45deg) translateX(0)}
+.lite{position:relative;background:linear-gradient(160deg,#F4F0E6 0%,#E8DFCC 100%);color:#1C1E21;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.lite::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#E8650F}
+.hd{font-family:Rajdhani,Inter,sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0}
+.sl{color:#E8650F}
+.mono{font-family:'JetBrains Mono',monospace}
+.idx{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;padding:0 6px;background:#E8DFCC;color:#1C1E21;font:700 11px 'JetBrains Mono',monospace;clip-path:polygon(0 0,100% 0,100% 70%,85% 100%,0 100%)}
+.seg{height:10px;background:repeating-linear-gradient(90deg,rgba(244,240,230,.08) 0 9px,transparent 9px 12px)}
+.seg>div{height:10px}
+.grid-bg{background-image:linear-gradient(rgba(232,223,204,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,223,204,.045) 1px,transparent 1px);background-size:32px 32px}
+.typ{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #E8650F;animation:typ 6s steps(70) infinite,car .8s step-end infinite}
+@keyframes typ{0%{width:0}60%,100%{width:70ch}}
+@keyframes car{50%{border-color:transparent}}
+.stage{perspective:900px}
+.wc{width:200px;height:200px;position:relative;transform-style:preserve-3d;animation:rt 16s linear infinite}
+.wc div{position:absolute;inset:0;border:1.5px solid rgba(232,223,204,.8);background:rgba(232,223,204,.04);box-shadow:0 0 16px rgba(232,223,204,.18),inset 0 0 22px rgba(232,101,15,.10)}
+.wc .a{transform:translateZ(100px)}.wc .b{transform:rotateY(90deg) translateZ(100px)}.wc .c{transform:rotateY(180deg) translateZ(100px)}.wc .d{transform:rotateY(-90deg) translateZ(100px)}.wc .e{transform:rotateX(90deg) translateZ(100px)}.wc .f{transform:rotateX(-90deg) translateZ(100px)}
+.ic{position:absolute;left:70px;top:70px;width:60px;height:60px;transform-style:preserve-3d;animation:rt 6s linear infinite reverse}
+.ic div{position:absolute;inset:0;border:1.5px solid #E8650F;background:rgba(232,101,15,.28);box-shadow:0 0 24px rgba(232,101,15,.7)}
+.ic .a{transform:translateZ(30px)}.ic .b{transform:rotateY(90deg) translateZ(30px)}.ic .c{transform:rotateY(180deg) translateZ(30px)}.ic .d{transform:rotateY(-90deg) translateZ(30px)}.ic .e{transform:rotateX(90deg) translateZ(30px)}.ic .f{transform:rotateX(-90deg) translateZ(30px)}
+@keyframes rt{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+.flow{stroke-dasharray:6 8;animation:fl 1.6s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-28}}
+.pulse{animation:pu 2s ease-in-out infinite}
+@keyframes pu{50%{opacity:.3}}
+.tk{display:inline-block;white-space:nowrap;animation:tk 28s linear infinite}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sos{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 28px;background:#E8650F;color:#111214;font:700 24px Rajdhani,Inter,sans-serif;letter-spacing:4px;text-decoration:none;border:2px solid #0A0B0C;box-shadow:0 5px 0 #0A0B0C,0 0 30px rgba(232,101,15,.55);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.sos:hover{color:#111214;background:#F07A2A}
+.sos:active{transform:translateY(4px)}
+.gb{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border:1.5px solid #E8DFCC;color:#F4F0E6;font:600 13px Inter,sans-serif;text-decoration:none;background:rgba(232,223,204,.06);box-shadow:0 4px 0 #0A0B0C}
+.gb:hover{color:#FFFFFF;background:rgba(232,223,204,.14)}
+.gb:active{transform:translateY(3px);box-shadow:0 1px 0 #0A0B0C}
+@media (prefers-reduced-motion:reduce){.wc,.ic,.flow,.pulse,.tk,.typ{animation:none}}
+</style>
+
+<style>html,body{margin:0;background:#0C0D0E}#beta-bar{position:sticky;top:0;z-index:9;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:8px 14px;background:#2E3236;color:#E8DFCC;font:600 13px Inter,system-ui,sans-serif;border-bottom:2px solid #5B6168}#beta-bar a{color:#E8DFCC;text-decoration:none;border:1.5px solid #E8DFCC;padding:6px 12px;box-shadow:0 3px 0 #0A0B0C}
+#lienzo{width:1440px;height:900px;transform-origin:0 0}#marco{overflow:hidden;margin:0 auto}</style>
+</head><body>
+<div id="beta-bar"><span>BETA · vista previa en revisión</span><a href="./">← Beta</a></div>
+<div id="marco"><div id="lienzo">
+
+<div class="grid-bg" style="width: 1440px; height: 900px; overflow: hidden; box-sizing: border-box; background-color: #121315; background-image: radial-gradient(ellipse at 88% 110%, rgba(232,101,15,.38) 0%, rgba(232,101,15,0) 46%), radial-gradient(ellipse at 10% -20%, rgba(232,223,204,.14) 0%, rgba(232,223,204,0) 45%), linear-gradient(rgba(232,223,204,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(232,223,204,.045) 1px, transparent 1px); background-size: auto, auto, 32px 32px, 32px 32px; color: #E6E2D8; font-family: Inter, system-ui, sans-serif; padding: 22px 30px; display: flex; flex-direction: column; gap: 14px">
+
+<div class="hud" style="display: flex; align-items: center; gap: 18px; padding: 12px 22px">
+<span style="font: 700 30px Rajdhani, Inter, sans-serif; letter-spacing: 1px; white-space: nowrap"><span style="color: #E8650F">SOS</span><span style="color: #F4F0E6">istem</span><span style="color: #9AA0A6; font-size: 12px; vertical-align: super">™</span> <span style="color: #8E8A80; font-size: 15px; font-weight: 600">// TERMINAL DE MANDO</span></span>
+<div class="mono" style="flex: 1; min-width: 0; background: #0D0E0F; border-left: 3px solid #E8650F; padding: 10px 14px; font-size: 13px; color: #E8DFCC; overflow: hidden"><span class="typ">&gt; ACTIVANDO SENSORES… // 27 EN LÍNEA // ENLAZANDO CONSOLA // 911 Y FAMILIA EN ESPERA //</span></div>
+<label class="mono" style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #B9B3A6">SMS SOS
+<input type="tel" placeholder="767" style="width: 96px; height: 42px; box-sizing: border-box; border: 1.5px solid #5B6168; background: #0D0E0F; color: #F4F0E6; padding: 0 10px; font: 700 15px 'JetBrains Mono', monospace">
+</label>
+<a class="sos" href="sos/" aria-label="Activar sensores SOS">SOS</a>
+</div>
+
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 2px; color: #A39E92"><span>PREVENCIÓN <span class="sl">//</span> ATENCIÓN <span class="sl">//</span> IDENTIFICACIÓN</span><span style="color: #E8DFCC"><span class="pulse" style="color: #E8650F">■</span> SISTEMA EN LÍNEA · DATOS ILUSTRATIVOS</span></div>
+
+<div style="display: flex; gap: 14px; flex: 1; min-height: 0">
+<div class="hud" style="flex: 1 1 0; min-width: 0; padding: 24px 30px; display: flex; flex-direction: column; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px"><span class="idx">00</span><span class="mono" style="font-size: 11px; color: #A39E92; letter-spacing: 2px">RED SOSISTEM · VISTA GENERAL</span></div>
+<h1 class="hd" style="font-size: 46px; line-height: 1; color: #F4F0E6; margin-top: 12px">Alerta temprana sin cámaras <span class="sl">//</span></h1>
+<h2 class="hd" style="font-size: 28px; line-height: 1.1; color: #B9B3A6; font-weight: 600">Infraestructura de seguridad humana</h2>
+<div style="display: flex; gap: 10px; margin-top: 12px"><span class="mono" style="background: #E8650F; color: #111214; padding: 5px 10px; font-size: 11px; font-weight: 700">HIPERSENSOR ACTIVO</span><span class="mono" style="background: #E8DFCC; color: #111214; padding: 5px 10px; font-size: 11px; font-weight: 700">CUBO 33 · CIFRADO</span></div>
+<div style="flex: 1; position: relative; min-height: 0">
+<svg viewBox="0 0 860 330" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true">
+<g stroke="rgba(232,223,204,.10)" stroke-width="1" fill="none">
+<path d="M0 300 L430 80 L860 300 M80 330 L430 150 L780 330 M0 220 L240 330 M860 220 L620 330 M200 330 L430 210 L660 330"></path>
+<circle cx="430" cy="170" r="150" stroke-dasharray="2 6"></circle>
+</g>
+<g fill="none" stroke-width="1.8">
+<path class="flow" d="M430 170 C330 160 230 120 120 90" stroke="#E8DFCC"></path>
+<path class="flow" d="M430 170 C330 210 220 250 110 260" stroke="#E8DFCC"></path>
+<path class="flow" d="M430 170 C540 150 640 110 760 80" stroke="#E8DFCC"></path>
+<path class="flow" d="M430 170 C560 210 660 250 770 255" stroke="#E8650F"></path>
+<path class="flow" d="M430 170 C430 230 430 270 430 305" stroke="#9AA0A6"></path>
+</g>
+<g font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">
+<path d="M64 72 H176 L184 80 V108 H64 Z" fill="#1C1E21" stroke="#E8DFCC"></path><text x="76" y="95" fill="#E8DFCC">RECINTOS</text>
+<path d="M50 242 H170 L178 250 V278 H50 Z" fill="#1C1E21" stroke="#E8DFCC"></path><text x="62" y="265" fill="#E8DFCC">FAMILIA 767</text>
+<path d="M700 62 H822 L830 70 V98 H700 Z" fill="#1C1E21" stroke="#E8DFCC"></path><text x="712" y="85" fill="#E8DFCC">ESP. PÚBLICOS</text>
+<path d="M710 237 H832 L840 245 V273 H710 Z" fill="#E8650F" stroke="#0A0B0C"></path><text x="722" y="260" fill="#111214">CAÍDA · SAN.2</text>
+<path d="M372 292 H482 L490 300 V324 H372 Z" fill="#1C1E21" stroke="#9AA0A6"></path><text x="386" y="313" fill="#D9DCDF">SISMO · 0.0</text>
+</g>
+</svg>
+<div class="stage" style="position: absolute; left: 50%; top: 52%; width: 200px; height: 200px; margin: -100px 0 0 -100px">
+<div class="wc" role="img" aria-label="Cubo SOSistem: hipersensor dentro del Cubo 33"><div class="a"></div><div class="b"></div><div class="c"></div><div class="d"></div><div class="e"></div><div class="f"></div>
+<div class="ic"><div class="a"></div><div class="b"></div><div class="c"></div><div class="d"></div><div class="e"></div><div class="f"></div></div></div>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-end">
+<span class="mono" style="font-size: 11px; color: #8E8A80; line-height: 1.6">SONIDOS ONDULATORIOS SOBRE DESASTRES NATURALES<br>Y EMERGENCIAS PERSONALES</span>
+<span style="display: flex; gap: 10px"><a class="gb" href="#">Contratar recintos →</a><a class="gb" href="#">Enlazar familia →</a></span>
+</div>
+</div>
+
+<div style="flex: 0 0 310px; display: flex; flex-direction: column; gap: 10px">
+<div class="lite" style="padding: 12px 16px 12px 20px; display: flex; justify-content: space-between; align-items: center; flex: 1"><div style="display: flex; flex-direction: column; gap: 0"><span class="mono" style="font-size: 10px; color: #5B6168; letter-spacing: 1.5px; font-weight: 700">SENSORES EN LÍNEA</span><span style="font: 700 34px Rajdhani, Inter, sans-serif; color: #111214; line-height: 1.05">27</span><span class="mono" style="font-size: 10px; color: #3A3F44; font-weight: 700">▲ 3 EQUIPOS</span></div><svg viewBox="0 0 96 40" width="96" height="40" aria-hidden="true"><polyline points="0,40 0,30 16,26 32,27 48,18 64,20 80,12 96,9 96,40" fill="rgba(232,101,15,.16)" stroke="none"></polyline><polyline points="0,30 16,26 32,27 48,18 64,20 80,12 96,9" fill="none" stroke="#E8650F" stroke-width="2.2"></polyline></svg></div><div class="lite" style="padding: 12px 16px 12px 20px; display: flex; justify-content: space-between; align-items: center; flex: 1"><div style="display: flex; flex-direction: column; gap: 0"><span class="mono" style="font-size: 10px; color: #5B6168; letter-spacing: 1.5px; font-weight: 700">PRUEBAS REALES</span><span style="font: 700 34px Rajdhani, Inter, sans-serif; color: #111214; line-height: 1.05">52+</span><span class="mono" style="font-size: 10px; color: #3A3F44; font-weight: 700">▲ META 1,000</span></div><svg viewBox="0 0 96 40" width="96" height="40" aria-hidden="true"><polyline points="0,40 0,34 16,31 32,26 48,22 64,17 80,12 96,5 96,40" fill="rgba(232,101,15,.16)" stroke="none"></polyline><polyline points="0,34 16,31 32,26 48,22 64,17 80,12 96,5" fill="none" stroke="#E8650F" stroke-width="2.2"></polyline></svg></div><div class="lite" style="padding: 12px 16px 12px 20px; display: flex; justify-content: space-between; align-items: center; flex: 1"><div style="display: flex; flex-direction: column; gap: 0"><span class="mono" style="font-size: 10px; color: #5B6168; letter-spacing: 1.5px; font-weight: 700">EVENTOS · 24 H</span><span style="font: 700 34px Rajdhani, Inter, sans-serif; color: #111214; line-height: 1.05">3</span><span class="mono" style="font-size: 10px; color: #B4500C; font-weight: 700">■ 1 ATENDIDO</span></div><svg viewBox="0 0 96 40" width="96" height="40" aria-hidden="true"><polyline points="0,40 0,32 16,32 32,12 48,32 64,32 80,20 96,32 96,40" fill="rgba(232,101,15,.16)" stroke="none"></polyline><polyline points="0,32 16,32 32,12 48,32 64,32 80,20 96,32" fill="none" stroke="#E8650F" stroke-width="2.2"></polyline></svg></div><div class="lite" style="padding: 12px 16px 12px 20px; display: flex; justify-content: space-between; align-items: center; flex: 1"><div style="display: flex; flex-direction: column; gap: 0"><span class="mono" style="font-size: 10px; color: #5B6168; letter-spacing: 1.5px; font-weight: 700">IDIOMAS</span><span style="font: 700 34px Rajdhani, Inter, sans-serif; color: #111214; line-height: 1.05">22</span><span class="mono" style="font-size: 10px; color: #3A3F44; font-weight: 700">■ + LSM · BRAILLE</span></div><svg viewBox="0 0 96 40" width="96" height="40" aria-hidden="true"><polyline points="0,40 0,20 16,20 32,20 48,20 64,20 80,20 96,20 96,40" fill="rgba(232,101,15,.16)" stroke="none"></polyline><polyline points="0,20 16,20 32,20 48,20 64,20 80,20 96,20" fill="none" stroke="#E8650F" stroke-width="2.2"></polyline></svg></div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+<div class="hud" style="padding: 0; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, rgba(232,101,15,.22), rgba(232,101,15,0)); border-bottom: 1px solid rgba(232,223,204,.12)"><span class="idx">01</span><h3 class="hd" style="font-size: 18px; color: #F4F0E6; flex: 1">Recintos</h3><span class="pulse" style="width: 8px; height: 8px; background: #E8650F"></span></div>
+<div style="display: flex; gap: 14px; padding: 12px 14px 14px; align-items: center">
+<svg viewBox="0 0 60 60" width="60" height="60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(232,223,204,.12)" stroke-width="6"></circle><circle cx="30" cy="30" r="24" fill="none" stroke="#E8650F" stroke-width="6" stroke-dasharray="87.5 150.8" transform="rotate(-90 30 30)"></circle><text x="30" y="35" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="16" fill="#F4F0E6">58%</text></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px">
+<span class="mono" style="font-size: 10px; color: #A39E92">S.S.O.S. · SENSORES Y SERVICIOS</span>
+<div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">AFORO</span><div class="seg" style="flex: 1"><div style="width: 58%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">GASES</span><div class="seg" style="flex: 1"><div style="width: 12%; background: repeating-linear-gradient(90deg, #9AA0A6 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">OXÍGENO</span><div class="seg" style="flex: 1"><div style="width: 96%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div>
+</div>
+</div>
+</div><div class="hud" style="padding: 0; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, rgba(232,101,15,.22), rgba(232,101,15,0)); border-bottom: 1px solid rgba(232,223,204,.12)"><span class="idx">02</span><h3 class="hd" style="font-size: 18px; color: #F4F0E6; flex: 1">Familia</h3><span class="pulse" style="width: 8px; height: 8px; background: #E8DFCC"></span></div>
+<div style="display: flex; gap: 14px; padding: 12px 14px 14px; align-items: center">
+<svg viewBox="0 0 60 60" width="60" height="60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(232,223,204,.12)" stroke-width="6"></circle><circle cx="30" cy="30" r="24" fill="none" stroke="#E8650F" stroke-width="6" stroke-dasharray="113.1 150.8" transform="rotate(-90 30 30)"></circle><text x="30" y="35" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="16" fill="#F4F0E6">75%</text></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px">
+<span class="mono" style="font-size: 10px; color: #A39E92">VÍA TELEFÓNICA · 767</span>
+<div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">ENLAZADOS</span><div class="seg" style="flex: 1"><div style="width: 75%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">CAÍDAS</span><div class="seg" style="flex: 1"><div style="width: 8%; background: repeating-linear-gradient(90deg, #E8650F 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">BATERÍA</span><div class="seg" style="flex: 1"><div style="width: 64%; background: repeating-linear-gradient(90deg, #9AA0A6 0 9px, transparent 9px 12px)"></div></div></div>
+</div>
+</div>
+</div><div class="hud" style="padding: 0; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, rgba(232,101,15,.22), rgba(232,101,15,0)); border-bottom: 1px solid rgba(232,223,204,.12)"><span class="idx">03</span><h3 class="hd" style="font-size: 18px; color: #F4F0E6; flex: 1">Eventos naturales</h3><span class="pulse" style="width: 8px; height: 8px; background: #E8DFCC"></span></div>
+<div style="display: flex; gap: 14px; padding: 12px 14px 14px; align-items: center">
+<svg viewBox="0 0 60 60" width="60" height="60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(232,223,204,.12)" stroke-width="6"></circle><circle cx="30" cy="30" r="24" fill="none" stroke="#E8650F" stroke-width="6" stroke-dasharray="6.0 150.8" transform="rotate(-90 30 30)"></circle><text x="30" y="35" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="16" fill="#F4F0E6">4%</text></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px">
+<span class="mono" style="font-size: 10px; color: #A39E92">SISMO · EXPLOSIÓN · GASES</span>
+<div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">SISMO</span><div class="seg" style="flex: 1"><div style="width: 4%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">RUIDO DB</span><div class="seg" style="flex: 1"><div style="width: 38%; background: repeating-linear-gradient(90deg, #9AA0A6 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">HUMO</span><div class="seg" style="flex: 1"><div style="width: 3%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div>
+</div>
+</div>
+</div><div class="hud" style="padding: 0; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, rgba(232,101,15,.22), rgba(232,101,15,0)); border-bottom: 1px solid rgba(232,223,204,.12)"><span class="idx">04</span><h3 class="hd" style="font-size: 18px; color: #F4F0E6; flex: 1">Espacios públicos</h3><span class="pulse" style="width: 8px; height: 8px; background: #C62828"></span></div>
+<div style="display: flex; gap: 14px; padding: 12px 14px 14px; align-items: center">
+<svg viewBox="0 0 60 60" width="60" height="60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="none" stroke="rgba(232,223,204,.12)" stroke-width="6"></circle><circle cx="30" cy="30" r="24" fill="none" stroke="#E8650F" stroke-width="6" stroke-dasharray="123.7 150.8" transform="rotate(-90 30 30)"></circle><text x="30" y="35" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="16" fill="#F4F0E6">82%</text></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px">
+<span class="mono" style="font-size: 10px; color: #A39E92">CELULAR + RECINTOS LIMITADOS</span>
+<div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">PERSONAS</span><div class="seg" style="flex: 1"><div style="width: 82%; background: repeating-linear-gradient(90deg, #E8DFCC 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">ALERTAS</span><div class="seg" style="flex: 1"><div style="width: 18%; background: repeating-linear-gradient(90deg, #E8650F 0 9px, transparent 9px 12px)"></div></div></div><div style="display: flex; align-items: center; gap: 8px"><span class="mono" style="font-size: 10px; color: #D6D0C2; width: 70px">CONEXIÓN</span><div class="seg" style="flex: 1"><div style="width: 91%; background: repeating-linear-gradient(90deg, #9AA0A6 0 9px, transparent 9px 12px)"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mono" style="background: #E8650F; color: #111214; padding: 9px 0; overflow: hidden; font-size: 12px; font-weight: 700; letter-spacing: 2px; clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)">
+<span class="tk">&#160;CADA SEGUNDO CUENTA // SIN CÁMARAS NI GRABACIÓN // 22 IDIOMAS // ··· −−− ··· // ⠎⠕⠎ // FORTALEZAS · PRECIOS · AYUDAS · INFORMES CASI AL MOMENTO // © VÍCTOR HUGO RAMÍREZ SALGADO //&#160;CADA SEGUNDO CUENTA // SIN CÁMARAS NI GRABACIÓN // 22 IDIOMAS // ··· −−− ··· // ⠎⠕⠎ // FORTALEZAS · PRECIOS · AYUDAS · INFORMES CASI AL MOMENTO // © VÍCTOR HUGO RAMÍREZ SALGADO //</span>
+</div>
+</div>
+</div></div>
+<script>(function(){var W=1440,H=900,l=document.getElementById("lienzo"),m=document.getElementById("marco");function f(){var s=Math.min(1,document.documentElement.clientWidth/W);l.style.transform="scale("+s+")";m.style.width=W*s+"px";m.style.height=H*s+"px"}addEventListener("resize",f);f()})();</script>
+</body></html>

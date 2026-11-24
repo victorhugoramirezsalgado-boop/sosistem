@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#121315">
+<title>Beta · SOSistem · Terminal de mando (celular)</title>
+<!-- SOSistem™ Beta · © Víctor Hugo Ramírez Salgado (VHRS). Autor y titular 100 %. Asistencia-IA. -->
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#E8650F}a:hover{color:#F28A45}
+.hud{position:relative;background:linear-gradient(155deg,#2A2D31 0%,#1C1E21 55%,#16181A 100%);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));box-shadow:inset 0 1px 0 rgba(244,240,230,.08)}
+.hud::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(#E8650F,#E8650F) top left/34px 2px no-repeat,linear-gradient(#E8650F,#E8650F) top left/2px 34px no-repeat,linear-gradient(rgba(232,223,204,.5),rgba(232,223,204,.5)) bottom right/34px 2px no-repeat,linear-gradient(rgba(232,223,204,.5),rgba(232,223,204,.5)) bottom right/2px 34px no-repeat}
+.hud::after{content:'';position:absolute;top:0;right:0;width:31px;height:2px;background:#E8650F;transform-origin:right top;transform:translateY(0) rotate(45deg) translateX(0)}
+.lite{position:relative;background:linear-gradient(160deg,#F4F0E6 0%,#E8DFCC 100%);color:#1C1E21;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.lite::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#E8650F}
+.hd{font-family:Rajdhani,Inter,sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0}
+.sl{color:#E8650F}
+.mono{font-family:'JetBrains Mono',monospace}
+.idx{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;padding:0 6px;background:#E8DFCC;color:#1C1E21;font:700 11px 'JetBrains Mono',monospace;clip-path:polygon(0 0,100% 0,100% 70%,85% 100%,0 100%)}
+.seg{height:10px;background:repeating-linear-gradient(90deg,rgba(244,240,230,.08) 0 9px,transparent 9px 12px)}
+.seg>div{height:10px}
+.grid-bg{background-image:linear-gradient(rgba(232,223,204,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,223,204,.045) 1px,transparent 1px);background-size:32px 32px}
+.typ{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #E8650F;animation:typ 6s steps(70) infinite,car .8s step-end infinite}
+@keyframes typ{0%{width:0}60%,100%{width:70ch}}
+@keyframes car{50%{border-color:transparent}}
+.stage{perspective:900px}
+.wc{width:200px;height:200px;position:relative;transform-style:preserve-3d;animation:rt 16s linear infinite}
+.wc div{position:absolute;inset:0;border:1.5px solid rgba(232,223,204,.8);background:rgba(232,223,204,.04);box-shadow:0 0 16px rgba(232,223,204,.18),inset 0 0 22px rgba(232,101,15,.10)}
+.wc .a{transform:translateZ(100px)}.wc .b{transform:rotateY(90deg) translateZ(100px)}.wc .c{transform:rotateY(180deg) translateZ(100px)}.wc .d{transform:rotateY(-90deg) translateZ(100px)}.wc .e{transform:rotateX(90deg) translateZ(100px)}.wc .f{transform:rotateX(-90deg) translateZ(100px)}
+.ic{position:absolute;left:70px;top:70px;width:60px;height:60px;transform-style:preserve-3d;animation:rt 6s linear infinite reverse}
+.ic div{position:absolute;inset:0;border:1.5px solid #E8650F;background:rgba(232,101,15,.28);box-shadow:0 0 24px rgba(232,101,15,.7)}
+.ic .a{transform:translateZ(30px)}.ic .b{transform:rotateY(90deg) translateZ(30px)}.ic .c{transform:rotateY(180deg) translateZ(30px)}.ic .d{transform:rotateY(-90deg) translateZ(30px)}.ic .e{transform:rotateX(90deg) translateZ(30px)}.ic .f{transform:rotateX(-90deg) translateZ(30px)}
+@keyframes rt{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+.flow{stroke-dasharray:6 8;animation:fl 1.6s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-28}}
+.pulse{animation:pu 2s ease-in-out infinite}
+@keyframes pu{50%{opacity:.3}}
+.tk{display:inline-block;white-space:nowrap;animation:tk 28s linear infinite}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sos{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 28px;background:#E8650F;color:#111214;font:700 24px Rajdhani,Inter,sans-serif;letter-spacing:4px;text-decoration:none;border:2px solid #0A0B0C;box-shadow:0 5px 0 #0A0B0C,0 0 30px rgba(232,101,15,.55);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.sos:hover{color:#111214;background:#F07A2A}
+.sos:active{transform:translateY(4px)}
+.gb{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border:1.5px solid #E8DFCC;color:#F4F0E6;font:600 13px Inter,sans-serif;text-decoration:none;background:rgba(232,223,204,.06);box-shadow:0 4px 0 #0A0B0C}
+.gb:hover{color:#FFFFFF;background:rgba(232,223,204,.14)}
+.gb:active{transform:translateY(3px);box-shadow:0 1px 0 #0A0B0C}
+@media (prefers-reduced-motion:reduce){.wc,.ic,.flow,.pulse,.tk,.typ{animation:none}}
+</style>
+<style>
+.chev{position:relative;background:linear-gradient(155deg,#2A2D31,#1A1C1F);clip-path:polygon(0 0,calc(100% - 26px) 0,100% 50%,calc(100% - 26px) 100%,0 100%,18px 50%);padding:16px 40px 16px 34px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.chev.first{clip-path:polygon(0 0,calc(100% - 26px) 0,100% 50%,calc(100% - 26px) 100%,0 100%)}
+.chev.hot{background:linear-gradient(155deg,#E8650F,#B94F0B)}
+.chev.lite2{background:linear-gradient(155deg,#F4F0E6,#E8DFCC)}
+.vbox{position:relative;background:linear-gradient(155deg,#2A2D31,#1A1C1F);padding:12px 14px;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),50% 100%,0 calc(100% - 14px));padding-bottom:22px}
+.dash{border:1.5px dashed #5B6168;color:#8E8A80}
+.chip{display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1.5px solid #E8DFCC;font:700 11px 'JetBrains Mono',monospace;color:#E8DFCC;letter-spacing:1px}
+</style>
+
+<style>html,body{margin:0;background:#0C0D0E}#beta-bar{position:sticky;top:0;z-index:9;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:8px 14px;background:#2E3236;color:#E8DFCC;font:600 13px Inter,system-ui,sans-serif;border-bottom:2px solid #5B6168}#beta-bar a{color:#E8DFCC;text-decoration:none;border:1.5px solid #E8DFCC;padding:6px 12px;box-shadow:0 3px 0 #0A0B0C}
+#lienzo{width:390px;height:844px;transform-origin:0 0}#marco{overflow:hidden;margin:0 auto}</style>
+</head><body>
+<div id="beta-bar"><span>BETA · vista previa en revisión</span><a href="./">← Beta</a></div>
+<div id="marco"><div id="lienzo">
+
+<div style="width: 390px; height: 844px; overflow: hidden; box-sizing: border-box; background-color: #121315; background-image: radial-gradient(ellipse at 88% 110%, rgba(232,101,15,.38) 0%, rgba(232,101,15,0) 46%), radial-gradient(ellipse at 10% -20%, rgba(232,223,204,.14) 0%, rgba(232,223,204,0) 45%), linear-gradient(rgba(232,223,204,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(232,223,204,.045) 1px, transparent 1px); background-size: auto, auto, 32px 32px, 32px 32px; color: #E6E2D8; font-family: Inter, system-ui, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div class="hud" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px"><span style="font: 700 26px Rajdhani, Inter, sans-serif; letter-spacing: 1px; white-space: nowrap"><span style="color: #E8650F">SOS</span><span style="color: #F4F0E6">istem</span><span style="color: #9AA0A6; font-size: 12px; vertical-align: super">™</span></span><span class="mono" style="font-size: 11px; color: #E8DFCC"><span class="pulse" style="color: #E8650F">■</span> 27 EN LÍNEA</span></div>
+<div class="mono" style="background: #0D0E0F; border-left: 3px solid #E8650F; padding: 8px 10px; font-size: 11px; color: #E8DFCC; overflow: hidden"><span class="typ">&gt; ACTIVANDO SENSORES… // ENLAZANDO CONSOLA // 911 Y FAMILIA EN ESPERA //</span></div>
+<div class="hud" style="position: relative; height: 290px; overflow: hidden; padding: 16px 18px">
+<div style="display: flex; align-items: center; gap: 8px"><span class="idx">00</span><span class="mono" style="font-size: 10px; color: #A39E92">VISTA GENERAL</span></div>
+<h1 class="hd" style="font-size: 26px; line-height: 1; color: #F4F0E6; margin-top: 8px">Alerta temprana <span class="sl">//</span></h1>
+<span class="hd" style="font-size: 16px; color: #B9B3A6; font-weight: 600">Sin cámaras ni grabación</span>
+<div class="stage" style="position: absolute; left: 50%; top: 60%; width: 200px; height: 200px; margin: -100px 0 0 -100px; transform: scale(.74)"><div class="wc" role="img" aria-label="Cubo SOSistem"><div class="a"></div><div class="b"></div><div class="c"></div><div class="d"></div><div class="e"></div><div class="f"></div><div class="ic"><div class="a"></div><div class="b"></div><div class="c"></div><div class="d"></div><div class="e"></div><div class="f"></div></div></div></div>
+</div>
+<a class="sos" href="sos/" style="height: 64px; font-size: 30px">SOS · ACTIVAR</a>
+<div style="display: flex; gap: 8px; align-items: center">
+<input type="tel" aria-label="Número para SMS SOS" placeholder="767 + número familiar" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; border: 1.5px solid #5B6168; background: #0D0E0F; color: #F4F0E6; padding: 0 10px; font: 600 13px 'JetBrains Mono', monospace">
+<a class="gb" href="sms:767" style="height: 44px">Enviar</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<a href="#" class="lite" style="padding: 12px 12px 12px 16px; text-decoration: none; display: flex; flex-direction: column; gap: 2px; min-height: 60px"><span class="hd" style="font-size: 17px; color: #111214">Recintos</span><span class="mono" style="font-size: 10px; color: #5B6168; font-weight: 700">S.S.O.S.</span></a><a href="#" class="lite" style="padding: 12px 12px 12px 16px; text-decoration: none; display: flex; flex-direction: column; gap: 2px; min-height: 60px"><span class="hd" style="font-size: 17px; color: #111214">Familia</span><span class="mono" style="font-size: 10px; color: #5B6168; font-weight: 700">VÍA TELEFÓNICA</span></a><a href="#" class="lite" style="padding: 12px 12px 12px 16px; text-decoration: none; display: flex; flex-direction: column; gap: 2px; min-height: 60px"><span class="hd" style="font-size: 17px; color: #111214">Catástrofes</span><span class="mono" style="font-size: 10px; color: #5B6168; font-weight: 700">EVENTOS NATURALES</span></a><a href="#" class="lite" style="padding: 12px 12px 12px 16px; text-decoration: none; display: flex; flex-direction: column; gap: 2px; min-height: 60px"><span class="hd" style="font-size: 17px; color: #111214">Públicos</span><span class="mono" style="font-size: 10px; color: #5B6168; font-weight: 700">ESPACIOS</span></a>
+</div>
+<div class="mono" style="background: #E8650F; color: #111214; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 3px; padding: 8px 0">CADA SEGUNDO CUENTA // ··· −−− ···</div>
+</div>
+</div></div>
+<script>(function(){var W=390,H=844,l=document.getElementById("lienzo"),m=document.getElementById("marco");function f(){var s=Math.min(1,document.documentElement.clientWidth/W);l.style.transform="scale("+s+")";m.style.width=W*s+"px";m.style.height=H*s+"px"}addEventListener("resize",f);f()})();</script>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#121315">
+<title>SOSistem™ Beta</title>
+<!-- SOSistem™ Beta (sosistem.com/beta/) · © Víctor Hugo Ramírez Salgado (VHRS). Autor y titular 100 %. Asistencia-IA.
+     Sin enlace desde el sitio oficial; oculta a buscadores (robots.txt: Disallow /beta/ y noindex). -->
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--or:#E8650F;--be:#E8DFCC;--co:#F4F0E6;--gi:#5B6168;--gc:#D9DCDF;--ng:#121315;--pa:#1C1E21}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#E6E2D8;font:16px/1.5 Inter,system-ui,sans-serif;background-color:var(--ng);
+ background-image:radial-gradient(ellipse at 90% 110%,rgba(232,101,15,.35),transparent 50%),linear-gradient(rgba(232,223,204,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,223,204,.045) 1px,transparent 1px);
+ background-size:auto,32px 32px,32px 32px}
+.w{max-width:1180px;margin:0 auto;padding:22px clamp(14px,4vw,30px) 60px}
+.hud{position:relative;background:linear-gradient(155deg,#2A2D31,#16181A);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+.hud::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(var(--or),var(--or)) top left/30px 2px no-repeat,linear-gradient(var(--or),var(--or)) top left/2px 30px no-repeat}
+header.hud{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between;padding:14px 20px}
+.logo{font:700 30px Rajdhani,Inter,sans-serif}.logo b{color:var(--or)}.logo i{font-style:normal;color:var(--co)}.logo sup{font-size:12px;color:#9AA0A6}
+.tag{font:700 12px 'JetBrains Mono',monospace;letter-spacing:2px;background:var(--gi);color:var(--be);padding:6px 10px}
+select{min-height:44px;background:#0D0E0F;color:var(--co);border:1.5px solid var(--gi);padding:0 10px;font:600 14px Inter,sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
+h1{font:700 clamp(30px,5vw,46px)/1.05 Rajdhani,Inter,sans-serif;text-transform:uppercase;margin:26px 0 6px;color:var(--co)}
+h1 span{color:var(--or)}
+.sub{color:#B9B3A6;max-width:760px;text-align:justify;margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:14px}
+.card{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;align-items:center;gap:10px}
+.idx{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;background:var(--be);color:#111;font:700 12px 'JetBrains Mono',monospace}
+.card h2{margin:0;font:700 20px Rajdhani,Inter,sans-serif;text-transform:uppercase;color:var(--co);flex:1}
+.est{font:700 10px 'JetBrains Mono',monospace;padding:4px 8px;letter-spacing:1px}
+.est.p{background:var(--or);color:#111}.est.r{background:var(--be);color:#111}
+.card p{margin:0;font-size:14px;color:#D6D0C2;text-align:justify}
+.bs{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.bt{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;text-decoration:none;font:700 14px Inter,sans-serif;border:2px solid #0A0B0C;box-shadow:0 5px 0 #0A0B0C;cursor:pointer}
+.bt:active{transform:translateY(4px);box-shadow:0 1px 0 #0A0B0C}
+.bt.o{background:var(--or);color:#111}.bt.l{background:transparent;color:var(--co);border-color:var(--be)}
+.mini{display:flex;flex-wrap:wrap;gap:8px}
+.mini a{color:var(--be);font:600 13px 'JetBrains Mono',monospace;border:1.5px solid var(--gi);padding:8px 10px;text-decoration:none;min-height:40px;display:inline-flex;align-items:center}
+.nota{margin-top:22px;padding:16px 20px;font-size:13px;color:#B9B3A6;text-align:justify}
+footer{margin-top:26px;font-size:12px;color:#8E8A80;text-align:center}
+button.bt{font-family:inherit}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hud">
+ <span class="logo"><b>SOS</b><i>istem</i><sup>™</sup></span>
+ <span class="tag">BETA · PRUEBAS</span>
+ <label class="mono" style="display:flex;gap:8px;align-items:center;font-size:12px;color:#B9B3A6"><span data-t="idioma">Idioma</span>
+  <select id="lang" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option><option value="fr">Français</option></select></label>
+</header>
+
+<h1 data-t="t">Página Beta <span>//</span> revisión antes de publicar</h1>
+<p class="sub" data-t="s">Aquí se prueban los cambios de SOSistem™ antes de pasar al sitio oficial. Nada de esta página se publica en sosistem.com hasta que el autor lo autorice.</p>
+
+<div class="grid">
+ <section class="hud card">
+  <div class="top"><span class="idx">01</span><h2>Terminal v8</h2><span class="est p">EN PRUEBA</span></div>
+  <p>Voz de auxilio confirmada 2 veces, «Todo bien» con 60 s de calma, sismo en pausa con el teléfono en la mano (giros de 180 a 240 °/s), caída verificada, comparación con el USGS y ajustes guardados en el equipo sin clave.</p>
+  <div class="bs"><a class="bt o" href="sos/">Abrir Terminal v8</a></div>
+ </section>
+ <section class="hud card">
+  <div class="top"><span class="idx">02</span><h2>Portada · Terminal de mando</h2><span class="est r">PROPUESTA</span></div>
+  <p>Diseño en naranja, gris, negro grisáceo y beige con el cubo giratorio, la red de recintos y los cuatro módulos.</p>
+  <div class="bs"><a class="bt o" href="portada.html">Pantalla</a><a class="bt l" href="portada-celular.html">Celular</a></div>
+ </section>
+ <section class="hud card">
+  <div class="top"><span class="idx">03</span><h2>Comunicación · situación</h2><span class="est r">PROPUESTA</span></div>
+  <p>Flujo 767 + número del familiar, reenvío al 911, informe visual, búsqueda por GPS y chip de persona SOS.</p>
+  <div class="bs"><a class="bt o" href="comunicacion.html">Ver pantalla</a></div>
+ </section>
+ <section class="hud card">
+  <div class="top"><span class="idx">04</span><h2>Portadas por dispositivo</h2><span class="est r">PROPUESTA</span></div>
+  <p>Primera imagen de SOSistem™ según el boceto del autor, en cinco tamaños de pantalla.</p>
+  <div class="mini"><a href="dispositivo-celular.html">Celular</a><a href="dispositivo-ipad.html">iPad</a><a href="dispositivo-reloj.html">Reloj</a><a href="dispositivo-pantalla.html">Pantalla</a><a href="dispositivo-proyector.html">Proyector</a></div>
+ </section>
+ <section class="hud card">
+  <div class="top"><span class="idx">05</span><h2>Morse</h2><span class="est r">APRENDIZAJE</span></div>
+  <p>Así suena «SOS» en código Morse (··· −−− ···). Aquí suena solo al tocar, con fines de aprendizaje.</p>
+  <div class="bs"><button class="bt o" type="button" id="morse">Escuchar ··· −−− ···</button></div>
+ </section>
+</div>
+
+<div class="hud nota">Versión Beta en revisión: no es el sistema terminado. Las cifras y alertas de las portadas son ilustrativas. Ningún sistema es 100 % preciso; SOSistem™ trabaja para reducir el margen de error. Modelo de utilidad en trámite ante el IMPI.</div>
+<footer>© 2026 Víctor Hugo Ramírez Salgado (VHRS) · SOSistem™ · Sistema S.O.S.© (Safe Creative 2609046908578) · Cubo Morse© · Todos los derechos reservados.</footer>
+</div>
+<script>
+(function(){
+ var T={en:{idioma:"Language",t:"Beta page // review before publishing",s:"SOSistem™ changes are tested here before they reach the official site. Nothing on this page is published on sosistem.com until the author authorizes it."},
+ pt:{idioma:"Idioma",t:"Página Beta // revisão antes de publicar",s:"Aqui as mudanças do SOSistem™ são testadas antes de chegar ao site oficial. Nada desta página é publicado em sosistem.com sem autorização do autor."},
+ fr:{idioma:"Langue",t:"Page Bêta // révision avant publication",s:"Les modifications de SOSistem™ sont testées ici avant d'arriver sur le site officiel. Rien n'est publié sur sosistem.com sans l'autorisation de l'auteur."}};
+ var ES={};document.querySelectorAll("[data-t]").forEach(function(n){ES[n.dataset.t]=n.innerHTML});
+ var s=document.getElementById("lang");
+ function pon(l){document.documentElement.lang=l;document.querySelectorAll("[data-t]").forEach(function(n){var k=n.dataset.t;n.innerHTML=(T[l]&&T[l][k])||ES[k]});try{localStorage.setItem("beta-l",l)}catch(e){}}
+ try{var g=localStorage.getItem("beta-l");if(g){s.value=g;pon(g)}}catch(e){}
+ s.onchange=function(){pon(s.value)};
+ document.getElementById("morse").onclick=function(){try{var C=window.AudioContext||window.webkitAudioContext,a=new C(),u=.09,t=a.currentTime+.05;
+  [1,1,1,0,3,3,3,0,1,1,1].forEach(function(d){if(!d){t+=u*2;return}var o=a.createOscillator(),g=a.createGain();o.frequency.value=700;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.25,t);o.start(t);o.stop(t+d*u);t+=d*u+u})}catch(e){}};
+})();
+</script>
+</body>
+</html>
