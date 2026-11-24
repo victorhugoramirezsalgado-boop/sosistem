@@ -89,6 +89,10 @@ li.on{border-color:#4a2a00}
 .bar .s.on{border-color:var(--or);color:var(--or)}
 #alerta{position:fixed;inset:0;background:var(--or);color:#000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:9;text-align:center;padding:24px}
 #alerta.v{display:flex}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,select,textarea{-webkit-user-select:text;user-select:text}
+#negro,#zonaSOS{touch-action:none}
+#zonaSOS{margin:10px max(4vw,12px) 0;min-height:150px;border:2px dashed #5a2a00;border-radius:22px;display:grid;place-items:center;color:#7a7a7a;font-size:14px;text-align:center;padding:12px}
 #alerta button.neg{background:transparent;color:#000;border:2px solid #000;font-size:15px;padding:12px 18px}
 #negro{position:fixed;inset:0;background:#000;display:none;align-items:flex-end;justify-content:center;padding-bottom:22vh;z-index:10}
 #negro.v{display:flex}
@@ -145,7 +149,8 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   </div>
 </section>
 
-<p class="ajn" style="padding:0 max(4vw,12px);margin:10px 0 0">Emergencia sin hablar: toque <b style="color:var(--or)">··· −−− ···</b> en un espacio libre de la pantalla (corto, corto, corto · largo, largo, largo · corto, corto, corto) o golpee la parte de atrás: 3 rápidos, 3 lentos, 3 rápidos. <span id="v-morseToque" style="color:var(--or)"></span></p>
+<p class="ajn" style="padding:0 max(4vw,12px);margin:10px 0 0">Emergencia sin hablar: marque <b style="color:var(--or)">··· −−− ···</b> en un espacio libre de la pantalla, aunque sea en el mismo lugar: toques o circulitos para los puntos y rayitas o toques sostenidos para las rayas. También puede golpear la parte de atrás: 3 rápidos, 3 lentos, 3 rápidos. Al entenderlo, el teléfono responde <b style="color:var(--or)">· − ·</b> (R = recibido). <span id="v-morseToque" style="color:var(--or)"></span></p>
+<div id="zonaSOS" aria-label="Zona para dibujar SOS en Morse">Zona SOS · dibuje aquí ○○○ ——— ○○○<br>o golpee la parte de atrás</div>
 <button id="pideMov" class="movbtn" hidden data-t="movBtn">Activar sismo, caída, giro y brújula</button>
 <h2 data-t="pantalla">Mi pantalla</h2>
 <div id="pantalla" class="pant"></div>
@@ -190,11 +195,11 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   <button id="todoBien" data-t="bien">Todo bien</button>
   <button id="btnNegro" class="neg">Pantalla negra · sigue enviando</button>
 </div>
-<div id="negro" role="status" aria-label="SOS enviándose con la pantalla en negro. Doble toque para volver.">
+<div id="negro" role="status" aria-label="SOS enviándose con la pantalla en negro. Mantenga presionado 2.5 segundos para volver.">
   <div class="ptos"><i class="pto"></i><i class="pto"></i><i class="pto"></i></div>
 </div>
 
-<script src="../assets/cubo-rt.js?v=sos10"></script>
-<script src="../assets/sos-inicio.js?v=sos10"></script>
+<script src="../assets/cubo-rt.js?v=sos11"></script>
+<script src="../assets/sos-inicio.js?v=sos11"></script>
 </body>
 </html>
