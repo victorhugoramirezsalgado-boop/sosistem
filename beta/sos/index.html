@@ -92,6 +92,8 @@ li.on{border-color:#4a2a00}
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,select,textarea{-webkit-user-select:text;user-select:text}
 #negro,#zonaSOS{touch-action:none}
+#marcaMorse{position:fixed;top:max(6px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:30;pointer-events:none;font:700 15px/1 ui-monospace,monospace;letter-spacing:3px;padding:4px 10px;border-radius:12px;background:#000c;opacity:0;transition:opacity .5s}
+#marcaMorse.v{opacity:.85}
 #zonaSOS{margin:10px max(4vw,12px) 0;min-height:150px;border:2px dashed #5a2a00;border-radius:22px;display:grid;place-items:center;color:#7a7a7a;font-size:14px;text-align:center;padding:12px}
 #alerta button.neg{background:transparent;color:#000;border:2px solid #000;font-size:15px;padding:12px 18px}
 #negro{position:fixed;inset:0;background:#000;display:none;align-items:flex-end;justify-content:center;padding-bottom:22vh;z-index:10}
@@ -188,6 +190,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
 
 <div id="vSitio" role="dialog" aria-label="Sitio"><div class="b"><span data-t="sigue">SOSistem sigue encendido</span><button id="vVolver" data-t="volver">← Terminal</button></div><iframe id="vMarco" title="sosistem.com"></iframe></div>
 
+<div id="marcaMorse" aria-live="polite"></div>
 <div id="alerta" role="alertdialog" aria-live="assertive">
   <b>S.O.S.</b>
   <p id="motivo">Alerta</p>
@@ -199,7 +202,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
   <div class="ptos"><i class="pto"></i><i class="pto"></i><i class="pto"></i></div>
 </div>
 
-<script src="../assets/cubo-rt.js?v=sos11"></script>
-<script src="../assets/sos-inicio.js?v=sos11"></script>
+<script src="../assets/cubo-rt.js?v=sos12"></script>
+<script src="../assets/sos-inicio.js?v=sos12"></script>
 </body>
 </html>
