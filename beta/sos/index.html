@@ -89,6 +89,16 @@ li.on{border-color:#4a2a00}
 .bar .s.on{border-color:var(--or);color:var(--or)}
 #alerta{position:fixed;inset:0;background:var(--or);color:#000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:9;text-align:center;padding:24px}
 #alerta.v{display:flex}
+#alerta button.neg{background:transparent;color:#000;border:2px solid #000;font-size:15px;padding:12px 18px}
+#negro{position:fixed;inset:0;background:#000;display:none;align-items:flex-end;justify-content:center;padding-bottom:22vh;z-index:10}
+#negro.v{display:flex}
+.ptos{display:flex;gap:14px}
+.pto{width:9px;height:9px;border-radius:50%;background:#3a1a00;animation:lat 2.4s ease-in-out infinite}
+.pto:nth-child(2){animation-delay:.3s}.pto:nth-child(3){animation-delay:.6s}
+.pto.on{background:#ff7a00;box-shadow:0 0 10px #ff7a00;animation:none}
+#alerta .pto{background:#00000055}#alerta .pto.on{background:#fff;box-shadow:0 0 12px #fff}
+@keyframes lat{50%{background:#7a3a00}}
+@media (prefers-reduced-motion:reduce){.pto{animation:none}}
 #alerta b{font-size:clamp(48px,16vw,110px);line-height:1}
 #alerta p{margin:0;font-size:20px;font-weight:700}
 #alerta button{background:#000;color:var(--or);border:0;border-radius:18px;padding:16px 28px;font-size:18px;font-weight:700}
@@ -154,6 +164,7 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
 <label>Repeticiones para confirmar la voz de auxilio<select name="vozN"><option value="1">1 vez (más rápido, más falsas alarmas)</option><option value="2">2 veces (recomendado)</option><option value="3">3 veces (más seguro)</option></select></label>
 <label>Sensibilidad al sismo<select name="sis"><option value="alta">Alta (0.06 m/s²)</option><option value="media">Media (0.10 m/s²)</option><option value="baja">Baja (0.20 m/s²)</option></select></label>
 <label>Giro máximo para considerar el teléfono quieto (°/s)<input name="giro" type="number" min="3" max="60" step="1"></label>
+<label>Ondas de aviso<select name="ondas"><option value="silencio">Normales; en Silencio, ondas discretas (≈15 kHz)</option><option value="discretas">Siempre discretas (≈15 kHz)</option><option value="no">En Silencio, sin ondas</option></select></label>
 <label>Esta pantalla es<select name="pub"><option value="privada">Privada (mi uso)</option><option value="publica">Pública (recinto)</option></select></label>
 <div class="ajb"><button type="submit">Guardar en este equipo</button><button type="button" id="ajBorrar">Restablecer</button></div>
 <p id="ajMsg" class="ajn" role="status"></p>
@@ -175,10 +186,15 @@ footer{color:#555;font-size:13px;text-align:center;padding:22px 16px 0}
 <div id="alerta" role="alertdialog" aria-live="assertive">
   <b>S.O.S.</b>
   <p id="motivo">Alerta</p>
+  <div class="ptos" aria-hidden="true"><i class="pto"></i><i class="pto"></i><i class="pto"></i></div>
   <button id="todoBien" data-t="bien">Todo bien</button>
+  <button id="btnNegro" class="neg">Pantalla negra · sigue enviando</button>
+</div>
+<div id="negro" role="status" aria-label="SOS enviándose con la pantalla en negro. Doble toque para volver.">
+  <div class="ptos"><i class="pto"></i><i class="pto"></i><i class="pto"></i></div>
 </div>
 
-<script src="../assets/cubo-rt.js?v=sos9"></script>
-<script src="../assets/sos-inicio.js?v=sos9"></script>
+<script src="../assets/cubo-rt.js?v=sos10"></script>
+<script src="../assets/sos-inicio.js?v=sos10"></script>
 </body>
 </html>
