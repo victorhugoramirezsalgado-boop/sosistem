@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SOSistem™ · Cubo con voz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Víctor Hugo Ramírez Salgado">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2f3d34">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+/* Portada al abrir como app: el cubo gira unos segundos y entra al índice */
+var stand=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone||p.get("portada");
+if(stand){
+ var sp=document.createElement("div");sp.id="splash";
+ sp.innerHTML='<div class="logo" style="font-size:30px;margin-bottom:26px"><b>SOS</b>istem<sup>™</sup> <span style="font:500 13px Helvetica,Arial,sans-serif;color:#e8892b;border:1px solid #e8892b;border-radius:10px;padding:1px 9px;margin-left:6px">beta</span></div>';
+ var es=document.querySelector(".escena").cloneNode(true);es.style.margin="0";sp.appendChild(es);
+ var tx=document.createElement("div");tx.style.cssText="color:#d9cdb4;margin-top:30px;font-size:17px";tx.textContent=actual.n;sp.appendChild(tx);
+ document.body.appendChild(sp);
+ var c2=es.querySelector(".cubo"),q2=es.querySelector("#qrmini"),k2=0;
+ try{hacerQR(q2,liga,118)}catch(e){}
+ var t2=setInterval(function(){k2=(k2+1)%6;c2.style.transform="rotateX("+rot[k2][0]+"deg) rotateY("+rot[k2][1]+"deg)"},800);
+ function cerrarP(){clearInterval(t2);sp.style.opacity=0;setTimeout(function(){sp.remove()},600)}
+ setTimeout(cerrarP,4800);sp.onclick=cerrarP;
+}
+</script>
+<style>
+:root{--verde:#2f3d34;--or:#e8892b;--mar:#1f5f7a;--amar:#e0b83a;--beige:#d9cdb4;--concha:#efe9dd;--gris:#5b6670;--claro:#c9cdd0;--bg:#f4efe4;--sf:#fffdf8;--tx:#2f3d34;--hd:#2f3d34;--ln:#d8d1c0;--mu:#5b6670}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#26302a;--sf:#2f3d34;--tx:#efe9dd;--hd:#efe9dd;--ln:#46564a;--mu:#c9cdd0}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px);-webkit-font-smoothing:antialiased}
+.w{max-width:640px;margin:0 auto;padding:0 20px}
+header.top{background:var(--verde);padding:calc(env(safe-area-inset-top,0px) + 16px) 0 16px;border-bottom:3px solid var(--or)}
+header.top .w{display:flex;align-items:center;justify-content:space-between}
+.logo{font:600 22px "Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--concha);letter-spacing:.01em}
+.logo b{color:var(--or);font-weight:800}
+.logo sup{font-size:11px;color:var(--beige)}
+#morse{font:500 13px ui-monospace,Menlo,monospace;color:var(--beige);background:none;border:1px solid #56685b;border-radius:4px;padding:6px 10px;cursor:pointer}
+.hero{padding:34px 0 8px}
+.hero small{display:block;color:var(--mu);font-size:14px;margin-bottom:6px}
+#giro{font:600 clamp(32px,9.5vw,50px)/1.08 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.02em;color:var(--hd);min-height:2.2em;transition:opacity .35s}
+.sub{margin:6px 0 20px;font-size:15px;color:var(--mu);max-width:46ch}
+.fila{display:flex;gap:12px;margin:0 0 14px}
+.btn{flex:1;min-height:50px;border-radius:6px;font:600 15px "Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--verde);background:transparent;color:var(--hd);transition:background .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--or);border-color:var(--or);color:#23301f}
+.btn.p:active{background:#d27a22}
+.btn.s:active{background:rgba(47,61,52,.1)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+input[type=search]{width:100%;min-height:50px;border:1.5px solid var(--ln);border-radius:6px;padding:0 14px;font-size:16px;background:var(--sf);color:var(--tx);font-family:inherit}
+input[type=search]:focus{outline:2px solid var(--or);outline-offset:1px}
+#estado{min-height:1.5em;margin-top:8px;font-size:14px;color:var(--mu)}
+h2{font:600 20px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.01em;margin:30px 0 12px;color:var(--hd)}
+ol.ind{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+ol.ind li{border-bottom:1px solid var(--ln)}
+ol.ind a{display:flex;align-items:center;gap:14px;padding:15px 4px 15px 0;color:var(--tx);text-decoration:none;font-weight:600;font-size:16px}
+ol.ind a::before{content:"";align-self:stretch;width:5px;border-radius:2px;background:var(--ac,#4f8a62);flex:none}
+ol.ind a::after{content:"\203A";margin-left:auto;font-size:24px;color:var(--mu);font-weight:300}
+ol.ind a small{display:block;font-weight:400;font-size:13.5px;color:var(--mu);margin-top:1px}
+ol.ind a:active{background:rgba(232,137,43,.12)}
+ol.ind a:focus-visible{outline:2px solid var(--or)}
+.escena{perspective:800px;width:180px;height:180px;margin:44px auto 40px}
+.cubo{position:relative;width:180px;height:180px;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.65,.05,.25,1);cursor:pointer}
+.cara{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;border:1px solid rgba(47,61,52,.35);font:600 17px/1.25 "Helvetica Neue",Helvetica,Arial,sans-serif;backface-visibility:hidden}
+.cara small{font:400 11.5px/1.35 "Helvetica Neue",Helvetica,Arial,sans-serif;margin-top:6px;opacity:.85}
+.cara b{color:var(--or)}
+.c0{transform:rotateY(0) translateZ(90px);background:var(--verde);color:var(--concha)}
+.c1{transform:rotateY(90deg) translateZ(90px);background:var(--beige);color:var(--verde)}
+.c2{transform:rotateY(180deg) translateZ(90px);background:var(--mar);color:#fff}
+.c3{transform:rotateY(-90deg) translateZ(90px);background:var(--claro);color:var(--verde)}
+.c4{transform:rotateX(90deg) translateZ(90px);background:var(--gris);color:#fff}
+.c5{transform:rotateX(-90deg) translateZ(90px);background:#fff;color:var(--verde)}
+#qrmini{width:118px;height:118px}
+#qrmini img,#qrmini canvas{width:100%!important;height:100%!important}
+.nota{font-size:13px;color:var(--mu);text-align:justify;margin:6px 0 0}
+footer{margin-top:34px;padding:20px 0 30px;border-top:1px solid var(--ln);font-size:12px;color:var(--mu);text-align:justify}
+#modal{position:fixed;inset:0;background:rgba(47,61,52,.96);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:9;padding:20px}
+#modal.on{display:flex}
+#qrgrande{background:#fff;padding:16px;border-radius:8px}
+#modal p{color:var(--concha);text-align:center;font-size:15px;max-width:340px}
+@media (prefers-reduced-motion:reduce){.cubo,#giro{transition:none}}
+#splash{position:fixed;inset:0;background:#2f3d34;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s}
+#splash .cubo{transition-duration:.7s}
+</style>
+</head>
+<body>
+<header class="top"><div class="w"><div class="logo"><b>SOS</b>istem<sup>™</sup> <span style="font:500 12px Helvetica,Arial,sans-serif;color:#e8892b;border:1px solid #e8892b;border-radius:10px;padding:1px 8px;margin-left:6px">beta</span></div><button id="morse" title="Toque para escuchar S.O.S. en Morse">··· ––– ···</button></div></header>
+<main class="w">
+<section class="hero">
+<small>Alerta temprana para salvaguardar la vida humana</small>
+<div id="giro" aria-live="polite">Aprendizaje</div>
+<p class="sub">Diga el nombre de un área o una palabra a buscar. También puede escribirla.</p>
+<div class="fila">
+<button class="btn p" id="mic" aria-label="Buscar con la voz"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12z"/></svg>Hablar</button>
+<button class="btn s" id="app">Hacer aplicación</button>
+</div>
+<input type="search" id="q" placeholder="Buscar: traductor, aprendizaje, dato técnico" aria-label="Buscar en el índice">
+<div id="estado" role="status"></div>
+</section>
+<h2>Índice</h2>
+<ol class="ind" id="indice"></ol>
+<h2>Cubo del área</h2>
+<div class="escena"><div class="cubo" id="cubo">
+<div class="cara c0"><span><b>SOS</b>istem™</span><small>Alerta temprana</small></div>
+<div class="cara c1"><span id="areaNom">Aprendizaje</span><small>Área actual</small></div>
+<div class="cara c2"><span>Cubo de la Comunicación (33)©</span></div>
+<div class="cara c3"><span>Marca en trámite</span><small>IMPI · expediente 3741790</small></div>
+<div class="cara c4"><span>© 2026</span><small>Víctor Hugo Ramírez Salgado</small></div>
+<div class="cara c5"><div id="qrmini"></div></div>
+</div></div>
+<div class="fila"><button class="btn s" id="verqr">Ver código QR</button><button class="btn s" id="pausa">Pausar giro</button></div>
+<p class="nota">Instalación: en Chrome del iPhone, Compartir y «Agregar a pantalla de inicio». En Android y escritorio, el botón «Hacer aplicación» abre la instalación. El ícono del iPhone es fijo; el cubo gira dentro de la aplicación.</p>
+<footer>© 2026 Víctor Hugo Ramírez Salgado. SOSistem™ · Sistema S.O.S.© · Cubo Morse©. Sistema en etapa piloto: no reemplaza al 911 ni a los servicios oficiales de emergencia. Liga por autoría de VHRS (Víctor Hugo Ramírez Salgado).</footer>
+</main>
+<div id="modal" role="dialog" aria-label="Código QR"><div id="qrgrande"></div><p id="qrtxt"></p><button class="btn p" style="flex:none;width:200px;margin-top:16px" id="cerrar">Cerrar</button></div>
+
+<script>
+/* Lista de áreas: para sumar una, agregue una línea. Ligas tomadas del índice de sosistem.com */
+var B="https://sosistem.com/";
+var AREAS=[
+ {n:"Aprendizaje",d:"22 idiomas, braille, Morse, señas y banderas",u:B+"anterior.html#aprende"},
+ {n:"Traductor",d:"CUBO33 · aprendizaje y traducción",u:"https://cubo33.com/aprende/?origen=sosistem&volver="+encodeURIComponent(B+"#aprendizaje")},
+ {n:"Cubo 33",d:"Mensajero del Cubo",u:B+"anterior.html#mensajero"},
+ {n:"Dato técnico",d:"Nomenclaturas y abreviaturas",u:B+"#nomenclaturas"},
+ {n:"Resumen ejecutivo",d:"Presentación mundial",u:B+"anterior.html#resumen-ejecutivo"},
+ {n:"Normativa",d:"Marco normativo vigente",u:B+"#normas"},
+ {n:"Fuentes",d:"Referencias APA 7.ª ed.",u:B+"anterior.html#fuentes"},
+ {n:"Terminal",d:"Terminal de pruebas",u:B+"terminal.html"},
+ {n:"Dossier del autor",d:"Víctor Hugo Ramírez Salgado",u:B+"#dossier"},
+ {n:"Contacto",d:"WhatsApp y correo",u:B+"#contacto"}
+];
+var $=function(i){return document.getElementById(i)};
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").trim()}
+
+/* Área actual: ?area=Nombre */
+var p=new URLSearchParams(location.search),an=p.get("area");
+var actual=AREAS.filter(function(a){return norm(a.n)==norm(an||"")})[0]||AREAS[0];
+$("areaNom").textContent=actual.n;
+document.title="SOSistem™ · "+actual.n;
+
+/* Índice con filtro */
+function pintar(f){
+ var h="",c=0;
+ var COL=["#4f8a62","#e0b83a","#1f5f7a","#d9cdb4","#8a949c"];
+ AREAS.forEach(function(a,i){
+  if(!f||norm(a.n+" "+a.d).indexOf(f)>-1){c++;h+='<li><a style="--ac:'+COL[i%5]+'" href="'+a.u+'">'+a.n+'<small>'+a.d+'</small></a></li>'}
+ });
+ $("indice").innerHTML=h||'<li class="nota">Sin resultados. Pruebe otra palabra.</li>';
+ return c;
+}
+pintar("");
+$("q").addEventListener("input",function(){pintar(norm(this.value))});
+
+/* Letrero grande que gira */
+var gi=0;
+setInterval(function(){
+ var g=$("giro");g.style.opacity=0;
+ setTimeout(function(){gi=(gi+1)%AREAS.length;g.textContent="SOSistem · "+AREAS[gi].n;g.style.opacity=1},350);
+},2600);
+
+/* Cubo: 6 caras (frente, derecha, atrás, izquierda, arriba, abajo=QR) */
+var rot=[[0,0],[0,-90],[0,-180],[0,90],[-90,0],[90,0]],ci=0,pausado=false,cub=$("cubo");
+function girar(){cub.style.transform="rotateX("+rot[ci][0]+"deg) rotateY("+rot[ci][1]+"deg)"}
+girar();
+setInterval(function(){if(!pausado){ci=(ci+1)%6;girar()}},2800);
+$("pausa").onclick=function(){pausado=!pausado;this.textContent=pausado?"Reanudar giro":"Pausar giro"};
+cub.onclick=function(){pausado=true;$("pausa").textContent="Reanudar giro";if(ci==5)abrirQR()};
+
+/* QR de la liga del área */
+var liga=actual.u;
+function hacerQR(el,t,s){el.innerHTML="";new QRCode(el,{text:t,width:s,height:s,colorDark:"#2f3d34",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}
+try{hacerQR($("qrmini"),liga,128)}catch(e){$("qrmini").textContent="QR"}
+function abrirQR(){try{hacerQR($("qrgrande"),liga,Math.min(300,innerWidth-80))}catch(e){}
+ $("qrtxt").textContent="Escanee con la cámara del teléfono para abrir: "+actual.n;$("modal").classList.add("on")}
+$("verqr").onclick=abrirQR;$("cerrar").onclick=function(){$("modal").classList.remove("on")};
+
+/* Voz: reconocimiento del navegador (sin costo) */
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+$("mic").onclick=function(){
+ if(!SR){$("estado").textContent="Este navegador no permite voz. Use el micrófono del teclado del teléfono en el campo de búsqueda.";return}
+ var r=new SR();r.lang="es-MX";r.interimResults=false;
+ $("estado").textContent="Escuchando…";
+ r.onresult=function(e){
+  var t=e.results[0][0].transcript,n=norm(t);
+  $("q").value=t;
+  var ex=AREAS.filter(function(a){return n.indexOf(norm(a.n))>-1})[0];
+  if(ex){$("estado").textContent="Abriendo «"+ex.n+"»…";location.href=ex.u;return}
+  var c=pintar(n);$("estado").textContent="Se escuchó «"+t+"» · "+c+" resultado(s)";
+ };
+ r.onerror=function(){$("estado").textContent="No se pudo usar el micrófono. Revise el permiso del navegador."};
+ r.start();
+};
+
+/* Morse sonoro al tocar */
+var AC;
+$("morse").onclick=function(){
+ AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+ var t=AC.currentTime,u=.12,sec=[1,1,1,3,3,3,1,1,1];
+ sec.forEach(function(d){var o=AC.createOscillator(),g=AC.createGain();o.frequency.value=650;o.connect(g);g.connect(AC.destination);
+  g.gain.value=.2;o.start(t);o.stop(t+d*u);t+=d*u+u});
+};
+
+/* Hacer aplicación: manifiesto generado + aviso de instalación */
+var evt=null;
+addEventListener("beforeinstallprompt",function(e){e.preventDefault();evt=e});
+/* Ícono de la app: estilo SOS Beta (fondo verde oscuro, marco naranja). Parámetros: ?area= ?tipo= ?logo= */
+function rr(x,l,t,w,h,r){x.beginPath();x.moveTo(l+r,t);x.arcTo(l+w,t,l+w,t+h,r);x.arcTo(l+w,t+h,l,t+h,r);x.arcTo(l,t+h,l,t,r);x.arcTo(l,t,l+w,t,r);x.closePath()}
+function ajusta(x,t,max,px,peso){do{x.font=peso+" "+px+"px Helvetica,Arial,sans-serif";px-=2}while(x.measureText(t).width>max&&px>16)}
+function poner(url){
+ var l=document.createElement("link");l.rel="apple-touch-icon";l.href=url;document.head.appendChild(l);
+ var m={name:"SOSistem · "+actual.n,short_name:"SOSistem "+actual.n,start_url:location.href,display:"standalone",background_color:"#2f3d34",theme_color:"#2f3d34",icons:[{src:url,sizes:"512x512",type:"image/png"}]};
+ var ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));document.head.appendChild(ml);
+ var mt=document.createElement("meta");mt.name="apple-mobile-web-app-title";mt.content="SOSistem "+actual.n;document.head.appendChild(mt);
+}
+function dibujar(img){
+ var S=512,c=document.createElement("canvas");c.width=c.height=S;var x=c.getContext("2d");
+ x.fillStyle="#2f3d34";x.fillRect(0,0,S,S);
+ x.strokeStyle="#e8892b";x.lineWidth=14;rr(x,34,34,S-68,S-68,70);x.stroke();
+ x.textAlign="center";var tipo=p.get("tipo")||"Índice";
+ if(img){var k=Math.min(300/img.width,170/img.height),w=img.width*k,h=img.height*k;x.drawImage(img,(S-w)/2,70+(170-h)/2,w,h)}
+ x.fillStyle="#e8892b";ajusta(x,"SOSistem",img?330:400,img?46:104,"800");x.fillText("SOSistem",S/2,img?292:215);
+ if(!img){x.font="600 30px monospace";x.fillText("··· ––– ···",S/2,262)}
+ x.fillStyle="#efe9dd";ajusta(x,actual.n,380,img?40:52,"700");x.fillText(actual.n,S/2,img?340:330);
+ x.fillStyle="#d9cdb4";x.font="400 28px Helvetica,Arial,sans-serif";x.fillText(tipo,S/2,img?384:378);
+ x.strokeStyle="#e8892b";x.lineWidth=4;rr(x,206,408,100,42,21);x.stroke();
+ x.fillStyle="#e8892b";x.font="600 26px Helvetica,Arial,sans-serif";x.fillText("beta",S/2,438);
+ try{poner(c.toDataURL("image/png"))}catch(e){if(img)dibujar(null)}
+}
+try{var lg=p.get("logo");if(lg){var im=new Image();im.crossOrigin="anonymous";im.onload=function(){dibujar(im)};im.onerror=function(){dibujar(null)};im.src=lg}else dibujar(null)}catch(e){}
+$("app").onclick=function(){
+ if(evt){evt.prompt();return}
+ $("estado").textContent="Toque Compartir en Chrome y elija «Agregar a pantalla de inicio».";
+};
+
+/* Portada al abrir como app: el cubo gira unos segundos y entra al índice */
+var stand=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone||p.get("portada");
+if(stand){
+ var sp=document.createElement("div");sp.id="splash";
+ sp.innerHTML='<div class="logo" style="font-size:30px;margin-bottom:26px"><b>SOS</b>istem<sup>™</sup> <span style="font:500 13px Helvetica,Arial,sans-serif;color:#e8892b;border:1px solid #e8892b;border-radius:10px;padding:1px 9px;margin-left:6px">beta</span></div>';
+ var es=document.querySelector(".escena").cloneNode(true);es.style.margin="0";sp.appendChild(es);
+ var tx=document.createElement("div");tx.style.cssText="color:#d9cdb4;margin-top:30px;font-size:17px";tx.textContent=actual.n;sp.appendChild(tx);
+ document.body.appendChild(sp);
+ var c2=es.querySelector(".cubo"),q2=es.querySelector("#qrmini"),k2=0;
+ try{hacerQR(q2,liga,118)}catch(e){}
+ var t2=setInterval(function(){k2=(k2+1)%6;c2.style.transform="rotateX("+rot[k2][0]+"deg) rotateY("+rot[k2][1]+"deg)"},800);
+ function cerrarP(){clearInterval(t2);sp.style.opacity=0;setTimeout(function(){sp.remove()},600)}
+ setTimeout(cerrarP,4800);sp.onclick=cerrarP;
+}
+</script>
+</body>
+</html>
